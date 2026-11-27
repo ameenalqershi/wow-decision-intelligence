@@ -436,6 +436,12 @@
           "WowDi.Verification.Evidence": "[1.0.0, )"
         }
       },
+      "wowdi.hosting.processprobe": {
+        "type": "Project",
+        "dependencies": {
+          "WowDi.Hosting": "[1.0.0, )"
+        }
+      },
       "wowdi.manufacturing.data": {
         "type": "Project",
         "dependencies": {

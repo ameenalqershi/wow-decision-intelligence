@@ -11,6 +11,7 @@ on:
       - src/DecisionGraph/**
       - src/Contracts/**
       - tests/Hosting/**
+      - tests/Hosting.ProcessProbe/**
       - tests/Udir/Fixtures/**
       - .github/workflows/local-hosting.yml
   push:
@@ -25,6 +26,7 @@ on:
       - src/DecisionGraph/**
       - src/Contracts/**
       - tests/Hosting/**
+      - tests/Hosting.ProcessProbe/**
       - tests/Udir/Fixtures/**
       - .github/workflows/local-hosting.yml
 permissions:
