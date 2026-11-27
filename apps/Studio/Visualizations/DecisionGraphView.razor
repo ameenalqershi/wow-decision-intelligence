@@ -1,0 +1,47 @@
+<section class="wow-visualization" aria-label="Decision graph">
+    <p>Model <bdi>@Snapshot.Revision.ModelId</bdi> · Revision <bdi>@Snapshot.Revision.RevisionId</bdi></p>
+    <div class="wow-graph-scroll">
+        <svg class="wow-graph-svg" viewBox="0 0 600 @projection.Height" aria-label="Graph nodes and relationship incidence">
+            @foreach(var incidence in projection.Incidence)
+            {
+                <line @key="incidence" class="wow-graph-link @(incidence.IsOwner?"wow-owner-link":"")" x1="224" y1="@incidence.NodeY" x2="368" y2="@incidence.EdgeY" data-edge-id="@incidence.EdgeId" data-entity-id="@incidence.EntityId" data-role="@(incidence.IsOwner?"owner":"target")" aria-hidden="true"/>
+            }
+            @foreach(var node in projection.Nodes)
+            {
+                <foreignObject @key="node.Id" x="16" y="@(node.Y-17)" width="208" height="34">
+                    <div class="wow-graph-node"><bdi>@node.Id</bdi> · @node.Kind</div>
+                </foreignObject>
+            }
+            @foreach(var edge in projection.Edges)
+            {
+                <foreignObject @key="edge.Id" x="368" y="@(edge.Y-17)" width="216" height="34">
+                    <button type="button" class="wow-graph-edge" data-edge-id="@edge.Id" aria-pressed="@(SelectedId==edge.Id?"true":"false")"
+                        @onclick="()=>Select(edge.Id)"><bdi>@edge.Id</bdi> · @edge.Kind</button>
+                </foreignObject>
+            }
+        </svg>
+    </div>
+    <table class="wow-visual-table">
+        <caption>Relationship incidence</caption>
+        <thead><tr><th scope="col">Relationship</th><th scope="col">Kind</th><th scope="col">Owner</th><th scope="col">Targets</th></tr></thead>
+        <tbody>
+            @foreach(var edge in projection.Edges)
+            {
+                <tr @key="edge.Id">
+                    <th scope="row"><button class="wow-graph-edge" type="button" aria-pressed="@(SelectedId==edge.Id?"true":"false")" @onclick="()=>Select(edge.Id)">@edge.Id</button></th>
+                    <td>@edge.Kind</td><td data-owner="@edge.OwnerId">@edge.OwnerId</td>
+                    <td>@foreach(var target in edge.Targets){<span class="wow-incident-id" data-target="@target">@target</span>}</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <p role="status" aria-live="polite">@(SelectedId is null?"No relationship selected":$"Selected relationship: {SelectedId}")</p>
+</section>
+@code {
+    [Parameter,EditorRequired] public DecisionGraphSnapshot Snapshot {get;set;}=default!;
+    [Parameter] public string? SelectedId {get;set;}
+    [Parameter] public EventCallback<string> SelectedIdChanged {get;set;}
+    private GraphProjection projection=default!;
+    protected override void OnParametersSet() => projection=GraphProjection.Create(Snapshot);
+    private Task Select(string id)=>SelectedIdChanged.InvokeAsync(id);
+}

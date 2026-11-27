@@ -1,0 +1,7 @@
+Synthetic frozen input — factory planning
+Machine M1 has 8 available minutes.
+Decision x uses integer minute ticks in [0, 12].
+Unit revenue is 7/3 USD per minute.
+Capacity: x <= available.
+Objective: maximize x * unitRevenue.
+A machine outage reduces available time from 8 to 3 minutes.

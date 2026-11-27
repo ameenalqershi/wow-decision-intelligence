@@ -1,0 +1,17 @@
+RUNNING configuration: Load local configuration
+Progress: indeterminate
+OK configuration: Load local configuration
+RUNNING workspace: Check directory access
+Progress: indeterminate
+OK workspace: Check directory access
+WOW DI · doctor
+╭───────────────┬────────────────────────────────────────────────────────────────────────────────╮
+│ Field         │ Value                                                                          │
+├───────────────┼────────────────────────────────────────────────────────────────────────────────┤
+│ scope         │ local CLI host                                                                 │
+│ runtime       │ not assessed                                                                   │
+│ remote        │ not assessed                                                                   │
+│ configuration │ loaded                                                                         │
+│ workspace     │ readable directory                                                             │
+│ message       │ Directory access verified; workspace data and solver health were not assessed. │
+╰───────────────┴────────────────────────────────────────────────────────────────────────────────╯

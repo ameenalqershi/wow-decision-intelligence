@@ -1,0 +1,34 @@
+name: Model import conformance
+on:
+  pull_request:
+    paths:
+      - src/Udir/**
+      - src/ModelImport/**
+      - tests/Udir/Fixtures/**
+      - src/Contracts/**
+      - tests/ModelImport/**
+      - .github/workflows/model-import.yml
+  push:
+    branches: [main]
+    paths:
+      - src/Udir/**
+      - src/ModelImport/**
+      - tests/Udir/Fixtures/**
+      - src/Contracts/**
+      - tests/ModelImport/**
+      - .github/workflows/model-import.yml
+permissions:
+  contents: read
+jobs:
+  model-import:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - run: dotnet restore tests/ModelImport/WowDi.ModelImport.Tests.csproj --locked-mode
+      - run: dotnet test tests/ModelImport/WowDi.ModelImport.Tests.csproj --no-restore -c Release

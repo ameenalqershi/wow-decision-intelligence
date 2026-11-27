@@ -1,0 +1,63 @@
+{
+  "version": {
+    "protocolVersion": "1.3",
+    "product": "Chrome/141.0.7390.37",
+    "revision": "@9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.0.0 Safari/537.36",
+    "jsVersion": "14.1.146.11"
+  },
+  "checks": [
+    "Keyboard selects SVG hyperedge; typed incidence equals accessible table and selection is synchronized",
+    "Keyboard-selected observed event matches stored fixture event ID; null observation has no point and splits line",
+    "Zero remains observed, missing value is explicitly unavailable"
+  ],
+  "incidence": {
+    "graph": [
+      [
+        "owner",
+        "optimizer"
+      ],
+      [
+        "target",
+        "demand"
+      ],
+      [
+        "target",
+        "materials"
+      ]
+    ],
+    "table": [
+      [
+        "owner",
+        "optimizer"
+      ],
+      [
+        "target",
+        "demand"
+      ],
+      [
+        "target",
+        "materials"
+      ]
+    ]
+  },
+  "chart": {
+    "segments": [
+      "event-1,event-2",
+      "event-4,event-5"
+    ],
+    "observed": [
+      "event-1",
+      "event-2",
+      "event-4",
+      "event-5"
+    ],
+    "missing": [
+      "event-3"
+    ]
+  },
+  "dims": {
+    "width": 1000,
+    "height": 1307
+  }
+}

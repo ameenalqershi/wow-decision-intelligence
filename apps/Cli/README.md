@@ -13,3 +13,9 @@ Build with .NET 10. Use `dotnet run --project apps/Cli -- version --format json`
 ## Local diagnostics
 
 `doctor` and `health` inspect only local host configuration and, if requested with `--workspace DIRECTORY`, actual directory readability. They do not certify model, solver or server health. `config` reports the recognized configuration sources and always redacts values. `logs` inspects the host's logging provider count and diagnostic sink, never dumps arbitrary raw log content. Persistent runtime log storage is not configured by this host; it belongs to the runtime/operations implementation. All commands accept machine output formats. An inaccessible directory or invalid configuration returns 5 and an actionable diagnostic without exposing the supplied path or configuration content.
+
+## Terminal presentation (CLI02)
+
+The interactive human diagnostics use Spectre.Console 0.54.0 and the reference palette from docs/design/references/02-WOW-DI-CLI.svg. Window chrome and background are terminal-owned. Colors are capability-dependent. Narrow terminals wrap cells instead of clipping values. Redirected/noninteractive/quiet human results use plain text; machine formats remain the CLI11 contract. NO_COLOR suppresses styling. The renderer also exposes trees and measured stage progress for downstream CLI commands.
+
+Progress events in the real doctor command are emitted immediately before/after local configuration loading and directory enumeration (or on their failure). No solver, time, memory or savings data is inferred. Unknown totals are explicitly indeterminate. The measured progress unit fixture is synthetic; actual solver-stage wiring and comparison with the solve reference require CLI05 and its engine dependencies.

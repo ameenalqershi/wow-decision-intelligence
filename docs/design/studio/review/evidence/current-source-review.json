@@ -1,0 +1,762 @@
+{
+  "reference": "docs/design/references/01-WOW-DI-Studio.svg",
+  "referenceHash": "8e98a4c893507fc50f0a155b13960148644911161f7fc0a38a82b1526a1c042d",
+  "pilotHash": "7f29710f7eeb59f6865010db4ab32691330ba7294210448de36bec48a6e83d76",
+  "modules": [
+    {
+      "id": "UI01",
+      "sourceHash": "d17cbeacd8e3ec82b69afa9a13f38954f5186ed62c9dd0d64dafc6f71cbd2897",
+      "scope": [
+        "UI01-01",
+        "UI01-02",
+        "UI01-03",
+        "UI01-04",
+        "UI01-05"
+      ],
+      "wireAndVisual": true,
+      "svgViewBoxes": [
+        "0 0 720 460",
+        "0 0 720 460"
+      ],
+      "fields": [
+        "F-REV"
+      ],
+      "ports": [
+        "API-WORKSPACE"
+      ],
+      "unknownFields": [],
+      "unknownPorts": [],
+      "ledgerOnly": [],
+      "specOnly": [],
+      "hasJourney": true,
+      "hasFailure": true,
+      "genericStateSkeleton": true,
+      "fieldScope": "Pilot field subset; specialized payload review remains open.",
+      "apiScope": "Shared application ports; review per-feature payloads."
+    },
+    {
+      "id": "UI02",
+      "sourceHash": "b5d12012f81df7671294c99ab83f0987e54ff6d2d1fe5c2e1bef359d3c86af12",
+      "scope": [
+        "UI02-01",
+        "UI02-02",
+        "UI02-03",
+        "UI02-04",
+        "UI02-05"
+      ],
+      "wireAndVisual": true,
+      "svgViewBoxes": [
+        "0 0 720 460",
+        "0 0 720 460"
+      ],
+      "fields": [
+        "F-REV"
+      ],
+      "ports": [
+        "API-WORKSPACE"
+      ],
+      "unknownFields": [],
+      "unknownPorts": [],
+      "ledgerOnly": [],
+      "specOnly": [],
+      "hasJourney": true,
+      "hasFailure": true,
+      "genericStateSkeleton": true,
+      "fieldScope": "Pilot field subset; specialized payload review remains open.",
+      "apiScope": "Shared application ports; review per-feature payloads."
+    },
+    {
+      "id": "UI03",
+      "sourceHash": "55d5e4b925455d2b8d3e73cbaa9121d04aef122fc17f1b6d4c46912f13b504f0",
+      "scope": [
+        "UI03-01",
+        "UI03-02",
+        "UI03-03",
+        "UI03-04",
+        "UI03-05"
+      ],
+      "wireAndVisual": true,
+      "svgViewBoxes": [
+        "0 0 720 460",
+        "0 0 720 460"
+      ],
+      "fields": [
+        "F-RUN",
+        "F-TERM",
+        "F-EVID"
+      ],
+      "ports": [
+        "API-RUN"
+      ],
+      "unknownFields": [],
+      "unknownPorts": [],
+      "ledgerOnly": [],
+      "specOnly": [],
+      "hasJourney": true,
+      "hasFailure": true,
+      "genericStateSkeleton": true,
+      "fieldScope": "Pilot field subset; specialized payload review remains open.",
+      "apiScope": "Shared application ports; review per-feature payloads."
+    },
+    {
+      "id": "UI04",
+      "sourceHash": "d08cf42c9605cf437b1f8ecd3d71158bd45b3552cadeb11b703a6314045fcaed",
+      "scope": [
+        "UI04-01",
+        "UI04-02",
+        "UI04-03",
+        "UI04-04"
+      ],
+      "wireAndVisual": true,
+      "svgViewBoxes": [
+        "0 0 720 460",
+        "0 0 720 460"
+      ],
+      "fields": [
+        "F-REV",
+        "F-MACHINE",
+        "F-OP"
+      ],
+      "ports": [
+        "API-MODEL"
+      ],
+      "unknownFields": [],
+      "unknownPorts": [],
+      "ledgerOnly": [],
+      "specOnly": [],
+      "hasJourney": true,
+      "hasFailure": true,
+      "genericStateSkeleton": true,
+      "fieldScope": "Pilot field subset; specialized payload review remains open.",
+      "apiScope": "Shared application ports; review per-feature payloads."
+    },
+    {
+      "id": "UI05",
+      "sourceHash": "558d01db571d2be9bddd71d7f5bf16750bccd875593afed80bb8fcf394adfa16",
+      "scope": [
+        "UI05-01",
+        "UI05-02",
+        "UI05-03",
+        "UI05-04",
+        "UI05-05",
+        "UI05-06",
+        "UI05-07",
+        "UI05-08"
+      ],
+      "wireAndVisual": true,
+      "svgViewBoxes": [
+        "0 0 720 460",
+        "0 0 720 460"
+      ],
+      "fields": [
+        "F-REV",
+        "F-MACHINE",
+        "F-OP"
+      ],
+      "ports": [
+        "API-GRAPH"
+      ],
+      "unknownFields": [],
+      "unknownPorts": [],
+      "ledgerOnly": [],
+      "specOnly": [],
+      "hasJourney": true,
+      "hasFailure": true,
+      "genericStateSkeleton": true,
+      "fieldScope": "Pilot field subset; specialized payload review remains open.",
+      "apiScope": "Shared application ports; review per-feature payloads."
+    },
+    {
+      "id": "UI06",
+      "sourceHash": "d3481e2a58805d1cc0ae798307aeba8fb6a5c7c85957af5bf03e6ab6ded19999",
+      "scope": [
+        "UI06-01",
+        "UI06-02",
+        "UI06-03",
+        "UI06-04",
+        "UI06-05"
+      ],
+      "wireAndVisual": true,
+      "svgViewBoxes": [
+        "0 0 720 460",
+        "0 0 720 460"
+      ],
+      "fields": [
+        "F-REV"
+      ],
+      "ports": [
+        "API-MODEL"
+      ],
+      "unknownFields": [],
+      "unknownPorts": [],
+      "ledgerOnly": [],
+      "specOnly": [],
+      "hasJourney": true,
+      "hasFailure": true,
+      "genericStateSkeleton": true,
+      "fieldScope": "Pilot field subset; specialized payload review remains open.",
+      "apiScope": "Shared application ports; review per-feature payloads."
+    },
+    {
+      "id": "UI07",
+      "sourceHash": "f9830d429e72a618f0912b2ea351a278dc2a29755d5c124cbf7f4517ec4d0720",
+      "scope": [
+        "UI07-01",
+        "UI07-02",
+        "UI07-03",
+        "UI07-04"
+      ],
+      "wireAndVisual": true,
+      "svgViewBoxes": [
+        "0 0 720 460",
+        "0 0 720 460"
+      ],
+      "fields": [
+        "F-REV",
+        "F-DURATION"
+      ],
+      "ports": [
+        "API-MODEL"
+      ],
+      "unknownFields": [],
+      "unknownPorts": [],
+      "ledgerOnly": [],
+      "specOnly": [],
+      "hasJourney": true,
+      "hasFailure": true,
+      "genericStateSkeleton": true,
+      "fieldScope": "Pilot field subset; specialized payload review remains open.",
+      "apiScope": "Shared application ports; review per-feature payloads."
+    },
+    {
+      "id": "UI08",
+      "sourceHash": "386d106bcd549116d47a70e0742fef907d257625379848b74a688a2840d37c55",
+      "scope": [
+        "UI08-01",
+        "UI08-02",
+        "UI08-03",
+        "UI08-04",
+        "UI08-05"
+      ],
+      "wireAndVisual": true,
+      "svgViewBoxes": [
+        "0 0 720 460",
+        "0 0 720 460"
+      ],
+      "fields": [
+        "F-REV",
+        "F-WEIGHT",
+        "F-OBJ"
+      ],
+      "ports": [
+        "API-MODEL"
+      ],
+      "unknownFields": [],
+      "unknownPorts": [],
+      "ledgerOnly": [],
+      "specOnly": [],
+      "hasJourney": true,
+      "hasFailure": true,
+      "genericStateSkeleton": true,
+      "fieldScope": "Pilot field subset; specialized payload review remains open.",
+      "apiScope": "Shared application ports; review per-feature payloads."
+    },
+    {
+      "id": "UI09",
+      "sourceHash": "ff95f0e6b71bf72a004aa6f4b2ee2a1749ec78575e8139b6e5014dea2649faf5",
+      "scope": [
+        "UI09-01",
+        "UI09-02",
+        "UI09-03",
+        "UI09-04",
+        "UI09-05",
+        "UI09-06"
+      ],
+      "wireAndVisual": true,
+      "svgViewBoxes": [
+        "0 0 720 460",
+        "0 0 720 460"
+      ],
+      "fields": [
+        "F-REV"
+      ],
+      "ports": [
+        "API-MODEL"
+      ],
+      "unknownFields": [],
+      "unknownPorts": [],
+      "ledgerOnly": [],
+      "specOnly": [],
+      "hasJourney": true,
+      "hasFailure": true,
+      "genericStateSkeleton": true,
+      "fieldScope": "Pilot field subset; specialized payload review remains open.",
+      "apiScope": "Shared application ports; review per-feature payloads."
+    },
+    {
+      "id": "UI10",
+      "sourceHash": "328aafa8e217c0618720db3ac66f873c4653bfbd229dcd655ac03f269fb2889d",
+      "scope": [
+        "UI10-01",
+        "UI10-02",
+        "UI10-03"
+      ],
+      "wireAndVisual": true,
+      "svgViewBoxes": [
+        "0 0 720 460",
+        "0 0 720 460"
+      ],
+      "fields": [
+        "F-REV",
+        "F-CPU",
+        "F-MEM"
+      ],
+      "ports": [
+        "API-SOLVE"
+      ],
+      "unknownFields": [],
+      "unknownPorts": [],
+      "ledgerOnly": [],
+      "specOnly": [],
+      "hasJourney": true,
+      "hasFailure": true,
+      "genericStateSkeleton": true,
+      "fieldScope": "Pilot field subset; specialized payload review remains open.",
+      "apiScope": "Shared application ports; review per-feature payloads."
+    },
+    {
+      "id": "UI11",
+      "sourceHash": "6cbab1c34bbda4fadbba86fb896c41f3258f30abf953331f7b28f8ae770855cf",
+      "scope": [
+        "UI11-01",
+        "UI11-02",
+        "UI11-03",
+        "UI11-04",
+        "UI11-05",
+        "UI11-06"
+      ],
+      "wireAndVisual": true,
+      "svgViewBoxes": [
+        "0 0 720 460",
+        "0 0 720 460"
+      ],
+      "fields": [
+        "F-RUN",
+        "F-ELAPSED",
+        "F-OBJ",
+        "F-BOUND",
+        "F-TERM"
+      ],
+      "ports": [
+        "API-RUN"
+      ],
+      "unknownFields": [],
+      "unknownPorts": [],
+      "ledgerOnly": [],
+      "specOnly": [],
+      "hasJourney": true,
+      "hasFailure": true,
+      "genericStateSkeleton": true,
+      "fieldScope": "Pilot field subset; specialized payload review remains open.",
+      "apiScope": "Shared application ports; review per-feature payloads."
+    },
+    {
+      "id": "UI12",
+      "sourceHash": "38247638b4af9b79b930ff3fb58e08304ce059beaabfdd35d51f4cd63c896a29",
+      "scope": [
+        "UI12-01",
+        "UI12-02",
+        "UI12-03",
+        "UI12-04",
+        "UI12-05",
+        "UI12-06"
+      ],
+      "wireAndVisual": true,
+      "svgViewBoxes": [
+        "0 0 720 460",
+        "0 0 720 460"
+      ],
+      "fields": [
+        "F-REV",
+        "F-RUN",
+        "F-EVID"
+      ],
+      "ports": [
+        "API-RUN"
+      ],
+      "unknownFields": [],
+      "unknownPorts": [],
+      "ledgerOnly": [],
+      "specOnly": [],
+      "hasJourney": true,
+      "hasFailure": true,
+      "genericStateSkeleton": true,
+      "fieldScope": "Pilot field subset; specialized payload review remains open.",
+      "apiScope": "Shared application ports; review per-feature payloads."
+    },
+    {
+      "id": "UI13",
+      "sourceHash": "b77078d18557c0b035e75afd8a5e7f626e141c7d02f9fa5b3cb4993b06d66390",
+      "scope": [
+        "UI13-01",
+        "UI13-02",
+        "UI13-03",
+        "UI13-04"
+      ],
+      "wireAndVisual": true,
+      "svgViewBoxes": [
+        "0 0 720 460",
+        "0 0 720 460"
+      ],
+      "fields": [
+        "F-REV",
+        "F-MACHINE",
+        "F-OBJ"
+      ],
+      "ports": [
+        "API-SCENARIO"
+      ],
+      "unknownFields": [],
+      "unknownPorts": [],
+      "ledgerOnly": [],
+      "specOnly": [],
+      "hasJourney": true,
+      "hasFailure": true,
+      "genericStateSkeleton": true,
+      "fieldScope": "Pilot field subset; specialized payload review remains open.",
+      "apiScope": "Shared application ports; review per-feature payloads."
+    },
+    {
+      "id": "UI14",
+      "sourceHash": "85c5e19a6cab59ce767fa356ba697230b30433291f2dd5b247196ba7a62b0b46",
+      "scope": [
+        "UI14-01",
+        "UI14-02",
+        "UI14-03",
+        "UI14-04"
+      ],
+      "wireAndVisual": true,
+      "svgViewBoxes": [
+        "0 0 720 460",
+        "0 0 720 460"
+      ],
+      "fields": [
+        "F-REV",
+        "F-OBJ"
+      ],
+      "ports": [
+        "API-SIMULATION"
+      ],
+      "unknownFields": [],
+      "unknownPorts": [],
+      "ledgerOnly": [],
+      "specOnly": [],
+      "hasJourney": true,
+      "hasFailure": true,
+      "genericStateSkeleton": true,
+      "fieldScope": "Pilot field subset; specialized payload review remains open.",
+      "apiScope": "Shared application ports; review per-feature payloads. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated."
+    },
+    {
+      "id": "UI15",
+      "sourceHash": "1e3466a7a3ea6e0ba93472cacfe996ece2e9bcf4cfe15df43dbbb3c70e0886e6",
+      "scope": [
+        "UI15-01",
+        "UI15-02",
+        "UI15-03",
+        "UI15-04",
+        "UI15-05",
+        "UI15-06"
+      ],
+      "wireAndVisual": true,
+      "svgViewBoxes": [
+        "0 0 720 460",
+        "0 0 720 460"
+      ],
+      "fields": [
+        "F-REV",
+        "F-MACHINE",
+        "F-OP",
+        "F-START",
+        "F-DURATION"
+      ],
+      "ports": [
+        "API-EVIDENCE"
+      ],
+      "unknownFields": [],
+      "unknownPorts": [],
+      "ledgerOnly": [],
+      "specOnly": [],
+      "hasJourney": true,
+      "hasFailure": true,
+      "genericStateSkeleton": true,
+      "fieldScope": "Pilot field subset; specialized payload review remains open.",
+      "apiScope": "Shared application ports; review per-feature payloads."
+    },
+    {
+      "id": "UI16",
+      "sourceHash": "0b718e2a6a0c58b2097915379a025f787c594c3e9021363222eae761f695628f",
+      "scope": [
+        "UI16-01",
+        "UI16-02",
+        "UI16-03",
+        "UI16-04",
+        "UI16-05"
+      ],
+      "wireAndVisual": true,
+      "svgViewBoxes": [
+        "0 0 720 460",
+        "0 0 720 460"
+      ],
+      "fields": [
+        "F-MACHINE",
+        "F-START",
+        "F-DURATION"
+      ],
+      "ports": [
+        "API-ALLOCATION"
+      ],
+      "unknownFields": [],
+      "unknownPorts": [],
+      "ledgerOnly": [],
+      "specOnly": [],
+      "hasJourney": true,
+      "hasFailure": true,
+      "genericStateSkeleton": true,
+      "fieldScope": "Pilot field subset; specialized payload review remains open.",
+      "apiScope": "Shared application ports; review per-feature payloads. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated."
+    },
+    {
+      "id": "UI17",
+      "sourceHash": "53d04c01586b2f23045ac333b9fed2a62a19539c06bceff8bb185377edef5ba5",
+      "scope": [
+        "UI17-01",
+        "UI17-02",
+        "UI17-03",
+        "UI17-04",
+        "UI17-05",
+        "UI17-06",
+        "UI17-07"
+      ],
+      "wireAndVisual": true,
+      "svgViewBoxes": [
+        "0 0 720 460",
+        "0 0 720 460"
+      ],
+      "fields": [
+        "F-RUN",
+        "F-REV",
+        "F-STATUS",
+        "F-TERM",
+        "F-EVID"
+      ],
+      "ports": [
+        "API-EVIDENCE"
+      ],
+      "unknownFields": [],
+      "unknownPorts": [],
+      "ledgerOnly": [],
+      "specOnly": [],
+      "hasJourney": true,
+      "hasFailure": true,
+      "genericStateSkeleton": true,
+      "fieldScope": "Pilot field subset; specialized payload review remains open.",
+      "apiScope": "Shared application ports; review per-feature payloads."
+    },
+    {
+      "id": "UI18",
+      "sourceHash": "2e3fd68b1d020aaf078487527845f3e24aab96d37037ac0d729ad37ffe6ea077",
+      "scope": [
+        "UI18-01",
+        "UI18-02",
+        "UI18-03",
+        "UI18-04",
+        "UI18-05"
+      ],
+      "wireAndVisual": true,
+      "svgViewBoxes": [
+        "0 0 720 460",
+        "0 0 720 460"
+      ],
+      "fields": [
+        "F-REV",
+        "F-OBJ",
+        "F-BOUND",
+        "F-EVID"
+      ],
+      "ports": [
+        "API-EXPLAIN"
+      ],
+      "unknownFields": [],
+      "unknownPorts": [],
+      "ledgerOnly": [],
+      "specOnly": [],
+      "hasJourney": true,
+      "hasFailure": true,
+      "genericStateSkeleton": true,
+      "fieldScope": "Pilot field subset; specialized payload review remains open.",
+      "apiScope": "Shared application ports; review per-feature payloads. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated."
+    },
+    {
+      "id": "UI19",
+      "sourceHash": "dc39bc4a11a7ff1a09ec65b4d4e6e6a9d5508483f389d04cc739d4250b5d9ae3",
+      "scope": [
+        "UI19-01",
+        "UI19-02",
+        "UI19-03",
+        "UI19-04",
+        "UI19-05",
+        "UI19-06"
+      ],
+      "wireAndVisual": true,
+      "svgViewBoxes": [
+        "0 0 720 460",
+        "0 0 720 460"
+      ],
+      "fields": [
+        "F-RUN",
+        "F-CPU",
+        "F-MEM",
+        "F-ELAPSED"
+      ],
+      "ports": [
+        "API-BENCHMARK"
+      ],
+      "unknownFields": [],
+      "unknownPorts": [],
+      "ledgerOnly": [],
+      "specOnly": [],
+      "hasJourney": true,
+      "hasFailure": true,
+      "genericStateSkeleton": true,
+      "fieldScope": "Pilot field subset; specialized payload review remains open.",
+      "apiScope": "Shared application ports; review per-feature payloads. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated."
+    },
+    {
+      "id": "UI20",
+      "sourceHash": "76afe8663af163aca0fce18671373d2881920096e034d82713b3ae7de0c191b1",
+      "scope": [
+        "UI20-01",
+        "UI20-02",
+        "UI20-03",
+        "UI20-04",
+        "UI20-05"
+      ],
+      "wireAndVisual": true,
+      "svgViewBoxes": [
+        "0 0 720 460",
+        "0 0 720 460"
+      ],
+      "fields": [
+        "F-REV",
+        "F-MACHINE",
+        "F-DURATION"
+      ],
+      "ports": [
+        "API-MAPPING"
+      ],
+      "unknownFields": [],
+      "unknownPorts": [],
+      "ledgerOnly": [],
+      "specOnly": [],
+      "hasJourney": true,
+      "hasFailure": true,
+      "genericStateSkeleton": true,
+      "fieldScope": "Pilot field subset; specialized payload review remains open.",
+      "apiScope": "Shared application ports; review per-feature payloads. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated."
+    },
+    {
+      "id": "UI21",
+      "sourceHash": "91722ea5f5cbc013b1c4ec220df15a7594e39a74537abb7033fac49c1388335f",
+      "scope": [
+        "UI21-01",
+        "UI21-02",
+        "UI21-03",
+        "UI21-04",
+        "UI21-05"
+      ],
+      "wireAndVisual": true,
+      "svgViewBoxes": [
+        "0 0 720 460",
+        "0 0 720 460"
+      ],
+      "fields": [],
+      "ports": [
+        "API-ADMIN"
+      ],
+      "unknownFields": [],
+      "unknownPorts": [],
+      "ledgerOnly": [],
+      "specOnly": [],
+      "hasJourney": true,
+      "hasFailure": true,
+      "genericStateSkeleton": true,
+      "fieldScope": "Tenant/role/policy schema belongs to the enterprise identity contract, outside the pilot field catalog.",
+      "apiScope": "Shared application ports; review per-feature payloads. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated."
+    },
+    {
+      "id": "UI22",
+      "sourceHash": "e83914db7220270ec6443fc129e355d262adbaca5e0eaaa4a584e1c56e684ff3",
+      "scope": [
+        "UI22-01",
+        "UI22-02",
+        "UI22-03",
+        "UI22-04",
+        "UI22-05",
+        "UI22-06"
+      ],
+      "wireAndVisual": true,
+      "svgViewBoxes": [
+        "0 0 720 460",
+        "0 0 720 460"
+      ],
+      "fields": [
+        "F-REV"
+      ],
+      "ports": [
+        "API-COMMAND"
+      ],
+      "unknownFields": [],
+      "unknownPorts": [],
+      "ledgerOnly": [],
+      "specOnly": [],
+      "hasJourney": true,
+      "hasFailure": true,
+      "genericStateSkeleton": true,
+      "fieldScope": "Pilot field subset; specialized payload review remains open.",
+      "apiScope": "Shared application ports; review per-feature payloads."
+    },
+    {
+      "id": "UI23",
+      "sourceHash": "9b021a395fd0a6530efb110a0a52f41a062ac49004baa1d28a1a8dabc8eb8b02",
+      "scope": [
+        "UI23-01",
+        "UI23-02",
+        "UI23-03",
+        "UI23-04",
+        "UI23-05"
+      ],
+      "wireAndVisual": true,
+      "svgViewBoxes": [
+        "0 0 720 460",
+        "0 0 720 460"
+      ],
+      "fields": [
+        "F-REV",
+        "F-RUN"
+      ],
+      "ports": [
+        "API-SETTINGS"
+      ],
+      "unknownFields": [],
+      "unknownPorts": [],
+      "ledgerOnly": [],
+      "specOnly": [],
+      "hasJourney": true,
+      "hasFailure": true,
+      "genericStateSkeleton": true,
+      "fieldScope": "Pilot field subset; specialized payload review remains open.",
+      "apiScope": "Shared application ports; review per-feature payloads. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated."
+    }
+  ]
+}

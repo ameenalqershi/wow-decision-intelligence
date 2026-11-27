@@ -1,0 +1,20 @@
+<div class="wow-field">
+    <label for="@Id">@Label</label>
+    <input class="wow-input" id="@Id" value="@Value" @oninput="OnInput" required="@Required"
+           aria-invalid="@(Error is not null ? "true" : null)"
+           aria-describedby="@DescriptionIds" disabled="@Disabled" />
+    @if (Hint is not null) { <span id="@(Id + "-hint")" class="wow-muted">@Hint</span> }
+    @if (Error is not null) { <span id="@(Id + "-error")" class="wow-error">@Error</span> }
+</div>
+@code {
+    [Parameter, EditorRequired] public string Id { get; set; } = "";
+    [Parameter, EditorRequired] public string Label { get; set; } = "";
+    [Parameter] public string Value { get; set; } = "";
+    [Parameter] public EventCallback<string> ValueChanged { get; set; }
+    [Parameter] public string? Hint { get; set; }
+    [Parameter] public string? Error { get; set; }
+    [Parameter] public bool Required { get; set; }
+    [Parameter] public bool Disabled { get; set; }
+    private string? DescriptionIds => string.Join(" ", new[] { Hint is null ? null : Id + "-hint", Error is null ? null : Id + "-error" }.Where(x => x is not null)) is { Length: > 0 } ids ? ids : null;
+    private Task OnInput(ChangeEventArgs e) => ValueChanged.InvokeAsync(e.Value?.ToString() ?? "");
+}

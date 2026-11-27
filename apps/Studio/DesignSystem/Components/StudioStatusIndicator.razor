@@ -1,0 +1,8 @@
+<span class="wow-status" data-state="@State.ToString().ToLowerInvariant()">
+    <span class="wow-status-dot" aria-hidden="true"></span>
+    <span>@Text</span>
+</span>
+@code {
+    [Parameter] public StudioState State { get; set; }
+    [Parameter, EditorRequired] public string Text { get; set; } = "";
+}

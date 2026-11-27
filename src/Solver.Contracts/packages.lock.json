@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "dependencies": {
+    "net10.0": {
+      "wowdi.contracts": {
+        "type": "Project"
+      },
+      "wowdi.udir": {
+        "type": "Project",
+        "dependencies": {
+          "WowDi.Contracts": "[1.0.0, )"
+        }
+      }
+    }
+  }
+}

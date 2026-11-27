@@ -10,15 +10,17 @@ if (!browser || !fixture || !output) throw Error('Usage: node browser-check.mjs 
 const profile = await mkdtemp(join(tmpdir(), 'wowdi-ds01-'));
 const args = ['--headless','--disable-gpu','--no-first-run','--disable-background-networking','--remote-debugging-port=0','--user-data-dir='+profile,'about:blank'];
 if (process.getuid?.() === 0) args.unshift('--no-sandbox'); // isolated local fixture on root-owned test host
-const child = spawn(browser, args, { stdio: 'ignore' });
+const child = spawn(browser, args, { stdio: ['ignore','ignore','pipe'] });
 let ws;
+let startupLog = '';
+child.stderr.on('data', b => { startupLog = (startupLog + b.toString()).slice(-8192); });
 try {
   let port;
-  for (let i=0;i<100;i++) {
+  for (let i=0;i<300;i++) {
     try { port = (await readFile(join(profile,'DevToolsActivePort'),'utf8')).split('\n')[0]; break; }
     catch { await new Promise(r=>setTimeout(r,100)); }
   }
-  assert.ok(port, 'Chromium debugging port');
+  assert.ok(port, 'Chromium debugging port: ' + startupLog);
   const tabs = await (await fetch('http://127.0.0.1:'+port+'/json/list')).json();
   ws = new WebSocket(tabs.find(t=>t.type==='page').webSocketDebuggerUrl);
   await new Promise((res,rej)=>{ ws.addEventListener('open',res,{once:true}); ws.addEventListener('error',rej,{once:true}); });
@@ -29,7 +31,7 @@ try {
   const evaluate=async expression=>{const r=await cdp('Runtime.evaluate',{expression,returnByValue:true});if(r.exceptionDetails)throw Error(JSON.stringify(r.exceptionDetails));return r.result.value;};
   await cdp('Emulation.setDeviceMetricsOverride',{width:720,height:460,deviceScaleFactor:1,mobile:false});
   await cdp('Page.navigate',{url:pathToFileURL(resolve(fixture)).href});
-  for (let i=0;i<100;i++) {if(await evaluate("document.readyState === 'complete' && document.querySelectorAll('.wow-theme').length === 3"))break;await new Promise(r=>setTimeout(r,100));}
+  for (let i=0;i<300;i++) {if(await evaluate("document.readyState === 'complete' && document.querySelectorAll('.wow-theme').length === 3"))break;await new Promise(r=>setTimeout(r,100));}
   const computed=await evaluate(`Array.from(document.querySelectorAll('.wow-theme'),t=>{
     const s=(selector)=>getComputedStyle(t.querySelector(selector));
     return { theme:t.dataset.wowTheme, background:getComputedStyle(t).backgroundColor, text:getComputedStyle(t).color,
