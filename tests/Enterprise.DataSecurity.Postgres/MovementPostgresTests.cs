@@ -74,7 +74,7 @@ public sealed partial class MovementPostgresTests:IAsyncLifetime
     {
         await using(var db=new SecurityDb(_options))
         {
-            Assert.Single(await db.Database.GetAppliedMigrationsAsync());
+            Assert.Equal(2,(await db.Database.GetAppliedMigrationsAsync()).Count());
             Assert.Empty(await db.Database.GetPendingMigrationsAsync());
             Assert.False(db.Database.HasPendingModelChanges());
             await db.Database.MigrateAsync();

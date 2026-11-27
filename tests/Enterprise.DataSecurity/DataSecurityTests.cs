@@ -344,6 +344,25 @@ public sealed class DataSecurityTests
         clock.Advance(TimeSpan.FromMinutes(1));
         using var revoked=new RevokingStream(source.ToArray(),()=>auth.Policy.Allowed=false);
         Assert.Null(await preview.PreviewAsync(new("A","model"),"connector","1.0","stream",revoked,options));
+        clock.Advance(TimeSpan.FromMinutes(1));
+        auth.Policy.Allowed=true;
+        registry.OnLookup=()=>auth.Policy.Allowed=false;
+        using var late=new MemoryStream(source.ToArray());
+        Assert.Null(await preview.PreviewAsync(new("A","model"),"connector","1.0","stream",late,options));
+    }
+
+    [Fact]
+    public async Task ArchiveRevocationDuringReadDiscardsStagedBytes()
+    {
+        using var auth=new AccessFixture("A");
+        var clock=new FakeClock();
+        var gate=new SecureTransferGate(auth.Gate(clock),new(2,TimeSpan.FromMinutes(1),4,clock),
+            new(1,TimeSpan.FromMinutes(1),4,clock),new DestinationPolicy([]));
+        using var zip=Zip(File("input.json"));
+        using var revoked=new RevokingStream(zip.ToArray(),()=>auth.Policy.Allowed=false);
+        Assert.Null(await gate.StageArchiveAsync(new("A","model"),revoked,new()));
+        auth.Policy.Allowed=true;
+        Assert.NotNull(await gate.StageArchiveAsync(new("A","model"),zip,new()));
     }
 
     private sealed class RevokingStream(byte[] bytes,Action revoke):MemoryStream(bytes)
@@ -355,7 +374,8 @@ public sealed class DataSecurityTests
     private sealed class MappingRegistry(RegisteredMapping mapping):IAuthorizedMappingRegistry
     {
         public ValueTask<RegisteredMapping?> FindAsync(TenantActor actor,string modelId,string connectorId,string mappingVersion,string streamId,CancellationToken ct)
-            =>ValueTask.FromResult<RegisteredMapping?>(mapping);
+            { OnLookup?.Invoke(); return ValueTask.FromResult<RegisteredMapping?>(mapping); }
+        public Action? OnLookup { get; set; }
     }
 
     private sealed class Store : IEvidenceMovementStore

@@ -128,8 +128,10 @@ public sealed class PostgresEvidenceMovementStore(DbContextOptions<SecurityDb> o
         var row=await LockedAsync(db,key,ct);
         if(row?.Bytes is null) return false;
         if(row.LegalHold==enabled) return true;
+        var now=await DatabaseNowAsync(db,ct);
         row.LegalHold=enabled;
-        Append(db,audit,await DatabaseNowAsync(db,ct));
+        row.HoldChangedAt=now;
+        Append(db,audit,now);
         await db.SaveChangesAsync(ct);
         await tx.CommitAsync(ct);
         return true;

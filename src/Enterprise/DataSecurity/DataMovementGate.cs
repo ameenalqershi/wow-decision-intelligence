@@ -44,7 +44,9 @@ public sealed class SecureTransferGate(DataMovementGate authorization, TenantAdm
         var actor = await authorization.AuthorizeAsync(resource, DataMovementAction.Import, cancellationToken);
         if (actor is null) return null;
         if (!imports.TryAcquire(actor)) throw new DataSecurityException("admission.limit");
-        return await BoundedArchive.ReadAsync(input, limits, cancellationToken);
+        var staged = await BoundedArchive.ReadAsync(input, limits, cancellationToken);
+        var current = await authorization.AuthorizeAsync(resource, DataMovementAction.Import, cancellationToken);
+        return current == actor ? staged : null;
     }
 
     public async ValueTask<bool> AdmitJobAsync(TenantResource resource, CancellationToken cancellationToken = default)

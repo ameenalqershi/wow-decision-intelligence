@@ -29,7 +29,8 @@ public sealed class SecureSnapshotPreview(DataMovementGate gate,TenantAdmissionL
             buffer.Write(chunk,0,read);
         }
         // Reauthorize against the live registry before returning any normalized values.
-        if(await gate.AuthorizeAsync(scope,DataMovementAction.Import,ct) is null)return null;
-        return await preview.PreviewAsync(scope,connectorId,mappingVersion,streamId,buffer.ToArray(),options,ct);
+        if(await gate.AuthorizeAsync(scope,DataMovementAction.Import,ct)!=actor)return null;
+        var result=await preview.PreviewAsync(scope,connectorId,mappingVersion,streamId,buffer.ToArray(),options,ct);
+        return await gate.AuthorizeAsync(scope,DataMovementAction.Import,ct)==actor?result:null;
     }
 }

@@ -21,6 +21,7 @@ internal sealed class ArtifactRow : EvidenceScopeRow
     public string Status { get; set; }="";
     public DateTimeOffset ExpiresAt { get; set; }
     public bool LegalHold { get; set; }
+    public DateTimeOffset? HoldChangedAt { get; set; }
     public DateTimeOffset? PurgedAt { get; set; }
 }
 internal sealed class ReferenceRow : EvidenceScopeRow
@@ -64,6 +65,7 @@ public sealed class SecurityDb(DbContextOptions<SecurityDb> options):DbContext(o
         artifact.Property(x=>x.Status).HasColumnName("status").HasMaxLength(16);
         artifact.Property(x=>x.ExpiresAt).HasColumnName("expires_at");
         artifact.Property(x=>x.LegalHold).HasColumnName("legal_hold");
+        artifact.Property(x=>x.HoldChangedAt).HasColumnName("hold_changed_at");
         artifact.Property(x=>x.PurgedAt).HasColumnName("purged_at");
 
         var reference=model.Entity<ReferenceRow>();

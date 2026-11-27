@@ -64,6 +64,10 @@ namespace WowDi.Enterprise.DataSecurity.Postgres.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("expires_at");
 
+                    b.Property<DateTimeOffset?>("HoldChangedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("hold_changed_at");
+
                     b.Property<bool>("LegalHold")
                         .HasColumnType("boolean")
                         .HasColumnName("legal_hold");
