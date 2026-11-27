@@ -31,6 +31,13 @@ public sealed class UdirDocument
         Extensions = extensions;
     }
 
+    /// <summary>Check the structurally validated model against the host measurement registry.</summary>
+    public void ValidateMeasurements(MeasurementSemantics measurements)
+    {
+        ArgumentNullException.ThrowIfNull(measurements);
+        measurements.Validate(Model);
+    }
+
     public static UdirDocument Create(Model model) => new(model, 0, null);
 
     public static UdirDocument Read(ReadOnlyMemory<byte> bytes)
