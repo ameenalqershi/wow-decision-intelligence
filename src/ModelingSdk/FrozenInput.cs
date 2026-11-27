@@ -2,6 +2,8 @@ using System.Collections.Immutable;
 using System.Security.Cryptography;
 using System.Text;
 using WowDi.Udir;
+using WowDi.Dml.Semantics;
+using WowDi.Contracts;
 
 namespace WowDi.ModelingSdk;
 
@@ -47,4 +49,17 @@ public sealed class ModelSource
     }
 }
 
-public sealed record BuiltModel(UdirDocument Document, ImmutableDictionary<string, ImmutableArray<byte>> Inputs);
+public sealed record BuiltModel(UdirDocument Document, ImmutableDictionary<string, ImmutableArray<byte>> Inputs,
+    string? FactsDigest=null)
+{
+    /// <summary>Explicit shared semantic admission; a structurally valid document alone is not a solve-ready model.</summary>
+    public NormalizationResult Normalize(FrozenMeasurementCatalog catalog,CancellationToken cancellationToken=default)
+    {
+        ArgumentNullException.ThrowIfNull(catalog);
+        if(!Inputs.TryGetValue(catalog.Input.Digest,out var bytes)||
+            !bytes.AsSpan().SequenceEqual(catalog.Input.Bytes.AsSpan())||
+            !Document.Model.InputDigests.Contains(catalog.Input.Digest))
+            throw new ContractException("sdk.catalog","The supplied catalog is not the frozen build input.");
+        return ExactNormalizer.Normalize(Document,catalog.Semantics,cancellationToken);
+    }
+}

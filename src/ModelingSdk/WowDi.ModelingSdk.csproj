@@ -9,5 +9,6 @@
   <ItemGroup>
     <ProjectReference Include="../Udir/WowDi.Udir.csproj" />
     <ProjectReference Include="../ModelImport/WowDi.ModelImport.csproj" />
+    <ProjectReference Include="../Dml.Semantics/WowDi.Dml.Semantics.csproj" />
   </ItemGroup>
 </Project>

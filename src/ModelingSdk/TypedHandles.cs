@@ -46,3 +46,13 @@ public sealed class ScenarioOverride
     internal ScenarioValue Value { get; }
     internal ScenarioOverride(ModelBuilder owner, ScenarioValue value) => (Owner, Value) = (owner, value);
 }
+
+public sealed class FactBinding
+{
+    internal ModelBuilder Owner {get;}
+    internal string SymbolId {get;}
+    internal ExactValue? Number {get;}
+    internal bool? Boolean {get;}
+    internal FactBinding(ModelBuilder owner,string symbolId,ExactValue? number,bool? boolean)
+        =>(Owner,SymbolId,Number,Boolean)=(owner,symbolId,number,boolean);
+}

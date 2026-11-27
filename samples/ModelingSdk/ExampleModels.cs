@@ -34,7 +34,7 @@ public static class ExampleModels
         var decisionSpan=source.Locate("Batch decision: integer between zero and eight.");
         var limitSpan=source.Locate("Material constraint: total consumption at most stock.");
         var profitSpan=source.Locate("Profit objective: maximize contribution margin times batches.");
-        var stock=b.Resource("stock",kg,0,10,stockSpan);
+        var stock=b.Resource("stock",kg,4,10,stockSpan);
         var material=b.Parameter("consumption",consumption,2,materialSpan);
         var price=b.Parameter("margin",margin,4,marginSpan);
         var qty=b.Variable("qty",count,0,8,decisionSpan);
@@ -42,7 +42,8 @@ public static class ExampleModels
         b.HardConstraint("available",b.AtMost(total,b.Reference(stock,limitSpan),limitSpan),limitSpan);
         var revenue=b.Multiply(b.Reference(qty,profitSpan),b.Reference(price,profitSpan),usd,profitSpan);
         b.Optimize("profit",revenue,Direction.Maximize,1,profitSpan);
-        b.AddScenario("root",0,"before",source.Locate("Scenario root: before shortage observation."));
+        b.AddScenario("root",0,"base",source.Locate("Scenario root: stock is 10 kg before shortage observation."),null,null,b.Override(stock,10));
+        b.FreezeFacts(b.Fact(stock,10));
         b.AddScenario("shortage",1,"shortage",source.Locate("Shortage branch: stock becomes 4 kg."),"root",null,b.Override(stock,4));
         b.AddScenario("normal",1,"normal",source.Locate("Normal branch: stock remains 10 kg."),"root",null,b.Override(stock,10));
         b.RequireCapability("integer.linear");
@@ -70,6 +71,7 @@ public static class ExampleModels
         var cost=b.Multiply(total,b.Reference(price,costSpan),usd,costSpan);
         b.Optimize("cost",cost,Direction.Minimize,1,source.Locate("Cost objective: minimize total wages."));
         b.RequireCapability("integer.linear");
+        b.FreezeFacts();
         return b.Build();
     }
 }

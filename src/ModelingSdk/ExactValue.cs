@@ -28,6 +28,17 @@ public readonly struct ExactValue
         if (bits[3] < 0) n = -n;
         return new(n, BigInteger.Pow(10, (bits[3] >> 16) & 0xff));
     }
+    internal bool IsIntegral => Denominator.IsOne;
+    internal bool FitsProfile => BigInteger.Abs(numerator).ToString(CultureInfo.InvariantCulture).Length<=256 &&
+        Denominator.ToString(CultureInfo.InvariantCulture).Length<=256;
+    internal int CompareTo(ExactValue other) => (numerator*other.Denominator).CompareTo(other.numerator*Denominator);
+    // Only for canonical domain endpoints already admitted by UDIR.
+    internal static ExactValue FromAdmittedBound(string value)
+    {
+        var parts=value.Split('/');
+        return new(BigInteger.Parse(parts[0],CultureInfo.InvariantCulture),
+            parts.Length==1?BigInteger.One:BigInteger.Parse(parts[1],CultureInfo.InvariantCulture));
+    }
     public override string ToString() => Denominator.IsOne
         ? numerator.ToString(CultureInfo.InvariantCulture)
         : FormattableString.Invariant($"{numerator}/{Denominator}");

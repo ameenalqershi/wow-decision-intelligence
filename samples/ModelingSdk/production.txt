@@ -5,6 +5,6 @@ Contribution margin: 4 USD per batch.
 Batch decision: integer between zero and eight.
 Material constraint: total consumption at most stock.
 Profit objective: maximize contribution margin times batches.
-Scenario root: before shortage observation.
+Scenario root: stock is 10 kg before shortage observation.
 Shortage branch: stock becomes 4 kg.
 Normal branch: stock remains 10 kg.

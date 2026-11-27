@@ -5,6 +5,12 @@ on:
       - src/ModelingSdk/**
       - src/Udir/**
       - src/ModelImport/**
+      - src/Dml.Syntax/**
+      - src/Dml.Binding/**
+      - src/Dml.Semantics/**
+      - src/Verification.Independent/**
+      - src/Solver.Contracts/**
+      - src/Manufacturing.Data/**
       - src/Contracts/**
       - tests/ModelingSdk/**
       - tests/Udir/Fixtures/**
@@ -16,6 +22,12 @@ on:
       - src/ModelingSdk/**
       - src/Udir/**
       - src/ModelImport/**
+      - src/Dml.Syntax/**
+      - src/Dml.Binding/**
+      - src/Dml.Semantics/**
+      - src/Verification.Independent/**
+      - src/Solver.Contracts/**
+      - src/Manufacturing.Data/**
       - src/Contracts/**
       - tests/ModelingSdk/**
       - tests/Udir/Fixtures/**

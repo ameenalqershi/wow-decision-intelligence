@@ -32,6 +32,24 @@
       "wowdi.contracts": {
         "type": "Project"
       },
+      "wowdi.dml.binding": {
+        "type": "Project",
+        "dependencies": {
+          "WowDi.Dml.Syntax": "[1.0.0, )"
+        }
+      },
+      "wowdi.dml.semantics": {
+        "type": "Project",
+        "dependencies": {
+          "WowDi.Dml.Binding": "[1.0.0, )"
+        }
+      },
+      "wowdi.dml.syntax": {
+        "type": "Project",
+        "dependencies": {
+          "WowDi.Udir": "[1.0.0, )"
+        }
+      },
       "wowdi.modelimport": {
         "type": "Project",
         "dependencies": {
@@ -42,6 +60,7 @@
       "wowdi.modelingsdk": {
         "type": "Project",
         "dependencies": {
+          "WowDi.Dml.Semantics": "[1.0.0, )",
           "WowDi.ModelImport": "[1.0.0, )",
           "WowDi.Udir": "[1.0.0, )"
         }

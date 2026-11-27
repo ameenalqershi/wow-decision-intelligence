@@ -25,6 +25,7 @@ public sealed class ModelBuilder
     private readonly Dictionary<string, ImmutableArray<byte>> inputs = new(StringComparer.Ordinal);
     private const string BooleanId = "sdk_bool";
     private BuiltModel? frozen;
+    private ImmutableDictionary<string,FactBinding>? factBindings;
 
     public ModelBuilder(string tenantId, string modelId, string revisionId, TimeBasis basis,
         FrozenMeasurementCatalog catalog, ModelSource source)
@@ -229,6 +230,59 @@ public sealed class ModelBuilder
         foreach (var item in overrides) Own(item.Owner);
         scenarios.Add(new(id, stage, informationSet, span, [.. overrides.Select(o => o.Value)], parentId, probability?.ToString()));
     }
+    public FactBinding Fact<T>(QuantitySymbol<T> symbol,ExactValue value) where T:struct,IQuantity
+    { Own(symbol.Type.Owner); return new(this,symbol.Id,value,null); }
+    public FactBinding Fact(BooleanSymbol symbol,bool value)
+    { Own(symbol.Owner); return new(this,symbol.Id,null,value); }
+
+    /// <summary>Request a complete frozen baseline fact snapshot; fixed numeric domains supply their own value.</summary>
+    public void FreezeFacts(params FactBinding[] bindings)
+    {
+        EnsureMutable(); ArgumentNullException.ThrowIfNull(bindings);
+        if(factBindings is not null)throw Error("factsAlreadySet");
+        var staged=ImmutableDictionary.CreateBuilder<string,FactBinding>(StringComparer.Ordinal);
+        foreach(var binding in bindings)
+        {
+            ArgumentNullException.ThrowIfNull(binding);
+            Own(binding.Owner);
+            if(!staged.TryAdd(binding.SymbolId,binding))throw Error("duplicateFact");
+        }
+        factBindings=staged.ToImmutable();
+    }
+
+    private FrozenInput? SnapshotFacts(Model model)
+    {
+        if(factBindings is null)return null;
+        var pending=factBindings.ToDictionary(StringComparer.Ordinal);
+        var snapshot=new SortedDictionary<string,string>(StringComparer.Ordinal);
+        foreach(var symbol in model.Symbols)
+        {
+            if(symbol.Role==SymbolRole.Variable)
+            {
+                if(pending.ContainsKey(symbol.Id))throw Error("variableFact");
+                continue;
+            }
+            var type=types[symbol.TypeId];
+            pending.Remove(symbol.Id,out var binding);
+            if(type.Kind==ScalarKind.Boolean)
+            {
+                if(binding?.Boolean is not bool value)throw Error("missingFact");
+                snapshot.Add(symbol.Id,value?"true":"false");continue;
+            }
+            ExactValue number;
+            if(binding?.Number is ExactValue explicitNumber)number=explicitNumber;
+            else if(binding is null&&symbol.Lower is not null&&symbol.Lower==symbol.Upper)
+                number=ExactValue.FromAdmittedBound(symbol.Lower);
+            else throw Error("missingFact");
+            if(!number.FitsProfile||(type.Kind is ScalarKind.Integer or ScalarKind.Instant)&&!number.IsIntegral||
+                symbol.Lower is not null&&number.CompareTo(ExactValue.FromAdmittedBound(symbol.Lower))<0||
+                symbol.Upper is not null&&number.CompareTo(ExactValue.FromAdmittedBound(symbol.Upper))>0)
+                throw Error("factDomain");
+            snapshot.Add(symbol.Id,number.ToString());
+        }
+        if(pending.Count!=0)throw Error("unknownFact");
+        return new FrozenInput(JsonSerializer.SerializeToUtf8Bytes(snapshot));
+    }
     public void RequireCapability(string capability) { EnsureMutable(); requires.Add(capability); }
 
     private QuantityExpression<T> Node<T>(QuantityType<T> type, Operation op, ImmutableArray<string> args, SourceSpan span, string? literal = null, string? symbolId = null) where T : struct, IQuantity
@@ -259,9 +313,18 @@ public sealed class ModelBuilder
             [.. types.Values.OrderBy(x => x.Id, StringComparer.Ordinal)], [.. symbols], [.. expressions], [.. constraints],
             [.. objectives], [.. scenarios], [.. requires.Order(StringComparer.Ordinal)]));
         doc.ValidateMeasurements(measurements);
+        var facts=SnapshotFacts(doc.Model);
+        var frozenInputs=inputs.ToImmutableDictionary(StringComparer.Ordinal);
+        if(facts is not null)
+        {
+            if(frozenInputs.TryGetValue(facts.Digest,out var existing)&&!existing.AsSpan().SequenceEqual(facts.Bytes.AsSpan()))
+                throw Error("digest");
+            frozenInputs=frozenInputs.SetItem(facts.Digest,facts.Bytes);
+            doc=UdirDocument.Create(doc.Model with { InputDigests=[..frozenInputs.Keys.Order(StringComparer.Ordinal)] });
+        }
         // Enforce the existing bounded wire contract, not a new SDK-specific schema.
         _ = doc.Write();
-        return frozen = new(doc, inputs.ToImmutableDictionary(StringComparer.Ordinal));
+        return frozen = new(doc, frozenInputs,facts?.Digest);
     }
 
     public static UdirDocument Import(ReadOnlyMemory<byte> bytes, MeasurementSemantics measurements)

@@ -43,7 +43,10 @@ public sealed class ModelingSdkTests
         Assert.Equal(first.Document.Model.InputDigests.Order(StringComparer.Ordinal),first.Inputs.Keys.Order(StringComparer.Ordinal));
         foreach(var (digest,bytes) in first.Inputs)Assert.Equal(digest,Hash(bytes.AsSpan()));
         Assert.Equal(source.Input.Digest,Assert.Single(first.Document.Model.Sources).Sha256);
-        Assert.Equal(2,first.Inputs.Count);
+        Assert.Equal(3,first.Inputs.Count);
+        Assert.NotNull(first.FactsDigest);
+        Assert.Contains(first.FactsDigest,first.Inputs.Keys);
+        Assert.True(first.Normalize(ExampleModels.Catalog()).Accepted);
         Assert.Null(VersionedModelImport.ValidateSchema(first.Document.Write()));
         var imported=ModelBuilder.Import(first.Document.Write(),ExampleModels.Catalog().Semantics);
         Assert.Equal(first.Document.Write(),imported.Write());
@@ -225,6 +228,70 @@ public sealed class ModelingSdkTests
         var source=new ModelSource("s",Encoding.UTF8.GetBytes("same same"));
         Assert.Throws<ArgumentException>(()=>source.Locate("same"));
         Assert.Throws<DecoderFallbackException>(()=>new ModelSource("bad",new byte[]{0xff}));
+    }
+
+    [Fact]
+    public void ExplicitFrozenFactsUseExactDomainAndDoNotReplaceModel()
+    {
+        var source=Source();var b=Builder(source);var kg=b.Rational<Kg>("kg","kg");
+        var stock=b.Resource("stock",kg,0,10,Span(source));
+        b.Parameter("fixed",kg,2,Span(source));
+        var flag=b.BooleanParameter("available",Span(source));
+        b.FreezeFacts(b.Fact(stock,new ExactValue(7,3)),b.Fact(flag,true));
+        var result=b.Build();Assert.NotNull(result.FactsDigest);
+        var facts=JsonSerializer.Deserialize<Dictionary<string,string>>(result.Inputs[result.FactsDigest!].AsSpan())!;
+        Assert.Equal("7/3",facts["stock"]);Assert.Equal("2",facts["fixed"]);Assert.Equal("true",facts["available"]);
+        Assert.Equal("0",result.Document.Model.Symbols.Single(s=>s.Id=="stock").Lower);
+        Assert.Equal("10",result.Document.Model.Symbols.Single(s=>s.Id=="stock").Upper);
+        Assert.Same(result,b.Build());
+        Assert.Equal("sdk.frozen",Assert.Throws<ContractException>(()=>b.FreezeFacts()).Code);
+    }
+
+    [Theory]
+    [InlineData("missing","sdk.missingFact")]
+    [InlineData("outside","sdk.factDomain")]
+    [InlineData("fraction","sdk.factDomain")]
+    [InlineData("variable","sdk.variableFact")]
+    [InlineData("huge","sdk.factDomain")]
+    public void InvalidFactSnapshotsFailBeforePublication(string mutation,string code)
+    {
+        var source=Source();var b=Builder(source);var kg=b.Integer<Kg>("kg","kg");
+        var stock=b.Resource("stock",kg,0,10,Span(source));
+        var q=b.Variable("q",kg,0,10,Span(source));
+        switch(mutation)
+        {
+            case "missing":b.FreezeFacts();break;
+            case "outside":b.FreezeFacts(b.Fact(stock,11));break;
+            case "fraction":b.FreezeFacts(b.Fact(stock,new ExactValue(1,2)));break;
+            case "variable":b.FreezeFacts(b.Fact(stock,2),b.Fact(q,1));break;
+            case "huge":b.FreezeFacts(b.Fact(stock,new ExactValue(BigInteger.Pow(10,256),1)));break;
+        }
+        Assert.Equal(code,Assert.Throws<ContractException>(()=>b.Build()).Code);
+    }
+
+    [Fact]
+    public void FactOwnershipAndDuplicateBindingFailWithoutMutatingStagedSnapshot()
+    {
+        var source=Source();var a=Builder(source);var b=Builder(source);
+        var ak=a.Integer<Kg>("kg","kg");var bk=b.Integer<Kg>("kg","kg");
+        var x=a.Resource("x",ak,0,10,Span(source));var y=b.Resource("y",bk,0,10,Span(source));
+        Assert.Equal("sdk.foreignHandle",Assert.Throws<ContractException>(()=>a.Fact(y,1)).Code);
+        Assert.Equal("sdk.foreignHandle",Assert.Throws<ContractException>(()=>a.FreezeFacts(b.Fact(y,1))).Code);
+        Assert.Equal("sdk.duplicateFact",Assert.Throws<ContractException>(()=>a.FreezeFacts(a.Fact(x,1),a.Fact(x,2))).Code);
+        a.FreezeFacts(a.Fact(x,3));Assert.NotNull(a.Build().FactsDigest);
+    }
+
+    [Fact]
+    public void SharedNormalizerRejectsUnsafeExpressionAndWrongCatalog()
+    {
+        var source=Source();var b=Builder(source);var r=b.Rational<Kg>("kg","kg");
+        var v=b.Variable("q",r,-1,1,Span(source));var dimensionless=b.Rational<Count>("count");
+        var bad=b.Divide(b.Literal(r,1,Span(source)),b.Reference(v,Span(source)),dimensionless,Span(source));
+        b.Optimize("goal",bad,Direction.Minimize,1,Span(source));
+        var built=b.Build();
+        Assert.Equal("DML-DIV-001",built.Normalize(Catalog()).Diagnostic!.Code);
+        var different=new FrozenMeasurementCatalog([new("minute","time","1"),new("kg","mass","2")],["USD"],["shift"]);
+        Assert.Equal("sdk.catalog",Assert.Throws<ContractException>(()=>built.Normalize(different)).Code);
     }
 
     [Fact]
