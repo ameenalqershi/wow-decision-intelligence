@@ -1,9 +1,8 @@
 # Module interaction-state review — SP02
 
-This supplement is a review artifact, not an approved replacement for the
-reference SVG, the module studies, or the domain contracts. The source
+This supplement is the reviewed interaction acceptance specification, not a replacement for the immutable reference SVG or the domain contracts. The source
 inventory at 3128c0e shows 23/23 modules use the same generic state skeleton.
-The following state scenarios are module-specific acceptance proposals.
+The following state scenarios are module-specific design acceptance requirements.
 All transitions use the selected tenant/workspace/revision; stale responses
 must be discarded. Loading is distinct from empty, unavailable, invalid,
 denied and failed; retain last valid state only with an explicit stale label.
@@ -36,18 +35,6 @@ success requires authoritative acknowledgement.
 | UI22 | Open palette, load registered commands for current capability/context. | Unknown or denied command, invalid arguments, stale workspace or restricted shell action. | Search and invoke same command via shortcut or palette; Escape restores opener; no unrestricted shell, privileged actions require explicit authorization. |
 | UI23 | Load effective config into editable draft; validate, persist, restart and reread. | Invalid setting, stale config revision, unavailable diagnostic, redacted secret. | Keyboard switch language/theme, correct invalid field; failed apply keeps previous effective config; export redacted report, partial diagnostics explicit. |
 
-## Proposed port delta reviewed against audit PR #190
+## Merged port disposition
 
-The audit head c6d198a942bb48056d0bd3e76e2d4f5c7105d699 introduces
-API-SIMULATION (UI14), API-ALLOCATION (UI16), API-EXPLAIN (UI18),
-API-BENCHMARK (UI19), API-MAPPING (UI20), API-ADMIN (UI21) and
-API-SETTINGS (UI23). This removes the earlier incorrect generic port
-assignment in those module studies. These remain design-review ports,
-not implemented endpoint contracts. The specialized field, version,
-validation and failure details in this review remain open until the
-contract owner confirms them.
-
-The remaining 16 module studies retain their original pilot ports in
-that proposed audit head. The seven changes do not add feature-specific
-state diagrams or replace draft mockups. A final SP02 disposition must
-use merged source hashes rather than treating an open PR as approved.
+The seven specialized logical profiles in merged #190 are adopted. See [edition 1](../../specialized-studio-ports-v1.md) and the [final disposition](FINAL-DISPOSITION.md). Concrete provider payload and conformance remain feature-owner acceptance gates.

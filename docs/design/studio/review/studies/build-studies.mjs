@@ -6,12 +6,13 @@ const dir=dirname(fileURLToPath(import.meta.url));
 const ref=readFileSync(resolve(dir,'../../../references/01-WOW-DI-Studio.svg'),'utf8');
 const chrome=ref.slice(0,ref.indexOf('<text x="158"'));
 const nav=['Overview','Decision Models','Decision Graph','Optimization','Scenarios','Simulation','Integrations','Benchmarks','Evidence','Settings'];
-const c={bg:'#10151e',chrome:'#1b2331',card:'#1c2735',edge:'#2c3949',text:'#e2e8f0',muted:'#94a3b8',accent:'#62e4c6',active:'#23463f',button:'#16785f',graph:'#121b27',monitor:'#1b2533',warn:'#f2bb79'};
+const c={bg:'#10151e',chrome:'#1b2331',card:'#1c2735',edge:'#2c3949',text:'#e2e8f0',muted:'#94a3b8',accent:'#62e4c6',active:'#23463f',button:'#16785f',graph:'#121b27',monitor:'#1b2533',warn:'#facc70'};
 const esc=s=>String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 const r=(x,y,w,h,fill=c.card,stroke=c.edge,rx=5)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${rx}" fill="${fill}" stroke="${stroke}"/>`;
 const t=(x,y,s,size=10,fill=c.text,weight=400)=>`<text x="${x}" y="${y}" font-size="${size}" fill="${fill}" font-weight="${weight}">${esc(s)}</text>`;
 const line=(x1,y1,x2,y2)=>`<path d="M${x1} ${y1} L${x2} ${y2}" stroke="#477d9e" stroke-width="1.5" fill="none"/>`;
-const button=(x,y,w,label,primary=false)=>r(x,y,w,23,primary?c.button:c.card,primary?'none':'#8292a7',4)+t(x+8,y+15,label,10,primary?'#fff':c.text);
+const localActions=new Set(['Open locally','Refresh health','Add variable by keyboard','Select paired trials','Open schedule table']);
+const button=(x,y,w,label,primary=false,enabled=localActions.has(label))=>'<g data-control="'+esc(label)+'" data-enabled="'+enabled+'">'+r(x,y,w,23,enabled&&primary?c.button:c.card,enabled&&primary?'none':enabled?'#8292a7':c.edge,4)+t(x+8,y+15,label,10,enabled?(primary?'#ffffff':c.text):c.muted)+'</g>';
 const field=(x,y,w,label,value)=>t(x,y,label,9,c.muted)+r(x,y+5,w,23,c.bg,'#8292a7',4)+t(x+8,y+20,value);
 const table=(x,y,width,headers,rows)=>{
   let out=r(x,y,width,23,c.chrome,c.edge,3);
@@ -101,7 +102,7 @@ function navChrome(index){
 for(const [id,index,title,action,main,side,content,details,sideAction] of studies){
  let svg=navChrome(index).replace('><rect width="720"',`><title>${esc(id+' '+title+' — proposed design fixture')}</title><rect width="720"`);
  svg+=t(158,54,title,15,c.text,700)+t(158,70,'Design fixture / '+nav[index]+' / '+id,9,c.muted);
- svg+=r(157,82,552,58)+t(169,100,'Selected context',9,c.muted)+t(169,119,'No authoritative runtime data loaded',11)+button(543,100,155,action,true);
+ svg+=r(157,82,552,58)+t(169,100,'Selected context',9,c.muted)+t(169,119,'No authoritative runtime data loaded',11)+button(543,100,155,action,true,['Open and restore','Refresh sources','Search commands','Filter horizon','Configure replay'].includes(action));
  svg+=pane(main)+content+inspector(side,details,sideAction);
  svg+=r(0,438,720,22,c.chrome,'none',0)+t(12,452,'Engine status: unavailable',9,c.muted)+t(562,452,'Local workspace | design fixture',9,c.muted)+'</svg>';
  writeFileSync(resolve(dir,id+'.svg'),svg+'\n');

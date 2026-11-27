@@ -1,10 +1,6 @@
 # UI01 — implementation review candidate
 
-Status: proposed for SP02 review; this does not claim #90 or authorize its
-implementation before SP02 is closed. The official English dark SVG remains
-the only approved visual source. The attached shell study applies that
-chrome, navigation and panel geometry to explicitly labeled local fixture
-state. It is not a screenshot baseline or production output.
+Status: reviewed UI-owned shell presentation contract under SP02; see [final disposition](../FINAL-DISPOSITION.md). Implementation starts only after SP02 closure and formal #90 claim. The official English dark reference remains immutable. This is a design study, not a runtime screenshot baseline or production output.
 
 ## Ownership
 
@@ -16,7 +12,7 @@ workspace/revision context. UI01 must not open raw model databases or construct
 engine requests directly. UI02–UI23 provide content through registered view
 descriptors, not independent shell implementations.
 
-## Presentation state (proposed, local only)
+## Presentation state (reviewed, local only)
 
 | Field | Type / validation | Default / recovery |
 |---|---|---|
@@ -25,7 +21,7 @@ descriptors, not independent shell implementations.
 | RevisionId | F-REV from authoritative workspace context | Null until selected; restore only if still available and authorized |
 | Tabs | Ordered unique local tab keys with registered view descriptor and workspace/revision binding | Empty; drop unknown descriptors, report discarded tabs |
 | ActiveTabKey | Key of a restored tab | First valid tab or null |
-| PrimaryShare | Finite ratio in [0.25,0.75], proposed shell policy | 0.69 from reference graph/monitor proportions; clamp user resize |
+| PrimaryShare | Finite ratio in [0.25,0.75], reviewed shell policy | 0.69 from reference graph/monitor proportions; clamp user resize |
 | InspectorVisible | Boolean | True; collapsing does not close document or mutate revision |
 | DisplayPlacement | Logical work area and stable display identity, supplied by host | DS03 recovery; invalid/disconnected display falls back to visible work area |
 
@@ -81,11 +77,11 @@ stateDiagram-v2
 
 ## Visual review
 
-[Proposed reference-aligned shell SVG](shell-study.svg) preserves the
+[Reviewed reference-aligned shell SVG](shell-study.svg) preserves the
 720×460 reference chrome dimensions, sidebar ordering, accent marker and
 dark palette. The two pane extents follow the original 375/167 geometry.
 The workspace control and tab row replace the graph module's KPI row
-only in this proposed shell-specific state. Use scalable typography and
+only in this reviewed shell-specific state. Use scalable typography and
 logical CSS properties at runtime. Native OS window controls remain
 host-owned; do not duplicate them in a native title bar. The study does
 not alter the official graph screen. Unavailable status is explicitly
@@ -107,5 +103,4 @@ labeled; fixture IDs are not production identifiers.
 | SH-10 | Compare dark reference chrome | Pinned font, viewport, theme, renderer and DPI; compare common regions only, no unapproved mockup baseline |
 
 Any full feature implementation must link its exact source revision,
-acceptance evidence and owning application contracts. This review does
-not substitute for SP02 final disposition or U02/QA02 native evidence.
+acceptance evidence and owning application contracts. This review does not substitute for U02/QA02 native evidence.

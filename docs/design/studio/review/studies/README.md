@@ -1,27 +1,29 @@
-# Reference-aligned proposed module studies
+# Reviewed Studio visual design studies
 
-UI01 is in ../UI01/shell-study.svg. UI05 uses the immutable
-../../../references/01-WOW-DI-Studio.svg. This directory contains the other
-21 module studies. The shared chrome, navigation order, active indicator,
-canvas/inspector extents and palette follow the archived reference. Each
-study uses a module-specific work area and inspector, with explicitly
-unavailable, empty or unvalidated fixture state rather than simulated
-solver results. These are static design review artifacts, not functional
-screens. Labels on proposed controls describe intended actions; the actual
-enabled/disabled policy is defined by the per-module state review.
+UI01 uses the shell study, UI05 the immutable official reference, and the
+other 21 modules their independent dark studies. The reviewed primary
+studies are static design specifications, not executed product screenshots.
 
-All 22 proposed studies were rendered in Chromium and checked for
-common reference geometry, navigation order, text bounds and overlapping
-text bounding boxes. These checks establish structural presentation
-properties only. They do not establish visual approval, keyboard behavior,
-high DPI rendering or completed feature contracts. The original SVG and
-other teams' source specifications have not been edited.
+- wireframes/ : 23 reviewed structural layouts derived from the actual
+  module information architecture (original draft wireframes remain).
+- states/ : five independent state messages and recovery treatments per
+  module, plus the registered action surface for every requirement.
+- rtl/ : one Arabic unavailable-state design per module with mirrored
+  logical panes and isolated LTR revision ID. Runtime localization and
+  keyboard/assistive technology acceptance remain feature requirements.
+- state-manifest.json : 115 scoped state fixtures, no mutation enabled
+  in rejected/unavailable/loading/empty/failed states.
 
-Regenerate and verify from the repository root:
+The final disposition defines the scope of design approval. State
+screens are not claims of a provider result; all fixture values are
+illustrative. Primary designs use the actual DS01 palette and reference
+geometry. Preserve scalable typography and logical CSS at runtime.
 
-    node docs/design/studio/review/studies/build-studies.mjs
-    node docs/design/studio/review/studies/check-layout.mjs /path/to/chromium docs/design/studio/review/studies/layout-evidence.json
-
-Final dispositions require review against merged audit sources, including
-specialized application ports and fields. Do not promote proposed studies
-to official screenshot baselines without explicit approval.
+Regenerate:
+```sh
+node docs/design/studio/review/studies/build-studies.mjs
+node docs/design/studio/review/studies/build-states.mjs
+node docs/design/studio/review/studies/build-rtl.mjs
+node docs/design/studio/review/studies/check-layout.mjs /path/to/chromium report.json
+node docs/design/studio/review/studies/check-variants.mjs /path/to/chromium variants.json
+```

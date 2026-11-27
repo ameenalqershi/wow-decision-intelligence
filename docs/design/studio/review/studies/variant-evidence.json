@@ -1,0 +1,1295 @@
+{
+  "renderer": "Chromium 141.0.7390.37",
+  "viewport": "720×460 logical SVG",
+  "results": [
+    {
+      "file": "states/UI01-actions.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "states/UI01-empty.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI01-failed.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI01-invalid.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI01-loading.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI01-unavailable.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI02-actions.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "states/UI02-empty.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI02-failed.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI02-invalid.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI02-loading.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI02-unavailable.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI03-actions.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "states/UI03-empty.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI03-failed.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI03-invalid.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI03-loading.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI03-unavailable.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI04-actions.svg",
+      "textCount": 31,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "states/UI04-empty.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI04-failed.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI04-invalid.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI04-loading.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI04-unavailable.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI05-actions.svg",
+      "textCount": 43,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "states/UI05-empty.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI05-failed.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI05-invalid.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI05-loading.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI05-unavailable.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI06-actions.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "states/UI06-empty.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI06-failed.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI06-invalid.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI06-loading.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI06-unavailable.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI07-actions.svg",
+      "textCount": 31,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "states/UI07-empty.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI07-failed.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI07-invalid.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI07-loading.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI07-unavailable.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI08-actions.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "states/UI08-empty.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI08-failed.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI08-invalid.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI08-loading.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI08-unavailable.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI09-actions.svg",
+      "textCount": 37,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "states/UI09-empty.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI09-failed.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI09-invalid.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI09-loading.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI09-unavailable.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI10-actions.svg",
+      "textCount": 28,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "states/UI10-empty.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI10-failed.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI10-invalid.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI10-loading.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI10-unavailable.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI11-actions.svg",
+      "textCount": 37,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "states/UI11-empty.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI11-failed.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI11-invalid.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI11-loading.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI11-unavailable.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI12-actions.svg",
+      "textCount": 37,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "states/UI12-empty.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI12-failed.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI12-invalid.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI12-loading.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI12-unavailable.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI13-actions.svg",
+      "textCount": 31,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "states/UI13-empty.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI13-failed.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI13-invalid.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI13-loading.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI13-unavailable.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI14-actions.svg",
+      "textCount": 31,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "states/UI14-empty.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI14-failed.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI14-invalid.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI14-loading.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI14-unavailable.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI15-actions.svg",
+      "textCount": 37,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "states/UI15-empty.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI15-failed.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI15-invalid.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI15-loading.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI15-unavailable.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI16-actions.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "states/UI16-empty.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI16-failed.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI16-invalid.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI16-loading.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI16-unavailable.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI17-actions.svg",
+      "textCount": 40,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "states/UI17-empty.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI17-failed.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI17-invalid.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI17-loading.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI17-unavailable.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI18-actions.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "states/UI18-empty.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI18-failed.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI18-invalid.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI18-loading.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI18-unavailable.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI19-actions.svg",
+      "textCount": 37,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "states/UI19-empty.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI19-failed.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI19-invalid.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI19-loading.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI19-unavailable.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI20-actions.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "states/UI20-empty.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI20-failed.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI20-invalid.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI20-loading.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI20-unavailable.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI21-actions.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "states/UI21-empty.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI21-failed.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI21-invalid.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI21-loading.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI21-unavailable.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI22-actions.svg",
+      "textCount": 37,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "states/UI22-empty.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI22-failed.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI22-invalid.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI22-loading.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI22-unavailable.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI23-actions.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "states/UI23-empty.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI23-failed.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI23-invalid.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI23-loading.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "states/UI23-unavailable.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": true
+    },
+    {
+      "file": "wireframes/UI01.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "wireframes/UI02.svg",
+      "textCount": 38,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "wireframes/UI03.svg",
+      "textCount": 41,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "wireframes/UI04.svg",
+      "textCount": 36,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "wireframes/UI05.svg",
+      "textCount": 42,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "wireframes/UI06.svg",
+      "textCount": 37,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "wireframes/UI07.svg",
+      "textCount": 39,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "wireframes/UI08.svg",
+      "textCount": 42,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "wireframes/UI09.svg",
+      "textCount": 39,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "wireframes/UI10.svg",
+      "textCount": 39,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "wireframes/UI11.svg",
+      "textCount": 39,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "wireframes/UI12.svg",
+      "textCount": 39,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "wireframes/UI13.svg",
+      "textCount": 41,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "wireframes/UI14.svg",
+      "textCount": 39,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "wireframes/UI15.svg",
+      "textCount": 36,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "wireframes/UI16.svg",
+      "textCount": 40,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "wireframes/UI17.svg",
+      "textCount": 41,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "wireframes/UI18.svg",
+      "textCount": 41,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "wireframes/UI19.svg",
+      "textCount": 39,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "wireframes/UI20.svg",
+      "textCount": 40,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "wireframes/UI21.svg",
+      "textCount": 41,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "wireframes/UI22.svg",
+      "textCount": 39,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "wireframes/UI23.svg",
+      "textCount": 39,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "rtl/UI01.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "rtl/UI02.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "rtl/UI03.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "rtl/UI04.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "rtl/UI05.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "rtl/UI06.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "rtl/UI07.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "rtl/UI08.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "rtl/UI09.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "rtl/UI10.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "rtl/UI11.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "rtl/UI12.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "rtl/UI13.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "rtl/UI14.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "rtl/UI15.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "rtl/UI16.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "rtl/UI17.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "rtl/UI18.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "rtl/UI19.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "rtl/UI20.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "rtl/UI21.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "rtl/UI22.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    },
+    {
+      "file": "rtl/UI23.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": [],
+      "mutationDisabled": null
+    }
+  ],
+  "limitation": "Static design rendering only. Native UI and runtime acceptance are not claimed."
+}

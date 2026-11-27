@@ -1,4 +1,6 @@
-# SP02 — module design review checkpoint (not design approval)
+# SP02 — module design review history
+
+Final disposition: [accepted Studio design specification](FINAL-DISPOSITION.md). The findings below record the original checkpoint, not remaining blockers. The final module specifications and merged audit supersede the earlier provisional statements.
 
 Reviewed base: `3128c0e` (merged DS02). All 23 module studies and their
 linked wireframes/high-fidelity sources were checked against the archived

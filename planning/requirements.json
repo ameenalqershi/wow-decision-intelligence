@@ -11923,20 +11923,32 @@
     "priority": "P0",
     "release": "MVP",
     "component": "docs/design",
-    "implementation": "Planned",
-    "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
-    "fieldScope": "No approved field mapping in this baseline.",
-    "apiScope": "No approved API mapping in this baseline.",
+    "implementation": "Studio module specification and design review accepted; feature implementation and provider conformance remain separate.",
+    "verification": "node docs/design/studio/review/verify-review.mjs; Chromium check-layout.mjs and check-variants.mjs; linked static visual review and domain regression evidence.",
+    "fieldScope": "17 SP01 pilot fields and approved logical specialized profiles; source-linked UDIR/EDG/solver/registry/identity/connector boundaries. Concrete provider payloads remain owned by feature issues.",
+    "apiScope": "Eight baseline ports and seven specialized logical ports adopted from #190; concrete versioned endpoints and provider acceptance remain separate.",
     "specifications": [
       "docs/design/architecture.md",
-      "docs/design/operating-modes.md"
+      "docs/design/operating-modes.md",
+      "docs/design/studio/review/FINAL-DISPOSITION.md",
+      "docs/design/studio/review/modules/matrix.json",
+      "docs/design/studio/review/bindings/contract-review.md",
+      "docs/design/specialized-studio-ports-v1.md"
     ],
     "diagrams": [
-      "docs/design/operating-modes.md"
+      "docs/design/studio/review/modules/UI01.md",
+      "docs/design/studio/review/modules/matrix.json",
+      "docs/design/studio/review/studies/state-manifest.json"
     ],
     "fields": [],
     "apis": [],
-    "evidence": [],
+    "evidence": [
+      "docs/design/studio/review/verify-review.mjs",
+      "docs/design/studio/review/studies/layout-evidence.json",
+      "docs/design/studio/review/studies/variant-evidence.json",
+      "docs/design/studio/review/evidence/contract-tests.md",
+      "docs/design/studio/review/FINAL-DISPOSITION.md"
+    ],
     "tests": [
       {
         "id": "TC-SP02-A",
@@ -11959,8 +11971,8 @@
           "TC-SP02-A",
           "TC-SP02-B"
         ],
-        "coverage": "Partially Covered",
-        "reason": "The available source and acceptance statement are mapped. Detailed field, contract or fixture review remains open."
+        "coverage": "Fully Covered",
+        "reason": "SP02 specification review only: linked module-specific design, fields/ports, state and acceptance trace, visual review and observed structural checks. Executed feature acceptance remains on UI01–UI23."
       },
       {
         "title": "Journeys and navigation",
@@ -11973,8 +11985,8 @@
           "TC-SP02-A",
           "TC-SP02-B"
         ],
-        "coverage": "Partially Covered",
-        "reason": "The available source and acceptance statement are mapped. Detailed field, contract or fixture review remains open."
+        "coverage": "Fully Covered",
+        "reason": "SP02 specification review only: linked module-specific design, fields/ports, state and acceptance trace, visual review and observed structural checks. Executed feature acceptance remains on UI01–UI23."
       },
       {
         "title": "Wireframes and high-fidelity mockups",
@@ -11987,8 +11999,8 @@
           "TC-SP02-A",
           "TC-SP02-B"
         ],
-        "coverage": "Partially Covered",
-        "reason": "The available source and acceptance statement are mapped. Detailed field, contract or fixture review remains open."
+        "coverage": "Fully Covered",
+        "reason": "SP02 specification review only: linked module-specific design, fields/ports, state and acceptance trace, visual review and observed structural checks. Executed feature acceptance remains on UI01–UI23."
       },
       {
         "title": "Component, data-flow and state diagrams",
@@ -12001,8 +12013,8 @@
           "TC-SP02-A",
           "TC-SP02-B"
         ],
-        "coverage": "Partially Covered",
-        "reason": "The available source and acceptance statement are mapped. Detailed field, contract or fixture review remains open."
+        "coverage": "Fully Covered",
+        "reason": "SP02 specification review only: linked module-specific design, fields/ports, state and acceptance trace, visual review and observed structural checks. Executed feature acceptance remains on UI01–UI23."
       },
       {
         "title": "Fields and API",
@@ -12015,8 +12027,8 @@
           "TC-SP02-A",
           "TC-SP02-B"
         ],
-        "coverage": "Partially Covered",
-        "reason": "The available source and acceptance statement are mapped. Detailed field, contract or fixture review remains open."
+        "coverage": "Fully Covered",
+        "reason": "SP02 specification review only: linked module-specific design, fields/ports, state and acceptance trace, visual review and observed structural checks. Executed feature acceptance remains on UI01–UI23."
       },
       {
         "title": "Validation, failures and recovery",
@@ -12029,8 +12041,8 @@
           "TC-SP02-A",
           "TC-SP02-B"
         ],
-        "coverage": "Partially Covered",
-        "reason": "The available source and acceptance statement are mapped. Detailed field, contract or fixture review remains open."
+        "coverage": "Fully Covered",
+        "reason": "SP02 specification review only: linked module-specific design, fields/ports, state and acceptance trace, visual review and observed structural checks. Executed feature acceptance remains on UI01–UI23."
       },
       {
         "title": "Acceptance tests for UI01–UI23",
@@ -12043,8 +12055,8 @@
           "TC-SP02-A",
           "TC-SP02-B"
         ],
-        "coverage": "Partially Covered",
-        "reason": "The available source and acceptance statement are mapped. Detailed field, contract or fixture review remains open."
+        "coverage": "Fully Covered",
+        "reason": "SP02 specification review only: linked module-specific design, fields/ports, state and acceptance trace, visual review and observed structural checks. Executed feature acceptance remains on UI01–UI23."
       }
     ]
   },

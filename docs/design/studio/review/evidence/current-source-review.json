@@ -1,11 +1,11 @@
 {
   "reference": "docs/design/references/01-WOW-DI-Studio.svg",
   "referenceHash": "8e98a4c893507fc50f0a155b13960148644911161f7fc0a38a82b1526a1c042d",
-  "pilotHash": "50f0d2e61701a850bfd7fb73e779453dc49cd7632235aa7b03b94130fe543297",
+  "pilotHash": "7f29710f7eeb59f6865010db4ab32691330ba7294210448de36bec48a6e83d76",
   "modules": [
     {
       "id": "UI01",
-      "sourceHash": "bb0198900fea26130516512cc1d6070d38c93db7a798b5a49779e03bbf2f3080",
+      "sourceHash": "d17cbeacd8e3ec82b69afa9a13f38954f5186ed62c9dd0d64dafc6f71cbd2897",
       "scope": [
         "UI01-01",
         "UI01-02",
@@ -36,7 +36,7 @@
     },
     {
       "id": "UI02",
-      "sourceHash": "60b5bc0b0400e2e115fc725835d354c4bcd867fec24940144176219fbbd7c29d",
+      "sourceHash": "b5d12012f81df7671294c99ab83f0987e54ff6d2d1fe5c2e1bef359d3c86af12",
       "scope": [
         "UI02-01",
         "UI02-02",
@@ -67,7 +67,7 @@
     },
     {
       "id": "UI03",
-      "sourceHash": "43518b0778691c9b7fc8371d00d2c80a2acd441f848736923caa3fa33b895319",
+      "sourceHash": "55d5e4b925455d2b8d3e73cbaa9121d04aef122fc17f1b6d4c46912f13b504f0",
       "scope": [
         "UI03-01",
         "UI03-02",
@@ -100,7 +100,7 @@
     },
     {
       "id": "UI04",
-      "sourceHash": "17eba3d679e55c062dbb59a941e38f65b449366f0f778a6a0a3e967f0266eee9",
+      "sourceHash": "d08cf42c9605cf437b1f8ecd3d71158bd45b3552cadeb11b703a6314045fcaed",
       "scope": [
         "UI04-01",
         "UI04-02",
@@ -132,7 +132,7 @@
     },
     {
       "id": "UI05",
-      "sourceHash": "c8768d9522ebde80bd3c59111247165ffda6b695ce4b12d3735f53be3e7f736f",
+      "sourceHash": "558d01db571d2be9bddd71d7f5bf16750bccd875593afed80bb8fcf394adfa16",
       "scope": [
         "UI05-01",
         "UI05-02",
@@ -168,7 +168,7 @@
     },
     {
       "id": "UI06",
-      "sourceHash": "c70f53e3ee20c7d947a5e97fa4538a22a8eca524b8296a673078d82a359de04a",
+      "sourceHash": "d3481e2a58805d1cc0ae798307aeba8fb6a5c7c85957af5bf03e6ab6ded19999",
       "scope": [
         "UI06-01",
         "UI06-02",
@@ -199,7 +199,7 @@
     },
     {
       "id": "UI07",
-      "sourceHash": "b26c418a58585f9f3e6e51e2f7795bf4db3e38d52f46a43c092c3975c97b4a0c",
+      "sourceHash": "f9830d429e72a618f0912b2ea351a278dc2a29755d5c124cbf7f4517ec4d0720",
       "scope": [
         "UI07-01",
         "UI07-02",
@@ -230,7 +230,7 @@
     },
     {
       "id": "UI08",
-      "sourceHash": "10ffb00a907f7a98c7690b2c0f3a25eba83ef0b66aa5914901f588353c31bd35",
+      "sourceHash": "386d106bcd549116d47a70e0742fef907d257625379848b74a688a2840d37c55",
       "scope": [
         "UI08-01",
         "UI08-02",
@@ -263,7 +263,7 @@
     },
     {
       "id": "UI09",
-      "sourceHash": "6b1d6256803cc9a3288bf1e0d555320a9ec462c5ee703800e90d1147f527eeaa",
+      "sourceHash": "ff95f0e6b71bf72a004aa6f4b2ee2a1749ec78575e8139b6e5014dea2649faf5",
       "scope": [
         "UI09-01",
         "UI09-02",
@@ -295,7 +295,7 @@
     },
     {
       "id": "UI10",
-      "sourceHash": "e2a7a952823b961a12c1ae16e2c67c681d504c93545bdb06570d54a70fa596bb",
+      "sourceHash": "328aafa8e217c0618720db3ac66f873c4653bfbd229dcd655ac03f269fb2889d",
       "scope": [
         "UI10-01",
         "UI10-02",
@@ -326,7 +326,7 @@
     },
     {
       "id": "UI11",
-      "sourceHash": "feba5bc545566b0061243f4d2367659924f820873934c19fbe8259bbdc5c9f92",
+      "sourceHash": "6cbab1c34bbda4fadbba86fb896c41f3258f30abf953331f7b28f8ae770855cf",
       "scope": [
         "UI11-01",
         "UI11-02",
@@ -362,7 +362,7 @@
     },
     {
       "id": "UI12",
-      "sourceHash": "7c4d91ae6a7706c32b1fb03136cfd876829501ca9c4d35726b04b11d692de82d",
+      "sourceHash": "38247638b4af9b79b930ff3fb58e08304ce059beaabfdd35d51f4cd63c896a29",
       "scope": [
         "UI12-01",
         "UI12-02",
@@ -396,7 +396,7 @@
     },
     {
       "id": "UI13",
-      "sourceHash": "1491fd269da7523837572ae0020f8b9f1f95918023956c1c9670cf35bb0527ee",
+      "sourceHash": "b77078d18557c0b035e75afd8a5e7f626e141c7d02f9fa5b3cb4993b06d66390",
       "scope": [
         "UI13-01",
         "UI13-02",
@@ -428,7 +428,7 @@
     },
     {
       "id": "UI14",
-      "sourceHash": "61e21401b3f5fab51c700e6338129dd6f8fdc0500e1fe55004fdbf2b998275e1",
+      "sourceHash": "85c5e19a6cab59ce767fa356ba697230b30433291f2dd5b247196ba7a62b0b46",
       "scope": [
         "UI14-01",
         "UI14-02",
@@ -445,7 +445,7 @@
         "F-OBJ"
       ],
       "ports": [
-        "API-SCENARIO"
+        "API-SIMULATION"
       ],
       "unknownFields": [],
       "unknownPorts": [],
@@ -455,11 +455,11 @@
       "hasFailure": true,
       "genericStateSkeleton": true,
       "fieldScope": "Pilot field subset; specialized payload review remains open.",
-      "apiScope": "Shared application ports; review per-feature payloads."
+      "apiScope": "Shared application ports; review per-feature payloads. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated."
     },
     {
       "id": "UI15",
-      "sourceHash": "2dad7cfc7131de7b52c39cfbc687ef76a77edf8f81275b5ce5f9378d03b46ac0",
+      "sourceHash": "1e3466a7a3ea6e0ba93472cacfe996ece2e9bcf4cfe15df43dbbb3c70e0886e6",
       "scope": [
         "UI15-01",
         "UI15-02",
@@ -495,7 +495,7 @@
     },
     {
       "id": "UI16",
-      "sourceHash": "db412aad00ecd08a2e25e1cf9ffc6f51e6c56e568e21e562755d34ec5daad685",
+      "sourceHash": "0b718e2a6a0c58b2097915379a025f787c594c3e9021363222eae761f695628f",
       "scope": [
         "UI16-01",
         "UI16-02",
@@ -514,7 +514,7 @@
         "F-DURATION"
       ],
       "ports": [
-        "API-GRAPH"
+        "API-ALLOCATION"
       ],
       "unknownFields": [],
       "unknownPorts": [],
@@ -524,11 +524,11 @@
       "hasFailure": true,
       "genericStateSkeleton": true,
       "fieldScope": "Pilot field subset; specialized payload review remains open.",
-      "apiScope": "Shared application ports; review per-feature payloads."
+      "apiScope": "Shared application ports; review per-feature payloads. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated."
     },
     {
       "id": "UI17",
-      "sourceHash": "b09e905195f4e567a946d0e5fb8f1272137ea8f757d33c418da3e2a53834a2a3",
+      "sourceHash": "53d04c01586b2f23045ac333b9fed2a62a19539c06bceff8bb185377edef5ba5",
       "scope": [
         "UI17-01",
         "UI17-02",
@@ -565,7 +565,7 @@
     },
     {
       "id": "UI18",
-      "sourceHash": "a56bfe0238d72cd1b929c1f83b810546f94d75372d900bd1064ca4661a9c4ec2",
+      "sourceHash": "2e3fd68b1d020aaf078487527845f3e24aab96d37037ac0d729ad37ffe6ea077",
       "scope": [
         "UI18-01",
         "UI18-02",
@@ -585,7 +585,7 @@
         "F-EVID"
       ],
       "ports": [
-        "API-EVIDENCE"
+        "API-EXPLAIN"
       ],
       "unknownFields": [],
       "unknownPorts": [],
@@ -595,11 +595,11 @@
       "hasFailure": true,
       "genericStateSkeleton": true,
       "fieldScope": "Pilot field subset; specialized payload review remains open.",
-      "apiScope": "Shared application ports; review per-feature payloads."
+      "apiScope": "Shared application ports; review per-feature payloads. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated."
     },
     {
       "id": "UI19",
-      "sourceHash": "5cc96c5ca2dff26fc7cbfc3e94fba5577c504e3fe23ef353bd785dc7500f0256",
+      "sourceHash": "dc39bc4a11a7ff1a09ec65b4d4e6e6a9d5508483f389d04cc739d4250b5d9ae3",
       "scope": [
         "UI19-01",
         "UI19-02",
@@ -620,7 +620,7 @@
         "F-ELAPSED"
       ],
       "ports": [
-        "API-RUN"
+        "API-BENCHMARK"
       ],
       "unknownFields": [],
       "unknownPorts": [],
@@ -630,11 +630,11 @@
       "hasFailure": true,
       "genericStateSkeleton": true,
       "fieldScope": "Pilot field subset; specialized payload review remains open.",
-      "apiScope": "Shared application ports; review per-feature payloads."
+      "apiScope": "Shared application ports; review per-feature payloads. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated."
     },
     {
       "id": "UI20",
-      "sourceHash": "05760194268faa084c4cc851a38e59ceb8f4f7ab39c9de91802d3aa9b05a18c3",
+      "sourceHash": "76afe8663af163aca0fce18671373d2881920096e034d82713b3ae7de0c191b1",
       "scope": [
         "UI20-01",
         "UI20-02",
@@ -653,7 +653,7 @@
         "F-DURATION"
       ],
       "ports": [
-        "API-MODEL"
+        "API-MAPPING"
       ],
       "unknownFields": [],
       "unknownPorts": [],
@@ -663,11 +663,11 @@
       "hasFailure": true,
       "genericStateSkeleton": true,
       "fieldScope": "Pilot field subset; specialized payload review remains open.",
-      "apiScope": "Shared application ports; review per-feature payloads."
+      "apiScope": "Shared application ports; review per-feature payloads. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated."
     },
     {
       "id": "UI21",
-      "sourceHash": "80411de731fff6ec4660733cbdd567a2586454adeae71f16deb0261e9094d85b",
+      "sourceHash": "91722ea5f5cbc013b1c4ec220df15a7594e39a74537abb7033fac49c1388335f",
       "scope": [
         "UI21-01",
         "UI21-02",
@@ -680,11 +680,9 @@
         "0 0 720 460",
         "0 0 720 460"
       ],
-      "fields": [
-        "F-REV"
-      ],
+      "fields": [],
       "ports": [
-        "API-WORKSPACE"
+        "API-ADMIN"
       ],
       "unknownFields": [],
       "unknownPorts": [],
@@ -693,12 +691,12 @@
       "hasJourney": true,
       "hasFailure": true,
       "genericStateSkeleton": true,
-      "fieldScope": "Pilot field subset; specialized payload review remains open.",
-      "apiScope": "Shared application ports; review per-feature payloads."
+      "fieldScope": "Tenant/role/policy schema belongs to the enterprise identity contract, outside the pilot field catalog.",
+      "apiScope": "Shared application ports; review per-feature payloads. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated."
     },
     {
       "id": "UI22",
-      "sourceHash": "8d74be35c57e7947604621855186921c435186cc29373495031d66ef81bf7975",
+      "sourceHash": "e83914db7220270ec6443fc129e355d262adbaca5e0eaaa4a584e1c56e684ff3",
       "scope": [
         "UI22-01",
         "UI22-02",
@@ -730,7 +728,7 @@
     },
     {
       "id": "UI23",
-      "sourceHash": "4a167e3bc6eab01db5e516352e27ac3502e9bc4846459f250cddb170c897fc77",
+      "sourceHash": "9b021a395fd0a6530efb110a0a52f41a062ac49004baa1d28a1a8dabc8eb8b02",
       "scope": [
         "UI23-01",
         "UI23-02",
@@ -748,7 +746,7 @@
         "F-RUN"
       ],
       "ports": [
-        "API-COMMAND"
+        "API-SETTINGS"
       ],
       "unknownFields": [],
       "unknownPorts": [],
@@ -758,7 +756,7 @@
       "hasFailure": true,
       "genericStateSkeleton": true,
       "fieldScope": "Pilot field subset; specialized payload review remains open.",
-      "apiScope": "Shared application ports; review per-feature payloads."
+      "apiScope": "Shared application ports; review per-feature payloads. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated."
     }
   ]
 }

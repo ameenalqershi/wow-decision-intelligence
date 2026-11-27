@@ -1,18 +1,48 @@
 {
-  "sourceRevision": "eee2e1c338c2d42a068552778b94191981fb181c",
-  "requirementsHash": "ad03706dae7394fd4d819ca54a0731ff935957517dcb5baecd73496a6953f665",
-  "backlogHash": "b65777282d1928efbfa085f99f159002f7ab46ea4688cb6e1628bace8eb38623",
+  "sourceRevision": "2e5513490a6710be659fd2c545125a2a69aa9fb5",
+  "requirementsHash": "87b8e7f3c407fb497f245ea71fa6d58ce1a3f84115abc92e4467898ac087fe64",
+  "backlogHash": "6fe1d1b857331a06c83f1e2c8b859c4b8975a2cd565f9ad598450c26060c1909",
   "modules": [
     {
       "module": "UI01",
       "issue": 90,
       "design": {
         "source": "docs/design/studio/UI01.md",
-        "wireframe": "docs/design/studio/drafts/UI01-wire.svg",
+        "wireframe": "docs/design/studio/review/studies/wireframes/UI01.svg",
         "study": "docs/design/studio/review/UI01/shell-study.svg",
-        "sourceHash": "bb0198900fea26130516512cc1d6070d38c93db7a798b5a49779e03bbf2f3080",
-        "wireHash": "be021db232d4b64e4dc55c3004be2d99a3a225b721d26164d03ec2e9f2a3a421",
-        "studyHash": "8a97f01601f25d92f0408e871a20565f532a60d41d8c1c7e15d980733a3c488d"
+        "sourceHash": "d17cbeacd8e3ec82b69afa9a13f38954f5186ed62c9dd0d64dafc6f71cbd2897",
+        "wireHash": "3a53da460ab957eecd6e02a9fc4c28ceddfe776d13d2f624dc41395a8458bb16",
+        "studyHash": "8a97f01601f25d92f0408e871a20565f532a60d41d8c1c7e15d980733a3c488d",
+        "stateVariants": [
+          {
+            "path": "docs/design/studio/review/studies/states/UI01-loading.svg",
+            "sha256": "4fda864e3f5e6a71e9730777232ab7c8fc9d58e72bef98cfad26d7d020b42cba"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI01-empty.svg",
+            "sha256": "24ab3e9ad0e795195726ec82f96d43f8983d5de8619cab9d8506c09443f3d0ac"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI01-invalid.svg",
+            "sha256": "9318c1c657063049aa0a12be57d61937f51fe82968bb1a07dc175a5e89335f78"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI01-unavailable.svg",
+            "sha256": "e0c276e9209a7ac49863811cc9e7e9dba166195fee3b116f2e9cda01647abfa7"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI01-failed.svg",
+            "sha256": "920f4ebdc88fc4199ae467b9c01d711c3400ffb767627f3ab300d3395a81d04c"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI01-actions.svg",
+            "sha256": "f46d3666e2519057f599aeebd44b732fa63283530c89a26b1599bce234ae02cb"
+          }
+        ],
+        "rtl": {
+          "path": "docs/design/studio/review/studies/rtl/UI01.svg",
+          "sha256": "6537220fe3c55e66a632fb3f783526f7807085e47789b998c50449c875616e61"
+        }
       },
       "approvedPilotFields": [
         "F-REV"
@@ -20,10 +50,10 @@
       "reviewedPilotFields": [
         "F-REV"
       ],
-      "baselinePorts": [
+      "logicalPorts": [
         "API-WORKSPACE"
       ],
-      "proposedPort": null,
+      "specializedPort": null,
       "dependencies": [
         {
           "scope": "DS01",
@@ -36,6 +66,35 @@
         {
           "scope": "SP02",
           "issue": 160
+        }
+      ],
+      "integrationGates": [
+        {
+          "consumer": "UI01",
+          "provider": "RT01",
+          "consumerIssue": 90,
+          "providerIssue": 129,
+          "kind": "integration",
+          "disposition": "capability",
+          "reason": "Authoritative workspace/revision switching; shell-local navigation can be developed independently but real workspace acceptance needs RT01."
+        },
+        {
+          "consumer": "UI01",
+          "provider": "U02",
+          "consumerIssue": 90,
+          "providerIssue": 71,
+          "kind": "native acceptance",
+          "disposition": "capability",
+          "reason": "Native disconnected monitor restoration and window lifecycle are host-owned; browser test alone is insufficient."
+        },
+        {
+          "consumer": "UI01",
+          "provider": "DS03",
+          "consumerIssue": 90,
+          "providerIssue": 127,
+          "kind": "native acceptance",
+          "disposition": "capability",
+          "reason": "Native placement and mixed-scale focus proof; shell layout development must not bypass DS03 qualification."
         }
       ],
       "contractReview": "bindings/contract-review.md#per-module-field-projection-and-outstanding-owner-seams",
@@ -144,18 +203,48 @@
           "oracle": "Discard a layout referring to a disconnected monitor and restore a visible window."
         }
       ],
-      "disposition": "Reviewed proposal; feature-owner payload/approval gates remain; no execution claim"
+      "disposition": "Studio design specification reviewed and accepted; concrete provider conformance and feature acceptance required"
     },
     {
       "module": "UI02",
       "issue": 91,
       "design": {
         "source": "docs/design/studio/UI02.md",
-        "wireframe": "docs/design/studio/drafts/UI02-wire.svg",
+        "wireframe": "docs/design/studio/review/studies/wireframes/UI02.svg",
         "study": "docs/design/studio/review/studies/UI02.svg",
-        "sourceHash": "60b5bc0b0400e2e115fc725835d354c4bcd867fec24940144176219fbbd7c29d",
-        "wireHash": "730b6bd830c9c620eb503559fa3d85455a053b73f824621c4cc9d00cf8666e03",
-        "studyHash": "681c454d8d700aeadfc10c1fee90264a3c3da1cbdd0e753b2034e42b4e420631"
+        "sourceHash": "b5d12012f81df7671294c99ab83f0987e54ff6d2d1fe5c2e1bef359d3c86af12",
+        "wireHash": "4970f299d6bf23766133557299f9b30643a3c806ac508f74f46a4d023fe32238",
+        "studyHash": "f76dfb91523b5d8a2ff2c7298c8f9528cb0073d1f8aa0d4f8b5640693f5eb306",
+        "stateVariants": [
+          {
+            "path": "docs/design/studio/review/studies/states/UI02-loading.svg",
+            "sha256": "5519eb40c6821ad35de2b11f9cdb636fb9897f70e08fa62a8f783a1f2277d8e7"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI02-empty.svg",
+            "sha256": "4e72f34eeee5c31c783b217ba8372fc9842ee146aa728fb02751ebbe99ad16ff"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI02-invalid.svg",
+            "sha256": "017d637049f4b8dd1f366321d70d6df4483f7cc89b0a1416b6a5184b8f3fb2a8"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI02-unavailable.svg",
+            "sha256": "2244f995a12336fa165c0fc85f0fd77fbb998fee1612885efff72d918c9eab87"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI02-failed.svg",
+            "sha256": "6bb203e747e0292d8990e03c8349279c3fd8551b43fca4d8258094b25e0ccb1b"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI02-actions.svg",
+            "sha256": "74fb7152367f2d051df3bb96db6a32bd92d8281c6e94f9a3085d7cee4997f75b"
+          }
+        ],
+        "rtl": {
+          "path": "docs/design/studio/review/studies/rtl/UI02.svg",
+          "sha256": "62c6a09b05f03dafe76ba392075482fbf050b6eadccfe3b980651b1b13a8b6a3"
+        }
       },
       "approvedPilotFields": [
         "F-REV"
@@ -163,10 +252,10 @@
       "reviewedPilotFields": [
         "F-REV"
       ],
-      "baselinePorts": [
+      "logicalPorts": [
         "API-WORKSPACE"
       ],
-      "proposedPort": null,
+      "specializedPort": null,
       "dependencies": [
         {
           "scope": "UI01",
@@ -179,6 +268,17 @@
         {
           "scope": "SP02",
           "issue": 160
+        }
+      ],
+      "integrationGates": [
+        {
+          "consumer": "UI02",
+          "provider": "RT05",
+          "consumerIssue": 91,
+          "providerIssue": 133,
+          "kind": "remote capability",
+          "disposition": "capability",
+          "reason": "Remote connection and credential lifecycle must be supported before remote acceptance; offline workspace does not depend on remote availability."
         }
       ],
       "contractReview": "bindings/contract-review.md#per-module-field-projection-and-outstanding-owner-seams",
@@ -297,18 +397,48 @@
           "oracle": "Refuse an incompatible backup before replacing current data."
         }
       ],
-      "disposition": "Reviewed proposal; feature-owner payload/approval gates remain; no execution claim"
+      "disposition": "Studio design specification reviewed and accepted; concrete provider conformance and feature acceptance required"
     },
     {
       "module": "UI03",
       "issue": 92,
       "design": {
         "source": "docs/design/studio/UI03.md",
-        "wireframe": "docs/design/studio/drafts/UI03-wire.svg",
+        "wireframe": "docs/design/studio/review/studies/wireframes/UI03.svg",
         "study": "docs/design/studio/review/studies/UI03.svg",
-        "sourceHash": "43518b0778691c9b7fc8371d00d2c80a2acd441f848736923caa3fa33b895319",
-        "wireHash": "82646e4ed2ac5b663ee7ff10f32968a948008cccf66cd2d62883208bf61b8f0f",
-        "studyHash": "b7ed050402429bcc13f01802c2ce2bb7917fc04858d28f1e1ed87d56599a4bba"
+        "sourceHash": "55d5e4b925455d2b8d3e73cbaa9121d04aef122fc17f1b6d4c46912f13b504f0",
+        "wireHash": "d71c04cc1df0b58fe32ced0aa9e047e5ad20dc37c37adae15e96fb0fb71eaeef",
+        "studyHash": "574e826583a2d52cd7e3417c9e4c595a22e6f32d9857dc640ea38b70299177a9",
+        "stateVariants": [
+          {
+            "path": "docs/design/studio/review/studies/states/UI03-loading.svg",
+            "sha256": "84ee330935f0ec0660d83e4a43f3fcde099742c5bbf845129cbcba6370322bbc"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI03-empty.svg",
+            "sha256": "f84f6e579e132871f7f13fad2c13c46e08edd927133cf78a94682b685078ed30"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI03-invalid.svg",
+            "sha256": "08a3350bcf9a3ae9b5c501b6b21a05f9b20ca32befe14d48293b0f70e20d1d76"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI03-unavailable.svg",
+            "sha256": "d21e15cea36760f8aa09d1e2e62e936228eff08890a527b43c4c3a6a5f35fa02"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI03-failed.svg",
+            "sha256": "6d59f8239fffde728e91b8ddbf098ba4b943c9caa68143c6f8b178c667b2bbe9"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI03-actions.svg",
+            "sha256": "d225a532dc738596e2f8585a93fee398e0be1b93471995b69bbfd91c0e241bc6"
+          }
+        ],
+        "rtl": {
+          "path": "docs/design/studio/review/studies/rtl/UI03.svg",
+          "sha256": "eca12de983de8f851c943e1d20a1e43aef4f5667a1ee41375e7557e1dbe89487"
+        }
       },
       "approvedPilotFields": [
         "F-RUN",
@@ -323,10 +453,10 @@
         "F-CPU",
         "F-MEM"
       ],
-      "baselinePorts": [
+      "logicalPorts": [
         "API-RUN"
       ],
-      "proposedPort": null,
+      "specializedPort": null,
       "dependencies": [
         {
           "scope": "UI01",
@@ -339,6 +469,26 @@
         {
           "scope": "SP02",
           "issue": 160
+        }
+      ],
+      "integrationGates": [
+        {
+          "consumer": "UI03",
+          "provider": "RT02",
+          "consumerIssue": 92,
+          "providerIssue": 130,
+          "kind": "enterprise capability",
+          "disposition": "capability",
+          "reason": "Enterprise job health and live status require authorized host observations; local panels may work separately."
+        },
+        {
+          "consumer": "UI03",
+          "provider": "I04",
+          "consumerIssue": 92,
+          "providerIssue": 58,
+          "kind": "integration capability",
+          "disposition": "capability",
+          "reason": "Connector synchronization health is owned by I04; do not imply healthy from missing data."
         }
       ],
       "contractReview": "bindings/contract-review.md#per-module-field-projection-and-outstanding-owner-seams",
@@ -447,18 +597,48 @@
           "oracle": "Show an unknown health or measurement state when a source is unavailable."
         }
       ],
-      "disposition": "Reviewed proposal; feature-owner payload/approval gates remain; no execution claim"
+      "disposition": "Studio design specification reviewed and accepted; concrete provider conformance and feature acceptance required"
     },
     {
       "module": "UI04",
       "issue": 93,
       "design": {
         "source": "docs/design/studio/UI04.md",
-        "wireframe": "docs/design/studio/drafts/UI04-wire.svg",
+        "wireframe": "docs/design/studio/review/studies/wireframes/UI04.svg",
         "study": "docs/design/studio/review/studies/UI04.svg",
-        "sourceHash": "17eba3d679e55c062dbb59a941e38f65b449366f0f778a6a0a3e967f0266eee9",
-        "wireHash": "5c114671a90c1bde2f46e3e70d5ac7b1cf25e00b103ab3e4a1a4b0fc1085c371",
-        "studyHash": "4d40b5e9aadd1356aedccfb0e1836b6bbfb816d5755e72b919b0a3a304870296"
+        "sourceHash": "d08cf42c9605cf437b1f8ecd3d71158bd45b3552cadeb11b703a6314045fcaed",
+        "wireHash": "520a7298b83dd1aeddd0f136d09ae333a4ab89071aeeef7ed577d429ae5ee642",
+        "studyHash": "d6271a73bf9d83462eb32cec5cc7accc05b1b15fb20935d6382c454075a16aaf",
+        "stateVariants": [
+          {
+            "path": "docs/design/studio/review/studies/states/UI04-loading.svg",
+            "sha256": "17769abb2ac0f85ad001bb2065f03ef7e051c03bd7874925716fc2a70a3cfd31"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI04-empty.svg",
+            "sha256": "b851917403fe27d06d94c67d136aed518c7a12de92d4f0b46d55088f21d4b316"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI04-invalid.svg",
+            "sha256": "60b05e9b852ed9963d020e32b11564ab0e19e8ccb8233c6d9263b6bb2c7f8bc0"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI04-unavailable.svg",
+            "sha256": "25abb286e3231810dfc378fbcbe23b4a7ad94bd95d8cf0a6e32f71dc46a8e092"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI04-failed.svg",
+            "sha256": "cf26afb8c84ff98e8eeea6d11d5ddce1ac60a2e23bcdbde82752a1a317363d1a"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI04-actions.svg",
+            "sha256": "d4dc3d8de7076de5d59d83a7c3484a8767bb901f32198dd18d0788463a90d938"
+          }
+        ],
+        "rtl": {
+          "path": "docs/design/studio/review/studies/rtl/UI04.svg",
+          "sha256": "756abe2d8eefed7a0e320d75a4e10ee84f578ffe3374dcb783f85377e6ca9a6b"
+        }
       },
       "approvedPilotFields": [
         "F-REV",
@@ -470,10 +650,10 @@
         "F-MACHINE",
         "F-OP"
       ],
-      "baselinePorts": [
+      "logicalPorts": [
         "API-MODEL"
       ],
-      "proposedPort": null,
+      "specializedPort": null,
       "dependencies": [
         {
           "scope": "UI01",
@@ -490,6 +670,30 @@
         {
           "scope": "SP02",
           "issue": 160
+        },
+        {
+          "scope": "M07",
+          "issue": 20
+        }
+      ],
+      "integrationGates": [
+        {
+          "consumer": "UI04",
+          "provider": "M05",
+          "consumerIssue": 93,
+          "providerIssue": 18,
+          "kind": "comparison acceptance",
+          "disposition": "transitive",
+          "reason": "Batch DSL equivalence requires an approved grammar and fixture, not a Studio-invented syntax."
+        },
+        {
+          "consumer": "UI04",
+          "provider": "M07",
+          "consumerIssue": 93,
+          "providerIssue": 20,
+          "kind": "comparison acceptance",
+          "disposition": "hard",
+          "reason": "Normalized equivalent output must come from semantic analysis; structural UDIR alone is insufficient."
         }
       ],
       "contractReview": "bindings/contract-review.md#per-module-field-projection-and-outstanding-owner-seams",
@@ -592,18 +796,48 @@
           "oracle": "Leave the saved revision intact on a dangling variable reference."
         }
       ],
-      "disposition": "Reviewed proposal; feature-owner payload/approval gates remain; no execution claim"
+      "disposition": "Studio design specification reviewed and accepted; concrete provider conformance and feature acceptance required"
     },
     {
       "module": "UI05",
       "issue": 94,
       "design": {
         "source": "docs/design/studio/UI05.md",
-        "wireframe": "docs/design/studio/drafts/UI05-wire.svg",
+        "wireframe": "docs/design/studio/review/studies/wireframes/UI05.svg",
         "study": "docs/design/references/01-WOW-DI-Studio.svg",
-        "sourceHash": "c8768d9522ebde80bd3c59111247165ffda6b695ce4b12d3735f53be3e7f736f",
-        "wireHash": "657e911f1989c194399a130aa2bac395606913055bcc0ac441cd94db11b53206",
-        "studyHash": "8e98a4c893507fc50f0a155b13960148644911161f7fc0a38a82b1526a1c042d"
+        "sourceHash": "558d01db571d2be9bddd71d7f5bf16750bccd875593afed80bb8fcf394adfa16",
+        "wireHash": "0102caf9e44212f483dd877f65bd85314e47f8e6fadefdd1f97becb9f7e8187c",
+        "studyHash": "8e98a4c893507fc50f0a155b13960148644911161f7fc0a38a82b1526a1c042d",
+        "stateVariants": [
+          {
+            "path": "docs/design/studio/review/studies/states/UI05-loading.svg",
+            "sha256": "3979e244bcaf7e35f8f7111b146e72ee49d302035669d59dd6022c824f4d1435"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI05-empty.svg",
+            "sha256": "5034d15861db39c718e6341f494c2543910da73187c5a009ee0840968d80ebb8"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI05-invalid.svg",
+            "sha256": "a8f96ce3ce7d61b36a051af197e16e80badfe98858a85afcdbe197df08b34e95"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI05-unavailable.svg",
+            "sha256": "01863e2d63c1a5f9ab6924d65b2924f7a8a61d901456856881e090f6086a54e3"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI05-failed.svg",
+            "sha256": "35d13190f9c808d72a51fe02d9f46858f4872b1bab65150ecb262e706cf913a8"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI05-actions.svg",
+            "sha256": "2e87a2d2e59a85d79062961bf162c88ed35f8a76880c3108f391ed1839c2ad8f"
+          }
+        ],
+        "rtl": {
+          "path": "docs/design/studio/review/studies/rtl/UI05.svg",
+          "sha256": "aab89ff8f92ddccfdb318a75932218853cdcfcfb387f99f7428743d21ccefce9"
+        }
       },
       "approvedPilotFields": [
         "F-REV",
@@ -615,10 +849,10 @@
         "F-MACHINE",
         "F-OP"
       ],
-      "baselinePorts": [
+      "logicalPorts": [
         "API-GRAPH"
       ],
-      "proposedPort": null,
+      "specializedPort": null,
       "dependencies": [
         {
           "scope": "UI01",
@@ -635,6 +869,21 @@
         {
           "scope": "SP02",
           "issue": 160
+        },
+        {
+          "scope": "DS04",
+          "issue": 128
+        }
+      ],
+      "integrationGates": [
+        {
+          "consumer": "UI05",
+          "provider": "DS04",
+          "consumerIssue": 94,
+          "providerIssue": 128,
+          "kind": "presentation reuse",
+          "disposition": "hard",
+          "reason": "Reuse existing graph projection, never substitute static image. Already closed."
         }
       ],
       "contractReview": "bindings/contract-review.md#per-module-field-projection-and-outstanding-owner-seams",
@@ -776,18 +1025,48 @@
           "oracle": "Deletion must remain visible in the revision diff. Filtering is presentation-only."
         }
       ],
-      "disposition": "Reviewed proposal; feature-owner payload/approval gates remain; no execution claim"
+      "disposition": "Studio design specification reviewed and accepted; concrete provider conformance and feature acceptance required"
     },
     {
       "module": "UI06",
       "issue": 95,
       "design": {
         "source": "docs/design/studio/UI06.md",
-        "wireframe": "docs/design/studio/drafts/UI06-wire.svg",
+        "wireframe": "docs/design/studio/review/studies/wireframes/UI06.svg",
         "study": "docs/design/studio/review/studies/UI06.svg",
-        "sourceHash": "c70f53e3ee20c7d947a5e97fa4538a22a8eca524b8296a673078d82a359de04a",
-        "wireHash": "499f9c42827e239b92bd592aaa0e099a5d3af1ab1be2b8a9ef637fba1d24729b",
-        "studyHash": "4d46a05b918621e959da7c42826990eaf2228a0af8e72be065b60eb63c5c3548"
+        "sourceHash": "d3481e2a58805d1cc0ae798307aeba8fb6a5c7c85957af5bf03e6ab6ded19999",
+        "wireHash": "8083622f68f7baa52703abb1b3fe4e85e727556d296115848eb9c65a81c2fc21",
+        "studyHash": "592c4bd517eb2e3bdc2073275f872bd7a09e642ad52aa03689244b81d6e4add4",
+        "stateVariants": [
+          {
+            "path": "docs/design/studio/review/studies/states/UI06-loading.svg",
+            "sha256": "cd22dfbf221cdf2b43042c6d7086aacb7551b075c2eab86018ae2185282b7365"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI06-empty.svg",
+            "sha256": "79f9da4d70cd0c4cbdddf4d70c6003d511be32d2df1db40e18489e9556705a35"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI06-invalid.svg",
+            "sha256": "bb673cc590408efc6e62a3696a8c16365f72d3f11337c237643c556d9cb55084"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI06-unavailable.svg",
+            "sha256": "436527d6f9a742bba6c30d356ef68e673662690c7b2b738f038f9a0b3b55440c"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI06-failed.svg",
+            "sha256": "9f913977b8284504eea8fb02aa9c508bac9701b36cc3d351c648ff09544d1b26"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI06-actions.svg",
+            "sha256": "1c76115bede95bc07918a9be293bd853052a59dc242d0ae3c66f7c6246cb518b"
+          }
+        ],
+        "rtl": {
+          "path": "docs/design/studio/review/studies/rtl/UI06.svg",
+          "sha256": "31d52d12ae5d8d231fd21f25cdeef047f916e9b3375aa2ecc769d3ce7d2301da"
+        }
       },
       "approvedPilotFields": [
         "F-REV"
@@ -795,10 +1074,10 @@
       "reviewedPilotFields": [
         "F-REV"
       ],
-      "baselinePorts": [
+      "logicalPorts": [
         "API-MODEL"
       ],
-      "proposedPort": null,
+      "specializedPort": null,
       "dependencies": [
         {
           "scope": "UI01",
@@ -817,6 +1096,7 @@
           "issue": 160
         }
       ],
+      "integrationGates": [],
       "contractReview": "bindings/contract-review.md#per-module-field-projection-and-outstanding-owner-seams",
       "stateReview": "interaction-state-review.md",
       "cases": [
@@ -923,18 +1203,48 @@
           "oracle": "Discard stale diagnostics arriving after a newer edit."
         }
       ],
-      "disposition": "Reviewed proposal; feature-owner payload/approval gates remain; no execution claim"
+      "disposition": "Studio design specification reviewed and accepted; concrete provider conformance and feature acceptance required"
     },
     {
       "module": "UI07",
       "issue": 96,
       "design": {
         "source": "docs/design/studio/UI07.md",
-        "wireframe": "docs/design/studio/drafts/UI07-wire.svg",
+        "wireframe": "docs/design/studio/review/studies/wireframes/UI07.svg",
         "study": "docs/design/studio/review/studies/UI07.svg",
-        "sourceHash": "b26c418a58585f9f3e6e51e2f7795bf4db3e38d52f46a43c092c3975c97b4a0c",
-        "wireHash": "ded0f5807548eed0a35ed60a9cd7a72438c25cba19c581942d085cbc41a1149c",
-        "studyHash": "ecab567ab7e103fdc5229e17773d7fb22971a8e802c2ed79987acb73e088f0d5"
+        "sourceHash": "f9830d429e72a618f0912b2ea351a278dc2a29755d5c124cbf7f4517ec4d0720",
+        "wireHash": "067e2d4f817a30b6646b89974d11dd7c3628dcd4f21e23b29d78bf0654c9a104",
+        "studyHash": "3ac93f6736740536aa420c24e1ea0248849e9218ac2ac77dc05b9c03e7c5168c",
+        "stateVariants": [
+          {
+            "path": "docs/design/studio/review/studies/states/UI07-loading.svg",
+            "sha256": "bc047746ad2c5a522f86b7b7fb844cf7f1df1bbe9780e28e6966e0edaf74392b"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI07-empty.svg",
+            "sha256": "0838d60e812e65143e1986feaf67c674373d1aeddc156490bf8098e2bbc58346"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI07-invalid.svg",
+            "sha256": "8b31fc9f01bb5a856e32e6abf57bfb7b3861dd5808beac4e8882cd96f47ddc7e"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI07-unavailable.svg",
+            "sha256": "f74d8b56536983fa455d8b6cbd7f5a08963fdf626572fd60fbb76f6a87dbace6"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI07-failed.svg",
+            "sha256": "bad87660c0affb45394f3a22316a2015f73b8af9c155bc473c2462fdebe4aa32"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI07-actions.svg",
+            "sha256": "64bcf6340860fa7aff8f1fa1bbd304f26756f5742582d088bf46ea6b032d29c2"
+          }
+        ],
+        "rtl": {
+          "path": "docs/design/studio/review/studies/rtl/UI07.svg",
+          "sha256": "9af2a27c2ce8606cbb991ffc023c78cbe1e86d75d056cd47dbe808b9c0d7bdad"
+        }
       },
       "approvedPilotFields": [
         "F-REV",
@@ -944,10 +1254,10 @@
         "F-REV",
         "F-DURATION"
       ],
-      "baselinePorts": [
+      "logicalPorts": [
         "API-MODEL"
       ],
-      "proposedPort": null,
+      "specializedPort": null,
       "dependencies": [
         {
           "scope": "UI04",
@@ -960,6 +1270,17 @@
         {
           "scope": "SP02",
           "issue": 160
+        }
+      ],
+      "integrationGates": [
+        {
+          "consumer": "UI07",
+          "provider": "S04",
+          "consumerIssue": 96,
+          "providerIssue": 29,
+          "kind": "evidence capability",
+          "disposition": "capability",
+          "reason": "Original constraint checks are verifier-owned; conflict proof must be evidence-backed, not inferred from a red form."
         }
       ],
       "contractReview": "bindings/contract-review.md#per-module-field-projection-and-outstanding-owner-seams",
@@ -1057,18 +1378,48 @@
           "oracle": "Reject incompatible dimensions. Label conflicts as proven only with supporting evidence."
         }
       ],
-      "disposition": "Reviewed proposal; feature-owner payload/approval gates remain; no execution claim"
+      "disposition": "Studio design specification reviewed and accepted; concrete provider conformance and feature acceptance required"
     },
     {
       "module": "UI08",
       "issue": 97,
       "design": {
         "source": "docs/design/studio/UI08.md",
-        "wireframe": "docs/design/studio/drafts/UI08-wire.svg",
+        "wireframe": "docs/design/studio/review/studies/wireframes/UI08.svg",
         "study": "docs/design/studio/review/studies/UI08.svg",
-        "sourceHash": "10ffb00a907f7a98c7690b2c0f3a25eba83ef0b66aa5914901f588353c31bd35",
-        "wireHash": "505fd6264227dcffeb202d41e79dfddba411d1fc349c56105935426b9ad4269a",
-        "studyHash": "500ce52bef1d095f93d743c8aea88877933032cb1f4fca1a0e6ec2b9de477ddd"
+        "sourceHash": "386d106bcd549116d47a70e0742fef907d257625379848b74a688a2840d37c55",
+        "wireHash": "1e8e8250ce94482157eb2ac0d639502aef64ba277460f304cc1e9afd1ad16746",
+        "studyHash": "91ccf72655d78c27259e04635e94dfa1997b23bd302eedd51677fb9f3043579a",
+        "stateVariants": [
+          {
+            "path": "docs/design/studio/review/studies/states/UI08-loading.svg",
+            "sha256": "a2a1f2faac3e6c676e3e651bbb62935c2af58892b4a06b5ad020cffb8123aeb6"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI08-empty.svg",
+            "sha256": "dd8faee5c04e150b0a89bf8cf8e740a21548fc75cb4727c6fffd2f4a3de13ac2"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI08-invalid.svg",
+            "sha256": "38e0827851161e98459ce73ffa67be9f651b39340f3bb5642ac253e69e145e4b"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI08-unavailable.svg",
+            "sha256": "988fd9fd1f63820032815df7f41b4a396c91881213951f6741f3b63946f20af0"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI08-failed.svg",
+            "sha256": "be1e3508a2e37684c0c765b1464a368413628cd8fcddeb305eefc2908e2755cf"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI08-actions.svg",
+            "sha256": "2dd802efb3ecf6f8d182fe17511264c1d44a403df796db0cb70f2c0a2e7a29fe"
+          }
+        ],
+        "rtl": {
+          "path": "docs/design/studio/review/studies/rtl/UI08.svg",
+          "sha256": "114ace4610db70deec5c943ec9402fcb65154e97a9930d2de20b7c5918ad83b0"
+        }
       },
       "approvedPilotFields": [
         "F-REV",
@@ -1080,10 +1431,10 @@
         "F-WEIGHT",
         "F-OBJ"
       ],
-      "baselinePorts": [
+      "logicalPorts": [
         "API-MODEL"
       ],
-      "proposedPort": null,
+      "specializedPort": null,
       "dependencies": [
         {
           "scope": "UI04",
@@ -1098,6 +1449,7 @@
           "issue": 160
         }
       ],
+      "integrationGates": [],
       "contractReview": "bindings/contract-review.md#per-module-field-projection-and-outstanding-owner-seams",
       "stateReview": "interaction-state-review.md",
       "cases": [
@@ -1204,18 +1556,48 @@
           "oracle": "Reject duplicate priorities in the v0 language and disable unsupported Pareto requests."
         }
       ],
-      "disposition": "Reviewed proposal; feature-owner payload/approval gates remain; no execution claim"
+      "disposition": "Studio design specification reviewed and accepted; concrete provider conformance and feature acceptance required"
     },
     {
       "module": "UI09",
       "issue": 98,
       "design": {
         "source": "docs/design/studio/UI09.md",
-        "wireframe": "docs/design/studio/drafts/UI09-wire.svg",
+        "wireframe": "docs/design/studio/review/studies/wireframes/UI09.svg",
         "study": "docs/design/studio/review/studies/UI09.svg",
-        "sourceHash": "6b1d6256803cc9a3288bf1e0d555320a9ec462c5ee703800e90d1147f527eeaa",
-        "wireHash": "2025f8cd59ec9bd598085a550e939c12d675dae8009907fcc9f3b2ddae244bc7",
-        "studyHash": "bae80d6d2d9a03077762fce6dcc45cab7c1266052878a023a91af00e6ee662a2"
+        "sourceHash": "ff95f0e6b71bf72a004aa6f4b2ee2a1749ec78575e8139b6e5014dea2649faf5",
+        "wireHash": "49795d97dacfd3777c6219077ccba81da37aae2deae863f8df545a7c024f0b80",
+        "studyHash": "eb57777fa1f8b196aca162177068328eda80a467557d824d6dbdf605d91c2c7e",
+        "stateVariants": [
+          {
+            "path": "docs/design/studio/review/studies/states/UI09-loading.svg",
+            "sha256": "9e568cd790ca19d202fc95d0a6766a131ffc2400dfc7e01c881408924a2cbca3"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI09-empty.svg",
+            "sha256": "77364d3818e3fca752f8917076ae1bff3fc15c95efc426328052b439e04508ec"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI09-invalid.svg",
+            "sha256": "145cfa0a4f94a96180055cb987d833f36ab1f6a0eef6abad897eee7aa8df58cc"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI09-unavailable.svg",
+            "sha256": "1b250cca2d9fec8d7f8a0c4ad0a29a351f3c80b6d06e475e5156b4dd0ce5a288"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI09-failed.svg",
+            "sha256": "8ce35be10d880d694080ff936438814090b3ff218f0361229c1d5d3768299830"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI09-actions.svg",
+            "sha256": "8e8ee60cc54412f9969a9cf83c91f46b549651e7156efd3594ad2063289427ed"
+          }
+        ],
+        "rtl": {
+          "path": "docs/design/studio/review/studies/rtl/UI09.svg",
+          "sha256": "c0694f33bfa7655be2e323598de6f36aba3e64384f7f32429538f5f078a3641e"
+        }
       },
       "approvedPilotFields": [
         "F-REV"
@@ -1223,10 +1605,10 @@
       "reviewedPilotFields": [
         "F-REV"
       ],
-      "baselinePorts": [
+      "logicalPorts": [
         "API-MODEL"
       ],
-      "proposedPort": null,
+      "specializedPort": null,
       "dependencies": [
         {
           "scope": "UI06",
@@ -1245,6 +1627,7 @@
           "issue": 160
         }
       ],
+      "integrationGates": [],
       "contractReview": "bindings/contract-review.md#per-module-field-projection-and-outstanding-owner-seams",
       "stateReview": "interaction-state-review.md",
       "cases": [
@@ -1362,18 +1745,48 @@
           "oracle": "Display unavailable lowering for an unsupported backend."
         }
       ],
-      "disposition": "Reviewed proposal; feature-owner payload/approval gates remain; no execution claim"
+      "disposition": "Studio design specification reviewed and accepted; concrete provider conformance and feature acceptance required"
     },
     {
       "module": "UI10",
       "issue": 99,
       "design": {
         "source": "docs/design/studio/UI10.md",
-        "wireframe": "docs/design/studio/drafts/UI10-wire.svg",
+        "wireframe": "docs/design/studio/review/studies/wireframes/UI10.svg",
         "study": "docs/design/studio/review/studies/UI10.svg",
-        "sourceHash": "e2a7a952823b961a12c1ae16e2c67c681d504c93545bdb06570d54a70fa596bb",
-        "wireHash": "ebecac59f1fdb8c9084babe6aaf68c2eb69d8ea5c29ec766985abe7cfe84ef04",
-        "studyHash": "553d063bffbc167daec911748bb11081fdd83b60b1bcf282f5637aeb63ffb7b3"
+        "sourceHash": "328aafa8e217c0618720db3ac66f873c4653bfbd229dcd655ac03f269fb2889d",
+        "wireHash": "9d8e15a8fcd107bf17fa9b77d5dce736d78bcbb7916564b79c00e6b5cb8f3345",
+        "studyHash": "f7edaa7a0d3f84512493bf4d094c2b553a7f4bfce8a9ff52a3cc2e4c1729e313",
+        "stateVariants": [
+          {
+            "path": "docs/design/studio/review/studies/states/UI10-loading.svg",
+            "sha256": "2af59c3baf6e59ed7b35dc347aca5259dad321d805eb9c8493234b377b08c74c"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI10-empty.svg",
+            "sha256": "4a1396cfff9234f33f5c8c85b545b41a5d2a98da580985295c558c5fc044d8ae"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI10-invalid.svg",
+            "sha256": "e2d0f70d9b515b8e35ddff535da33a054775039b48705337ea52c767f5a75cca"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI10-unavailable.svg",
+            "sha256": "bf54f4ce354c344af3760b2e29b8af5856bde71125d9345aa64560bf99a4568a"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI10-failed.svg",
+            "sha256": "43490c520d7290f411061d927ba40314de4319ef5bce039e593b93554bdf814c"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI10-actions.svg",
+            "sha256": "e36d9c8bce6d53d1b4ae11e654fff6a8a9e4460520ac7f86afd3a934e92676bd"
+          }
+        ],
+        "rtl": {
+          "path": "docs/design/studio/review/studies/rtl/UI10.svg",
+          "sha256": "b0fd68b0357b82d9ce799f63dbeb972addda623ee745a9e28532e9588fa8ce10"
+        }
       },
       "approvedPilotFields": [
         "F-REV",
@@ -1385,10 +1798,10 @@
         "F-CPU",
         "F-MEM"
       ],
-      "baselinePorts": [
+      "logicalPorts": [
         "API-SOLVE"
       ],
-      "proposedPort": null,
+      "specializedPort": null,
       "dependencies": [
         {
           "scope": "UI01",
@@ -1405,6 +1818,17 @@
         {
           "scope": "SP02",
           "issue": 160
+        }
+      ],
+      "integrationGates": [
+        {
+          "consumer": "UI10",
+          "provider": "RT01",
+          "consumerIssue": 99,
+          "providerIssue": 129,
+          "kind": "local execution",
+          "disposition": "capability",
+          "reason": "A usable local submit flow needs application runtime admission, not direct solver invocation from UI."
         }
       ],
       "contractReview": "bindings/contract-review.md#per-module-field-projection-and-outstanding-owner-seams",
@@ -1486,18 +1910,48 @@
           "oracle": "Reject options outside the selected adapter manifest before creating a run."
         }
       ],
-      "disposition": "Reviewed proposal; feature-owner payload/approval gates remain; no execution claim"
+      "disposition": "Studio design specification reviewed and accepted; concrete provider conformance and feature acceptance required"
     },
     {
       "module": "UI11",
       "issue": 100,
       "design": {
         "source": "docs/design/studio/UI11.md",
-        "wireframe": "docs/design/studio/drafts/UI11-wire.svg",
+        "wireframe": "docs/design/studio/review/studies/wireframes/UI11.svg",
         "study": "docs/design/studio/review/studies/UI11.svg",
-        "sourceHash": "feba5bc545566b0061243f4d2367659924f820873934c19fbe8259bbdc5c9f92",
-        "wireHash": "0a77d533725613d8270b7b35b887ae230f59d44da87ac2e037853426e835e522",
-        "studyHash": "1796a3b97cf26e7312ca8d707f9e239932ae53f590a6bb97613515f8b5c6cd26"
+        "sourceHash": "6cbab1c34bbda4fadbba86fb896c41f3258f30abf953331f7b28f8ae770855cf",
+        "wireHash": "1c009a62b3ccdc990484e12a080c7c84bc0d70c4090f2d749d6544159222f612",
+        "studyHash": "cfb74a066f7876e7b15d2d8d1cf9f332fd685ee24bddaa44b462816493d7325b",
+        "stateVariants": [
+          {
+            "path": "docs/design/studio/review/studies/states/UI11-loading.svg",
+            "sha256": "fba29a9145a23bdf89e8492c97d60df3c777f1b85b4867bf8bda9f94ccb01cc9"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI11-empty.svg",
+            "sha256": "ebf9c675879734ee04c635b019776d206faa01ce2f41711545ebc1b7133f32b0"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI11-invalid.svg",
+            "sha256": "cfa1dec703dc4e9f0e125ab79725d367de0de73ab384af83e030bd5dfd900f0e"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI11-unavailable.svg",
+            "sha256": "b066ae7d425c4ed8f7ee594edf5be3cb183573f67526bc2044805a19844e7a46"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI11-failed.svg",
+            "sha256": "19424b565e71028c598eba7734ba85b558e1ab6dd4177bad6fa7e97a8fb3fd2c"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI11-actions.svg",
+            "sha256": "d469460a75679621ccca10ab6e9c8fa2ed7f9dbf8b9fe260d13e745944a88cd2"
+          }
+        ],
+        "rtl": {
+          "path": "docs/design/studio/review/studies/rtl/UI11.svg",
+          "sha256": "7204b97e4551e84a0b2a8602626855debddd4a83c636d51629cecbdfe73a4b33"
+        }
       },
       "approvedPilotFields": [
         "F-RUN",
@@ -1516,10 +1970,10 @@
         "F-CPU",
         "F-MEM"
       ],
-      "baselinePorts": [
+      "logicalPorts": [
         "API-RUN"
       ],
-      "proposedPort": null,
+      "specializedPort": null,
       "dependencies": [
         {
           "scope": "UI01",
@@ -1536,6 +1990,30 @@
         {
           "scope": "SP02",
           "issue": 160
+        },
+        {
+          "scope": "DS04",
+          "issue": 128
+        }
+      ],
+      "integrationGates": [
+        {
+          "consumer": "UI11",
+          "provider": "RT01",
+          "consumerIssue": 100,
+          "providerIssue": 129,
+          "kind": "local execution",
+          "disposition": "capability",
+          "reason": "Local job inspection and cancellation use application runtime. S07/S10 own execution/evidence."
+        },
+        {
+          "consumer": "UI11",
+          "provider": "DS04",
+          "consumerIssue": 100,
+          "providerIssue": 128,
+          "kind": "presentation reuse",
+          "disposition": "hard",
+          "reason": "Convergence primitive is merged; metric projections preserve supplied event sequence."
         }
       ],
       "contractReview": "bindings/contract-review.md#per-module-field-projection-and-outstanding-owner-seams",
@@ -1660,18 +2138,48 @@
           "oracle": "Handle duplicate or out-of-order events and avoid synthetic percent completion."
         }
       ],
-      "disposition": "Reviewed proposal; feature-owner payload/approval gates remain; no execution claim"
+      "disposition": "Studio design specification reviewed and accepted; concrete provider conformance and feature acceptance required"
     },
     {
       "module": "UI12",
       "issue": 101,
       "design": {
         "source": "docs/design/studio/UI12.md",
-        "wireframe": "docs/design/studio/drafts/UI12-wire.svg",
+        "wireframe": "docs/design/studio/review/studies/wireframes/UI12.svg",
         "study": "docs/design/studio/review/studies/UI12.svg",
-        "sourceHash": "7c4d91ae6a7706c32b1fb03136cfd876829501ca9c4d35726b04b11d692de82d",
-        "wireHash": "e8050af352584ecc62a785a903c4b04fe29c3e5dccccca9bee76b23345ba2dc7",
-        "studyHash": "5aca97b5228c5a4f62dc691b3c8adadbe7591edaec9ee9a9e8d94543e504f2e6"
+        "sourceHash": "38247638b4af9b79b930ff3fb58e08304ce059beaabfdd35d51f4cd63c896a29",
+        "wireHash": "bea941c3a53e488dabca069bc534b0244f5462002d27b90df14bb7b52f6a036d",
+        "studyHash": "099a280054b04ca08e169825e279dc94dc39f6db87c6457972f10ec4d310ff3a",
+        "stateVariants": [
+          {
+            "path": "docs/design/studio/review/studies/states/UI12-loading.svg",
+            "sha256": "9608739325ff83f1049376dce986fd0bf96b99e7b71491922cc335ec7ac3e968"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI12-empty.svg",
+            "sha256": "b41fba1a8eef6dbe7712cb922a0968fa26d6f6fceeb1d08883c121756fd46809"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI12-invalid.svg",
+            "sha256": "76e03334112a1bb9db8e2f06ccc454113ce3e7a7f5675cafb77c14e974103054"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI12-unavailable.svg",
+            "sha256": "a1ae07f146f8667e2fa9fedc0c7117adc917f25607162d6fd01783b99ee80aba"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI12-failed.svg",
+            "sha256": "54f59c3ec45d3196aa723c67645d72d50dcc20c7b7ec205594dd15e35577599c"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI12-actions.svg",
+            "sha256": "121c2140bd440d30611641b6430915bc485122477006f8291ba4bb9370994c0c"
+          }
+        ],
+        "rtl": {
+          "path": "docs/design/studio/review/studies/rtl/UI12.svg",
+          "sha256": "9ba9a25f496ce60cec622248443d326d1d70f5b5b0711cca658b93cc853cc478"
+        }
       },
       "approvedPilotFields": [
         "F-REV",
@@ -1683,10 +2191,10 @@
         "F-RUN",
         "F-EVID"
       ],
-      "baselinePorts": [
+      "logicalPorts": [
         "API-RUN"
       ],
-      "proposedPort": null,
+      "specializedPort": null,
       "dependencies": [
         {
           "scope": "UI11",
@@ -1701,6 +2209,7 @@
           "issue": 160
         }
       ],
+      "integrationGates": [],
       "contractReview": "bindings/contract-review.md#per-module-field-projection-and-outstanding-owner-seams",
       "stateReview": "interaction-state-review.md",
       "cases": [
@@ -1813,18 +2322,48 @@
           "oracle": "Display capability unavailable when native search events are absent."
         }
       ],
-      "disposition": "Reviewed proposal; feature-owner payload/approval gates remain; no execution claim"
+      "disposition": "Studio design specification reviewed and accepted; concrete provider conformance and feature acceptance required"
     },
     {
       "module": "UI13",
       "issue": 102,
       "design": {
         "source": "docs/design/studio/UI13.md",
-        "wireframe": "docs/design/studio/drafts/UI13-wire.svg",
+        "wireframe": "docs/design/studio/review/studies/wireframes/UI13.svg",
         "study": "docs/design/studio/review/studies/UI13.svg",
-        "sourceHash": "1491fd269da7523837572ae0020f8b9f1f95918023956c1c9670cf35bb0527ee",
-        "wireHash": "4631e6be4e0f7f4606365218757cc49680ea0d3dcdc921e3587a72e06e0a3816",
-        "studyHash": "f7d85c7f4c4753a447175107a02a0d4c6d393c3d7aa2f29b39c487e0477cc736"
+        "sourceHash": "b77078d18557c0b035e75afd8a5e7f626e141c7d02f9fa5b3cb4993b06d66390",
+        "wireHash": "71f3c60a2e51bd7a90bbfc96c9aeca833710b017c29db09e6032e54dfb728b33",
+        "studyHash": "aadb50f5512aac1e9155753ea1c857379e3dfcd098550c67fcaf9f1a36ce29f0",
+        "stateVariants": [
+          {
+            "path": "docs/design/studio/review/studies/states/UI13-loading.svg",
+            "sha256": "15f147aca1ded4d967880dd8f9cee656c12565e294693da48fb4c8cc832d3097"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI13-empty.svg",
+            "sha256": "711982db01a3fd31f59675df1954850d7d4e2d2cb0fbcac7b5165bef0b408c0c"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI13-invalid.svg",
+            "sha256": "58c23d5e2dc7bd4bfb1cc6065fcac8ec9f33b41c2bb45f05369dc4432153dee4"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI13-unavailable.svg",
+            "sha256": "76ebceff435d072007e6674c39a6e17014b66fa3123a8228af345aa498ee6ed6"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI13-failed.svg",
+            "sha256": "e2cf406ca0c31e2cf8d1ff8c2451d516d67f07327a41dbec3dac9aefd0bff0d2"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI13-actions.svg",
+            "sha256": "d97b1ebf77ed1557f156f6e04f4c81e693855bcbd058af5415aea132b3fe20db"
+          }
+        ],
+        "rtl": {
+          "path": "docs/design/studio/review/studies/rtl/UI13.svg",
+          "sha256": "638c99643372d732c49ed6d07e274699857e8a52344b23cf5fc7f48d3b0c9d99"
+        }
       },
       "approvedPilotFields": [
         "F-REV",
@@ -1836,10 +2375,10 @@
         "F-MACHINE",
         "F-OBJ"
       ],
-      "baselinePorts": [
+      "logicalPorts": [
         "API-SCENARIO"
       ],
-      "proposedPort": null,
+      "specializedPort": null,
       "dependencies": [
         {
           "scope": "UI01",
@@ -1854,6 +2393,7 @@
           "issue": 160
         }
       ],
+      "integrationGates": [],
       "contractReview": "bindings/contract-review.md#per-module-field-projection-and-outstanding-owner-seams",
       "stateReview": "interaction-state-review.md",
       "cases": [
@@ -1949,18 +2489,48 @@
           "oracle": "Suppress savings on incompatible objectives or missing baselines."
         }
       ],
-      "disposition": "Reviewed proposal; feature-owner payload/approval gates remain; no execution claim"
+      "disposition": "Studio design specification reviewed and accepted; concrete provider conformance and feature acceptance required"
     },
     {
       "module": "UI14",
       "issue": 103,
       "design": {
         "source": "docs/design/studio/UI14.md",
-        "wireframe": "docs/design/studio/drafts/UI14-wire.svg",
+        "wireframe": "docs/design/studio/review/studies/wireframes/UI14.svg",
         "study": "docs/design/studio/review/studies/UI14.svg",
-        "sourceHash": "61e21401b3f5fab51c700e6338129dd6f8fdc0500e1fe55004fdbf2b998275e1",
-        "wireHash": "7e31b87548f530b9744333b2c4db163dbb220b36c2fd7ca97e349adca7241648",
-        "studyHash": "12ccaacd1825ef7c1e5091013153f658e07c7278a9846c936817d230bc273e49"
+        "sourceHash": "85c5e19a6cab59ce767fa356ba697230b30433291f2dd5b247196ba7a62b0b46",
+        "wireHash": "1784a1d6c643e41323e12873d4603e09b7a29a4b091620eb07e99e94a896118b",
+        "studyHash": "62743e267a2ffbf6d0592c9b0f479c3efab271a92d82c47e01cd9e1fde3bc6f8",
+        "stateVariants": [
+          {
+            "path": "docs/design/studio/review/studies/states/UI14-loading.svg",
+            "sha256": "840e0dfd54085ae2c8bc74a67a91586c49352de5ee222c53ffa20fc4230b19d7"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI14-empty.svg",
+            "sha256": "16c1017ca5455b657f103c8b8d68ac0f74df16d07abcb972a7c6f18a7f0f340b"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI14-invalid.svg",
+            "sha256": "c035dab68fad3c3416e84848a25a336eefd406414ea313189170180fd2918f11"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI14-unavailable.svg",
+            "sha256": "8460bd0d311232cb51de7824495c02511729e5e69eb25c7966b597be06c233f4"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI14-failed.svg",
+            "sha256": "a5a4fdbc46532f9e573a38a1a0055ac13688d1e550882546cb7831ea91cf6116"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI14-actions.svg",
+            "sha256": "b2d8bb5cf38a24907a51563d5a642f0792144f45c99036e526cdd2b139d78639"
+          }
+        ],
+        "rtl": {
+          "path": "docs/design/studio/review/studies/rtl/UI14.svg",
+          "sha256": "067afe9b97f350626a3b36608b7dc72a1825f205b44c630b536948beeb03c561"
+        }
       },
       "approvedPilotFields": [
         "F-REV",
@@ -1970,10 +2540,19 @@
         "F-REV",
         "F-OBJ"
       ],
-      "baselinePorts": [
-        "API-SCENARIO"
+      "logicalPorts": [
+        "API-SIMULATION"
       ],
-      "proposedPort": "API-SIMULATION",
+      "specializedPort": {
+        "port": "API-SIMULATION",
+        "consumer": "UI14",
+        "owners": [
+          "A04"
+        ],
+        "specification": "docs/design/specialized-studio-ports-v1.md",
+        "approval": "logical-design-baseline",
+        "providerAcceptance": "required"
+      },
       "dependencies": [
         {
           "scope": "UI01",
@@ -1988,6 +2567,7 @@
           "issue": 160
         }
       ],
+      "integrationGates": [],
       "contractReview": "bindings/contract-review.md#per-module-field-projection-and-outstanding-owner-seams",
       "stateReview": "interaction-state-review.md",
       "cases": [
@@ -2083,18 +2663,48 @@
           "oracle": "Reject invalid distribution parameters and disclose truncated runs."
         }
       ],
-      "disposition": "Reviewed proposal; feature-owner payload/approval gates remain; no execution claim"
+      "disposition": "Studio design specification reviewed and accepted; concrete provider conformance and feature acceptance required"
     },
     {
       "module": "UI15",
       "issue": 104,
       "design": {
         "source": "docs/design/studio/UI15.md",
-        "wireframe": "docs/design/studio/drafts/UI15-wire.svg",
+        "wireframe": "docs/design/studio/review/studies/wireframes/UI15.svg",
         "study": "docs/design/studio/review/studies/UI15.svg",
-        "sourceHash": "2dad7cfc7131de7b52c39cfbc687ef76a77edf8f81275b5ce5f9378d03b46ac0",
-        "wireHash": "1d483dc6edeed0ac971116a64db8afa25a79c64f9b003a2f6d57f97d2dfc6e9c",
-        "studyHash": "2428da9c523ba5be8dd8ab1517e8b181a920f8ad952f5674087bea6ea7c88bd9"
+        "sourceHash": "1e3466a7a3ea6e0ba93472cacfe996ece2e9bcf4cfe15df43dbbb3c70e0886e6",
+        "wireHash": "b7fba0a027988d83b593ec34a402cde51d0980e84d2b52cc9eddafd41ebf0143",
+        "studyHash": "7eade5465162fc73be7c2c974a9f877c64ce07f685aa13ede9406c74bf387b2c",
+        "stateVariants": [
+          {
+            "path": "docs/design/studio/review/studies/states/UI15-loading.svg",
+            "sha256": "bd19ebe4a17a9dd0e0855eddce0d3698a0ea541baa64ad58e769bd6911af036d"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI15-empty.svg",
+            "sha256": "326f66a31587f325cd5e790a11ef7a3094892002110486ff21454de860e6cd70"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI15-invalid.svg",
+            "sha256": "4c3d90f530683fcdd42b6cf4a1e0c3e8a6ebc6f73933dd49e0ce05b4320a0970"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI15-unavailable.svg",
+            "sha256": "d5a0768016a026eb161dc8f13ae069f3e9156b2a433b4cce69fb183dbfb0ef78"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI15-failed.svg",
+            "sha256": "59a0638996794886f2b4252248ae6bad2727f27a8066c8e18375f5bd10ddc0b9"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI15-actions.svg",
+            "sha256": "da3cfad7281ad594874c8ad4c1bc1586654e70deed2e4d205243bb9724a8d37c"
+          }
+        ],
+        "rtl": {
+          "path": "docs/design/studio/review/studies/rtl/UI15.svg",
+          "sha256": "599d9553593639351f02c925e683b5c2b976107f6b82dfc977c743206ccc8f46"
+        }
       },
       "approvedPilotFields": [
         "F-REV",
@@ -2113,10 +2723,10 @@
         "F-DUE",
         "F-WEIGHT"
       ],
-      "baselinePorts": [
+      "logicalPorts": [
         "API-EVIDENCE"
       ],
-      "proposedPort": null,
+      "specializedPort": null,
       "dependencies": [
         {
           "scope": "UI01",
@@ -2135,6 +2745,7 @@
           "issue": 160
         }
       ],
+      "integrationGates": [],
       "contractReview": "bindings/contract-review.md#per-module-field-projection-and-outstanding-owner-seams",
       "stateReview": "interaction-state-review.md",
       "cases": [
@@ -2252,18 +2863,48 @@
           "oracle": "Handle overlapping downtime and blocked schedules without drawing a feasible plan."
         }
       ],
-      "disposition": "Reviewed proposal; feature-owner payload/approval gates remain; no execution claim"
+      "disposition": "Studio design specification reviewed and accepted; concrete provider conformance and feature acceptance required"
     },
     {
       "module": "UI16",
       "issue": 105,
       "design": {
         "source": "docs/design/studio/UI16.md",
-        "wireframe": "docs/design/studio/drafts/UI16-wire.svg",
+        "wireframe": "docs/design/studio/review/studies/wireframes/UI16.svg",
         "study": "docs/design/studio/review/studies/UI16.svg",
-        "sourceHash": "db412aad00ecd08a2e25e1cf9ffc6f51e6c56e568e21e562755d34ec5daad685",
-        "wireHash": "47b204330d270c3bab4004ba2a3285984e63fd26de31ce877c41ede50487b552",
-        "studyHash": "d223c3899696322da846f5f9a31519136e9ea0f6a453e573b34ddf84c96cefa9"
+        "sourceHash": "0b718e2a6a0c58b2097915379a025f787c594c3e9021363222eae761f695628f",
+        "wireHash": "88dc4887755eb1ee0562825e157dedb51e7ddc43a7a27f42dab77138ffc3a4ad",
+        "studyHash": "395f6393576e951de45b0968e97e6b62c7f5722181705b42e5b1262c78084741",
+        "stateVariants": [
+          {
+            "path": "docs/design/studio/review/studies/states/UI16-loading.svg",
+            "sha256": "448caf4a89c8adba2275f8993abd008916a97862255da116698f23d01440fe95"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI16-empty.svg",
+            "sha256": "ba2cf4a578cafe32fe48fbefa9767516337889bb5a34818f00f3a9390c5eab86"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI16-invalid.svg",
+            "sha256": "be2a3b7dd4fab8e79b83e2c0ad0de1024efed25614232ac474a3e43382cbdb94"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI16-unavailable.svg",
+            "sha256": "4adda9b770eed55dbeaca478acae8000167a24c741c2e07e8757dd2231b62bbe"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI16-failed.svg",
+            "sha256": "fd4ed0f3ca5cb9b16935b039e6cef4c66e0a8146773f5cdc4695fe7187e4baf5"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI16-actions.svg",
+            "sha256": "af5a4f9edabed082f7f6917e37b3af36970ae33667abd78f96a3db8c24977f3d"
+          }
+        ],
+        "rtl": {
+          "path": "docs/design/studio/review/studies/rtl/UI16.svg",
+          "sha256": "f43be3979b79ab25f5a9b57d303111277fa43b5ccc57917223d026b2b1b1882a"
+        }
       },
       "approvedPilotFields": [
         "F-MACHINE",
@@ -2275,10 +2916,19 @@
         "F-START",
         "F-DURATION"
       ],
-      "baselinePorts": [
-        "API-GRAPH"
+      "logicalPorts": [
+        "API-ALLOCATION"
       ],
-      "proposedPort": "API-ALLOCATION",
+      "specializedPort": {
+        "port": "API-ALLOCATION",
+        "consumer": "UI16",
+        "owners": [
+          "V03"
+        ],
+        "specification": "docs/design/specialized-studio-ports-v1.md",
+        "approval": "logical-design-baseline",
+        "providerAcceptance": "required"
+      },
       "dependencies": [
         {
           "scope": "UI01",
@@ -2293,6 +2943,7 @@
           "issue": 160
         }
       ],
+      "integrationGates": [],
       "contractReview": "bindings/contract-review.md#per-module-field-projection-and-outstanding-owner-seams",
       "stateReview": "interaction-state-review.md",
       "cases": [
@@ -2399,18 +3050,48 @@
           "oracle": "Report unavailable utilization for zero capacity."
         }
       ],
-      "disposition": "Reviewed proposal; feature-owner payload/approval gates remain; no execution claim"
+      "disposition": "Studio design specification reviewed and accepted; concrete provider conformance and feature acceptance required"
     },
     {
       "module": "UI17",
       "issue": 106,
       "design": {
         "source": "docs/design/studio/UI17.md",
-        "wireframe": "docs/design/studio/drafts/UI17-wire.svg",
+        "wireframe": "docs/design/studio/review/studies/wireframes/UI17.svg",
         "study": "docs/design/studio/review/studies/UI17.svg",
-        "sourceHash": "b09e905195f4e567a946d0e5fb8f1272137ea8f757d33c418da3e2a53834a2a3",
-        "wireHash": "d70d389cdeaa814ccbe1efd9d2074af92149ceb039311bb16d16e4ff39f9cbcf",
-        "studyHash": "4bb5c1f2a55d6d6cc9a7eb53ee8e581bad74f2e1c42524f22ed0927b2c592e4a"
+        "sourceHash": "53d04c01586b2f23045ac333b9fed2a62a19539c06bceff8bb185377edef5ba5",
+        "wireHash": "e6074493b2d75dfd2d34234b0e438c34c05fa9e1a9e38c8a602746e7d2ce852c",
+        "studyHash": "b4d8d8d2e43ae670f95748eee51c14a9b03c0788cd8e5b4987c334164e10c155",
+        "stateVariants": [
+          {
+            "path": "docs/design/studio/review/studies/states/UI17-loading.svg",
+            "sha256": "9ec6f3fe997043ba55e9b9cecd740ed6184bd303e30c23ec2482413158d975d2"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI17-empty.svg",
+            "sha256": "e86fdb228a7df872169cbf9d6e51f06c42017aa73dbba322fdc61ce57bc3f627"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI17-invalid.svg",
+            "sha256": "fe0563933930c9c1a1ffcd13b19cc93fff7b8d898baa47edf510b0990392d043"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI17-unavailable.svg",
+            "sha256": "91f4fa0c750297f1373f010b10325f3f44d3bc5b3d2d746c7b2ed119e5bd7892"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI17-failed.svg",
+            "sha256": "5f4bcb8a9538845d5ce77116d1c1f7a6ae17de7adfbed852b27119c50e72d578"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI17-actions.svg",
+            "sha256": "0909010f029263f73d131ad0abf44a9f7e597a3652070150b24a88d1ee912d04"
+          }
+        ],
+        "rtl": {
+          "path": "docs/design/studio/review/studies/rtl/UI17.svg",
+          "sha256": "352768db77a7d850151f068bd11be8b961c054a43c8d9ab34e3ea58408975e98"
+        }
       },
       "approvedPilotFields": [
         "F-RUN",
@@ -2428,10 +3109,10 @@
         "F-OBJ",
         "F-BOUND"
       ],
-      "baselinePorts": [
+      "logicalPorts": [
         "API-EVIDENCE"
       ],
-      "proposedPort": null,
+      "specializedPort": null,
       "dependencies": [
         {
           "scope": "UI01",
@@ -2444,6 +3125,17 @@
         {
           "scope": "SP02",
           "issue": 160
+        }
+      ],
+      "integrationGates": [
+        {
+          "consumer": "UI17",
+          "provider": "RT01",
+          "consumerIssue": 106,
+          "providerIssue": 129,
+          "kind": "local execution",
+          "disposition": "capability",
+          "reason": "Read/export evidence through application runtime, not raw registry or filesystem bypass."
         }
       ],
       "contractReview": "bindings/contract-review.md#per-module-field-projection-and-outstanding-owner-seams",
@@ -2574,18 +3266,48 @@
           "oracle": "Reject a bundle whose frozen model digest differs."
         }
       ],
-      "disposition": "Reviewed proposal; feature-owner payload/approval gates remain; no execution claim"
+      "disposition": "Studio design specification reviewed and accepted; concrete provider conformance and feature acceptance required"
     },
     {
       "module": "UI18",
       "issue": 107,
       "design": {
         "source": "docs/design/studio/UI18.md",
-        "wireframe": "docs/design/studio/drafts/UI18-wire.svg",
+        "wireframe": "docs/design/studio/review/studies/wireframes/UI18.svg",
         "study": "docs/design/studio/review/studies/UI18.svg",
-        "sourceHash": "a56bfe0238d72cd1b929c1f83b810546f94d75372d900bd1064ca4661a9c4ec2",
-        "wireHash": "2fcf77890ec0e92daacb7b03092159d6dacf50496fd446ab668317c6c79defa8",
-        "studyHash": "a878a008de7dbe7c24a5890a39ff328468e196b1a892f24d59300759157ccb7c"
+        "sourceHash": "2e3fd68b1d020aaf078487527845f3e24aab96d37037ac0d729ad37ffe6ea077",
+        "wireHash": "92b7a2e7e71852867a58284a0ed7d2ec1b07c2c1e77b7e8aec9f796f512c5e70",
+        "studyHash": "6ea15a0ff00980c84c957ea910d94a49490aeace50b7e97a73e0a605258ba5e2",
+        "stateVariants": [
+          {
+            "path": "docs/design/studio/review/studies/states/UI18-loading.svg",
+            "sha256": "e2ba3cdf66bfc226ccea837d2d3e365005b7939eb6688a843366a3c681cff125"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI18-empty.svg",
+            "sha256": "0cf0f44bf14ca5295207131293b110966c23dcf94ac5362e14d015b2545705c9"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI18-invalid.svg",
+            "sha256": "e5529c74385c326963234bc1e319047363751443c29d5e42c0f58ac9dce4ee3b"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI18-unavailable.svg",
+            "sha256": "2b584bd14461f57af0773ccc1f1e6d90fdffc8ee3ba1beb65a8e481c90b9d745"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI18-failed.svg",
+            "sha256": "f44180ed1c767490c4cff7a82a9beecb16892afbfc781d192cf56d7c981781ff"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI18-actions.svg",
+            "sha256": "6f0f5f0a92e78979f8a6ba775ae91795d30f272fd24d5e8c3e4f3140fcbd5286"
+          }
+        ],
+        "rtl": {
+          "path": "docs/design/studio/review/studies/rtl/UI18.svg",
+          "sha256": "4d7599753ad419c5e931ca25f061a13052d4ba82fa3e912e3741e1e15d9aa8a8"
+        }
       },
       "approvedPilotFields": [
         "F-REV",
@@ -2599,10 +3321,20 @@
         "F-BOUND",
         "F-EVID"
       ],
-      "baselinePorts": [
-        "API-EVIDENCE"
+      "logicalPorts": [
+        "API-EXPLAIN"
       ],
-      "proposedPort": "API-EXPLAIN",
+      "specializedPort": {
+        "port": "API-EXPLAIN",
+        "consumer": "UI18",
+        "owners": [
+          "A02",
+          "A03"
+        ],
+        "specification": "docs/design/specialized-studio-ports-v1.md",
+        "approval": "logical-design-baseline",
+        "providerAcceptance": "required"
+      },
       "dependencies": [
         {
           "scope": "UI17",
@@ -2621,6 +3353,7 @@
           "issue": 160
         }
       ],
+      "integrationGates": [],
       "contractReview": "bindings/contract-review.md#per-module-field-projection-and-outstanding-owner-seams",
       "stateReview": "interaction-state-review.md",
       "cases": [
@@ -2727,18 +3460,48 @@
           "oracle": "Do not expose LP marginal values for unsupported discrete models."
         }
       ],
-      "disposition": "Reviewed proposal; feature-owner payload/approval gates remain; no execution claim"
+      "disposition": "Studio design specification reviewed and accepted; concrete provider conformance and feature acceptance required"
     },
     {
       "module": "UI19",
       "issue": 108,
       "design": {
         "source": "docs/design/studio/UI19.md",
-        "wireframe": "docs/design/studio/drafts/UI19-wire.svg",
+        "wireframe": "docs/design/studio/review/studies/wireframes/UI19.svg",
         "study": "docs/design/studio/review/studies/UI19.svg",
-        "sourceHash": "5cc96c5ca2dff26fc7cbfc3e94fba5577c504e3fe23ef353bd785dc7500f0256",
-        "wireHash": "de6000f8158f13a5df7794ac5373e6aeb49f946fa98f851e6f9a103ae1cd4ff9",
-        "studyHash": "f4936f4168235920c652754fa0bac41d8c97c1471b0c731d0c1925e5c56a5bc4"
+        "sourceHash": "dc39bc4a11a7ff1a09ec65b4d4e6e6a9d5508483f389d04cc739d4250b5d9ae3",
+        "wireHash": "2d2a4c690b248f51bccd82f7c85f968665e58ca1056af1d5e5c1ebbbeeec0807",
+        "studyHash": "3ff0eaab10ac950d723984f803e9c3183b0babe5eb6ace31f7155817ab5c56a1",
+        "stateVariants": [
+          {
+            "path": "docs/design/studio/review/studies/states/UI19-loading.svg",
+            "sha256": "b21ef97ef01d5b7b21ea25bef1c4d83ccd60f17bfbaa2d6e2f9f9a2013335802"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI19-empty.svg",
+            "sha256": "2bf88c8b88f12b6188477bf98933623c3246e5cbd9e44653fb47c58a21112088"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI19-invalid.svg",
+            "sha256": "e6adbd0f858dd82244aae0ba0b3e7e74efe14b63391ee18f49c8f0d81642abbd"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI19-unavailable.svg",
+            "sha256": "968dcf45ec0b97e6bb1880d690b5cacfadbb26e7bd48954f5feefb1b66ba8b44"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI19-failed.svg",
+            "sha256": "4bb5f9e15a805e9486df3176fadcb0a1b80bd28f2595e1959c3df17900e1be54"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI19-actions.svg",
+            "sha256": "203f1a17c76898787bd99ae74f66d3e49d1239d4a7a6eac183b802213c5e5fdb"
+          }
+        ],
+        "rtl": {
+          "path": "docs/design/studio/review/studies/rtl/UI19.svg",
+          "sha256": "0737c14438c4e38676138067d61141196153f42cf29bd67d7432c36fdcb1580d"
+        }
       },
       "approvedPilotFields": [
         "F-RUN",
@@ -2752,10 +3515,19 @@
         "F-MEM",
         "F-ELAPSED"
       ],
-      "baselinePorts": [
-        "API-RUN"
+      "logicalPorts": [
+        "API-BENCHMARK"
       ],
-      "proposedPort": "API-BENCHMARK",
+      "specializedPort": {
+        "port": "API-BENCHMARK",
+        "consumer": "UI19",
+        "owners": [
+          "X07"
+        ],
+        "specification": "docs/design/specialized-studio-ports-v1.md",
+        "approval": "logical-design-baseline",
+        "providerAcceptance": "required"
+      },
       "dependencies": [
         {
           "scope": "UI01",
@@ -2770,6 +3542,7 @@
           "issue": 160
         }
       ],
+      "integrationGates": [],
       "contractReview": "bindings/contract-review.md#per-module-field-projection-and-outstanding-owner-seams",
       "stateReview": "interaction-state-review.md",
       "cases": [
@@ -2887,18 +3660,48 @@
           "oracle": "Reject incomparable units and highlight unmatched instance families."
         }
       ],
-      "disposition": "Reviewed proposal; feature-owner payload/approval gates remain; no execution claim"
+      "disposition": "Studio design specification reviewed and accepted; concrete provider conformance and feature acceptance required"
     },
     {
       "module": "UI20",
       "issue": 109,
       "design": {
         "source": "docs/design/studio/UI20.md",
-        "wireframe": "docs/design/studio/drafts/UI20-wire.svg",
+        "wireframe": "docs/design/studio/review/studies/wireframes/UI20.svg",
         "study": "docs/design/studio/review/studies/UI20.svg",
-        "sourceHash": "05760194268faa084c4cc851a38e59ceb8f4f7ab39c9de91802d3aa9b05a18c3",
-        "wireHash": "68413905e442b57e205dbbf97d2d4b1b7b23bee3fa4406467d0c93d5db4b7775",
-        "studyHash": "1985d125f630190d156d1f0e5f5e20e7c1b2ffe23d77da31887f3125acfb6ddb"
+        "sourceHash": "76afe8663af163aca0fce18671373d2881920096e034d82713b3ae7de0c191b1",
+        "wireHash": "3f3b48b9158908bcddeb60b82ba101ff2e1e3598c33ced396fdc18898358cbb7",
+        "studyHash": "eb8a17c38fd436ed3a75a649eba2b29f104562188a86c0a131f90b95fa0cc4f8",
+        "stateVariants": [
+          {
+            "path": "docs/design/studio/review/studies/states/UI20-loading.svg",
+            "sha256": "8a096368be6eea24aba6c36b7af4bfb0bf4dfeea5c0400c7d89f475258e74f8f"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI20-empty.svg",
+            "sha256": "7d3d8f99e0ada82ab1d32bb672c532fb1b5ef02bd72518d282dcd9e6bc26a3d4"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI20-invalid.svg",
+            "sha256": "e7ab7bd53393316381e9c4e33c3d34caf06a733f85b3900bf0111f0336aba5c2"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI20-unavailable.svg",
+            "sha256": "610d38e53ef96ec03b40eed5f4a280d4cb362ec369fda1e54690ebb988c15965"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI20-failed.svg",
+            "sha256": "e313b5cf3286d8708b9b02946c60f9a7b7290b5a80a42c799bf7610a2d69f200"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI20-actions.svg",
+            "sha256": "1fb9e4f8a73dc71d86c3cb274c08c0a64258c332563eaadf731d54a52e99af1c"
+          }
+        ],
+        "rtl": {
+          "path": "docs/design/studio/review/studies/rtl/UI20.svg",
+          "sha256": "34010cc4f8e3e27116d22ec66e76fcd5d0c0cd96b81d53078ce3ff3b1c53bfcc"
+        }
       },
       "approvedPilotFields": [
         "F-REV",
@@ -2910,10 +3713,21 @@
         "F-MACHINE",
         "F-DURATION"
       ],
-      "baselinePorts": [
-        "API-MODEL"
+      "logicalPorts": [
+        "API-MAPPING"
       ],
-      "proposedPort": "API-MAPPING",
+      "specializedPort": {
+        "port": "API-MAPPING",
+        "consumer": "UI20",
+        "owners": [
+          "I01",
+          "I02",
+          "I04"
+        ],
+        "specification": "docs/design/specialized-studio-ports-v1.md",
+        "approval": "logical-design-baseline",
+        "providerAcceptance": "required"
+      },
       "dependencies": [
         {
           "scope": "UI01",
@@ -2930,6 +3744,17 @@
         {
           "scope": "SP02",
           "issue": 160
+        }
+      ],
+      "integrationGates": [
+        {
+          "consumer": "UI20",
+          "provider": "I04",
+          "consumerIssue": 109,
+          "providerIssue": 58,
+          "kind": "integration capability",
+          "disposition": "capability",
+          "reason": "Full synchronization health/checkpoint capability remains I04-owned; I01/I02 cover declaration and snapshot import."
         }
       ],
       "contractReview": "bindings/contract-review.md#per-module-field-projection-and-outstanding-owner-seams",
@@ -3033,29 +3858,69 @@
           "oracle": "Abort invalid imports atomically and redact credentials."
         }
       ],
-      "disposition": "Reviewed proposal; feature-owner payload/approval gates remain; no execution claim"
+      "disposition": "Studio design specification reviewed and accepted; concrete provider conformance and feature acceptance required"
     },
     {
       "module": "UI21",
       "issue": 110,
       "design": {
         "source": "docs/design/studio/UI21.md",
-        "wireframe": "docs/design/studio/drafts/UI21-wire.svg",
+        "wireframe": "docs/design/studio/review/studies/wireframes/UI21.svg",
         "study": "docs/design/studio/review/studies/UI21.svg",
-        "sourceHash": "80411de731fff6ec4660733cbdd567a2586454adeae71f16deb0261e9094d85b",
-        "wireHash": "77dfef64adeabb0c987815a49d603772c381b9332d521c1a38fcd541db46ac5d",
-        "studyHash": "aa54e5f1891f31d7d785c4cb0ec4136ee0909daeb637458c737a74dba7ed3d1c"
+        "sourceHash": "91722ea5f5cbc013b1c4ec220df15a7594e39a74537abb7033fac49c1388335f",
+        "wireHash": "4c3a12c2cd1fbcbebfc34df158e6c4da8cec25c50927a6787c998c5a67a1b4e7",
+        "studyHash": "880940a590a1ae21f4230ebd30c2eba2943e2d94b4cd7b168b0951363a8f51ae",
+        "stateVariants": [
+          {
+            "path": "docs/design/studio/review/studies/states/UI21-loading.svg",
+            "sha256": "3987efef48d0dd71c92e0d1fa29253a35827fba5203693d144605d1c0edd3b67"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI21-empty.svg",
+            "sha256": "a31a946bcf62e9823235e2d5036f15b784e76306bf66563531ea4e6aeef322d0"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI21-invalid.svg",
+            "sha256": "25745fa94d06e516cf291da89d2d8764097ed28c85e9beafee95ccbe23a45b17"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI21-unavailable.svg",
+            "sha256": "208ca86f55b0940f7c5134bf7df8d4686d5d0dfd055557bf468f9ca5f2b8b50a"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI21-failed.svg",
+            "sha256": "72da87346b56df6ef15dd3bf588ef2985623cd00bfca038b3047c86ee75178ef"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI21-actions.svg",
+            "sha256": "a4d79e24b4ba1dd8d62a9ccb41bc69cce93fb708a5d3f58c6fbbff4ce99248dc"
+          }
+        ],
+        "rtl": {
+          "path": "docs/design/studio/review/studies/rtl/UI21.svg",
+          "sha256": "dc072bfcde98c23386d3352c9268823b6d820407049886b2862a8d3047f118a0"
+        }
       },
-      "approvedPilotFields": [
-        "F-REV"
-      ],
+      "approvedPilotFields": [],
       "reviewedPilotFields": [
         "F-REV"
       ],
-      "baselinePorts": [
-        "API-WORKSPACE"
+      "logicalPorts": [
+        "API-ADMIN"
       ],
-      "proposedPort": "API-ADMIN",
+      "specializedPort": {
+        "port": "API-ADMIN",
+        "consumer": "UI21",
+        "owners": [
+          "E01",
+          "E02",
+          "S12",
+          "U06"
+        ],
+        "specification": "docs/design/specialized-studio-ports-v1.md",
+        "approval": "logical-design-baseline",
+        "providerAcceptance": "required"
+      },
       "dependencies": [
         {
           "scope": "UI01",
@@ -3072,6 +3937,48 @@
         {
           "scope": "SP02",
           "issue": 160
+        },
+        {
+          "scope": "RT04",
+          "issue": 132
+        }
+      ],
+      "integrationGates": [
+        {
+          "consumer": "UI21",
+          "provider": "S12",
+          "consumerIssue": 110,
+          "providerIssue": 37,
+          "kind": "enterprise capability",
+          "disposition": "capability",
+          "reason": "Actual server route/action admission belongs to S12; UI cannot define administrative authorization independently."
+        },
+        {
+          "consumer": "UI21",
+          "provider": "E02",
+          "consumerIssue": 110,
+          "providerIssue": 76,
+          "kind": "enterprise capability",
+          "disposition": "capability",
+          "reason": "Durable membership and administrative persistence are server-owned; configured identity seam is not a production directory."
+        },
+        {
+          "consumer": "UI21",
+          "provider": "EXT01",
+          "consumerIssue": 110,
+          "providerIssue": 138,
+          "kind": "extension capability",
+          "disposition": "capability",
+          "reason": "Extension management requires approved registry and activation policy; manifest syntax alone does not authorize activation."
+        },
+        {
+          "consumer": "UI21",
+          "provider": "RT04",
+          "consumerIssue": 110,
+          "providerIssue": 132,
+          "kind": "SDK capability",
+          "disposition": "hard",
+          "reason": "Versioned SDK examples must match actual embedded SDK distribution."
         }
       ],
       "contractReview": "bindings/contract-review.md#per-module-field-projection-and-outstanding-owner-seams",
@@ -3185,18 +4092,48 @@
           "oracle": "Reject a cross-tenant request at the server even if the client is modified."
         }
       ],
-      "disposition": "Reviewed proposal; feature-owner payload/approval gates remain; no execution claim"
+      "disposition": "Studio design specification reviewed and accepted; concrete provider conformance and feature acceptance required"
     },
     {
       "module": "UI22",
       "issue": 111,
       "design": {
         "source": "docs/design/studio/UI22.md",
-        "wireframe": "docs/design/studio/drafts/UI22-wire.svg",
+        "wireframe": "docs/design/studio/review/studies/wireframes/UI22.svg",
         "study": "docs/design/studio/review/studies/UI22.svg",
-        "sourceHash": "8d74be35c57e7947604621855186921c435186cc29373495031d66ef81bf7975",
-        "wireHash": "f8b06ca9f4e5fc4b822c4b29bd111830c861ddef1633552fbd73a9fb3f6c6b16",
-        "studyHash": "17e9d12dcdf9412a1c3ec243b8bd028ea151d795853cd09c9c15fbd1d2005cf8"
+        "sourceHash": "e83914db7220270ec6443fc129e355d262adbaca5e0eaaa4a584e1c56e684ff3",
+        "wireHash": "a6436d135b105e9007a6153ec11d4a80e23431995f6cac75aca9e0a219a34122",
+        "studyHash": "f5eb2b1531a72d2ddb2b4b0012583ad5676e72fbcc3bc8f237c477ea2407bc76",
+        "stateVariants": [
+          {
+            "path": "docs/design/studio/review/studies/states/UI22-loading.svg",
+            "sha256": "d2836751a3ddea75f69127ab40c3f574045e21399a3493f6cf600d6ac135740f"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI22-empty.svg",
+            "sha256": "612f6c181910f903afeafeae4eed2cf9bc5137ea30c39362b7ee20232a2a71e3"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI22-invalid.svg",
+            "sha256": "c16a2369d943dd0d0e8eb6108c0281b974017d4323bc9fd6d92625c35d30d6a5"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI22-unavailable.svg",
+            "sha256": "557e90d4b01264f3f3088feee02541aa8da9be4a28a6ce3a09ba50ae9c52bdb0"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI22-failed.svg",
+            "sha256": "74fe3e9de53e3301eb8ca0f1d5960869d124a8a3b460fb45080db0b3b6ad9093"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI22-actions.svg",
+            "sha256": "50f7994d23ef874f49f529d515727d69845e02cd7f0f4834d6b8a41176ab640e"
+          }
+        ],
+        "rtl": {
+          "path": "docs/design/studio/review/studies/rtl/UI22.svg",
+          "sha256": "3eb312dcc71e1e79f31b65ea1a434fbb029e2a2fa4ea2d44441635cd54bfdd3b"
+        }
       },
       "approvedPilotFields": [
         "F-REV"
@@ -3204,10 +4141,10 @@
       "reviewedPilotFields": [
         "F-REV"
       ],
-      "baselinePorts": [
+      "logicalPorts": [
         "API-COMMAND"
       ],
-      "proposedPort": null,
+      "specializedPort": null,
       "dependencies": [
         {
           "scope": "UI01",
@@ -3216,6 +4153,30 @@
         {
           "scope": "SP02",
           "issue": 160
+        },
+        {
+          "scope": "CLI01",
+          "issue": 113
+        }
+      ],
+      "integrationGates": [
+        {
+          "consumer": "UI22",
+          "provider": "CLI01",
+          "consumerIssue": 111,
+          "providerIssue": 113,
+          "kind": "shared command capability",
+          "disposition": "hard",
+          "reason": "Registered invocation semantics should agree with common command registry; do not execute arbitrary shell."
+        },
+        {
+          "consumer": "UI22",
+          "provider": "RT01",
+          "consumerIssue": 111,
+          "providerIssue": 129,
+          "kind": "local capability",
+          "disposition": "capability",
+          "reason": "Local workspace context and host capabilities are runtime-owned."
         }
       ],
       "contractReview": "bindings/contract-review.md#per-module-field-projection-and-outstanding-owner-seams",
@@ -3340,18 +4301,48 @@
           "oracle": "A command requiring an external shell must demand an explicit local capability and structured arguments."
         }
       ],
-      "disposition": "Reviewed proposal; feature-owner payload/approval gates remain; no execution claim"
+      "disposition": "Studio design specification reviewed and accepted; concrete provider conformance and feature acceptance required"
     },
     {
       "module": "UI23",
       "issue": 112,
       "design": {
         "source": "docs/design/studio/UI23.md",
-        "wireframe": "docs/design/studio/drafts/UI23-wire.svg",
+        "wireframe": "docs/design/studio/review/studies/wireframes/UI23.svg",
         "study": "docs/design/studio/review/studies/UI23.svg",
-        "sourceHash": "4a167e3bc6eab01db5e516352e27ac3502e9bc4846459f250cddb170c897fc77",
-        "wireHash": "26d71d721c75556abb56d673e6fce38cfd4c8a896e47c6a58c4186fa7c501433",
-        "studyHash": "e8e42e10fb3012cffed85039ec7ccd3907cafad9b4b769ad26e8bd0db01d14ed"
+        "sourceHash": "9b021a395fd0a6530efb110a0a52f41a062ac49004baa1d28a1a8dabc8eb8b02",
+        "wireHash": "d7e1305de8ecf8778654e45c59ff79e67d72fdcbd94849ee769ed29daefa64ae",
+        "studyHash": "84b4fa60fd12598012ef9b808f107d64b8d78627d305a32283efbb94267d5330",
+        "stateVariants": [
+          {
+            "path": "docs/design/studio/review/studies/states/UI23-loading.svg",
+            "sha256": "eeb0126495513d9d1aa2636c03f3bac934095524d5bac6b1ce418a9e30f65f88"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI23-empty.svg",
+            "sha256": "c12f21e64ff694198e3647b3ffdd54a6172ea7aece25b8245c6a593a00887f8e"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI23-invalid.svg",
+            "sha256": "64a871edb8c2b6b2fe5f90696f91b152d733f2d67d63250898b652bde054d04a"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI23-unavailable.svg",
+            "sha256": "9aa7e324969c320e35aa3795280d22e0f9c65f37aa5d9e6d46fefe2518882957"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI23-failed.svg",
+            "sha256": "e158ec2d705b492d6b6a3c3ffa0286602c83b20e1dd6e09eb5edf4b6fc7055c6"
+          },
+          {
+            "path": "docs/design/studio/review/studies/states/UI23-actions.svg",
+            "sha256": "2e8ce34e7e2c3d190f4dd3f19cf69e1459e88151f0c03aa45a503a166bd594b7"
+          }
+        ],
+        "rtl": {
+          "path": "docs/design/studio/review/studies/rtl/UI23.svg",
+          "sha256": "cbe0ef3e21a1c6220cba33055f7999cdd91835a3506aa1d018425b4b9010a7e1"
+        }
       },
       "approvedPilotFields": [
         "F-REV",
@@ -3361,10 +4352,21 @@
         "F-REV",
         "F-RUN"
       ],
-      "baselinePorts": [
-        "API-COMMAND"
+      "logicalPorts": [
+        "API-SETTINGS"
       ],
-      "proposedPort": "API-SETTINGS",
+      "specializedPort": {
+        "port": "API-SETTINGS",
+        "consumer": "UI23",
+        "owners": [
+          "RT01",
+          "CLI10",
+          "DS03"
+        ],
+        "specification": "docs/design/specialized-studio-ports-v1.md",
+        "approval": "logical-design-baseline",
+        "providerAcceptance": "required"
+      },
       "dependencies": [
         {
           "scope": "UI01",
@@ -3377,6 +4379,30 @@
         {
           "scope": "SP02",
           "issue": 160
+        },
+        {
+          "scope": "DS03",
+          "issue": 127
+        }
+      ],
+      "integrationGates": [
+        {
+          "consumer": "UI23",
+          "provider": "RT01",
+          "consumerIssue": 112,
+          "providerIssue": 129,
+          "kind": "local capability",
+          "disposition": "capability",
+          "reason": "Effective engine/workspace settings and runtime health need actual runtime provider, not mock config."
+        },
+        {
+          "consumer": "UI23",
+          "provider": "DS03",
+          "consumerIssue": 112,
+          "providerIssue": 127,
+          "kind": "presentation acceptance",
+          "disposition": "hard",
+          "reason": "Runtime language and native layout qualification are DS03-owned."
         }
       ],
       "contractReview": "bindings/contract-review.md#per-module-field-projection-and-outstanding-owner-seams",
@@ -3485,7 +4511,7 @@
           "oracle": "Keep the last valid configuration after invalid edits."
         }
       ],
-      "disposition": "Reviewed proposal; feature-owner payload/approval gates remain; no execution claim"
+      "disposition": "Studio design specification reviewed and accepted; concrete provider conformance and feature acceptance required"
     }
   ],
   "downstream": [
@@ -3592,6 +4618,10 @@
         {
           "scope": "M09",
           "issue": 22
+        },
+        {
+          "scope": "M07",
+          "issue": 20
         }
       ]
     },
@@ -3611,6 +4641,10 @@
         {
           "scope": "M02",
           "issue": 15
+        },
+        {
+          "scope": "DS04",
+          "issue": 128
         }
       ]
     },
@@ -3717,6 +4751,10 @@
         {
           "scope": "S10",
           "issue": 35
+        },
+        {
+          "scope": "DS04",
+          "issue": 128
         }
       ]
     },
@@ -3883,6 +4921,10 @@
         {
           "scope": "I01",
           "issue": 55
+        },
+        {
+          "scope": "RT04",
+          "issue": 132
         }
       ]
     },
@@ -3894,6 +4936,10 @@
         {
           "scope": "UI01",
           "issue": 90
+        },
+        {
+          "scope": "CLI01",
+          "issue": 113
         }
       ]
     },
@@ -3909,6 +4955,10 @@
         {
           "scope": "CLI10",
           "issue": 122
+        },
+        {
+          "scope": "DS03",
+          "issue": 127
         }
       ]
     },
@@ -3928,6 +4978,10 @@
         {
           "scope": "DS04",
           "issue": 128
+        },
+        {
+          "scope": "U02",
+          "issue": 71
         }
       ]
     },
@@ -4102,5 +5156,7 @@
     }
   ],
   "reviewCaseCount": 120,
-  "warning": "Design trace coverage only. Unmerged port proposals and owner approval remain."
+  "specializedPortsHash": "d4c910672449d3fafe7f6e9ddc7efb5d47341f42a6ce49aebdcc1352b3204c52",
+  "integrationGatesHash": "e6c422983024ca1980b20ed3ed5476fe51fba6b34def50dd1cfdab1ce7ce6653",
+  "warning": "Logical design baseline only; concrete provider conformance and feature acceptance remain required."
 }

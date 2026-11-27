@@ -40,4 +40,11 @@ walk(dir);
 const dependencies=JSON.parse(fs.readFileSync(path.join(dir,'modules/dependency-evidence.json'),'utf8'));
 assert.equal(dependencies.length,24);
 assert.ok(dependencies.every(d=>!d.wouldCycle));
+const official=JSON.parse(fs.readFileSync(path.join(root,'planning/studio-integration-gates.json'),'utf8'));
+for(const d of dependencies){const row=official.find(x=>x.consumer===d.consumer&&x.provider===d.provider);assert.ok(row&&row.disposition===d.disposition);}
+assert.equal(dependencies.filter(d=>d.disposition==='hard').length,7);
+assert.equal(dependencies.filter(d=>d.disposition==='transitive').length,1);
+assert.equal(dependencies.filter(d=>d.disposition==='capability').length,16);
+assert.equal(matrix.modules.filter(m=>m.specializedPort?.approval==='logical-design-baseline').length,7);
+assert.ok(matrix.modules.every(m=>m.design.stateVariants.length===6&&m.design.rtl.sha256));
 console.log(JSON.stringify({modules:matrix.modules.length,requirements:matrix.reviewCaseCount,transitions:matrix.modules.reduce((n,m)=>n+m.transitions.length,0),downstream:matrix.downstream.length,links,reviewedCapabilityGates:dependencies.length,limitation:'Specification trace and structure only, not final design approval or feature execution.'},null,2));

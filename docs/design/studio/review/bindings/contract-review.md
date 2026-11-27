@@ -1,6 +1,6 @@
 # SP02 contract compatibility review — accepted domain sources
 
-Baseline cf664c1. The pilot dictionary accepted in #159 covers 17 fields,
+Baseline 2e55134, including merged #190. The pilot dictionary accepted in #159 covers 17 fields,
 eight baseline ports. UDIR #16, solver contract #26, graph #14/#15,
 registry #24, connector #55 and identity #75 provide typed seams.
 This review binds presentation to those seams, not directly to their
@@ -78,16 +78,16 @@ the domain owner validator before publication.
 | UI11 | P:F-RUN,F-STATUS,F-TERM,F-OBJ,F-BOUND,F-ELAPSED,F-CPU,F-MEM; S:SolverResult, Measurement, ObjectiveObservation/Bound, Evidence | Read snapshot/events; scope by run and revision; cancellation acknowledged by runtime; adapter evidence separate from verified | S07/S10 event ordering/resumption, cancellation, progress source and independent verification projection |
 | UI12 | G:revision impact; S:SolverResult identity/Solver; P:F-REV,F-RUN,F-EVID | Read recorded backend/reuse evidence; no graph reachability used as a certificate | X05 decomposition/invalidation/reuse/fallback trace and comparability contract; native search capability |
 | UI13 | U:Scenario.Id/ParentId/Stage/InformationSet/Probability/Overrides/Span, ScenarioValue.SymbolId/Value; S:ObjectiveObservation; P:F-REV,F-MACHINE,F-OBJ | Compare compatible frozen revisions; override only parameter/resource exact value; probability absent distinct from zero | A01 scenario fork, delta, comparative risk and common budget/metric context |
-| UI14 | U:Scenario tree and TimeBasis; P:F-REV,F-OBJ | Read frozen context, validate config through owner; never infer distribution from probabilities | A04 simulation configuration/seed/RNG/actual samples/quantile/termination; proposed API-SIMULATION in #190 |
+| UI14 | U:Scenario tree and TimeBasis; P:F-REV,F-OBJ | Read frozen context, validate config through owner; never infer distribution from probabilities | A04 simulation configuration/seed/RNG/actual samples/quantile/termination; approved logical API-SIMULATION in merged #190 |
 | UI15 | P:F-REV,F-MACHINE,F-OP,F-START,F-DURATION,F-RELEASE,F-DUE,F-WEIGHT; G:TimeWindow/SourceStamp | Half-open intervals, same horizon origin, preserve exact input; independently checked outcome before feasible label | V03/V04 calendars, order/assignment records and scenario scheduling; S04/S10 verified row projection |
-| UI16 | P:F-MACHINE,F-START,F-DURATION; G:CapacityLimit, TimeWindow, GraphRevision | Same horizon/unit; zero capacity undefined utilization, not idle; read contributing assignment identities | V03 allocation/capacity/horizon and occupied intervals; proposed API-ALLOCATION in #190 |
+| UI16 | P:F-MACHINE,F-START,F-DURATION; G:CapacityLimit, TimeWindow, GraphRevision | Same horizon/unit; zero capacity undefined utilization, not idle; read contributing assignment identities | V03 allocation/capacity/horizon and occupied intervals; approved logical API-ALLOCATION in merged #190 |
 | UI17 | P:F-RUN,F-REV,F-STATUS,F-TERM,F-EVID,F-OBJ,F-BOUND; S:SolverResult/StatusEvidence/ObjectiveObservation; U:SourceSpan | Validate exact bundle bytes and full scope; separate adapter evidence, independent checks, and absent certificate | S10 bundle/audit/replay; S04/S05 original row checks and verified certificate/claim mapping |
-| UI18 | U:Constraint/Objective/SourceSpan; S:ObjectiveObservation/Bound/Evidence; P:F-REV,F-OBJ,F-BOUND,F-EVID | Read matched baseline/alternative and exact evidence; no marginal value for unsupported discrete models | A02/A03 counterfactual/reason/sensitivity/infeasibility result; proposed API-EXPLAIN in #190 |
-| UI19 | S:SolverIdentity, Measurement; P:F-RUN,F-CPU,F-MEM,F-ELAPSED | Compare measured values only in same scope/unit; keep failed or unmatched trial visible | X07 suite/instance/seed/budget/hardware/trial/failure/statistics manifest; proposed API-BENCHMARK in #190 |
-| UI20 | C:ConnectorManifest, FieldMapping, ProvenancePolicy, CursorPolicy, RetryPolicy, ConnectorStreamIdentity, ConnectorReadBatch/SourceRow; P:F-REV,F-MACHINE,F-DURATION | Validate declaration, preview through importer; atomic commit only after admission; redact credential reference and cursor | I02/I04 normalized rows, staged commit, checkpoint/health; proposed API-MAPPING in #190 |
-| UI21 | E:TenantActor/TenantResource/TenantPermission/TenantOidcOptions; C:manifest metadata; P:F-REV | Server authorization before read/mutation; never derive authorization from role display, no secrets in UI | E02/U06/S12 membership mutations, administrative audit, SDK/extension registry; proposed API-ADMIN in #190 |
+| UI18 | U:Constraint/Objective/SourceSpan; S:ObjectiveObservation/Bound/Evidence; P:F-REV,F-OBJ,F-BOUND,F-EVID | Read matched baseline/alternative and exact evidence; no marginal value for unsupported discrete models | A02/A03 counterfactual/reason/sensitivity/infeasibility result; approved logical API-EXPLAIN in merged #190 |
+| UI19 | S:SolverIdentity, Measurement; P:F-RUN,F-CPU,F-MEM,F-ELAPSED | Compare measured values only in same scope/unit; keep failed or unmatched trial visible | X07 suite/instance/seed/budget/hardware/trial/failure/statistics manifest; approved logical API-BENCHMARK in merged #190 |
+| UI20 | C:ConnectorManifest, FieldMapping, ProvenancePolicy, CursorPolicy, RetryPolicy, ConnectorStreamIdentity, ConnectorReadBatch/SourceRow; P:F-REV,F-MACHINE,F-DURATION | Validate declaration, preview through importer; atomic commit only after admission; redact credential reference and cursor | I02/I04 normalized rows, staged commit, checkpoint/health; approved logical API-MAPPING in merged #190 |
+| UI21 | E:TenantActor/TenantResource/TenantPermission/TenantOidcOptions; C:manifest metadata; P:F-REV | Server authorization before read/mutation; never derive authorization from role display, no secrets in UI | E02/U06/S12 membership mutations, administrative audit, SDK/extension registry; approved logical API-ADMIN in merged #190 |
 | UI22 | L registered command and local history; P:F-REV; API-COMMAND logical vocabulary and cli-contract.md | Resolve registered command under same context/permission for shortcuts/menu/search; no arbitrary shell | CLI10/runtime command invocation schema, external capability policy and redacted history |
-| UI23 | DS01 theme/density; DS03 language proposed until #127; E:diagnostic redaction policy; P:F-REV,F-RUN | Validate local draft, atomic write, reread effective config; never log credentials | RT01/CLI10 effective engine config/schema/health; proposed API-SETTINGS in #190 |
+| UI23 | DS01 theme/density; DS03 language proposed until #127; E:diagnostic redaction policy; P:F-REV,F-RUN | Validate local draft, atomic write, reread effective config; never log credentials | RT01/CLI10 effective engine config/schema/health; approved logical API-SETTINGS in merged #190 |
 
 ## Compatibility cases that must not be hidden by UI adaptation
 
@@ -112,14 +112,14 @@ the domain owner validator before publication.
   not a successful empty result.
 - Connector required and allowNull are independent. A valid mapping
   manifest is neither an authorized credential nor a validated import.
-- The proposed seven ports in #190 remain unmerged. Their original
+- The proposed seven ports in merged #190 remain unmerged. Their original
   generic pilot bindings must not be routed to incorrect services
   just to render a module. Until accepted, display unavailable capability.
 
 ## Ownership disposition
 
 The UI-owned projection, labels, exact value formatting, selection and
-recovery can be reviewed now. Feature-owned schema and REST/SDK bindings
+recovery can be reviewed now. Concrete feature-owned schema and REST/SDK bindings
 cannot be approved by the UI workstream on behalf of their owners.
 The detailed requirement matrices distinguish implemented domain seam
 from future application port. No change to common contracts is introduced.
