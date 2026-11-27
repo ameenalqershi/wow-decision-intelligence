@@ -1,0 +1,72 @@
+name: Typed modeling SDK conformance
+on:
+  pull_request:
+    paths:
+      - src/ModelingSdk/**
+      - src/Udir/**
+      - src/ModelImport/**
+      - src/Dml.Syntax/**
+      - src/Dml.Binding/**
+      - src/Dml.Semantics/**
+      - src/Verification.Independent/**
+      - src/Solver.Contracts/**
+      - src/Manufacturing.Data/**
+      - src/Contracts/**
+      - tests/ModelingSdk/**
+      - tests/Udir/Fixtures/**
+      - samples/ModelingSdk/**
+      - .github/workflows/modeling-sdk.yml
+  push:
+    branches: [main]
+    paths:
+      - src/ModelingSdk/**
+      - src/Udir/**
+      - src/ModelImport/**
+      - src/Dml.Syntax/**
+      - src/Dml.Binding/**
+      - src/Dml.Semantics/**
+      - src/Verification.Independent/**
+      - src/Solver.Contracts/**
+      - src/Manufacturing.Data/**
+      - src/Contracts/**
+      - tests/ModelingSdk/**
+      - tests/Udir/Fixtures/**
+      - samples/ModelingSdk/**
+      - .github/workflows/modeling-sdk.yml
+permissions:
+  contents: read
+jobs:
+  modeling-sdk:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - run: dotnet restore tests/ModelingSdk/WowDi.ModelingSdk.Tests.csproj --locked-mode
+      - name: Verify strongly typed negative compilation
+        shell: pwsh
+        run: |
+          $output = & dotnet build samples/ModelingSdk/WowDi.ModelingSdk.Sample.csproj -c Release --no-restore -p:DefineConstants=SDK_NEGATIVE_TEST 2>&1
+          $exitCode = $LASTEXITCODE
+          $output | Write-Output
+          if ($exitCode -eq 0 -or ($output -join "`n") -notmatch 'CompileRejection\.cs.*error CS0411') {
+            throw 'Expected the invalid mixed-dimension addition to fail with CS0411.'
+          }
+          exit 0
+      - run: dotnet test tests/ModelingSdk/WowDi.ModelingSdk.Tests.csproj --no-restore -c Release
+      - name: Execute both examples and compare repeat output
+        shell: pwsh
+        run: |
+          foreach ($model in @('production','workforce')) {
+            $dll = 'samples/ModelingSdk/bin/Release/net10.0/WowDi.ModelingSdk.Sample.dll'
+            $first = (& dotnet $dll $model) -join "`n"
+            if ($LASTEXITCODE -ne 0) { throw 'Sample failed' }
+            $second = (& dotnet $dll $model) -join "`n"
+            if ($LASTEXITCODE -ne 0 -or $first -cne $second) { throw 'Non-deterministic sample output' }
+            $document = $first | ConvertFrom-Json
+            if ($document.contract -ne 'wowdi.udir') { throw 'Unexpected wire contract' }
+          }

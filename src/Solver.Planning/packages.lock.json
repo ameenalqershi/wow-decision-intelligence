@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "dependencies": {
+    "net10.0": {
+      "wowdi.contracts": {
+        "type": "Project"
+      },
+      "wowdi.dml.binding": {
+        "type": "Project",
+        "dependencies": {
+          "WowDi.Dml.Syntax": "[1.0.0, )"
+        }
+      },
+      "wowdi.dml.lowering": {
+        "type": "Project",
+        "dependencies": {
+          "WowDi.Dml.Semantics": "[1.0.0, )",
+          "WowDi.Solver.Contracts": "[1.0.0, )"
+        }
+      },
+      "wowdi.dml.semantics": {
+        "type": "Project",
+        "dependencies": {
+          "WowDi.Dml.Binding": "[1.0.0, )"
+        }
+      },
+      "wowdi.dml.syntax": {
+        "type": "Project",
+        "dependencies": {
+          "WowDi.Udir": "[1.0.0, )"
+        }
+      },
+      "wowdi.runtime.governance": {
+        "type": "Project",
+        "dependencies": {
+          "WowDi.Solver.Contracts": "[1.0.0, )"
+        }
+      },
+      "wowdi.solver.contracts": {
+        "type": "Project",
+        "dependencies": {
+          "WowDi.Udir": "[1.0.0, )"
+        }
+      },
+      "wowdi.udir": {
+        "type": "Project",
+        "dependencies": {
+          "WowDi.Contracts": "[1.0.0, )"
+        }
+      }
+    }
+  }
+}
