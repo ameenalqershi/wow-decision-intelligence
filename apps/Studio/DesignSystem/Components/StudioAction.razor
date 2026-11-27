@@ -1,0 +1,6 @@
+<FluentButton Class="wow-fluent-action" Appearance="Appearance.Neutral" Disabled="@Disabled" OnClick="@Clicked">@ChildContent</FluentButton>
+@code {
+    [Parameter] public bool Disabled { get; set; }
+    [Parameter] public EventCallback<MouseEventArgs> Clicked { get; set; }
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+}

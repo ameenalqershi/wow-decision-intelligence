@@ -1,0 +1,21 @@
+{
+  "version": {
+    "protocolVersion": "1.3",
+    "product": "Chrome/141.0.7390.37",
+    "revision": "@9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.0.0 Safari/537.36",
+    "jsVersion": "14.1.146.11"
+  },
+  "checks": [
+    "Modal accessible names, keyboard traversal, Escape and focus restoration",
+    "Modal apply and polite live announcement",
+    "Actual Fluent UI button keyboard activation",
+    "Editable table keyboard navigation, stable row identity and named fields",
+    "Distinct loading, empty, error trees and live region semantics",
+    "Theme changes through the real Blazor event pipeline"
+  ],
+  "dims": {
+    "width": 1000,
+    "height": 900
+  }
+}
