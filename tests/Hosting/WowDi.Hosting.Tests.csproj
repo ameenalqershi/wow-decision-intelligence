@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../src/Hosting/WowDi.Hosting.csproj" />
+    <ProjectReference Include="../Hosting.ProcessProbe/WowDi.Hosting.ProcessProbe.csproj" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
+    <PackageReference Include="xunit" Version="2.9.3" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="3.1.5" PrivateAssets="all" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="../Udir/Fixtures/factory.*" Link="Fixtures/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+  <Target Name="CopyProcessProbeRuntimeFiles" AfterTargets="Build">
+    <ItemGroup>
+      <ProbeRuntimeFiles Include="../Hosting.ProcessProbe/bin/$(Configuration)/$(TargetFramework)/WowDi.Hosting.ProcessProbe.runtimeconfig.json" />
+      <ProbeRuntimeFiles Include="../Hosting.ProcessProbe/bin/$(Configuration)/$(TargetFramework)/WowDi.Hosting.ProcessProbe.deps.json" />
+    </ItemGroup>
+    <Copy SourceFiles="@(ProbeRuntimeFiles)" DestinationFolder="$(OutDir)" SkipUnchangedFiles="true" />
+  </Target>
+</Project>
