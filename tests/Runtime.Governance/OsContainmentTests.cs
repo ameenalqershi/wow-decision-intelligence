@@ -33,6 +33,7 @@ public sealed class OsContainmentTests
         Assert.Equal(Termination.Completed,result.Termination);
         Assert.True(completion.CandidateEligible);
         Assert.True(result.CleanupConfirmed);
+        Assert.Equal(result.Resources.ElapsedMs!.Value*lease.Request.Budget.Threads,result.ReservedCoreMilliseconds);
         Assert.Equal("candidate",Encoding.UTF8.GetString(result.Candidate!));
         Assert.True(result.Resources.CpuMs>0);
         Assert.True(result.ScopePeakBytes>0);
@@ -51,6 +52,7 @@ public sealed class OsContainmentTests
         Assert.NotEqual(Termination.Completed,result.Termination);
         Assert.Null(result.Candidate);
         Assert.True(result.CleanupConfirmed);
+        Assert.Equal(result.Resources.ElapsedMs!.Value*lease.Request.Budget.Threads,result.ReservedCoreMilliseconds);
         Assert.True(result.ScopePeakBytes>0);
         Assert.Equal(0,governor.Snapshot().Running);
     }
@@ -100,6 +102,7 @@ public sealed class OsContainmentTests
             var (completion,result)=await running;
             Assert.Equal(RunState.Cancelled,completion.State);
             Assert.True(result.CleanupConfirmed);
+        Assert.Equal(result.Resources.ElapsedMs!.Value*lease.Request.Budget.Threads,result.ReservedCoreMilliseconds);
             Assert.Null(result.Candidate);
             Assert.Equal(0,governor.Snapshot().ReservedBytes);
         }
