@@ -1,0 +1,4 @@
+body { margin: 0; }
+.gallery { display: grid; gap: var(--wow-space-3); padding: var(--wow-space-4); }
+.gallery h1 { margin: 0; font-size: var(--wow-font-heading); }
+.gallery p { margin-block: var(--wow-space-2); }

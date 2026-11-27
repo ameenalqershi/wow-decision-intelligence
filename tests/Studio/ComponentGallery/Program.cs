@@ -1,0 +1,10 @@
+using Microsoft.FluentUI.AspNetCore.Components;
+using WowDi.Studio.ComponentGallery.Components;
+var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddRazorComponents().AddInteractiveServerComponents();
+builder.Services.AddFluentUIComponents();
+var app = builder.Build();
+app.UseAntiforgery();
+app.MapStaticAssets();
+app.MapRazorComponents<App>().AddInteractiveServerRenderMode();
+app.Run();

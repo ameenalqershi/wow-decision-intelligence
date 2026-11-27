@@ -1,0 +1,34 @@
+@implements IAsyncDisposable
+@inject IJSRuntime JS
+<dialog @ref="element" class="wow-dialog" aria-labelledby="@HeadingId">
+    <h2 id="@HeadingId" class="wow-card-heading">@Title</h2>
+    @ChildContent
+    <div class="wow-toolbar">
+        <button class="wow-button" type="button" @onclick="CloseAsync">@CloseLabel</button>
+    </div>
+</dialog>
+@code {
+    [Parameter, EditorRequired] public string HeadingId { get; set; } = "";
+    [Parameter, EditorRequired] public string Title { get; set; } = "";
+    [Parameter] public string CloseLabel { get; set; } = "Close";
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    private ElementReference element;
+    private IJSObjectReference? module;
+    public async Task ShowAsync()
+    {
+        module ??= await JS.InvokeAsync<IJSObjectReference>("import", "./_content/WowDi.Studio.DesignSystem/dialog.js");
+        await module.InvokeVoidAsync("show", element);
+    }
+    public async Task CloseAsync()
+    {
+        if (module is not null) await module.InvokeVoidAsync("close", element);
+    }
+    public async ValueTask DisposeAsync()
+    {
+        if (module is not null)
+        {
+            try { await module.DisposeAsync(); }
+            catch (JSDisconnectedException) { }
+        }
+    }
+}
