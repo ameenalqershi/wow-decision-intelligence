@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="460" viewBox="0 0 720 460" role="img"><title>Application shell wireframe</title><g font-family="Segoe UI, sans-serif"><rect x="0" y="0" width="720" height="460" rx="4" fill="#fff" stroke="none"/>
+<rect x="0" y="0" width="720" height="31" rx="4" fill="#eee" stroke="none"/>
+<text x="12" y="20" font-size="12" fill="#222">WOW Decision Intelligence Studio</text>
+<rect x="0" y="31" width="144" height="407" rx="4" fill="#eee" stroke="none"/>
+<rect x="0" y="438" width="720" height="22" rx="4" fill="#eee" stroke="none"/>
+<text x="12" y="453" font-size="10" fill="#222">Design fixture  /  UI01</text>
+<text x="156" y="61" font-size="20" fill="#222">Application shell</text>
+<text x="156" y="82" font-size="11" fill="#222">Workspace  /  Overview  /  Tabs</text>
+<rect x="155" y="101" width="548" height="34" rx="4" fill="#fff" stroke="#777"/>
+<text x="166" y="122" font-size="12" fill="#222">Workspace navigator</text>
+<rect x="155" y="148" width="366" height="277" rx="4" fill="#fff" stroke="#777"/>
+<text x="168" y="174" font-size="16" fill="#222">Tabs</text>
+<rect x="532" y="148" width="171" height="277" rx="4" fill="#fff" stroke="#777"/>
+<text x="545" y="174" font-size="12" fill="#222">Status strip</text>
+<rect x="6" y="48" width="132" height="26" rx="4" fill="#ddd" stroke="none"/>
+<text x="16" y="65" font-size="12" fill="#444">Overview</text>
+<text x="16" y="97" font-size="12" fill="#222">Decision Models</text>
+<text x="16" y="129" font-size="12" fill="#222">Decision Graph</text>
+<text x="16" y="161" font-size="12" fill="#222">Optimization</text>
+<text x="16" y="193" font-size="12" fill="#222">Scenarios</text>
+<text x="16" y="225" font-size="12" fill="#222">Simulation</text>
+<text x="16" y="257" font-size="12" fill="#222">Integrations</text>
+<text x="16" y="289" font-size="12" fill="#222">Benchmarks</text>
+<text x="16" y="321" font-size="12" fill="#222">Evidence</text>
+<text x="16" y="353" font-size="12" fill="#222">Settings</text>
+<rect x="167" y="190" width="342" height="30" rx="4" fill="#fff" stroke="#777"/>
+<text x="177" y="210" font-size="11" fill="#222">Recent workspaces</text>
+<rect x="167" y="226" width="342" height="30" rx="4" fill="#fff" stroke="#777"/>
+<text x="177" y="246" font-size="11" fill="#222">Open documents</text>
+<rect x="167" y="262" width="342" height="30" rx="4" fill="#fff" stroke="#777"/>
+<text x="177" y="282" font-size="11" fill="#222">Panel positions</text>
+<rect x="542" y="205" width="150" height="32" rx="4" fill="#eee" stroke="#777"/>
+<text x="550" y="225" font-size="11" fill="#222">New workspace</text>
+<rect x="542" y="250" width="150" height="32" rx="4" fill="#eee" stroke="#777"/>
+<text x="550" y="270" font-size="11" fill="#222">Restore layout</text></g></svg>

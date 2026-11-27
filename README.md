@@ -33,4 +33,8 @@ The first experiment compares cached component solutions against exhaustive enum
 | Which dependencies have actually run? | [Runtime qualification](docs/research/runtime.md) · [Measured evidence](research/evidence/) |
 | Where can I contribute? | [Scope and issue map](planning/roadmap.md) · [Contributor workflow](CONTRIBUTING.md) |
 
-Private development repository. The owner can grant access to named collaborators. Contributor workflow applies equally to humans and development agents. No customer data, connector credentials, proprietary ERP code or external write actions are needed for the sample runs.
+Public development repository. The owner can grant write access to named collaborators. Contributor workflow applies equally to humans and development agents. No customer data, connector credentials, proprietary ERP code or external write actions are needed for the sample runs.
+
+[Engineering audit and outstanding gates](docs/audit/engineering-audit.md) · [Traceability source register](docs/audit/source-register.md) · [Official archive and design references](docs/design/references/) · [Studio module specifications](docs/design/studio/)
+
+Run `dotnet run --project tools/Traceability` to check planning integrity. Add `-- --require-full` to fail on unresolved planning coverage. The GitHub-ledger CI job also compares current issue titles, acceptance and dependency references.

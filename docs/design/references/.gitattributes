@@ -1,0 +1,6 @@
+# Official archive entries are byte-exact on every checkout.
+*.svg -text
+*.png -text
+*.zip -text
+IMPLEMENTATION-SPEC.md -text
+SHA256SUMS text eol=lf

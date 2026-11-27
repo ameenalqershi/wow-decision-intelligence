@@ -338,9 +338,12 @@
     "title": "Expose REST API and idempotent job worker",
     "deps": [
       "S07",
-      "S11"
+      "S11",
+      "S06",
+      "S02",
+      "E01"
     ],
-    "accept": "Submit, poll, cancel and replay a job with tenant isolation and idempotency conflict detection; publish OpenAPI."
+    "accept": "Submit, poll, cancel and replay an authenticated, budgeted job using the planner and a qualified adapter. Reject idempotency conflicts and publish verified evidence under a fenced lease."
   },
   {
     "id": "X01",
@@ -666,9 +669,9 @@
     "area": "Applications",
     "title": "Ship cross-platform professional CLI",
     "deps": [
-      "S12"
+      "F01"
     ],
-    "accept": "Provide validate, compile, solve, compare and evidence commands with stable JSON, human tables, cancellation and exit codes."
+    "accept": "Coordinate local commands over the application ports, structured output, installation and independent offline execution. Remote transport is qualified separately in RT05."
   },
   {
     "id": "U02",
@@ -686,9 +689,11 @@
     "deps": [
       "U02",
       "M05",
-      "M09"
+      "M09",
+      "M01",
+      "M02"
     ],
-    "accept": "Round-trip typed model edits, show source-linked hyperedges and prevent invalid saves."
+    "accept": "Round-trip typed edits and compare hyperedges and dependency impact across two graph revisions with source provenance."
   },
   {
     "id": "U04",
@@ -820,11 +825,12 @@
     "area": "Quality",
     "title": "Run integration, accessibility and isolation tests",
     "deps": [
-      "U04",
-      "E01",
-      "S12"
+      "QA01",
+      "QA02",
+      "QA03",
+      "QA04"
     ],
-    "accept": "Cover CLI and desktop workflows, RTL, tenant isolation, backup and approval bypass denial using synthetic records."
+    "accept": "Review independent local, embedded, desktop, CLI and enterprise suites. Each release consumes only its applicable evidence."
   },
   {
     "id": "Q03",
@@ -842,12 +848,9 @@
     "area": "Quality",
     "title": "Decide MVP, enterprise and scale release gates",
     "deps": [
-      "V05",
-      "V07",
-      "Q03",
-      "X08"
+      "F01"
     ],
-    "accept": "Map measured results to gates, document exclusions and decide release independently at each tier."
+    "accept": "Publish six independent release decisions with explicit evidence, exclusions and sign-off. Gate criteria are versioned separately from gate execution."
   },
   {
     "id": "P01",
@@ -858,5 +861,995 @@
       "R06"
     ],
     "accept": "Score inventory, logistics, transport, retail, health, finance, cash flow, energy, construction, projects, agriculture, telecom, cloud and data centers by data availability, risk and value before opening delivery epics."
+  },
+  {
+    "id": "T01",
+    "area": "Foundation",
+    "title": "Audit scope traceability and reconcile the engineering plan",
+    "deps": [],
+    "accept": "Publish a checked traceability baseline, original design archive, verified dependency repairs and open gaps."
+  },
+  {
+    "id": "UI01",
+    "area": "Applications",
+    "title": "Application shell",
+    "deps": [
+      "DS01",
+      "DS02",
+      "SP02"
+    ],
+    "accept": "Resize two panes, reopen a saved layout and switch tabs by keyboard while the selected revision remains stable."
+  },
+  {
+    "id": "UI02",
+    "area": "Applications",
+    "title": "Workspace manager",
+    "deps": [
+      "UI01",
+      "RT01",
+      "SP02"
+    ],
+    "accept": "Create a local workspace, back it up, restore into another directory and compare revision and evidence digests."
+  },
+  {
+    "id": "UI03",
+    "area": "Applications",
+    "title": "Overview dashboard",
+    "deps": [
+      "UI01",
+      "RT01",
+      "SP02"
+    ],
+    "accept": "Exercise an empty workspace and one with two runs. Follow a recent decision to its exact revision."
+  },
+  {
+    "id": "UI04",
+    "area": "Applications",
+    "title": "Visual model designer",
+    "deps": [
+      "UI01",
+      "M01",
+      "M09",
+      "SP02"
+    ],
+    "accept": "Build the Batch example by pointer and keyboard, then compare normalized output with the DSL fixture."
+  },
+  {
+    "id": "UI05",
+    "area": "Applications",
+    "title": "Enterprise decision graph explorer",
+    "deps": [
+      "UI01",
+      "M01",
+      "M02",
+      "SP02"
+    ],
+    "accept": "Select a three-variable constraint, filter an edge and compare before/after reachability against the unfiltered graph queries."
+  },
+  {
+    "id": "UI06",
+    "area": "Applications",
+    "title": "Decision DSL editor",
+    "deps": [
+      "UI01",
+      "M06",
+      "M07",
+      "SP02"
+    ],
+    "accept": "Edit a symbol in Batch, navigate to its exact diagnostic, repair the edit and compare formatted and original typed trees."
+  },
+  {
+    "id": "UI07",
+    "area": "Applications",
+    "title": "Constraint editor",
+    "deps": [
+      "UI04",
+      "M04",
+      "SP02"
+    ],
+    "accept": "Save an equivalent capacity expression in two units and compare normalized quantities and bound inclusivity."
+  },
+  {
+    "id": "UI08",
+    "area": "Applications",
+    "title": "Objective editor",
+    "deps": [
+      "UI04",
+      "NUM02",
+      "SP02"
+    ],
+    "accept": "Reverse one goal direction, adjust a weight and compare a known assignment against the displayed objective vector."
+  },
+  {
+    "id": "UI09",
+    "area": "Applications",
+    "title": "Mathematical model inspector",
+    "deps": [
+      "UI06",
+      "M08",
+      "M12",
+      "SP02"
+    ],
+    "accept": "Follow one normalized row across all views back to its original span and inspect the reconstruction rule."
+  },
+  {
+    "id": "UI10",
+    "area": "Applications",
+    "title": "Solver configuration",
+    "deps": [
+      "UI01",
+      "S06",
+      "S07",
+      "SP02"
+    ],
+    "accept": "Select auto on a finite interval model, explain eligibility and round-trip its budget through the planner."
+  },
+  {
+    "id": "UI11",
+    "area": "Applications",
+    "title": "Optimization monitor",
+    "deps": [
+      "UI01",
+      "S07",
+      "S10",
+      "SP02"
+    ],
+    "accept": "Replay events with an incumbent and absent bound. Show measured values and preserve the verified incumbent after cancellation."
+  },
+  {
+    "id": "UI12",
+    "area": "Applications",
+    "title": "Algorithm execution visualizer",
+    "deps": [
+      "UI11",
+      "X05",
+      "SP02"
+    ],
+    "accept": "Compare a disconnected edit and a new coupling edge. Link each reuse or fallback to its recorded evidence."
+  },
+  {
+    "id": "UI13",
+    "area": "Applications",
+    "title": "Scenario comparison studio",
+    "deps": [
+      "UI01",
+      "A01",
+      "SP02"
+    ],
+    "accept": "Compare two frozen revisions, show changed inputs and report comparable cost deltas with units."
+  },
+  {
+    "id": "UI14",
+    "area": "Applications",
+    "title": "Simulation studio",
+    "deps": [
+      "UI01",
+      "A04",
+      "SP02"
+    ],
+    "accept": "Replay identical seeds and compare quantiles, sample counts and event traces against recorded simulation output."
+  },
+  {
+    "id": "UI15",
+    "area": "Applications",
+    "title": "Production scheduling studio",
+    "deps": [
+      "UI01",
+      "V03",
+      "V04",
+      "SP02"
+    ],
+    "accept": "Select an operation before and after an outage, confirm its half-open interval and expose its machine and original-model checks."
+  },
+  {
+    "id": "UI16",
+    "area": "Applications",
+    "title": "Resource allocation visualizer",
+    "deps": [
+      "UI01",
+      "V03",
+      "SP02"
+    ],
+    "accept": "Reconcile occupied machine minutes with capacity in the same frozen horizon and drill into each contributing operation."
+  },
+  {
+    "id": "UI17",
+    "area": "Applications",
+    "title": "Decision evidence viewer",
+    "deps": [
+      "UI01",
+      "S10",
+      "SP02"
+    ],
+    "accept": "Open a timed-out run with verified incumbent and inspect source rows, objective and absent certificate separately."
+  },
+  {
+    "id": "UI18",
+    "area": "Applications",
+    "title": "Explainability studio",
+    "deps": [
+      "UI17",
+      "A02",
+      "A03",
+      "SP02"
+    ],
+    "accept": "Compare a forced alternative to the baseline using identical input and budget and trace any claim to its evidence."
+  },
+  {
+    "id": "UI19",
+    "area": "Applications",
+    "title": "Performance and benchmark studio",
+    "deps": [
+      "UI01",
+      "X07",
+      "SP02"
+    ],
+    "accept": "Display paired samples, hardware, seeds, peak memory and failed trials from a benchmark manifest."
+  },
+  {
+    "id": "UI20",
+    "area": "Applications",
+    "title": "Integration mapping designer",
+    "deps": [
+      "UI01",
+      "I01",
+      "I02",
+      "SP02"
+    ],
+    "accept": "Map a source quantity to an engine field, preview normalized values and trace rejected rows to source fields."
+  },
+  {
+    "id": "UI21",
+    "area": "Applications",
+    "title": "Administration and developer portal",
+    "deps": [
+      "UI01",
+      "E01",
+      "I01",
+      "SP02"
+    ],
+    "accept": "Use two tenant accounts to check a read-only role, an administrative operation and versioned SDK examples in Blazor."
+  },
+  {
+    "id": "UI22",
+    "area": "Applications",
+    "title": "Command palette and productivity",
+    "deps": [
+      "UI01",
+      "SP02"
+    ],
+    "accept": "Invoke a registered command by name and shortcut with the same permission and workspace context."
+  },
+  {
+    "id": "UI23",
+    "area": "Applications",
+    "title": "Settings and diagnostics",
+    "deps": [
+      "UI01",
+      "CLI10",
+      "SP02"
+    ],
+    "accept": "Change theme and language, restart and inspect the effective configuration and redacted health report."
+  },
+  {
+    "id": "CLI01",
+    "area": "Applications",
+    "title": "Command host and registration",
+    "deps": [
+      "F01"
+    ],
+    "accept": "Launch help and version from a clean directory without database, network or native solver initialization."
+  },
+  {
+    "id": "CLI02",
+    "area": "Applications",
+    "title": "Terminal presentation",
+    "deps": [
+      "CLI01",
+      "DS01"
+    ],
+    "accept": "Snapshot a wide and narrow TTY and redirected output. Record exactly which events generated each progress line."
+  },
+  {
+    "id": "CLI03",
+    "area": "Applications",
+    "title": "Workspace command family",
+    "deps": [
+      "CLI01",
+      "RT01"
+    ],
+    "accept": "Initialize a temporary workspace, reopen it by path and compare exported revision identity after a second process reads it."
+  },
+  {
+    "id": "CLI04",
+    "area": "Applications",
+    "title": "Model command family",
+    "deps": [
+      "CLI03",
+      "M08",
+      "M10"
+    ],
+    "accept": "Import two revisions, compile a supported model and compare its inspected source mappings with the exported model."
+  },
+  {
+    "id": "CLI05",
+    "area": "Applications",
+    "title": "Optimization command family",
+    "deps": [
+      "CLI04",
+      "S06",
+      "S04",
+      "RT01",
+      "X05",
+      "A02"
+    ],
+    "accept": "Run a factory fixture locally, verify a candidate, cancel a second run and confirm dry-run starts no solver process."
+  },
+  {
+    "id": "CLI06",
+    "area": "Applications",
+    "title": "Graph command family",
+    "deps": [
+      "CLI03",
+      "M02"
+    ],
+    "accept": "Change one coupling and compare exported impact membership with a full traversal of both revisions."
+  },
+  {
+    "id": "CLI07",
+    "area": "Applications",
+    "title": "Scenario and simulation commands",
+    "deps": [
+      "CLI03",
+      "A01",
+      "A04"
+    ],
+    "accept": "Freeze a baseline, create a delta, compare results and replay a seeded simulation from its manifest."
+  },
+  {
+    "id": "CLI08",
+    "area": "Applications",
+    "title": "Decision and evidence commands",
+    "deps": [
+      "CLI03",
+      "S10",
+      "A02"
+    ],
+    "accept": "Verify an exported solution against the original model in a fresh workspace and compare the recorded objective."
+  },
+  {
+    "id": "CLI09",
+    "area": "Applications",
+    "title": "Solver and benchmark commands",
+    "deps": [
+      "CLI01",
+      "X07",
+      "S01"
+    ],
+    "accept": "Run paired instances with a fixed budget, enumerate adapter versions and retain failures in the report."
+  },
+  {
+    "id": "CLI10",
+    "area": "Applications",
+    "title": "Diagnostics commands",
+    "deps": [
+      "CLI01"
+    ],
+    "accept": "Run doctor without a workspace and against an unreadable local path. Check actionable diagnostics and redacted configuration."
+  },
+  {
+    "id": "CLI11",
+    "area": "Applications",
+    "title": "Machine output and automation",
+    "deps": [
+      "CLI01"
+    ],
+    "accept": "Pipe JSON to a parser while reading progress on stderr, parse quoted CSV and cancel a child process without leaving a worker."
+  },
+  {
+    "id": "CLI12",
+    "area": "Applications",
+    "title": "CLI packaging and installation",
+    "deps": [
+      "CLI01",
+      "CLI11",
+      "RT01"
+    ],
+    "accept": "Install from a local feed on clean Windows and Linux, run inside a container and solve using only packaged dependencies."
+  },
+  {
+    "id": "DS01",
+    "area": "Applications",
+    "title": "Shared visual tokens",
+    "deps": [
+      "F01"
+    ],
+    "accept": "Map dark reference colors and dimensions to named tokens. Render the same states in all themes and check contrast on text and focus rings."
+  },
+  {
+    "id": "DS02",
+    "area": "Applications",
+    "title": "Accessible component gallery",
+    "deps": [
+      "DS01"
+    ],
+    "accept": "Traverse a modal and editable table using keyboard alone. Confirm accessible names, focus restoration and distinct live announcements."
+  },
+  {
+    "id": "DS03",
+    "area": "Applications",
+    "title": "Desktop layouts and localization",
+    "deps": [
+      "DS02"
+    ],
+    "accept": "Switch language at runtime, move the window between monitors and verify logical focus order and usable split views at two scale factors."
+  },
+  {
+    "id": "DS04",
+    "area": "Applications",
+    "title": "Graph and chart primitives",
+    "deps": [
+      "DS01",
+      "M01"
+    ],
+    "accept": "Render a hyperedge, select it with the keyboard and compare its incident IDs to the accessible table. Link chart points to the stored run events."
+  },
+  {
+    "id": "RT01",
+    "area": "Runtime",
+    "title": "Offline local runtime",
+    "deps": [
+      "F05",
+      "M11"
+    ],
+    "accept": "Disable network, create and reopen a workspace, persist a frozen revision and replay an export with the same evidence identity."
+  },
+  {
+    "id": "RT02",
+    "area": "Runtime",
+    "title": "Enterprise host conformance",
+    "deps": [
+      "S12",
+      "E01",
+      "E02"
+    ],
+    "accept": "Run two tenants using identical client-generated model IDs and prove isolated reads, job cancellation and audit trails."
+  },
+  {
+    "id": "RT03",
+    "area": "Runtime",
+    "title": "Headless execution conformance",
+    "deps": [
+      "RT01",
+      "CLI11"
+    ],
+    "accept": "Unset display, block outbound network, execute a published CLI fixture and verify exit status and evidence digest."
+  },
+  {
+    "id": "RT04",
+    "area": "Runtime",
+    "title": "Embedded SDK distribution",
+    "deps": [
+      "M09",
+      "F05"
+    ],
+    "accept": "Build a fresh consumer from a local package feed, evaluate Batch and verify against the same original-model checker without server or UI."
+  },
+  {
+    "id": "RT05",
+    "area": "Runtime",
+    "title": "Hybrid routing and credentials",
+    "deps": [
+      "RT01",
+      "S12",
+      "E01"
+    ],
+    "accept": "Keep local execution usable when the server is down. Reconnect and correlate a remote result with its exact submitted revision."
+  },
+  {
+    "id": "NUM01",
+    "area": "Model",
+    "title": "Numerical invariants and reproducibility",
+    "deps": [
+      "M04",
+      "M07"
+    ],
+    "accept": "Enumerate small exact models and test equivalent unit scalings, boundary residuals and overflowing coefficients; compare repeat runs under a pinned profile."
+  },
+  {
+    "id": "NUM02",
+    "area": "Model",
+    "title": "Multi-objective solving semantics",
+    "deps": [
+      "M07",
+      "S01",
+      "S04"
+    ],
+    "accept": "Compare a tiny two-objective model against an enumerated nondominated set. Establish each higher-priority bound before declaring lexicographic optimality."
+  },
+  {
+    "id": "NUM03",
+    "area": "Model",
+    "title": "Robust and stochastic models",
+    "deps": [
+      "M03",
+      "S01"
+    ],
+    "accept": "Check a two-stage example against enumerated scenarios and verify that first-stage choices agree on identical information sets."
+  },
+  {
+    "id": "NUM04",
+    "area": "Model",
+    "title": "Online reoptimization study",
+    "deps": [
+      "X05",
+      "S07"
+    ],
+    "accept": "Replay timestamped disruptions under an equal budget and compare decisions to cold full solves on identical observed prefixes."
+  },
+  {
+    "id": "EXT01",
+    "area": "Foundation",
+    "title": "Algorithm and solver extension registry",
+    "deps": [
+      "F05",
+      "S01",
+      "E07"
+    ],
+    "accept": "Load two versioned manifests, reject a mismatched capability and survive adapter process failure without losing verified evidence."
+  },
+  {
+    "id": "AI01",
+    "area": "Intelligence",
+    "title": "Optional provider contracts",
+    "deps": [
+      "F05",
+      "F04"
+    ],
+    "accept": "Run core conformance with no provider installed and inspect provider-specific diagnostics for unsupported operations."
+  },
+  {
+    "id": "AI02",
+    "area": "Intelligence",
+    "title": "Validated language-model proposals",
+    "deps": [
+      "AI01",
+      "M06",
+      "S04"
+    ],
+    "accept": "Submit an ambiguous request, review missing fields, validate generated DML and verify each explanatory claim against an evidence reference."
+  },
+  {
+    "id": "AI03",
+    "area": "Intelligence",
+    "title": "Forecast qualification",
+    "deps": [
+      "A05",
+      "X07"
+    ],
+    "accept": "Use chronological holdouts and report interval coverage, error, drift and failure rates against a seasonal baseline."
+  },
+  {
+    "id": "EXP01",
+    "area": "Research engineering",
+    "title": "Five-strategy comparative study",
+    "deps": [
+      "X07",
+      "V02"
+    ],
+    "accept": "Freeze holdout families, observed data and budget. Publish positive, negative and missing outcomes across profit, cost, utilization, feasibility, violations, gaps, latency, CPU, memory, training, inference, disruption adaptation, explanation, reproducibility and robustness."
+  },
+  {
+    "id": "QA01",
+    "area": "Quality",
+    "title": "Local and SDK contract suite",
+    "deps": [
+      "RT01",
+      "RT04"
+    ],
+    "accept": "Run the same factory and workforce fixtures via offline and package consumers; compare source-domain checks, identity and objective."
+  },
+  {
+    "id": "QA02",
+    "area": "Quality",
+    "title": "Desktop visual and accessibility qualification",
+    "deps": [
+      "UI01",
+      "DS03",
+      "DS04"
+    ],
+    "accept": "Capture actual windows at reference logical size and 3x scale; store fonts, OS, host, fixture, tolerance calibration and per-region diff."
+  },
+  {
+    "id": "QA03",
+    "area": "Quality",
+    "title": "Command-line release conformance",
+    "deps": [
+      "CLI02",
+      "CLI11",
+      "CLI12"
+    ],
+    "accept": "Exercise an actual installed binary on both platforms with a TTY, redirected streams and a blocked network."
+  },
+  {
+    "id": "QA04",
+    "area": "Quality",
+    "title": "Enterprise reliability qualification",
+    "deps": [
+      "E01",
+      "S12",
+      "E07"
+    ],
+    "accept": "Stress two concurrent tenants and record queue fairness, peak memory, leaked workers and verified terminal outcomes under worker restart."
+  },
+  {
+    "id": "QA05",
+    "area": "Quality",
+    "title": "Compiler and solver robustness suite",
+    "deps": [
+      "M08",
+      "S04"
+    ],
+    "accept": "Compare generated bounded source models with exact enumeration after normalization and independent verification; persist minimized seeds and rejection reasons."
+  },
+  {
+    "id": "SEC01",
+    "area": "Enterprise",
+    "title": "Secure data movement and retention",
+    "deps": [
+      "F04",
+      "I01"
+    ],
+    "accept": "Exercise authorized redacted export, invalid archive sizes and expired retention while preserving the audit record and reference integrity."
+  },
+  {
+    "id": "SEC02",
+    "area": "Enterprise",
+    "title": "Release provenance and secure updates",
+    "deps": [
+      "F04",
+      "E06"
+    ],
+    "accept": "Generate an SBOM per RID, verify signatures offline and exercise rollback after interrupted installation."
+  },
+  {
+    "id": "SEC03",
+    "area": "Enterprise",
+    "title": "Restore and disaster recovery",
+    "deps": [
+      "E02",
+      "E05"
+    ],
+    "accept": "Restore a tenant snapshot into a fresh instance, reconcile outbox/lease state and measure recovery time and lost writes."
+  },
+  {
+    "id": "SL01",
+    "area": "Manufacturing",
+    "title": "Factory vertical slice and evidence",
+    "deps": [
+      "UI05",
+      "UI11",
+      "UI13",
+      "UI15",
+      "UI17",
+      "CLI05",
+      "CLI08",
+      "RT01",
+      "V04",
+      "X05"
+    ],
+    "accept": "Replay the same authorized fixture, change one machine availability, run both incremental and full paths, and export verifiable evidence for each OS and each client."
+  },
+  {
+    "id": "SL02",
+    "area": "Second sector",
+    "title": "Independent workforce end-to-end slice",
+    "deps": [
+      "SL01",
+      "V07",
+      "RT04"
+    ],
+    "accept": "Use a workforce domain assembly with no manufacturing dependency. Replay availability change and verify coverage and cost against a small independent oracle."
+  },
+  {
+    "id": "G01",
+    "area": "Quality",
+    "title": "Research prototype gate",
+    "deps": [
+      "X01",
+      "R08"
+    ],
+    "accept": "Repeat a finite experiment on a clean host and publish the falsification case with its raw evidence."
+  },
+  {
+    "id": "G02",
+    "area": "Quality",
+    "title": "MVP gate",
+    "deps": [
+      "SL01",
+      "QA02",
+      "QA03",
+      "R07"
+    ],
+    "accept": "Replay factory import through both installed clients, verify outage and full comparison, and attach Windows/Linux evidence for the shipping subset."
+  },
+  {
+    "id": "G03",
+    "area": "Quality",
+    "title": "Production release gate",
+    "deps": [
+      "G02",
+      "SEC02",
+      "SEC03",
+      "QA01"
+    ],
+    "accept": "Run offline install, upgrade, restore and rollback on supported hosts, and verify no loss of accepted revisions."
+  },
+  {
+    "id": "G04",
+    "area": "Quality",
+    "title": "Enterprise release gate",
+    "deps": [
+      "G03",
+      "RT02",
+      "QA04",
+      "E04"
+    ],
+    "accept": "Demonstrate tenant isolation, failover and human approval on a clean tenant pair with audit export."
+  },
+  {
+    "id": "G05",
+    "area": "Quality",
+    "title": "Multi-sector platform gate",
+    "deps": [
+      "G03",
+      "SL02"
+    ],
+    "accept": "Install both verticals against the same core build and compare semantic verification across their own baselines."
+  },
+  {
+    "id": "G06",
+    "area": "Quality",
+    "title": "Scale release gate",
+    "deps": [
+      "G04",
+      "E08",
+      "X07"
+    ],
+    "accept": "Publish reproducible saturation curves with quotas, workload mix, hardware, latency distributions and recovery results."
+  },
+  {
+    "id": "SP01",
+    "area": "Foundation",
+    "title": "Versioned field and contract dictionary",
+    "deps": [
+      "F01"
+    ],
+    "accept": "Trace each pilot field through every applicable layer and exercise one valid and one invalid representation in contract tests."
+  },
+  {
+    "id": "SP02",
+    "area": "Foundation",
+    "title": "Studio module specification and design review",
+    "deps": [
+      "F01"
+    ],
+    "accept": "Check each module against the visual source and review its distinct navigation, loading, invalid input, unavailable data, keyboard path and recovery before feature implementation."
+  },
+  {
+    "id": "SP03",
+    "area": "Foundation",
+    "title": "Editable architecture and subsystem diagrams",
+    "deps": [
+      "F01"
+    ],
+    "accept": "Render editable sources, verify each edge against the documented contract, and associate requirements, issue IDs and explicit failure/recovery paths."
+  },
+  {
+    "id": "SP04",
+    "area": "Foundation",
+    "title": "Product and delivery specifications",
+    "deps": [
+      "F01"
+    ],
+    "accept": "Trace an operator journey and SDK consumer from the PRD to versioned fields, acceptance tests and release-specific evidence."
+  },
+  {
+    "id": "SP05",
+    "area": "Research engineering",
+    "title": "Research hypothesis dossiers",
+    "deps": [
+      "R04"
+    ],
+    "accept": "Review H1–H5 individually with counterexamples and before/after flows. Mark unmeasured results and record the rejection rule before running experiments."
+  },
+  {
+    "id": "EP01",
+    "area": "Foundation",
+    "title": "Studio design system and desktop experience",
+    "deps": [
+      "F01"
+    ],
+    "accept": "Review gallery, module contracts, host qualification and applicable OS evidence before accepting a desktop release."
+  },
+  {
+    "id": "EP02",
+    "area": "Foundation",
+    "title": "Runtime modes and distribution contracts",
+    "deps": [
+      "F01"
+    ],
+    "accept": "Publish a mode-by-mode conformance report and verify consistent contracts across all five modes."
+  },
+  {
+    "id": "EP03",
+    "area": "Foundation",
+    "title": "Product specifications and editable engineering diagrams",
+    "deps": [
+      "F01"
+    ],
+    "accept": "Resolve each mandated specification and diagram to reviewed source, owning requirement and test oracle."
+  },
+  {
+    "id": "EP04",
+    "area": "Foundation",
+    "title": "Numerical, extension and research qualification",
+    "deps": [
+      "F01"
+    ],
+    "accept": "Distinguish mathematical proof, measured experiment and capability limitation for each research item."
+  },
+  {
+    "id": "EP05",
+    "area": "Foundation",
+    "title": "Security and recovery controls",
+    "deps": [
+      "F04"
+    ],
+    "accept": "Review verified controls and qualification evidence independently for each release tier."
+  },
+  {
+    "id": "EP06",
+    "area": "Foundation",
+    "title": "Cross-product vertical slice acceptance",
+    "deps": [
+      "F01"
+    ],
+    "accept": "Accept each sector only after a complete replay through the published clients and original-model verification."
+  },
+  {
+    "id": "IND01",
+    "area": "Portfolio",
+    "title": "Inventory feasibility and model study",
+    "deps": [
+      "V06"
+    ],
+    "accept": "Specify SKU stock and reorder lots with orders per period. On stock-movement ledger, compare holding plus shortage cost against seasonal reorder point subject to inventory balance, lead time and service. Record units, solver capabilities, input rights, integration fields, uncertainty and rejection thresholds before an experiment."
+  },
+  {
+    "id": "IND02",
+    "area": "Portfolio",
+    "title": "Supply chain feasibility and model study",
+    "deps": [
+      "V06"
+    ],
+    "accept": "Specify plants, suppliers and arcs with source and flow quantities. On dated purchase and shipment snapshots, compare landed cost against fixed sourcing proportions subject to lead time, capacity and material conservation. Record units, solver capabilities, input rights, integration fields, uncertainty and rejection thresholds before an experiment."
+  },
+  {
+    "id": "IND03",
+    "area": "Portfolio",
+    "title": "Logistics feasibility and model study",
+    "deps": [
+      "V06"
+    ],
+    "accept": "Specify depots, parcels and dispatch slots with parcel-to-route assignment. On anonymized dispatch manifests, compare late deliveries and distance against first-fit dispatch subject to cutoffs, vehicle capacities and windows. Record units, solver capabilities, input rights, integration fields, uncertainty and rejection thresholds before an experiment."
+  },
+  {
+    "id": "IND04",
+    "area": "Portfolio",
+    "title": "Transportation feasibility and model study",
+    "deps": [
+      "V06"
+    ],
+    "accept": "Specify vehicles, trips and stations with trip assignment and departure. On licensed timetable and travel-time matrix, compare cancelled trips and operating cost against published timetable subject to headway, turnaround and availability. Record units, solver capabilities, input rights, integration fields, uncertainty and rejection thresholds before an experiment."
+  },
+  {
+    "id": "IND05",
+    "area": "Portfolio",
+    "title": "Retail feasibility and model study",
+    "deps": [
+      "V06"
+    ],
+    "accept": "Specify stores, assortments and shelves with SKU allocation per store. On anonymized store-week demand, compare margin after shrinkage against historical replenishment subject to shelf space, stock and minimum assortment. Record units, solver capabilities, input rights, integration fields, uncertainty and rejection thresholds before an experiment."
+  },
+  {
+    "id": "IND06",
+    "area": "Portfolio",
+    "title": "Healthcare feasibility and model study",
+    "deps": [
+      "V06"
+    ],
+    "accept": "Specify clinics, rooms and visit slots with elective appointment assignment. On synthetic appointments with no patient identifiers, compare wait and overtime against manual appointment list subject to capacity, credentials and priority rules. Record units, solver capabilities, input rights, integration fields, uncertainty and rejection thresholds before an experiment."
+  },
+  {
+    "id": "IND07",
+    "area": "Portfolio",
+    "title": "Finance feasibility and model study",
+    "deps": [
+      "V06"
+    ],
+    "accept": "Specify instruments, exposures and limits with bounded allocation. On licensed historical prices and synthetic portfolios, compare scenario risk-adjusted return against fixed allocation policy subject to portfolio exposure and liquidity limits. Record units, solver capabilities, input rights, integration fields, uncertainty and rejection thresholds before an experiment."
+  },
+  {
+    "id": "IND08",
+    "area": "Portfolio",
+    "title": "Cash flow feasibility and model study",
+    "deps": [
+      "V06"
+    ],
+    "accept": "Specify accounts, obligations and receipts with cash transfers by date. On synthetic dated obligations, compare interest and shortfall against treasury calendar policy subject to minimum balance, currency and settlement. Record units, solver capabilities, input rights, integration fields, uncertainty and rejection thresholds before an experiment."
+  },
+  {
+    "id": "IND09",
+    "area": "Portfolio",
+    "title": "Energy feasibility and model study",
+    "deps": [
+      "V06"
+    ],
+    "accept": "Specify generators, meters and periods with unit dispatch. On public hourly load with licensed generator data, compare generation cost and deficit against dispatch merit order subject to ramp, capacity and reserve. Record units, solver capabilities, input rights, integration fields, uncertainty and rejection thresholds before an experiment."
+  },
+  {
+    "id": "IND10",
+    "area": "Portfolio",
+    "title": "Construction feasibility and model study",
+    "deps": [
+      "V06"
+    ],
+    "accept": "Specify sites, crews, trades and lifts with work package start and crew assignment. On synthetic site schedule and calendars, compare delay and idle cost against critical path with leveling subject to precedence, safety windows and crane capacity. Record units, solver capabilities, input rights, integration fields, uncertainty and rejection thresholds before an experiment."
+  },
+  {
+    "id": "IND11",
+    "area": "Portfolio",
+    "title": "Project management feasibility and model study",
+    "deps": [
+      "V06"
+    ],
+    "accept": "Specify tasks, skills and teams with task start and assignment. On licensed project scheduling instances, compare late milestones and staffing cost against priority-list scheduling subject to precedence, milestones and skill pools. Record units, solver capabilities, input rights, integration fields, uncertainty and rejection thresholds before an experiment."
+  },
+  {
+    "id": "IND12",
+    "area": "Portfolio",
+    "title": "Agriculture feasibility and model study",
+    "deps": [
+      "V06"
+    ],
+    "accept": "Specify plots, crops and irrigation slots with planting and water allocation. On regional weather and synthetic farm inventory, compare yield margin and water use against fixed crop calendar subject to soil, rotation, water and seasonal bounds. Record units, solver capabilities, input rights, integration fields, uncertainty and rejection thresholds before an experiment."
+  },
+  {
+    "id": "IND13",
+    "area": "Portfolio",
+    "title": "Telecommunications feasibility and model study",
+    "deps": [
+      "V06"
+    ],
+    "accept": "Specify links, traffic classes and capacity with traffic routing and capacity reservation. On synthetic network and held-out traffic demand, compare congestion and unserved demand against shortest feasible path subject to flow conservation, link limits and latency. Record units, solver capabilities, input rights, integration fields, uncertainty and rejection thresholds before an experiment."
+  },
+  {
+    "id": "IND14",
+    "area": "Portfolio",
+    "title": "Cloud resources feasibility and model study",
+    "deps": [
+      "V06"
+    ],
+    "accept": "Specify instances, jobs and quotas with instance placement and sizing. On synthetic job arrival traces, compare compute cost and deadline misses against first-fit decreasing subject to memory, cores and regional quotas. Record units, solver capabilities, input rights, integration fields, uncertainty and rejection thresholds before an experiment."
+  },
+  {
+    "id": "IND15",
+    "area": "Portfolio",
+    "title": "Data centers feasibility and model study",
+    "deps": [
+      "V06"
+    ],
+    "accept": "Specify racks, servers and power zones with placement and power scheduling. On synthetic rack inventory and power traces, compare energy plus unmet service against static rack assignment subject to thermal envelope, power caps and redundancy. Record units, solver capabilities, input rights, integration fields, uncertainty and rejection thresholds before an experiment."
   }
 ]

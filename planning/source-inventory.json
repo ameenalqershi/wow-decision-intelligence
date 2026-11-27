@@ -1,0 +1,868 @@
+{
+  "Baseline scope R01": [
+    "REQ-R01"
+  ],
+  "Baseline scope R02": [
+    "REQ-R02"
+  ],
+  "Baseline scope R03": [
+    "REQ-R03"
+  ],
+  "Baseline scope R04": [
+    "REQ-R04"
+  ],
+  "Baseline scope R05": [
+    "REQ-R05"
+  ],
+  "Baseline scope R06": [
+    "REQ-R06"
+  ],
+  "Baseline scope R07": [
+    "REQ-R07"
+  ],
+  "Supplement §7": [
+    "DIR-R07-1",
+    "DIR-U02-1",
+    "DIR-U02-2",
+    "DIR-U02-3",
+    "DIR-RT01-2"
+  ],
+  "Baseline scope R08": [
+    "REQ-R08"
+  ],
+  "Baseline scope F01": [
+    "REQ-F01"
+  ],
+  "Baseline scope F02": [
+    "REQ-F02"
+  ],
+  "Baseline scope F03": [
+    "REQ-F03"
+  ],
+  "Baseline scope F04": [
+    "REQ-F04"
+  ],
+  "Baseline scope F05": [
+    "REQ-F05"
+  ],
+  "Baseline scope M01": [
+    "REQ-M01"
+  ],
+  "Baseline scope M02": [
+    "REQ-M02"
+  ],
+  "Baseline scope M03": [
+    "REQ-M03"
+  ],
+  "Baseline scope M04": [
+    "REQ-M04"
+  ],
+  "Baseline scope M05": [
+    "REQ-M05"
+  ],
+  "Baseline scope M06": [
+    "REQ-M06"
+  ],
+  "Baseline scope M07": [
+    "REQ-M07"
+  ],
+  "Baseline scope M08": [
+    "REQ-M08"
+  ],
+  "Baseline scope M09": [
+    "REQ-M09"
+  ],
+  "Baseline scope M10": [
+    "REQ-M10"
+  ],
+  "Baseline scope M11": [
+    "REQ-M11"
+  ],
+  "Baseline scope M12": [
+    "REQ-M12"
+  ],
+  "Baseline scope S01": [
+    "REQ-S01"
+  ],
+  "Baseline scope S02": [
+    "REQ-S02"
+  ],
+  "Baseline scope S03": [
+    "REQ-S03"
+  ],
+  "Baseline scope S04": [
+    "REQ-S04"
+  ],
+  "Supplement §12": [
+    "DIR-S04-1",
+    "NUM01-01",
+    "NUM01-02",
+    "NUM01-03",
+    "NUM01-04",
+    "NUM01-05",
+    "NUM02-01",
+    "NUM02-02",
+    "NUM02-03",
+    "NUM03-01",
+    "NUM03-02",
+    "NUM03-03",
+    "NUM03-04",
+    "NUM04-01",
+    "NUM04-02",
+    "NUM04-03",
+    "NUM04-04",
+    "NUM04-05",
+    "EXT01-01",
+    "EXT01-02",
+    "EXT01-03",
+    "EXT01-04"
+  ],
+  "Baseline scope S05": [
+    "REQ-S05"
+  ],
+  "Baseline scope S06": [
+    "REQ-S06"
+  ],
+  "Baseline scope S07": [
+    "REQ-S07"
+  ],
+  "Baseline scope S08": [
+    "REQ-S08"
+  ],
+  "Baseline scope S09": [
+    "REQ-S09"
+  ],
+  "Baseline scope S10": [
+    "REQ-S10"
+  ],
+  "Baseline scope S11": [
+    "REQ-S11"
+  ],
+  "Baseline scope S12": [
+    "REQ-S12"
+  ],
+  "Baseline scope X01": [
+    "REQ-X01"
+  ],
+  "Baseline scope X02": [
+    "REQ-X02"
+  ],
+  "Baseline scope X03": [
+    "REQ-X03"
+  ],
+  "Baseline scope X04": [
+    "REQ-X04"
+  ],
+  "Baseline scope X05": [
+    "REQ-X05"
+  ],
+  "Baseline scope X06": [
+    "REQ-X06"
+  ],
+  "Baseline scope X07": [
+    "REQ-X07"
+  ],
+  "Baseline scope X08": [
+    "REQ-X08"
+  ],
+  "Baseline scope X09": [
+    "REQ-X09"
+  ],
+  "Baseline scope X10": [
+    "REQ-X10"
+  ],
+  "Baseline scope V01": [
+    "REQ-V01"
+  ],
+  "Baseline scope V02": [
+    "REQ-V02"
+  ],
+  "Baseline scope V03": [
+    "REQ-V03"
+  ],
+  "Baseline scope V04": [
+    "REQ-V04"
+  ],
+  "Baseline scope V05": [
+    "REQ-V05"
+  ],
+  "Baseline scope V06": [
+    "REQ-V06"
+  ],
+  "Baseline scope V07": [
+    "REQ-V07"
+  ],
+  "Baseline scope I01": [
+    "REQ-I01"
+  ],
+  "Baseline scope I02": [
+    "REQ-I02"
+  ],
+  "Baseline scope I03": [
+    "REQ-I03"
+  ],
+  "Baseline scope I04": [
+    "REQ-I04"
+  ],
+  "Baseline scope I05": [
+    "REQ-I05"
+  ],
+  "Baseline scope I06": [
+    "REQ-I06"
+  ],
+  "Baseline scope I07": [
+    "REQ-I07"
+  ],
+  "Baseline scope I08": [
+    "REQ-I08"
+  ],
+  "Baseline scope I09": [
+    "REQ-I09"
+  ],
+  "Baseline scope A01": [
+    "REQ-A01"
+  ],
+  "Baseline scope A02": [
+    "REQ-A02"
+  ],
+  "Baseline scope A03": [
+    "REQ-A03"
+  ],
+  "Baseline scope A04": [
+    "REQ-A04"
+  ],
+  "Baseline scope A05": [
+    "REQ-A05"
+  ],
+  "Baseline scope A06": [
+    "REQ-A06"
+  ],
+  "Baseline scope U01": [
+    "REQ-U01"
+  ],
+  "Baseline scope U02": [
+    "REQ-U02"
+  ],
+  "Baseline scope U03": [
+    "REQ-U03"
+  ],
+  "Baseline scope U04": [
+    "REQ-U04"
+  ],
+  "Baseline scope U05": [
+    "REQ-U05"
+  ],
+  "Baseline scope U06": [
+    "REQ-U06"
+  ],
+  "Baseline scope E01": [
+    "REQ-E01"
+  ],
+  "Baseline scope E02": [
+    "REQ-E02"
+  ],
+  "Baseline scope E03": [
+    "REQ-E03"
+  ],
+  "Baseline scope E04": [
+    "REQ-E04"
+  ],
+  "Baseline scope E05": [
+    "REQ-E05"
+  ],
+  "Baseline scope E06": [
+    "REQ-E06"
+  ],
+  "Baseline scope E07": [
+    "REQ-E07"
+  ],
+  "Baseline scope E08": [
+    "REQ-E08"
+  ],
+  "Baseline scope Q01": [
+    "REQ-Q01"
+  ],
+  "Baseline scope Q02": [
+    "REQ-Q02"
+  ],
+  "Baseline scope Q03": [
+    "REQ-Q03"
+  ],
+  "Baseline scope Q04": [
+    "REQ-Q04"
+  ],
+  "Baseline scope P01": [
+    "REQ-P01"
+  ],
+  "Supplement §3": [
+    "REQ-T01",
+    "DIR-T01-3",
+    "DIR-T01-4"
+  ],
+  "Supplement §1": [
+    "DIR-T01-1"
+  ],
+  "Supplement §2": [
+    "DIR-T01-2"
+  ],
+  "Supplement §4": [
+    "DIR-T01-5",
+    "DIR-T01-6"
+  ],
+  "Supplement §5": [
+    "DIR-T01-7"
+  ],
+  "Supplement §8": [
+    "DIR-T01-8",
+    "DIR-DS01-1",
+    "DIR-DS01-2"
+  ],
+  "Supplement §22": [
+    "DIR-T01-9"
+  ],
+  "Supplement §23": [
+    "DIR-T01-10"
+  ],
+  "Supplement §24": [
+    "DIR-T01-11"
+  ],
+  "Supplement §26": [
+    "DIR-T01-12"
+  ],
+  "Supplement §27": [
+    "DIR-T01-13"
+  ],
+  "Supplement §28": [
+    "DIR-T01-14"
+  ],
+  "Supplement §10": [
+    "UI01-01",
+    "UI01-02",
+    "UI01-03",
+    "UI01-04",
+    "UI01-05",
+    "UI02-01",
+    "UI02-02",
+    "UI02-03",
+    "UI02-04",
+    "UI02-05",
+    "UI03-01",
+    "UI03-02",
+    "UI03-03",
+    "UI03-04",
+    "UI03-05",
+    "UI04-01",
+    "UI04-02",
+    "UI04-03",
+    "UI04-04",
+    "UI05-01",
+    "UI05-02",
+    "UI05-03",
+    "UI05-04",
+    "UI05-05",
+    "UI05-06",
+    "UI05-07",
+    "UI05-08",
+    "UI06-01",
+    "UI06-02",
+    "UI06-03",
+    "UI06-04",
+    "UI06-05",
+    "UI07-01",
+    "UI07-02",
+    "UI07-03",
+    "UI07-04",
+    "UI08-01",
+    "UI08-02",
+    "UI08-03",
+    "UI08-04",
+    "UI08-05",
+    "UI09-01",
+    "UI09-02",
+    "UI09-03",
+    "UI09-04",
+    "UI09-05",
+    "UI09-06",
+    "UI10-01",
+    "UI10-02",
+    "UI10-03",
+    "UI11-01",
+    "UI11-02",
+    "UI11-03",
+    "UI11-04",
+    "UI11-05",
+    "UI11-06",
+    "UI12-01",
+    "UI12-02",
+    "UI12-03",
+    "UI12-04",
+    "UI12-05",
+    "UI12-06",
+    "UI13-01",
+    "UI13-02",
+    "UI13-03",
+    "UI13-04",
+    "UI14-01",
+    "UI14-02",
+    "UI14-03",
+    "UI14-04",
+    "UI15-01",
+    "UI15-02",
+    "UI15-03",
+    "UI15-04",
+    "UI15-05",
+    "UI15-06",
+    "UI16-01",
+    "UI16-02",
+    "UI16-03",
+    "UI16-04",
+    "UI16-05",
+    "UI17-01",
+    "UI17-02",
+    "UI17-03",
+    "UI17-04",
+    "UI17-05",
+    "UI17-06",
+    "UI17-07",
+    "UI18-01",
+    "UI18-02",
+    "UI18-03",
+    "UI18-04",
+    "UI18-05",
+    "UI19-01",
+    "UI19-02",
+    "UI19-03",
+    "UI19-04",
+    "UI19-05",
+    "UI19-06",
+    "UI20-01",
+    "UI20-02",
+    "UI20-03",
+    "UI20-04",
+    "UI20-05",
+    "UI21-01",
+    "UI21-02",
+    "UI21-03",
+    "UI21-04",
+    "UI21-05",
+    "UI22-01",
+    "UI22-02",
+    "UI22-03",
+    "UI22-04",
+    "UI22-05",
+    "UI22-06",
+    "UI23-01",
+    "UI23-02",
+    "UI23-03",
+    "UI23-04",
+    "UI23-05"
+  ],
+  "Supplement §11": [
+    "CLI01-01",
+    "CLI01-02",
+    "CLI01-03",
+    "CLI01-04",
+    "CLI01-05",
+    "CLI01-06",
+    "CLI02-01",
+    "CLI02-02",
+    "CLI02-03",
+    "CLI02-04",
+    "CLI02-05",
+    "CLI02-06",
+    "CLI02-07",
+    "CLI03-01",
+    "CLI03-02",
+    "CLI03-03",
+    "CLI03-04",
+    "CLI03-05",
+    "CLI03-06",
+    "CLI04-01",
+    "CLI04-02",
+    "CLI04-03",
+    "CLI04-04",
+    "CLI04-05",
+    "CLI04-06",
+    "CLI05-01",
+    "CLI05-02",
+    "CLI05-03",
+    "CLI05-04",
+    "CLI05-05",
+    "CLI05-06",
+    "CLI05-07",
+    "CLI06-01",
+    "CLI06-02",
+    "CLI06-03",
+    "CLI06-04",
+    "CLI07-01",
+    "CLI07-02",
+    "CLI07-03",
+    "CLI07-04",
+    "CLI08-01",
+    "CLI08-02",
+    "CLI08-03",
+    "CLI08-04",
+    "CLI09-01",
+    "CLI09-02",
+    "CLI09-03",
+    "CLI09-04",
+    "CLI09-05",
+    "CLI09-06",
+    "CLI10-01",
+    "CLI10-02",
+    "CLI10-03",
+    "CLI10-04",
+    "CLI10-05",
+    "CLI11-01",
+    "CLI11-02",
+    "CLI11-03",
+    "CLI11-04",
+    "CLI11-05",
+    "CLI11-06",
+    "CLI11-07",
+    "CLI11-08",
+    "CLI11-09",
+    "CLI11-10",
+    "CLI12-01",
+    "CLI12-02",
+    "CLI12-03",
+    "CLI12-04",
+    "CLI12-05",
+    "CLI12-06"
+  ],
+  "Supplement §9": [
+    "DS01-01",
+    "DS01-02",
+    "DS01-03",
+    "DS01-04",
+    "DS01-05",
+    "DS01-06",
+    "DS02-01",
+    "DS02-02",
+    "DS02-03",
+    "DS02-04",
+    "DS02-05",
+    "DS02-06",
+    "DS03-01",
+    "DS03-02",
+    "DS03-03",
+    "DS03-04",
+    "DS04-01",
+    "DS04-02",
+    "DS04-03",
+    "DS04-04"
+  ],
+  "Supplement §6": [
+    "RT01-01",
+    "RT01-02",
+    "RT01-03",
+    "RT01-04",
+    "RT01-05",
+    "RT01-06",
+    "RT01-07",
+    "RT01-08",
+    "DIR-RT01-1",
+    "RT02-01",
+    "RT02-02",
+    "RT02-03",
+    "RT02-04",
+    "RT03-01",
+    "RT03-02",
+    "RT03-03",
+    "RT04-01",
+    "RT04-02",
+    "RT04-03",
+    "RT04-04",
+    "RT05-01",
+    "RT05-02",
+    "RT05-03",
+    "RT05-04"
+  ],
+  "Supplement §14": [
+    "AI01-01",
+    "AI01-02",
+    "AI01-03",
+    "AI01-04",
+    "AI01-05",
+    "AI01-06",
+    "DIR-AI01-1",
+    "DIR-AI01-2",
+    "AI02-01",
+    "AI02-02",
+    "AI02-03",
+    "AI02-04",
+    "AI02-05",
+    "AI03-01",
+    "AI03-02",
+    "AI03-03",
+    "AI03-04",
+    "AI03-05",
+    "AI03-06"
+  ],
+  "Supplement §15": [
+    "EXP01-01",
+    "EXP01-02",
+    "EXP01-03",
+    "EXP01-04",
+    "EXP01-05",
+    "DIR-EXP01-1",
+    "DIR-EXP01-2",
+    "DIR-EXP01-3",
+    "DIR-EXP01-4",
+    "DIR-EXP01-5",
+    "DIR-EXP01-6",
+    "DIR-EXP01-7",
+    "DIR-EXP01-8",
+    "DIR-EXP01-9",
+    "DIR-EXP01-10",
+    "DIR-EXP01-11",
+    "DIR-EXP01-12",
+    "DIR-EXP01-13",
+    "DIR-EXP01-14",
+    "DIR-EXP01-15"
+  ],
+  "Supplement §21": [
+    "QA01-01",
+    "QA01-02",
+    "QA01-03",
+    "QA01-04",
+    "QA02-01",
+    "QA02-02",
+    "QA02-03",
+    "QA02-04",
+    "QA02-05",
+    "DIR-QA02-1",
+    "QA03-01",
+    "QA03-02",
+    "QA03-03",
+    "QA03-04",
+    "QA04-01",
+    "QA04-02",
+    "QA04-03",
+    "QA04-04",
+    "QA04-05",
+    "QA05-01",
+    "QA05-02",
+    "QA05-03",
+    "QA05-04",
+    "QA05-05"
+  ],
+  "Supplement §20": [
+    "SEC01-01",
+    "SEC01-02",
+    "SEC01-03",
+    "SEC01-04",
+    "SEC01-05",
+    "DIR-SEC01-1",
+    "SEC02-01",
+    "SEC02-02",
+    "SEC02-03",
+    "SEC02-04",
+    "SEC02-05",
+    "SEC03-01",
+    "SEC03-02",
+    "SEC03-03",
+    "SEC03-04",
+    "DIR-SEC03-1"
+  ],
+  "Supplement §25": [
+    "SL01-01",
+    "SL01-02",
+    "SL01-03",
+    "SL01-04",
+    "SL01-05",
+    "SL01-06",
+    "SL01-07",
+    "SL01-08",
+    "SL01-09",
+    "SL01-10",
+    "SL01-11",
+    "SL02-01",
+    "SL02-02",
+    "SL02-03",
+    "DIR-EP06-1"
+  ],
+  "Supplement §19": [
+    "DIR-SL02-1",
+    "IND01-01",
+    "IND01-02",
+    "IND01-03",
+    "IND01-04",
+    "IND01-05",
+    "IND01-06",
+    "IND02-01",
+    "IND02-02",
+    "IND02-03",
+    "IND02-04",
+    "IND02-05",
+    "IND02-06",
+    "IND03-01",
+    "IND03-02",
+    "IND03-03",
+    "IND03-04",
+    "IND03-05",
+    "IND03-06",
+    "IND04-01",
+    "IND04-02",
+    "IND04-03",
+    "IND04-04",
+    "IND04-05",
+    "IND04-06",
+    "IND05-01",
+    "IND05-02",
+    "IND05-03",
+    "IND05-04",
+    "IND05-05",
+    "IND05-06",
+    "IND06-01",
+    "IND06-02",
+    "IND06-03",
+    "IND06-04",
+    "IND06-05",
+    "IND06-06",
+    "IND07-01",
+    "IND07-02",
+    "IND07-03",
+    "IND07-04",
+    "IND07-05",
+    "IND07-06",
+    "IND08-01",
+    "IND08-02",
+    "IND08-03",
+    "IND08-04",
+    "IND08-05",
+    "IND08-06",
+    "IND09-01",
+    "IND09-02",
+    "IND09-03",
+    "IND09-04",
+    "IND09-05",
+    "IND09-06",
+    "IND10-01",
+    "IND10-02",
+    "IND10-03",
+    "IND10-04",
+    "IND10-05",
+    "IND10-06",
+    "IND11-01",
+    "IND11-02",
+    "IND11-03",
+    "IND11-04",
+    "IND11-05",
+    "IND11-06",
+    "IND12-01",
+    "IND12-02",
+    "IND12-03",
+    "IND12-04",
+    "IND12-05",
+    "IND12-06",
+    "IND13-01",
+    "IND13-02",
+    "IND13-03",
+    "IND13-04",
+    "IND13-05",
+    "IND13-06",
+    "IND14-01",
+    "IND14-02",
+    "IND14-03",
+    "IND14-04",
+    "IND14-05",
+    "IND14-06",
+    "IND15-01",
+    "IND15-02",
+    "IND15-03",
+    "IND15-04",
+    "IND15-05",
+    "IND15-06"
+  ],
+  "Supplement §18": [
+    "G01-01",
+    "G01-02",
+    "G01-03",
+    "G02-01",
+    "G02-02",
+    "G02-03",
+    "G02-04",
+    "DIR-G02-1",
+    "G03-01",
+    "G03-02",
+    "G03-03",
+    "G04-01",
+    "G04-02",
+    "G04-03",
+    "G04-04",
+    "G05-01",
+    "G05-02",
+    "G06-01",
+    "G06-02",
+    "G06-03"
+  ],
+  "Supplement §16": [
+    "SP01-01",
+    "SP01-02",
+    "SP01-03",
+    "SP01-04",
+    "SP01-05",
+    "SP01-06",
+    "SP01-07",
+    "SP01-08",
+    "SP02-01",
+    "SP02-02",
+    "SP02-03",
+    "SP02-04",
+    "SP02-05",
+    "SP02-06",
+    "SP02-07",
+    "SP04-01",
+    "SP04-02",
+    "SP04-03",
+    "SP04-04",
+    "SP04-05",
+    "SP04-06",
+    "SP04-07",
+    "EP01-01",
+    "EP01-02",
+    "EP01-03",
+    "EP01-04",
+    "EP02-01",
+    "EP02-02",
+    "EP02-03",
+    "EP03-01",
+    "EP03-02",
+    "EP03-03",
+    "EP03-04",
+    "DIR-EP03-1",
+    "EP04-01",
+    "EP04-02",
+    "EP04-03",
+    "EP04-04",
+    "EP04-05",
+    "EP05-01",
+    "EP05-02",
+    "EP05-03",
+    "EP06-01",
+    "EP06-02"
+  ],
+  "Supplement §17": [
+    "SP03-01",
+    "SP03-02",
+    "SP03-03",
+    "SP03-04",
+    "SP03-05",
+    "SP03-06",
+    "SP03-07"
+  ],
+  "Supplement §13": [
+    "SP05-01",
+    "SP05-02",
+    "SP05-03",
+    "SP05-04",
+    "SP05-05",
+    "SP05-06",
+    "SP05-07",
+    "SP05-08",
+    "DIR-SP05-1",
+    "DIR-SP05-2",
+    "DIR-EP04-1"
+  ]
+}
