@@ -1,0 +1,3121 @@
+{
+  "sourceRevision": "cf664c1",
+  "requirementsHash": "ad03706dae7394fd4d819ca54a0731ff935957517dcb5baecd73496a6953f665",
+  "backlogHash": "b65777282d1928efbfa085f99f159002f7ab46ea4688cb6e1628bace8eb38623",
+  "modules": [
+    {
+      "module": "UI01",
+      "issue": 90,
+      "design": {
+        "source": "docs/design/studio/UI01.md",
+        "wireframe": "docs/design/studio/drafts/UI01-wire.svg",
+        "study": "docs/design/studio/review/UI01/shell-study.svg",
+        "sourceHash": "bb0198900fea26130516512cc1d6070d38c93db7a798b5a49779e03bbf2f3080",
+        "wireHash": "be021db232d4b64e4dc55c3004be2d99a3a225b721d26164d03ec2e9f2a3a421",
+        "studyHash": "8a97f01601f25d92f0408e871a20565f532a60d41d8c1c7e15d980733a3c488d"
+      },
+      "approvedPilotFields": [
+        "F-REV"
+      ],
+      "baselinePorts": [
+        "API-WORKSPACE"
+      ],
+      "proposedPort": null,
+      "dependencies": [
+        {
+          "scope": "DS01",
+          "issue": 125
+        },
+        {
+          "scope": "DS02",
+          "issue": 126
+        },
+        {
+          "scope": "SP02",
+          "issue": 160
+        }
+      ],
+      "contractReview": "bindings/contract-review.md#per-module-field-projection-and-outstanding-owner-seams",
+      "stateReview": "interaction-state-review.md",
+      "cases": [
+        {
+          "requirement": "UI01-01",
+          "title": "Main navigation",
+          "designCase": "SP02-UI01-01",
+          "action": "Navigate each registered view",
+          "oracle": "Compare reference nav order, active ID and aria-current; unavailable route stays labeled",
+          "featureTests": [
+            "TC-UI01-A",
+            "TC-UI01-B"
+          ]
+        },
+        {
+          "requirement": "UI01-02",
+          "title": "Title and status bars",
+          "designCase": "SP02-UI01-02",
+          "action": "Read title and status",
+          "oracle": "Compare workspace identity and observed connection; unknown is not connected",
+          "featureTests": [
+            "TC-UI01-A",
+            "TC-UI01-B"
+          ]
+        },
+        {
+          "requirement": "UI01-03",
+          "title": "Workspace switching",
+          "designCase": "SP02-UI01-03",
+          "action": "Switch workspace by keyboard",
+          "oracle": "Accept only authorized returned revision; rejected switch retains prior context",
+          "featureTests": [
+            "TC-UI01-A",
+            "TC-UI01-B"
+          ]
+        },
+        {
+          "requirement": "UI01-04",
+          "title": "Resizable and dockable panels",
+          "designCase": "SP02-UI01-04",
+          "action": "Resize and dock two panes",
+          "oracle": "Pointer and arrow resizing clamp finite ratio; separator exposes value and no model mutation",
+          "featureTests": [
+            "TC-UI01-A",
+            "TC-UI01-B"
+          ]
+        },
+        {
+          "requirement": "UI01-05",
+          "title": "Split views and multi-tab restoration",
+          "designCase": "SP02-UI01-05",
+          "action": "Restore tabs after restart",
+          "oracle": "Order, active ID and revision equal saved valid state; disconnected display restores visible bounds",
+          "featureTests": [
+            "TC-UI01-A",
+            "TC-UI01-B"
+          ]
+        }
+      ],
+      "featureAcceptance": [
+        {
+          "id": "TC-UI01-A",
+          "oracle": "Resize two panes, reopen a saved layout and switch tabs by keyboard while the selected revision remains stable."
+        },
+        {
+          "id": "TC-UI01-B",
+          "oracle": "Discard a layout referring to a disconnected monitor and restore a visible window."
+        }
+      ],
+      "disposition": "Reviewed proposal; feature-owner payload/approval gates remain; no execution claim"
+    },
+    {
+      "module": "UI02",
+      "issue": 91,
+      "design": {
+        "source": "docs/design/studio/UI02.md",
+        "wireframe": "docs/design/studio/drafts/UI02-wire.svg",
+        "study": "docs/design/studio/review/studies/UI02.svg",
+        "sourceHash": "60b5bc0b0400e2e115fc725835d354c4bcd867fec24940144176219fbbd7c29d",
+        "wireHash": "730b6bd830c9c620eb503559fa3d85455a053b73f824621c4cc9d00cf8666e03",
+        "studyHash": "681c454d8d700aeadfc10c1fee90264a3c3da1cbdd0e753b2034e42b4e420631"
+      },
+      "approvedPilotFields": [
+        "F-REV"
+      ],
+      "baselinePorts": [
+        "API-WORKSPACE"
+      ],
+      "proposedPort": null,
+      "dependencies": [
+        {
+          "scope": "UI01",
+          "issue": 90
+        },
+        {
+          "scope": "RT01",
+          "issue": 129
+        },
+        {
+          "scope": "SP02",
+          "issue": 160
+        }
+      ],
+      "contractReview": "bindings/contract-review.md#per-module-field-projection-and-outstanding-owner-seams",
+      "stateReview": "interaction-state-review.md",
+      "cases": [
+        {
+          "requirement": "UI02-01",
+          "title": "Create and open workspaces",
+          "designCase": "SP02-UI02-01",
+          "action": "Create and open explicit path",
+          "oracle": "Reject non-workspace directory without explicit import; reopen exact manifest",
+          "featureTests": [
+            "TC-UI02-A",
+            "TC-UI02-B"
+          ]
+        },
+        {
+          "requirement": "UI02-02",
+          "title": "Recent workspaces",
+          "designCase": "SP02-UI02-02",
+          "action": "Choose recent workspace",
+          "oracle": "History contains no credentials; missing path remains unavailable and removable",
+          "featureTests": [
+            "TC-UI02-A",
+            "TC-UI02-B"
+          ]
+        },
+        {
+          "requirement": "UI02-03",
+          "title": "Local and remote connections",
+          "designCase": "SP02-UI02-03",
+          "action": "Switch local and remote mode",
+          "oracle": "Local works offline; remote denial does not fall back to unrelated local data",
+          "featureTests": [
+            "TC-UI02-A",
+            "TC-UI02-B"
+          ]
+        },
+        {
+          "requirement": "UI02-04",
+          "title": "Workspace settings",
+          "designCase": "SP02-UI02-04",
+          "action": "Edit workspace settings",
+          "oracle": "Versioned validation failure retains previous effective configuration",
+          "featureTests": [
+            "TC-UI02-A",
+            "TC-UI02-B"
+          ]
+        },
+        {
+          "requirement": "UI02-05",
+          "title": "Backup and recovery",
+          "designCase": "SP02-UI02-05",
+          "action": "Backup and restore into new directory",
+          "oracle": "Compare original and restored revision/evidence digests; incompatible backup never replaces current data",
+          "featureTests": [
+            "TC-UI02-A",
+            "TC-UI02-B"
+          ]
+        }
+      ],
+      "featureAcceptance": [
+        {
+          "id": "TC-UI02-A",
+          "oracle": "Create a local workspace, back it up, restore into another directory and compare revision and evidence digests."
+        },
+        {
+          "id": "TC-UI02-B",
+          "oracle": "Refuse an incompatible backup before replacing current data."
+        }
+      ],
+      "disposition": "Reviewed proposal; feature-owner payload/approval gates remain; no execution claim"
+    },
+    {
+      "module": "UI03",
+      "issue": 92,
+      "design": {
+        "source": "docs/design/studio/UI03.md",
+        "wireframe": "docs/design/studio/drafts/UI03-wire.svg",
+        "study": "docs/design/studio/review/studies/UI03.svg",
+        "sourceHash": "43518b0778691c9b7fc8371d00d2c80a2acd441f848736923caa3fa33b895319",
+        "wireHash": "82646e4ed2ac5b663ee7ff10f32968a948008cccf66cd2d62883208bf61b8f0f",
+        "studyHash": "b7ed050402429bcc13f01802c2ce2bb7917fc04858d28f1e1ed87d56599a4bba"
+      },
+      "approvedPilotFields": [
+        "F-RUN",
+        "F-TERM",
+        "F-EVID"
+      ],
+      "baselinePorts": [
+        "API-RUN"
+      ],
+      "proposedPort": null,
+      "dependencies": [
+        {
+          "scope": "UI01",
+          "issue": 90
+        },
+        {
+          "scope": "RT01",
+          "issue": 129
+        },
+        {
+          "scope": "SP02",
+          "issue": 160
+        }
+      ],
+      "contractReview": "bindings/contract-review.md#per-module-field-projection-and-outstanding-owner-seams",
+      "stateReview": "interaction-state-review.md",
+      "cases": [
+        {
+          "requirement": "UI03-01",
+          "title": "Engine health",
+          "designCase": "SP02-UI03-01",
+          "action": "Load engine health",
+          "oracle": "Unavailable source renders unknown and timestamp absent; never healthy by default",
+          "featureTests": [
+            "TC-UI03-A",
+            "TC-UI03-B"
+          ]
+        },
+        {
+          "requirement": "UI03-02",
+          "title": "Recent models and decisions",
+          "designCase": "SP02-UI03-02",
+          "action": "Open recent model/decision",
+          "oracle": "Selecting exact run and revision opens corresponding evidence; empty history distinct from failed lookup",
+          "featureTests": [
+            "TC-UI03-A",
+            "TC-UI03-B"
+          ]
+        },
+        {
+          "requirement": "UI03-03",
+          "title": "Active jobs",
+          "designCase": "SP02-UI03-03",
+          "action": "Inspect active jobs",
+          "oracle": "Display authoritative job state and stable run ID; failed subscription refreshes snapshot",
+          "featureTests": [
+            "TC-UI03-A",
+            "TC-UI03-B"
+          ]
+        },
+        {
+          "requirement": "UI03-04",
+          "title": "Measured performance",
+          "designCase": "SP02-UI03-04",
+          "action": "Inspect performance",
+          "oracle": "Measured elapsed/CPU/peak memory preserve units and null/zero distinction",
+          "featureTests": [
+            "TC-UI03-A",
+            "TC-UI03-B"
+          ]
+        },
+        {
+          "requirement": "UI03-05",
+          "title": "Integration health",
+          "designCase": "SP02-UI03-05",
+          "action": "Inspect integration health",
+          "oracle": "Unavailable/denied connector separated from disconnected; refresh only failed panel",
+          "featureTests": [
+            "TC-UI03-A",
+            "TC-UI03-B"
+          ]
+        }
+      ],
+      "featureAcceptance": [
+        {
+          "id": "TC-UI03-A",
+          "oracle": "Exercise an empty workspace and one with two runs. Follow a recent decision to its exact revision."
+        },
+        {
+          "id": "TC-UI03-B",
+          "oracle": "Show an unknown health or measurement state when a source is unavailable."
+        }
+      ],
+      "disposition": "Reviewed proposal; feature-owner payload/approval gates remain; no execution claim"
+    },
+    {
+      "module": "UI04",
+      "issue": 93,
+      "design": {
+        "source": "docs/design/studio/UI04.md",
+        "wireframe": "docs/design/studio/drafts/UI04-wire.svg",
+        "study": "docs/design/studio/review/studies/UI04.svg",
+        "sourceHash": "17eba3d679e55c062dbb59a941e38f65b449366f0f778a6a0a3e967f0266eee9",
+        "wireHash": "5c114671a90c1bde2f46e3e70d5ac7b1cf25e00b103ab3e4a1a4b0fc1085c371",
+        "studyHash": "4d40b5e9aadd1356aedccfb0e1836b6bbfb816d5755e72b919b0a3a304870296"
+      },
+      "approvedPilotFields": [
+        "F-REV",
+        "F-MACHINE",
+        "F-OP"
+      ],
+      "baselinePorts": [
+        "API-MODEL"
+      ],
+      "proposedPort": null,
+      "dependencies": [
+        {
+          "scope": "UI01",
+          "issue": 90
+        },
+        {
+          "scope": "M01",
+          "issue": 14
+        },
+        {
+          "scope": "M09",
+          "issue": 22
+        },
+        {
+          "scope": "SP02",
+          "issue": 160
+        }
+      ],
+      "contractReview": "bindings/contract-review.md#per-module-field-projection-and-outstanding-owner-seams",
+      "stateReview": "interaction-state-review.md",
+      "cases": [
+        {
+          "requirement": "UI04-01",
+          "title": "Drag-and-drop editing",
+          "designCase": "SP02-UI04-01",
+          "action": "Add model element by drag and keyboard",
+          "oracle": "Equivalent normalized Batch output; keyboard path needs no pointer",
+          "featureTests": [
+            "TC-UI04-A",
+            "TC-UI04-B"
+          ]
+        },
+        {
+          "requirement": "UI04-02",
+          "title": "Resources and variables",
+          "designCase": "SP02-UI04-02",
+          "action": "Edit resources and variables",
+          "oracle": "Type IDs resolve, exact bounds and source spans preserved; invalid reference blocks publication",
+          "featureTests": [
+            "TC-UI04-A",
+            "TC-UI04-B"
+          ]
+        },
+        {
+          "requirement": "UI04-03",
+          "title": "Constraints and objectives",
+          "designCase": "SP02-UI04-03",
+          "action": "Connect constraints and objectives",
+          "oracle": "Boolean predicates and complete expression incidence retained; no dangling operand accepted",
+          "featureTests": [
+            "TC-UI04-A",
+            "TC-UI04-B"
+          ]
+        },
+        {
+          "requirement": "UI04-04",
+          "title": "Live validation",
+          "designCase": "SP02-UI04-04",
+          "action": "Validate during edits",
+          "oracle": "Stale validation is discarded; invalid draft never mutates saved revision",
+          "featureTests": [
+            "TC-UI04-A",
+            "TC-UI04-B"
+          ]
+        }
+      ],
+      "featureAcceptance": [
+        {
+          "id": "TC-UI04-A",
+          "oracle": "Build the Batch example by pointer and keyboard, then compare normalized output with the DSL fixture."
+        },
+        {
+          "id": "TC-UI04-B",
+          "oracle": "Leave the saved revision intact on a dangling variable reference."
+        }
+      ],
+      "disposition": "Reviewed proposal; feature-owner payload/approval gates remain; no execution claim"
+    },
+    {
+      "module": "UI05",
+      "issue": 94,
+      "design": {
+        "source": "docs/design/studio/UI05.md",
+        "wireframe": "docs/design/studio/drafts/UI05-wire.svg",
+        "study": "docs/design/references/01-WOW-DI-Studio.svg",
+        "sourceHash": "c8768d9522ebde80bd3c59111247165ffda6b695ce4b12d3735f53be3e7f736f",
+        "wireHash": "657e911f1989c194399a130aa2bac395606913055bcc0ac441cd94db11b53206",
+        "studyHash": "8e98a4c893507fc50f0a155b13960148644911161f7fc0a38a82b1526a1c042d"
+      },
+      "approvedPilotFields": [
+        "F-REV",
+        "F-MACHINE",
+        "F-OP"
+      ],
+      "baselinePorts": [
+        "API-GRAPH"
+      ],
+      "proposedPort": null,
+      "dependencies": [
+        {
+          "scope": "UI01",
+          "issue": 90
+        },
+        {
+          "scope": "M01",
+          "issue": 14
+        },
+        {
+          "scope": "M02",
+          "issue": 15
+        },
+        {
+          "scope": "SP02",
+          "issue": 160
+        }
+      ],
+      "contractReview": "bindings/contract-review.md#per-module-field-projection-and-outstanding-owner-seams",
+      "stateReview": "interaction-state-review.md",
+      "cases": [
+        {
+          "requirement": "UI05-01",
+          "title": "Hypergraph incidence",
+          "designCase": "SP02-UI05-01",
+          "action": "Select three-variable hyperedge",
+          "oracle": "Owner and every operand accessible in table and graph; compare snapshot incidence",
+          "featureTests": [
+            "TC-UI05-A",
+            "TC-UI05-B"
+          ]
+        },
+        {
+          "requirement": "UI05-02",
+          "title": "Zoom and pan",
+          "designCase": "SP02-UI05-02",
+          "action": "Zoom and pan by pointer and keyboard",
+          "oracle": "Viewport changes only; selected IDs and graph revision unchanged",
+          "featureTests": [
+            "TC-UI05-A",
+            "TC-UI05-B"
+          ]
+        },
+        {
+          "requirement": "UI05-03",
+          "title": "Node search",
+          "designCase": "SP02-UI05-03",
+          "action": "Search stable node ID",
+          "oracle": "Ordinal ID exact match retained; no-result distinct from unknown revision",
+          "featureTests": [
+            "TC-UI05-A",
+            "TC-UI05-B"
+          ]
+        },
+        {
+          "requirement": "UI05-04",
+          "title": "Edge filtering",
+          "designCase": "SP02-UI05-04",
+          "action": "Filter edge kind",
+          "oracle": "Underlying graph query and incidence unchanged; clear restores visible selection",
+          "featureTests": [
+            "TC-UI05-A",
+            "TC-UI05-B"
+          ]
+        },
+        {
+          "requirement": "UI05-05",
+          "title": "Dependency tracing",
+          "designCase": "SP02-UI05-05",
+          "action": "Trace dependency",
+          "oracle": "Compare affected IDs against authoritative graph queries, not visual adjacency",
+          "featureTests": [
+            "TC-UI05-A",
+            "TC-UI05-B"
+          ]
+        },
+        {
+          "requirement": "UI05-06",
+          "title": "Impact analysis",
+          "designCase": "SP02-UI05-06",
+          "action": "Inspect cross-revision impact",
+          "oracle": "New coupling/deleted edges included in union traversal; different tenant rejected",
+          "featureTests": [
+            "TC-UI05-A",
+            "TC-UI05-B"
+          ]
+        },
+        {
+          "requirement": "UI05-07",
+          "title": "Provenance",
+          "designCase": "SP02-UI05-07",
+          "action": "Open provenance",
+          "oracle": "Show source key, record, mapping version and instant from exact snapshot",
+          "featureTests": [
+            "TC-UI05-A",
+            "TC-UI05-B"
+          ]
+        },
+        {
+          "requirement": "UI05-08",
+          "title": "Revision comparison",
+          "designCase": "SP02-UI05-08",
+          "action": "Compare two revisions",
+          "oracle": "Deleted entity/relationship remains inspectable; same ID with changed source marked changed",
+          "featureTests": [
+            "TC-UI05-A",
+            "TC-UI05-B"
+          ]
+        }
+      ],
+      "featureAcceptance": [
+        {
+          "id": "TC-UI05-A",
+          "oracle": "Select a three-variable constraint, filter an edge and compare before/after reachability against the unfiltered graph queries."
+        },
+        {
+          "id": "TC-UI05-B",
+          "oracle": "Deletion must remain visible in the revision diff. Filtering is presentation-only."
+        }
+      ],
+      "disposition": "Reviewed proposal; feature-owner payload/approval gates remain; no execution claim"
+    },
+    {
+      "module": "UI06",
+      "issue": 95,
+      "design": {
+        "source": "docs/design/studio/UI06.md",
+        "wireframe": "docs/design/studio/drafts/UI06-wire.svg",
+        "study": "docs/design/studio/review/studies/UI06.svg",
+        "sourceHash": "c70f53e3ee20c7d947a5e97fa4538a22a8eca524b8296a673078d82a359de04a",
+        "wireHash": "499f9c42827e239b92bd592aaa0e099a5d3af1ab1be2b8a9ef637fba1d24729b",
+        "studyHash": "4d46a05b918621e959da7c42826990eaf2228a0af8e72be065b60eb63c5c3548"
+      },
+      "approvedPilotFields": [
+        "F-REV"
+      ],
+      "baselinePorts": [
+        "API-MODEL"
+      ],
+      "proposedPort": null,
+      "dependencies": [
+        {
+          "scope": "UI01",
+          "issue": 90
+        },
+        {
+          "scope": "M06",
+          "issue": 19
+        },
+        {
+          "scope": "M07",
+          "issue": 20
+        },
+        {
+          "scope": "SP02",
+          "issue": 160
+        }
+      ],
+      "contractReview": "bindings/contract-review.md#per-module-field-projection-and-outstanding-owner-seams",
+      "stateReview": "interaction-state-review.md",
+      "cases": [
+        {
+          "requirement": "UI06-01",
+          "title": "Syntax highlighting",
+          "designCase": "SP02-UI06-01",
+          "action": "Highlight syntax",
+          "oracle": "Token spans come from language service; unknown token remains text, no execution",
+          "featureTests": [
+            "TC-UI06-A",
+            "TC-UI06-B"
+          ]
+        },
+        {
+          "requirement": "UI06-02",
+          "title": "Autocompletion",
+          "designCase": "SP02-UI06-02",
+          "action": "Invoke completion by keyboard",
+          "oracle": "Suggestions match current document revision and position; Escape restores editor",
+          "featureTests": [
+            "TC-UI06-A",
+            "TC-UI06-B"
+          ]
+        },
+        {
+          "requirement": "UI06-03",
+          "title": "Source-span diagnostics",
+          "designCase": "SP02-UI06-03",
+          "action": "Navigate source diagnostic",
+          "oracle": "UTF-16 half-open span points to exact frozen source/edit, including Arabic and surrogate pairs",
+          "featureTests": [
+            "TC-UI06-A",
+            "TC-UI06-B"
+          ]
+        },
+        {
+          "requirement": "UI06-04",
+          "title": "Formatting",
+          "designCase": "SP02-UI06-04",
+          "action": "Format source",
+          "oracle": "Compare typed trees before/after; failure retains original text and cursor",
+          "featureTests": [
+            "TC-UI06-A",
+            "TC-UI06-B"
+          ]
+        },
+        {
+          "requirement": "UI06-05",
+          "title": "Validation and live compilation",
+          "designCase": "SP02-UI06-05",
+          "action": "Live compile two overlapping edits",
+          "oracle": "Older response ignored; invalid source stays draft, successful compile publishes only explicitly",
+          "featureTests": [
+            "TC-UI06-A",
+            "TC-UI06-B"
+          ]
+        }
+      ],
+      "featureAcceptance": [
+        {
+          "id": "TC-UI06-A",
+          "oracle": "Edit a symbol in Batch, navigate to its exact diagnostic, repair the edit and compare formatted and original typed trees."
+        },
+        {
+          "id": "TC-UI06-B",
+          "oracle": "Discard stale diagnostics arriving after a newer edit."
+        }
+      ],
+      "disposition": "Reviewed proposal; feature-owner payload/approval gates remain; no execution claim"
+    },
+    {
+      "module": "UI07",
+      "issue": 96,
+      "design": {
+        "source": "docs/design/studio/UI07.md",
+        "wireframe": "docs/design/studio/drafts/UI07-wire.svg",
+        "study": "docs/design/studio/review/studies/UI07.svg",
+        "sourceHash": "b26c418a58585f9f3e6e51e2f7795bf4db3e38d52f46a43c092c3975c97b4a0c",
+        "wireHash": "ded0f5807548eed0a35ed60a9cd7a72438c25cba19c581942d085cbc41a1149c",
+        "studyHash": "ecab567ab7e103fdc5229e17773d7fb22971a8e802c2ed79987acb73e088f0d5"
+      },
+      "approvedPilotFields": [
+        "F-REV",
+        "F-DURATION"
+      ],
+      "baselinePorts": [
+        "API-MODEL"
+      ],
+      "proposedPort": null,
+      "dependencies": [
+        {
+          "scope": "UI04",
+          "issue": 93
+        },
+        {
+          "scope": "M04",
+          "issue": 17
+        },
+        {
+          "scope": "SP02",
+          "issue": 160
+        }
+      ],
+      "contractReview": "bindings/contract-review.md#per-module-field-projection-and-outstanding-owner-seams",
+      "stateReview": "interaction-state-review.md",
+      "cases": [
+        {
+          "requirement": "UI07-01",
+          "title": "Hard and soft constraints",
+          "designCase": "SP02-UI07-01",
+          "action": "Toggle hard/soft",
+          "oracle": "Hard has no penalty; soft positive exact penalty, reject zero or missing",
+          "featureTests": [
+            "TC-UI07-A",
+            "TC-UI07-B"
+          ]
+        },
+        {
+          "requirement": "UI07-02",
+          "title": "Expressions",
+          "designCase": "SP02-UI07-02",
+          "action": "Edit expression",
+          "oracle": "Predicate resolves to Boolean DAG; reject wrong arity, cycle or dangling expression",
+          "featureTests": [
+            "TC-UI07-A",
+            "TC-UI07-B"
+          ]
+        },
+        {
+          "requirement": "UI07-03",
+          "title": "Units and bounds",
+          "designCase": "SP02-UI07-03",
+          "action": "Change units and bounds",
+          "oracle": "Equivalent capacity in approved units matches normalized value and inclusivity; incompatible dimension rejected",
+          "featureTests": [
+            "TC-UI07-A",
+            "TC-UI07-B"
+          ]
+        },
+        {
+          "requirement": "UI07-04",
+          "title": "Conflict detection",
+          "designCase": "SP02-UI07-04",
+          "action": "Inspect conflict",
+          "oracle": "Only supporting evidence permits proven label; unsupported check is unavailable",
+          "featureTests": [
+            "TC-UI07-A",
+            "TC-UI07-B"
+          ]
+        }
+      ],
+      "featureAcceptance": [
+        {
+          "id": "TC-UI07-A",
+          "oracle": "Save an equivalent capacity expression in two units and compare normalized quantities and bound inclusivity."
+        },
+        {
+          "id": "TC-UI07-B",
+          "oracle": "Reject incompatible dimensions. Label conflicts as proven only with supporting evidence."
+        }
+      ],
+      "disposition": "Reviewed proposal; feature-owner payload/approval gates remain; no execution claim"
+    },
+    {
+      "module": "UI08",
+      "issue": 97,
+      "design": {
+        "source": "docs/design/studio/UI08.md",
+        "wireframe": "docs/design/studio/drafts/UI08-wire.svg",
+        "study": "docs/design/studio/review/studies/UI08.svg",
+        "sourceHash": "10ffb00a907f7a98c7690b2c0f3a25eba83ef0b66aa5914901f588353c31bd35",
+        "wireHash": "505fd6264227dcffeb202d41e79dfddba411d1fc349c56105935426b9ad4269a",
+        "studyHash": "500ce52bef1d095f93d743c8aea88877933032cb1f4fca1a0e6ec2b9de477ddd"
+      },
+      "approvedPilotFields": [
+        "F-REV",
+        "F-WEIGHT",
+        "F-OBJ"
+      ],
+      "baselinePorts": [
+        "API-MODEL"
+      ],
+      "proposedPort": null,
+      "dependencies": [
+        {
+          "scope": "UI04",
+          "issue": 93
+        },
+        {
+          "scope": "NUM02",
+          "issue": 135
+        },
+        {
+          "scope": "SP02",
+          "issue": 160
+        }
+      ],
+      "contractReview": "bindings/contract-review.md#per-module-field-projection-and-outstanding-owner-seams",
+      "stateReview": "interaction-state-review.md",
+      "cases": [
+        {
+          "requirement": "UI08-01",
+          "title": "Minimize and maximize",
+          "designCase": "SP02-UI08-01",
+          "action": "Reverse goal direction",
+          "oracle": "Canonical Minimize/Maximize retained; compare known assignment in correct direction",
+          "featureTests": [
+            "TC-UI08-A",
+            "TC-UI08-B"
+          ]
+        },
+        {
+          "requirement": "UI08-02",
+          "title": "Weights",
+          "designCase": "SP02-UI08-02",
+          "action": "Edit objective weight",
+          "oracle": "Reject nonpositive UDIR weight; preserve nonnegative source tardiness coefficient separately",
+          "featureTests": [
+            "TC-UI08-A",
+            "TC-UI08-B"
+          ]
+        },
+        {
+          "requirement": "UI08-03",
+          "title": "Lexicographic priority",
+          "designCase": "SP02-UI08-03",
+          "action": "Reorder lexicographic goals",
+          "oracle": "Unique positive priorities; duplicate priority rejected without changing saved revision",
+          "featureTests": [
+            "TC-UI08-A",
+            "TC-UI08-B"
+          ]
+        },
+        {
+          "requirement": "UI08-04",
+          "title": "Multi-objective models",
+          "designCase": "SP02-UI08-04",
+          "action": "Inspect multi-objective policy",
+          "oracle": "Vector shown in own units; unsupported Pareto policy unavailable, no scalar aggregation",
+          "featureTests": [
+            "TC-UI08-A",
+            "TC-UI08-B"
+          ]
+        },
+        {
+          "requirement": "UI08-05",
+          "title": "Contribution preview",
+          "designCase": "SP02-UI08-05",
+          "action": "Preview contribution",
+          "oracle": "Compare known assignment with owner evaluated vector; unavailable evaluation remains null",
+          "featureTests": [
+            "TC-UI08-A",
+            "TC-UI08-B"
+          ]
+        }
+      ],
+      "featureAcceptance": [
+        {
+          "id": "TC-UI08-A",
+          "oracle": "Reverse one goal direction, adjust a weight and compare a known assignment against the displayed objective vector."
+        },
+        {
+          "id": "TC-UI08-B",
+          "oracle": "Reject duplicate priorities in the v0 language and disable unsupported Pareto requests."
+        }
+      ],
+      "disposition": "Reviewed proposal; feature-owner payload/approval gates remain; no execution claim"
+    },
+    {
+      "module": "UI09",
+      "issue": 98,
+      "design": {
+        "source": "docs/design/studio/UI09.md",
+        "wireframe": "docs/design/studio/drafts/UI09-wire.svg",
+        "study": "docs/design/studio/review/studies/UI09.svg",
+        "sourceHash": "6b1d6256803cc9a3288bf1e0d555320a9ec462c5ee703800e90d1147f527eeaa",
+        "wireHash": "2025f8cd59ec9bd598085a550e939c12d675dae8009907fcc9f3b2ddae244bc7",
+        "studyHash": "bae80d6d2d9a03077762fce6dcc45cab7c1266052878a023a91af00e6ee662a2"
+      },
+      "approvedPilotFields": [
+        "F-REV"
+      ],
+      "baselinePorts": [
+        "API-MODEL"
+      ],
+      "proposedPort": null,
+      "dependencies": [
+        {
+          "scope": "UI06",
+          "issue": 95
+        },
+        {
+          "scope": "M08",
+          "issue": 21
+        },
+        {
+          "scope": "M12",
+          "issue": 25
+        },
+        {
+          "scope": "SP02",
+          "issue": 160
+        }
+      ],
+      "contractReview": "bindings/contract-review.md#per-module-field-projection-and-outstanding-owner-seams",
+      "stateReview": "interaction-state-review.md",
+      "cases": [
+        {
+          "requirement": "UI09-01",
+          "title": "Source AST",
+          "designCase": "SP02-UI09-01",
+          "action": "Inspect source AST",
+          "oracle": "Exact source ID/span retained; unavailable parser AST clearly labeled",
+          "featureTests": [
+            "TC-UI09-A",
+            "TC-UI09-B"
+          ]
+        },
+        {
+          "requirement": "UI09-02",
+          "title": "Typed UDIR",
+          "designCase": "SP02-UI09-02",
+          "action": "Inspect typed UDIR",
+          "oracle": "Show semantic profile and exact canonical values; no rounding",
+          "featureTests": [
+            "TC-UI09-A",
+            "TC-UI09-B"
+          ]
+        },
+        {
+          "requirement": "UI09-03",
+          "title": "Normalized model",
+          "designCase": "SP02-UI09-03",
+          "action": "Inspect normalized model",
+          "oracle": "Only owner-provided normalization; unavailable stage not synthesized",
+          "featureTests": [
+            "TC-UI09-A",
+            "TC-UI09-B"
+          ]
+        },
+        {
+          "requirement": "UI09-04",
+          "title": "Solver representation",
+          "designCase": "SP02-UI09-04",
+          "action": "Inspect solver representation",
+          "oracle": "Unsupported adapter lowering returns unavailable, no fabricated rows",
+          "featureTests": [
+            "TC-UI09-A",
+            "TC-UI09-B"
+          ]
+        },
+        {
+          "requirement": "UI09-05",
+          "title": "Transformation ledger",
+          "designCase": "SP02-UI09-05",
+          "action": "Follow transformation ledger",
+          "oracle": "Inspect original and transformed identity and reconstruction evidence",
+          "featureTests": [
+            "TC-UI09-A",
+            "TC-UI09-B"
+          ]
+        },
+        {
+          "requirement": "UI09-06",
+          "title": "Source mapping",
+          "designCase": "SP02-UI09-06",
+          "action": "Navigate mapped source",
+          "oracle": "UTF-16 source span resolves within exact frozen source; absent mapping explicit",
+          "featureTests": [
+            "TC-UI09-A",
+            "TC-UI09-B"
+          ]
+        }
+      ],
+      "featureAcceptance": [
+        {
+          "id": "TC-UI09-A",
+          "oracle": "Follow one normalized row across all views back to its original span and inspect the reconstruction rule."
+        },
+        {
+          "id": "TC-UI09-B",
+          "oracle": "Display unavailable lowering for an unsupported backend."
+        }
+      ],
+      "disposition": "Reviewed proposal; feature-owner payload/approval gates remain; no execution claim"
+    },
+    {
+      "module": "UI10",
+      "issue": 99,
+      "design": {
+        "source": "docs/design/studio/UI10.md",
+        "wireframe": "docs/design/studio/drafts/UI10-wire.svg",
+        "study": "docs/design/studio/review/studies/UI10.svg",
+        "sourceHash": "e2a7a952823b961a12c1ae16e2c67c681d504c93545bdb06570d54a70fa596bb",
+        "wireHash": "ebecac59f1fdb8c9084babe6aaf68c2eb69d8ea5c29ec766985abe7cfe84ef04",
+        "studyHash": "553d063bffbc167daec911748bb11081fdd83b60b1bcf282f5637aeb63ffb7b3"
+      },
+      "approvedPilotFields": [
+        "F-REV",
+        "F-CPU",
+        "F-MEM"
+      ],
+      "baselinePorts": [
+        "API-SOLVE"
+      ],
+      "proposedPort": null,
+      "dependencies": [
+        {
+          "scope": "UI01",
+          "issue": 90
+        },
+        {
+          "scope": "S06",
+          "issue": 31
+        },
+        {
+          "scope": "S07",
+          "issue": 32
+        },
+        {
+          "scope": "SP02",
+          "issue": 160
+        }
+      ],
+      "contractReview": "bindings/contract-review.md#per-module-field-projection-and-outstanding-owner-seams",
+      "stateReview": "interaction-state-review.md",
+      "cases": [
+        {
+          "requirement": "UI10-01",
+          "title": "Solver capabilities and selection",
+          "designCase": "SP02-UI10-01",
+          "action": "Choose auto or explicit profile",
+          "oracle": "Compare feature tokens, domains, horizon and exact coefficient constraints; explain ineligibility",
+          "featureTests": [
+            "TC-UI10-A",
+            "TC-UI10-B"
+          ]
+        },
+        {
+          "requirement": "UI10-02",
+          "title": "Time, CPU and memory budgets",
+          "designCase": "SP02-UI10-02",
+          "action": "Set requested time CPU memory limits",
+          "oracle": "Round-trip owner-approved units and values; reject invalid limits before run; measured counters distinct",
+          "featureTests": [
+            "TC-UI10-A",
+            "TC-UI10-B"
+          ]
+        },
+        {
+          "requirement": "UI10-03",
+          "title": "Parallelism and options",
+          "designCase": "SP02-UI10-03",
+          "action": "Set parallelism and options",
+          "oracle": "Requested threads obey MaxThreads; unsupported adapter option rejected; no run created",
+          "featureTests": [
+            "TC-UI10-A",
+            "TC-UI10-B"
+          ]
+        }
+      ],
+      "featureAcceptance": [
+        {
+          "id": "TC-UI10-A",
+          "oracle": "Select auto on a finite interval model, explain eligibility and round-trip its budget through the planner."
+        },
+        {
+          "id": "TC-UI10-B",
+          "oracle": "Reject options outside the selected adapter manifest before creating a run."
+        }
+      ],
+      "disposition": "Reviewed proposal; feature-owner payload/approval gates remain; no execution claim"
+    },
+    {
+      "module": "UI11",
+      "issue": 100,
+      "design": {
+        "source": "docs/design/studio/UI11.md",
+        "wireframe": "docs/design/studio/drafts/UI11-wire.svg",
+        "study": "docs/design/studio/review/studies/UI11.svg",
+        "sourceHash": "feba5bc545566b0061243f4d2367659924f820873934c19fbe8259bbdc5c9f92",
+        "wireHash": "0a77d533725613d8270b7b35b887ae230f59d44da87ac2e037853426e835e522",
+        "studyHash": "1796a3b97cf26e7312ca8d707f9e239932ae53f590a6bb97613515f8b5c6cd26"
+      },
+      "approvedPilotFields": [
+        "F-RUN",
+        "F-ELAPSED",
+        "F-OBJ",
+        "F-BOUND",
+        "F-TERM"
+      ],
+      "baselinePorts": [
+        "API-RUN"
+      ],
+      "proposedPort": null,
+      "dependencies": [
+        {
+          "scope": "UI01",
+          "issue": 90
+        },
+        {
+          "scope": "S07",
+          "issue": 32
+        },
+        {
+          "scope": "S10",
+          "issue": 35
+        },
+        {
+          "scope": "SP02",
+          "issue": 160
+        }
+      ],
+      "contractReview": "bindings/contract-review.md#per-module-field-projection-and-outstanding-owner-seams",
+      "stateReview": "interaction-state-review.md",
+      "cases": [
+        {
+          "requirement": "UI11-01",
+          "title": "Live state and elapsed time",
+          "designCase": "SP02-UI11-01",
+          "action": "Read live status and elapsed",
+          "oracle": "Only observed events; unknown progress indeterminate and no synthetic percentage",
+          "featureTests": [
+            "TC-UI11-A",
+            "TC-UI11-B"
+          ]
+        },
+        {
+          "requirement": "UI11-02",
+          "title": "Measured CPU and memory",
+          "designCase": "SP02-UI11-02",
+          "action": "Read measured CPU and memory",
+          "oracle": "Nullable counters and process-tree scope preserved, explicit display units",
+          "featureTests": [
+            "TC-UI11-A",
+            "TC-UI11-B"
+          ]
+        },
+        {
+          "requirement": "UI11-03",
+          "title": "Incumbent, bound and gap",
+          "designCase": "SP02-UI11-03",
+          "action": "Inspect incumbent bound and gap",
+          "oracle": "Compare same objective stage, direction, units and evidence; absent bound gives no gap",
+          "featureTests": [
+            "TC-UI11-A",
+            "TC-UI11-B"
+          ]
+        },
+        {
+          "requirement": "UI11-04",
+          "title": "Cancellation",
+          "designCase": "SP02-UI11-04",
+          "action": "Cancel running job",
+          "oracle": "Await owner acknowledgement; terminal reason independent of mathematical status; preserve verified incumbent",
+          "featureTests": [
+            "TC-UI11-A",
+            "TC-UI11-B"
+          ]
+        },
+        {
+          "requirement": "UI11-05",
+          "title": "Solver transitions",
+          "designCase": "SP02-UI11-05",
+          "action": "Inspect solver transitions",
+          "oracle": "Use recorded events and solver identities; duplicates/out-of-order trigger proper reconciliation",
+          "featureTests": [
+            "TC-UI11-A",
+            "TC-UI11-B"
+          ]
+        },
+        {
+          "requirement": "UI11-06",
+          "title": "Convergence",
+          "designCase": "SP02-UI11-06",
+          "action": "Select convergence point",
+          "oracle": "Exact event ID and sequence preserved; missing observation/gap not interpolated",
+          "featureTests": [
+            "TC-UI11-A",
+            "TC-UI11-B"
+          ]
+        }
+      ],
+      "featureAcceptance": [
+        {
+          "id": "TC-UI11-A",
+          "oracle": "Replay events with an incumbent and absent bound. Show measured values and preserve the verified incumbent after cancellation."
+        },
+        {
+          "id": "TC-UI11-B",
+          "oracle": "Handle duplicate or out-of-order events and avoid synthetic percent completion."
+        }
+      ],
+      "disposition": "Reviewed proposal; feature-owner payload/approval gates remain; no execution claim"
+    },
+    {
+      "module": "UI12",
+      "issue": 101,
+      "design": {
+        "source": "docs/design/studio/UI12.md",
+        "wireframe": "docs/design/studio/drafts/UI12-wire.svg",
+        "study": "docs/design/studio/review/studies/UI12.svg",
+        "sourceHash": "7c4d91ae6a7706c32b1fb03136cfd876829501ca9c4d35726b04b11d692de82d",
+        "wireHash": "e8050af352584ecc62a785a903c4b04fe29c3e5dccccca9bee76b23345ba2dc7",
+        "studyHash": "5aca97b5228c5a4f62dc691b3c8adadbe7591edaec9ee9a9e8d94543e504f2e6"
+      },
+      "approvedPilotFields": [
+        "F-REV",
+        "F-RUN",
+        "F-EVID"
+      ],
+      "baselinePorts": [
+        "API-RUN"
+      ],
+      "proposedPort": null,
+      "dependencies": [
+        {
+          "scope": "UI11",
+          "issue": 100
+        },
+        {
+          "scope": "X05",
+          "issue": 42
+        },
+        {
+          "scope": "SP02",
+          "issue": 160
+        }
+      ],
+      "contractReview": "bindings/contract-review.md#per-module-field-projection-and-outstanding-owner-seams",
+      "stateReview": "interaction-state-review.md",
+      "cases": [
+        {
+          "requirement": "UI12-01",
+          "title": "Backend-exposed search",
+          "designCase": "SP02-UI12-01",
+          "action": "Inspect backend-exposed search",
+          "oracle": "Only emitted search events; absence means unavailable, never synthetic tree",
+          "featureTests": [
+            "TC-UI12-A",
+            "TC-UI12-B"
+          ]
+        },
+        {
+          "requirement": "UI12-02",
+          "title": "Decomposition",
+          "designCase": "SP02-UI12-02",
+          "action": "Inspect decomposition",
+          "oracle": "Component identities and boundaries come from owner evidence, not visual grouping",
+          "featureTests": [
+            "TC-UI12-A",
+            "TC-UI12-B"
+          ]
+        },
+        {
+          "requirement": "UI12-03",
+          "title": "Incremental reoptimization",
+          "designCase": "SP02-UI12-03",
+          "action": "Inspect incremental reoptimization",
+          "oracle": "Disconnected edit linked to recorded input revision and observed reuse",
+          "featureTests": [
+            "TC-UI12-A",
+            "TC-UI12-B"
+          ]
+        },
+        {
+          "requirement": "UI12-04",
+          "title": "Reused and invalidated components",
+          "designCase": "SP02-UI12-04",
+          "action": "Inspect reused and invalidated components",
+          "oracle": "New coupling invalidates affected set; every claim has provenance",
+          "featureTests": [
+            "TC-UI12-A",
+            "TC-UI12-B"
+          ]
+        },
+        {
+          "requirement": "UI12-05",
+          "title": "Full-solve fallback",
+          "designCase": "SP02-UI12-05",
+          "action": "Inspect full-solve fallback",
+          "oracle": "Show actual reason and terminal evidence, not claimed speedup",
+          "featureTests": [
+            "TC-UI12-A",
+            "TC-UI12-B"
+          ]
+        },
+        {
+          "requirement": "UI12-06",
+          "title": "Algorithm comparison",
+          "designCase": "SP02-UI12-06",
+          "action": "Compare algorithm runs",
+          "oracle": "Same fixture/budget/scope and measured counters; incomparable comparison suppressed",
+          "featureTests": [
+            "TC-UI12-A",
+            "TC-UI12-B"
+          ]
+        }
+      ],
+      "featureAcceptance": [
+        {
+          "id": "TC-UI12-A",
+          "oracle": "Compare a disconnected edit and a new coupling edge. Link each reuse or fallback to its recorded evidence."
+        },
+        {
+          "id": "TC-UI12-B",
+          "oracle": "Display capability unavailable when native search events are absent."
+        }
+      ],
+      "disposition": "Reviewed proposal; feature-owner payload/approval gates remain; no execution claim"
+    },
+    {
+      "module": "UI13",
+      "issue": 102,
+      "design": {
+        "source": "docs/design/studio/UI13.md",
+        "wireframe": "docs/design/studio/drafts/UI13-wire.svg",
+        "study": "docs/design/studio/review/studies/UI13.svg",
+        "sourceHash": "1491fd269da7523837572ae0020f8b9f1f95918023956c1c9670cf35bb0527ee",
+        "wireHash": "4631e6be4e0f7f4606365218757cc49680ea0d3dcdc921e3587a72e06e0a3816",
+        "studyHash": "f7d85c7f4c4753a447175107a02a0d4c6d393c3d7aa2f29b39c487e0477cc736"
+      },
+      "approvedPilotFields": [
+        "F-REV",
+        "F-MACHINE",
+        "F-OBJ"
+      ],
+      "baselinePorts": [
+        "API-SCENARIO"
+      ],
+      "proposedPort": null,
+      "dependencies": [
+        {
+          "scope": "UI01",
+          "issue": 90
+        },
+        {
+          "scope": "A01",
+          "issue": 64
+        },
+        {
+          "scope": "SP02",
+          "issue": 160
+        }
+      ],
+      "contractReview": "bindings/contract-review.md#per-module-field-projection-and-outstanding-owner-seams",
+      "stateReview": "interaction-state-review.md",
+      "cases": [
+        {
+          "requirement": "UI13-01",
+          "title": "Baseline and alternative scenarios",
+          "designCase": "SP02-UI13-01",
+          "action": "Choose baseline and alternative",
+          "oracle": "Full immutable revision/run context retained; missing baseline prevents comparison",
+          "featureTests": [
+            "TC-UI13-A",
+            "TC-UI13-B"
+          ]
+        },
+        {
+          "requirement": "UI13-02",
+          "title": "Input changes",
+          "designCase": "SP02-UI13-02",
+          "action": "Inspect input delta",
+          "oracle": "Show changed source IDs and exact typed override values; cross-unit conversion explicit",
+          "featureTests": [
+            "TC-UI13-A",
+            "TC-UI13-B"
+          ]
+        },
+        {
+          "requirement": "UI13-03",
+          "title": "Decision changes",
+          "designCase": "SP02-UI13-03",
+          "action": "Inspect changed decisions",
+          "oracle": "Compare owner-provided assignments in compatible scope; failed alternative distinct from unchanged",
+          "featureTests": [
+            "TC-UI13-A",
+            "TC-UI13-B"
+          ]
+        },
+        {
+          "requirement": "UI13-04",
+          "title": "Cost and risk comparisons",
+          "designCase": "SP02-UI13-04",
+          "action": "Compare cost and risk",
+          "oracle": "Same objective units/currency and risk definition; no unsupported savings or probability claim",
+          "featureTests": [
+            "TC-UI13-A",
+            "TC-UI13-B"
+          ]
+        }
+      ],
+      "featureAcceptance": [
+        {
+          "id": "TC-UI13-A",
+          "oracle": "Compare two frozen revisions, show changed inputs and report comparable cost deltas with units."
+        },
+        {
+          "id": "TC-UI13-B",
+          "oracle": "Suppress savings on incompatible objectives or missing baselines."
+        }
+      ],
+      "disposition": "Reviewed proposal; feature-owner payload/approval gates remain; no execution claim"
+    },
+    {
+      "module": "UI14",
+      "issue": 103,
+      "design": {
+        "source": "docs/design/studio/UI14.md",
+        "wireframe": "docs/design/studio/drafts/UI14-wire.svg",
+        "study": "docs/design/studio/review/studies/UI14.svg",
+        "sourceHash": "61e21401b3f5fab51c700e6338129dd6f8fdc0500e1fe55004fdbf2b998275e1",
+        "wireHash": "7e31b87548f530b9744333b2c4db163dbb220b36c2fd7ca97e349adca7241648",
+        "studyHash": "12ccaacd1825ef7c1e5091013153f658e07c7278a9846c936817d230bc273e49"
+      },
+      "approvedPilotFields": [
+        "F-REV",
+        "F-OBJ"
+      ],
+      "baselinePorts": [
+        "API-SCENARIO"
+      ],
+      "proposedPort": "API-SIMULATION",
+      "dependencies": [
+        {
+          "scope": "UI01",
+          "issue": 90
+        },
+        {
+          "scope": "A04",
+          "issue": 67
+        },
+        {
+          "scope": "SP02",
+          "issue": 160
+        }
+      ],
+      "contractReview": "bindings/contract-review.md#per-module-field-projection-and-outstanding-owner-seams",
+      "stateReview": "interaction-state-review.md",
+      "cases": [
+        {
+          "requirement": "UI14-01",
+          "title": "Discrete-event simulation",
+          "designCase": "SP02-UI14-01",
+          "action": "Configure discrete-event replay",
+          "oracle": "Compare recorded event trace and model revision; no events fabricated",
+          "featureTests": [
+            "TC-UI14-A",
+            "TC-UI14-B"
+          ]
+        },
+        {
+          "requirement": "UI14-02",
+          "title": "Monte Carlo experiments",
+          "designCase": "SP02-UI14-02",
+          "action": "Run Monte Carlo experiment",
+          "oracle": "Compare actual sample count and quantiles against seeded owner result",
+          "featureTests": [
+            "TC-UI14-A",
+            "TC-UI14-B"
+          ]
+        },
+        {
+          "requirement": "UI14-03",
+          "title": "Configuration and seeds",
+          "designCase": "SP02-UI14-03",
+          "action": "Edit seed and budget",
+          "oracle": "Reject invalid parameters; same accepted config/seed retains replay settings",
+          "featureTests": [
+            "TC-UI14-A",
+            "TC-UI14-B"
+          ]
+        },
+        {
+          "requirement": "UI14-04",
+          "title": "Uncertainty and distributions",
+          "designCase": "SP02-UI14-04",
+          "action": "Inspect uncertainty distribution",
+          "oracle": "Show actual sample count and truncation/termination; unavailable distribution not zero",
+          "featureTests": [
+            "TC-UI14-A",
+            "TC-UI14-B"
+          ]
+        }
+      ],
+      "featureAcceptance": [
+        {
+          "id": "TC-UI14-A",
+          "oracle": "Replay identical seeds and compare quantiles, sample counts and event traces against recorded simulation output."
+        },
+        {
+          "id": "TC-UI14-B",
+          "oracle": "Reject invalid distribution parameters and disclose truncated runs."
+        }
+      ],
+      "disposition": "Reviewed proposal; feature-owner payload/approval gates remain; no execution claim"
+    },
+    {
+      "module": "UI15",
+      "issue": 104,
+      "design": {
+        "source": "docs/design/studio/UI15.md",
+        "wireframe": "docs/design/studio/drafts/UI15-wire.svg",
+        "study": "docs/design/studio/review/studies/UI15.svg",
+        "sourceHash": "2dad7cfc7131de7b52c39cfbc687ef76a77edf8f81275b5ce5f9378d03b46ac0",
+        "wireHash": "1d483dc6edeed0ac971116a64db8afa25a79c64f9b003a2f6d57f97d2dfc6e9c",
+        "studyHash": "2428da9c523ba5be8dd8ab1517e8b181a920f8ad952f5674087bea6ea7c88bd9"
+      },
+      "approvedPilotFields": [
+        "F-REV",
+        "F-MACHINE",
+        "F-OP",
+        "F-START",
+        "F-DURATION"
+      ],
+      "baselinePorts": [
+        "API-EVIDENCE"
+      ],
+      "proposedPort": null,
+      "dependencies": [
+        {
+          "scope": "UI01",
+          "issue": 90
+        },
+        {
+          "scope": "V03",
+          "issue": 50
+        },
+        {
+          "scope": "V04",
+          "issue": 51
+        },
+        {
+          "scope": "SP02",
+          "issue": 160
+        }
+      ],
+      "contractReview": "bindings/contract-review.md#per-module-field-projection-and-outstanding-owner-seams",
+      "stateReview": "interaction-state-review.md",
+      "cases": [
+        {
+          "requirement": "UI15-01",
+          "title": "Interactive Gantt",
+          "designCase": "SP02-UI15-01",
+          "action": "Select Gantt operation by keyboard",
+          "oracle": "Same selection in schedule table, half-open start/end and exact operation ID",
+          "featureTests": [
+            "TC-UI15-A",
+            "TC-UI15-B"
+          ]
+        },
+        {
+          "requirement": "UI15-02",
+          "title": "Machine calendars",
+          "designCase": "SP02-UI15-02",
+          "action": "Inspect machine calendar",
+          "oracle": "Use exact calendar and horizon origin; missing calendar unavailable",
+          "featureTests": [
+            "TC-UI15-A",
+            "TC-UI15-B"
+          ]
+        },
+        {
+          "requirement": "UI15-03",
+          "title": "Production orders",
+          "designCase": "SP02-UI15-03",
+          "action": "Inspect production order",
+          "oracle": "Resolve owner-provided order/operation identity and original release/due/duration",
+          "featureTests": [
+            "TC-UI15-A",
+            "TC-UI15-B"
+          ]
+        },
+        {
+          "requirement": "UI15-04",
+          "title": "Maintenance windows",
+          "designCase": "SP02-UI15-04",
+          "action": "Inspect maintenance window",
+          "oracle": "Half-open interval; reject reversed/overlapping downtime under owning rules",
+          "featureTests": [
+            "TC-UI15-A",
+            "TC-UI15-B"
+          ]
+        },
+        {
+          "requirement": "UI15-05",
+          "title": "Resource conflicts",
+          "designCase": "SP02-UI15-05",
+          "action": "Inspect resource conflict",
+          "oracle": "Original-model checks expose conflict; no infeasible plan rendered as verified feasible",
+          "featureTests": [
+            "TC-UI15-A",
+            "TC-UI15-B"
+          ]
+        },
+        {
+          "requirement": "UI15-06",
+          "title": "Alternatives",
+          "designCase": "SP02-UI15-06",
+          "action": "Compare alternative schedule",
+          "oracle": "Before/after outage uses frozen compatible revisions and evidence",
+          "featureTests": [
+            "TC-UI15-A",
+            "TC-UI15-B"
+          ]
+        }
+      ],
+      "featureAcceptance": [
+        {
+          "id": "TC-UI15-A",
+          "oracle": "Select an operation before and after an outage, confirm its half-open interval and expose its machine and original-model checks."
+        },
+        {
+          "id": "TC-UI15-B",
+          "oracle": "Handle overlapping downtime and blocked schedules without drawing a feasible plan."
+        }
+      ],
+      "disposition": "Reviewed proposal; feature-owner payload/approval gates remain; no execution claim"
+    },
+    {
+      "module": "UI16",
+      "issue": 105,
+      "design": {
+        "source": "docs/design/studio/UI16.md",
+        "wireframe": "docs/design/studio/drafts/UI16-wire.svg",
+        "study": "docs/design/studio/review/studies/UI16.svg",
+        "sourceHash": "db412aad00ecd08a2e25e1cf9ffc6f51e6c56e568e21e562755d34ec5daad685",
+        "wireHash": "47b204330d270c3bab4004ba2a3285984e63fd26de31ce877c41ede50487b552",
+        "studyHash": "d223c3899696322da846f5f9a31519136e9ea0f6a453e573b34ddf84c96cefa9"
+      },
+      "approvedPilotFields": [
+        "F-MACHINE",
+        "F-START",
+        "F-DURATION"
+      ],
+      "baselinePorts": [
+        "API-GRAPH"
+      ],
+      "proposedPort": "API-ALLOCATION",
+      "dependencies": [
+        {
+          "scope": "UI01",
+          "issue": 90
+        },
+        {
+          "scope": "V03",
+          "issue": 50
+        },
+        {
+          "scope": "SP02",
+          "issue": 160
+        }
+      ],
+      "contractReview": "bindings/contract-review.md#per-module-field-projection-and-outstanding-owner-seams",
+      "stateReview": "interaction-state-review.md",
+      "cases": [
+        {
+          "requirement": "UI16-01",
+          "title": "Utilization",
+          "designCase": "SP02-UI16-01",
+          "action": "Inspect utilization",
+          "oracle": "Reconcile occupied minutes and capacity; denominator zero yields unavailable",
+          "featureTests": [
+            "TC-UI16-A",
+            "TC-UI16-B"
+          ]
+        },
+        {
+          "requirement": "UI16-02",
+          "title": "Capacity analysis",
+          "designCase": "SP02-UI16-02",
+          "action": "Inspect capacity",
+          "oracle": "Same horizon and unit; missing capacity distinct from measured zero",
+          "featureTests": [
+            "TC-UI16-A",
+            "TC-UI16-B"
+          ]
+        },
+        {
+          "requirement": "UI16-03",
+          "title": "Bottlenecks",
+          "designCase": "SP02-UI16-03",
+          "action": "Inspect bottleneck",
+          "oracle": "Only owner-defined bottleneck criterion with provenance; no inferred mathematical cause",
+          "featureTests": [
+            "TC-UI16-A",
+            "TC-UI16-B"
+          ]
+        },
+        {
+          "requirement": "UI16-04",
+          "title": "Heatmaps",
+          "designCase": "SP02-UI16-04",
+          "action": "Read heatmap with keyboard",
+          "oracle": "Text/numeric equivalent of exact values and missing state; color not sole encoding",
+          "featureTests": [
+            "TC-UI16-A",
+            "TC-UI16-B"
+          ]
+        },
+        {
+          "requirement": "UI16-05",
+          "title": "Allocation networks",
+          "designCase": "SP02-UI16-05",
+          "action": "Inspect allocation network",
+          "oracle": "Select contributing operation and resource IDs; reconcile totals with owner records",
+          "featureTests": [
+            "TC-UI16-A",
+            "TC-UI16-B"
+          ]
+        }
+      ],
+      "featureAcceptance": [
+        {
+          "id": "TC-UI16-A",
+          "oracle": "Reconcile occupied machine minutes with capacity in the same frozen horizon and drill into each contributing operation."
+        },
+        {
+          "id": "TC-UI16-B",
+          "oracle": "Report unavailable utilization for zero capacity."
+        }
+      ],
+      "disposition": "Reviewed proposal; feature-owner payload/approval gates remain; no execution claim"
+    },
+    {
+      "module": "UI17",
+      "issue": 106,
+      "design": {
+        "source": "docs/design/studio/UI17.md",
+        "wireframe": "docs/design/studio/drafts/UI17-wire.svg",
+        "study": "docs/design/studio/review/studies/UI17.svg",
+        "sourceHash": "b09e905195f4e567a946d0e5fb8f1272137ea8f757d33c418da3e2a53834a2a3",
+        "wireHash": "d70d389cdeaa814ccbe1efd9d2074af92149ceb039311bb16d16e4ff39f9cbcf",
+        "studyHash": "4bb5c1f2a55d6d6cc9a7eb53ee8e581bad74f2e1c42524f22ed0927b2c592e4a"
+      },
+      "approvedPilotFields": [
+        "F-RUN",
+        "F-REV",
+        "F-STATUS",
+        "F-TERM",
+        "F-EVID"
+      ],
+      "baselinePorts": [
+        "API-EVIDENCE"
+      ],
+      "proposedPort": null,
+      "dependencies": [
+        {
+          "scope": "UI01",
+          "issue": 90
+        },
+        {
+          "scope": "S10",
+          "issue": 35
+        },
+        {
+          "scope": "SP02",
+          "issue": 160
+        }
+      ],
+      "contractReview": "bindings/contract-review.md#per-module-field-projection-and-outstanding-owner-seams",
+      "stateReview": "interaction-state-review.md",
+      "cases": [
+        {
+          "requirement": "UI17-01",
+          "title": "Math and verification status",
+          "designCase": "SP02-UI17-01",
+          "action": "Inspect mathematical and verification status",
+          "oracle": "Separate termination, adapter result and independent verifier; timeout may retain checked incumbent",
+          "featureTests": [
+            "TC-UI17-A",
+            "TC-UI17-B"
+          ]
+        },
+        {
+          "requirement": "UI17-02",
+          "title": "Evidence level",
+          "designCase": "SP02-UI17-02",
+          "action": "Inspect evidence level",
+          "oracle": "Distinguish SolverAttestation from IndependentCertificate and verified original checks",
+          "featureTests": [
+            "TC-UI17-A",
+            "TC-UI17-B"
+          ]
+        },
+        {
+          "requirement": "UI17-03",
+          "title": "Original constraint checks",
+          "designCase": "SP02-UI17-03",
+          "action": "Inspect original constraint rows",
+          "oracle": "Exact row identity/source span and original check outcome; missing row not pass",
+          "featureTests": [
+            "TC-UI17-A",
+            "TC-UI17-B"
+          ]
+        },
+        {
+          "requirement": "UI17-04",
+          "title": "Objective recalculation",
+          "designCase": "SP02-UI17-04",
+          "action": "Inspect recalculated objective",
+          "oracle": "Compare independent original objective in own units, exact representation and stage",
+          "featureTests": [
+            "TC-UI17-A",
+            "TC-UI17-B"
+          ]
+        },
+        {
+          "requirement": "UI17-05",
+          "title": "Certificates",
+          "designCase": "SP02-UI17-05",
+          "action": "Inspect certificate",
+          "oracle": "Absent certificate explicit; tampered/unsupported rejected without upgrading proof",
+          "featureTests": [
+            "TC-UI17-A",
+            "TC-UI17-B"
+          ]
+        },
+        {
+          "requirement": "UI17-06",
+          "title": "Audit history",
+          "designCase": "SP02-UI17-06",
+          "action": "Inspect audit history",
+          "oracle": "Authorized scoped history only; redact secrets, missing history unavailable",
+          "featureTests": [
+            "TC-UI17-A",
+            "TC-UI17-B"
+          ]
+        },
+        {
+          "requirement": "UI17-07",
+          "title": "Reproducibility",
+          "designCase": "SP02-UI17-07",
+          "action": "Export and replay",
+          "oracle": "Compare digest to immutable bytes/revision/run; reject mismatched frozen model",
+          "featureTests": [
+            "TC-UI17-A",
+            "TC-UI17-B"
+          ]
+        }
+      ],
+      "featureAcceptance": [
+        {
+          "id": "TC-UI17-A",
+          "oracle": "Open a timed-out run with verified incumbent and inspect source rows, objective and absent certificate separately."
+        },
+        {
+          "id": "TC-UI17-B",
+          "oracle": "Reject a bundle whose frozen model digest differs."
+        }
+      ],
+      "disposition": "Reviewed proposal; feature-owner payload/approval gates remain; no execution claim"
+    },
+    {
+      "module": "UI18",
+      "issue": 107,
+      "design": {
+        "source": "docs/design/studio/UI18.md",
+        "wireframe": "docs/design/studio/drafts/UI18-wire.svg",
+        "study": "docs/design/studio/review/studies/UI18.svg",
+        "sourceHash": "a56bfe0238d72cd1b929c1f83b810546f94d75372d900bd1064ca4661a9c4ec2",
+        "wireHash": "2fcf77890ec0e92daacb7b03092159d6dacf50496fd446ab668317c6c79defa8",
+        "studyHash": "a878a008de7dbe7c24a5890a39ff328468e196b1a892f24d59300759157ccb7c"
+      },
+      "approvedPilotFields": [
+        "F-REV",
+        "F-OBJ",
+        "F-BOUND",
+        "F-EVID"
+      ],
+      "baselinePorts": [
+        "API-EVIDENCE"
+      ],
+      "proposedPort": "API-EXPLAIN",
+      "dependencies": [
+        {
+          "scope": "UI17",
+          "issue": 106
+        },
+        {
+          "scope": "A02",
+          "issue": 65
+        },
+        {
+          "scope": "A03",
+          "issue": 66
+        },
+        {
+          "scope": "SP02",
+          "issue": 160
+        }
+      ],
+      "contractReview": "bindings/contract-review.md#per-module-field-projection-and-outstanding-owner-seams",
+      "stateReview": "interaction-state-review.md",
+      "cases": [
+        {
+          "requirement": "UI18-01",
+          "title": "Why and why-not",
+          "designCase": "SP02-UI18-01",
+          "action": "Ask why or why-not",
+          "oracle": "Claim links to recorded decision and evidence; no invented cause",
+          "featureTests": [
+            "TC-UI18-A",
+            "TC-UI18-B"
+          ]
+        },
+        {
+          "requirement": "UI18-02",
+          "title": "Binding constraints",
+          "designCase": "SP02-UI18-02",
+          "action": "Inspect binding constraints",
+          "oracle": "Show exact source rows and verified values; unsupported binding query unavailable",
+          "featureTests": [
+            "TC-UI18-A",
+            "TC-UI18-B"
+          ]
+        },
+        {
+          "requirement": "UI18-03",
+          "title": "Counterfactual comparison",
+          "designCase": "SP02-UI18-03",
+          "action": "Compare counterfactual",
+          "oracle": "Identical input and budget except explicit forced alternative; baseline remains intact",
+          "featureTests": [
+            "TC-UI18-A",
+            "TC-UI18-B"
+          ]
+        },
+        {
+          "requirement": "UI18-04",
+          "title": "Sensitivity",
+          "designCase": "SP02-UI18-04",
+          "action": "Inspect sensitivity",
+          "oracle": "Reject LP marginal values for unsupported discrete model; label eligible scope",
+          "featureTests": [
+            "TC-UI18-A",
+            "TC-UI18-B"
+          ]
+        },
+        {
+          "requirement": "UI18-05",
+          "title": "Infeasibility explanations",
+          "designCase": "SP02-UI18-05",
+          "action": "Inspect infeasibility explanation",
+          "oracle": "Only supported proof type labeled proven; heuristic warning clearly separate",
+          "featureTests": [
+            "TC-UI18-A",
+            "TC-UI18-B"
+          ]
+        }
+      ],
+      "featureAcceptance": [
+        {
+          "id": "TC-UI18-A",
+          "oracle": "Compare a forced alternative to the baseline using identical input and budget and trace any claim to its evidence."
+        },
+        {
+          "id": "TC-UI18-B",
+          "oracle": "Do not expose LP marginal values for unsupported discrete models."
+        }
+      ],
+      "disposition": "Reviewed proposal; feature-owner payload/approval gates remain; no execution claim"
+    },
+    {
+      "module": "UI19",
+      "issue": 108,
+      "design": {
+        "source": "docs/design/studio/UI19.md",
+        "wireframe": "docs/design/studio/drafts/UI19-wire.svg",
+        "study": "docs/design/studio/review/studies/UI19.svg",
+        "sourceHash": "5cc96c5ca2dff26fc7cbfc3e94fba5577c504e3fe23ef353bd785dc7500f0256",
+        "wireHash": "de6000f8158f13a5df7794ac5373e6aeb49f946fa98f851e6f9a103ae1cd4ff9",
+        "studyHash": "f4936f4168235920c652754fa0bac41d8c97c1471b0c731d0c1925e5c56a5bc4"
+      },
+      "approvedPilotFields": [
+        "F-RUN",
+        "F-CPU",
+        "F-MEM",
+        "F-ELAPSED"
+      ],
+      "baselinePorts": [
+        "API-RUN"
+      ],
+      "proposedPort": "API-BENCHMARK",
+      "dependencies": [
+        {
+          "scope": "UI01",
+          "issue": 90
+        },
+        {
+          "scope": "X07",
+          "issue": 44
+        },
+        {
+          "scope": "SP02",
+          "issue": 160
+        }
+      ],
+      "contractReview": "bindings/contract-review.md#per-module-field-projection-and-outstanding-owner-seams",
+      "stateReview": "interaction-state-review.md",
+      "cases": [
+        {
+          "requirement": "UI19-01",
+          "title": "Benchmark execution",
+          "designCase": "SP02-UI19-01",
+          "action": "Start benchmark execution",
+          "oracle": "Use authorized suite, explicit budget/seed/manifest; failed trials retained",
+          "featureTests": [
+            "TC-UI19-A",
+            "TC-UI19-B"
+          ]
+        },
+        {
+          "requirement": "UI19-02",
+          "title": "Solver comparison",
+          "designCase": "SP02-UI19-02",
+          "action": "Compare solver trials",
+          "oracle": "Pair same instance family and scope, report unmatched trials separately",
+          "featureTests": [
+            "TC-UI19-A",
+            "TC-UI19-B"
+          ]
+        },
+        {
+          "requirement": "UI19-03",
+          "title": "CPU and memory",
+          "designCase": "SP02-UI19-03",
+          "action": "Inspect CPU and memory",
+          "oracle": "Measured process-tree scope and explicit units; null not zero",
+          "featureTests": [
+            "TC-UI19-A",
+            "TC-UI19-B"
+          ]
+        },
+        {
+          "requirement": "UI19-04",
+          "title": "Historical performance",
+          "designCase": "SP02-UI19-04",
+          "action": "Inspect historical performance",
+          "oracle": "Stable trial ID and environment version; incompatible series not joined",
+          "featureTests": [
+            "TC-UI19-A",
+            "TC-UI19-B"
+          ]
+        },
+        {
+          "requirement": "UI19-05",
+          "title": "Regression detection",
+          "designCase": "SP02-UI19-05",
+          "action": "Inspect regression",
+          "oracle": "Compare owner-approved baseline/criterion; no unsupported significance claim",
+          "featureTests": [
+            "TC-UI19-A",
+            "TC-UI19-B"
+          ]
+        },
+        {
+          "requirement": "UI19-06",
+          "title": "Statistics and replay",
+          "designCase": "SP02-UI19-06",
+          "action": "Inspect statistics and replay",
+          "oracle": "Show actual paired sample count, failures, environment and seeds; replay exact manifest",
+          "featureTests": [
+            "TC-UI19-A",
+            "TC-UI19-B"
+          ]
+        }
+      ],
+      "featureAcceptance": [
+        {
+          "id": "TC-UI19-A",
+          "oracle": "Display paired samples, hardware, seeds, peak memory and failed trials from a benchmark manifest."
+        },
+        {
+          "id": "TC-UI19-B",
+          "oracle": "Reject incomparable units and highlight unmatched instance families."
+        }
+      ],
+      "disposition": "Reviewed proposal; feature-owner payload/approval gates remain; no execution claim"
+    },
+    {
+      "module": "UI20",
+      "issue": 109,
+      "design": {
+        "source": "docs/design/studio/UI20.md",
+        "wireframe": "docs/design/studio/drafts/UI20-wire.svg",
+        "study": "docs/design/studio/review/studies/UI20.svg",
+        "sourceHash": "05760194268faa084c4cc851a38e59ceb8f4f7ab39c9de91802d3aa9b05a18c3",
+        "wireHash": "68413905e442b57e205dbbf97d2d4b1b7b23bee3fa4406467d0c93d5db4b7775",
+        "studyHash": "1985d125f630190d156d1f0e5f5e20e7c1b2ffe23d77da31887f3125acfb6ddb"
+      },
+      "approvedPilotFields": [
+        "F-REV",
+        "F-MACHINE",
+        "F-DURATION"
+      ],
+      "baselinePorts": [
+        "API-MODEL"
+      ],
+      "proposedPort": "API-MAPPING",
+      "dependencies": [
+        {
+          "scope": "UI01",
+          "issue": 90
+        },
+        {
+          "scope": "I01",
+          "issue": 55
+        },
+        {
+          "scope": "I02",
+          "issue": 56
+        },
+        {
+          "scope": "SP02",
+          "issue": 160
+        }
+      ],
+      "contractReview": "bindings/contract-review.md#per-module-field-projection-and-outstanding-owner-seams",
+      "stateReview": "interaction-state-review.md",
+      "cases": [
+        {
+          "requirement": "UI20-01",
+          "title": "Connectors and schemas",
+          "designCase": "SP02-UI20-01",
+          "action": "Inspect connector schema",
+          "oracle": "Exact source/target schema and version; unknown schema disables mapping",
+          "featureTests": [
+            "TC-UI20-A",
+            "TC-UI20-B"
+          ]
+        },
+        {
+          "requirement": "UI20-02",
+          "title": "Field mapping",
+          "designCase": "SP02-UI20-02",
+          "action": "Map source to target field",
+          "oracle": "Unique target ID, required and allowNull separately; reject stale schema",
+          "featureTests": [
+            "TC-UI20-A",
+            "TC-UI20-B"
+          ]
+        },
+        {
+          "requirement": "UI20-03",
+          "title": "Transformations and units",
+          "designCase": "SP02-UI20-03",
+          "action": "Apply declared transform",
+          "oracle": "Resolve allowlisted transform/version; identity cannot change units/types; no arbitrary code",
+          "featureTests": [
+            "TC-UI20-A",
+            "TC-UI20-B"
+          ]
+        },
+        {
+          "requirement": "UI20-04",
+          "title": "Synchronization health",
+          "designCase": "SP02-UI20-04",
+          "action": "Inspect synchronization health",
+          "oracle": "Use owner checkpoint/stream identity; redact cursor and credential references",
+          "featureTests": [
+            "TC-UI20-A",
+            "TC-UI20-B"
+          ]
+        },
+        {
+          "requirement": "UI20-05",
+          "title": "Import validation",
+          "designCase": "SP02-UI20-05",
+          "action": "Validate and commit staged import",
+          "oracle": "Trace rejected row to source field; atomic rejection leaves current revision unchanged",
+          "featureTests": [
+            "TC-UI20-A",
+            "TC-UI20-B"
+          ]
+        }
+      ],
+      "featureAcceptance": [
+        {
+          "id": "TC-UI20-A",
+          "oracle": "Map a source quantity to an engine field, preview normalized values and trace rejected rows to source fields."
+        },
+        {
+          "id": "TC-UI20-B",
+          "oracle": "Abort invalid imports atomically and redact credentials."
+        }
+      ],
+      "disposition": "Reviewed proposal; feature-owner payload/approval gates remain; no execution claim"
+    },
+    {
+      "module": "UI21",
+      "issue": 110,
+      "design": {
+        "source": "docs/design/studio/UI21.md",
+        "wireframe": "docs/design/studio/drafts/UI21-wire.svg",
+        "study": "docs/design/studio/review/studies/UI21.svg",
+        "sourceHash": "80411de731fff6ec4660733cbdd567a2586454adeae71f16deb0261e9094d85b",
+        "wireHash": "77dfef64adeabb0c987815a49d603772c381b9332d521c1a38fcd541db46ac5d",
+        "studyHash": "aa54e5f1891f31d7d785c4cb0ec4136ee0909daeb637458c737a74dba7ed3d1c"
+      },
+      "approvedPilotFields": [
+        "F-REV"
+      ],
+      "baselinePorts": [
+        "API-WORKSPACE"
+      ],
+      "proposedPort": "API-ADMIN",
+      "dependencies": [
+        {
+          "scope": "UI01",
+          "issue": 90
+        },
+        {
+          "scope": "E01",
+          "issue": 75
+        },
+        {
+          "scope": "I01",
+          "issue": 55
+        },
+        {
+          "scope": "SP02",
+          "issue": 160
+        }
+      ],
+      "contractReview": "bindings/contract-review.md#per-module-field-projection-and-outstanding-owner-seams",
+      "stateReview": "interaction-state-review.md",
+      "cases": [
+        {
+          "requirement": "UI21-01",
+          "title": "Tenants and users",
+          "designCase": "SP02-UI21-01",
+          "action": "Inspect tenants and users",
+          "oracle": "Server lookup bound to trusted tenant, foreign and missing resource indistinguishable",
+          "featureTests": [
+            "TC-UI21-A",
+            "TC-UI21-B"
+          ]
+        },
+        {
+          "requirement": "UI21-02",
+          "title": "Roles and permissions",
+          "designCase": "SP02-UI21-02",
+          "action": "Inspect or change role",
+          "oracle": "View-only user denied mutation at server; effective permissions not inferred from token role",
+          "featureTests": [
+            "TC-UI21-A",
+            "TC-UI21-B"
+          ]
+        },
+        {
+          "requirement": "UI21-03",
+          "title": "API configuration",
+          "designCase": "SP02-UI21-03",
+          "action": "Inspect API configuration",
+          "oracle": "HTTPS issuer/audience and redacted config; route/secret policy server-owned",
+          "featureTests": [
+            "TC-UI21-A",
+            "TC-UI21-B"
+          ]
+        },
+        {
+          "requirement": "UI21-04",
+          "title": "SDK documentation",
+          "designCase": "SP02-UI21-04",
+          "action": "Open versioned SDK docs",
+          "oracle": "Match actual published SDK version; missing examples explicit",
+          "featureTests": [
+            "TC-UI21-A",
+            "TC-UI21-B"
+          ]
+        },
+        {
+          "requirement": "UI21-05",
+          "title": "Extension management",
+          "designCase": "SP02-UI21-05",
+          "action": "Inspect extension management",
+          "oracle": "Manifest read does not authorize activation; denied mutation no optimistic success",
+          "featureTests": [
+            "TC-UI21-A",
+            "TC-UI21-B"
+          ]
+        }
+      ],
+      "featureAcceptance": [
+        {
+          "id": "TC-UI21-A",
+          "oracle": "Use two tenant accounts to check a read-only role, an administrative operation and versioned SDK examples in Blazor."
+        },
+        {
+          "id": "TC-UI21-B",
+          "oracle": "Reject a cross-tenant request at the server even if the client is modified."
+        }
+      ],
+      "disposition": "Reviewed proposal; feature-owner payload/approval gates remain; no execution claim"
+    },
+    {
+      "module": "UI22",
+      "issue": 111,
+      "design": {
+        "source": "docs/design/studio/UI22.md",
+        "wireframe": "docs/design/studio/drafts/UI22-wire.svg",
+        "study": "docs/design/studio/review/studies/UI22.svg",
+        "sourceHash": "8d74be35c57e7947604621855186921c435186cc29373495031d66ef81bf7975",
+        "wireHash": "f8b06ca9f4e5fc4b822c4b29bd111830c861ddef1633552fbd73a9fb3f6c6b16",
+        "studyHash": "17e9d12dcdf9412a1c3ec243b8bd028ea151d795853cd09c9c15fbd1d2005cf8"
+      },
+      "approvedPilotFields": [
+        "F-REV"
+      ],
+      "baselinePorts": [
+        "API-COMMAND"
+      ],
+      "proposedPort": null,
+      "dependencies": [
+        {
+          "scope": "UI01",
+          "issue": 90
+        },
+        {
+          "scope": "SP02",
+          "issue": 160
+        }
+      ],
+      "contractReview": "bindings/contract-review.md#per-module-field-projection-and-outstanding-owner-seams",
+      "stateReview": "interaction-state-review.md",
+      "cases": [
+        {
+          "requirement": "UI22-01",
+          "title": "Search everywhere",
+          "designCase": "SP02-UI22-01",
+          "action": "Search registered commands",
+          "oracle": "Search by title/ID under current capability; no arbitrary execution",
+          "featureTests": [
+            "TC-UI22-A",
+            "TC-UI22-B"
+          ]
+        },
+        {
+          "requirement": "UI22-02",
+          "title": "Keyboard shortcuts",
+          "designCase": "SP02-UI22-02",
+          "action": "Invoke shortcut",
+          "oracle": "Same registered command and permission as name invocation",
+          "featureTests": [
+            "TC-UI22-A",
+            "TC-UI22-B"
+          ]
+        },
+        {
+          "requirement": "UI22-03",
+          "title": "Context menus",
+          "designCase": "SP02-UI22-03",
+          "action": "Open context menu",
+          "oracle": "Context actions match selected entity and revision; keyboard equivalent",
+          "featureTests": [
+            "TC-UI22-A",
+            "TC-UI22-B"
+          ]
+        },
+        {
+          "requirement": "UI22-04",
+          "title": "Quick navigation",
+          "designCase": "SP02-UI22-04",
+          "action": "Quick navigate",
+          "oracle": "Resolve authorized target and restore prior focus on cancel",
+          "featureTests": [
+            "TC-UI22-A",
+            "TC-UI22-B"
+          ]
+        },
+        {
+          "requirement": "UI22-05",
+          "title": "Command history",
+          "designCase": "SP02-UI22-05",
+          "action": "Inspect command history",
+          "oracle": "Only redacted bounded local history; secrets and raw payload excluded",
+          "featureTests": [
+            "TC-UI22-A",
+            "TC-UI22-B"
+          ]
+        },
+        {
+          "requirement": "UI22-06",
+          "title": "Restricted terminal integration",
+          "designCase": "SP02-UI22-06",
+          "action": "Invoke restricted terminal action",
+          "oracle": "Explicit local capability and structured arguments; no shell interpolation or unapproved external command",
+          "featureTests": [
+            "TC-UI22-A",
+            "TC-UI22-B"
+          ]
+        }
+      ],
+      "featureAcceptance": [
+        {
+          "id": "TC-UI22-A",
+          "oracle": "Invoke a registered command by name and shortcut with the same permission and workspace context."
+        },
+        {
+          "id": "TC-UI22-B",
+          "oracle": "A command requiring an external shell must demand an explicit local capability and structured arguments."
+        }
+      ],
+      "disposition": "Reviewed proposal; feature-owner payload/approval gates remain; no execution claim"
+    },
+    {
+      "module": "UI23",
+      "issue": 112,
+      "design": {
+        "source": "docs/design/studio/UI23.md",
+        "wireframe": "docs/design/studio/drafts/UI23-wire.svg",
+        "study": "docs/design/studio/review/studies/UI23.svg",
+        "sourceHash": "4a167e3bc6eab01db5e516352e27ac3502e9bc4846459f250cddb170c897fc77",
+        "wireHash": "26d71d721c75556abb56d673e6fce38cfd4c8a896e47c6a58c4186fa7c501433",
+        "studyHash": "e8e42e10fb3012cffed85039ec7ccd3907cafad9b4b769ad26e8bd0db01d14ed"
+      },
+      "approvedPilotFields": [
+        "F-REV",
+        "F-RUN"
+      ],
+      "baselinePorts": [
+        "API-COMMAND"
+      ],
+      "proposedPort": "API-SETTINGS",
+      "dependencies": [
+        {
+          "scope": "UI01",
+          "issue": 90
+        },
+        {
+          "scope": "CLI10",
+          "issue": 122
+        },
+        {
+          "scope": "SP02",
+          "issue": 160
+        }
+      ],
+      "contractReview": "bindings/contract-review.md#per-module-field-projection-and-outstanding-owner-seams",
+      "stateReview": "interaction-state-review.md",
+      "cases": [
+        {
+          "requirement": "UI23-01",
+          "title": "Application and engine settings",
+          "designCase": "SP02-UI23-01",
+          "action": "Edit app and engine settings",
+          "oracle": "Validate owner schema/version; invalid edit retains last effective config",
+          "featureTests": [
+            "TC-UI23-A",
+            "TC-UI23-B"
+          ]
+        },
+        {
+          "requirement": "UI23-02",
+          "title": "Theme and language",
+          "designCase": "SP02-UI23-02",
+          "action": "Switch theme and language",
+          "oracle": "Runtime change keeps focus and ID/unit legibility; restart restores effective setting",
+          "featureTests": [
+            "TC-UI23-A",
+            "TC-UI23-B"
+          ]
+        },
+        {
+          "requirement": "UI23-03",
+          "title": "Logging",
+          "designCase": "SP02-UI23-03",
+          "action": "Change logging level",
+          "oracle": "Owner-approved level; no secret or raw tenant payload in diagnostic output",
+          "featureTests": [
+            "TC-UI23-A",
+            "TC-UI23-B"
+          ]
+        },
+        {
+          "requirement": "UI23-04",
+          "title": "Health",
+          "designCase": "SP02-UI23-04",
+          "action": "Inspect health",
+          "oracle": "Unavailable measurement/source explicit; not silently healthy",
+          "featureTests": [
+            "TC-UI23-A",
+            "TC-UI23-B"
+          ]
+        },
+        {
+          "requirement": "UI23-05",
+          "title": "Runtime diagnostics",
+          "designCase": "SP02-UI23-05",
+          "action": "Export runtime diagnostics",
+          "oracle": "Redacted exact manifest with partial data labeled; no credentials",
+          "featureTests": [
+            "TC-UI23-A",
+            "TC-UI23-B"
+          ]
+        }
+      ],
+      "featureAcceptance": [
+        {
+          "id": "TC-UI23-A",
+          "oracle": "Change theme and language, restart and inspect the effective configuration and redacted health report."
+        },
+        {
+          "id": "TC-UI23-B",
+          "oracle": "Keep the last valid configuration after invalid edits."
+        }
+      ],
+      "disposition": "Reviewed proposal; feature-owner payload/approval gates remain; no execution claim"
+    }
+  ],
+  "downstream": [
+    {
+      "scope": "Q02",
+      "issue": 84,
+      "direct": false,
+      "otherDependencies": [
+        {
+          "scope": "QA01",
+          "issue": 143
+        },
+        {
+          "scope": "QA02",
+          "issue": 144
+        },
+        {
+          "scope": "QA03",
+          "issue": 145
+        },
+        {
+          "scope": "QA04",
+          "issue": 146
+        }
+      ]
+    },
+    {
+      "scope": "Q03",
+      "issue": 85,
+      "direct": false,
+      "otherDependencies": [
+        {
+          "scope": "E06",
+          "issue": 80
+        },
+        {
+          "scope": "Q01",
+          "issue": 83
+        },
+        {
+          "scope": "Q02",
+          "issue": 84
+        }
+      ]
+    },
+    {
+      "scope": "UI01",
+      "issue": 90,
+      "direct": true,
+      "otherDependencies": [
+        {
+          "scope": "DS01",
+          "issue": 125
+        },
+        {
+          "scope": "DS02",
+          "issue": 126
+        }
+      ]
+    },
+    {
+      "scope": "UI02",
+      "issue": 91,
+      "direct": true,
+      "otherDependencies": [
+        {
+          "scope": "UI01",
+          "issue": 90
+        },
+        {
+          "scope": "RT01",
+          "issue": 129
+        }
+      ]
+    },
+    {
+      "scope": "UI03",
+      "issue": 92,
+      "direct": true,
+      "otherDependencies": [
+        {
+          "scope": "UI01",
+          "issue": 90
+        },
+        {
+          "scope": "RT01",
+          "issue": 129
+        }
+      ]
+    },
+    {
+      "scope": "UI04",
+      "issue": 93,
+      "direct": true,
+      "otherDependencies": [
+        {
+          "scope": "UI01",
+          "issue": 90
+        },
+        {
+          "scope": "M01",
+          "issue": 14
+        },
+        {
+          "scope": "M09",
+          "issue": 22
+        }
+      ]
+    },
+    {
+      "scope": "UI05",
+      "issue": 94,
+      "direct": true,
+      "otherDependencies": [
+        {
+          "scope": "UI01",
+          "issue": 90
+        },
+        {
+          "scope": "M01",
+          "issue": 14
+        },
+        {
+          "scope": "M02",
+          "issue": 15
+        }
+      ]
+    },
+    {
+      "scope": "UI06",
+      "issue": 95,
+      "direct": true,
+      "otherDependencies": [
+        {
+          "scope": "UI01",
+          "issue": 90
+        },
+        {
+          "scope": "M06",
+          "issue": 19
+        },
+        {
+          "scope": "M07",
+          "issue": 20
+        }
+      ]
+    },
+    {
+      "scope": "UI07",
+      "issue": 96,
+      "direct": true,
+      "otherDependencies": [
+        {
+          "scope": "UI04",
+          "issue": 93
+        },
+        {
+          "scope": "M04",
+          "issue": 17
+        }
+      ]
+    },
+    {
+      "scope": "UI08",
+      "issue": 97,
+      "direct": true,
+      "otherDependencies": [
+        {
+          "scope": "UI04",
+          "issue": 93
+        },
+        {
+          "scope": "NUM02",
+          "issue": 135
+        }
+      ]
+    },
+    {
+      "scope": "UI09",
+      "issue": 98,
+      "direct": true,
+      "otherDependencies": [
+        {
+          "scope": "UI06",
+          "issue": 95
+        },
+        {
+          "scope": "M08",
+          "issue": 21
+        },
+        {
+          "scope": "M12",
+          "issue": 25
+        }
+      ]
+    },
+    {
+      "scope": "UI10",
+      "issue": 99,
+      "direct": true,
+      "otherDependencies": [
+        {
+          "scope": "UI01",
+          "issue": 90
+        },
+        {
+          "scope": "S06",
+          "issue": 31
+        },
+        {
+          "scope": "S07",
+          "issue": 32
+        }
+      ]
+    },
+    {
+      "scope": "UI11",
+      "issue": 100,
+      "direct": true,
+      "otherDependencies": [
+        {
+          "scope": "UI01",
+          "issue": 90
+        },
+        {
+          "scope": "S07",
+          "issue": 32
+        },
+        {
+          "scope": "S10",
+          "issue": 35
+        }
+      ]
+    },
+    {
+      "scope": "UI12",
+      "issue": 101,
+      "direct": true,
+      "otherDependencies": [
+        {
+          "scope": "UI11",
+          "issue": 100
+        },
+        {
+          "scope": "X05",
+          "issue": 42
+        }
+      ]
+    },
+    {
+      "scope": "UI13",
+      "issue": 102,
+      "direct": true,
+      "otherDependencies": [
+        {
+          "scope": "UI01",
+          "issue": 90
+        },
+        {
+          "scope": "A01",
+          "issue": 64
+        }
+      ]
+    },
+    {
+      "scope": "UI14",
+      "issue": 103,
+      "direct": true,
+      "otherDependencies": [
+        {
+          "scope": "UI01",
+          "issue": 90
+        },
+        {
+          "scope": "A04",
+          "issue": 67
+        }
+      ]
+    },
+    {
+      "scope": "UI15",
+      "issue": 104,
+      "direct": true,
+      "otherDependencies": [
+        {
+          "scope": "UI01",
+          "issue": 90
+        },
+        {
+          "scope": "V03",
+          "issue": 50
+        },
+        {
+          "scope": "V04",
+          "issue": 51
+        }
+      ]
+    },
+    {
+      "scope": "UI16",
+      "issue": 105,
+      "direct": true,
+      "otherDependencies": [
+        {
+          "scope": "UI01",
+          "issue": 90
+        },
+        {
+          "scope": "V03",
+          "issue": 50
+        }
+      ]
+    },
+    {
+      "scope": "UI17",
+      "issue": 106,
+      "direct": true,
+      "otherDependencies": [
+        {
+          "scope": "UI01",
+          "issue": 90
+        },
+        {
+          "scope": "S10",
+          "issue": 35
+        }
+      ]
+    },
+    {
+      "scope": "UI18",
+      "issue": 107,
+      "direct": true,
+      "otherDependencies": [
+        {
+          "scope": "UI17",
+          "issue": 106
+        },
+        {
+          "scope": "A02",
+          "issue": 65
+        },
+        {
+          "scope": "A03",
+          "issue": 66
+        }
+      ]
+    },
+    {
+      "scope": "UI19",
+      "issue": 108,
+      "direct": true,
+      "otherDependencies": [
+        {
+          "scope": "UI01",
+          "issue": 90
+        },
+        {
+          "scope": "X07",
+          "issue": 44
+        }
+      ]
+    },
+    {
+      "scope": "UI20",
+      "issue": 109,
+      "direct": true,
+      "otherDependencies": [
+        {
+          "scope": "UI01",
+          "issue": 90
+        },
+        {
+          "scope": "I01",
+          "issue": 55
+        },
+        {
+          "scope": "I02",
+          "issue": 56
+        }
+      ]
+    },
+    {
+      "scope": "UI21",
+      "issue": 110,
+      "direct": true,
+      "otherDependencies": [
+        {
+          "scope": "UI01",
+          "issue": 90
+        },
+        {
+          "scope": "E01",
+          "issue": 75
+        },
+        {
+          "scope": "I01",
+          "issue": 55
+        }
+      ]
+    },
+    {
+      "scope": "UI22",
+      "issue": 111,
+      "direct": true,
+      "otherDependencies": [
+        {
+          "scope": "UI01",
+          "issue": 90
+        }
+      ]
+    },
+    {
+      "scope": "UI23",
+      "issue": 112,
+      "direct": true,
+      "otherDependencies": [
+        {
+          "scope": "UI01",
+          "issue": 90
+        },
+        {
+          "scope": "CLI10",
+          "issue": 122
+        }
+      ]
+    },
+    {
+      "scope": "QA02",
+      "issue": 144,
+      "direct": false,
+      "otherDependencies": [
+        {
+          "scope": "UI01",
+          "issue": 90
+        },
+        {
+          "scope": "DS03",
+          "issue": 127
+        },
+        {
+          "scope": "DS04",
+          "issue": 128
+        }
+      ]
+    },
+    {
+      "scope": "SL01",
+      "issue": 151,
+      "direct": false,
+      "otherDependencies": [
+        {
+          "scope": "UI05",
+          "issue": 94
+        },
+        {
+          "scope": "UI11",
+          "issue": 100
+        },
+        {
+          "scope": "UI13",
+          "issue": 102
+        },
+        {
+          "scope": "UI15",
+          "issue": 104
+        },
+        {
+          "scope": "UI17",
+          "issue": 106
+        },
+        {
+          "scope": "CLI05",
+          "issue": 117
+        },
+        {
+          "scope": "CLI08",
+          "issue": 120
+        },
+        {
+          "scope": "RT01",
+          "issue": 129
+        },
+        {
+          "scope": "V04",
+          "issue": 51
+        },
+        {
+          "scope": "X05",
+          "issue": 42
+        }
+      ]
+    },
+    {
+      "scope": "SL02",
+      "issue": 152,
+      "direct": false,
+      "otherDependencies": [
+        {
+          "scope": "SL01",
+          "issue": 151
+        },
+        {
+          "scope": "V07",
+          "issue": 54
+        },
+        {
+          "scope": "RT04",
+          "issue": 132
+        }
+      ]
+    },
+    {
+      "scope": "G02",
+      "issue": 154,
+      "direct": false,
+      "otherDependencies": [
+        {
+          "scope": "SL01",
+          "issue": 151
+        },
+        {
+          "scope": "QA02",
+          "issue": 144
+        },
+        {
+          "scope": "QA03",
+          "issue": 145
+        },
+        {
+          "scope": "R07",
+          "issue": 7
+        }
+      ]
+    },
+    {
+      "scope": "G03",
+      "issue": 155,
+      "direct": false,
+      "otherDependencies": [
+        {
+          "scope": "G02",
+          "issue": 154
+        },
+        {
+          "scope": "SEC02",
+          "issue": 149
+        },
+        {
+          "scope": "SEC03",
+          "issue": 150
+        },
+        {
+          "scope": "QA01",
+          "issue": 143
+        }
+      ]
+    },
+    {
+      "scope": "G04",
+      "issue": 156,
+      "direct": false,
+      "otherDependencies": [
+        {
+          "scope": "G03",
+          "issue": 155
+        },
+        {
+          "scope": "RT02",
+          "issue": 130
+        },
+        {
+          "scope": "QA04",
+          "issue": 146
+        },
+        {
+          "scope": "E04",
+          "issue": 78
+        }
+      ]
+    },
+    {
+      "scope": "G05",
+      "issue": 157,
+      "direct": false,
+      "otherDependencies": [
+        {
+          "scope": "G03",
+          "issue": 155
+        },
+        {
+          "scope": "SL02",
+          "issue": 152
+        }
+      ]
+    },
+    {
+      "scope": "G06",
+      "issue": 158,
+      "direct": false,
+      "otherDependencies": [
+        {
+          "scope": "G04",
+          "issue": 156
+        },
+        {
+          "scope": "E08",
+          "issue": 82
+        },
+        {
+          "scope": "X07",
+          "issue": 44
+        }
+      ]
+    }
+  ],
+  "reviewCaseCount": 120,
+  "warning": "Design trace coverage only. Unmerged port proposals and owner approval remain."
+}
