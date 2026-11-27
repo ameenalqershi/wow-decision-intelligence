@@ -1,0 +1,54 @@
+name: Enterprise isolation policy
+on:
+  pull_request:
+    paths:
+      - src/Enterprise/Isolation/**
+      - src/Runtime.Governance/**
+      - src/Runtime.WorkerBootstrap/**
+      - tests/Enterprise.Isolation/**
+      - tests/Enterprise.Isolation.Fixture/**
+      - tools/run-isolation-cgroup-tests.sh
+      - .github/workflows/enterprise-isolation.yml
+  push:
+    branches: [main]
+    paths:
+      - src/Enterprise/Isolation/**
+      - src/Runtime.Governance/**
+      - src/Runtime.WorkerBootstrap/**
+      - tests/Enterprise.Isolation/**
+      - tests/Enterprise.Isolation.Fixture/**
+      - tools/run-isolation-cgroup-tests.sh
+      - .github/workflows/enterprise-isolation.yml
+permissions:
+  contents: read
+jobs:
+  policy:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - run: dotnet restore tests/Enterprise.Isolation/WowDi.Enterprise.Isolation.Tests.csproj --locked-mode
+      - run: dotnet test tests/Enterprise.Isolation/WowDi.Enterprise.Isolation.Tests.csproj --no-restore -c Release --filter 'Category!=OSIsolation'
+      - name: Build actual sandbox fixture
+        run: |
+          dotnet build src/Runtime.WorkerBootstrap/WowDi.Runtime.WorkerBootstrap.csproj -c Release
+          dotnet publish tests/Enterprise.Isolation.Fixture/WowDi.Enterprise.Isolation.Fixture.csproj -c Release -o "$RUNNER_TEMP/wowdi-plugin"
+      - name: Provision disposable fixture rootfs
+        shell: bash
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y bubblewrap
+          bwrap --version
+          docker pull mcr.microsoft.com/dotnet/runtime:10.0-noble
+          docker image inspect mcr.microsoft.com/dotnet/runtime:10.0-noble --format '{{json .RepoDigests}}'
+          container=$(docker create mcr.microsoft.com/dotnet/runtime:10.0-noble)
+          trap 'docker rm -f "$container" >/dev/null' EXIT
+          mkdir "$RUNNER_TEMP/wowdi-rootfs"
+          docker export "$container" | tar --no-same-owner -xf - -C "$RUNNER_TEMP/wowdi-rootfs"
+          mkdir -p "$RUNNER_TEMP/wowdi-rootfs"/{plugin,input,scratch,tmp,proc,dev}
+      - name: Actual kernel isolation
+        shell: bash
+        run: |
+          sudo systemd-run --wait --pipe --collect --property=Delegate=yes --property="User=$(id -un)" --working-directory="$PWD" --setenv="WOWDI_TEST_DOTNET=$(readlink -f "$(command -v dotnet)")" --setenv="WOWDI_TEST_ROOTFS=$RUNNER_TEMP/wowdi-rootfs" --setenv="WOWDI_TEST_PLUGIN_DIR=$RUNNER_TEMP/wowdi-plugin" --setenv="WOWDI_TEST_BWRAP=$(command -v bwrap)" /bin/bash "$PWD/tools/run-isolation-cgroup-tests.sh"
