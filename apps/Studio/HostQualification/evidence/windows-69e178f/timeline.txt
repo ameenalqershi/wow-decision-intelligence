@@ -1,0 +1,22 @@
+native (windows-latest, win-x64)	Windows packaged window with process network blocks	2026-11-27T21:51:37.4491640Z After native reactivation: thread=6908;pid=1096;active=131374;focus=131374;flags=0
+native (windows-latest, win-x64)	Windows packaged window with process network blocks	2026-11-27T21:51:37.4597181Z Before key {TAB}: thread=6908;pid=1096;active=131374;focus=131374;flags=0
+native (windows-latest, win-x64)	Windows packaged window with process network blocks	2026-11-27T21:51:37.7274318Z After key {TAB}: thread=6908;pid=1096;active=131374;focus=131374;flags=0
+native (windows-latest, win-x64)	Windows packaged window with process network blocks	2026-11-27T21:52:38.5007524Z   "FocusedId": "direction",
+native (windows-latest, win-x64)	Windows packaged window with process network blocks	2026-11-27T21:52:38.9269240Z Native descendants after blank activation: hwnd=262474;class=Chrome_WidgetWin_0;pid=1096;thread=6908;thread=6908;pid=1096;active=131374;focus=262256;flags=0
+native (windows-latest, win-x64)	Windows packaged window with process network blocks	2026-11-27T21:52:38.9278209Z Before key {TAB}: thread=6908;pid=1096;active=131374;focus=262256;flags=0
+native (windows-latest, win-x64)	Windows packaged window with process network blocks	2026-11-27T21:52:39.1897196Z After key {TAB}: thread=6908;pid=1096;active=131374;focus=262256;flags=0
+native (windows-latest, win-x64)	Windows packaged window with process network blocks	2026-11-27T21:52:39.1908407Z Before key {TAB}: thread=6908;pid=1096;active=131374;focus=262256;flags=0
+native (windows-latest, win-x64)	Windows packaged window with process network blocks	2026-11-27T21:52:39.4424371Z After key {TAB}: thread=6908;pid=1096;active=131374;focus=262256;flags=0
+native (windows-latest, win-x64)	Windows packaged window with process network blocks	2026-11-27T21:52:39.8116322Z   "FocusedId": "confirm",
+native (windows-latest, win-x64)	Windows packaged window with process network blocks	2026-11-27T21:52:40.4448016Z WARNING: Connected probe failed: Timeout:  param($p) $p.FocusedId -eq 'confirm' -and $p.Events -contains 'focus:confirm'
+native (windows-latest, win-x64)	Windows packaged window with process network blocks	2026-11-27T21:52:45.5221840Z After native reactivation: thread=7040;pid=7912;active=524768;focus=524768;flags=0
+native (windows-latest, win-x64)	Windows packaged window with process network blocks	2026-11-27T21:52:45.5247782Z Before key {TAB}: thread=7040;pid=7912;active=524768;focus=524768;flags=0
+native (windows-latest, win-x64)	Windows packaged window with process network blocks	2026-11-27T21:52:45.7777449Z After key {TAB}: thread=7040;pid=7912;active=524768;focus=524768;flags=0
+native (windows-latest, win-x64)	Windows packaged window with process network blocks	2026-11-27T21:53:46.5807112Z   "FocusedId": "direction",
+native (windows-latest, win-x64)	Windows packaged window with process network blocks	2026-11-27T21:53:46.9621251Z Native descendants after blank activation: hwnd=262650;class=Chrome_WidgetWin_0;pid=7912;thread=7040;thread=7040;pid=7912;active=524768;focus=262582;flags=0
+native (windows-latest, win-x64)	Windows packaged window with process network blocks	2026-11-27T21:53:46.9629048Z Before key {TAB}: thread=7040;pid=7912;active=524768;focus=262582;flags=0
+native (windows-latest, win-x64)	Windows packaged window with process network blocks	2026-11-27T21:53:47.2153442Z After key {TAB}: thread=7040;pid=7912;active=524768;focus=262582;flags=0
+native (windows-latest, win-x64)	Windows packaged window with process network blocks	2026-11-27T21:53:47.2162772Z Before key {TAB}: thread=7040;pid=7912;active=524768;focus=262582;flags=0
+native (windows-latest, win-x64)	Windows packaged window with process network blocks	2026-11-27T21:53:47.4696880Z After key {TAB}: thread=7040;pid=7912;active=524768;focus=262582;flags=0
+native (windows-latest, win-x64)	Windows packaged window with process network blocks	2026-11-27T21:53:47.8265254Z   "FocusedId": "confirm",
+native (windows-latest, win-x64)	Windows packaged window with process network blocks	2026-11-27T21:53:48.7919300Z WARNING: Blocked probe failed: Timeout:  param($p) $p.FocusedId -eq 'confirm' -and $p.Events -contains 'focus:confirm'

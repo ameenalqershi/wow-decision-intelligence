@@ -1,0 +1,6 @@
+2026-11-27T17:25:00.1683221Z Before key {TAB}: thread=9116;pid=8476;active=458862;focus=458862;flags=0
+2026-11-27T17:25:04.9890145Z After key {TAB}: thread=9116;pid=8476;active=458862;focus=458862;flags=0
+2026-11-27T17:26:06.4053864Z WARNING: Connected probe failed: Timeout:  param($p) $p.FocusedId -eq 'confirm' -and $p.Events -contains 'focus:confirm' 
+2026-11-27T17:26:11.8687177Z Before key {TAB}: thread=7448;pid=6596;active=458774;focus=458774;flags=0
+2026-11-27T17:26:12.1328978Z After key {TAB}: thread=7448;pid=6596;active=458774;focus=458774;flags=0
+2026-11-27T17:27:14.1714257Z WARNING: Blocked probe failed: Timeout:  param($p) $p.FocusedId -eq 'confirm' -and $p.Events -contains 'focus:confirm' 

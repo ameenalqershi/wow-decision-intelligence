@@ -1,0 +1,8 @@
+native (windows-latest, win-x64)	Windows packaged window with process network blocks	2026-11-27T21:12:17.8787363Z After native reactivation: thread=684;pid=7500;active=196910;focus=196910;flags=0
+native (windows-latest, win-x64)	Windows packaged window with process network blocks	2026-11-27T21:12:17.8846674Z Before key {TAB}: thread=684;pid=7500;active=196910;focus=196910;flags=0
+native (windows-latest, win-x64)	Windows packaged window with process network blocks	2026-11-27T21:12:18.1687239Z After key {TAB}: thread=684;pid=7500;active=196910;focus=196910;flags=0
+native (windows-latest, win-x64)	Windows packaged window with process network blocks	2026-11-27T21:13:20.5108144Z WARNING: Connected probe failed: Timeout:  param($p) $p.FocusedId -eq 'confirm' -and $p.Events -contains 'focus:confirm' 
+native (windows-latest, win-x64)	Windows packaged window with process network blocks	2026-11-27T21:13:26.6032542Z After native reactivation: thread=7188;pid=6224;active=197000;focus=197000;flags=0
+native (windows-latest, win-x64)	Windows packaged window with process network blocks	2026-11-27T21:13:26.6046613Z Before key {TAB}: thread=7188;pid=6224;active=197000;focus=197000;flags=0
+native (windows-latest, win-x64)	Windows packaged window with process network blocks	2026-11-27T21:13:26.8564442Z After key {TAB}: thread=7188;pid=6224;active=197000;focus=197000;flags=0
+native (windows-latest, win-x64)	Windows packaged window with process network blocks	2026-11-27T21:14:28.9525740Z WARNING: Blocked probe failed: Timeout:  param($p) $p.FocusedId -eq 'confirm' -and $p.Events -contains 'focus:confirm' 

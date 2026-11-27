@@ -1,0 +1,25 @@
+Starting on Unix 7.0.0.1020, 10.0.15
+Photino.NET: "Photino".SetTitle(Photino.Blazor App)
+Photino.NET: "Photino.Blazor App".SetUseOsDefaultSize(False)
+Photino.NET: "Photino.Blazor App".SetUseOsDefaultLocation(False)
+Photino.NET: "Photino.Blazor App".SetWidth(1000)
+Photino.NET: "Photino.Blazor App".SetHeight(900)
+Photino.NET: "Photino.Blazor App".SetLeft(0)
+Photino.NET: "Photino.Blazor App".SetTop(100)
+Photino application built
+Photino.NET: "Photino.Blazor App".SetTitle(WOW DI Host Qualification)
+Photino.NET: "WOW DI Host Qualification".SetUseOsDefaultLocation(True)
+Photino.NET: "WOW DI Host Qualification".SetDevTools(False)
+Photino.NET: "WOW DI Host Qualification".SetContextMenuEnabled(False)
+Photino.NET: "WOW DI Host Qualification".SetWebSecurityEnabled(True)
+Photino.NET: "WOW DI Host Qualification".SetFileSystemAccessEnabled(False)
+Photino.NET: "WOW DI Host Qualification".SetJavascriptClipboardAccessEnabled(False)
+Photino.NET: "WOW DI Host Qualification".SetMediaStreamEnabled(False)
+Photino.NET: "WOW DI Host Qualification".SetMediaAutoplayEnabled(False)
+Photino.NET: "WOW DI Host Qualification".SetGrantBrowserPermission(False)
+Photino.NET: "WOW DI Host Qualification".SetWidth(800)
+Photino.NET: "WOW DI Host Qualification".SetHeight(520)
+Entering native event loop
+Photino.NET: "WOW DI Host Qualification".Load(/)
+Photino.NET: "WOW DI Host Qualification" ** File "/" could not be found.
+Photino.NET: "WOW DI Host Qualification".Load(app://localhost/)
