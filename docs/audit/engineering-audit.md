@@ -19,7 +19,7 @@
 
 All 88 pre-audit issue bodies matched the existing title, acceptance text and listed dependencies. At capture there were nine closed issues and 79 open, including the active #8 reservation. The baseline had acceptance prose, no stable test IDs or clause-level requirement IDs, and no machine-checked cross-reference to source artifacts. Existing comments and closure were retained. A structurally valid graph allowed local workflows to depend on enterprise service delivery.
 
-## Coverage in the current register
+## Coverage at the original audit merge (#186)
 
 | Planning classification | Clauses |
 |---|---:|
@@ -70,3 +70,9 @@ H1–H5 remain research-scoped. The five-arm comparison has a protocol and no me
 **الخلاصة.** توثق المصفوفة ما وصل إلى مرحلة التخطيط وما يحتاج حقولاً أو عقوداً أو أدلة إضافية. نجاح التجارب الرياضية على النظامين لا يثبت جاهزية التطبيق أو المنتج للإصدار.
 
 **Executed checks.** On the Linux development host the initial live C# reconciliation read 184 issues, 634 clauses and 387 direct edges. Ten mutation fixtures rejected unknown/cyclic prerequisites, duplicate GitHub numbers, missing requirements/test mappings/references/fields, omitted engineering prerequisites, forbidden enterprise coupling and an untraced inventory row. An eleventh strict-coverage fixture rejected an intentionally missing requirement. The prior Node scope validator accepted 184 mapped issues.
+
+[Engineering views, complete network and release roadmap](engineering-views.md) · [GitHub Project](https://github.com/users/ameenalqershi/projects/2)
+
+The original archive baseline was merged in PR #186. The first production contract boundary, F05, was merged in #187 with 18 xUnit cases and Windows/Linux runs. The diagram files under docs/audit are report illustrations in addition to the design-document baseline counts above. Live issues and the project board hold current execution status.
+
+**Follow-up.** All 184 issues are present on the repository-linked engineering Project. The audit retains source-snapshot counts above. F05 and M01 now have implementation, field specifications and test evidence in the matrix. The revised Studio contracts separate simulation, allocation, explanations, benchmarking, connector mappings, tenant administration and settings. The latest counts are printed by the .NET validator. Check actual issue state and reservations before starting work. The original brief and approved per-feature contracts are still needed to establish exhaustive full coverage.
