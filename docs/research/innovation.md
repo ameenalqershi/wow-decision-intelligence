@@ -12,6 +12,8 @@
 
 **Prior-art references.** [Dynamic CSP](https://www.ijcai.org/Proceedings/09/Papers/109.pdf), [Kitching & Bacchus](https://www.cs.toronto.edu/~fbacchus/Papers/MB_CP2008.pdf), [IJCAI on DP and caching](https://ijcai.org/proceedings/2019/160), [algorithm selection benchmark](https://arxiv.org/abs/1506.02465), [LNS](https://neo.lcc.uma.es/vrp/wp-content/data/articles/CP4VRPshaw98.pdf), [canonicalized solver cache patent](https://patents.google.com/patent/US8150787B2/en), [scheduling repair patent](https://patents.google.com/patent/US6216109B1/en), [MiniZinc](https://docs.minizinc.dev/en/latest/flattening.html), [JuMP ecosystem](https://jump.dev/pages/code/). Search terms included incremental constraint solving, component caching, solver selection, iterative manufacturing rescheduling and solver-independent flattening. This search does not cover every jurisdiction, claim family or unpublished application.
 
+See the [H1–H5 research dossiers](hypothesis-dossiers.md) for assumptions, counterexamples, replay commands and prospective decision rules.
+
 ## Measured scope
 
 The [component experiment](../../research/ComponentStudy) uses seven named cases and 128 seeded families × three revisions. Each result is checked against a separately written full enumerator; each feasible returned assignment is evaluated against the original model. Counts below exclude extraction, serialization and verification. Four candidate evaluations in place of sixteen do not imply a fourfold latency or cost advantage.

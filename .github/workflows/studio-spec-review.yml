@@ -1,0 +1,42 @@
+name: Studio specification review
+on:
+  pull_request:
+    paths:
+      - 'docs/design/studio/review/**'
+      - 'docs/design/studio/UI*.md'
+      - 'docs/design/pilot*.md'
+      - 'docs/design/references/**'
+      - 'planning/requirements.json'
+      - 'planning/backlog.json'
+      - '.github/workflows/studio-spec-review.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify requirement trace and reviewed sources
+        run: |
+          node docs/design/studio/review/verify-review.mjs
+          git diff --exit-code -- docs/design/studio/review/modules
+      - name: Render proposed visual studies
+        run: |
+          node docs/design/studio/review/studies/build-studies.mjs
+          node docs/design/studio/review/studies/build-states.mjs
+          node docs/design/studio/review/studies/build-rtl.mjs
+          git diff --exit-code -- docs/design/studio/review/studies
+          node docs/design/studio/review/studies/check-layout.mjs "$(command -v google-chrome)" "$RUNNER_TEMP/sp02-layout.json"
+          node docs/design/studio/review/studies/check-variants.mjs "$(command -v google-chrome)" "$RUNNER_TEMP/sp02-variants.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sp02-visual-review
+          path: |
+            ${{ runner.temp }}/sp02-layout.json
+            ${{ runner.temp }}/sp02-variants.json
