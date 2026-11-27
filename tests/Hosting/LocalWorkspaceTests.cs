@@ -195,5 +195,29 @@ public sealed class LocalWorkspaceTests : IDisposable
         Assert.False(Directory.Exists(PathFor("damaged")));
     }
 
+    [Fact]
+    public void ForeignTenantRowsCannotBeRestoredOrOpened()
+    {
+        var a=Create(); Save(a);
+        // Direct registry access intentionally bypasses the workspace facade to simulate a contaminated file.
+        var foreign=UdirDocument.Create(Model.Model with { TenantId="other" });
+        var raw=new WowDi.ModelRegistry.SqliteModelRegistry(Path.Combine(a.DirectoryPath,"workspace.db"));
+        raw.Save("other",foreign,Graph(foreign),Inputs());
+        Assert.Equal("workspace.tenantScope",Assert.Throws<ContractException>(()=>LocalWorkspace.Open(a.DirectoryPath)).Code);
+        Assert.Equal("workspace.tenantScope",Assert.Throws<ContractException>(()=>WorkspaceBackup.RestoreCopy(a,PathFor("foreign-copy"))).Code);
+        Assert.False(Directory.Exists(PathFor("foreign-copy")));
+    }
+
+    [Fact]
+    public void NewlyPublishedUnixWorkspacesArePrivate()
+    {
+        if(OperatingSystem.IsWindows()) return; // Windows ACL is inherited; Unix mode is not applicable.
+        var a=Create();
+        var allowed=UnixFileMode.UserRead|UnixFileMode.UserWrite|UnixFileMode.UserExecute;
+        Assert.Equal(allowed,File.GetUnixFileMode(a.DirectoryPath)&(UnixFileMode)511);
+        var copy=WorkspaceBackup.RestoreCopy(a,PathFor("private-copy"));
+        Assert.Equal(allowed,File.GetUnixFileMode(copy.DirectoryPath)&(UnixFileMode)511);
+    }
+
     public void Dispose() => Directory.Delete(root, recursive: true);
 }

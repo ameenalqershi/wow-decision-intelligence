@@ -34,7 +34,7 @@ public sealed class LocalWorkspace
         var parent = Path.GetDirectoryName(full) ?? throw Error("path");
         if (!Directory.Exists(parent) || Directory.Exists(full) || File.Exists(full)) throw Error("existsOrParent");
         var stage = Path.Combine(parent, ".wowdi-create-" + Guid.NewGuid().ToString("N"));
-        Directory.CreateDirectory(stage);
+        CreatePrivateDirectory(stage);
         try
         {
             using var activity = ActivitySource.StartActivity("workspace.create");
@@ -95,6 +95,7 @@ public sealed class LocalWorkspace
             if ((long)cmd.ExecuteScalar()! != 1464092999L) throw Error("registrySchema");
             cmd.CommandText = "PRAGMA user_version";
             if ((long)cmd.ExecuteScalar()! is not (1 or 2)) throw Error("registrySchema");
+            CheckTenantScope(db, identity.TenantId);
         }
         if (identity.SchemaVersion == 1)
         {
@@ -140,6 +141,27 @@ public sealed class LocalWorkspace
         var result = new List<GraphRevision>();
         while (rows.Read()) result.Add(new(Identity.TenantId, rows.GetString(0), rows.GetString(1)));
         return result.AsReadOnly();
+    }
+
+    // A local workspace is a single-tenant file, unlike the shared registry library.
+    // Reject stray tenant rows before opening or publishing a complete backup.
+    private static void CheckTenantScope(SqliteConnection db, string tenant)
+    {
+        using var cmd = db.CreateCommand();
+        cmd.CommandText = """
+            SELECT EXISTS(SELECT 1 FROM revisions WHERE tenant IS NULL OR tenant <> $tenant COLLATE BINARY)
+                OR EXISTS(SELECT 1 FROM content WHERE tenant IS NULL OR tenant <> $tenant COLLATE BINARY)
+                OR EXISTS(SELECT 1 FROM inputs WHERE tenant IS NULL OR tenant <> $tenant COLLATE BINARY)
+                OR EXISTS(SELECT 1 FROM local_artifacts WHERE tenant IS NULL OR tenant <> $tenant COLLATE BINARY)
+            """;
+        cmd.Parameters.AddWithValue("$tenant", tenant);
+        if ((long)cmd.ExecuteScalar()! != 0) throw Error("tenantScope");
+    }
+
+    internal static void CreatePrivateDirectory(string path)
+    {
+        if (OperatingSystem.IsWindows()) Directory.CreateDirectory(path);
+        else Directory.CreateDirectory(path, UnixFileMode.UserRead | UnixFileMode.UserWrite | UnixFileMode.UserExecute);
     }
 
     internal SqliteConnection OpenDatabase(bool readOnly = false) => Connect(DatabasePath, readOnly);

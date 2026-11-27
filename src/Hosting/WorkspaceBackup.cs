@@ -15,7 +15,7 @@ public static class WorkspaceBackup
         if (!Directory.Exists(parent) || Directory.Exists(full) || File.Exists(full))
             throw LocalWorkspace.Error("existsOrParent");
         var stage = Path.Combine(parent, ".wowdi-restore-" + Guid.NewGuid().ToString("N"));
-        Directory.CreateDirectory(stage);
+        LocalWorkspace.CreatePrivateDirectory(stage);
         try
         {
             using (var from = source.OpenDatabase(readOnly: true))
