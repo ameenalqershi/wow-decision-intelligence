@@ -1,0 +1,4 @@
+no-stock SHA256=641cea6f3191697d57f19883941bfa983ccc7aa99572a2817fad3c1f1100c2b4 evaluated=121 feasible=0
+baseline SHA256=2309d48c32af84ba93a4ae7a8c3a375f6c6b297b00d9f141b3e01f848f56c1ab evaluated=121 feasible=41 optimum=3 starts=0,3
+outage SHA256=1e953fbaf3b9e08eaf5359ffd9fd2ab88e23a44045b9bee5bc070d5ad8470904 evaluated=121 feasible=12 optimum=12 starts=3,6
+multi SHA256=413b43212b2a57ec837ea9eda0281d96226b13de646f1003e597cb12e6426bdf evaluated=2197 feasible=150 optimum=1/2 USD starts=0,4,6
