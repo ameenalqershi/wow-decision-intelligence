@@ -1,0 +1,97 @@
+{
+  "version": {
+    "protocolVersion": "1.3",
+    "product": "Chrome/158.0.8127.89",
+    "revision": "@1de57fa19722fa6d6841d4f596c394d015580656",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/158.0.0.0 Safari/537.36",
+    "jsVersion": "15.8.62.31"
+  },
+  "english": {
+    "lang": "en",
+    "dir": "ltr",
+    "dpr": 1,
+    "firstX": 16,
+    "secondX": 664.65625,
+    "firstY": 93,
+    "secondY": 93,
+    "noOverflow": true,
+    "ids": [
+      {
+        "text": "revision-17-A",
+        "direction": "ltr",
+        "bidi": "isolate"
+      },
+      {
+        "text": "125.50 ms",
+        "direction": "ltr",
+        "bidi": "isolate"
+      },
+      {
+        "text": "run-7-B",
+        "direction": "ltr",
+        "bidi": "isolate"
+      }
+    ]
+  },
+  "arabic": {
+    "lang": "ar",
+    "dir": "rtl",
+    "dpr": 1,
+    "firstX": 345.34375,
+    "secondX": 16,
+    "firstY": 93,
+    "secondY": 93,
+    "noOverflow": true,
+    "ids": [
+      {
+        "text": "revision-17-A",
+        "direction": "ltr",
+        "bidi": "isolate"
+      },
+      {
+        "text": "125٫50 ms",
+        "direction": "ltr",
+        "bidi": "isolate"
+      },
+      {
+        "text": "run-7-B",
+        "direction": "ltr",
+        "bidi": "isolate"
+      }
+    ]
+  },
+  "compact": {
+    "lang": "ar",
+    "dir": "rtl",
+    "dpr": 2,
+    "firstX": 16,
+    "secondX": 16,
+    "firstY": 93,
+    "secondY": 262,
+    "noOverflow": true,
+    "ids": [
+      {
+        "text": "revision-17-A",
+        "direction": "ltr",
+        "bidi": "isolate"
+      },
+      {
+        "text": "125٫50 ms",
+        "direction": "ltr",
+        "bidi": "isolate"
+      },
+      {
+        "text": "run-7-B",
+        "direction": "ltr",
+        "bidi": "isolate"
+      }
+    ]
+  },
+  "checks": [
+    "Runtime language switch, direction and focus preserved",
+    "Keyboard focus order in RTL and stacked layout",
+    "Bidi isolated identifiers and unit labels",
+    "Responsive split at emulated DPR 1 and 2"
+  ],
+  "limitation": "Browser device-scale emulation, not physical monitor transfer"
+}

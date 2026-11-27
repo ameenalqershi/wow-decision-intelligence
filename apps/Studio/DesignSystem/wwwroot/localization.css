@@ -1,0 +1,7 @@
+.wow-language { min-inline-size: 0; text-align: start; }
+.wow-identity { unicode-bidi: isolate; direction: ltr; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.wow-logical-split { display: grid; grid-template-columns: minmax(0,2fr) minmax(0,1fr); gap: var(--wow-panel-gap); }
+.wow-logical-pane { min-inline-size: 0; overflow-wrap: anywhere; padding: var(--wow-space-3); background: var(--wow-card); border: var(--wow-border-width) solid var(--wow-border); border-radius: var(--wow-radius-card); }
+@media (max-width: 640px) {
+    .wow-logical-split { grid-template-columns: minmax(0,1fr); }
+}

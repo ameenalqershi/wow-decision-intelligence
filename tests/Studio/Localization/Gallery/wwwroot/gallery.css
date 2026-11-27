@@ -1,0 +1,3 @@
+body { margin: 0; }
+.localization-gallery { padding: var(--wow-space-4); display: grid; gap: var(--wow-space-3); }
+.localization-gallery h1,.localization-gallery h2 { font-size: var(--wow-font-heading); margin: 0; }

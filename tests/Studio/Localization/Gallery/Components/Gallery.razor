@@ -1,0 +1,28 @@
+<ThemeScope>
+    <LanguageScope Language="@language">
+        <main class="localization-gallery" data-interactive="@interactive.ToString().ToLowerInvariant()">
+            <h1>@Text("Localization fixture","اختبار الترجمة")</h1>
+            <button class="wow-button" id="switch" @onclick="Switch">@Text("Switch to Arabic","التبديل إلى الإنجليزية")</button>
+            <ResponsiveSplit PrimaryLabel="@Text("Workspace","مساحة العمل")" SecondaryLabel="@Text("Details","التفاصيل")">
+                <Primary>
+                    <h2>@Text("Workspace","مساحة العمل")</h2>
+                    <p>@Text("Revision","النسخة"): <IdentityText Value="revision-17-A" /></p>
+                    <p>@Text("Duration","المدة"): <LocalizedNumber Language="@language" Value="125.50m" Unit="ms" /></p>
+                    <button id="primary" class="wow-button">@Text("Inspect workspace","فحص مساحة العمل")</button>
+                </Primary>
+                <Secondary>
+                    <h2>@Text("Details","التفاصيل")</h2>
+                    <p>@Text("Run","التشغيل"): <IdentityText Value="run-7-B" /></p>
+                    <button id="secondary" class="wow-button">@Text("Inspect details","فحص التفاصيل")</button>
+                </Secondary>
+            </ResponsiveSplit>
+        </main>
+    </LanguageScope>
+</ThemeScope>
+@code {
+    private StudioLanguage language;
+    private bool interactive;
+    private string Text(string en,string ar)=>language==StudioLanguage.Arabic?ar:en;
+    private void Switch()=>language=language==StudioLanguage.English?StudioLanguage.Arabic:StudioLanguage.English;
+    protected override void OnAfterRender(bool firstRender){if(firstRender){interactive=true;StateHasChanged();}}
+}

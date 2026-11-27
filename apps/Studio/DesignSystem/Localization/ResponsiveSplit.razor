@@ -1,0 +1,12 @@
+@namespace WowDi.Studio.DesignSystem.Localization
+@using Microsoft.AspNetCore.Components
+<div class="wow-logical-split">
+    <section class="wow-logical-pane" aria-label="@PrimaryLabel">@Primary</section>
+    <section class="wow-logical-pane" aria-label="@SecondaryLabel">@Secondary</section>
+</div>
+@code {
+    [Parameter,EditorRequired] public string PrimaryLabel {get;set;}="";
+    [Parameter,EditorRequired] public string SecondaryLabel {get;set;}="";
+    [Parameter] public RenderFragment? Primary {get;set;}
+    [Parameter] public RenderFragment? Secondary {get;set;}
+}

@@ -1,0 +1,9 @@
+@namespace WowDi.Studio.DesignSystem.Localization
+@using Microsoft.AspNetCore.Components
+<div class="wow-language" lang="@Language.Tag()" dir="@Language.Direction()">
+    @ChildContent
+</div>
+@code {
+    [Parameter] public StudioLanguage Language {get;set;}
+    [Parameter] public RenderFragment? ChildContent {get;set;}
+}

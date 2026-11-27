@@ -1,0 +1,98 @@
+# DS03 — localization and responsive layout primitives
+
+Use LanguageScope to switch the language and direction without rebuilding
+the component tree. Consumer strings must be localized; scope does not
+translate arbitrary text or silently change process-wide culture.
+IdentityText and LocalizedNumber keep immutable IDs and numeric/unit labels
+isolated within Arabic text. Numeric formatting is explicit per language.
+ResponsiveSplit uses logical layout order: the primary pane starts on the
+left in English, on the right in Arabic, and stacks first on narrow screens.
+DOM order remains stable for keyboard access. Use localization.css with
+DS01/DS02 styles.
+
+DisplayRecovery is a deterministic pure placement policy using host-provided
+logical work areas and scale factors. It preserves valid saved placement,
+clamps offscreen bounds, and centers a fallback on an available display.
+The host owns physical display enumeration, conversion to a consistent
+logical coordinate space, actual window movement and OS DPI events.
+This policy alone is not proof of multi-monitor support.
+
+## Evidence
+
+- 5/5 C# tests passed: language mapping, valid placement, invalid topology,
+  missing monitor fallback and secondary monitor scale/clamping.
+- Actual Chromium tests passed: runtime en/ar switch, logical focus order,
+  mixed-direction identity and number labels, and responsive layout with
+  emulated DPR 1 and 2. The recorded screenshot is a labeled fixture.
+- Windows/Linux browser qualification CI runs the same tests.
+- Native monitor transfer with distinct real display scale factors is still
+  unverified. Do not close DS03 until that acceptance is observed.
+- Full resource translation and application shell persistence remain
+  feature-level integration; the gallery is not the final Studio design.
+
+Commands from root:
+
+    dotnet test tests/Studio/Localization/Unit -c Release
+    dotnet publish tests/Studio/Localization/Gallery -c Release -o artifacts/ds03
+    cd artifacts/ds03
+    dotnet WowDi.Studio.LocalizationGallery.dll --urls http://127.0.0.1:48265/
+
+From another shell at the root:
+
+    node tests/Studio/Localization/browser-check.mjs /path/to/chromium http://127.0.0.1:48265/ gallery.png
+
+### Cross-platform evidence checkpoint
+
+The first Windows browser qualification passed (run 46038731726);
+the actual browser JSON and screenshot are preserved in
+tests/Studio/Localization/evidence/windows. The subsequent run
+46039504824 failed before the debugging port existed; it did not execute
+the localization assertions. Increased bounded startup time and retained
+stderr/early-exit diagnostics without relaxing any assertions.
+
+For native acceptance, use a machine with two actual displays configured
+with different effective scale factors. Start the native Studio host, record
+display ID/work area/scale and window bounds on display A, switch to Arabic
+by keyboard, traverse both panes, move the window to B using OS window
+controls, record the new monitor and scale, repeat keyboard traversal and
+verify both panes/IDs/units remain legible. Disconnect B and restore the
+saved layout; record native window bounds inside the remaining work area.
+Attach before/after screenshots and observed topology and focus trace.
+Do not record a pass from browser emulation, unit tests or a single display.
+
+### Native coordinate-frame boundary
+
+DisplayCoordinateFrame converts physical pixels to monitor-local logical
+offsets relative to each monitor's work area, then reuses DisplayRecovery
+to restore/clamp and quantize both edges within the selected physical
+work area. It deliberately does not divide global virtual-desktop
+coordinates by one monitor's scale. This avoids mixed-scale origin and
+rounding errors, including negative monitor coordinates. Stable display
+identity, actual work areas and scale are supplied by the native host.
+NativePlacement is explicitly monitor-local; do not deserialize old
+absolute ShellLayout coordinates into it or alter the persistence schema
+without coordinated versioning. Tests cover 100%, 125%, 150%, 200%,
+scale changes, disconnected monitor fallback, invalid topology, and
+1,000 fractional-scale containment cases. These are deterministic
+coordinate tests, not actual multi-monitor or native window proof.
+
+### Pinned native-host API inspection
+
+Photino.NET v4.0.16 Monitor exposes MonitorArea, WorkArea and Scale, but
+does not expose a stable monitor identifier or primary-monitor flag.
+Photino.Native v4.0.22 Windows uses EnumDisplayMonitors, GetMonitorInfo
+and GetDpiForMonitor; its Linux implementation calls GDK monitor
+geometry/workarea and gdk_monitor_get_scale_factor (the upstream code
+explicitly notes fractional scaling is not implemented). GDK geometry
+is in its logical coordinate space, not the Windows physical-pixel
+representation. Consequently, neither list order nor bounds are a
+durable identity, and applying DisplayCoordinateFrame indiscriminately
+to Linux GDK coordinates would double-convert them.
+
+A production adapter must supply explicit stable OS display identity,
+primary status and coordinate-space provenance, use the appropriate
+logical or physical recovery path, then read back actual window bounds
+and effective scale after the OS move. An ambiguous identity must not
+restore an old position as if the display were known. Do not infer a
+physical mixed-DPI pass from a browser or Xvfb virtual monitor. The
+available remote environment does not provide two physical displays.
