@@ -910,7 +910,8 @@
       "UI01",
       "M01",
       "M09",
-      "SP02"
+      "SP02",
+      "M07"
     ],
     "accept": "Build the Batch example by pointer and keyboard, then compare normalized output with the DSL fixture."
   },
@@ -922,7 +923,8 @@
       "UI01",
       "M01",
       "M02",
-      "SP02"
+      "SP02",
+      "DS04"
     ],
     "accept": "Select a three-variable constraint, filter an edge and compare before/after reachability against the unfiltered graph queries."
   },
@@ -992,7 +994,8 @@
       "UI01",
       "S07",
       "S10",
-      "SP02"
+      "SP02",
+      "DS04"
     ],
     "accept": "Replay events with an incumbent and absent bound. Show measured values and preserve the verified incumbent after cancellation."
   },
@@ -1106,7 +1109,8 @@
       "UI01",
       "E01",
       "I01",
-      "SP02"
+      "SP02",
+      "RT04"
     ],
     "accept": "Use two tenant accounts to check a read-only role, an administrative operation and versioned SDK examples in Blazor."
   },
@@ -1116,7 +1120,8 @@
     "title": "Command palette and productivity",
     "deps": [
       "UI01",
-      "SP02"
+      "SP02",
+      "CLI01"
     ],
     "accept": "Invoke a registered command by name and shortcut with the same permission and workspace context."
   },
@@ -1127,7 +1132,8 @@
     "deps": [
       "UI01",
       "CLI10",
-      "SP02"
+      "SP02",
+      "DS03"
     ],
     "accept": "Change theme and language, restart and inspect the effective configuration and redacted health report."
   },
@@ -1456,7 +1462,8 @@
     "deps": [
       "UI01",
       "DS03",
-      "DS04"
+      "DS04",
+      "U02"
     ],
     "accept": "Capture actual windows at reference logical size and 3x scale; store fonts, OS, host, fixture, tolerance calibration and per-region diff."
   },

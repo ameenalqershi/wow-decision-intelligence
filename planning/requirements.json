@@ -2,8 +2,8 @@
   {
     "issue": "R01",
     "number": 1,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Research",
+    "priority": "P1",
+    "release": "Research",
     "component": "Research",
     "implementation": "Baseline issue closed; scope extensions require separate verification",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -43,8 +43,8 @@
   {
     "issue": "R02",
     "number": 2,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Research",
+    "priority": "P1",
+    "release": "Research",
     "component": "Research",
     "implementation": "Baseline issue closed; scope extensions require separate verification",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -84,8 +84,8 @@
   {
     "issue": "R03",
     "number": 3,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Research",
+    "priority": "P1",
+    "release": "Research",
     "component": "Research",
     "implementation": "Baseline issue closed; scope extensions require separate verification",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -125,8 +125,8 @@
   {
     "issue": "R04",
     "number": 4,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Research",
+    "priority": "P1",
+    "release": "Research",
     "component": "Research",
     "implementation": "Baseline issue closed; scope extensions require separate verification",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -167,8 +167,8 @@
   {
     "issue": "R05",
     "number": 5,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Research",
+    "priority": "P1",
+    "release": "Research",
     "component": "Research",
     "implementation": "Baseline issue closed; scope extensions require separate verification",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -208,8 +208,8 @@
   {
     "issue": "R06",
     "number": 6,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Research",
+    "priority": "P1",
+    "release": "MVP",
     "component": "Research",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -249,8 +249,8 @@
   {
     "issue": "R07",
     "number": 7,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Research",
+    "priority": "P0",
+    "release": "MVP",
     "component": "Research",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -306,8 +306,8 @@
   {
     "issue": "R08",
     "number": 8,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Research",
+    "priority": "P1",
+    "release": "Research",
     "component": "Research",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -347,8 +347,8 @@
   {
     "issue": "F01",
     "number": 9,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Foundation",
+    "priority": "P0",
+    "release": "MVP",
     "component": "Foundation",
     "implementation": "Baseline issue closed; scope extensions require separate verification",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -389,8 +389,8 @@
   {
     "issue": "F02",
     "number": 10,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Foundation",
+    "priority": "P1",
+    "release": "Scale",
     "component": "Foundation",
     "implementation": "Baseline issue closed; scope extensions require separate verification",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -431,8 +431,8 @@
   {
     "issue": "F03",
     "number": 11,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Foundation",
+    "priority": "P0",
+    "release": "Scale",
     "component": "Foundation",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -472,8 +472,8 @@
   {
     "issue": "F04",
     "number": 12,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Foundation",
+    "priority": "P1",
+    "release": "Production",
     "component": "Foundation",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -514,23 +514,24 @@
   {
     "issue": "F05",
     "number": 13,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Foundation",
+    "priority": "P0",
+    "release": "MVP",
     "component": "Foundation",
-    "implementation": "Planned",
-    "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
-    "fieldScope": "No approved field mapping in this baseline.",
-    "apiScope": "No approved API mapping in this baseline.",
+    "implementation": "Merged and verified on Windows and Linux in #187",
+    "verification": "Run dotnet test tests/Contracts/WowDi.Contracts.Tests.csproj -c Release after locked restore.",
+    "fieldScope": "The field table in docs/design/contract-compatibility.md defines the required identity, structural fields and rejection behavior.",
+    "apiScope": "EnvelopeReader.Read is the public compatibility entry point.",
     "specifications": [
-      "docs/design/architecture.md",
-      "docs/design/operating-modes.md"
+      "docs/design/contract-compatibility.md"
     ],
     "diagrams": [
-      "docs/design/operating-modes.md"
+      "docs/design/contract-compatibility.md"
     ],
     "fields": [],
     "apis": [],
-    "evidence": [],
+    "evidence": [
+      "tests/Contracts/EnvelopeTests.cs"
+    ],
     "tests": [
       {
         "id": "TC-F05-A",
@@ -548,30 +549,32 @@
         "tests": [
           "TC-F05-A"
         ],
-        "coverage": "Partially Covered",
-        "reason": "The available source and acceptance statement are mapped. Detailed field, contract or fixture review remains open."
+        "coverage": "Fully Covered",
+        "reason": "Published fields, policy, acceptance and executable fixtures are linked."
       }
     ]
   },
   {
     "issue": "M01",
     "number": 14,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Model",
+    "priority": "P0",
+    "release": "MVP",
     "component": "Model",
-    "implementation": "Planned",
-    "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
-    "fieldScope": "No approved field mapping in this baseline.",
-    "apiScope": "No approved API mapping in this baseline.",
+    "implementation": "Merged and verified on Windows and Linux in #188",
+    "verification": "Run dotnet test tests/DecisionGraph/WowDi.DecisionGraph.Tests.csproj -c Release after locked restore.",
+    "fieldScope": "The field table in docs/design/decision-graph.md defines the required identity, structural fields and rejection behavior.",
+    "apiScope": "DecisionGraphSnapshot.Create and IncidentRelationships are the managed graph entry points.",
     "specifications": [
-      "docs/design/engine.md"
+      "docs/design/decision-graph.md"
     ],
     "diagrams": [
-      "docs/design/operating-modes.md"
+      "docs/design/decision-graph.md"
     ],
     "fields": [],
     "apis": [],
-    "evidence": [],
+    "evidence": [
+      "tests/DecisionGraph/GraphTests.cs"
+    ],
     "tests": [
       {
         "id": "TC-M01-A",
@@ -589,16 +592,16 @@
         "tests": [
           "TC-M01-A"
         ],
-        "coverage": "Partially Covered",
-        "reason": "The available source and acceptance statement are mapped. Detailed field, contract or fixture review remains open."
+        "coverage": "Fully Covered",
+        "reason": "Published fields, policy, acceptance and executable fixtures are linked."
       }
     ]
   },
   {
     "issue": "M02",
     "number": 15,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Model",
+    "priority": "P0",
+    "release": "MVP",
     "component": "Model",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -689,8 +692,8 @@
   {
     "issue": "M04",
     "number": 17,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Model",
+    "priority": "P0",
+    "release": "MVP",
     "component": "Model",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -731,8 +734,8 @@
   {
     "issue": "M05",
     "number": 18,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Model",
+    "priority": "P0",
+    "release": "MVP",
     "component": "Model",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -773,8 +776,8 @@
   {
     "issue": "M06",
     "number": 19,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Model",
+    "priority": "P0",
+    "release": "MVP",
     "component": "Model",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -815,8 +818,8 @@
   {
     "issue": "M07",
     "number": 20,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Model",
+    "priority": "P0",
+    "release": "MVP",
     "component": "Model",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -857,8 +860,8 @@
   {
     "issue": "M08",
     "number": 21,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Model",
+    "priority": "P0",
+    "release": "MVP",
     "component": "Model",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -899,8 +902,8 @@
   {
     "issue": "M09",
     "number": 22,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Model",
+    "priority": "P1",
+    "release": "Production",
     "component": "Model",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -941,8 +944,8 @@
   {
     "issue": "M10",
     "number": 23,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Model",
+    "priority": "P1",
+    "release": "MVP",
     "component": "Model",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -1032,8 +1035,8 @@
   {
     "issue": "M12",
     "number": 25,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Model",
+    "priority": "P1",
+    "release": "Production",
     "component": "Model",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -1130,8 +1133,8 @@
   {
     "issue": "S02",
     "number": 27,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Runtime",
+    "priority": "P0",
+    "release": "MVP",
     "component": "Runtime",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -1171,8 +1174,8 @@
   {
     "issue": "S03",
     "number": 28,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Runtime",
+    "priority": "P1",
+    "release": "Multi-Sector",
     "component": "Runtime",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -1212,8 +1215,8 @@
   {
     "issue": "S04",
     "number": 29,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Runtime",
+    "priority": "P0",
+    "release": "MVP",
     "component": "Runtime",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -1266,8 +1269,8 @@
   {
     "issue": "S05",
     "number": 30,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Runtime",
+    "priority": "P1",
+    "release": "MVP",
     "component": "Runtime",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -1307,8 +1310,8 @@
   {
     "issue": "S06",
     "number": 31,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Runtime",
+    "priority": "P0",
+    "release": "MVP",
     "component": "Runtime",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -1348,8 +1351,8 @@
   {
     "issue": "S07",
     "number": 32,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Runtime",
+    "priority": "P0",
+    "release": "MVP",
     "component": "Runtime",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -1389,8 +1392,8 @@
   {
     "issue": "S08",
     "number": 33,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Runtime",
+    "priority": "P1",
+    "release": "Production",
     "component": "Runtime",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -1430,8 +1433,8 @@
   {
     "issue": "S09",
     "number": 34,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Runtime",
+    "priority": "P1",
+    "release": "Production",
     "component": "Runtime",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -1471,8 +1474,8 @@
   {
     "issue": "S10",
     "number": 35,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Runtime",
+    "priority": "P0",
+    "release": "MVP",
     "component": "Runtime",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -1513,8 +1516,8 @@
   {
     "issue": "S11",
     "number": 36,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Runtime",
+    "priority": "P1",
+    "release": "Enterprise",
     "component": "Runtime",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -1555,22 +1558,25 @@
   {
     "issue": "S12",
     "number": 37,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Runtime",
+    "priority": "P1",
+    "release": "Enterprise",
     "component": "Runtime",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
     "fieldScope": "No approved field mapping in this baseline.",
-    "apiScope": "No approved API mapping in this baseline.",
+    "apiScope": "No approved API mapping in this baseline. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated.",
     "specifications": [
       "docs/design/architecture.md",
-      "docs/design/operating-modes.md"
+      "docs/design/operating-modes.md",
+      "docs/design/specialized-studio-ports-v1.md"
     ],
     "diagrams": [
       "docs/design/operating-modes.md"
     ],
     "fields": [],
-    "apis": [],
+    "apis": [
+      "API-ADMIN"
+    ],
     "evidence": [],
     "tests": [
       {
@@ -1597,8 +1603,8 @@
   {
     "issue": "X01",
     "number": 38,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Research engineering",
+    "priority": "P1",
+    "release": "Research",
     "component": "Research engineering",
     "implementation": "Baseline issue closed; scope extensions require separate verification",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -1641,8 +1647,8 @@
   {
     "issue": "X02",
     "number": 39,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Research engineering",
+    "priority": "P1",
+    "release": "MVP",
     "component": "Research engineering",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -1683,8 +1689,8 @@
   {
     "issue": "X03",
     "number": 40,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Research engineering",
+    "priority": "P1",
+    "release": "MVP",
     "component": "Research engineering",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -1725,8 +1731,8 @@
   {
     "issue": "X04",
     "number": 41,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Research engineering",
+    "priority": "P1",
+    "release": "MVP",
     "component": "Research engineering",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -1767,8 +1773,8 @@
   {
     "issue": "X05",
     "number": 42,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Research engineering",
+    "priority": "P1",
+    "release": "MVP",
     "component": "Research engineering",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -1809,8 +1815,8 @@
   {
     "issue": "X06",
     "number": 43,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Research engineering",
+    "priority": "P1",
+    "release": "Research",
     "component": "Research engineering",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -1851,22 +1857,25 @@
   {
     "issue": "X07",
     "number": 44,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Research engineering",
+    "priority": "P1",
+    "release": "Scale",
     "component": "Research engineering",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
     "fieldScope": "No approved field mapping in this baseline.",
-    "apiScope": "No approved API mapping in this baseline.",
+    "apiScope": "No approved API mapping in this baseline. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated.",
     "specifications": [
       "docs/research/innovation.md",
-      "docs/research/comparison-protocol.md"
+      "docs/research/comparison-protocol.md",
+      "docs/design/specialized-studio-ports-v1.md"
     ],
     "diagrams": [
       "docs/design/operating-modes.md"
     ],
     "fields": [],
-    "apis": [],
+    "apis": [
+      "API-BENCHMARK"
+    ],
     "evidence": [],
     "tests": [
       {
@@ -1893,8 +1902,8 @@
   {
     "issue": "X08",
     "number": 45,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Research engineering",
+    "priority": "P1",
+    "release": "Research",
     "component": "Research engineering",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -1935,8 +1944,8 @@
   {
     "issue": "X09",
     "number": 46,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Research engineering",
+    "priority": "P1",
+    "release": "Research",
     "component": "Research engineering",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -1977,8 +1986,8 @@
   {
     "issue": "X10",
     "number": 47,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Research engineering",
+    "priority": "P1",
+    "release": "Research",
     "component": "Research engineering",
     "implementation": "Baseline issue closed; scope extensions require separate verification",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -2021,8 +2030,8 @@
   {
     "issue": "V01",
     "number": 48,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Manufacturing",
+    "priority": "P0",
+    "release": "MVP",
     "component": "Manufacturing",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -2063,8 +2072,8 @@
   {
     "issue": "V02",
     "number": 49,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Manufacturing",
+    "priority": "P1",
+    "release": "Production",
     "component": "Manufacturing",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -2105,22 +2114,25 @@
   {
     "issue": "V03",
     "number": 50,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Manufacturing",
+    "priority": "P0",
+    "release": "MVP",
     "component": "Manufacturing",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
     "fieldScope": "No approved field mapping in this baseline.",
-    "apiScope": "No approved API mapping in this baseline.",
+    "apiScope": "No approved API mapping in this baseline. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated.",
     "specifications": [
       "docs/design/production.md",
-      "docs/research/feasibility.md"
+      "docs/research/feasibility.md",
+      "docs/design/specialized-studio-ports-v1.md"
     ],
     "diagrams": [
       "docs/design/operating-modes.md"
     ],
     "fields": [],
-    "apis": [],
+    "apis": [
+      "API-ALLOCATION"
+    ],
     "evidence": [],
     "tests": [
       {
@@ -2147,8 +2159,8 @@
   {
     "issue": "V04",
     "number": 51,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Manufacturing",
+    "priority": "P1",
+    "release": "MVP",
     "component": "Manufacturing",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -2189,8 +2201,8 @@
   {
     "issue": "V05",
     "number": 52,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Manufacturing",
+    "priority": "P1",
+    "release": "MVP",
     "component": "Manufacturing",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -2231,8 +2243,8 @@
   {
     "issue": "V06",
     "number": 53,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Second sector",
+    "priority": "P1",
+    "release": "Multi-Sector",
     "component": "Second sector",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -2273,8 +2285,8 @@
   {
     "issue": "V07",
     "number": 54,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Second sector",
+    "priority": "P1",
+    "release": "Multi-Sector",
     "component": "Second sector",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -2315,22 +2327,25 @@
   {
     "issue": "I01",
     "number": 55,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Integrations",
+    "priority": "P1",
+    "release": "Enterprise",
     "component": "Integrations",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
     "fieldScope": "No approved field mapping in this baseline.",
-    "apiScope": "No approved API mapping in this baseline.",
+    "apiScope": "No approved API mapping in this baseline. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated.",
     "specifications": [
       "docs/design/architecture.md",
-      "docs/design/operating-modes.md"
+      "docs/design/operating-modes.md",
+      "docs/design/specialized-studio-ports-v1.md"
     ],
     "diagrams": [
       "docs/design/operating-modes.md"
     ],
     "fields": [],
-    "apis": [],
+    "apis": [
+      "API-MAPPING"
+    ],
     "evidence": [],
     "tests": [
       {
@@ -2357,22 +2372,25 @@
   {
     "issue": "I02",
     "number": 56,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Integrations",
+    "priority": "P1",
+    "release": "Enterprise",
     "component": "Integrations",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
     "fieldScope": "No approved field mapping in this baseline.",
-    "apiScope": "No approved API mapping in this baseline.",
+    "apiScope": "No approved API mapping in this baseline. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated.",
     "specifications": [
       "docs/design/architecture.md",
-      "docs/design/operating-modes.md"
+      "docs/design/operating-modes.md",
+      "docs/design/specialized-studio-ports-v1.md"
     ],
     "diagrams": [
       "docs/design/operating-modes.md"
     ],
     "fields": [],
-    "apis": [],
+    "apis": [
+      "API-MAPPING"
+    ],
     "evidence": [],
     "tests": [
       {
@@ -2399,8 +2417,8 @@
   {
     "issue": "I03",
     "number": 57,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Integrations",
+    "priority": "P1",
+    "release": "Enterprise",
     "component": "Integrations",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -2441,22 +2459,25 @@
   {
     "issue": "I04",
     "number": 58,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Integrations",
+    "priority": "P1",
+    "release": "Enterprise",
     "component": "Integrations",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
     "fieldScope": "No approved field mapping in this baseline.",
-    "apiScope": "No approved API mapping in this baseline.",
+    "apiScope": "No approved API mapping in this baseline. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated.",
     "specifications": [
       "docs/design/architecture.md",
-      "docs/design/operating-modes.md"
+      "docs/design/operating-modes.md",
+      "docs/design/specialized-studio-ports-v1.md"
     ],
     "diagrams": [
       "docs/design/operating-modes.md"
     ],
     "fields": [],
-    "apis": [],
+    "apis": [
+      "API-MAPPING"
+    ],
     "evidence": [],
     "tests": [
       {
@@ -2483,8 +2504,8 @@
   {
     "issue": "I05",
     "number": 59,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Integrations",
+    "priority": "P2",
+    "release": "Enterprise",
     "component": "Integrations",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -2525,8 +2546,8 @@
   {
     "issue": "I06",
     "number": 60,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Integrations",
+    "priority": "P2",
+    "release": "Enterprise",
     "component": "Integrations",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -2567,8 +2588,8 @@
   {
     "issue": "I07",
     "number": 61,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Integrations",
+    "priority": "P2",
+    "release": "Enterprise",
     "component": "Integrations",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -2609,8 +2630,8 @@
   {
     "issue": "I08",
     "number": 62,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Integrations",
+    "priority": "P2",
+    "release": "Enterprise",
     "component": "Integrations",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -2651,8 +2672,8 @@
   {
     "issue": "I09",
     "number": 63,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Integrations",
+    "priority": "P2",
+    "release": "Enterprise",
     "component": "Integrations",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -2693,8 +2714,8 @@
   {
     "issue": "A01",
     "number": 64,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Intelligence",
+    "priority": "P1",
+    "release": "MVP",
     "component": "Intelligence",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -2734,21 +2755,24 @@
   {
     "issue": "A02",
     "number": 65,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Intelligence",
+    "priority": "P1",
+    "release": "MVP",
     "component": "Intelligence",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
     "fieldScope": "No approved field mapping in this baseline.",
-    "apiScope": "No approved API mapping in this baseline.",
+    "apiScope": "No approved API mapping in this baseline. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated.",
     "specifications": [
-      "docs/design/engine.md"
+      "docs/design/engine.md",
+      "docs/design/specialized-studio-ports-v1.md"
     ],
     "diagrams": [
       "docs/design/operating-modes.md"
     ],
     "fields": [],
-    "apis": [],
+    "apis": [
+      "API-EXPLAIN"
+    ],
     "evidence": [],
     "tests": [
       {
@@ -2775,21 +2799,24 @@
   {
     "issue": "A03",
     "number": 66,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Intelligence",
+    "priority": "P1",
+    "release": "Production",
     "component": "Intelligence",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
     "fieldScope": "No approved field mapping in this baseline.",
-    "apiScope": "No approved API mapping in this baseline.",
+    "apiScope": "No approved API mapping in this baseline. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated.",
     "specifications": [
-      "docs/design/engine.md"
+      "docs/design/engine.md",
+      "docs/design/specialized-studio-ports-v1.md"
     ],
     "diagrams": [
       "docs/design/operating-modes.md"
     ],
     "fields": [],
-    "apis": [],
+    "apis": [
+      "API-EXPLAIN"
+    ],
     "evidence": [],
     "tests": [
       {
@@ -2816,21 +2843,24 @@
   {
     "issue": "A04",
     "number": 67,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Intelligence",
+    "priority": "P1",
+    "release": "Production",
     "component": "Intelligence",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
     "fieldScope": "No approved field mapping in this baseline.",
-    "apiScope": "No approved API mapping in this baseline.",
+    "apiScope": "No approved API mapping in this baseline. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated.",
     "specifications": [
-      "docs/design/engine.md"
+      "docs/design/engine.md",
+      "docs/design/specialized-studio-ports-v1.md"
     ],
     "diagrams": [
       "docs/design/operating-modes.md"
     ],
     "fields": [],
-    "apis": [],
+    "apis": [
+      "API-SIMULATION"
+    ],
     "evidence": [],
     "tests": [
       {
@@ -2857,8 +2887,8 @@
   {
     "issue": "A05",
     "number": 68,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Intelligence",
+    "priority": "P1",
+    "release": "Production",
     "component": "Intelligence",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -2898,8 +2928,8 @@
   {
     "issue": "A06",
     "number": 69,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Intelligence",
+    "priority": "P1",
+    "release": "Production",
     "component": "Intelligence",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -2939,8 +2969,8 @@
   {
     "issue": "U01",
     "number": 70,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Applications",
+    "priority": "P1",
+    "release": "MVP",
     "component": "Applications",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -2981,8 +3011,8 @@
   {
     "issue": "U02",
     "number": 71,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Applications",
+    "priority": "P1",
+    "release": "Production",
     "component": "Applications",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -3062,8 +3092,8 @@
   {
     "issue": "U03",
     "number": 72,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Applications",
+    "priority": "P1",
+    "release": "MVP",
     "component": "Applications",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -3104,8 +3134,8 @@
   {
     "issue": "U04",
     "number": 73,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Applications",
+    "priority": "P1",
+    "release": "MVP",
     "component": "Applications",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -3146,8 +3176,8 @@
   {
     "issue": "U05",
     "number": 74,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Applications",
+    "priority": "P1",
+    "release": "Production",
     "component": "Applications",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -3188,22 +3218,25 @@
   {
     "issue": "U06",
     "number": 88,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Applications",
+    "priority": "P1",
+    "release": "Enterprise",
     "component": "Applications",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
     "fieldScope": "No approved field mapping in this baseline.",
-    "apiScope": "No approved API mapping in this baseline.",
+    "apiScope": "No approved API mapping in this baseline. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated.",
     "specifications": [
       "docs/design/architecture.md",
-      "docs/design/operating-modes.md"
+      "docs/design/operating-modes.md",
+      "docs/design/specialized-studio-ports-v1.md"
     ],
     "diagrams": [
       "docs/design/operating-modes.md"
     ],
     "fields": [],
-    "apis": [],
+    "apis": [
+      "API-ADMIN"
+    ],
     "evidence": [],
     "tests": [
       {
@@ -3230,22 +3263,25 @@
   {
     "issue": "E01",
     "number": 75,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Enterprise",
+    "priority": "P1",
+    "release": "Production",
     "component": "Enterprise",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
     "fieldScope": "No approved field mapping in this baseline.",
-    "apiScope": "No approved API mapping in this baseline.",
+    "apiScope": "No approved API mapping in this baseline. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated.",
     "specifications": [
       "docs/design/architecture.md",
-      "docs/design/operating-modes.md"
+      "docs/design/operating-modes.md",
+      "docs/design/specialized-studio-ports-v1.md"
     ],
     "diagrams": [
       "docs/design/operating-modes.md"
     ],
     "fields": [],
-    "apis": [],
+    "apis": [
+      "API-ADMIN"
+    ],
     "evidence": [],
     "tests": [
       {
@@ -3272,22 +3308,25 @@
   {
     "issue": "E02",
     "number": 76,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Enterprise",
+    "priority": "P1",
+    "release": "Production",
     "component": "Enterprise",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
     "fieldScope": "No approved field mapping in this baseline.",
-    "apiScope": "No approved API mapping in this baseline.",
+    "apiScope": "No approved API mapping in this baseline. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated.",
     "specifications": [
       "docs/design/architecture.md",
-      "docs/design/operating-modes.md"
+      "docs/design/operating-modes.md",
+      "docs/design/specialized-studio-ports-v1.md"
     ],
     "diagrams": [
       "docs/design/operating-modes.md"
     ],
     "fields": [],
-    "apis": [],
+    "apis": [
+      "API-ADMIN"
+    ],
     "evidence": [],
     "tests": [
       {
@@ -3314,8 +3353,8 @@
   {
     "issue": "E03",
     "number": 77,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Enterprise",
+    "priority": "P1",
+    "release": "Scale",
     "component": "Enterprise",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -3356,8 +3395,8 @@
   {
     "issue": "E04",
     "number": 78,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Enterprise",
+    "priority": "P1",
+    "release": "Enterprise",
     "component": "Enterprise",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -3398,8 +3437,8 @@
   {
     "issue": "E05",
     "number": 79,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Enterprise",
+    "priority": "P1",
+    "release": "Production",
     "component": "Enterprise",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -3440,8 +3479,8 @@
   {
     "issue": "E06",
     "number": 80,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Enterprise",
+    "priority": "P1",
+    "release": "Production",
     "component": "Enterprise",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -3482,8 +3521,8 @@
   {
     "issue": "E07",
     "number": 81,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Enterprise",
+    "priority": "P1",
+    "release": "Enterprise",
     "component": "Enterprise",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -3524,8 +3563,8 @@
   {
     "issue": "E08",
     "number": 82,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Enterprise",
+    "priority": "P2",
+    "release": "Scale",
     "component": "Enterprise",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -3566,8 +3605,8 @@
   {
     "issue": "Q01",
     "number": 83,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Quality",
+    "priority": "P1",
+    "release": "Production",
     "component": "Quality",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -3608,8 +3647,8 @@
   {
     "issue": "Q02",
     "number": 84,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Quality",
+    "priority": "P1",
+    "release": "Enterprise",
     "component": "Quality",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -3650,8 +3689,8 @@
   {
     "issue": "Q03",
     "number": 85,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Quality",
+    "priority": "P1",
+    "release": "Production",
     "component": "Quality",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -3692,8 +3731,8 @@
   {
     "issue": "Q04",
     "number": 86,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Quality",
+    "priority": "P1",
+    "release": "Research",
     "component": "Quality",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -3734,8 +3773,8 @@
   {
     "issue": "P01",
     "number": 87,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Portfolio",
+    "priority": "P2",
+    "release": "Multi-Sector",
     "component": "Portfolio",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -3776,8 +3815,8 @@
   {
     "issue": "T01",
     "number": 89,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Foundation",
+    "priority": "P0",
+    "release": "Research",
     "component": "Foundation",
     "implementation": "In progress",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
@@ -3792,7 +3831,9 @@
     "fields": [],
     "apis": [],
     "evidence": [
-      "docs/design/references/SHA256SUMS"
+      "docs/design/references/SHA256SUMS",
+      "tools/Traceability/check-fixtures.sh",
+      "docs/audit/baseline-issues.json"
     ],
     "tests": [
       {
@@ -3854,8 +3895,8 @@
         "tests": [
           "TC-T01-A"
         ],
-        "coverage": "Partially Covered",
-        "reason": "The available source and acceptance statement are mapped. Detailed field, contract or fixture review remains open."
+        "coverage": "Fully Covered",
+        "reason": "Linked audit scope, automated test and observed two-platform or live-ledger evidence."
       },
       {
         "title": "Check structural and semantic dependencies including indirect prerequisites and parallel work",
@@ -3893,8 +3934,8 @@
         "tests": [
           "TC-T01-A"
         ],
-        "coverage": "Partially Covered",
-        "reason": "The available source and acceptance statement are mapped. Detailed field, contract or fixture review remains open."
+        "coverage": "Fully Covered",
+        "reason": "Linked audit scope, automated test and observed two-platform or live-ledger evidence."
       },
       {
         "title": "Scope additions by independent acceptance, reuse existing issues and attach real sub-issues",
@@ -5461,11 +5502,12 @@
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
     "fieldScope": "Pilot field subset; specialized payload review remains open.",
-    "apiScope": "Shared application ports; review per-feature payloads.",
+    "apiScope": "Shared application ports; review per-feature payloads. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated.",
     "specifications": [
       "docs/design/studio/UI14.md",
       "docs/design/references/IMPLEMENTATION-SPEC.md",
-      "docs/design/pilot-contracts.md"
+      "docs/design/pilot-contracts.md",
+      "docs/design/specialized-studio-ports-v1.md"
     ],
     "diagrams": [
       "docs/design/studio/UI14.md",
@@ -5476,7 +5518,7 @@
       "F-OBJ"
     ],
     "apis": [
-      "API-SCENARIO"
+      "API-SIMULATION"
     ],
     "evidence": [],
     "tests": [
@@ -5684,11 +5726,12 @@
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
     "fieldScope": "Pilot field subset; specialized payload review remains open.",
-    "apiScope": "Shared application ports; review per-feature payloads.",
+    "apiScope": "Shared application ports; review per-feature payloads. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated.",
     "specifications": [
       "docs/design/studio/UI16.md",
       "docs/design/references/IMPLEMENTATION-SPEC.md",
-      "docs/design/pilot-contracts.md"
+      "docs/design/pilot-contracts.md",
+      "docs/design/specialized-studio-ports-v1.md"
     ],
     "diagrams": [
       "docs/design/studio/UI16.md",
@@ -5700,7 +5743,7 @@
       "F-DURATION"
     ],
     "apis": [
-      "API-GRAPH"
+      "API-ALLOCATION"
     ],
     "evidence": [],
     "tests": [
@@ -5936,11 +5979,12 @@
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
     "fieldScope": "Pilot field subset; specialized payload review remains open.",
-    "apiScope": "Shared application ports; review per-feature payloads.",
+    "apiScope": "Shared application ports; review per-feature payloads. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated.",
     "specifications": [
       "docs/design/studio/UI18.md",
       "docs/design/references/IMPLEMENTATION-SPEC.md",
-      "docs/design/pilot-contracts.md"
+      "docs/design/pilot-contracts.md",
+      "docs/design/specialized-studio-ports-v1.md"
     ],
     "diagrams": [
       "docs/design/studio/UI18.md",
@@ -5953,7 +5997,7 @@
       "F-EVID"
     ],
     "apis": [
-      "API-EVIDENCE"
+      "API-EXPLAIN"
     ],
     "evidence": [],
     "tests": [
@@ -6048,11 +6092,12 @@
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
     "fieldScope": "Pilot field subset; specialized payload review remains open.",
-    "apiScope": "Shared application ports; review per-feature payloads.",
+    "apiScope": "Shared application ports; review per-feature payloads. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated.",
     "specifications": [
       "docs/design/studio/UI19.md",
       "docs/design/references/IMPLEMENTATION-SPEC.md",
-      "docs/design/pilot-contracts.md"
+      "docs/design/pilot-contracts.md",
+      "docs/design/specialized-studio-ports-v1.md"
     ],
     "diagrams": [
       "docs/design/studio/UI19.md",
@@ -6065,7 +6110,7 @@
       "F-ELAPSED"
     ],
     "apis": [
-      "API-RUN"
+      "API-BENCHMARK"
     ],
     "evidence": [],
     "tests": [
@@ -6174,11 +6219,12 @@
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
     "fieldScope": "Pilot field subset; specialized payload review remains open.",
-    "apiScope": "Shared application ports; review per-feature payloads.",
+    "apiScope": "Shared application ports; review per-feature payloads. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated.",
     "specifications": [
       "docs/design/studio/UI20.md",
       "docs/design/references/IMPLEMENTATION-SPEC.md",
-      "docs/design/pilot-contracts.md"
+      "docs/design/pilot-contracts.md",
+      "docs/design/specialized-studio-ports-v1.md"
     ],
     "diagrams": [
       "docs/design/studio/UI20.md",
@@ -6190,7 +6236,7 @@
       "F-DURATION"
     ],
     "apis": [
-      "API-MODEL"
+      "API-MAPPING"
     ],
     "evidence": [],
     "tests": [
@@ -6284,22 +6330,21 @@
     "component": "apps/Studio",
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
-    "fieldScope": "Pilot field subset; specialized payload review remains open.",
-    "apiScope": "Shared application ports; review per-feature payloads.",
+    "fieldScope": "Tenant/role/policy schema belongs to the enterprise identity contract, outside the pilot field catalog.",
+    "apiScope": "Shared application ports; review per-feature payloads. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated.",
     "specifications": [
       "docs/design/studio/UI21.md",
       "docs/design/references/IMPLEMENTATION-SPEC.md",
-      "docs/design/pilot-contracts.md"
+      "docs/design/pilot-contracts.md",
+      "docs/design/specialized-studio-ports-v1.md"
     ],
     "diagrams": [
       "docs/design/studio/UI21.md",
       "docs/design/studio/drafts/UI21-wire.svg"
     ],
-    "fields": [
-      "F-REV"
-    ],
+    "fields": [],
     "apis": [
-      "API-WORKSPACE"
+      "API-ADMIN"
     ],
     "evidence": [],
     "tests": [
@@ -6517,11 +6562,12 @@
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
     "fieldScope": "Pilot field subset; specialized payload review remains open.",
-    "apiScope": "Shared application ports; review per-feature payloads.",
+    "apiScope": "Shared application ports; review per-feature payloads. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated.",
     "specifications": [
       "docs/design/studio/UI23.md",
       "docs/design/references/IMPLEMENTATION-SPEC.md",
-      "docs/design/pilot-contracts.md"
+      "docs/design/pilot-contracts.md",
+      "docs/design/specialized-studio-ports-v1.md"
     ],
     "diagrams": [
       "docs/design/studio/UI23.md",
@@ -6532,7 +6578,7 @@
       "F-RUN"
     ],
     "apis": [
-      "API-COMMAND"
+      "API-SETTINGS"
     ],
     "evidence": [],
     "tests": [
@@ -7651,18 +7697,20 @@
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
     "fieldScope": "No approved field mapping in this baseline.",
-    "apiScope": "Shared application ports; review per-feature payloads.",
+    "apiScope": "Shared application ports; review per-feature payloads. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated.",
     "specifications": [
       "docs/design/cli-contract.md",
       "docs/design/references/IMPLEMENTATION-SPEC.md",
-      "docs/design/pilot-contracts.md"
+      "docs/design/pilot-contracts.md",
+      "docs/design/specialized-studio-ports-v1.md"
     ],
     "diagrams": [
       "docs/design/references/02-WOW-DI-CLI.svg"
     ],
     "fields": [],
     "apis": [
-      "API-COMMAND"
+      "API-COMMAND",
+      "API-SETTINGS"
     ],
     "evidence": [],
     "tests": [
@@ -8317,16 +8365,19 @@
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
     "fieldScope": "No approved field mapping in this baseline.",
-    "apiScope": "No approved API mapping in this baseline.",
+    "apiScope": "No approved API mapping in this baseline. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated.",
     "specifications": [
       "docs/design/references/IMPLEMENTATION-SPEC.md",
-      "docs/design/studio/UI01.md"
+      "docs/design/studio/UI01.md",
+      "docs/design/specialized-studio-ports-v1.md"
     ],
     "diagrams": [
       "docs/design/references/01-WOW-DI-Studio.svg"
     ],
     "fields": [],
-    "apis": [],
+    "apis": [
+      "API-SETTINGS"
+    ],
     "evidence": [],
     "tests": [
       {
@@ -8495,10 +8546,11 @@
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
     "fieldScope": "Pilot field subset; specialized payload review remains open.",
-    "apiScope": "Shared application ports; review per-feature payloads.",
+    "apiScope": "Shared application ports; review per-feature payloads. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated.",
     "specifications": [
       "docs/design/operating-modes.md",
-      "docs/design/pilot-contracts.md"
+      "docs/design/pilot-contracts.md",
+      "docs/design/specialized-studio-ports-v1.md"
     ],
     "diagrams": [
       "docs/design/operating-modes.md"
@@ -8510,7 +8562,8 @@
     ],
     "apis": [
       "API-WORKSPACE",
-      "API-EVIDENCE"
+      "API-EVIDENCE",
+      "API-SETTINGS"
     ],
     "evidence": [],
     "tests": [
