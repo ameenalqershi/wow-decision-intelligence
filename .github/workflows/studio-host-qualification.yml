@@ -43,6 +43,7 @@ jobs:
           mkdir -p "$RUNNER_TEMP/installed" "$RUNNER_TEMP/evidence"
           tar -C "$RUNNER_TEMP/publish" -czf "$RUNNER_TEMP/wowdi-host-linux.tar.gz" .
           tar -C "$RUNNER_TEMP/installed" -xzf "$RUNNER_TEMP/wowdi-host-linux.tar.gz"
+          pwsh -NoProfile -File tests/Studio/HostQualification/verify-install.ps1 -Published "$RUNNER_TEMP/publish" -Installed "$RUNNER_TEMP/installed" -Package "$RUNNER_TEMP/wowdi-host-linux.tar.gz" -Evidence "$RUNNER_TEMP/evidence/installation.json"
           ldd "$RUNNER_TEMP/installed/Photino.Native.so" | tee "$RUNNER_TEMP/evidence/ldd.txt"
           if grep -q 'not found' "$RUNNER_TEMP/evidence/ldd.txt"; then exit 1; fi
           sudo unshare --net -- runuser -u "$(id -un)" -- env HOME="$HOME" PATH="$PATH" timeout 90s xvfb-run -a dbus-run-session -- bash "$GITHUB_WORKSPACE/tests/Studio/HostQualification/linux-smoke.sh" "$RUNNER_TEMP/installed/WowDi.Studio.HostQualification" "$RUNNER_TEMP/evidence"
@@ -56,6 +57,7 @@ jobs:
           $package = Join-Path $env:RUNNER_TEMP 'wowdi-host-windows.zip'
           Compress-Archive -Path (Join-Path $env:RUNNER_TEMP 'publish/*') -DestinationPath $package
           Expand-Archive -LiteralPath $package -DestinationPath $installed
+          & tests/Studio/HostQualification/verify-install.ps1 -Published (Join-Path $env:RUNNER_TEMP "publish") -Installed $installed -Package $package -Evidence (Join-Path $out "installation.json")
           $exe = Join-Path $installed 'WowDi.Studio.HostQualification.exe'
           $failures = @()
           foreach ($mode in @('Connected','Blocked')) {

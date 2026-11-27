@@ -8,6 +8,7 @@ report="$out/host.json"
 test ! -e "$report"
 test ! -e "$report.observations"
 export GDK_BACKEND=x11
+cd "$out"
 openbox >"$out/window-manager.log" 2>&1 &
 wm=$!
 "$exe" --evidence "$report" >"$out/host.log" 2>&1 &
@@ -31,6 +32,7 @@ wait_json() {
     return 1
 }
 wait_json '.Rendered and .Direction == "ltr" and .FixtureRevision == "host-qualification-v1" and .DocumentUrl == "app://localhost/"'
+wait_json '.Events | index("security:csp-inline-and-connect-blocked") != null'
 window=$(xdotool search --onlyvisible --name '^WOW DI Host Qualification$' | head -1)
 test -n "$window"
 xdotool windowactivate --sync "$window"

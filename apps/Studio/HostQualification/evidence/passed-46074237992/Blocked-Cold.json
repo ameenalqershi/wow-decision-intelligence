@@ -1,0 +1,65 @@
+{
+  "FixtureRevision": "host-qualification-v1",
+  "Os": "Microsoft Windows NT 10.0.26100.0",
+  "Runtime": "10.0.15",
+  "Rendered": true,
+  "Direction": "rtl",
+  "FocusedId": "confirm",
+  "DocumentUrl": "http://localhost/",
+  "Events": [
+    "render",
+    "focus:direction",
+    "focus:direction",
+    "focus:confirm",
+    "focus:direction",
+    "direction:rtl",
+    "focus:confirm",
+    "confirm"
+  ],
+  "ObservationSequence": 8,
+  "EventCount": 8,
+  "HasFocus": true,
+  "StopwatchFrequency": 10000000,
+  "EventTrace": [
+    {
+      "Sequence": 1,
+      "Name": "render",
+      "ElapsedTicks": 17974850
+    },
+    {
+      "Sequence": 2,
+      "Name": "focus:direction",
+      "ElapsedTicks": 18350586
+    },
+    {
+      "Sequence": 3,
+      "Name": "focus:direction",
+      "ElapsedTicks": 19637667
+    },
+    {
+      "Sequence": 4,
+      "Name": "focus:confirm",
+      "ElapsedTicks": 24791839
+    },
+    {
+      "Sequence": 5,
+      "Name": "focus:direction",
+      "ElapsedTicks": 27263542
+    },
+    {
+      "Sequence": 6,
+      "Name": "direction:rtl",
+      "ElapsedTicks": 29868775
+    },
+    {
+      "Sequence": 7,
+      "Name": "focus:confirm",
+      "ElapsedTicks": 32501204
+    },
+    {
+      "Sequence": 8,
+      "Name": "confirm",
+      "ElapsedTicks": 35066495
+    }
+  ]
+}

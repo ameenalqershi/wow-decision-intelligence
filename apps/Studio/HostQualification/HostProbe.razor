@@ -23,6 +23,7 @@
 
 @code {
     private bool rtl;
+    private sealed record SecurityResult(bool InlineBlocked, bool ConnectBlocked);
     private ElementReference directionButton;
     private void FocusDirection() => Evidence.Record("focus:direction");
     private void FocusConfirm() => Evidence.Record("focus:confirm");
@@ -49,6 +50,11 @@
             Evidence.Record("render");
             FocusBridge.RendererReady();
             await directionButton.FocusAsync();
+            var security = await JS.InvokeAsync<SecurityResult>("wowdiHostProbe.security");
+            if (!security.InlineBlocked || !security.ConnectBlocked)
+                throw new InvalidOperationException("Host fixture CSP negative control failed.");
+            Evidence.Record("security:csp-inline-and-connect-blocked");
+            await InvokeAsync(StateHasChanged);
         }
         var observation = Evidence.BeginObservation();
         var dom = await JS.InvokeAsync<DomState>("wowdiHostProbe.read");

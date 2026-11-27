@@ -1,0 +1,4 @@
+Native focus preserved: 131462
+Discarded superseded DOM observation 1
+Native focus transition 7; current=459246
+Native focus bridge target=131462; actual=131462; acquired=True

@@ -1,0 +1,13 @@
+Native focus preserved: 262634
+Discarded superseded DOM observation 1
+Native focus transition 7; current=327750
+Native focus bridge target=262634; actual=262634; acquired=True
+Native focus transition 6; current=262634
+Native focus preserved: 262634
+Native focus transition 7; current=327750
+Native focus transition 6; current=262634
+Native focus bridge target=262634; actual=262634; acquired=True
+Native focus preserved: 262634
+Native focus transition 7; current=327750
+Native focus bridge target=262634; actual=262634; acquired=True
+Discarded superseded DOM observation 5

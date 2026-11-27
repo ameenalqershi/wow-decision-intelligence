@@ -46,6 +46,14 @@ internal static class Program
             focusBridge.Bind(app.MainWindow);
             app.MainWindow.SetTitle("WOW DI Host Qualification")
                 .SetUseOsDefaultLocation(true)
+                .SetDevToolsEnabled(false)
+                .SetContextMenuEnabled(false)
+                .SetWebSecurityEnabled(true)
+                .SetFileSystemAccessEnabled(false)
+                .SetJavascriptClipboardAccessEnabled(false)
+                .SetMediaStreamEnabled(false)
+                .SetMediaAutoplayEnabled(false)
+                .SetGrantBrowserPermissions(false)
                 .SetWidth(800)
                 .SetHeight(520);
             Console.WriteLine("Entering native event loop");

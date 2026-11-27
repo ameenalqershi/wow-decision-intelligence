@@ -136,3 +136,47 @@ unused 20-digit filename. Readers select completed JSON files and retain
 the accepted/failing snapshot as host.json. No overwrite of a reader-held
 file, no retry masking. Regression holds an exclusive reader of the old
 generation while publishing the new one. Windows native proof is pending.
+
+### Observed qualification checkpoint — 4b79562
+
+GitHub Actions run 46074237992 succeeded on Linux and all four Windows
+profiles. Reports and native focus traces are archived in
+`evidence/passed-46074237992`. Every final report has true Rendered and
+HasFocus, RTL direction, confirm focus and a fresh confirm event; the
+trace includes forward/backward native Tab and Enter. Linux ran in the
+isolated network namespace; Windows used the process-scoped outbound
+firewall conditions specified by the probe. The Windows traces confirm
+parent focus was restored to the eligible WebView child by the posted
+recovery message. Superseded observations were actually discarded.
+These are observed results of the older head, not evidence for the
+subsequent changes until their own workflow passes.
+
+### Trust and portable installation boundary
+
+The candidate loads only bundled local trusted assets, with no external
+document navigation, credentials, model mutation or engine execution.
+Disable development tools, context menus, automatic browser permission
+grants, filesystem access, clipboard access, media stream/autoplay;
+keep web security enabled. The trusted document declares a restrictive
+CSP (no arbitrary inline scripts, network connections, frames, objects
+or forms). A harmless inline-script and loopback-fetch negative control
+must emit actual CSP violations in each native engine before keyboard
+qualification succeeds. This is defense in depth, NOT a complete
+origin-authenticated IPC boundary: pinned upstream Photino.Native
+forwards WebView2 message text without the source origin. The managed
+bridge cannot authenticate messages from a navigated external page.
+Do not expose untrusted content or accept external navigation, privileged
+commands, connector secrets or arbitrary HTML through this candidate.
+Production host adoption requires documented navigation and origin
+enforcement or a qualified alternative host, and independent review of
+the private HWND compatibility bridge.
+
+The install test qualifies a portable per-user-style extraction of the
+self-contained package, not an MSI/deb installer, signing, OS service,
+or system-wide installation. Verify every extracted file against the
+published tree by SHA-256 and record the archive hash, file count and
+size. Launch from the evidence working directory to ensure bundled
+resource resolution does not depend on the installation current
+directory. The existing offline, keyboard, RTL and normal-exit checks
+remain required. No end-user signing or installer certification is
+claimed.

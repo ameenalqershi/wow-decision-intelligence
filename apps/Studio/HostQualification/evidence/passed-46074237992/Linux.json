@@ -1,0 +1,59 @@
+{
+  "FixtureRevision": "host-qualification-v1",
+  "Os": "Unix 7.0.0.1020",
+  "Runtime": "10.0.15",
+  "Rendered": true,
+  "Direction": "rtl",
+  "FocusedId": "confirm",
+  "DocumentUrl": "app://localhost/",
+  "Events": [
+    "render",
+    "focus:direction",
+    "focus:confirm",
+    "focus:direction",
+    "direction:rtl",
+    "focus:confirm",
+    "confirm"
+  ],
+  "ObservationSequence": 7,
+  "EventCount": 7,
+  "HasFocus": true,
+  "StopwatchFrequency": 1000000000,
+  "EventTrace": [
+    {
+      "Sequence": 1,
+      "Name": "render",
+      "ElapsedTicks": 4086759747
+    },
+    {
+      "Sequence": 2,
+      "Name": "focus:direction",
+      "ElapsedTicks": 4111772692
+    },
+    {
+      "Sequence": 3,
+      "Name": "focus:confirm",
+      "ElapsedTicks": 4324579728
+    },
+    {
+      "Sequence": 4,
+      "Name": "focus:direction",
+      "ElapsedTicks": 4352845847
+    },
+    {
+      "Sequence": 5,
+      "Name": "direction:rtl",
+      "ElapsedTicks": 4384305825
+    },
+    {
+      "Sequence": 6,
+      "Name": "focus:confirm",
+      "ElapsedTicks": 4663763828
+    },
+    {
+      "Sequence": 7,
+      "Name": "confirm",
+      "ElapsedTicks": 4687331004
+    }
+  ]
+}

@@ -69,8 +69,8 @@ try {
     $env:WEBVIEW2_USER_DATA_FOLDER = Join-Path ([System.IO.Path]::GetTempPath()) ("wowdi-host-" + [guid]::NewGuid().ToString("N"))
     Write-Host "Native probe network mode: $NetworkMode"
     Set-Content -Path (Join-Path $out "network-mode.txt") -Value $NetworkMode
-    $process = Start-Process -FilePath $exe -WorkingDirectory (Split-Path $exe) -ArgumentList @('--evidence', ('"' + $report + '"')) -PassThru
-    $initial = Wait-Probe { param($p) $p.Rendered -and $p.Direction -eq 'ltr' -and $p.FixtureRevision -eq 'host-qualification-v1' -and $p.DocumentUrl -eq 'http://localhost/' }
+    $process = Start-Process -FilePath $exe -WorkingDirectory $out -ArgumentList @('--evidence', ('"' + $report + '"')) -PassThru
+    $initial = Wait-Probe { param($p) $p.Rendered -and $p.Direction -eq 'ltr' -and $p.FixtureRevision -eq 'host-qualification-v1' -and $p.DocumentUrl -eq 'http://localhost/' -and $p.Events -contains 'security:csp-inline-and-connect-blocked' }
     $process.Refresh()
     if ($process.MainWindowHandle -eq [IntPtr]::Zero -or $process.MainWindowTitle -ne 'WOW DI Host Qualification') {
         throw 'Expected native window was not found.'
