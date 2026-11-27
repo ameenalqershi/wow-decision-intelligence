@@ -1,0 +1,244 @@
+{
+  "contract": "wowdi.udir",
+  "version": "1.0",
+  "payload": {
+    "tenantId": "fixture",
+    "modelId": "factory",
+    "revisionId": "r17",
+    "semanticsVersion": "udir/1",
+    "inputDigests": [
+      "e33e4eb77f943970b14b114ed08deeb6fc49d74680233bb77cea180e45e17d61"
+    ],
+    "sources": [
+      {
+        "id": "input",
+        "sha256": "e33e4eb77f943970b14b114ed08deeb6fc49d74680233bb77cea180e45e17d61",
+        "utf16Length": 287
+      }
+    ],
+    "timeBasis": {
+      "calendarId": "shift-a",
+      "timeZoneId": "UTC",
+      "origin": "2026-01-01T00:00:00Z",
+      "tickUnit": "minute"
+    },
+    "types": [
+      {
+        "id": "bool",
+        "kind": "Boolean"
+      },
+      {
+        "id": "minutes",
+        "kind": "Integer",
+        "unit": "minute"
+      },
+      {
+        "id": "usd",
+        "kind": "Money",
+        "currency": "USD"
+      },
+      {
+        "id": "price",
+        "kind": "Rate",
+        "unit": "USD/minute"
+      },
+      {
+        "id": "duration",
+        "kind": "Duration",
+        "unit": "minute"
+      }
+    ],
+    "symbols": [
+      {
+        "id": "x",
+        "role": "Variable",
+        "typeId": "minutes",
+        "lower": "0",
+        "upper": "12",
+        "span": {
+          "sourceId": "input",
+          "start": 78,
+          "length": 8
+        }
+      },
+      {
+        "id": "available",
+        "role": "Resource",
+        "typeId": "minutes",
+        "lower": "0",
+        "upper": "8",
+        "span": {
+          "sourceId": "input",
+          "start": 59,
+          "length": 9
+        }
+      },
+      {
+        "id": "unitRevenue",
+        "role": "Parameter",
+        "typeId": "price",
+        "lower": "7/3",
+        "upper": "7/3",
+        "span": {
+          "sourceId": "input",
+          "start": 143,
+          "length": 3
+        }
+      }
+    ],
+    "expressions": [
+      {
+        "id": "q",
+        "op": "Symbol",
+        "typeId": "minutes",
+        "arguments": [],
+        "span": {
+          "sourceId": "input",
+          "start": 78,
+          "length": 8
+        },
+        "symbolId": "x"
+      },
+      {
+        "id": "capacity",
+        "op": "Symbol",
+        "typeId": "minutes",
+        "arguments": [],
+        "span": {
+          "sourceId": "input",
+          "start": 59,
+          "length": 9
+        },
+        "symbolId": "available"
+      },
+      {
+        "id": "ok",
+        "op": "LessOrEqual",
+        "typeId": "bool",
+        "arguments": [
+          "q",
+          "capacity"
+        ],
+        "span": {
+          "sourceId": "input",
+          "start": 163,
+          "length": 8
+        }
+      },
+      {
+        "id": "price",
+        "op": "Literal",
+        "typeId": "price",
+        "arguments": [],
+        "span": {
+          "sourceId": "input",
+          "start": 143,
+          "length": 3
+        },
+        "literal": "7/3"
+      },
+      {
+        "id": "return",
+        "op": "Multiply",
+        "typeId": "usd",
+        "arguments": [
+          "q",
+          "price"
+        ],
+        "span": {
+          "sourceId": "input",
+          "start": 189,
+          "length": 9
+        }
+      }
+    ],
+    "constraints": [
+      {
+        "id": "limit",
+        "predicateId": "ok",
+        "hard": true,
+        "span": {
+          "sourceId": "input",
+          "start": 163,
+          "length": 8
+        }
+      }
+    ],
+    "objectives": [
+      {
+        "id": "revenue",
+        "expressionId": "return",
+        "direction": "Maximize",
+        "priority": 1,
+        "weight": "1",
+        "tolerance": "0",
+        "span": {
+          "sourceId": "input",
+          "start": 189,
+          "length": 9
+        }
+      }
+    ],
+    "scenarios": [
+      {
+        "id": "root",
+        "stage": 0,
+        "informationSet": "before-observation",
+        "overrides": [],
+        "span": {
+          "sourceId": "input",
+          "start": 163,
+          "length": 8
+        }
+      },
+      {
+        "id": "normal",
+        "parentId": "root",
+        "stage": 1,
+        "informationSet": "normal",
+        "probability": "3/4",
+        "overrides": [
+          {
+            "symbolId": "available",
+            "value": "8"
+          }
+        ],
+        "span": {
+          "sourceId": "input",
+          "start": 163,
+          "length": 8
+        }
+      },
+      {
+        "id": "outage",
+        "parentId": "root",
+        "stage": 1,
+        "informationSet": "outage",
+        "probability": "1/4",
+        "overrides": [
+          {
+            "symbolId": "available",
+            "value": "3"
+          }
+        ],
+        "span": {
+          "sourceId": "input",
+          "start": 236,
+          "length": 6
+        }
+      }
+    ],
+    "requires": [
+      "integer.linear",
+      "staged.uncertainty"
+    ]
+  },
+  "extensions": {
+    "example.display": {
+      "required": false,
+      "value": {
+        "label": "Demo"
+      }
+    }
+  }
+}

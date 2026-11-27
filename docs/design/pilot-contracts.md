@@ -51,9 +51,9 @@ erDiagram
 
 مفتاح العملية والآلة مرتبط بنسخة النموذج. يعاد حساب الهدف والتحقق من التداخل قبل حفظ دليل الحل. لا تُعرض قيمة صفرية مكان قياس غائب.
 
-## Additional Studio ports under design review
+## Additional Studio logical ports — design baseline
 
-These ports distinguish specialized Studio operations from common run and workspace reads. Their domain schemas remain attached to the indicated owner until reviewed. A front end cannot route administration through a local workspace command.
+These approved logical port boundaries distinguish specialized Studio operations from common run and workspace reads. See [edition 1 field profiles, ownership and acceptance](specialized-studio-ports-v1.md). Concrete wire payloads and provider implementation remain feature-owner gates. A front end cannot route administration through a local workspace command.
 
 | Contract ID | Inputs / outputs | Validation, failure and retry |
 |---|---|---|

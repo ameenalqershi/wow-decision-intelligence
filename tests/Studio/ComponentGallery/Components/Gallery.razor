@@ -1,0 +1,69 @@
+<ThemeScope Theme="@theme">
+    <main class="gallery" data-interactive="@interactive.ToString().ToLowerInvariant()">
+        <h1>Studio component qualification</h1>
+        <p>Presentation fixtures only — no mathematical results.</p>
+        <StudioToolbar Label="Presentation settings">
+            <label for="theme">Theme</label>
+            <select id="theme" class="wow-input" @bind="theme">
+                @foreach (var item in Enum.GetValues<StudioTheme>()) { <option value="@item">@item</option> }
+            </select>
+        </StudioToolbar>
+        <StudioNavigation Label="Fixture navigation" Items="@navigation" ActiveId="gallery" />
+        <StudioCard Title="Editable presentation fixture" HeadingId="edit-heading">
+            <form @onsubmit="Save" @onsubmit:preventDefault>
+                <StudioField Id="title" Label="Fixture title" Value="@title" ValueChanged="v => title = v" Hint="Enter a title." Error="@validation" Required="true" />
+                <StudioToolbar Label="Form actions">
+                    <button class="wow-button" type="submit">Save title</button>
+                    <button id="open-dialog" class="wow-button" type="button" @onclick="Open">Open editor</button>
+                    <StudioAction Clicked="FluentAction">Fluent action</StudioAction>
+                </StudioToolbar>
+            </form>
+            <StudioEditableTable Caption="Local example values" Rows="@rows" Edited="Edit" />
+        </StudioCard>
+        <StudioCard Title="Distinct query states" HeadingId="state-heading">
+            <StudioToolbar Label="Select query state">
+                <button id="loading" class="wow-button" @onclick="() => state = StudioState.Loading">Loading</button>
+                <button id="empty" class="wow-button" @onclick="() => state = StudioState.Empty">Empty</button>
+                <button id="error" class="wow-button" @onclick="() => state = StudioState.Error">Error</button>
+                <button id="ready" class="wow-button" @onclick="() => state = StudioState.Ready">Ready</button>
+            </StudioToolbar>
+            <StudioStatusIndicator State="@state" Text="@state.ToString()" />
+            <StudioStateView State="@state" Retry="Retry"><p>Example content ready.</p></StudioStateView>
+            <StudioAnnouncements Status="@status" Error="@error" />
+        </StudioCard>
+        <StudioDialog @ref="dialog" Title="Edit fixture" HeadingId="dialog-heading">
+            <StudioField Id="dialog-value" Label="Dialog value" Value="@dialogValue" ValueChanged="v => dialogValue = v" />
+            <button id="apply-dialog" type="button" class="wow-button" @onclick="Apply">Apply value</button>
+        </StudioDialog>
+    </main>
+</ThemeScope>
+@code {
+    private StudioTheme theme;
+    private StudioState state = StudioState.Ready;
+    private StudioDialog? dialog;
+    private bool interactive;
+    private string title = "Example";
+    private string dialogValue = "";
+    private string? validation;
+    private string? status;
+    private string? error;
+    private readonly StudioNavItem[] navigation = [new("gallery", "Gallery", "#edit-heading"), new("states", "States", "#state-heading")];
+    private StudioTableRow[] rows = [new("a", "Alpha", "One"), new("b", "Beta", "Two")];
+    protected override void OnAfterRender(bool firstRender) { if (firstRender) { interactive = true; StateHasChanged(); } }
+    private void Save()
+    {
+        validation = string.IsNullOrWhiteSpace(title) ? "A title is required." : null;
+        status = validation is null ? "Title saved." : null;
+        error = validation;
+    }
+    private Task Open() => dialog!.ShowAsync();
+    private async Task Apply() { status = "Dialog value applied."; error = null; await dialog!.CloseAsync(); }
+    private void FluentAction() { status = "Fluent action invoked."; error = null; }
+    private void Retry() { state = StudioState.Loading; status = "Retry requested."; error = null; }
+    private void Edit(StudioTableEdit edit)
+    {
+        rows = rows.Select(row => row.Id == edit.Id ? row with { Value = edit.Value } : row).ToArray();
+        status = "Value updated: " + edit.Id;
+        error = null;
+    }
+}

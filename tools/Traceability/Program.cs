@@ -95,6 +95,7 @@ internal sealed partial class Audit(string root)
             }
         }
         Require(seen.SetEquals(declared.Keys), "Source inventory contains an untraced requirement");
+        CheckStudioGates(rows, map, suites, upstream, apiIds);
         if (writeDrawing)
             File.WriteAllText(Path.Combine(root, "docs/audit/diagrams/dependencies.dot"), DependencyDrawing.Render(rows.Values, map));
         if (livePath != null) CheckGitHub(livePath, rows, map, parents);

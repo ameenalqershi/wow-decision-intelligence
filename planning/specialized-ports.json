@@ -1,0 +1,80 @@
+[
+  {
+    "port": "API-SIMULATION",
+    "consumer": "UI14",
+    "owners": [
+      "A04"
+    ],
+    "specification": "docs/design/specialized-studio-ports-v1.md",
+    "approval": "logical-design-baseline",
+    "providerAcceptance": "required"
+  },
+  {
+    "port": "API-ALLOCATION",
+    "consumer": "UI16",
+    "owners": [
+      "V03"
+    ],
+    "specification": "docs/design/specialized-studio-ports-v1.md",
+    "approval": "logical-design-baseline",
+    "providerAcceptance": "required"
+  },
+  {
+    "port": "API-EXPLAIN",
+    "consumer": "UI18",
+    "owners": [
+      "A02",
+      "A03"
+    ],
+    "specification": "docs/design/specialized-studio-ports-v1.md",
+    "approval": "logical-design-baseline",
+    "providerAcceptance": "required"
+  },
+  {
+    "port": "API-BENCHMARK",
+    "consumer": "UI19",
+    "owners": [
+      "X07"
+    ],
+    "specification": "docs/design/specialized-studio-ports-v1.md",
+    "approval": "logical-design-baseline",
+    "providerAcceptance": "required"
+  },
+  {
+    "port": "API-MAPPING",
+    "consumer": "UI20",
+    "owners": [
+      "I01",
+      "I02",
+      "I04"
+    ],
+    "specification": "docs/design/specialized-studio-ports-v1.md",
+    "approval": "logical-design-baseline",
+    "providerAcceptance": "required"
+  },
+  {
+    "port": "API-ADMIN",
+    "consumer": "UI21",
+    "owners": [
+      "E01",
+      "E02",
+      "S12",
+      "U06"
+    ],
+    "specification": "docs/design/specialized-studio-ports-v1.md",
+    "approval": "logical-design-baseline",
+    "providerAcceptance": "required"
+  },
+  {
+    "port": "API-SETTINGS",
+    "consumer": "UI23",
+    "owners": [
+      "RT01",
+      "CLI10",
+      "DS03"
+    ],
+    "specification": "docs/design/specialized-studio-ports-v1.md",
+    "approval": "logical-design-baseline",
+    "providerAcceptance": "required"
+  }
+]

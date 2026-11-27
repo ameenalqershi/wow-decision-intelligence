@@ -1,0 +1,98 @@
+{
+  "version": {
+    "protocolVersion": "1.3",
+    "product": "Chrome/141.0.7390.37",
+    "revision": "@9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.0.0 Safari/537.36",
+    "jsVersion": "14.1.146.11"
+  },
+  "computed": [
+    {
+      "theme": "dark",
+      "background": "rgb(16, 21, 30)",
+      "text": "rgb(226, 232, 240)",
+      "card": "rgb(28, 39, 53)",
+      "button": "rgb(22, 120, 95)",
+      "font": "24px",
+      "icon": "16px",
+      "target": "24px",
+      "stateCount": 3
+    },
+    {
+      "theme": "light",
+      "background": "rgb(245, 247, 250)",
+      "text": "rgb(23, 33, 46)",
+      "card": "rgb(255, 255, 255)",
+      "button": "rgb(22, 120, 95)",
+      "font": "24px",
+      "icon": "16px",
+      "target": "24px",
+      "stateCount": 3
+    },
+    {
+      "theme": "high-contrast",
+      "background": "rgb(0, 0, 0)",
+      "text": "rgb(255, 255, 255)",
+      "card": "rgb(0, 0, 0)",
+      "button": "rgb(255, 255, 255)",
+      "font": "24px",
+      "icon": "16px",
+      "target": "24px",
+      "stateCount": 3
+    }
+  ],
+  "focus": [
+    {
+      "theme": "dark",
+      "role": "action",
+      "visible": true,
+      "width": "2px",
+      "color": "rgb(98, 228, 198)",
+      "style": "solid"
+    },
+    {
+      "theme": "dark",
+      "role": "control",
+      "visible": true,
+      "width": "2px",
+      "color": "rgb(98, 228, 198)",
+      "style": "solid"
+    },
+    {
+      "theme": "light",
+      "role": "action",
+      "visible": true,
+      "width": "2px",
+      "color": "rgb(7, 89, 160)",
+      "style": "solid"
+    },
+    {
+      "theme": "light",
+      "role": "control",
+      "visible": true,
+      "width": "2px",
+      "color": "rgb(7, 89, 160)",
+      "style": "solid"
+    },
+    {
+      "theme": "high-contrast",
+      "role": "action",
+      "visible": true,
+      "width": "2px",
+      "color": "rgb(255, 255, 0)",
+      "style": "solid"
+    },
+    {
+      "theme": "high-contrast",
+      "role": "control",
+      "visible": true,
+      "width": "2px",
+      "color": "rgb(255, 255, 0)",
+      "style": "solid"
+    }
+  ],
+  "dims": {
+    "width": 720,
+    "height": 1317
+  }
+}

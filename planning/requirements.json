@@ -643,21 +643,30 @@
     "number": 16,
     "priority": "P0",
     "release": "MVP",
-    "component": "Model",
-    "implementation": "Planned",
-    "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
-    "fieldScope": "No approved field mapping in this baseline.",
-    "apiScope": "No approved API mapping in this baseline.",
+    "component": "src/Udir",
+    "implementation": "Implemented; see the linked #16 pull request and its Windows/Linux checks.",
+    "verification": "dotnet restore tests/Udir/WowDi.Udir.Tests.csproj --locked-mode && dotnet test tests/Udir/WowDi.Udir.Tests.csproj --no-restore -c Release",
+    "fieldScope": "The UDIR v1 field table defines the representation. F-REV retains its trusted tenant/model namespace. Unit-bearing integer domains preserve the factory minute basis.",
+    "apiScope": "UdirDocument.Create, Read and Write provide the managed API-MODEL representation boundary. Domain solving and verification are separate consumers.",
     "specifications": [
-      "docs/design/language.md",
-      "docs/design/engine.md"
+      "docs/design/udir-v1.md",
+      "docs/design/engine.md",
+      "docs/design/pilot-field-dictionary-v1.md"
     ],
     "diagrams": [
-      "docs/design/operating-modes.md"
+      "docs/design/udir-v1.md"
     ],
-    "fields": [],
-    "apis": [],
-    "evidence": [],
+    "fields": [
+      "F-REV"
+    ],
+    "apis": [
+      "API-MODEL"
+    ],
+    "evidence": [
+      "tests/Udir/UdirTests.cs",
+      "tests/Udir/Fixtures/factory.json",
+      "tests/Udir/Fixtures/factory.txt"
+    ],
     "tests": [
       {
         "id": "TC-M03-A",
@@ -675,8 +684,8 @@
         "tests": [
           "TC-M03-A"
         ],
-        "coverage": "Partially Covered",
-        "reason": "The available source and acceptance statement are mapped. Detailed field, contract or fixture review remains open."
+        "coverage": "Fully Covered",
+        "reason": "Versioned wire fields, source spans, rejection criteria and executable round-trip fixtures are linked."
       }
     ]
   },
@@ -979,20 +988,28 @@
     "number": 24,
     "priority": "P1",
     "release": "MVP",
-    "component": "Model",
-    "implementation": "Planned",
-    "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
-    "fieldScope": "No approved field mapping in this baseline.",
-    "apiScope": "No approved API mapping in this baseline.",
+    "component": "src/ModelRegistry",
+    "implementation": "Implemented; the linked issue records merge and platform evidence.",
+    "verification": "dotnet test tests/ModelRegistry -c Release after locked restore.",
+    "fieldScope": "Tenant, model and immutable revision identity; content and source digests in the component specification.",
+    "apiScope": "Managed boundary documented in the linked specification.",
     "specifications": [
+      "docs/design/model-registry.md",
       "docs/design/engine.md"
     ],
     "diagrams": [
-      "docs/design/operating-modes.md"
+      "docs/design/model-registry.md"
     ],
-    "fields": [],
-    "apis": [],
-    "evidence": [],
+    "fields": [
+      "F-REV"
+    ],
+    "apis": [
+      "API-MODEL",
+      "API-WORKSPACE"
+    ],
+    "evidence": [
+      "tests/ModelRegistry/ModelRegistryTests.cs"
+    ],
     "tests": [
       {
         "id": "TC-M11-A",
@@ -1010,8 +1027,8 @@
         "tests": [
           "TC-M11-A"
         ],
-        "coverage": "Partially Covered",
-        "reason": "The available source and acceptance statement are mapped. Detailed field, contract or fixture review remains open."
+        "coverage": "Fully Covered",
+        "reason": "Field contract and executable positive and negative acceptance fixtures are linked."
       }
     ]
   },
@@ -1061,20 +1078,36 @@
     "number": 26,
     "priority": "P0",
     "release": "MVP",
-    "component": "Runtime",
-    "implementation": "Planned",
-    "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
-    "fieldScope": "No approved field mapping in this baseline.",
-    "apiScope": "No approved API mapping in this baseline.",
+    "component": "src/Solver.Contracts",
+    "implementation": "Implemented; the linked issue records merge and platform evidence.",
+    "verification": "dotnet test tests/Solver.Contracts -c Release after locked restore.",
+    "fieldScope": "Solver manifest and revision-scoped result fields preserve raw observations, tolerances and evidence attribution.",
+    "apiScope": "Managed boundary documented in the linked specification.",
     "specifications": [
+      "docs/design/solver-contract.md",
       "docs/design/engine.md"
     ],
     "diagrams": [
-      "docs/design/operating-modes.md"
+      "docs/design/solver-contract.md"
     ],
-    "fields": [],
-    "apis": [],
-    "evidence": [],
+    "fields": [
+      "F-REV",
+      "F-RUN",
+      "F-STATUS",
+      "F-TERM",
+      "F-OBJ",
+      "F-BOUND",
+      "F-CPU",
+      "F-MEM",
+      "F-ELAPSED"
+    ],
+    "apis": [
+      "API-SOLVE",
+      "API-RUN"
+    ],
+    "evidence": [
+      "tests/Solver.Contracts/SolverContractTests.cs"
+    ],
     "tests": [
       {
         "id": "TC-S01-A",
@@ -1092,8 +1125,8 @@
         "tests": [
           "TC-S01-A"
         ],
-        "coverage": "Partially Covered",
-        "reason": "The available source and acceptance statement are mapped. Detailed field, contract or fixture review remains open."
+        "coverage": "Fully Covered",
+        "reason": "Field contract and executable positive and negative acceptance fixtures are linked."
       }
     ]
   },
@@ -1531,16 +1564,19 @@
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
     "fieldScope": "No approved field mapping in this baseline.",
-    "apiScope": "No approved API mapping in this baseline.",
+    "apiScope": "No approved API mapping in this baseline. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated.",
     "specifications": [
       "docs/design/architecture.md",
-      "docs/design/operating-modes.md"
+      "docs/design/operating-modes.md",
+      "docs/design/specialized-studio-ports-v1.md"
     ],
     "diagrams": [
       "docs/design/operating-modes.md"
     ],
     "fields": [],
-    "apis": [],
+    "apis": [
+      "API-ADMIN"
+    ],
     "evidence": [],
     "tests": [
       {
@@ -1827,16 +1863,19 @@
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
     "fieldScope": "No approved field mapping in this baseline.",
-    "apiScope": "No approved API mapping in this baseline.",
+    "apiScope": "No approved API mapping in this baseline. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated.",
     "specifications": [
       "docs/research/innovation.md",
-      "docs/research/comparison-protocol.md"
+      "docs/research/comparison-protocol.md",
+      "docs/design/specialized-studio-ports-v1.md"
     ],
     "diagrams": [
       "docs/design/operating-modes.md"
     ],
     "fields": [],
-    "apis": [],
+    "apis": [
+      "API-BENCHMARK"
+    ],
     "evidence": [],
     "tests": [
       {
@@ -2081,16 +2120,19 @@
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
     "fieldScope": "No approved field mapping in this baseline.",
-    "apiScope": "No approved API mapping in this baseline.",
+    "apiScope": "No approved API mapping in this baseline. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated.",
     "specifications": [
       "docs/design/production.md",
-      "docs/research/feasibility.md"
+      "docs/research/feasibility.md",
+      "docs/design/specialized-studio-ports-v1.md"
     ],
     "diagrams": [
       "docs/design/operating-modes.md"
     ],
     "fields": [],
-    "apis": [],
+    "apis": [
+      "API-ALLOCATION"
+    ],
     "evidence": [],
     "tests": [
       {
@@ -2291,16 +2333,19 @@
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
     "fieldScope": "No approved field mapping in this baseline.",
-    "apiScope": "No approved API mapping in this baseline.",
+    "apiScope": "No approved API mapping in this baseline. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated.",
     "specifications": [
       "docs/design/architecture.md",
-      "docs/design/operating-modes.md"
+      "docs/design/operating-modes.md",
+      "docs/design/specialized-studio-ports-v1.md"
     ],
     "diagrams": [
       "docs/design/operating-modes.md"
     ],
     "fields": [],
-    "apis": [],
+    "apis": [
+      "API-MAPPING"
+    ],
     "evidence": [],
     "tests": [
       {
@@ -2333,16 +2378,19 @@
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
     "fieldScope": "No approved field mapping in this baseline.",
-    "apiScope": "No approved API mapping in this baseline.",
+    "apiScope": "No approved API mapping in this baseline. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated.",
     "specifications": [
       "docs/design/architecture.md",
-      "docs/design/operating-modes.md"
+      "docs/design/operating-modes.md",
+      "docs/design/specialized-studio-ports-v1.md"
     ],
     "diagrams": [
       "docs/design/operating-modes.md"
     ],
     "fields": [],
-    "apis": [],
+    "apis": [
+      "API-MAPPING"
+    ],
     "evidence": [],
     "tests": [
       {
@@ -2417,16 +2465,19 @@
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
     "fieldScope": "No approved field mapping in this baseline.",
-    "apiScope": "No approved API mapping in this baseline.",
+    "apiScope": "No approved API mapping in this baseline. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated.",
     "specifications": [
       "docs/design/architecture.md",
-      "docs/design/operating-modes.md"
+      "docs/design/operating-modes.md",
+      "docs/design/specialized-studio-ports-v1.md"
     ],
     "diagrams": [
       "docs/design/operating-modes.md"
     ],
     "fields": [],
-    "apis": [],
+    "apis": [
+      "API-MAPPING"
+    ],
     "evidence": [],
     "tests": [
       {
@@ -2710,15 +2761,18 @@
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
     "fieldScope": "No approved field mapping in this baseline.",
-    "apiScope": "No approved API mapping in this baseline.",
+    "apiScope": "No approved API mapping in this baseline. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated.",
     "specifications": [
-      "docs/design/engine.md"
+      "docs/design/engine.md",
+      "docs/design/specialized-studio-ports-v1.md"
     ],
     "diagrams": [
       "docs/design/operating-modes.md"
     ],
     "fields": [],
-    "apis": [],
+    "apis": [
+      "API-EXPLAIN"
+    ],
     "evidence": [],
     "tests": [
       {
@@ -2751,15 +2805,18 @@
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
     "fieldScope": "No approved field mapping in this baseline.",
-    "apiScope": "No approved API mapping in this baseline.",
+    "apiScope": "No approved API mapping in this baseline. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated.",
     "specifications": [
-      "docs/design/engine.md"
+      "docs/design/engine.md",
+      "docs/design/specialized-studio-ports-v1.md"
     ],
     "diagrams": [
       "docs/design/operating-modes.md"
     ],
     "fields": [],
-    "apis": [],
+    "apis": [
+      "API-EXPLAIN"
+    ],
     "evidence": [],
     "tests": [
       {
@@ -2792,15 +2849,18 @@
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
     "fieldScope": "No approved field mapping in this baseline.",
-    "apiScope": "No approved API mapping in this baseline.",
+    "apiScope": "No approved API mapping in this baseline. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated.",
     "specifications": [
-      "docs/design/engine.md"
+      "docs/design/engine.md",
+      "docs/design/specialized-studio-ports-v1.md"
     ],
     "diagrams": [
       "docs/design/operating-modes.md"
     ],
     "fields": [],
-    "apis": [],
+    "apis": [
+      "API-SIMULATION"
+    ],
     "evidence": [],
     "tests": [
       {
@@ -3164,16 +3224,19 @@
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
     "fieldScope": "No approved field mapping in this baseline.",
-    "apiScope": "No approved API mapping in this baseline.",
+    "apiScope": "No approved API mapping in this baseline. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated.",
     "specifications": [
       "docs/design/architecture.md",
-      "docs/design/operating-modes.md"
+      "docs/design/operating-modes.md",
+      "docs/design/specialized-studio-ports-v1.md"
     ],
     "diagrams": [
       "docs/design/operating-modes.md"
     ],
     "fields": [],
-    "apis": [],
+    "apis": [
+      "API-ADMIN"
+    ],
     "evidence": [],
     "tests": [
       {
@@ -3206,16 +3269,19 @@
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
     "fieldScope": "No approved field mapping in this baseline.",
-    "apiScope": "No approved API mapping in this baseline.",
+    "apiScope": "No approved API mapping in this baseline. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated.",
     "specifications": [
       "docs/design/architecture.md",
-      "docs/design/operating-modes.md"
+      "docs/design/operating-modes.md",
+      "docs/design/specialized-studio-ports-v1.md"
     ],
     "diagrams": [
       "docs/design/operating-modes.md"
     ],
     "fields": [],
-    "apis": [],
+    "apis": [
+      "API-ADMIN"
+    ],
     "evidence": [],
     "tests": [
       {
@@ -3248,16 +3314,19 @@
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
     "fieldScope": "No approved field mapping in this baseline.",
-    "apiScope": "No approved API mapping in this baseline.",
+    "apiScope": "No approved API mapping in this baseline. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated.",
     "specifications": [
       "docs/design/architecture.md",
-      "docs/design/operating-modes.md"
+      "docs/design/operating-modes.md",
+      "docs/design/specialized-studio-ports-v1.md"
     ],
     "diagrams": [
       "docs/design/operating-modes.md"
     ],
     "fields": [],
-    "apis": [],
+    "apis": [
+      "API-ADMIN"
+    ],
     "evidence": [],
     "tests": [
       {
@@ -5433,11 +5502,12 @@
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
     "fieldScope": "Pilot field subset; specialized payload review remains open.",
-    "apiScope": "Shared application ports; review per-feature payloads.",
+    "apiScope": "Shared application ports; review per-feature payloads. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated.",
     "specifications": [
       "docs/design/studio/UI14.md",
       "docs/design/references/IMPLEMENTATION-SPEC.md",
-      "docs/design/pilot-contracts.md"
+      "docs/design/pilot-contracts.md",
+      "docs/design/specialized-studio-ports-v1.md"
     ],
     "diagrams": [
       "docs/design/studio/UI14.md",
@@ -5656,11 +5726,12 @@
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
     "fieldScope": "Pilot field subset; specialized payload review remains open.",
-    "apiScope": "Shared application ports; review per-feature payloads.",
+    "apiScope": "Shared application ports; review per-feature payloads. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated.",
     "specifications": [
       "docs/design/studio/UI16.md",
       "docs/design/references/IMPLEMENTATION-SPEC.md",
-      "docs/design/pilot-contracts.md"
+      "docs/design/pilot-contracts.md",
+      "docs/design/specialized-studio-ports-v1.md"
     ],
     "diagrams": [
       "docs/design/studio/UI16.md",
@@ -5908,11 +5979,12 @@
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
     "fieldScope": "Pilot field subset; specialized payload review remains open.",
-    "apiScope": "Shared application ports; review per-feature payloads.",
+    "apiScope": "Shared application ports; review per-feature payloads. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated.",
     "specifications": [
       "docs/design/studio/UI18.md",
       "docs/design/references/IMPLEMENTATION-SPEC.md",
-      "docs/design/pilot-contracts.md"
+      "docs/design/pilot-contracts.md",
+      "docs/design/specialized-studio-ports-v1.md"
     ],
     "diagrams": [
       "docs/design/studio/UI18.md",
@@ -6020,11 +6092,12 @@
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
     "fieldScope": "Pilot field subset; specialized payload review remains open.",
-    "apiScope": "Shared application ports; review per-feature payloads.",
+    "apiScope": "Shared application ports; review per-feature payloads. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated.",
     "specifications": [
       "docs/design/studio/UI19.md",
       "docs/design/references/IMPLEMENTATION-SPEC.md",
-      "docs/design/pilot-contracts.md"
+      "docs/design/pilot-contracts.md",
+      "docs/design/specialized-studio-ports-v1.md"
     ],
     "diagrams": [
       "docs/design/studio/UI19.md",
@@ -6146,11 +6219,12 @@
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
     "fieldScope": "Pilot field subset; specialized payload review remains open.",
-    "apiScope": "Shared application ports; review per-feature payloads.",
+    "apiScope": "Shared application ports; review per-feature payloads. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated.",
     "specifications": [
       "docs/design/studio/UI20.md",
       "docs/design/references/IMPLEMENTATION-SPEC.md",
-      "docs/design/pilot-contracts.md"
+      "docs/design/pilot-contracts.md",
+      "docs/design/specialized-studio-ports-v1.md"
     ],
     "diagrams": [
       "docs/design/studio/UI20.md",
@@ -6257,11 +6331,12 @@
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
     "fieldScope": "Tenant/role/policy schema belongs to the enterprise identity contract, outside the pilot field catalog.",
-    "apiScope": "Shared application ports; review per-feature payloads.",
+    "apiScope": "Shared application ports; review per-feature payloads. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated.",
     "specifications": [
       "docs/design/studio/UI21.md",
       "docs/design/references/IMPLEMENTATION-SPEC.md",
-      "docs/design/pilot-contracts.md"
+      "docs/design/pilot-contracts.md",
+      "docs/design/specialized-studio-ports-v1.md"
     ],
     "diagrams": [
       "docs/design/studio/UI21.md",
@@ -6487,11 +6562,12 @@
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
     "fieldScope": "Pilot field subset; specialized payload review remains open.",
-    "apiScope": "Shared application ports; review per-feature payloads.",
+    "apiScope": "Shared application ports; review per-feature payloads. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated.",
     "specifications": [
       "docs/design/studio/UI23.md",
       "docs/design/references/IMPLEMENTATION-SPEC.md",
-      "docs/design/pilot-contracts.md"
+      "docs/design/pilot-contracts.md",
+      "docs/design/specialized-studio-ports-v1.md"
     ],
     "diagrams": [
       "docs/design/studio/UI23.md",
@@ -7621,18 +7697,20 @@
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
     "fieldScope": "No approved field mapping in this baseline.",
-    "apiScope": "Shared application ports; review per-feature payloads.",
+    "apiScope": "Shared application ports; review per-feature payloads. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated.",
     "specifications": [
       "docs/design/cli-contract.md",
       "docs/design/references/IMPLEMENTATION-SPEC.md",
-      "docs/design/pilot-contracts.md"
+      "docs/design/pilot-contracts.md",
+      "docs/design/specialized-studio-ports-v1.md"
     ],
     "diagrams": [
       "docs/design/references/02-WOW-DI-CLI.svg"
     ],
     "fields": [],
     "apis": [
-      "API-COMMAND"
+      "API-COMMAND",
+      "API-SETTINGS"
     ],
     "evidence": [],
     "tests": [
@@ -8287,16 +8365,19 @@
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
     "fieldScope": "No approved field mapping in this baseline.",
-    "apiScope": "No approved API mapping in this baseline.",
+    "apiScope": "No approved API mapping in this baseline. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated.",
     "specifications": [
       "docs/design/references/IMPLEMENTATION-SPEC.md",
-      "docs/design/studio/UI01.md"
+      "docs/design/studio/UI01.md",
+      "docs/design/specialized-studio-ports-v1.md"
     ],
     "diagrams": [
       "docs/design/references/01-WOW-DI-Studio.svg"
     ],
     "fields": [],
-    "apis": [],
+    "apis": [
+      "API-SETTINGS"
+    ],
     "evidence": [],
     "tests": [
       {
@@ -8465,10 +8546,11 @@
     "implementation": "Planned",
     "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
     "fieldScope": "Pilot field subset; specialized payload review remains open.",
-    "apiScope": "Shared application ports; review per-feature payloads.",
+    "apiScope": "Shared application ports; review per-feature payloads. Specialized logical design baseline; concrete provider payload and acceptance remain owner-gated.",
     "specifications": [
       "docs/design/operating-modes.md",
-      "docs/design/pilot-contracts.md"
+      "docs/design/pilot-contracts.md",
+      "docs/design/specialized-studio-ports-v1.md"
     ],
     "diagrams": [
       "docs/design/operating-modes.md"
@@ -8480,7 +8562,8 @@
     ],
     "apis": [
       "API-WORKSPACE",
-      "API-EVIDENCE"
+      "API-EVIDENCE",
+      "API-SETTINGS"
     ],
     "evidence": [],
     "tests": [

@@ -269,10 +269,12 @@ digraph Dependencies {
   "UI01" -> "UI03";
   "UI04" [label="UI04  #93", tooltip="Applications / Visual model designer", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/93"];
   "M01" -> "UI04";
+  "M07" -> "UI04";
   "M09" -> "UI04";
   "SP02" -> "UI04";
   "UI01" -> "UI04";
   "UI05" [label="UI05  #94", tooltip="Applications / Enterprise decision graph explorer", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/94"];
+  "DS04" -> "UI05";
   "M01" -> "UI05";
   "M02" -> "UI05";
   "SP02" -> "UI05";
@@ -301,6 +303,7 @@ digraph Dependencies {
   "SP02" -> "UI10";
   "UI01" -> "UI10";
   "UI11" [label="UI11  #100", tooltip="Applications / Optimization monitor", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/100"];
+  "DS04" -> "UI11";
   "S07" -> "UI11";
   "S10" -> "UI11";
   "SP02" -> "UI11";
@@ -347,13 +350,16 @@ digraph Dependencies {
   "UI21" [label="UI21  #110", tooltip="Applications / Administration and developer portal", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/110"];
   "E01" -> "UI21";
   "I01" -> "UI21";
+  "RT04" -> "UI21";
   "SP02" -> "UI21";
   "UI01" -> "UI21";
   "UI22" [label="UI22  #111", tooltip="Applications / Command palette and productivity", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/111"];
+  "CLI01" -> "UI22";
   "SP02" -> "UI22";
   "UI01" -> "UI22";
   "UI23" [label="UI23  #112", tooltip="Applications / Settings and diagnostics", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/112"];
   "CLI10" -> "UI23";
+  "DS03" -> "UI23";
   "SP02" -> "UI23";
   "UI01" -> "UI23";
   "CLI01" [label="CLI01  #113", tooltip="Applications / Command host and registration", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/113"];
@@ -460,6 +466,7 @@ digraph Dependencies {
   "QA02" [label="QA02  #144", tooltip="Quality / Desktop visual and accessibility qualification", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/144"];
   "DS03" -> "QA02";
   "DS04" -> "QA02";
+  "U02" -> "QA02";
   "UI01" -> "QA02";
   "QA03" [label="QA03  #145", tooltip="Quality / Command-line release conformance", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/145"];
   "CLI02" -> "QA03";

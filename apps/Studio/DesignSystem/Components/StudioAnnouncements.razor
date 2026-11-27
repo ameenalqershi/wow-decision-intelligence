@@ -1,0 +1,8 @@
+<div class="wow-announcements">
+    <div role="status" aria-live="polite" aria-atomic="true">@Status</div>
+    <div role="alert" aria-atomic="true" class="wow-error">@Error</div>
+</div>
+@code {
+    [Parameter] public string? Status { get; set; }
+    [Parameter] public string? Error { get; set; }
+}
