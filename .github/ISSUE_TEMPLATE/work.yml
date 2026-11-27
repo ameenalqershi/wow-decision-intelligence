@@ -1,0 +1,22 @@
+name: Engineering work
+description: Scope a deliverable with acceptance evidence and dependencies
+title: "[Work] "
+body:
+  - type: textarea
+    id: deliverable
+    attributes:
+      label: Deliverable and owned paths
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance evidence and failure cases
+    validations:
+      required: true
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies and downstream contract impacts
+    validations:
+      required: true

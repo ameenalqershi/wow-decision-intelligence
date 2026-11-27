@@ -1,0 +1,15 @@
+# Runtime and dependency qualification
+
+Use C# and .NET 10 LTS, supported through November 2028 according to [Microsoft's support policy](https://dotnet.microsoft.com/en-us/platform/support/policy). The observed development server runs Ubuntu 24.04 x64, SDK 10.0.115 and .NET runtime 10.0.15. No paid AI subscription, proprietary solver license or Python service is needed for the research suite.
+
+| Candidate | .NET integration / native requirements | License and operational decision | Evidence level |
+|---|---|---|---|
+| OR-Tools 9.15.6755 | Official Google.OrTools managed binding, runtime RID packages and Google.Protobuf. C++ solver libraries load at runtime. | Apache-2.0 core, inventory native third parties separately. Separate schedule process to contain ABI and crash risk. | Built and ran CP-SAT on Ubuntu x64; check locked restore and launch on Windows x64. [Bindings](https://github.com/google/or-tools/blob/stable/ortools/dotnet/README.md) |
+| HiGHS 1.16.0 | Highs.Native from upstream installation instructions, C# wrapper and native library per RID. Native Microsoft runtime may be needed on Windows. | MIT core; verify included third-party notices for the exact redistributed bundle. Separate from OR-Tools to avoid competing native libraries in one process. | Built and ran coverage LP on Ubuntu x64. [C# interface](https://ergo-code.github.io/HiGHS/stable/interfaces/csharp/) · [project](https://highs.dev/) |
+| SCIP | Native C/C++ or an available OR-Tools MPSolver backend; probe CreateSolver and version at startup | Apache-2.0 since 8.0.3, dependency-specific licenses vary with build. No mandatory SCIP dependency. | Documentation-qualified only. [SCIP license matrix](https://scipopt.org/index.php) · [adapter example](https://developers.google.com/optimization/assignment/assignment_cp) |
+| Math.NET Numerics | Managed routines with optional native acceleration | MIT core; qualify native provider separately. Use if simulation/statistical needs justify it. | Documentation-qualified; outside first experiments. [Project](https://numerics.mathdotnet.com/) |
+| ML.NET | Managed cross-platform API; some trainers or dependencies use native code | MIT project; audit selected trainer package and its transitive dependencies. Learned selection remains gated by holdout results. | Documentation-qualified; no trained production model. [Project](https://github.com/dotnet/machinelearning) |
+
+Native research restores are pinned with committed NuGet lockfiles. At release record per-RID artifacts, integrity hashes, license expressions and source of notices (including bundled/system libraries), test on clean hosts and review redistribution terms for the actual published files. Binary inventory and package metadata alone do not establish redistribution approval. The repository itself has no public license grant at this stage.
+
+Hosted validation of the initial commit was blocked before a runner started by the GitHub account billing/spending restriction. Keep Windows qualification open until tests run on an actual Windows runner. Cross-publishing alone cannot validate ABI loading, packaging or desktop behavior.

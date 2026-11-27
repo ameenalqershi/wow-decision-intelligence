@@ -5,6 +5,7 @@ permissions:
 jobs:
   research:
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.os }}
@@ -13,8 +14,7 @@ jobs:
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '10.0.x'
-      - run: dotnet build research/ComponentStudy -c Release
-      - run: dotnet run --project research/ComponentStudy -c Release --no-build
+      - run: dotnet run --project research/ComponentStudy -c Release
       - run: dotnet restore research/ScheduleStudy --locked-mode
       - run: dotnet run --project research/ScheduleStudy -c Release --no-restore
       - run: dotnet restore research/CoverageStudy --locked-mode
