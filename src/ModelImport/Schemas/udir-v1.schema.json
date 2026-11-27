@@ -1,0 +1,547 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:wowdi:schemas:udir:1",
+  "title": "WOW DI UDIR version 1 envelope",
+  "description": "Wire shape only. F05 verifies compatibility and duplicate names; M03 validates references, exact arithmetic, domain constraints and supported semantics; M04 and later owners validate dimensions and feasibility.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract",
+    "version",
+    "payload"
+  ],
+  "properties": {
+    "contract": {
+      "const": "wowdi.udir"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^1\\.(0|[1-9][0-9]{0,3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])$"
+    },
+    "payload": {
+      "$ref": "#/$defs/model"
+    },
+    "extensions": {
+      "type": "object",
+      "propertyNames": {
+        "minLength": 1
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/extension"
+      }
+    }
+  },
+  "$defs": {
+    "text": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "digest": {
+      "type": "string",
+      "minLength": 64,
+      "maxLength": 64,
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "exact": {
+      "type": "string",
+      "maxLength": 514,
+      "pattern": "^(0|-?[1-9][0-9]{0,255})(/([2-9]|[1-9][0-9]{1,255}))?$"
+    },
+    "literal": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/exact"
+        },
+        {
+          "type": "string",
+          "enum": [
+            "true",
+            "false"
+          ]
+        }
+      ]
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "sha256",
+        "utf16Length"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/text"
+        },
+        "sha256": {
+          "$ref": "#/$defs/digest"
+        },
+        "utf16Length": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
+        }
+      }
+    },
+    "span": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sourceId",
+        "start",
+        "length"
+      ],
+      "properties": {
+        "sourceId": {
+          "$ref": "#/$defs/text"
+        },
+        "start": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
+        },
+        "length": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
+        }
+      }
+    },
+    "scalarType": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/text"
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "Boolean",
+            "Integer",
+            "Rational",
+            "Instant",
+            "Duration",
+            "Quantity",
+            "Money",
+            "Rate"
+          ]
+        },
+        "unit": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/text"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "currency": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/text"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "timeBasis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "calendarId",
+        "timeZoneId",
+        "origin",
+        "tickUnit"
+      ],
+      "properties": {
+        "calendarId": {
+          "$ref": "#/$defs/text"
+        },
+        "timeZoneId": {
+          "$ref": "#/$defs/text"
+        },
+        "origin": {
+          "$ref": "#/$defs/text"
+        },
+        "tickUnit": {
+          "$ref": "#/$defs/text"
+        }
+      }
+    },
+    "symbol": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "role",
+        "typeId",
+        "span"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/text"
+        },
+        "role": {
+          "type": "string",
+          "enum": [
+            "Variable",
+            "Parameter",
+            "Resource"
+          ]
+        },
+        "typeId": {
+          "$ref": "#/$defs/text"
+        },
+        "span": {
+          "$ref": "#/$defs/span"
+        },
+        "lower": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/exact"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "upper": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/exact"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "expression": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "op",
+        "typeId",
+        "arguments",
+        "span"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/text"
+        },
+        "op": {
+          "type": "string",
+          "enum": [
+            "Literal",
+            "Symbol",
+            "Negate",
+            "Add",
+            "Subtract",
+            "Multiply",
+            "Divide",
+            "Equal",
+            "LessOrEqual",
+            "GreaterOrEqual"
+          ]
+        },
+        "typeId": {
+          "$ref": "#/$defs/text"
+        },
+        "arguments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/text"
+          }
+        },
+        "span": {
+          "$ref": "#/$defs/span"
+        },
+        "literal": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/literal"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "symbolId": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/text"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "constraint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "predicateId",
+        "hard",
+        "span"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/text"
+        },
+        "predicateId": {
+          "$ref": "#/$defs/text"
+        },
+        "hard": {
+          "type": "boolean"
+        },
+        "span": {
+          "$ref": "#/$defs/span"
+        },
+        "penalty": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/exact"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "objective": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "expressionId",
+        "direction",
+        "priority",
+        "weight",
+        "tolerance",
+        "span"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/text"
+        },
+        "expressionId": {
+          "$ref": "#/$defs/text"
+        },
+        "direction": {
+          "type": "string",
+          "enum": [
+            "Minimize",
+            "Maximize"
+          ]
+        },
+        "priority": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "weight": {
+          "$ref": "#/$defs/exact"
+        },
+        "tolerance": {
+          "$ref": "#/$defs/exact"
+        },
+        "span": {
+          "$ref": "#/$defs/span"
+        }
+      }
+    },
+    "scenarioValue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "symbolId",
+        "value"
+      ],
+      "properties": {
+        "symbolId": {
+          "$ref": "#/$defs/text"
+        },
+        "value": {
+          "$ref": "#/$defs/literal"
+        }
+      }
+    },
+    "scenario": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "stage",
+        "informationSet",
+        "span",
+        "overrides"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/text"
+        },
+        "stage": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
+        },
+        "informationSet": {
+          "$ref": "#/$defs/text"
+        },
+        "span": {
+          "$ref": "#/$defs/span"
+        },
+        "overrides": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/scenarioValue"
+          }
+        },
+        "parentId": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/text"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "probability": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/exact"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "model": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "tenantId",
+        "modelId",
+        "revisionId",
+        "semanticsVersion",
+        "inputDigests",
+        "sources",
+        "timeBasis",
+        "types",
+        "symbols",
+        "expressions",
+        "constraints",
+        "objectives",
+        "scenarios",
+        "requires"
+      ],
+      "properties": {
+        "tenantId": {
+          "$ref": "#/$defs/text"
+        },
+        "modelId": {
+          "$ref": "#/$defs/text"
+        },
+        "revisionId": {
+          "$ref": "#/$defs/text"
+        },
+        "semanticsVersion": {
+          "const": "udir/1"
+        },
+        "inputDigests": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/digest"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/source"
+          }
+        },
+        "timeBasis": {
+          "$ref": "#/$defs/timeBasis"
+        },
+        "types": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/scalarType"
+          }
+        },
+        "symbols": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/symbol"
+          }
+        },
+        "expressions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/expression"
+          }
+        },
+        "constraints": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/constraint"
+          }
+        },
+        "objectives": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/objective"
+          }
+        },
+        "scenarios": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/scenario"
+          }
+        },
+        "requires": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/text"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "extension": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "required",
+        "value"
+      ],
+      "properties": {
+        "required": {
+          "type": "boolean"
+        },
+        "value": {}
+      }
+    }
+  }
+}
