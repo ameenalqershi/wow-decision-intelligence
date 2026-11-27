@@ -1,0 +1,139 @@
+{
+  "renderer": "Chromium 141.0.7390.37",
+  "viewport": "720x460 logical SVG",
+  "studies": [
+    {
+      "module": "UI01.svg",
+      "textCount": 34,
+      "outside": [],
+      "collisions": []
+    },
+    {
+      "module": "UI02.svg",
+      "textCount": 38,
+      "outside": [],
+      "collisions": []
+    },
+    {
+      "module": "UI03.svg",
+      "textCount": 41,
+      "outside": [],
+      "collisions": []
+    },
+    {
+      "module": "UI04.svg",
+      "textCount": 36,
+      "outside": [],
+      "collisions": []
+    },
+    {
+      "module": "UI06.svg",
+      "textCount": 37,
+      "outside": [],
+      "collisions": []
+    },
+    {
+      "module": "UI07.svg",
+      "textCount": 39,
+      "outside": [],
+      "collisions": []
+    },
+    {
+      "module": "UI08.svg",
+      "textCount": 42,
+      "outside": [],
+      "collisions": []
+    },
+    {
+      "module": "UI09.svg",
+      "textCount": 39,
+      "outside": [],
+      "collisions": []
+    },
+    {
+      "module": "UI10.svg",
+      "textCount": 39,
+      "outside": [],
+      "collisions": []
+    },
+    {
+      "module": "UI11.svg",
+      "textCount": 39,
+      "outside": [],
+      "collisions": []
+    },
+    {
+      "module": "UI12.svg",
+      "textCount": 39,
+      "outside": [],
+      "collisions": []
+    },
+    {
+      "module": "UI13.svg",
+      "textCount": 41,
+      "outside": [],
+      "collisions": []
+    },
+    {
+      "module": "UI14.svg",
+      "textCount": 39,
+      "outside": [],
+      "collisions": []
+    },
+    {
+      "module": "UI15.svg",
+      "textCount": 36,
+      "outside": [],
+      "collisions": []
+    },
+    {
+      "module": "UI16.svg",
+      "textCount": 40,
+      "outside": [],
+      "collisions": []
+    },
+    {
+      "module": "UI17.svg",
+      "textCount": 41,
+      "outside": [],
+      "collisions": []
+    },
+    {
+      "module": "UI18.svg",
+      "textCount": 41,
+      "outside": [],
+      "collisions": []
+    },
+    {
+      "module": "UI19.svg",
+      "textCount": 39,
+      "outside": [],
+      "collisions": []
+    },
+    {
+      "module": "UI20.svg",
+      "textCount": 40,
+      "outside": [],
+      "collisions": []
+    },
+    {
+      "module": "UI21.svg",
+      "textCount": 41,
+      "outside": [],
+      "collisions": []
+    },
+    {
+      "module": "UI22.svg",
+      "textCount": 39,
+      "outside": [],
+      "collisions": []
+    },
+    {
+      "module": "UI23.svg",
+      "textCount": 39,
+      "outside": [],
+      "collisions": []
+    }
+  ],
+  "limitation": "Text bounding boxes and common reference geometry only; not visual approval, accessibility or functional tests."
+}
