@@ -12,37 +12,37 @@ approved here.
 
 ## Field profiles
 
-- P: [SP01 edition 1](../../pilot-field-dictionary-v1.md), required
+- P: [SP01 edition 1](../../../pilot-field-dictionary-v1.md), required
   text and integer/minute fields; nullable measured numbers; exact
   objective/bound semantics. No inferred default or implicit unit
   conversion. All fields tenant-confidential unless synthetic.
-- U: [UDIR v1](../../udir-v1.md), actual immutable records in
-  [Model.cs](../../../../src/Udir/Model.cs). Canonical exact strings
+- U: [UDIR v1](../../../udir-v1.md), actual immutable records in
+  [Model.cs](../../../../../src/Udir/Model.cs). Canonical exact strings
   (integer or reduced rational), no conversion to double/decimal for
   authoritative editing. Optional null members absent on UDIR wire.
   Source spans are UTF-16 half-open ranges; bind by full frozen context.
   Structural validation is not proof of feasibility.
-- G: [EDG](../../decision-graph.md) and [impact](../../revision-impact.md).
+- G: [EDG](../../../decision-graph.md) and [impact](../../../revision-impact.md).
   GraphRevision, GraphEntity, GraphRelationship, SourceStamp, TimeWindow,
   CapacityLimit. Complete incidence, ordinal ID, typed nullable window/
   capacity, half-open absolute instants, explicit capacity unit. EDG
   decimal capacity is not a general UDIR exact-number transport.
-- S: [solver contract](../../solver-contract.md), SolverCapabilities,
+- S: [solver contract](../../../solver-contract.md), SolverCapabilities,
   SolverResult, ObjectiveObservation, ObjectiveBound, Evidence and
   Measurement. Exact objective strings; measured nullable Int64 values.
   Adapter status/evidence distinct from independent verifier result.
   Per-objective bound direction and stage scope; never merge objectives
   into a scalar without an approved policy.
-- R: [registry](../../model-registry.md): immutable tenant/model/revision
+- R: [registry](../../../model-registry.md): immutable tenant/model/revision
   key, UDIR and EDG digests, exact input/source bytes. Trusted tenant
   supplied by application, no UI direct SQL. Atomic publish, no partial
   revision on failure.
-- C: [connector manifest](../../connector-contract.md): typed versioned
+- C: [connector manifest](../../../connector-contract.md): typed versioned
   mapping, provenance, bounded cursor and retry policies, source row keys,
   UTC source timestamp, required and allowNull independently; opaque
   credential reference only, not credential value. Mapping declaration
   validation is not validated source import or authorization.
-- E: [identity](../../enterprise-identity.md): server TenantAccess,
+- E: [identity](../../../enterprise-identity.md): server TenantAccess,
   TenantResource, TenantActor, TenantPermission (View/Write/Propose/
   Approve/Execute). Token claims alone do not grant authorization.
   Tenant binding precedes lookup. Public REST status/route mapping and

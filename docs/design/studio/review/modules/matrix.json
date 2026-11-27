@@ -94,6 +94,43 @@
           ]
         }
       ],
+      "transitions": [
+        [
+          "LoadingLayout",
+          "Recovering",
+          "Invalid version or disconnected display"
+        ],
+        [
+          "LoadingLayout",
+          "Ready",
+          "Authorized context restored"
+        ],
+        [
+          "Recovering",
+          "Ready",
+          "Visible defaults applied"
+        ],
+        [
+          "Ready",
+          "Switching",
+          "Choose workspace"
+        ],
+        [
+          "Switching",
+          "Ready",
+          "Confirmed or retained old context"
+        ],
+        [
+          "Ready",
+          "Unsaved",
+          "Layout write failed"
+        ],
+        [
+          "Unsaved",
+          "Ready",
+          "Retry confirmed or discard"
+        ]
+      ],
       "featureAcceptance": [
         {
           "id": "TC-UI01-A",
@@ -196,6 +233,53 @@
             "TC-UI02-B"
           ]
         }
+      ],
+      "transitions": [
+        [
+          "Selecting",
+          "ValidatingManifest",
+          "Choose explicit source"
+        ],
+        [
+          "ValidatingManifest",
+          "Rejected",
+          "Incompatible or denied"
+        ],
+        [
+          "ValidatingManifest",
+          "Opening",
+          "Valid open"
+        ],
+        [
+          "ValidatingManifest",
+          "PreviewingRestore",
+          "Valid backup"
+        ],
+        [
+          "PreviewingRestore",
+          "Restoring",
+          "Explicit confirmed target"
+        ],
+        [
+          "Restoring",
+          "Rejected",
+          "Digest or write failure"
+        ],
+        [
+          "Rejected",
+          "Selecting",
+          "Keep previous workspace"
+        ],
+        [
+          "Opening",
+          "Selecting",
+          "Open confirmed"
+        ],
+        [
+          "Restoring",
+          "Selecting",
+          "Atomic restore confirmed"
+        ]
       ],
       "featureAcceptance": [
         {
@@ -302,6 +386,43 @@
           ]
         }
       ],
+      "transitions": [
+        [
+          "LoadingPanels",
+          "Partial",
+          "Some panels unavailable"
+        ],
+        [
+          "LoadingPanels",
+          "Ready",
+          "All required observations received"
+        ],
+        [
+          "Partial",
+          "Refreshing",
+          "Retry failed source"
+        ],
+        [
+          "Ready",
+          "Stale",
+          "Freshness expired"
+        ],
+        [
+          "Stale",
+          "Refreshing",
+          "Explicit refresh"
+        ],
+        [
+          "Refreshing",
+          "Ready",
+          "Current observations"
+        ],
+        [
+          "Refreshing",
+          "Partial",
+          "Independent failure"
+        ]
+      ],
       "featureAcceptance": [
         {
           "id": "TC-UI03-A",
@@ -399,6 +520,48 @@
             "TC-UI04-B"
           ]
         }
+      ],
+      "transitions": [
+        [
+          "Draft",
+          "Dirty",
+          "Add or edit element"
+        ],
+        [
+          "Dirty",
+          "Validating",
+          "Validate current edit"
+        ],
+        [
+          "Validating",
+          "Invalid",
+          "Dangling or incompatible type"
+        ],
+        [
+          "Invalid",
+          "Dirty",
+          "Correct draft"
+        ],
+        [
+          "Validating",
+          "Publishing",
+          "Validated and explicitly save"
+        ],
+        [
+          "Publishing",
+          "Saved",
+          "New immutable revision returned"
+        ],
+        [
+          "Publishing",
+          "Dirty",
+          "Write failed retain draft"
+        ],
+        [
+          "Saved",
+          "Draft",
+          "Open new revision"
+        ]
       ],
       "featureAcceptance": [
         {
@@ -542,6 +705,43 @@
           ]
         }
       ],
+      "transitions": [
+        [
+          "LoadingGraph",
+          "Ready",
+          "Exact snapshot resolved"
+        ],
+        [
+          "Ready",
+          "Filtered",
+          "Apply presentation filter"
+        ],
+        [
+          "Filtered",
+          "Ready",
+          "Clear filters"
+        ],
+        [
+          "Ready",
+          "Comparing",
+          "Select compatible old revision"
+        ],
+        [
+          "Comparing",
+          "SelectionUnavailable",
+          "Deleted or hidden selected ID"
+        ],
+        [
+          "SelectionUnavailable",
+          "Comparing",
+          "Inspect old snapshot"
+        ],
+        [
+          "Comparing",
+          "Ready",
+          "Return to current revision"
+        ]
+      ],
       "featureAcceptance": [
         {
           "id": "TC-UI05-A",
@@ -649,6 +849,43 @@
           ]
         }
       ],
+      "transitions": [
+        [
+          "Editing",
+          "Compiling",
+          "Validate edit version"
+        ],
+        [
+          "Compiling",
+          "StaleResponse",
+          "New edit supersedes request"
+        ],
+        [
+          "StaleResponse",
+          "Editing",
+          "Discard stale result"
+        ],
+        [
+          "Compiling",
+          "Invalid",
+          "Current source diagnostic"
+        ],
+        [
+          "Invalid",
+          "Editing",
+          "Correct at source span"
+        ],
+        [
+          "Compiling",
+          "Ready",
+          "Current typed tree returned"
+        ],
+        [
+          "Ready",
+          "Editing",
+          "Edit or format"
+        ]
+      ],
       "featureAcceptance": [
         {
           "id": "TC-UI06-A",
@@ -741,6 +978,43 @@
             "TC-UI07-B"
           ]
         }
+      ],
+      "transitions": [
+        [
+          "Editing",
+          "Invalid",
+          "Domain or penalty rejected"
+        ],
+        [
+          "Invalid",
+          "Editing",
+          "Correct operand"
+        ],
+        [
+          "Editing",
+          "CheckingConflict",
+          "Structurally and dimensionally valid"
+        ],
+        [
+          "CheckingConflict",
+          "ProofUnavailable",
+          "No supported evidence"
+        ],
+        [
+          "CheckingConflict",
+          "Validated",
+          "Owner check returned"
+        ],
+        [
+          "ProofUnavailable",
+          "Validated",
+          "Structural validity retained without proof claim"
+        ],
+        [
+          "Validated",
+          "Editing",
+          "Edit invalidates old checks"
+        ]
       ],
       "featureAcceptance": [
         {
@@ -846,6 +1120,43 @@
             "TC-UI08-B"
           ]
         }
+      ],
+      "transitions": [
+        [
+          "Editing",
+          "InvalidPriority",
+          "Duplicate or nonpositive priority"
+        ],
+        [
+          "InvalidPriority",
+          "Editing",
+          "Correct order"
+        ],
+        [
+          "Editing",
+          "Checking",
+          "Validate weight direction and profile"
+        ],
+        [
+          "Checking",
+          "PreviewUnavailable",
+          "No evaluation or unsupported mode"
+        ],
+        [
+          "Checking",
+          "Ready",
+          "Owner returned compatible vector"
+        ],
+        [
+          "PreviewUnavailable",
+          "Editing",
+          "Change requested policy"
+        ],
+        [
+          "Ready",
+          "Editing",
+          "Change objective"
+        ]
       ],
       "featureAcceptance": [
         {
@@ -965,6 +1276,43 @@
           ]
         }
       ],
+      "transitions": [
+        [
+          "LoadingRepresentation",
+          "Ready",
+          "Representation available"
+        ],
+        [
+          "LoadingRepresentation",
+          "Failed",
+          "Read or scope failure"
+        ],
+        [
+          "Ready",
+          "MappingUnavailable",
+          "No reconstruction map"
+        ],
+        [
+          "Ready",
+          "InspectingSource",
+          "Valid mapped source span"
+        ],
+        [
+          "MappingUnavailable",
+          "LoadingRepresentation",
+          "Choose supported view"
+        ],
+        [
+          "InspectingSource",
+          "Ready",
+          "Return to selected representation"
+        ],
+        [
+          "Failed",
+          "LoadingRepresentation",
+          "Retry exact revision"
+        ]
+      ],
       "featureAcceptance": [
         {
           "id": "TC-UI09-A",
@@ -1051,6 +1399,38 @@
             "TC-UI10-B"
           ]
         }
+      ],
+      "transitions": [
+        [
+          "LoadingManifest",
+          "Editing",
+          "Manifest loaded"
+        ],
+        [
+          "Editing",
+          "CheckingEligibility",
+          "Validate requested configuration"
+        ],
+        [
+          "CheckingEligibility",
+          "Rejected",
+          "Missing capability or invalid limits"
+        ],
+        [
+          "Rejected",
+          "Editing",
+          "Correct options"
+        ],
+        [
+          "CheckingEligibility",
+          "Eligible",
+          "Owner admits configuration"
+        ],
+        [
+          "Eligible",
+          "Editing",
+          "Any option change invalidates eligibility"
+        ]
       ],
       "featureAcceptance": [
         {
@@ -1174,6 +1554,48 @@
           ]
         }
       ],
+      "transitions": [
+        [
+          "LoadingSnapshot",
+          "Streaming",
+          "Authorized run and position"
+        ],
+        [
+          "Streaming",
+          "Resyncing",
+          "Sequence gap or connection loss"
+        ],
+        [
+          "Resyncing",
+          "Streaming",
+          "Refresh snapshot and resume"
+        ],
+        [
+          "Streaming",
+          "CancelPending",
+          "Explicit cancel request"
+        ],
+        [
+          "CancelPending",
+          "Streaming",
+          "Cancellation rejected or pending retry"
+        ],
+        [
+          "CancelPending",
+          "Terminal",
+          "Authoritative terminal observation"
+        ],
+        [
+          "Streaming",
+          "Terminal",
+          "Run ended"
+        ],
+        [
+          "Resyncing",
+          "Terminal",
+          "Refreshed terminal snapshot"
+        ]
+      ],
       "featureAcceptance": [
         {
           "id": "TC-UI11-A",
@@ -1290,6 +1712,38 @@
           ]
         }
       ],
+      "transitions": [
+        [
+          "LoadingTrace",
+          "CapabilityUnavailable",
+          "Backend lacks trace"
+        ],
+        [
+          "LoadingTrace",
+          "Inspecting",
+          "Recorded trace available"
+        ],
+        [
+          "Inspecting",
+          "Comparing",
+          "Select compatible full solve"
+        ],
+        [
+          "Comparing",
+          "Fallback",
+          "Recorded repair fallback"
+        ],
+        [
+          "Fallback",
+          "Inspecting",
+          "Inspect actual evidence"
+        ],
+        [
+          "CapabilityUnavailable",
+          "LoadingTrace",
+          "Select supported run"
+        ]
+      ],
       "featureAcceptance": [
         {
           "id": "TC-UI12-A",
@@ -1384,6 +1838,43 @@
           ]
         }
       ],
+      "transitions": [
+        [
+          "Selecting",
+          "LoadingPair",
+          "Pin two revisions"
+        ],
+        [
+          "LoadingPair",
+          "Incompatible",
+          "Units objectives or scope differ"
+        ],
+        [
+          "LoadingPair",
+          "AlternativeFailed",
+          "Alternative read failed"
+        ],
+        [
+          "LoadingPair",
+          "Comparing",
+          "Comparable pair returned"
+        ],
+        [
+          "Incompatible",
+          "Selecting",
+          "Choose compatible pair"
+        ],
+        [
+          "AlternativeFailed",
+          "LoadingPair",
+          "Explicit retry alternative"
+        ],
+        [
+          "Comparing",
+          "Selecting",
+          "Change baseline or alternative"
+        ]
+      ],
       "featureAcceptance": [
         {
           "id": "TC-UI13-A",
@@ -1476,6 +1967,43 @@
             "TC-UI14-B"
           ]
         }
+      ],
+      "transitions": [
+        [
+          "Configuring",
+          "Invalid",
+          "Seed distribution or budget invalid"
+        ],
+        [
+          "Invalid",
+          "Configuring",
+          "Correct input"
+        ],
+        [
+          "Configuring",
+          "Running",
+          "Validated experiment submitted"
+        ],
+        [
+          "Running",
+          "Truncated",
+          "Stopped before full sample budget"
+        ],
+        [
+          "Running",
+          "Completed",
+          "Recorded completion"
+        ],
+        [
+          "Truncated",
+          "Configuring",
+          "New explicit replay"
+        ],
+        [
+          "Completed",
+          "Configuring",
+          "New explicit replay"
+        ]
       ],
       "featureAcceptance": [
         {
@@ -1599,6 +2127,43 @@
           ]
         }
       ],
+      "transitions": [
+        [
+          "LoadingSchedule",
+          "NoCandidate",
+          "No authoritative assignment"
+        ],
+        [
+          "LoadingSchedule",
+          "Inspecting",
+          "Candidate and calendars loaded"
+        ],
+        [
+          "Inspecting",
+          "Conflict",
+          "Original check or calendar conflict"
+        ],
+        [
+          "Inspecting",
+          "AlternativeReady",
+          "Compatible alternative available"
+        ],
+        [
+          "Conflict",
+          "LoadingSchedule",
+          "Select another frozen revision"
+        ],
+        [
+          "NoCandidate",
+          "LoadingSchedule",
+          "Retry or select run"
+        ],
+        [
+          "AlternativeReady",
+          "Inspecting",
+          "Return to original"
+        ]
+      ],
       "featureAcceptance": [
         {
           "id": "TC-UI15-A",
@@ -1703,6 +2268,43 @@
             "TC-UI16-B"
           ]
         }
+      ],
+      "transitions": [
+        [
+          "LoadingCapacity",
+          "Unavailable",
+          "Missing scope capacity or assignment"
+        ],
+        [
+          "LoadingCapacity",
+          "ZeroCapacity",
+          "Denominator equals zero"
+        ],
+        [
+          "LoadingCapacity",
+          "Ready",
+          "Comparable capacity and contributors"
+        ],
+        [
+          "Ready",
+          "Filtering",
+          "Change horizon resource"
+        ],
+        [
+          "Filtering",
+          "LoadingCapacity",
+          "Fetch matching scope"
+        ],
+        [
+          "Unavailable",
+          "LoadingCapacity",
+          "Retry exact context"
+        ],
+        [
+          "ZeroCapacity",
+          "Filtering",
+          "Choose another horizon"
+        ]
       ],
       "featureAcceptance": [
         {
@@ -1833,6 +2435,43 @@
           ]
         }
       ],
+      "transitions": [
+        [
+          "LoadingBundle",
+          "DigestMismatch",
+          "Content or revision hash differs"
+        ],
+        [
+          "LoadingBundle",
+          "Inspecting",
+          "Scoped bundle accepted"
+        ],
+        [
+          "Inspecting",
+          "VerificationUnavailable",
+          "Missing independent check or certificate"
+        ],
+        [
+          "Inspecting",
+          "Exporting",
+          "Explicit authorized export"
+        ],
+        [
+          "VerificationUnavailable",
+          "Inspecting",
+          "Inspect available adapter evidence"
+        ],
+        [
+          "Exporting",
+          "Inspecting",
+          "Export or diagnostic returned"
+        ],
+        [
+          "DigestMismatch",
+          "LoadingBundle",
+          "Choose trusted bundle"
+        ]
+      ],
       "featureAcceptance": [
         {
           "id": "TC-UI17-A",
@@ -1942,6 +2581,43 @@
             "TC-UI18-B"
           ]
         }
+      ],
+      "transitions": [
+        [
+          "Selecting",
+          "CapabilityUnavailable",
+          "Unsupported explanation"
+        ],
+        [
+          "Selecting",
+          "Evaluating",
+          "Eligible forced alternative"
+        ],
+        [
+          "Evaluating",
+          "UnknownProof",
+          "Evidence insufficient"
+        ],
+        [
+          "Evaluating",
+          "Compared",
+          "Matched result returned"
+        ],
+        [
+          "UnknownProof",
+          "Selecting",
+          "Change supported query"
+        ],
+        [
+          "CapabilityUnavailable",
+          "Selecting",
+          "Choose eligible query"
+        ],
+        [
+          "Compared",
+          "Selecting",
+          "Keep baseline select new alternative"
+        ]
       ],
       "featureAcceptance": [
         {
@@ -2060,6 +2736,43 @@
           ]
         }
       ],
+      "transitions": [
+        [
+          "LoadingSuite",
+          "Partial",
+          "Missing or failed trials"
+        ],
+        [
+          "LoadingSuite",
+          "Incomparable",
+          "Scope or units differ"
+        ],
+        [
+          "LoadingSuite",
+          "Ready",
+          "Comparable observed samples"
+        ],
+        [
+          "Partial",
+          "LoadingSuite",
+          "Reload manifest"
+        ],
+        [
+          "Incomparable",
+          "LoadingSuite",
+          "Choose paired samples"
+        ],
+        [
+          "Ready",
+          "Exporting",
+          "Export exact manifest"
+        ],
+        [
+          "Exporting",
+          "Ready",
+          "Result or diagnostic returned"
+        ]
+      ],
       "featureAcceptance": [
         {
           "id": "TC-UI19-A",
@@ -2169,6 +2882,38 @@
           ]
         }
       ],
+      "transitions": [
+        [
+          "LoadingSchema",
+          "EditingMap",
+          "Authorized version resolved"
+        ],
+        [
+          "EditingMap",
+          "Previewing",
+          "Validate staged mapping"
+        ],
+        [
+          "Previewing",
+          "RejectedRows",
+          "Row or transform diagnostics"
+        ],
+        [
+          "RejectedRows",
+          "EditingMap",
+          "Correct mapping"
+        ],
+        [
+          "Previewing",
+          "Committing",
+          "All required rows valid and explicit commit"
+        ],
+        [
+          "Committing",
+          "EditingMap",
+          "Atomic success or rollback diagnostic"
+        ]
+      ],
       "featureAcceptance": [
         {
           "id": "TC-UI20-A",
@@ -2275,6 +3020,48 @@
             "TC-UI21-B"
           ]
         }
+      ],
+      "transitions": [
+        [
+          "Authenticating",
+          "Denied",
+          "Invalid or foreign context"
+        ],
+        [
+          "Authenticating",
+          "ReadOnly",
+          "Authorized effective policy"
+        ],
+        [
+          "ReadOnly",
+          "Mutating",
+          "Server-authorized explicit action"
+        ],
+        [
+          "Mutating",
+          "PolicyStale",
+          "Concurrent policy revision"
+        ],
+        [
+          "Mutating",
+          "Denied",
+          "Server rejects action"
+        ],
+        [
+          "Mutating",
+          "ReadOnly",
+          "Authoritative result and audit"
+        ],
+        [
+          "PolicyStale",
+          "Authenticating",
+          "Refetch effective grants"
+        ],
+        [
+          "Denied",
+          "Authenticating",
+          "New valid authorization"
+        ]
       ],
       "featureAcceptance": [
         {
@@ -2386,6 +3173,48 @@
           ]
         }
       ],
+      "transitions": [
+        [
+          "Searching",
+          "Selected",
+          "Choose registered command"
+        ],
+        [
+          "Selected",
+          "Denied",
+          "Unknown denied or stale context"
+        ],
+        [
+          "Selected",
+          "Confirming",
+          "Privileged or external action"
+        ],
+        [
+          "Selected",
+          "Invoking",
+          "Validated safe action"
+        ],
+        [
+          "Confirming",
+          "Invoking",
+          "Explicit authorization and confirmation"
+        ],
+        [
+          "Confirming",
+          "Searching",
+          "Cancel restore focus"
+        ],
+        [
+          "Denied",
+          "Searching",
+          "Correct selection or context"
+        ],
+        [
+          "Invoking",
+          "Searching",
+          "Return result and focus"
+        ]
+      ],
       "featureAcceptance": [
         {
           "id": "TC-UI22-A",
@@ -2489,6 +3318,43 @@
             "TC-UI23-B"
           ]
         }
+      ],
+      "transitions": [
+        [
+          "LoadingConfig",
+          "Editing",
+          "Effective version loaded"
+        ],
+        [
+          "Editing",
+          "Invalid",
+          "Invalid or stale settings"
+        ],
+        [
+          "Invalid",
+          "Editing",
+          "Correct draft"
+        ],
+        [
+          "Editing",
+          "Saving",
+          "Validated explicit apply"
+        ],
+        [
+          "Saving",
+          "Editing",
+          "Atomic success or failed write"
+        ],
+        [
+          "Saving",
+          "RestartRequired",
+          "Owner confirms restart needed"
+        ],
+        [
+          "RestartRequired",
+          "LoadingConfig",
+          "Restart reread actual effective config"
+        ]
       ],
       "featureAcceptance": [
         {

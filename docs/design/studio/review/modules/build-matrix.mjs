@@ -8,6 +8,7 @@ const dir=path.dirname(fileURLToPath(import.meta.url)),root=path.resolve(dir,'..
 const read=p=>fs.readFileSync(path.resolve(root,p),'utf8');
 const hash=p=>createHash('sha256').update(read(p)).digest('hex');
 const data=JSON.parse(fs.readFileSync(path.join(dir,'acceptance-data.json'),'utf8'));
+const transitions=JSON.parse(fs.readFileSync(path.join(dir,'transitions.json'),'utf8'));
 const requirements=JSON.parse(read('planning/requirements.json'));
 const backlog=JSON.parse(read('planning/backlog.json'));
 const map=JSON.parse(read('planning/issue-map.json'));
@@ -26,6 +27,9 @@ for(const m of modules){
  assert.equal(d.cases.length,m.requirements.length,id);
  assert.ok(entry.deps.includes('SP02'),id);
  assert.ok(d.flow.length>=4&&d.states.length>=5,id);
+ const edges=transitions[id]; assert.ok(edges.length>=5,id);
+ for(const [from,to,trigger] of edges)assert.ok(d.states.includes(from)&&d.states.includes(to)&&trigger,id+' invalid transition');
+ for(const state of d.states)assert.ok(edges.some(([a,b])=>a===state||b===state),id+' disconnected state '+state);
  const original=base+id+'.md',wire=base+'drafts/'+id+'-wire.svg';
  const study=id==='UI01'?base+'review/UI01/shell-study.svg':id==='UI05'?'docs/design/references/01-WOW-DI-Studio.svg':base+'review/studies/'+id+'.svg';
  for(const p of [original,wire,study])assert.ok(fs.existsSync(path.join(root,p)),p);
@@ -41,7 +45,7 @@ for(const m of modules){
  const gates=entry.deps.map(k=>({scope:k,issue:map[k]}));
  assert.ok(gates.every(g=>Number.isInteger(g.issue)),id);
  const refs={source:original,wireframe:wire,study,sourceHash:hash(original),wireHash:hash(wire),studyHash:hash(study)};
- rows.push({module:id,issue:m.number,design:refs,approvedPilotFields:m.fields,baselinePorts:m.apis,proposedPort:portReview[id]??null,dependencies:gates,contractReview:'bindings/contract-review.md#per-module-field-projection-and-outstanding-owner-seams',stateReview:'interaction-state-review.md',cases,featureAcceptance:m.tests,disposition:'Reviewed proposal; feature-owner payload/approval gates remain; no execution claim'});
+ rows.push({module:id,issue:m.number,design:refs,approvedPilotFields:m.fields,baselinePorts:m.apis,proposedPort:portReview[id]??null,dependencies:gates,contractReview:'bindings/contract-review.md#per-module-field-projection-and-outstanding-owner-seams',stateReview:'interaction-state-review.md',cases,transitions:edges,featureAcceptance:m.tests,disposition:'Reviewed proposal; feature-owner payload/approval gates remain; no execution claim'});
  let md='# '+id+' — detailed specification review\n\n';
  md+='Source: '+link('functional scope',original)+' · '+link('wireframe',wire)+' · '+link(id==='UI05'?'official reference':'proposed high-fidelity study',study)+' · '+link('accepted field dictionary','docs/design/pilot-field-dictionary-v1.md')+'.\n\n';
  md+='**Implementation gates:** '+gates.map(g=>g.scope+' (#'+g.issue+')').join(', ')+'. No feature coding before its claimed dependencies close.\n\n';
@@ -52,7 +56,7 @@ for(const m of modules){
  md+='Approved pilot field IDs: '+m.fields.join(', ')+'. Baseline logical ports: '+m.apis.join(', ')+'. '+(portReview[id]?'Proposed replacement '+portReview[id]+' remains subject to #190 merge/owner review. ':'')+'Read inherited type, unit, requiredness, defaults, relationship and classification rules in the field profiles; do not invent wire DTOs or physical storage.\n\n';
  md+='## Operation sequence\n\n\x60\x60\x60mermaid\nsequenceDiagram\n  actor Operator\n  participant Studio\n  participant App as Application boundary\n  participant Owner as Authoritative service\n  Operator->>Studio: '+d.flow[0]+'\n  Studio->>App: '+d.flow[1]+'\n  App->>Owner: Validate context and capability\n  Owner-->>App: Scoped result or diagnostic\n  alt Accepted\n    App-->>Studio: '+d.flow[2]+'\n    Studio-->>Operator: '+d.flow[3]+'\n  else Rejected or unavailable\n    App-->>Studio: Explicit diagnostic\n    Studio-->>Operator: Retain previous valid state\n  end\n\x60\x60\x60\n\n';
  md+='## Interaction states and recovery\n\n| Module | Navigation and loading | Invalid / unavailable | Keyboard and recovery |\n|---|---|---|---|\n'+state+'\n\n';
- md+='Named states: '+d.states.join(', ')+'. Initial loading, empty, denied, invalid, unavailable and failed are separate presentation states; the owner result determines which is shown. Explicit retry never implies mutation.\n\n';
+ md+='\x60\x60\x60mermaid\nstateDiagram-v2\n  [*] --> '+edges[0][0]+'\n'+edges.map(([a,b,t])=>'  '+a+' --> '+b+': '+t).join('\n')+'\n\x60\x60\x60\n\nInitial loading, empty, denied, invalid, unavailable and failed are separate presentation states; the owner result determines which is shown. Explicit retry never implies mutation.\n\n';
  md+='## Acceptance and test trace\n\n| Requirement | Review case | Action | Observable oracle | Feature acceptance IDs |\n|---|---|---|---|---|\n'+cases.map(c=>'| '+c.requirement+' '+esc(c.title)+' | '+c.designCase+' | '+esc(c.action)+' | '+esc(c.oracle)+' | '+c.featureTests.join(', ')+' |').join('\n')+'\n\n';
  md+='Feature-level acceptance:\n\n'+m.tests.map(t=>'- '+t.id+': '+t.oracle).join('\n')+'\n\n';
  md+='## Visual, localization and accessibility gates\n\nUse approved DS01 tokens and DS02 components, with English LTR and Arabic RTL in separate scenarios. Isolate exact IDs, source spans and units; preserve logical focus order and named controls. Test keyboard and pointer equivalence for the actions above, focus recovery on errors and explicit unavailable/empty state. Compare common chrome with the reference and pin viewport, font, DPI, renderer and fixture. Do not use proposed mockups as approved screenshot baselines. Native monitor, screen-reader and feature-specific functional evidence belong to implementing issues.\n\n';
