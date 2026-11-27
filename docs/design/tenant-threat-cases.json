@@ -1,0 +1,205 @@
+[
+  {
+    "id": "F04-01",
+    "surface": "Identity",
+    "owners": [
+      "E01",
+      "RT02"
+    ],
+    "stimulus": "Two tenants share model/run IDs; valid token A requests B via route, body, query, list, cancel and evidence.",
+    "oracle": "No B data or mutations; tenant comes only from validated identity; safe denial audit.",
+    "status": "specified-not-executed"
+  },
+  {
+    "id": "F04-02",
+    "surface": "Identity",
+    "owners": [
+      "E01"
+    ],
+    "stimulus": "Invalid issuer/audience/signature, expired token, absent or ambiguous tenant membership, missing role, revoked membership.",
+    "oracle": "Reject before resource access; no identity fallback or token logging.",
+    "status": "specified-not-executed"
+  },
+  {
+    "id": "F04-03",
+    "surface": "Identity",
+    "owners": [
+      "E01",
+      "E02"
+    ],
+    "stimulus": "Concurrent requests with pooled contexts, background job with missing tenant, forged tenant header.",
+    "oracle": "No ambient tenant bleed; fail closed; composite keys prevent cross-tenant references.",
+    "status": "specified-not-executed"
+  },
+  {
+    "id": "F04-04",
+    "surface": "Imports",
+    "owners": [
+      "I01",
+      "I02",
+      "M10",
+      "SEC01"
+    ],
+    "stimulus": "Duplicate keys, unknown required extension, malformed encoding, huge/deep archive, invalid units and partial snapshot.",
+    "oracle": "Bounded rejection or quarantine; existing revision and cursor unchanged; diagnostic without raw secret.",
+    "status": "specified-not-executed"
+  },
+  {
+    "id": "F04-05",
+    "surface": "Imports",
+    "owners": [
+      "I03",
+      "I04"
+    ],
+    "stimulus": "Forged/replayed webhook, duplicate event, gap in sequence, crash before checkpoint commit.",
+    "oracle": "Authenticate exact received bytes; reject forgery; receipt and checkpoint atomic; replay no duplicate effect.",
+    "status": "specified-not-executed"
+  },
+  {
+    "id": "F04-06",
+    "surface": "Imports",
+    "owners": [
+      "I01",
+      "I03",
+      "I08"
+    ],
+    "stimulus": "Connector endpoint redirects to loopback/private metadata or resolves to disallowed address; SQL contains writes.",
+    "oracle": "Enforce authorized destination on every hop and read-only least-privilege access; no network/SQL side effect outside policy.",
+    "status": "specified-not-executed"
+  },
+  {
+    "id": "F04-07",
+    "surface": "Plugins",
+    "owners": [
+      "E07",
+      "EXT01"
+    ],
+    "stimulus": "Unsigned/unapproved extension, capability escalation, attempts access to another tenant file, network or connector credential.",
+    "oracle": "Activation denied or isolated; no credential inheritance; no unauthorized output committed.",
+    "status": "specified-not-executed"
+  },
+  {
+    "id": "F04-08",
+    "surface": "Plugins",
+    "owners": [
+      "E07",
+      "S07"
+    ],
+    "stimulus": "Worker exceeds memory/time, forks child, exits or publishes after lease expiry.",
+    "oracle": "Process tree stopped; old lease fenced; no unverified evidence or duplicate publication.",
+    "status": "specified-not-executed"
+  },
+  {
+    "id": "F04-09",
+    "surface": "Cache",
+    "owners": [
+      "X03",
+      "X04",
+      "S10"
+    ],
+    "stimulus": "Equal artifact hashes/IDs from tenants A/B; same tenant changed unit, policy, objective or required extension.",
+    "oracle": "No cross-tenant hit; semantic mismatch rejected; unknown evidence never promoted.",
+    "status": "specified-not-executed"
+  },
+  {
+    "id": "F04-10",
+    "surface": "Cache",
+    "owners": [
+      "X04",
+      "E02"
+    ],
+    "stimulus": "Corrupt cached bytes and concurrent cache invalidation during revision change.",
+    "oracle": "Validate canonical content/provenance and revision; reject or recompute; no stale result.",
+    "status": "specified-not-executed"
+  },
+  {
+    "id": "F04-11",
+    "surface": "Evidence export",
+    "owners": [
+      "SEC01",
+      "S10",
+      "E05"
+    ],
+    "stimulus": "Guess export ID, change tenant/revision, reuse expired or revoked download grant.",
+    "oracle": "Reauthorize every retrieval; no existence leak or bytes from another tenant; audit decision.",
+    "status": "specified-not-executed"
+  },
+  {
+    "id": "F04-12",
+    "surface": "Evidence export",
+    "owners": [
+      "SEC01",
+      "E05"
+    ],
+    "stimulus": "Export contains connector secrets, other tenant records, customer payload in logs or unsafe archive paths.",
+    "oracle": "Redact/omit forbidden fields; path containment; preserve authorized evidence integrity; no secret in logs.",
+    "status": "specified-not-executed"
+  },
+  {
+    "id": "F04-13",
+    "surface": "External writes",
+    "owners": [
+      "S11",
+      "E04"
+    ],
+    "stimulus": "Unverified or stale revision, self-approval of sensitive proposal, expired grant, disabled connector/policy.",
+    "oracle": "No external request; audit denial; new approval cannot override disabled policy.",
+    "status": "specified-not-executed"
+  },
+  {
+    "id": "F04-14",
+    "surface": "External writes",
+    "owners": [
+      "E04",
+      "E03",
+      "I04"
+    ],
+    "stimulus": "Duplicate dispatch, crash after remote success before ack, target cannot deduplicate or reconcile.",
+    "oracle": "Stable target-bound idempotency; reconcile unknown outcome before retry; suspend if unsupported.",
+    "status": "specified-not-executed"
+  },
+  {
+    "id": "F04-15",
+    "surface": "External writes",
+    "owners": [
+      "E04",
+      "S11"
+    ],
+    "stimulus": "Approval bound to different target, tenant, proposal digest or changed input; concurrent execution attempts.",
+    "oracle": "Atomic expected-state/revision check, one logical execution, reject stale or mismatched approval.",
+    "status": "specified-not-executed"
+  },
+  {
+    "id": "F04-16",
+    "surface": "Identity",
+    "owners": [
+      "E05",
+      "SEC03"
+    ],
+    "stimulus": "Restore tenant A snapshot beside B with same IDs; audit admin tries cross-tenant export.",
+    "oracle": "Tenant-constrained restore and authorization; reconcile leases/outbox; no B mutation.",
+    "status": "specified-not-executed"
+  },
+  {
+    "id": "F04-17",
+    "surface": "Plugins",
+    "owners": [
+      "AI01",
+      "SEC02"
+    ],
+    "stimulus": "Generated explanation asserts optimality or instructs tool call; tampered installer or extension.",
+    "oracle": "Untrusted text cannot change verified status or execute; verify provenance before activation.",
+    "status": "specified-not-executed"
+  },
+  {
+    "id": "F04-18",
+    "surface": "Evidence export",
+    "owners": [
+      "SEC01",
+      "SEC03"
+    ],
+    "stimulus": "Retention expiry while evidence is referenced or legal hold applies; backup access by unauthorized actor.",
+    "oracle": "Policy-aware deletion and protected backup; preserve required reference/audit integrity; no unauthorized restore.",
+    "status": "specified-not-executed"
+  }
+]
