@@ -17,6 +17,9 @@
       "approvedPilotFields": [
         "F-REV"
       ],
+      "reviewedPilotFields": [
+        "F-REV"
+      ],
       "baselinePorts": [
         "API-WORKSPACE"
       ],
@@ -155,6 +158,9 @@
         "studyHash": "681c454d8d700aeadfc10c1fee90264a3c3da1cbdd0e753b2034e42b4e420631"
       },
       "approvedPilotFields": [
+        "F-REV"
+      ],
+      "reviewedPilotFields": [
         "F-REV"
       ],
       "baselinePorts": [
@@ -309,6 +315,14 @@
         "F-TERM",
         "F-EVID"
       ],
+      "reviewedPilotFields": [
+        "F-RUN",
+        "F-TERM",
+        "F-EVID",
+        "F-ELAPSED",
+        "F-CPU",
+        "F-MEM"
+      ],
       "baselinePorts": [
         "API-RUN"
       ],
@@ -451,6 +465,11 @@
         "F-MACHINE",
         "F-OP"
       ],
+      "reviewedPilotFields": [
+        "F-REV",
+        "F-MACHINE",
+        "F-OP"
+      ],
       "baselinePorts": [
         "API-MODEL"
       ],
@@ -587,6 +606,11 @@
         "studyHash": "8e98a4c893507fc50f0a155b13960148644911161f7fc0a38a82b1526a1c042d"
       },
       "approvedPilotFields": [
+        "F-REV",
+        "F-MACHINE",
+        "F-OP"
+      ],
+      "reviewedPilotFields": [
         "F-REV",
         "F-MACHINE",
         "F-OP"
@@ -768,6 +792,9 @@
       "approvedPilotFields": [
         "F-REV"
       ],
+      "reviewedPilotFields": [
+        "F-REV"
+      ],
       "baselinePorts": [
         "API-MODEL"
       ],
@@ -913,6 +940,10 @@
         "F-REV",
         "F-DURATION"
       ],
+      "reviewedPilotFields": [
+        "F-REV",
+        "F-DURATION"
+      ],
       "baselinePorts": [
         "API-MODEL"
       ],
@@ -1040,6 +1071,11 @@
         "studyHash": "500ce52bef1d095f93d743c8aea88877933032cb1f4fca1a0e6ec2b9de477ddd"
       },
       "approvedPilotFields": [
+        "F-REV",
+        "F-WEIGHT",
+        "F-OBJ"
+      ],
+      "reviewedPilotFields": [
         "F-REV",
         "F-WEIGHT",
         "F-OBJ"
@@ -1182,6 +1218,9 @@
         "studyHash": "bae80d6d2d9a03077762fce6dcc45cab7c1266052878a023a91af00e6ee662a2"
       },
       "approvedPilotFields": [
+        "F-REV"
+      ],
+      "reviewedPilotFields": [
         "F-REV"
       ],
       "baselinePorts": [
@@ -1341,6 +1380,11 @@
         "F-CPU",
         "F-MEM"
       ],
+      "reviewedPilotFields": [
+        "F-REV",
+        "F-CPU",
+        "F-MEM"
+      ],
       "baselinePorts": [
         "API-SOLVE"
       ],
@@ -1461,6 +1505,16 @@
         "F-OBJ",
         "F-BOUND",
         "F-TERM"
+      ],
+      "reviewedPilotFields": [
+        "F-RUN",
+        "F-ELAPSED",
+        "F-OBJ",
+        "F-BOUND",
+        "F-TERM",
+        "F-STATUS",
+        "F-CPU",
+        "F-MEM"
       ],
       "baselinePorts": [
         "API-RUN"
@@ -1624,6 +1678,11 @@
         "F-RUN",
         "F-EVID"
       ],
+      "reviewedPilotFields": [
+        "F-REV",
+        "F-RUN",
+        "F-EVID"
+      ],
       "baselinePorts": [
         "API-RUN"
       ],
@@ -1772,6 +1831,11 @@
         "F-MACHINE",
         "F-OBJ"
       ],
+      "reviewedPilotFields": [
+        "F-REV",
+        "F-MACHINE",
+        "F-OBJ"
+      ],
       "baselinePorts": [
         "API-SCENARIO"
       ],
@@ -1899,6 +1963,10 @@
         "studyHash": "12ccaacd1825ef7c1e5091013153f658e07c7278a9846c936817d230bc273e49"
       },
       "approvedPilotFields": [
+        "F-REV",
+        "F-OBJ"
+      ],
+      "reviewedPilotFields": [
         "F-REV",
         "F-OBJ"
       ],
@@ -2034,6 +2102,16 @@
         "F-OP",
         "F-START",
         "F-DURATION"
+      ],
+      "reviewedPilotFields": [
+        "F-REV",
+        "F-MACHINE",
+        "F-OP",
+        "F-START",
+        "F-DURATION",
+        "F-RELEASE",
+        "F-DUE",
+        "F-WEIGHT"
       ],
       "baselinePorts": [
         "API-EVIDENCE"
@@ -2192,6 +2270,11 @@
         "F-START",
         "F-DURATION"
       ],
+      "reviewedPilotFields": [
+        "F-MACHINE",
+        "F-START",
+        "F-DURATION"
+      ],
       "baselinePorts": [
         "API-GRAPH"
       ],
@@ -2335,6 +2418,15 @@
         "F-STATUS",
         "F-TERM",
         "F-EVID"
+      ],
+      "reviewedPilotFields": [
+        "F-RUN",
+        "F-REV",
+        "F-STATUS",
+        "F-TERM",
+        "F-EVID",
+        "F-OBJ",
+        "F-BOUND"
       ],
       "baselinePorts": [
         "API-EVIDENCE"
@@ -2501,6 +2593,12 @@
         "F-BOUND",
         "F-EVID"
       ],
+      "reviewedPilotFields": [
+        "F-REV",
+        "F-OBJ",
+        "F-BOUND",
+        "F-EVID"
+      ],
       "baselinePorts": [
         "API-EVIDENCE"
       ],
@@ -2643,6 +2741,12 @@
         "studyHash": "f4936f4168235920c652754fa0bac41d8c97c1471b0c731d0c1925e5c56a5bc4"
       },
       "approvedPilotFields": [
+        "F-RUN",
+        "F-CPU",
+        "F-MEM",
+        "F-ELAPSED"
+      ],
+      "reviewedPilotFields": [
         "F-RUN",
         "F-CPU",
         "F-MEM",
@@ -2801,6 +2905,11 @@
         "F-MACHINE",
         "F-DURATION"
       ],
+      "reviewedPilotFields": [
+        "F-REV",
+        "F-MACHINE",
+        "F-DURATION"
+      ],
       "baselinePorts": [
         "API-MODEL"
       ],
@@ -2938,6 +3047,9 @@
         "studyHash": "aa54e5f1891f31d7d785c4cb0ec4136ee0909daeb637458c737a74dba7ed3d1c"
       },
       "approvedPilotFields": [
+        "F-REV"
+      ],
+      "reviewedPilotFields": [
         "F-REV"
       ],
       "baselinePorts": [
@@ -3087,6 +3199,9 @@
         "studyHash": "17e9d12dcdf9412a1c3ec243b8bd028ea151d795853cd09c9c15fbd1d2005cf8"
       },
       "approvedPilotFields": [
+        "F-REV"
+      ],
+      "reviewedPilotFields": [
         "F-REV"
       ],
       "baselinePorts": [
@@ -3239,6 +3354,10 @@
         "studyHash": "e8e42e10fb3012cffed85039ec7ccd3907cafad9b4b769ad26e8bd0db01d14ed"
       },
       "approvedPilotFields": [
+        "F-REV",
+        "F-RUN"
+      ],
+      "reviewedPilotFields": [
         "F-REV",
         "F-RUN"
       ],

@@ -15,6 +15,9 @@ const map=JSON.parse(read('planning/issue-map.json'));
 const portReview={UI14:'API-SIMULATION',UI16:'API-ALLOCATION',UI18:'API-EXPLAIN',UI19:'API-BENCHMARK',UI20:'API-MAPPING',UI21:'API-ADMIN',UI23:'API-SETTINGS'};
 const stateReview=read('docs/design/studio/review/interaction-state-review.md');
 const bindingReview=read('docs/design/studio/review/bindings/contract-review.md');
+const dictionary=read('docs/design/pilot-field-dictionary-v1.md');
+const pilotRows=new Map([...dictionary.matchAll(/^\| (F-[A-Z]+) \/ .*$/gm)].map(m=>[m[1],m[0]]));
+assert.equal(pilotRows.size,17);
 const base='docs/design/studio/';
 const modules=requirements.filter(r=>/^UI[0-9]{2}$/.test(r.issue));
 assert.equal(modules.length,23);
@@ -36,6 +39,8 @@ for(const m of modules){
  const binding=bindingReview.split('\n').find(l=>l.startsWith('| '+id+' |'));
  const state=stateReview.split('\n').find(l=>l.startsWith('| '+id+' |'));
  assert.ok(binding&&state,id);
+ const fieldIds=[...new Set([...m.fields,...(binding.match(/\bF-[A-Z]+\b/g)??[])])];
+ assert.ok(fieldIds.every(f=>pilotRows.has(f)),id+' missing field definition');
  const cases=m.requirements.map((req,i)=>{
    assert.ok(!ids.has(req.id),req.id);ids.add(req.id);
    const [action,oracle]=d.cases[i];assert.ok(action&&oracle,req.id);
@@ -45,7 +50,7 @@ for(const m of modules){
  const gates=entry.deps.map(k=>({scope:k,issue:map[k]}));
  assert.ok(gates.every(g=>Number.isInteger(g.issue)),id);
  const refs={source:original,wireframe:wire,study,sourceHash:hash(original),wireHash:hash(wire),studyHash:hash(study)};
- rows.push({module:id,issue:m.number,design:refs,approvedPilotFields:m.fields,baselinePorts:m.apis,proposedPort:portReview[id]??null,dependencies:gates,contractReview:'bindings/contract-review.md#per-module-field-projection-and-outstanding-owner-seams',stateReview:'interaction-state-review.md',cases,transitions:edges,featureAcceptance:m.tests,disposition:'Reviewed proposal; feature-owner payload/approval gates remain; no execution claim'});
+ rows.push({module:id,issue:m.number,design:refs,approvedPilotFields:m.fields,reviewedPilotFields:fieldIds,baselinePorts:m.apis,proposedPort:portReview[id]??null,dependencies:gates,contractReview:'bindings/contract-review.md#per-module-field-projection-and-outstanding-owner-seams',stateReview:'interaction-state-review.md',cases,transitions:edges,featureAcceptance:m.tests,disposition:'Reviewed proposal; feature-owner payload/approval gates remain; no execution claim'});
  let md='# '+id+' — detailed specification review\n\n';
  md+='Source: '+link('functional scope',original)+' · '+link('wireframe',wire)+' · '+link(id==='UI05'?'official reference':'proposed high-fidelity study',study)+' · '+link('accepted field dictionary','docs/design/pilot-field-dictionary-v1.md')+'.\n\n';
  md+='**Implementation gates:** '+gates.map(g=>g.scope+' (#'+g.issue+')').join(', ')+'. No feature coding before its claimed dependencies close.\n\n';
@@ -53,7 +58,8 @@ for(const m of modules){
  md+='The operator navigates through '+d.flow.join(' → ')+'. The application boundary, not Studio, owns authoritative mutation, validation and storage.\n\n';
  md+='\x60\x60\x60mermaid\nflowchart TD\n'+d.flow.map((v,i)=>'  N'+i+'["'+v+'"]'+(i+1<d.flow.length?' --> N'+(i+1):'')).join('\n')+'\n  N1 -->|invalid or denied| R["Keep previous valid context and display diagnostic"]\n  R -->|explicit retry| N0\n\x60\x60\x60\n\n';
  md+='## Fields and ports\n\n| Module | Existing binding | Direction and validation | Remaining owner seam |\n|---|---|---|---|\n'+binding+'\n\n';
- md+='Approved pilot field IDs: '+m.fields.join(', ')+'. Baseline logical ports: '+m.apis.join(', ')+'. '+(portReview[id]?'Proposed replacement '+portReview[id]+' remains subject to #190 merge/owner review. ':'')+'Read inherited type, unit, requiredness, defaults, relationship and classification rules in the field profiles; do not invent wire DTOs or physical storage.\n\n';
+ md+='### Approved pilot field definitions applicable to this module\n\n| Field ID / JSON key | Type, units, presence | Source and relationship | Valid representation / rejected condition |\n|---|---|---|---|\n'+fieldIds.map(f=>pilotRows.get(f)).join('\n')+'\n\n';
+ md+='Ledger pilot field IDs: '+m.fields.join(', ')+'. Baseline logical ports: '+m.apis.join(', ')+'. '+(portReview[id]?'Proposed replacement '+portReview[id]+' remains subject to #190 merge/owner review. ':'')+'Read inherited type, unit, requiredness, defaults, relationship and classification rules in the field profiles; do not invent wire DTOs or physical storage.\n\n';
  md+='## Operation sequence\n\n\x60\x60\x60mermaid\nsequenceDiagram\n  actor Operator\n  participant Studio\n  participant App as Application boundary\n  participant Owner as Authoritative service\n  Operator->>Studio: '+d.flow[0]+'\n  Studio->>App: '+d.flow[1]+'\n  App->>Owner: Validate context and capability\n  Owner-->>App: Scoped result or diagnostic\n  alt Accepted\n    App-->>Studio: '+d.flow[2]+'\n    Studio-->>Operator: '+d.flow[3]+'\n  else Rejected or unavailable\n    App-->>Studio: Explicit diagnostic\n    Studio-->>Operator: Retain previous valid state\n  end\n\x60\x60\x60\n\n';
  md+='## Interaction states and recovery\n\n| Module | Navigation and loading | Invalid / unavailable | Keyboard and recovery |\n|---|---|---|---|\n'+state+'\n\n';
  md+='\x60\x60\x60mermaid\nstateDiagram-v2\n  [*] --> '+edges[0][0]+'\n'+edges.map(([a,b,t])=>'  '+a+' --> '+b+': '+t).join('\n')+'\n\x60\x60\x60\n\nInitial loading, empty, denied, invalid, unavailable and failed are separate presentation states; the owner result determines which is shown. Explicit retry never implies mutation.\n\n';
