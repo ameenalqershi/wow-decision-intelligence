@@ -65,6 +65,37 @@ using System;
 using System.Runtime.InteropServices;
 public static class QualificationForeground {
     [DllImport("user32.dll")] public static extern IntPtr GetForegroundWindow();
+    [DllImport("user32.dll")] static extern bool GetClientRect(IntPtr hwnd, out Rect rect);
+    [DllImport("user32.dll")] static extern bool ClientToScreen(IntPtr hwnd, ref Point point);
+    [DllImport("user32.dll", SetLastError=true)] static extern bool SetCursorPos(int x,int y);
+    [DllImport("user32.dll")] static extern IntPtr WindowFromPoint(Point point);
+    [DllImport("user32.dll")] static extern bool IsChild(IntPtr parent, IntPtr child);
+    [DllImport("user32.dll")] static extern int GetClassName(IntPtr hwnd,System.Text.StringBuilder name,int count);
+    [DllImport("user32.dll")] static extern bool EnumChildWindows(IntPtr parent, EnumChild callback, IntPtr param);
+    delegate bool EnumChild(IntPtr hwnd,IntPtr param);
+    [StructLayout(LayoutKind.Sequential)] struct Rect { public int left,top,right,bottom; }
+    [StructLayout(LayoutKind.Sequential)] struct Point { public int x,y; }
+    public static string Children(IntPtr parent) {
+        var list=new System.Collections.Generic.List<string>();
+        EnumChildWindows(parent,(hwnd,param)=>{
+            var name=new System.Text.StringBuilder(256);GetClassName(hwnd,name,name.Capacity);
+            uint pid;uint tid=GetWindowThreadProcessId(hwnd,out pid);
+            list.Add($"hwnd={hwnd};class={name};pid={pid};thread={tid};"+FocusState(hwnd));return true;
+        },IntPtr.Zero);
+        return string.Join("\n",list);
+    }
+    // Diagnostic only: acquire focus in the blank lower part of the fixture.
+    // Never click a control. The original keyboard-only failure remains a failure.
+    public static void ClickBlank(IntPtr parent) {
+        Rect r;if(!GetClientRect(parent,out r))throw new InvalidOperationException("client rectangle");
+        var p=new Point{x=(r.right-r.left)/2,y=(r.bottom-r.top)*4/5};
+        if(!ClientToScreen(parent,ref p))throw new InvalidOperationException("screen coordinate");
+        var hit=WindowFromPoint(p);
+        if(hit!=parent&&!IsChild(parent,hit))throw new InvalidOperationException("fixture does not own click point");
+        if(!SetCursorPos(p.x,p.y))throw new InvalidOperationException("cursor position");
+        var clicks=new[]{new Input{type=0,value=new InputUnion{mouse=new MouseInput{flags=2}}},new Input{type=0,value=new InputUnion{mouse=new MouseInput{flags=4}}}};
+        if(SendInput(2,clicks,Marshal.SizeOf<Input>())!=2)throw new InvalidOperationException("mouse input rejected");
+    }
     [DllImport("user32.dll")] public static extern bool ShowWindow(IntPtr hwnd, int command);
     [DllImport("user32.dll")] public static extern bool SetForegroundWindow(IntPtr hwnd);
     [DllImport("user32.dll", SetLastError=true)] static extern uint SendInput(uint count, Input[] inputs, int size);
@@ -141,8 +172,29 @@ public static class QualificationForeground {
     # Initial focus is an explicit app accessibility behavior, not a keyboard test.
     $null = Wait-Probe { param($p) $p.FocusedId -eq 'direction' }
     # Real forward and backward OS keyboard navigation must both work.
+    Write-Host ("Native descendants before keyboard: " + [QualificationForeground]::Children($handle))
     Send-ProbeKey '{TAB}'
-    $null = Wait-Probe { param($p) $p.FocusedId -eq 'confirm' -and $p.Events -contains 'focus:confirm' }
+    try {
+        $null = Wait-Probe { param($p) $p.FocusedId -eq 'confirm' -and $p.Events -contains 'focus:confirm' }
+    } catch {
+        $original = $_
+        Write-Host ("Native descendants after failed keyboard: " + [QualificationForeground]::Children($handle))
+        # Distinguish OS/WebView focus acquisition from general keyboard dispatch.
+        # This branch cannot turn the failed qualification green.
+        try {
+            [QualificationForeground]::ClickBlank($handle)
+            Start-Sleep -Milliseconds 350
+            Write-Host ("Native descendants after blank activation: " + [QualificationForeground]::Children($handle))
+            Send-ProbeKey '{TAB}'
+            Send-ProbeKey '{TAB}'
+            Start-Sleep -Milliseconds 350
+            if (Test-Path $report) {
+                Copy-Item $report (Join-Path $out 'after-blank-activation.json')
+                Get-Content $report -Raw | Write-Host
+            }
+        } catch { Write-Warning "Secondary focus diagnostic failed: $_" }
+        throw $original
+    }
     Send-ProbeKey '+{TAB}'
     $null = Wait-Probe { param($p) $p.FocusedId -eq 'direction' }
     Send-ProbeKey '{ENTER}'
