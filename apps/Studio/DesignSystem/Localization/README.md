@@ -59,3 +59,19 @@ verify both panes/IDs/units remain legible. Disconnect B and restore the
 saved layout; record native window bounds inside the remaining work area.
 Attach before/after screenshots and observed topology and focus trace.
 Do not record a pass from browser emulation, unit tests or a single display.
+
+### Native coordinate-frame boundary
+
+DisplayCoordinateFrame converts physical pixels to monitor-local logical
+offsets relative to each monitor's work area, then reuses DisplayRecovery
+to restore/clamp and quantize both edges within the selected physical
+work area. It deliberately does not divide global virtual-desktop
+coordinates by one monitor's scale. This avoids mixed-scale origin and
+rounding errors, including negative monitor coordinates. Stable display
+identity, actual work areas and scale are supplied by the native host.
+NativePlacement is explicitly monitor-local; do not deserialize old
+absolute ShellLayout coordinates into it or alter the persistence schema
+without coordinated versioning. Tests cover 100%, 125%, 150%, 200%,
+scale changes, disconnected monitor fallback, invalid topology, and
+1,000 fractional-scale containment cases. These are deterministic
+coordinate tests, not actual multi-monitor or native window proof.
