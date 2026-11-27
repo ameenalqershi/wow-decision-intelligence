@@ -75,3 +75,24 @@ without coordinated versioning. Tests cover 100%, 125%, 150%, 200%,
 scale changes, disconnected monitor fallback, invalid topology, and
 1,000 fractional-scale containment cases. These are deterministic
 coordinate tests, not actual multi-monitor or native window proof.
+
+### Pinned native-host API inspection
+
+Photino.NET v4.0.16 Monitor exposes MonitorArea, WorkArea and Scale, but
+does not expose a stable monitor identifier or primary-monitor flag.
+Photino.Native v4.0.22 Windows uses EnumDisplayMonitors, GetMonitorInfo
+and GetDpiForMonitor; its Linux implementation calls GDK monitor
+geometry/workarea and gdk_monitor_get_scale_factor (the upstream code
+explicitly notes fractional scaling is not implemented). GDK geometry
+is in its logical coordinate space, not the Windows physical-pixel
+representation. Consequently, neither list order nor bounds are a
+durable identity, and applying DisplayCoordinateFrame indiscriminately
+to Linux GDK coordinates would double-convert them.
+
+A production adapter must supply explicit stable OS display identity,
+primary status and coordinate-space provenance, use the appropriate
+logical or physical recovery path, then read back actual window bounds
+and effective scale after the OS move. An ambiguous identity must not
+restore an old position as if the display were known. Do not infer a
+physical mixed-DPI pass from a browser or Xvfb virtual monitor. The
+available remote environment does not provide two physical displays.
