@@ -4,7 +4,24 @@ using WowDi.Enterprise.Identity;
 
 namespace WowDi.Enterprise.DataSecurity;
 
-public sealed record EvidenceKey(string TenantId, string ModelId, string RevisionId, string EvidenceId);
+public sealed record EvidenceKey(string TenantId, string ModelId, string RevisionId, string EvidenceId)
+{
+    // Registry scope preserves ordinal Unicode identity; evidence handles remain opaque ASCII.
+    public void Validate()
+    {
+        if (!RegistryId(TenantId) || !RegistryId(ModelId) || !RegistryId(RevisionId) ||
+            !OpaqueId(EvidenceId)) throw new DataSecurityException("evidence.key");
+    }
+    private static bool RegistryId(string value)
+    {
+        if (string.IsNullOrWhiteSpace(value) || value.Length > 256 || value != value.Trim() ||
+            value.Any(char.IsControl)) return false;
+        try { _ = new System.Text.UTF8Encoding(false, true).GetByteCount(value); return true; }
+        catch (System.Text.EncoderFallbackException) { return false; }
+    }
+    private static bool OpaqueId(string value) => value is { Length: > 0 and <= 256 } &&
+        value.All(c => char.IsAsciiLetterOrDigit(c) || c is '-' or '_' or '.');
+}
 public enum EvidenceMathStatus { Optimal, Feasible, Infeasible, Unbounded, Unknown }
 
 // Internal repository record: original bytes are never copied into the redacted export.
@@ -40,7 +57,7 @@ public sealed class EvidenceMovement(DataMovementGate access, IEvidenceMovementS
         ArgumentNullException.ThrowIfNull(requested);
         var actor = await access.AuthorizeAsync(new(requested.TenantId, requested.ModelId), DataMovementAction.RedactedExport, cancellationToken);
         if (actor is null) return null;
-        ValidateKey(requested);
+        requested.Validate();
         var key = requested with { TenantId = actor.TenantId };
         var evidence = await store.ReadAsync(key, cancellationToken);
         if (evidence is null || evidence.Key != key) return null;
@@ -60,6 +77,10 @@ public sealed class EvidenceMovement(DataMovementGate access, IEvidenceMovementS
             mathematicalStatus = evidence.Status.ToString(),
             redacted = true
         });
+        // Membership or movement policy may change during the database read/hash.
+        var currentActor = await access.AuthorizeAsync(new(key.TenantId, key.ModelId),
+            DataMovementAction.RedactedExport, cancellationToken);
+        if (currentActor is null || currentActor != actor) return null;
         if (!await store.CommitExportAuditAsync(key, digest, new(key, actor.Issuer, actor.Subject, "RedactedExport", clock.GetUtcNow()), cancellationToken)) return null;
         return new(bytes, Convert.ToHexStringLower(SHA256.HashData(bytes)));
     }
@@ -71,16 +92,9 @@ public sealed class EvidenceMovement(DataMovementGate access, IEvidenceMovementS
         ArgumentNullException.ThrowIfNull(requested);
         var actor = await access.AuthorizeAsync(new(requested.TenantId, requested.ModelId), DataMovementAction.Retention, cancellationToken);
         if (actor is null) return RetentionResult.Missing;
-        ValidateKey(requested);
+        requested.Validate();
         var key = requested with { TenantId = actor.TenantId };
         return await store.ExpireAsync(key, new(key, actor.Issuer, actor.Subject, "RetentionExpired", clock.GetUtcNow()), cancellationToken);
     }
 
-    private static void ValidateKey(EvidenceKey key)
-    {
-        if (!Valid(key.TenantId) || !Valid(key.ModelId) || !Valid(key.RevisionId) || !Valid(key.EvidenceId))
-            throw new DataSecurityException("evidence.key");
-    }
-    private static bool Valid(string value) => value is { Length: > 0 and <= 256 } &&
-        value.All(c => char.IsAsciiLetterOrDigit(c) || c is '-' or '_' or '.');
 }

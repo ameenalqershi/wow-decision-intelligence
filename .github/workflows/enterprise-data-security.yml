@@ -65,5 +65,8 @@ jobs:
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 10.0.x
+      - run: sudo apt-get update && sudo apt-get install -y postgresql-client-16
+      - run: echo /usr/lib/postgresql/16/bin >> "$GITHUB_PATH"
+      - run: pg_dump --version | grep -E "PostgreSQL\) 16\." && pg_restore --version | grep -E "PostgreSQL\) 16\."
       - run: dotnet restore tests/Enterprise.DataSecurity.Postgres/WowDi.Enterprise.DataSecurity.Postgres.Tests.csproj --locked-mode
       - run: dotnet test tests/Enterprise.DataSecurity.Postgres/WowDi.Enterprise.DataSecurity.Postgres.Tests.csproj --no-restore -c Release

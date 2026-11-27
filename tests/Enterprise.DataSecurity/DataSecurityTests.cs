@@ -250,6 +250,25 @@ public sealed class DataSecurityTests
     }
 
     [Fact]
+    public async Task ExportRechecksRevocationAfterReadAndPreservesRegistryUnicode()
+    {
+        using var auth = new AccessFixture("مؤسسة");
+        var clock = new FakeClock();
+        var store = new Store();
+        var key = new EvidenceKey("مؤسسة","model","نسخة-١","e1");
+        store.Add(Evidence(key,clock.GetUtcNow().AddHours(1)));
+        var service = new EvidenceMovement(auth.Gate(clock),store,clock);
+        Assert.NotNull(await service.ExportAsync(key));
+        Assert.Single(store.Audits);
+        store.AfterRead = () => auth.Policy.Allowed = false;
+        Assert.Null(await service.ExportAsync(key));
+        Assert.Single(store.Audits);
+        auth.Policy.Allowed = true;
+        Assert.Throws<DataSecurityException>(() => (key with {EvidenceId="bad id"}).Validate());
+        Assert.Throws<DataSecurityException>(() => (key with {RevisionId="bad\nrevision"}).Validate());
+    }
+
+    [Fact]
     public async Task ExpiredRetentionPreservesAuditReferencesAndOtherTenants()
     {
         using var auth = new AccessFixture("A");
@@ -348,11 +367,12 @@ public sealed class DataSecurityTests
         public int Reads;
         public bool FailAudit;
         public bool RemoveBeforeExportCommit;
+        public Action? AfterRead;
         public void Add(StoredEvidence e) { lock(_gate) _data[e.Key] = e; }
         public bool Exists(EvidenceKey key) { lock(_gate) return _data.ContainsKey(key); }
         public ValueTask<StoredEvidence?> ReadAsync(EvidenceKey key, CancellationToken ct)
         {
-            lock(_gate) { Reads++; return ValueTask.FromResult(_data.GetValueOrDefault(key)); }
+            lock(_gate) { Reads++; var result = _data.GetValueOrDefault(key); AfterRead?.Invoke(); return ValueTask.FromResult(result); }
         }
         public ValueTask<bool> CommitExportAuditAsync(EvidenceKey key, string digest, MovementAudit audit, CancellationToken ct)
         {

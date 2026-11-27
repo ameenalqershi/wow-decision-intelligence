@@ -84,37 +84,37 @@ public sealed partial class MovementPostgresTests
                 TokenType="at+jwt",SigningCredentials=new SigningCredentials(new RsaSecurityKey(rsa){KeyId="test-key"},SecurityAlgorithms.RsaSha256)
             });
         }
-        using var seed=await Send(HttpMethod.Post,"/fixture/seed/http-fixture",Token("http-fixture"));
+        using var seed=await Send(HttpMethod.Post,"/fixture/seed/مؤسسة-اختبار",Token("مؤسسة-اختبار"));
         Assert.Equal(HttpStatusCode.OK,seed.StatusCode);
-        var key=Key("http-fixture");
+        var key=Key("مؤسسة-اختبار");
         var data=Evidence(key,DateTimeOffset.UtcNow.AddHours(1));
         await _store.RegisterPublishedAsync(data);
         await _store.RegisterPublishedAsync(Evidence(Key("other"),DateTimeOffset.UtcNow.AddHours(1)));
-        using var missing=await Send(HttpMethod.Get,"/fixture/export/http-fixture/e1",null);
-        using var expired=await Send(HttpMethod.Get,"/fixture/export/http-fixture/e1",Token("http-fixture",expired:true));
-        using var foreign=await Send(HttpMethod.Get,"/fixture/export/other/e1",Token("http-fixture"));
-        using var forbidden=await Send(HttpMethod.Get,"/fixture/export/http-fixture/e1",Token("http-fixture","no-movement"));
+        using var missing=await Send(HttpMethod.Get,"/fixture/export/مؤسسة-اختبار/e1",null);
+        using var expired=await Send(HttpMethod.Get,"/fixture/export/مؤسسة-اختبار/e1",Token("مؤسسة-اختبار",expired:true));
+        using var foreign=await Send(HttpMethod.Get,"/fixture/export/other/e1",Token("مؤسسة-اختبار"));
+        using var forbidden=await Send(HttpMethod.Get,"/fixture/export/مؤسسة-اختبار/e1",Token("مؤسسة-اختبار","no-movement"));
         Assert.Equal(HttpStatusCode.Unauthorized,missing.StatusCode);
         Assert.Equal(HttpStatusCode.Unauthorized,expired.StatusCode);
         Assert.Equal(HttpStatusCode.NotFound,foreign.StatusCode);
         Assert.Equal(HttpStatusCode.NotFound,forbidden.StatusCode);
         Assert.Equal(0L,await Count("SELECT count(*) FROM wowdi_security.movement_audit"));
-        using var allowed=await Send(HttpMethod.Get,"/fixture/export/http-fixture/e1",Token("http-fixture"));
+        using var allowed=await Send(HttpMethod.Get,"/fixture/export/مؤسسة-اختبار/e1",Token("مؤسسة-اختبار"));
         Assert.Equal(HttpStatusCode.OK,allowed.StatusCode);
         Assert.True(allowed.Headers.CacheControl!.NoStore);
         var output=await allowed.Content.ReadAsStringAsync();
         Assert.Contains("Feasible",output);
         Assert.Contains(data.OriginalSha256,output);
         Assert.DoesNotContain(Encoding.UTF8.GetString(data.OriginalBytes.Span),output);
-        Assert.Equal(1L,await Count("SELECT count(*) FROM wowdi_security.movement_audit WHERE tenant='http-fixture' AND subject='fixture-actor' AND action='RedactedExport'"));
+        Assert.Equal(1L,await Count("SELECT count(*) FROM wowdi_security.movement_audit WHERE tenant='مؤسسة-اختبار' AND subject='fixture-actor' AND action='RedactedExport'"));
         Assert.Equal(0L,await Count("SELECT count(*) FROM wowdi_security.movement_audit WHERE tenant='other'"));
-        using var denied=await Send(HttpMethod.Post,"/fixture/expire/other/e1",Token("http-fixture"));
+        using var denied=await Send(HttpMethod.Post,"/fixture/expire/other/e1",Token("مؤسسة-اختبار"));
         Assert.Equal(HttpStatusCode.NotFound,denied.StatusCode);
         Assert.NotNull(await _store.ReadAsync(Key("other"),default));
     }
     private sealed class MovementDirectory:ITenantMembershipDirectory
     {
-        public ValueTask<bool> IsActiveAsync(TenantActor actor,CancellationToken ct)=>ValueTask.FromResult(actor.TenantId is "http-fixture" or "other");
+        public ValueTask<bool> IsActiveAsync(TenantActor actor,CancellationToken ct)=>ValueTask.FromResult(actor.TenantId is "مؤسسة-اختبار" or "other");
         public ValueTask<bool> AllowsAsync(TenantActor actor,TenantPermission permission,string model,CancellationToken ct)=>
             ValueTask.FromResult(model=="factory"&&permission is TenantPermission.View or TenantPermission.Write);
     }

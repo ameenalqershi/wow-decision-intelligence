@@ -153,7 +153,7 @@ public sealed class PostgresEvidenceMovementStore(DbContextOptions<SecurityDb> o
     private static void Validate(EvidenceKey key)
     {
         ArgumentNullException.ThrowIfNull(key);
-        ValidateId(key.TenantId); ValidateId(key.ModelId); ValidateId(key.RevisionId); ValidateId(key.EvidenceId);
+        key.Validate();
     }
     private static void ValidateId(string id)
     {
