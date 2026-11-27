@@ -39,3 +39,9 @@ var lostChoice = flatSource.Where(p => p.x == 0).ToHashSet();
 Check("H5 duplicate soft cost and missing feasible projection",
     !sourceCosts.SetEquals(droppedPenalty) && !flatSource.SetEquals(lostChoice) &&
     flatSource.Min(p => p.cost) == lostChoice.Min(p => p.cost));
+
+var alternatives = bits.Select(x => (x, cost: x)).ToArray();
+var minimizeWinner = alternatives.MinBy(p => p.cost);
+var maximizeWinner = alternatives.MaxBy(p => p.cost);
+Check("H5 reversing objective sense preserves values but changes the optimizer",
+    minimizeWinner.x == 0 && maximizeWinner.x == 1);
