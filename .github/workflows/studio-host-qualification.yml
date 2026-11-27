@@ -54,9 +54,25 @@ jobs:
           $package = Join-Path $env:RUNNER_TEMP 'wowdi-host-windows.zip'
           Compress-Archive -Path (Join-Path $env:RUNNER_TEMP 'publish/*') -DestinationPath $package
           Expand-Archive -LiteralPath $package -DestinationPath $installed
-          & tests/Studio/HostQualification/windows-smoke.ps1 -Executable (Join-Path $installed 'WowDi.Studio.HostQualification.exe') -EvidenceDirectory $out
+          $exe = Join-Path $installed 'WowDi.Studio.HostQualification.exe'
+          $failures = @()
+          foreach ($mode in @('Connected','Blocked')) {
+            $probe = Join-Path $out $mode
+            New-Item -ItemType Directory -Path $probe | Out-Null
+            try {
+              & tests/Studio/HostQualification/windows-smoke.ps1 -Executable $exe -EvidenceDirectory $probe -NetworkMode $mode
+            } catch {
+              $failures += "$mode : $_"
+              Write-Warning "$mode probe failed: $_"
+            }
+          }
+          if ($failures.Count -gt 0) { throw ($failures -join '; ') }
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: native-host-${{ matrix.rid }}
-          path: ${{ runner.temp }}/evidence
+          path: |
+            ${{ runner.temp }}/evidence/**/*.json
+            ${{ runner.temp }}/evidence/**/*.log
+            ${{ runner.temp }}/evidence/**/*.png
+            ${{ runner.temp }}/evidence/**/*.txt

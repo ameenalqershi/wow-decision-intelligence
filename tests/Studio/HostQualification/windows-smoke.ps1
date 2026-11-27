@@ -1,7 +1,8 @@
 # Native window qualification on a disposable Windows runner only.
 param(
     [Parameter(Mandatory=$true)][string]$Executable,
-    [Parameter(Mandatory=$true)][string]$EvidenceDirectory
+    [Parameter(Mandatory=$true)][string]$EvidenceDirectory,
+    [ValidateSet("Connected","Blocked")][string]$NetworkMode = "Blocked"
 )
 $ErrorActionPreference = 'Stop'
 $exe = (Resolve-Path $Executable).Path
@@ -24,6 +25,7 @@ function Wait-Probe([scriptblock]$Condition) {
     if (Test-Path "$report.startup.log") { Get-Content "$report.startup.log" -Raw | Write-Host }
     $process.Refresh()
     Write-Host "Window: $($process.MainWindowTitle), Handle: $($process.MainWindowHandle)"
+    Get-Process msedgewebview2 -ErrorAction SilentlyContinue | Select-Object Id,SessionId,MainWindowTitle | Format-Table | Out-String | Write-Host
     throw "Timeout: $Condition"
 }
 try {
@@ -38,14 +40,19 @@ try {
         Get-ChildItem $_ -Filter msedgewebview2.exe -Recurse -File -ErrorAction SilentlyContinue
     } | Select-Object -ExpandProperty FullName -Unique)
     if ($webviews.Count -eq 0) { throw 'Installed WebView2 runtime not found.' }
-    if (@(Get-NetFirewallProfile | Where-Object { -not $_.Enabled }).Count -gt 0) {
+    if ($NetworkMode -eq "Blocked" -and @(Get-NetFirewallProfile | Where-Object { -not $_.Enabled }).Count -gt 0) {
         throw 'Firewall profile is disabled; offline condition cannot be established.'
     }
+    if ($NetworkMode -eq "Blocked") {
     foreach ($binary in @($exe) + $webviews) {
         $name = 'WowDiHostQualification-' + [guid]::NewGuid().ToString('N')
         New-NetFirewallRule -Name $name -DisplayName $name -Direction Outbound -Program $binary -Action Block -Profile Any | Out-Null
         $rules += $name
     }
+    }
+    $env:WEBVIEW2_USER_DATA_FOLDER = Join-Path $out "webview-profile"
+    Write-Host "Native probe network mode: $NetworkMode"
+    Set-Content -Path (Join-Path $out "network-mode.txt") -Value $NetworkMode
     $process = Start-Process -FilePath $exe -WorkingDirectory (Split-Path $exe) -ArgumentList @('--evidence', ('"' + $report + '"')) -PassThru
     $initial = Wait-Probe { param($p) $p.Rendered -and $p.Direction -eq 'ltr' -and $p.FixtureRevision -eq 'host-qualification-v1' -and $p.DocumentUrl -eq 'http://localhost/' }
     $process.Refresh()
@@ -70,4 +77,5 @@ try {
 finally {
     if ($process -and -not $process.HasExited) { Stop-Process -Id $process.Id -Force }
     foreach ($name in $rules) { Remove-NetFirewallRule -Name $name }
+    Remove-Item Env:WEBVIEW2_USER_DATA_FOLDER -ErrorAction SilentlyContinue
 }
