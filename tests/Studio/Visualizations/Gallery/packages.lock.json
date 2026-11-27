@@ -8,11 +8,19 @@
         "resolved": "10.0.15",
         "contentHash": "cineG7aU2cpo+CC5rDORY4bFRya0mlaULDpzQ+ncfG0tMyZlWATyVAo2P29i0hH40EElK5O204pjT4XEYALb6g=="
       },
+      "Microsoft.FluentUI.AspNetCore.Components": {
+        "type": "Transitive",
+        "resolved": "4.14.5",
+        "contentHash": "7ZgWTBA5sBMG9wzTAIoP6la2v7ZM48UU2b2Hx4YbuITtgHMmiLLgk0atG1l+beOnaiief1Ao9HfuQu6uWa4FUA=="
+      },
       "wowdi.decisiongraph": {
         "type": "Project"
       },
       "wowdi.studio.designsystem": {
-        "type": "Project"
+        "type": "Project",
+        "dependencies": {
+          "Microsoft.FluentUI.AspNetCore.Components": "[4.14.5, )"
+        }
       },
       "wowdi.studio.visualizations": {
         "type": "Project",
