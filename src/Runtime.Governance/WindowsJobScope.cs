@@ -55,6 +55,15 @@ public sealed class WindowsJobScopeFactory(int maximumProcesses=64):IWorkerProce
         public async ValueTask<ScopeCompletion> CompleteAsync(CancellationToken ct)
         {
             var accounting=Native.Get<Native.Accounting>(job,1);
+            // Job accounting can lag the signaled process handle on Windows. Give natural
+            // termination a bounded grace period; any remaining member is still killed.
+            var grace=Stopwatch.StartNew();
+            while(accounting.ActiveProcesses!=0&&grace.Elapsed<TimeSpan.FromMilliseconds(250))
+            {
+                ct.ThrowIfCancellationRequested();
+                await Task.Delay(25,ct);
+                accounting=Native.Get<Native.Accounting>(job,1);
+            }
             var residual=accounting.ActiveProcesses!=0;
             if(residual&&!Native.TerminateJobObject(job,125))throw Native.Error();
             while(accounting.ActiveProcesses!=0)

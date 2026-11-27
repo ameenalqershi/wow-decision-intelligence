@@ -76,7 +76,7 @@ public sealed class OsContainmentTests
         Assert.True(retry.Fence>first.Fence);
         Assert.False(governor.Finish(first,Termination.Completed,true).Accepted);
         var recovered=await executor.RunAsync(retry,Program("success"));
-        Assert.True(recovered.Completion.CandidateEligible);
+        Assert.True(recovered.Completion.CandidateEligible,$"{recovered.Completion.State}; {recovered.Result.Diagnostic}; exit={recovered.Result.ExitCode}; cleanup={recovered.Result.CleanupConfirmed}");
         Assert.Equal(0,governor.Snapshot().ReservedBytes);
     }
 
