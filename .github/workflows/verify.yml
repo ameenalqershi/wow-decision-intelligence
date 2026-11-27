@@ -51,3 +51,7 @@ jobs:
           for file in *.svg *.png IMPLEMENTATION-SPEC.md; do
             unzip -p WOW-DI-UI-Design-References.zip "$file" | cmp - "$file"
           done
+      - name: Check the editable dependency drawing
+        run: |
+          dotnet run --project tools/Traceability -- --write-dependency-graph
+          git diff --exit-code -- docs/audit/diagrams/dependencies.dot
