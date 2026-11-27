@@ -56,6 +56,31 @@ public sealed class OsContainmentTests
     }
 
     [Fact]
+    public async Task TwoRealTenantWorkersAndCrashRetryRemainFenced()
+    {
+        const long memory=256L*1024*1024;
+        var governor=new WorkerGovernor(new(2,memory*2,2,16),new Dictionary<string,TenantCapacity>
+        {["A"]=new(1,memory,1,4),["B"]=new(1,memory,1,4)});
+        var a=GovernorTests.Request("A","run",bytes:memory);var b=GovernorTests.Request("B","run",bytes:memory);
+        governor.Submit(a);governor.Submit(b);
+        var first=governor.TryAcquire()!;var second=governor.TryAcquire()!;
+        Assert.Equal("A",first.Request.Key.TenantId);Assert.Equal("B",second.Request.Key.TenantId);
+        var executor=new WorkerExecutor(governor,Boundary());
+        var results=await Task.WhenAll(executor.RunAsync(first,Program("crash")),executor.RunAsync(second,Program("cpu")));
+        Assert.Equal(RunState.Failed,results[0].Completion.State);
+        Assert.Equal(RunState.Completed,results[1].Completion.State);
+        Assert.All(results,x=>Assert.True(x.Result.CleanupConfirmed));
+        Assert.Equal(0,governor.Snapshot().Running);
+        Assert.True(governor.RetryFailed(a.Key));
+        var retry=governor.TryAcquire()!;
+        Assert.True(retry.Fence>first.Fence);
+        Assert.False(governor.Finish(first,Termination.Completed,true).Accepted);
+        var recovered=await executor.RunAsync(retry,Program("success"));
+        Assert.True(recovered.Completion.CandidateEligible);
+        Assert.Equal(0,governor.Snapshot().ReservedBytes);
+    }
+
+    [Fact]
     public async Task RealOsBoundaryCancelsStartedAdapterAndConfirmsEmptyScope()
     {
         var (governor,lease)=Admit("cancel");

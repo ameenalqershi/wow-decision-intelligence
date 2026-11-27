@@ -21,6 +21,7 @@ public sealed class ProcessTests
     [InlineData("success",Termination.Completed,"candidate")]
     [InlineData("crash",Termination.Failed,null)]
     [InlineData("overflow",Termination.Failed,null)]
+    [InlineData("empty",Termination.Failed,null)]
     public async Task RealChildProcessOutcomeAndOutputBounds(string mode,Termination expected,string? value)
     {
         var governor=GovernorTests.Governor(1,1);

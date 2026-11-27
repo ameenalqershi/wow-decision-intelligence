@@ -2,6 +2,7 @@ if(args.Length<1||args.Length>2)return 2;
 switch(args[0])
 {
     case "success": Console.Write("candidate");return 0;
+    case "empty":return 0;
     case "crash": return 17;
     case "slow":
         if(args.Length==2)File.WriteAllText(args[1],Environment.ProcessId.ToString(System.Globalization.CultureInfo.InvariantCulture));

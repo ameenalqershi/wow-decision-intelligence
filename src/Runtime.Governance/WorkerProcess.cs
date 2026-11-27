@@ -84,7 +84,7 @@ public sealed class WorkerProcessBoundary(IWorkerProcessScopeFactory scopes,Work
                 tasks.Remove(next);
             }
             exit=process.ExitCode;
-            if(exit==0){candidate=await stdout;termination=Termination.Completed;}
+            if(exit==0){candidate=await stdout;if(candidate.Length>0)termination=Termination.Completed;else{candidate=null;diagnostic="worker.emptyResult";}}
             else diagnostic="worker.exit";
         }
         catch(OperationCanceledException) when(stop.IsCancellationRequested)
