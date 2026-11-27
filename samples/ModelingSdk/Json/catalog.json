@@ -1,0 +1,1 @@
+{"format":"wowdi.sdk.measurement-catalog/1","units":[{"symbol":"batch","dimension":"batch","scale":"1"},{"symbol":"employee","dimension":"people","scale":"1"},{"symbol":"hour","dimension":"time","scale":"60"},{"symbol":"kg","dimension":"mass","scale":"1"},{"symbol":"minute","dimension":"time","scale":"1"}],"currencies":["USD"],"calendars":["shift"]}
