@@ -1,0 +1,73 @@
+{
+  "version": {
+    "protocolVersion": "1.3",
+    "product": "Chrome/141.0.7390.37",
+    "revision": "@9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.0.0 Safari/537.36",
+    "jsVersion": "14.1.146.11"
+  },
+  "checks": [
+    "Reference navigation, authorized workspace selection and keyboard tab selection preserve frozen revision",
+    "Keyboard and real pointer resizing, logical docking and inspector visibility preserve revision",
+    "Failed file write leaves live layout and explicit retry clears unsaved status",
+    "Provider rejects previously authorized workspace without mutating prior tabs or revision",
+    "Reload reopens exact persisted tab keys, active selection, ratio, dock and revision",
+    "RTL logical geometry, stable identity, theme switching, accessible tablist and narrow DPR2 layout",
+    "All ten navigation groups, unavailable provider, duplicate tab creation and keyboard deletion with focus restoration",
+    "Reference common chrome palette and horizontal containment verified from actual computed styles"
+  ],
+  "splitRatio": 0.58,
+  "measured": 0.5799982904521754,
+  "narrow": {
+    "viewport": 600,
+    "document": 585,
+    "primary": 386,
+    "inspector": 578.421875
+  },
+  "desktop": {
+    "viewport": 1200,
+    "document": 1185,
+    "chrome": "rgb(27, 35, 49)",
+    "nav": "rgb(21, 29, 41)",
+    "background": "rgb(16, 21, 30)",
+    "footer": "rgb(27, 35, 49)"
+  },
+  "containment": [
+    {
+      "selector": ".wow-shell-title",
+      "left": 0,
+      "right": 0
+    },
+    {
+      "selector": ".wow-shell-main",
+      "left": 237,
+      "right": 0
+    },
+    {
+      "selector": ".wow-shell-inspector",
+      "left": 889.65625,
+      "right": 12.015625
+    },
+    {
+      "selector": ".wow-shell-status",
+      "left": 0,
+      "right": 0
+    }
+  ],
+  "bounds": {
+    "x": 0,
+    "y": 21,
+    "width": 1185,
+    "height": 780
+  },
+  "restored": {
+    "keys": [
+      "1f5e49bb5a344e92a05ceeb3bc1f6aa7",
+      "c71daac6245449158c03ab176b55dbbb"
+    ],
+    "active": "1f5e49bb5a344e92a05ceeb3bc1f6aa7",
+    "share": "0.6000",
+    "dock": "start"
+  },
+  "limitation": "Synthetic application provider and browser host only; physical monitor and native host qualification remain U02/DS03."
+}
