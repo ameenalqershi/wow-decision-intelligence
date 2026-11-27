@@ -1,0 +1,27 @@
+name: Enterprise isolation policy
+on:
+  pull_request:
+    paths:
+      - src/Enterprise/Isolation/**
+      - src/Runtime.Governance/**
+      - tests/Enterprise.Isolation/**
+      - .github/workflows/enterprise-isolation.yml
+  push:
+    branches: [main]
+    paths:
+      - src/Enterprise/Isolation/**
+      - src/Runtime.Governance/**
+      - tests/Enterprise.Isolation/**
+      - .github/workflows/enterprise-isolation.yml
+permissions:
+  contents: read
+jobs:
+  policy:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - run: dotnet restore tests/Enterprise.Isolation/WowDi.Enterprise.Isolation.Tests.csproj --locked-mode
+      - run: dotnet test tests/Enterprise.Isolation/WowDi.Enterprise.Isolation.Tests.csproj --no-restore -c Release
