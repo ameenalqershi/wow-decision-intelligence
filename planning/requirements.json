@@ -12076,20 +12076,28 @@
     "priority": "P0",
     "release": "MVP",
     "component": "docs/design",
-    "implementation": "Planned",
-    "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
+    "implementation": "Editable bilingual architecture and subsystem diagram catalog reviewed against source contracts; not deployment or feature acceptance.",
+    "verification": "dotnet run --project tools/ArchitectureDiagrams -c Release -- repository output; actual Chromium SVG geometry check; Traceability.",
     "fieldScope": "No approved field mapping in this baseline.",
     "apiScope": "No approved API mapping in this baseline.",
     "specifications": [
       "docs/design/architecture.md",
-      "docs/design/operating-modes.md"
+      "docs/design/operating-modes.md",
+      "docs/design/diagrams/sp03/README.md",
+      "docs/design/diagrams/sp03/REPRODUCE.md"
     ],
     "diagrams": [
-      "docs/design/operating-modes.md"
+      "docs/design/diagrams/sp03/diagrams.tsv",
+      "docs/design/diagrams/sp03/README.md"
     ],
     "fields": [],
     "apis": [],
-    "evidence": [],
+    "evidence": [
+      "docs/design/diagrams/sp03/render-evidence.json",
+      "docs/design/diagrams/sp03/browser-evidence.json",
+      "tools/ArchitectureDiagrams/Program.cs",
+      "tests/ArchitectureDiagrams/browser-check.mjs"
+    ],
     "tests": [
       {
         "id": "TC-SP03-A",
@@ -12112,8 +12120,8 @@
           "TC-SP03-A",
           "TC-SP03-B"
         ],
-        "coverage": "Partially Covered",
-        "reason": "The available source and acceptance statement are mapped. Detailed field, contract or fixture review remains open."
+        "coverage": "Fully Covered",
+        "reason": "Specification only: editable bilingual catalog, source/issue-linked edges, rendered SVG acceptance, explicit logical/implemented distinctions. Does not assert feature or deployment acceptance."
       },
       {
         "title": "Classes and ERD",
@@ -12126,8 +12134,8 @@
           "TC-SP03-A",
           "TC-SP03-B"
         ],
-        "coverage": "Partially Covered",
-        "reason": "The available source and acceptance statement are mapped. Detailed field, contract or fixture review remains open."
+        "coverage": "Fully Covered",
+        "reason": "Specification only: editable bilingual catalog, source/issue-linked edges, rendered SVG acceptance, explicit logical/implemented distinctions. Does not assert feature or deployment acceptance."
       },
       {
         "title": "Sequence, activity and state diagrams",
@@ -12140,8 +12148,8 @@
           "TC-SP03-A",
           "TC-SP03-B"
         ],
-        "coverage": "Partially Covered",
-        "reason": "The available source and acceptance statement are mapped. Detailed field, contract or fixture review remains open."
+        "coverage": "Fully Covered",
+        "reason": "Specification only: editable bilingual catalog, source/issue-linked edges, rendered SVG acceptance, explicit logical/implemented distinctions. Does not assert feature or deployment acceptance."
       },
       {
         "title": "Trust boundaries and deployment",
@@ -12154,8 +12162,8 @@
           "TC-SP03-A",
           "TC-SP03-B"
         ],
-        "coverage": "Partially Covered",
-        "reason": "The available source and acceptance statement are mapped. Detailed field, contract or fixture review remains open."
+        "coverage": "Fully Covered",
+        "reason": "Specification only: editable bilingual catalog, source/issue-linked edges, rendered SVG acceptance, explicit logical/implemented distinctions. Does not assert feature or deployment acceptance."
       },
       {
         "title": "Command trees and UI navigation",
@@ -12168,8 +12176,8 @@
           "TC-SP03-A",
           "TC-SP03-B"
         ],
-        "coverage": "Partially Covered",
-        "reason": "The available source and acceptance statement are mapped. Detailed field, contract or fixture review remains open."
+        "coverage": "Fully Covered",
+        "reason": "Specification only: editable bilingual catalog, source/issue-linked edges, rendered SVG acceptance, explicit logical/implemented distinctions. Does not assert feature or deployment acceptance."
       },
       {
         "title": "Bilingual explanations",
@@ -12182,8 +12190,8 @@
           "TC-SP03-A",
           "TC-SP03-B"
         ],
-        "coverage": "Partially Covered",
-        "reason": "The available source and acceptance statement are mapped. Detailed field, contract or fixture review remains open."
+        "coverage": "Fully Covered",
+        "reason": "Specification only: editable bilingual catalog, source/issue-linked edges, rendered SVG acceptance, explicit logical/implemented distinctions. Does not assert feature or deployment acceptance."
       },
       {
         "title": "Before/after algorithms and mathematical visualizations",
@@ -12196,8 +12204,8 @@
           "TC-SP03-A",
           "TC-SP03-B"
         ],
-        "coverage": "Partially Covered",
-        "reason": "The available source and acceptance statement are mapped. Detailed field, contract or fixture review remains open."
+        "coverage": "Fully Covered",
+        "reason": "Specification only: editable bilingual catalog, source/issue-linked edges, rendered SVG acceptance, explicit logical/implemented distinctions. Does not assert feature or deployment acceptance."
       }
     ]
   },
