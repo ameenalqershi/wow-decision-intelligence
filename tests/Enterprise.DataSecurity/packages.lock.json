@@ -136,6 +136,11 @@
           "Microsoft.IdentityModel.Tokens": "8.19.2"
         }
       },
+      "System.IO.Hashing": {
+        "type": "Transitive",
+        "resolved": "10.0.15",
+        "contentHash": "8dyz8adVemyDILwoEFTCq2NsB6XgqOgVHbnv0XgnttQac76XUR3S5L2qcIkJJqOw97mjQttCTWccyk4DKtfm3Q=="
+      },
       "xunit.abstractions": {
         "type": "Transitive",
         "resolved": "2.0.3",
@@ -179,6 +184,7 @@
       "wowdi.enterprise.datasecurity": {
         "type": "Project",
         "dependencies": {
+          "System.IO.Hashing": "[10.0.15, )",
           "WowDi.Enterprise.Identity": "[1.0.0, )"
         }
       },

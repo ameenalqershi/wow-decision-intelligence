@@ -7,6 +7,7 @@
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="System.IO.Hashing" Version="10.0.15" />
     <ProjectReference Include="../../Enterprise.Identity/WowDi.Enterprise.Identity.csproj" />
   </ItemGroup>
 </Project>

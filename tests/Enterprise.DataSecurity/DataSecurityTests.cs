@@ -1,4 +1,5 @@
 using System.Collections.Concurrent;
+using System.Buffers.Binary;
 using System.IO.Compression;
 using System.Security.Claims;
 using System.Security.Cryptography;
@@ -93,6 +94,33 @@ public sealed class DataSecurityTests
         using var corrupt = new MemoryStream([1,2,3]);
         Assert.Equal("archive.invalid", (await Assert.ThrowsAsync<DataSecurityException>(() =>
             BoundedArchive.ReadAsync(corrupt, new()))).Code);
+    }
+
+    [Fact]
+    public async Task ArchiveRejectsSameLengthMemberWithCorruptDeclaredCrc()
+    {
+        using var original = Zip(File("valid.txt", 17), ("checksum.txt", Encoding.ASCII.GetBytes("123456789"), null));
+        var bytes = original.ToArray();
+        using (var valid = new MemoryStream(bytes))
+        {
+            var members = await BoundedArchive.ReadAsync(valid, new());
+            Assert.Equal("123456789", Encoding.ASCII.GetString(members[1].Bytes.AsSpan()));
+        }
+        // ZIP central directory CRC-32 is at offset 16 in each file header.
+        // Find the exact header with the known standard CRC-32 test vector.
+        var found = false;
+        for (var i = 0; i <= bytes.Length - 46; i++)
+        {
+            if (BinaryPrimitives.ReadUInt32LittleEndian(bytes.AsSpan(i, 4)) != 0x02014b50u ||
+                BinaryPrimitives.ReadUInt32LittleEndian(bytes.AsSpan(i + 16, 4)) != 0xcbf43926u) continue;
+            bytes[i + 16] ^= 1;
+            found = true;
+            break;
+        }
+        Assert.True(found);
+        using var corrupt = new MemoryStream(bytes);
+        var ex = await Assert.ThrowsAsync<DataSecurityException>(() => BoundedArchive.ReadAsync(corrupt, new()));
+        Assert.Equal("archive.invalid", ex.Code);
     }
 
     [Fact]

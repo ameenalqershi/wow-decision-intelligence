@@ -1,5 +1,6 @@
 using System.Collections.Immutable;
 using System.IO.Compression;
+using System.IO.Hashing;
 
 namespace WowDi.Enterprise.DataSecurity;
 
@@ -54,7 +55,9 @@ public static class BoundedArchive
                 using var member = entry.Open();
                 using var buffer = new MemoryStream();
                 await CopyBoundedAsync(member, buffer, Math.Min(limits.EntryBytes, limits.ExpandedBytes - expanded), cancellationToken);
-                if (buffer.Length != entry.Length) throw new DataSecurityException("archive.invalid");
+                if (buffer.Length != entry.Length ||
+                    Crc32.HashToUInt32(buffer.GetBuffer().AsSpan(0, checked((int)buffer.Length))) != entry.Crc32)
+                    throw new DataSecurityException("archive.invalid");
                 expanded += buffer.Length;
                 result.Add(new(entry.FullName, ImmutableArray.CreateRange(buffer.ToArray())));
             }
