@@ -149,7 +149,7 @@ internal static class ModelRules
         Need(seen == nodes.Count, "cycle");
     }
 
-    private static bool ValidOrigin(string? value) =>
+    internal static bool ValidOrigin(string? value) =>
         value != null && (value.EndsWith('Z') || value.Length >= 6 && value[^6] is '+' or '-' && value[^3] == ':') &&
         DateTimeOffset.TryParseExact(value, ["yyyy-MM-dd'T'HH:mm:ssK", "yyyy-MM-dd'T'HH:mm:ss.FFFFFFFK"],
             CultureInfo.InvariantCulture, DateTimeStyles.None, out _);
