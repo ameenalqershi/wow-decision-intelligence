@@ -1,0 +1,284 @@
+{
+  "contract": "wowdi.udir",
+  "version": "1.0",
+  "payload": {
+    "tenantId": "example",
+    "modelId": "production",
+    "revisionId": "json-r1",
+    "semanticsVersion": "udir/1",
+    "inputDigests": [
+      "062b73d8c7db66f5b5ec18e0754958206ac2e4e10ea2179c36d6b03cd3470476",
+      "0b7cc074f811ed6f75d319137b0242702e132938ce03f15adbed66daaeb32191",
+      "8053654ef6dbc709e021415bcac9b74dbebb19f1f8f25cf10355ff926e1ccd47"
+    ],
+    "sources": [
+      {
+        "id": "production-requirements",
+        "sha256": "0b7cc074f811ed6f75d319137b0242702e132938ce03f15adbed66daaeb32191",
+        "utf16Length": 461
+      }
+    ],
+    "timeBasis": {
+      "calendarId": "shift",
+      "timeZoneId": "UTC",
+      "origin": "2026-01-01T00:00:00Z",
+      "tickUnit": "minute"
+    },
+    "types": [
+      {
+        "id": "count",
+        "kind": "Integer",
+        "unit": "batch"
+      },
+      {
+        "id": "capacity",
+        "kind": "Integer",
+        "unit": "kg"
+      },
+      {
+        "id": "materialRate",
+        "kind": "Integer",
+        "unit": "kg/batch"
+      },
+      {
+        "id": "marginRate",
+        "kind": "Integer",
+        "unit": "USD/batch"
+      },
+      {
+        "id": "cash",
+        "kind": "Money",
+        "currency": "USD"
+      },
+      {
+        "id": "truth",
+        "kind": "Boolean"
+      }
+    ],
+    "symbols": [
+      {
+        "id": "stock",
+        "role": "Resource",
+        "typeId": "capacity",
+        "lower": "4",
+        "upper": "10",
+        "span": {
+          "sourceId": "production-requirements",
+          "start": 34,
+          "length": 54
+        }
+      },
+      {
+        "id": "qty",
+        "role": "Variable",
+        "typeId": "count",
+        "lower": "0",
+        "upper": "8",
+        "span": {
+          "sourceId": "production-requirements",
+          "start": 165,
+          "length": 47
+        }
+      },
+      {
+        "id": "margin",
+        "role": "Parameter",
+        "typeId": "marginRate",
+        "lower": "4",
+        "upper": "4",
+        "span": {
+          "sourceId": "production-requirements",
+          "start": 127,
+          "length": 37
+        }
+      },
+      {
+        "id": "consumption",
+        "role": "Parameter",
+        "typeId": "materialRate",
+        "lower": "2",
+        "upper": "2",
+        "span": {
+          "sourceId": "production-requirements",
+          "start": 89,
+          "length": 37
+        }
+      }
+    ],
+    "expressions": [
+      {
+        "id": "readStock",
+        "op": "Symbol",
+        "typeId": "capacity",
+        "arguments": [],
+        "span": {
+          "sourceId": "production-requirements",
+          "start": 213,
+          "length": 53
+        },
+        "symbolId": "stock"
+      },
+      {
+        "id": "readQty",
+        "op": "Symbol",
+        "typeId": "count",
+        "arguments": [],
+        "span": {
+          "sourceId": "production-requirements",
+          "start": 213,
+          "length": 53
+        },
+        "symbolId": "qty"
+      },
+      {
+        "id": "readMaterial",
+        "op": "Symbol",
+        "typeId": "materialRate",
+        "arguments": [],
+        "span": {
+          "sourceId": "production-requirements",
+          "start": 213,
+          "length": 53
+        },
+        "symbolId": "consumption"
+      },
+      {
+        "id": "used",
+        "op": "Multiply",
+        "typeId": "capacity",
+        "arguments": [
+          "readMaterial",
+          "readQty"
+        ],
+        "span": {
+          "sourceId": "production-requirements",
+          "start": 213,
+          "length": 53
+        }
+      },
+      {
+        "id": "fits",
+        "op": "LessOrEqual",
+        "typeId": "truth",
+        "arguments": [
+          "used",
+          "readStock"
+        ],
+        "span": {
+          "sourceId": "production-requirements",
+          "start": 213,
+          "length": 53
+        }
+      },
+      {
+        "id": "readMargin",
+        "op": "Symbol",
+        "typeId": "marginRate",
+        "arguments": [],
+        "span": {
+          "sourceId": "production-requirements",
+          "start": 267,
+          "length": 61
+        },
+        "symbolId": "margin"
+      },
+      {
+        "id": "profitValue",
+        "op": "Multiply",
+        "typeId": "cash",
+        "arguments": [
+          "readMargin",
+          "readQty"
+        ],
+        "span": {
+          "sourceId": "production-requirements",
+          "start": 267,
+          "length": 61
+        }
+      }
+    ],
+    "constraints": [
+      {
+        "id": "available",
+        "predicateId": "fits",
+        "hard": true,
+        "span": {
+          "sourceId": "production-requirements",
+          "start": 213,
+          "length": 53
+        }
+      }
+    ],
+    "objectives": [
+      {
+        "id": "profit",
+        "expressionId": "profitValue",
+        "direction": "Maximize",
+        "priority": 1,
+        "weight": "1",
+        "tolerance": "0",
+        "span": {
+          "sourceId": "production-requirements",
+          "start": 267,
+          "length": 61
+        }
+      }
+    ],
+    "scenarios": [
+      {
+        "id": "root",
+        "stage": 0,
+        "informationSet": "base",
+        "span": {
+          "sourceId": "production-requirements",
+          "start": 329,
+          "length": 58
+        },
+        "overrides": [
+          {
+            "symbolId": "stock",
+            "value": "10"
+          }
+        ]
+      },
+      {
+        "id": "normal",
+        "stage": 1,
+        "informationSet": "normal",
+        "span": {
+          "sourceId": "production-requirements",
+          "start": 425,
+          "length": 35
+        },
+        "parentId": "root",
+        "overrides": [
+          {
+            "symbolId": "stock",
+            "value": "10"
+          }
+        ]
+      },
+      {
+        "id": "shortage",
+        "stage": 1,
+        "informationSet": "shortage",
+        "span": {
+          "sourceId": "production-requirements",
+          "start": 388,
+          "length": 36
+        },
+        "parentId": "root",
+        "overrides": [
+          {
+            "symbolId": "stock",
+            "value": "4"
+          }
+        ]
+      }
+    ],
+    "requires": [
+      "staged.uncertainty",
+      "integer.linear"
+    ]
+  }
+}
