@@ -40,3 +40,22 @@ Commands from root:
 From another shell at the root:
 
     node tests/Studio/Localization/browser-check.mjs /path/to/chromium http://127.0.0.1:48265/ gallery.png
+
+### Cross-platform evidence checkpoint
+
+The first Windows browser qualification passed (run 46038731726);
+the actual browser JSON and screenshot are preserved in
+tests/Studio/Localization/evidence/windows. The subsequent run
+46039504824 failed before the debugging port existed; it did not execute
+the localization assertions. Increased bounded startup time and retained
+stderr/early-exit diagnostics without relaxing any assertions.
+
+For native acceptance, use a machine with two actual displays configured
+with different effective scale factors. Start the native Studio host, record
+display ID/work area/scale and window bounds on display A, switch to Arabic
+by keyboard, traverse both panes, move the window to B using OS window
+controls, record the new monitor and scale, repeat keyboard traversal and
+verify both panes/IDs/units remain legible. Disconnect B and restore the
+saved layout; record native window bounds inside the remaining work area.
+Attach before/after screenshots and observed topology and focus trace.
+Do not record a pass from browser emulation, unit tests or a single display.
