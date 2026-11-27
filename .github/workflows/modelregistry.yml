@@ -1,0 +1,36 @@
+name: ModelRegistry conformance
+on:
+  pull_request:
+    paths:
+      - src/Udir/**
+      - src/ModelRegistry/**
+      - src/DecisionGraph/**
+      - tests/Udir/Fixtures/**
+      - src/Contracts/**
+      - tests/ModelRegistry/**
+      - .github/workflows/modelregistry.yml
+  push:
+    branches: [main]
+    paths:
+      - src/Udir/**
+      - src/ModelRegistry/**
+      - src/DecisionGraph/**
+      - tests/Udir/Fixtures/**
+      - src/Contracts/**
+      - tests/ModelRegistry/**
+      - .github/workflows/modelregistry.yml
+permissions:
+  contents: read
+jobs:
+  conformance:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - run: dotnet restore tests/ModelRegistry/WowDi.ModelRegistry.Tests.csproj --locked-mode
+      - run: dotnet test tests/ModelRegistry/WowDi.ModelRegistry.Tests.csproj --no-restore -c Release
