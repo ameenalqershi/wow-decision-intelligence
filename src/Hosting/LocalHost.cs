@@ -20,6 +20,8 @@ public static class LocalHost
             var selected = sp.GetRequiredService<LocalWorkspaceOptions>();
             return selected.CreateTenant is null ? LocalWorkspace.Open(selected.Path) : LocalWorkspace.Create(selected.Path, selected.CreateTenant);
         });
+        builder.Services.AddSingleton<LocalSettings>();
+        builder.Services.AddSingleton<LocalDiagnostics>();
         return builder.Build();
     }
 }

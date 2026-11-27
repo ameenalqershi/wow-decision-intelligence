@@ -12,7 +12,7 @@ public sealed record WorkspaceIdentity(string WorkspaceId, string TenantId, int 
 /// <summary>Explicit local-only workspace. The trusted tenant is established at creation, never taken from an import.</summary>
 public sealed class LocalWorkspace
 {
-    public const int SchemaVersion = 1;
+    public const int SchemaVersion = 2;
     private const string DatabaseName = "workspace.db";
     public static readonly ActivitySource ActivitySource = new("WowDi.Hosting.LocalWorkspace");
     public string DirectoryPath { get; }
@@ -53,6 +53,8 @@ public sealed class LocalWorkspace
                         run_id TEXT NOT NULL, digest TEXT NOT NULL, bytes BLOB NOT NULL,
                         PRIMARY KEY(tenant,run_id),
                         FOREIGN KEY(tenant,model_id,revision_id) REFERENCES revisions(tenant,model_id,revision_id));
+                    CREATE TABLE local_settings (singleton INTEGER PRIMARY KEY CHECK(singleton=1), revision INTEGER NOT NULL CHECK(revision>=0), diagnostic_level INTEGER NOT NULL CHECK(diagnostic_level BETWEEN 0 AND 4));
+                    INSERT INTO local_settings VALUES (1,0,2);
                     INSERT INTO workspace_identity VALUES (1,$id,$tenant,$version);
                     """;
                 cmd.Parameters.AddWithValue("$id", Guid.NewGuid().ToString("N"));
@@ -83,10 +85,37 @@ public sealed class LocalWorkspace
             if ((long)cmd.ExecuteScalar()! != 1) throw Error("notWorkspace");
             cmd.CommandText = "SELECT workspace_id,tenant_id,schema_version FROM workspace_identity WHERE singleton=1";
             using var row = cmd.ExecuteReader();
-            if (!row.Read() || row.GetInt64(2) != SchemaVersion) throw Error("schema");
-            identity = new(row.GetString(0), row.GetString(1), SchemaVersion);
+            if (!row.Read() || row.GetInt64(2) is not (1 or SchemaVersion)) throw Error("schema");
+            var storedVersion = checked((int)row.GetInt64(2));
+            identity = new(row.GetString(0), row.GetString(1), storedVersion);
             if (!Guid.TryParseExact(identity.WorkspaceId, "N", out _) || string.IsNullOrWhiteSpace(identity.TenantId))
                 throw Error("identity");
+            row.Close();
+            cmd.CommandText = "PRAGMA application_id";
+            if ((long)cmd.ExecuteScalar()! != 1464092999L) throw Error("registrySchema");
+            cmd.CommandText = "PRAGMA user_version";
+            if ((long)cmd.ExecuteScalar()! is not (1 or 2)) throw Error("registrySchema");
+        }
+        if (identity.SchemaVersion == 1)
+        {
+            using var db = Connect(dbPath);
+            using var tx = db.BeginTransaction(deferred: false);
+            using var cmd = db.CreateCommand();
+            cmd.Transaction = tx;
+            cmd.CommandText = "SELECT schema_version FROM workspace_identity WHERE singleton=1";
+            var version = (long)cmd.ExecuteScalar()!;
+            if (version == 1)
+            {
+                cmd.CommandText = """
+                    CREATE TABLE local_settings (singleton INTEGER PRIMARY KEY CHECK(singleton=1), revision INTEGER NOT NULL CHECK(revision>=0), diagnostic_level INTEGER NOT NULL CHECK(diagnostic_level BETWEEN 0 AND 4));
+                    INSERT INTO local_settings VALUES (1,0,2);
+                    UPDATE workspace_identity SET schema_version=2 WHERE singleton=1;
+                    """;
+                cmd.ExecuteNonQuery();
+            }
+            else if (version != SchemaVersion) throw Error("schema");
+            tx.Commit();
+            identity = identity with { SchemaVersion = SchemaVersion };
         }
         return new(full, identity);
     }

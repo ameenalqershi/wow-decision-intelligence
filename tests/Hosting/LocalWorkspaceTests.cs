@@ -174,5 +174,26 @@ public sealed class LocalWorkspaceTests : IDisposable
         Assert.Single(LocalRunArtifacts.ListRunIds(a, "factory", "r17"));
     }
 
+    [Fact]
+    public void BackupRestorePreservesRevisionAndArtifactDigestsButSeparatesWorkspaceIdentity()
+    {
+        var a=Create(); Save(a);
+        var artifact=LocalRunArtifacts.Store(a,"factory","r17","run-1",new byte[]{1,2,3});
+        var settings=new LocalSettings(a); settings.Apply(new(a.Identity.WorkspaceId,0,LocalDiagnosticLevel.Debug));
+        var b=WorkspaceBackup.RestoreCopy(a,PathFor("restored"));
+        Assert.NotEqual(a.Identity.WorkspaceId,b.Identity.WorkspaceId);
+        Assert.Equal(a.Identity.TenantId,b.Identity.TenantId);
+        Assert.Equal(LocalRevisionTransfer.Export(a,"factory","r17").Digest,LocalRevisionTransfer.Export(b,"factory","r17").Digest);
+        Assert.Equal(artifact.Digest,LocalRunArtifacts.Find(b,"factory","r17","run-1")!.Digest);
+        Assert.Equal(LocalDiagnosticLevel.Debug,new LocalSettings(b).Read().DiagnosticLevel);
+        Assert.Throws<ContractException>(()=>WorkspaceBackup.RestoreCopy(a,b.DirectoryPath));
+        using var cancel=new CancellationTokenSource(); cancel.Cancel();
+        Assert.Throws<OperationCanceledException>(()=>WorkspaceBackup.RestoreCopy(a,PathFor("cancelled"),cancel.Token));
+        Assert.False(Directory.Exists(PathFor("cancelled")));
+        Sql(a,"UPDATE local_artifacts SET bytes=x'00'");
+        Assert.Throws<ContractException>(()=>WorkspaceBackup.RestoreCopy(a,PathFor("damaged")));
+        Assert.False(Directory.Exists(PathFor("damaged")));
+    }
+
     public void Dispose() => Directory.Delete(root, recursive: true);
 }
