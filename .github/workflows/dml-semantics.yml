@@ -1,0 +1,42 @@
+name: DML semantic normalization conformance
+on:
+  pull_request:
+    paths:
+      - src/Udir/**
+      - src/Dml.Syntax/**
+      - src/Dml.Binding/**
+      - src/Dml.Semantics/**
+      - tests/Dml.Semantics/**
+      - tests/Dml.Binding/**
+      - tests/Udir/Fixtures/**
+      - src/Contracts/**
+      - tests/Dml.Syntax/**
+      - .github/workflows/dml-semantics.yml
+  push:
+    branches: [main]
+    paths:
+      - src/Udir/**
+      - src/Dml.Syntax/**
+      - src/Dml.Binding/**
+      - src/Dml.Semantics/**
+      - tests/Dml.Semantics/**
+      - tests/Dml.Binding/**
+      - tests/Udir/Fixtures/**
+      - src/Contracts/**
+      - tests/Dml.Syntax/**
+      - .github/workflows/dml-semantics.yml
+permissions:
+  contents: read
+jobs:
+  dml-semantics:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - run: dotnet restore tests/Dml.Semantics/WowDi.Dml.Semantics.Tests.csproj --locked-mode
+      - run: dotnet test tests/Dml.Semantics/WowDi.Dml.Semantics.Tests.csproj --no-restore -c Release
