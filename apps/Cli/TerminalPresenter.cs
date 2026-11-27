@@ -54,7 +54,8 @@ public sealed class TerminalPresenter
     public void WriteTable(string heading, IReadOnlyDictionary<string, string?> fields)
     {
         console.MarkupLine(Styled(heading, TerminalPalette.Accent, true));
-        var table = new Table().Border(TableBorder.Rounded).BorderColor(new Color(48, 54, 61));
+        var table = new Table().Border(TableBorder.Rounded);
+        if (capabilities.Color) table.BorderColor(new Color(48, 54, 61));
         table.AddColumn(new TableColumn(Styled("Field", TerminalPalette.Muted)));
         table.AddColumn(new TableColumn(Styled("Value", TerminalPalette.Muted)));
         foreach (var (key, value) in fields)
@@ -68,7 +69,7 @@ public sealed class TerminalPresenter
         foreach (var child in root.Children) Add(tree, child);
         console.Write(tree);
 
-        static void Add(IHasTreeNodes parent, TerminalNode node)
+        void Add(IHasTreeNodes parent, TerminalNode node)
         {
             var branch = parent.AddNode(Styled(node.Label, TerminalPalette.Primary));
             foreach (var child in node.Children) Add(branch, child);
@@ -105,6 +106,6 @@ public sealed class TerminalPresenter
 
     public static string SafeText(string value) => string.Concat(value.Select(c => char.IsControl(c) ? ' ' : c));
 
-    private static string Styled(string value, string color, bool bold = false) =>
-        "[" + (bold ? "bold " : "") + color + "]" + Markup.Escape(SafeText(value)) + "[/]";
+    private string Styled(string value, string color, bool bold = false) =>
+        !capabilities.Color ? Markup.Escape(SafeText(value)) : "[" + (bold ? "bold " : "") + color + "]" + Markup.Escape(SafeText(value)) + "[/]";
 }

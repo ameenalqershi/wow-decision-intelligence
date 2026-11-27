@@ -33,6 +33,7 @@ public sealed class TerminalPresenterTests
         Assert.DoesNotContain('%', output.ToString());
         presenter.WriteStage(new("solve", "Observed count", StageState.Started, 1, 4));
         Assert.Contains("25.0%", output.ToString());
+        Assert.DoesNotContain('\u001b', output.ToString());
         Assert.Throws<ArgumentOutOfRangeException>(() => presenter.WriteStage(new("bad", "Invalid", StageState.Started, 5, 4)));
         Assert.Throws<ArgumentOutOfRangeException>(() => presenter.WriteStage(new("bad", "Invalid", StageState.Started, 0, 0)));
     }
