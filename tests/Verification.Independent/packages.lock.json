@@ -96,6 +96,12 @@
       "wowdi.contracts": {
         "type": "Project"
       },
+      "wowdi.manufacturing.data": {
+        "type": "Project",
+        "dependencies": {
+          "WowDi.Udir": "[1.0.0, )"
+        }
+      },
       "wowdi.solver.contracts": {
         "type": "Project",
         "dependencies": {
@@ -111,6 +117,7 @@
       "wowdi.verification.independent": {
         "type": "Project",
         "dependencies": {
+          "WowDi.Manufacturing.Data": "[1.0.0, )",
           "WowDi.Solver.Contracts": "[1.0.0, )",
           "WowDi.Udir": "[1.0.0, )"
         }

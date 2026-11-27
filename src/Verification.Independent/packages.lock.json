@@ -5,6 +5,12 @@
       "wowdi.contracts": {
         "type": "Project"
       },
+      "wowdi.manufacturing.data": {
+        "type": "Project",
+        "dependencies": {
+          "WowDi.Udir": "[1.0.0, )"
+        }
+      },
       "wowdi.solver.contracts": {
         "type": "Project",
         "dependencies": {

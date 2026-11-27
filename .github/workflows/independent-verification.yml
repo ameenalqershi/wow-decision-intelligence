@@ -4,20 +4,24 @@ on:
     paths:
       - src/Verification.Independent/**
       - src/Udir/**
+      - src/Manufacturing.Data/**
       - src/Solver.Contracts/**
       - src/Contracts/**
       - tests/Verification.Independent/**
       - tests/Udir/Fixtures/**
+      - tests/Manufacturing.Data/Fixtures/**
       - .github/workflows/independent-verification.yml
   push:
     branches: [main]
     paths:
       - src/Verification.Independent/**
       - src/Udir/**
+      - src/Manufacturing.Data/**
       - src/Solver.Contracts/**
       - src/Contracts/**
       - tests/Verification.Independent/**
       - tests/Udir/Fixtures/**
+      - tests/Manufacturing.Data/Fixtures/**
       - .github/workflows/independent-verification.yml
 permissions:
   contents: read
