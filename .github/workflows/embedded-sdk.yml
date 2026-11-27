@@ -1,0 +1,74 @@
+name: Embedded SDK package conformance
+on:
+  pull_request:
+    paths:
+      - src/Contracts/**
+      - src/Udir/**
+      - src/Dml.Syntax/**
+      - src/Dml.Binding/**
+      - src/Dml.Semantics/**
+      - src/ModelImport/**
+      - src/ModelingSdk/**
+      - tools/EmbeddedSdk/**
+      - samples/EmbeddedSdk/**
+      - .github/workflows/embedded-sdk.yml
+  push:
+    branches: [main]
+    paths:
+      - src/Contracts/**
+      - src/Udir/**
+      - src/Dml.Syntax/**
+      - src/Dml.Binding/**
+      - src/Dml.Semantics/**
+      - src/ModelImport/**
+      - src/ModelingSdk/**
+      - tools/EmbeddedSdk/**
+      - samples/EmbeddedSdk/**
+      - .github/workflows/embedded-sdk.yml
+permissions:
+  contents: read
+jobs:
+  embedded-sdk:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - run: dotnet restore tools/EmbeddedSdk/WowDi.EmbeddedSdk.Pack.csproj --locked-mode
+      - run: dotnet build tools/EmbeddedSdk/WowDi.EmbeddedSdk.Pack.csproj -c Release --no-restore
+      - name: Prepare signed-dependency local feed
+        shell: pwsh
+        run: |
+          $tool = (Resolve-Path 'tools/EmbeddedSdk/bin/Release/net10.0/WowDi.EmbeddedSdk.Pack.dll').Path
+          $out = Join-Path $env:RUNNER_TEMP "wowdi-embedded-${{ github.run_id }}-${{ github.run_attempt }}"
+          & dotnet $tool prepare (Get-Location).Path $out
+          if ($LASTEXITCODE -ne 0) { throw 'Package preparation failed' }
+          "WOWDI_PACKAGE_TEST=$out" >> $env:GITHUB_ENV
+      - name: Reject tampered package before restore
+        shell: pwsh
+        run: |
+          $tool = (Resolve-Path 'tools/EmbeddedSdk/bin/Release/net10.0/WowDi.EmbeddedSdk.Pack.dll').Path
+          $bad = "$env:WOWDI_PACKAGE_TEST-tampered"
+          New-Item -ItemType Directory -Path $bad | Out-Null
+          Copy-Item (Join-Path $env:WOWDI_PACKAGE_TEST 'feed') $bad -Recurse
+          Copy-Item (Join-Path $env:WOWDI_PACKAGE_TEST 'package-sha256.json') $bad
+          $path = Join-Path $bad 'feed/WowDi.Contracts.1.0.0.nupkg'
+          $stream = [System.IO.File]::Open($path, [System.IO.FileMode]::Append)
+          try { $stream.WriteByte(88) } finally { $stream.Dispose() }
+          $result = & dotnet $tool verify (Get-Location).Path $bad 2>&1
+          $code = $LASTEXITCODE
+          $result | Write-Output
+          if ($code -ne 1 -or ($result -join ' ') -notmatch 'Local feed content differs' -or (Test-Path (Join-Path $bad 'packages'))) {
+            throw 'Tamper rejection failed'
+          }
+          exit 0
+      - name: Fresh package-only consumer
+        shell: pwsh
+        run: |
+          $tool = (Resolve-Path 'tools/EmbeddedSdk/bin/Release/net10.0/WowDi.EmbeddedSdk.Pack.dll').Path
+          & dotnet $tool verify (Get-Location).Path $env:WOWDI_PACKAGE_TEST
+          if ($LASTEXITCODE -ne 0) { throw 'Consumer verification failed' }
