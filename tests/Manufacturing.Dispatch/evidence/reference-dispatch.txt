@@ -1,0 +1,2 @@
+baseline digest=2309d48c32af84ba93a4ae7a8c3a375f6c6b297b00d9f141b3e01f848f56c1ab EDD=6 starts=3,0
+outage digest=1e953fbaf3b9e08eaf5359ffd9fd2ab88e23a44045b9bee5bc070d5ad8470904 EDD=15 starts=5,3

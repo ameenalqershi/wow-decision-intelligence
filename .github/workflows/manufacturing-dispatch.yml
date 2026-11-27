@@ -1,0 +1,39 @@
+name: Manufacturing dispatch baseline
+on:
+  pull_request:
+    paths:
+      - src/Manufacturing.Dispatch/**
+      - src/Manufacturing.Data/**
+      - src/Udir/**
+      - src/Contracts/**
+      - tests/Manufacturing.Dispatch/**
+      - tests/Manufacturing.Data/Fixtures/**
+      - docs/design/manufacturing-dispatch-v1.md
+      - .github/workflows/manufacturing-dispatch.yml
+  push:
+    branches: [main]
+    paths:
+      - src/Manufacturing.Dispatch/**
+      - src/Manufacturing.Data/**
+      - src/Udir/**
+      - src/Contracts/**
+      - tests/Manufacturing.Dispatch/**
+      - tests/Manufacturing.Data/Fixtures/**
+      - docs/design/manufacturing-dispatch-v1.md
+      - .github/workflows/manufacturing-dispatch.yml
+permissions:
+  contents: read
+jobs:
+  dispatch:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - run: dotnet restore tests/Manufacturing.Dispatch --locked-mode
+      - run: dotnet test tests/Manufacturing.Dispatch -c Release --no-restore --logger "console;verbosity=normal"
