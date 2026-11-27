@@ -1,0 +1,53 @@
+name: Enterprise PostgreSQL persistence
+on:
+  pull_request:
+    paths:
+      - src/Enterprise/Persistence/**
+      - src/Enterprise.Identity/**
+      - src/Udir/**
+      - src/DecisionGraph/**
+      - src/Contracts/**
+      - tests/Enterprise.Persistence/**
+      - tests/Udir/Fixtures/**
+      - .github/workflows/enterprise-persistence.yml
+  push:
+    branches: [main]
+    paths:
+      - src/Enterprise/Persistence/**
+      - src/Enterprise.Identity/**
+      - src/Udir/**
+      - src/DecisionGraph/**
+      - src/Contracts/**
+      - tests/Enterprise.Persistence/**
+      - tests/Udir/Fixtures/**
+      - .github/workflows/enterprise-persistence.yml
+permissions:
+  contents: read
+jobs:
+  postgres:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: wowdi_test
+          POSTGRES_PASSWORD: test-fixture-only
+          POSTGRES_DB: wowdi_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U wowdi_test -d wowdi_test"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      WOWDI_PG: Host=127.0.0.1;Port=5432;Database=wowdi_test;Username=wowdi_test;Password=test-fixture-only
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - run: sudo apt-get update && sudo apt-get install -y postgresql-client
+      - run: pg_dump --version && pg_restore --version
+      - run: dotnet restore tests/Enterprise.Persistence/WowDi.Enterprise.Persistence.Tests.csproj --locked-mode
+      - run: dotnet test tests/Enterprise.Persistence/WowDi.Enterprise.Persistence.Tests.csproj --no-restore -c Release
