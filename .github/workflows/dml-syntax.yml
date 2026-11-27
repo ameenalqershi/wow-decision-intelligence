@@ -1,0 +1,34 @@
+name: DML syntax conformance
+on:
+  pull_request:
+    paths:
+      - src/Udir/**
+      - src/Dml.Syntax/**
+      - tests/Udir/Fixtures/**
+      - src/Contracts/**
+      - tests/Dml.Syntax/**
+      - .github/workflows/dml-syntax.yml
+  push:
+    branches: [main]
+    paths:
+      - src/Udir/**
+      - src/Dml.Syntax/**
+      - tests/Udir/Fixtures/**
+      - src/Contracts/**
+      - tests/Dml.Syntax/**
+      - .github/workflows/dml-syntax.yml
+permissions:
+  contents: read
+jobs:
+  dml-syntax:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - run: dotnet restore tests/Dml.Syntax/WowDi.Dml.Syntax.Tests.csproj --locked-mode
+      - run: dotnet test tests/Dml.Syntax/WowDi.Dml.Syntax.Tests.csproj --no-restore -c Release
