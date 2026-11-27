@@ -35,7 +35,7 @@ public sealed class ActualSandboxTests
             File.WriteAllText(marker,"synthetic other-tenant marker");
             var input=Encoding.UTF8.GetBytes($"probe:{port}:{marker}");
             var result=await Run(input,scratch,TimeSpan.FromSeconds(20));
-            Assert.Equal(Termination.Completed,result.Termination);
+            Assert.True(result.Termination==Termination.Completed,$"{result.Termination}; {result.Diagnostic}; exit={result.ExitCode}; peak={result.ScopePeakBytes}");
             Assert.True(result.CleanupConfirmed);
             using var response=JsonDocument.Parse(result.Candidate!);
             var value=response.RootElement;
@@ -56,8 +56,12 @@ public sealed class ActualSandboxTests
         var result=await Run(Encoding.UTF8.GetBytes(mode),false,TimeSpan.FromSeconds(mode=="delay"?3:20));
         Assert.True(result.CleanupConfirmed);
         Assert.Null(result.Candidate);
-        if(mode=="delay")Assert.Equal(Termination.Timeout,result.Termination);
-        else Assert.Equal(Termination.Failed,result.Termination);
+        if(mode=="delay")Assert.True(result.Termination==Termination.Timeout,$"{result.Termination}; {result.Diagnostic}; exit={result.ExitCode}");
+        else
+        {
+            Assert.Equal(Termination.Failed,result.Termination);
+            Assert.True(result.ScopePeakBytes>=128L*1024*1024,"The memory fixture must actually allocate memory, not simply fail at sandbox startup.");
+        }
         Assert.True(result.ScopePeakBytes>0);
     }
 
