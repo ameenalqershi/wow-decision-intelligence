@@ -60,13 +60,29 @@ try {
         throw 'Expected native window was not found.'
     }
     Add-Type -AssemblyName System.Windows.Forms
-    Add-Type -TypeDefinition @'
+    if (-not ("QualificationForeground" -as [type])) { Add-Type -TypeDefinition @'
 using System;
 using System.Runtime.InteropServices;
 public static class QualificationForeground {
     [DllImport("user32.dll")] public static extern IntPtr GetForegroundWindow();
+    [DllImport("user32.dll")] public static extern uint GetWindowThreadProcessId(IntPtr window, out uint processId);
+    [DllImport("user32.dll", SetLastError=true)] static extern bool GetGUIThreadInfo(uint threadId, ref GuiThreadInfo info);
+    [StructLayout(LayoutKind.Sequential)]
+    struct GuiThreadInfo {
+        public uint cbSize, flags;
+        public IntPtr active, focus, capture, menuOwner, moveSize, caret;
+        public int left, top, right, bottom;
+    }
+    public static string FocusState(IntPtr window) {
+        uint pid;
+        uint thread = GetWindowThreadProcessId(window, out pid);
+        var info = new GuiThreadInfo { cbSize = (uint)Marshal.SizeOf<GuiThreadInfo>() };
+        if (!GetGUIThreadInfo(thread, ref info)) return "GetGUIThreadInfo failed: " + Marshal.GetLastWin32Error();
+        return $"thread={thread};pid={pid};active={info.active};focus={info.focus};flags={info.flags}";
+    }
 }
 '@
+    }
     $shell = New-Object -ComObject WScript.Shell
     if (-not $shell.AppActivate($process.Id)) { throw 'Could not activate the native window.' }
     Start-Sleep -Milliseconds 500
@@ -76,7 +92,10 @@ public static class QualificationForeground {
         if ($foreground -ne $process.MainWindowHandle) {
             throw "Probe window is not foreground (actual $foreground; expected $($process.MainWindowHandle))."
         }
+        Write-Host ("Before key " + $Key + ": " + [QualificationForeground]::FocusState($foreground))
         [System.Windows.Forms.SendKeys]::SendWait($Key)
+        Start-Sleep -Milliseconds 250
+        Write-Host ("After key " + $Key + ": " + [QualificationForeground]::FocusState($foreground))
     }
     # Initial focus is an explicit app accessibility behavior, not a keyboard test.
     $null = Wait-Probe { param($p) $p.FocusedId -eq 'direction' }
@@ -93,6 +112,22 @@ public static class QualificationForeground {
     $null = Wait-Probe { param($p) $p.Events -contains 'confirm' }
     if (-not $process.CloseMainWindow() -or -not $process.WaitForExit(20000) -or $process.ExitCode -ne 0) { throw 'Native window did not close normally.' }
     Get-Content $report
+}
+catch {
+    if ($process -and -not $process.HasExited) {
+        try {
+            Add-Type -AssemblyName System.Drawing
+            Add-Type -AssemblyName System.Windows.Forms
+            $bounds = [System.Windows.Forms.Screen]::FromHandle($process.MainWindowHandle).Bounds
+            $bitmap = [System.Drawing.Bitmap]::new($bounds.Width, $bounds.Height)
+            try {
+                $graphics = [System.Drawing.Graphics]::FromImage($bitmap)
+                try { $graphics.CopyFromScreen($bounds.Location, [System.Drawing.Point]::Empty, $bounds.Size) } finally { $graphics.Dispose() }
+                $bitmap.Save((Join-Path $out "desktop-failure.png"), [System.Drawing.Imaging.ImageFormat]::Png)
+            } finally { $bitmap.Dispose() }
+        } catch { Write-Warning "Failure screenshot unavailable: $_" }
+    }
+    throw
 }
 finally {
     if ($process -and -not $process.HasExited) { Stop-Process -Id $process.Id -Force }
