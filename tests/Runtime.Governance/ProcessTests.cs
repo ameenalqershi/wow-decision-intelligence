@@ -32,6 +32,7 @@ public sealed class ProcessTests
         var (completion,result)=await executor.RunAsync(governor.TryAcquire()!,Program(mode));
         Assert.Equal(expected,result.Termination);
         Assert.True(result.CleanupConfirmed);
+        Assert.Equal(result.Resources.ElapsedMs!.Value,result.ReservedCoreMilliseconds);
         Assert.Equal(expected==Termination.Completed,completion.CandidateEligible);
         Assert.Equal(value,result.Candidate is null?null:Encoding.UTF8.GetString(result.Candidate));
         Assert.Equal(0,governor.Snapshot().Running);
@@ -57,6 +58,7 @@ public sealed class ProcessTests
         var (completion,result)=await execution;
         Assert.Equal(RunState.Cancelled,completion.State);
         Assert.True(result.CleanupConfirmed);
+        Assert.Equal(result.Resources.ElapsedMs!.Value,result.ReservedCoreMilliseconds);
         Assert.Null(result.Candidate);
         Assert.True(scope.Exited);
         Assert.Equal(b.Key,governor.TryAcquire()!.Request.Key);
