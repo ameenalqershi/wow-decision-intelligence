@@ -17,6 +17,7 @@ public static class LocalRunArtifacts
         ArgumentNullException.ThrowIfNull(workspace);
         ArgumentException.ThrowIfNullOrWhiteSpace(runId);
         if (bytes.IsEmpty || bytes.Length > MaximumArtifactBytes) throw LocalWorkspace.Error("artifactSize");
+        using var lease = workspace.AcquireWrite();
         var revision = workspace.FindRevision(modelId, revisionId) ?? throw LocalWorkspace.Error("revisionMissing");
         var key = revision.Graph.Revision;
         var owned = bytes.ToArray();

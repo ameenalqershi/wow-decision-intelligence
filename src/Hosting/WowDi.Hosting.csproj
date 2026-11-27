@@ -8,6 +8,7 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="../ModelRegistry/WowDi.ModelRegistry.csproj" />
+    <ProjectReference Include="../Verification.Evidence/WowDi.Verification.Evidence.csproj" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.0" />
   </ItemGroup>
 </Project>

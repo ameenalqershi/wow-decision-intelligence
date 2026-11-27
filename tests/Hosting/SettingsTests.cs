@@ -48,7 +48,7 @@ public sealed class SettingsTests : IDisposable
         var a=Create();
         Sql(a,"DROP TABLE local_settings; UPDATE workspace_identity SET schema_version=1;");
         a=LocalWorkspace.Open(a.DirectoryPath);
-        Assert.Equal(2,a.Identity.SchemaVersion);
+        Assert.Equal(LocalWorkspace.SchemaVersion,a.Identity.SchemaVersion);
         var settings=new LocalSettings(a);
         Assert.Equal(0,settings.Read().Revision);
         Sql(a,"CREATE TRIGGER fail_settings BEFORE UPDATE ON local_settings BEGIN SELECT RAISE(ABORT,'interrupted'); END;");

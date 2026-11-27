@@ -32,6 +32,7 @@ public sealed class LocalSettings(LocalWorkspace workspace)
         if (change.WorkspaceId != workspace.Identity.WorkspaceId) throw LocalWorkspace.Error("settingsScope");
         if (!Enum.IsDefined(change.DiagnosticLevel) || change.ExpectedRevision < 0 || change.ExpectedRevision == long.MaxValue)
             throw LocalWorkspace.Error("settingsInvalid");
+        using var lease = workspace.AcquireWrite();
         using var db = workspace.OpenDatabase();
         using var tx = db.BeginTransaction(deferred: false);
         using var cmd = db.CreateCommand();

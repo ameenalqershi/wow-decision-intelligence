@@ -21,6 +21,7 @@ public static class LocalHost
             return selected.CreateTenant is null ? LocalWorkspace.Open(selected.Path) : LocalWorkspace.Create(selected.Path, selected.CreateTenant);
         });
         builder.Services.AddSingleton<LocalSettings>();
+        builder.Services.AddSingleton<LocalEvidence>();
         builder.Services.AddSingleton<LocalDiagnostics>();
         return builder.Build();
     }

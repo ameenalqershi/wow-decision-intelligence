@@ -1,6 +1,6 @@
 # Local runtime — RT01 workspace foundation
 
-The caller supplies an explicit directory and a trusted local tenant on creation. No network endpoint, credentials, server listener or native worker starts when building the host. DI resolves the workspace lazily. A workspace is a single SQLite database inside the selected directory; creation stages in the same parent and publishes by directory rename without overwrite. Existing non-workspace directories are rejected. Workspace metadata is preflighted read-only before the registry's migration logic executes. The existing ModelRegistry owns revision/source/graph integrity and schema migration.
+The caller supplies an explicit directory and a trusted local tenant on creation. No network endpoint, credentials, server listener or native worker starts when building the host. DI resolves the workspace lazily. A workspace contains the M11 registry and separate S10 evidence SQLite databases inside the selected directory; creation stages in the same parent and publishes by directory rename without overwrite. Existing non-workspace directories are rejected. Workspace metadata is preflighted read-only before the registry's migration logic executes. The existing ModelRegistry owns revision/source/graph integrity and schema migration.
 
 ## Storage boundaries
 
@@ -34,3 +34,15 @@ WorkspaceBackup.RestoreCopy uses SQLite's consistent online backup API to a sibl
 Validation: 13 tests cover settings CAS, concurrent writers, v1 migration, failed write rollback, redacted actual health, workspace restore and digest preservation, cancellation and corrupt artifact rejection. Actual solver, admission/cancellation/time-limit enforcement and verified evidence still depend on #27/#28, #29, #31/#32, #35. #89/#190 are merged; no shared contracts are duplicated.
 
 Additional workspace isolation: local files are single-tenant even though the shared registry supports multiple tenants. Workspace preflight rejects foreign rows in revisions, content, inputs or artifacts; a contaminated snapshot cannot be published at restore. Newly created and restored Unix directories have owner-only 0700 permissions. Windows inherits the selected parent's ACL; this is not an encryption guarantee. Two additional tests pass locally (15 total; Unix permission test applies only on Unix).
+
+## S10 integration and workspace schema v3
+
+LocalEvidence composes the merged #35 library. The local host stages both SQLite files on creation. Legacy v1/v2 workspaces create or validate S10 before advancing metadata to v3; an interrupted migration is retryable. Missing evidence.db in an established v3 workspace fails closed. Both files are checked for tenant scope.
+
+Capture is a trusted host boundary, not a user-supplied result endpoint. It requires the exact S10 measurement snapshot bytes already frozen in revision inputs. The SDK-private catalog representation is not automatically the S10 snapshot. Replay requires trusted package identity and hashes and does not publish supplied bytes. Unknown/rejected observations remain audit records. No opaque unverified artifact is promoted.
+
+Cooperative local writers and backup hold a persistent exclusive file lease with a bounded 15-second wait and cancellation where exposed. Never delete the lease file during use. Both database snapshots are copied while writers are quiesced; staging checks revisions, artifacts, settings and recomputed S10 evidence before publication. This is not a distributed transaction or a security boundary against privileged direct database edits.
+
+Observed: 22/22 Hosting tests normal and isolated Linux; upstream S10 8/8. Seven new tests cover capture/retry, lineage, portable replay after restoration, rejected observations, missing database, migration, frozen catalog, corruption, isolation, concurrent capture and cancellation while the lease is held. Contention testing uses multiple workspace handles in one process; independent-process and crash qualification remain pending. Fixtures are enumerated test witnesses, not native solver outcomes. Windows CI is configured.
+
+Remaining: qualified native adapter execution (#7/#27/#28), actual planner and resource-governed worker invocation (#31/#32), durable run recovery and full offline acceptance. Do not close #129 on storage tests alone.

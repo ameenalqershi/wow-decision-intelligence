@@ -14,6 +14,8 @@ public static class WorkspaceBackup
         var parent = Path.GetDirectoryName(full) ?? throw LocalWorkspace.Error("path");
         if (!Directory.Exists(parent) || Directory.Exists(full) || File.Exists(full))
             throw LocalWorkspace.Error("existsOrParent");
+        using var lease = source.AcquireWrite(cancellationToken);
+        LocalWorkspace.CheckEvidenceScope(source.EvidencePath, source.Identity.TenantId);
         var stage = Path.Combine(parent, ".wowdi-restore-" + Guid.NewGuid().ToString("N"));
         LocalWorkspace.CreatePrivateDirectory(stage);
         try
@@ -26,6 +28,13 @@ public static class WorkspaceBackup
             {
                 to.Open();
                 from.BackupDatabase(to);
+            }
+            using (var from = new SqliteConnection(new SqliteConnectionStringBuilder
+            { DataSource = source.EvidencePath, Mode = SqliteOpenMode.ReadOnly, Pooling = false }.ToString()))
+            using (var to = new SqliteConnection(new SqliteConnectionStringBuilder
+            { DataSource = Path.Combine(stage, "evidence.db"), Pooling = false }.ToString()))
+            {
+                from.Open(); to.Open(); from.BackupDatabase(to);
             }
             cancellationToken.ThrowIfCancellationRequested();
             var copy = LocalWorkspace.Open(stage);
@@ -53,6 +62,7 @@ public static class WorkspaceBackup
                 }
             }
             _ = new LocalSettings(copy).Read();
+            new LocalEvidence(copy).ValidateAll(cancellationToken);
             // Independent restored context; frozen tenant/model/revision/run identities remain unchanged.
             using (var db = copy.OpenDatabase())
             using (var cmd = db.CreateCommand())

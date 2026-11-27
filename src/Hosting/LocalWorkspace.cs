@@ -4,6 +4,7 @@ using WowDi.Contracts;
 using WowDi.DecisionGraph;
 using WowDi.ModelRegistry;
 using WowDi.Udir;
+using WowDi.Verification.Evidence;
 
 namespace WowDi.Hosting;
 
@@ -12,13 +13,16 @@ public sealed record WorkspaceIdentity(string WorkspaceId, string TenantId, int 
 /// <summary>Explicit local-only workspace. The trusted tenant is established at creation, never taken from an import.</summary>
 public sealed class LocalWorkspace
 {
-    public const int SchemaVersion = 2;
+    public const int SchemaVersion = 3;
     private const string DatabaseName = "workspace.db";
     public static readonly ActivitySource ActivitySource = new("WowDi.Hosting.LocalWorkspace");
     public string DirectoryPath { get; }
     public WorkspaceIdentity Identity { get; }
     private readonly SqliteModelRegistry registry;
     private string DatabasePath => Path.Combine(DirectoryPath, DatabaseName);
+    internal string EvidencePath => Path.Combine(DirectoryPath, "evidence.db");
+    internal SqliteEvidenceStore EvidenceStore() => new(EvidencePath, registry);
+    internal FileStream AcquireWrite(CancellationToken ct = default) => WorkspaceWriteGate.Acquire(DirectoryPath, ct);
 
     private LocalWorkspace(string path, WorkspaceIdentity identity)
     {
@@ -39,7 +43,8 @@ public sealed class LocalWorkspace
         {
             using var activity = ActivitySource.StartActivity("workspace.create");
             var dbPath = Path.Combine(stage, DatabaseName);
-            _ = new SqliteModelRegistry(dbPath);
+            var createdRegistry = new SqliteModelRegistry(dbPath);
+            _ = new SqliteEvidenceStore(Path.Combine(stage, "evidence.db"), createdRegistry);
             using (var db = Connect(dbPath))
             using (var tx = db.BeginTransaction(deferred: false))
             {
@@ -85,7 +90,7 @@ public sealed class LocalWorkspace
             if ((long)cmd.ExecuteScalar()! != 1) throw Error("notWorkspace");
             cmd.CommandText = "SELECT workspace_id,tenant_id,schema_version FROM workspace_identity WHERE singleton=1";
             using var row = cmd.ExecuteReader();
-            if (!row.Read() || row.GetInt64(2) is not (1 or SchemaVersion)) throw Error("schema");
+            if (!row.Read() || row.GetInt64(2) is not (1 or 2 or SchemaVersion)) throw Error("schema");
             var storedVersion = checked((int)row.GetInt64(2));
             identity = new(row.GetString(0), row.GetString(1), storedVersion);
             if (!Guid.TryParseExact(identity.WorkspaceId, "N", out _) || string.IsNullOrWhiteSpace(identity.TenantId))
@@ -97,8 +102,9 @@ public sealed class LocalWorkspace
             if ((long)cmd.ExecuteScalar()! is not (1 or 2)) throw Error("registrySchema");
             CheckTenantScope(db, identity.TenantId);
         }
-        if (identity.SchemaVersion == 1)
+        if (identity.SchemaVersion != SchemaVersion)
         {
+            using var lease = WorkspaceWriteGate.Acquire(full);
             using var db = Connect(dbPath);
             using var tx = db.BeginTransaction(deferred: false);
             using var cmd = db.CreateCommand();
@@ -114,16 +120,29 @@ public sealed class LocalWorkspace
                     """;
                 cmd.ExecuteNonQuery();
             }
-            else if (version != SchemaVersion) throw Error("schema");
+            else if (version is not (2 or SchemaVersion)) throw Error("schema");
             tx.Commit();
+            // Create/validate S10 first; a crash before updating metadata is retryable.
+            // Existing evidence in a v2 workspace is never discarded.
+            var evidencePath = Path.Combine(full, "evidence.db");
+            if (version != SchemaVersion)
+            {
+                _ = new SqliteEvidenceStore(evidencePath, new SqliteModelRegistry(dbPath));
+                CheckEvidenceScope(evidencePath, identity.TenantId);
+                using var upgrade = db.CreateCommand();
+                upgrade.CommandText = "UPDATE workspace_identity SET schema_version=3 WHERE singleton=1 AND schema_version=2";
+                if (upgrade.ExecuteNonQuery() != 1) throw Error("schema");
+            }
             identity = identity with { SchemaVersion = SchemaVersion };
         }
+        CheckEvidenceScope(Path.Combine(full, "evidence.db"), identity.TenantId);
         return new(full, identity);
     }
 
     public GraphRevision SaveRevision(UdirDocument document, DecisionGraphSnapshot graph,
         IReadOnlyDictionary<string, ReadOnlyMemory<byte>> inputs)
     {
+        using var lease = AcquireWrite();
         using var activity = ActivitySource.StartActivity("workspace.save_revision");
         return registry.Save(Identity.TenantId, document, graph, inputs);
     }
@@ -154,6 +173,20 @@ public sealed class LocalWorkspace
                 OR EXISTS(SELECT 1 FROM inputs WHERE tenant IS NULL OR tenant <> $tenant COLLATE BINARY)
                 OR EXISTS(SELECT 1 FROM local_artifacts WHERE tenant IS NULL OR tenant <> $tenant COLLATE BINARY)
             """;
+        cmd.Parameters.AddWithValue("$tenant", tenant);
+        if ((long)cmd.ExecuteScalar()! != 0) throw Error("tenantScope");
+    }
+
+    internal static void CheckEvidenceScope(string path, string tenant)
+    {
+        if (!File.Exists(path)) throw Error("evidenceMissing");
+        using var db = Connect(path, readOnly: true);
+        using var cmd = db.CreateCommand();
+        cmd.CommandText = "PRAGMA application_id";
+        if ((long)cmd.ExecuteScalar()! != 1464092997L) throw Error("evidenceSchema");
+        cmd.CommandText = "PRAGMA user_version";
+        if ((long)cmd.ExecuteScalar()! != 1L) throw Error("evidenceSchema");
+        cmd.CommandText = "SELECT EXISTS(SELECT 1 FROM evidence WHERE tenant IS NULL OR tenant <> $tenant COLLATE BINARY)";
         cmd.Parameters.AddWithValue("$tenant", tenant);
         if ((long)cmd.ExecuteScalar()! != 0) throw Error("tenantScope");
     }
