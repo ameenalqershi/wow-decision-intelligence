@@ -1,0 +1,8 @@
+problem Workforce {
+  decision staff : Int[employee] in [0[employee], 12[employee]];
+  param hoursPerStaff : Rational[hour/employee] = 8[hour/employee];
+  param wage : Rational[USD/hour] = 15[USD/hour];
+  param demand : Rational[hour] = 64[hour];
+  constraint coverage : staff * hoursPerStaff >= demand;
+  minimize cost priority 1 : staff * hoursPerStaff * wage;
+}
