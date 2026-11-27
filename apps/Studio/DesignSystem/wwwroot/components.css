@@ -1,0 +1,21 @@
+.wow-card { background: var(--wow-card); border: var(--wow-border-width) solid var(--wow-border); border-radius: var(--wow-radius-card); padding: var(--wow-space-3); box-shadow: var(--wow-shadow); }
+.wow-card-heading { margin: 0; font-size: var(--wow-font-heading); font-weight: var(--wow-weight-bold); }
+.wow-toolbar { display: flex; flex-wrap: wrap; gap: var(--wow-density-gap); align-items: center; padding-block: var(--wow-space-2); }
+.wow-nav { display: flex; flex-direction: column; gap: var(--wow-space-1); background: var(--wow-sidebar); padding: var(--wow-space-2); }
+.wow-nav a { color: var(--wow-nav-text); padding: var(--wow-space-2); text-decoration: none; border-radius: var(--wow-radius-control); }
+.wow-nav a[aria-current="page"] { background: var(--wow-active-bg); color: var(--wow-active-text); border-inline-start: var(--wow-active-marker-width) solid var(--wow-active-marker); }
+.wow-field { display: grid; gap: var(--wow-space-1); }
+.wow-input, .wow-button { font: inherit; color: var(--wow-text); background: var(--wow-bg); border: var(--wow-border-width) solid var(--wow-control-border); border-radius: var(--wow-radius-control); min-block-size: var(--wow-hit-target); padding: var(--wow-space-1) var(--wow-space-2); }
+.wow-input[aria-invalid="true"] { border-color: var(--wow-error); }
+.wow-muted { color: var(--wow-muted); }
+.wow-error { color: var(--wow-error); }
+.wow-state, .wow-announcements { padding: var(--wow-space-2); }
+.wow-table { border-collapse: collapse; inline-size: 100%; }
+.wow-table th, .wow-table td { text-align: start; padding: var(--wow-space-2); border-block-end: var(--wow-border-width) solid var(--wow-border); }
+.wow-dialog { color: var(--wow-text); background: var(--wow-card); border: var(--wow-border-width) solid var(--wow-control-border); border-radius: var(--wow-radius-card); padding: var(--wow-space-4); max-inline-size: 90%; }
+.wow-fluent-action { --neutral-fill-rest: var(--wow-bg); --neutral-foreground-rest: var(--wow-text); --neutral-stroke-rest: var(--wow-control-border); }
+.wow-status { display: inline-flex; align-items: center; gap: var(--wow-space-1); color: var(--wow-text); }
+.wow-status-dot { inline-size: var(--wow-space-2); block-size: var(--wow-space-2); border-radius: 50%; background: currentColor; }
+.wow-status[data-state="ready"] { color: var(--wow-success); }
+.wow-status[data-state="error"] { color: var(--wow-error); }
+.wow-status[data-state="empty"], .wow-status[data-state="loading"] { color: var(--wow-muted); }

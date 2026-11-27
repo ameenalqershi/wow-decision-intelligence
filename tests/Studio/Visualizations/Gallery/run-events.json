@@ -1,0 +1,7 @@
+[
+  {"EventId":"event-1","Sequence":1,"Value":10},
+  {"EventId":"event-2","Sequence":2,"Value":8},
+  {"EventId":"event-3","Sequence":3,"Value":null},
+  {"EventId":"event-4","Sequence":4,"Value":5},
+  {"EventId":"event-5","Sequence":5,"Value":0}
+]

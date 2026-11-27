@@ -1,0 +1,28 @@
+@switch (State)
+{
+    case StudioState.Loading:
+        <section class="wow-state" role="status" aria-busy="true" data-state="loading">@LoadingText</section>
+        break;
+    case StudioState.Empty:
+        <section class="wow-state" role="status" data-state="empty">@EmptyText</section>
+        break;
+    case StudioState.Error:
+        <section class="wow-state" data-state="error">
+            <p role="alert" class="wow-error">@ErrorText</p>
+            @if (Retry.HasDelegate) { <button class="wow-button" type="button" @onclick="Retry">@RetryLabel</button> }
+        </section>
+        break;
+    case StudioState.Ready:
+        <section data-state="ready">@ChildContent</section>
+        break;
+    default: throw new ArgumentOutOfRangeException(nameof(State));
+}
+@code {
+    [Parameter] public StudioState State { get; set; }
+    [Parameter] public string LoadingText { get; set; } = "Loading";
+    [Parameter] public string EmptyText { get; set; } = "No results";
+    [Parameter] public string ErrorText { get; set; } = "Unable to load";
+    [Parameter] public string RetryLabel { get; set; } = "Retry";
+    [Parameter] public EventCallback Retry { get; set; }
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+}

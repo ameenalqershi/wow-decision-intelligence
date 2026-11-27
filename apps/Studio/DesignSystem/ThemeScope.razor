@@ -1,0 +1,12 @@
+@namespace WowDi.Studio.DesignSystem
+@using Microsoft.AspNetCore.Components
+
+<div class="wow-theme" data-wow-theme="@Theme.ToAttribute()" data-wow-density="@Density.ToAttribute()">
+    @ChildContent
+</div>
+
+@code {
+    [Parameter] public StudioTheme Theme { get; set; } = StudioTheme.Dark;
+    [Parameter] public StudioDensity Density { get; set; } = StudioDensity.Comfortable;
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+}

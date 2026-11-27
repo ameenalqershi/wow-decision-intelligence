@@ -1,0 +1,39 @@
+<section class="wow-visualization" aria-label="Convergence chart">
+    <h2>@Series.Metric (@Series.Unit)</h2>
+    <p>Run <bdi>@Series.RunId</bdi></p>
+    <svg class="wow-chart-svg" viewBox="0 0 600 210" aria-label="Observed metric by event sequence">
+        @foreach(var segment in Series.Segments)
+        {
+            @if(segment.Length>1){<polyline class="wow-chart-line" points="@MetricSeries.Path(segment)" data-segment="@string.Join(",",segment.Select(p=>p.Observation.EventId))"/>}
+        }
+        @foreach(var point in Series.Points.Where(p=>p.Y.HasValue))
+        {
+            <circle @key="point.Observation.EventId" class="wow-chart-point" cx="@MetricSeries.Coordinate(point.X)" cy="@MetricSeries.Coordinate(point.Y!.Value)" r="5" data-event-id="@point.Observation.EventId" aria-hidden="true"/>
+            <foreignObject x="@MetricSeries.Coordinate(point.X-12)" y="@MetricSeries.Coordinate(point.Y!.Value-12)" width="24" height="24">
+                <button class="wow-chart-hit" type="button" aria-label="@($"Event {point.Observation.EventId}: {point.Observation.Value} {Series.Unit}")"
+                    aria-pressed="@(SelectedEventId==point.Observation.EventId?"true":"false")" @onclick="()=>Select(point.Observation.EventId)"></button>
+            </foreignObject>
+        }
+    </svg>
+    <table class="wow-visual-table">
+        <caption>Stored event observations</caption>
+        <thead><tr><th scope="col">Sequence</th><th scope="col">Event ID</th><th scope="col">Value (@Series.Unit)</th></tr></thead>
+        <tbody>
+            @foreach(var point in Series.Points)
+            {
+                <tr @key="point.Observation.EventId">
+                    <td>@point.Observation.Sequence</td>
+                    <th scope="row"><button type="button" class="wow-graph-edge" aria-pressed="@(SelectedEventId==point.Observation.EventId?"true":"false")" @onclick="()=>Select(point.Observation.EventId)">@point.Observation.EventId</button></th>
+                    <td data-missing="@(point.Y is null?"true":"false")">@(point.Observation.Value?.ToString()??"Unavailable")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <p role="status" aria-live="polite">@(SelectedEventId is null?"No event selected":$"Selected event: {SelectedEventId}")</p>
+</section>
+@code {
+    [Parameter,EditorRequired] public MetricSeries Series {get;set;}=default!;
+    [Parameter] public string? SelectedEventId {get;set;}
+    [Parameter] public EventCallback<string> SelectedEventIdChanged {get;set;}
+    private Task Select(string id)=>SelectedEventIdChanged.InvokeAsync(id);
+}

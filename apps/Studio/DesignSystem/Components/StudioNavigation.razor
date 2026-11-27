@@ -1,0 +1,11 @@
+<nav class="wow-nav" aria-label="@Label">
+    @foreach (var item in Items)
+    {
+        <a @key="item.Id" href="@item.Href" aria-current="@(item.Id == ActiveId ? "page" : null)">@item.Label</a>
+    }
+</nav>
+@code {
+    [Parameter, EditorRequired] public string Label { get; set; } = "";
+    [Parameter, EditorRequired] public IReadOnlyList<StudioNavItem> Items { get; set; } = [];
+    [Parameter] public string? ActiveId { get; set; }
+}

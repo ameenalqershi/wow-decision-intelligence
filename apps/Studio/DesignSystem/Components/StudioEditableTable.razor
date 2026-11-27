@@ -1,0 +1,22 @@
+<table class="wow-table">
+    <caption>@Caption</caption>
+    <thead><tr><th scope="col">@NameHeading</th><th scope="col">@ValueHeading</th></tr></thead>
+    <tbody>
+        @foreach (var row in Rows)
+        {
+            <tr @key="row.Id">
+                <th scope="row">@row.Label</th>
+                <td><input class="wow-input" aria-label="@($"{row.Label} {ValueHeading}")" value="@row.Value"
+                           @onchange="e => Change(row.Id, e)" /></td>
+            </tr>
+        }
+    </tbody>
+</table>
+@code {
+    [Parameter, EditorRequired] public string Caption { get; set; } = "";
+    [Parameter] public string NameHeading { get; set; } = "Name";
+    [Parameter] public string ValueHeading { get; set; } = "Value";
+    [Parameter, EditorRequired] public IReadOnlyList<StudioTableRow> Rows { get; set; } = [];
+    [Parameter] public EventCallback<StudioTableEdit> Edited { get; set; }
+    private Task Change(string id, ChangeEventArgs e) => Edited.InvokeAsync(new StudioTableEdit(id, e.Value?.ToString() ?? ""));
+}

@@ -1,0 +1,15 @@
+.wow-visualization { background: var(--wow-card); padding: var(--wow-space-3); border: var(--wow-border-width) solid var(--wow-border); border-radius: var(--wow-radius-card); }
+.wow-graph-scroll { overflow: auto; }
+.wow-graph-svg, .wow-chart-svg { display: block; inline-size: 100%; background: var(--wow-graph-bg); }
+.wow-graph-link { stroke: var(--wow-edge); stroke-width: var(--wow-border-width); }
+.wow-owner-link { stroke: var(--wow-interactive-node-border); stroke-width: var(--wow-focus-width); }
+.wow-graph-node, .wow-graph-edge { box-sizing: border-box; color: var(--wow-text); background: var(--wow-node-bg); border: var(--wow-border-width) solid var(--wow-interactive-node-border); border-radius: var(--wow-radius-control); font: inherit; padding: var(--wow-space-1); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.wow-graph-edge { min-block-size: var(--wow-hit-target); }
+.wow-graph-edge[aria-pressed="true"] { color: var(--wow-active-text); background: var(--wow-active-bg); border-color: var(--wow-active-marker); }
+.wow-chart-line { stroke: var(--wow-chart); stroke-width: var(--wow-focus-width); fill: none; }
+.wow-chart-point { fill: var(--wow-chart); }
+.wow-chart-hit { inline-size: 100%; block-size: 100%; background: transparent; border: 0; }
+.wow-chart-hit[aria-pressed="true"] { border: var(--wow-focus-width) solid var(--wow-focus); }
+.wow-visual-table { inline-size: 100%; border-collapse: collapse; }
+.wow-visual-table th, .wow-visual-table td { padding: var(--wow-space-1); text-align: start; border-block-end: var(--wow-border-width) solid var(--wow-border); }
+.wow-incident-id { display: inline-block; margin-inline-end: var(--wow-space-2); }
