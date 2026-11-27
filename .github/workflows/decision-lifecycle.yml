@@ -1,0 +1,40 @@
+name: Decision lifecycle policy
+on:
+  pull_request:
+    paths:
+      - src/DecisionLifecycle/**
+      - src/Verification.Evidence/**
+      - src/Verification.Bounds/**
+      - src/Verification.Independent/**
+      - src/Udir/**
+      - src/Solver.Contracts/**
+      - tests/DecisionLifecycle/**
+      - tests/Udir/Fixtures/**
+      - .github/workflows/decision-lifecycle.yml
+  push:
+    branches: [main]
+    paths:
+      - src/DecisionLifecycle/**
+      - src/Verification.Evidence/**
+      - src/Verification.Bounds/**
+      - src/Verification.Independent/**
+      - src/Udir/**
+      - src/Solver.Contracts/**
+      - tests/DecisionLifecycle/**
+      - tests/Udir/Fixtures/**
+      - .github/workflows/decision-lifecycle.yml
+permissions:
+  contents: read
+jobs:
+  lifecycle:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - run: dotnet restore tests/DecisionLifecycle/WowDi.DecisionLifecycle.Tests.csproj --locked-mode
+      - run: dotnet test tests/DecisionLifecycle/WowDi.DecisionLifecycle.Tests.csproj --no-restore -c Release
