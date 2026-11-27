@@ -180,3 +180,14 @@ resource resolution does not depend on the installation current
 directory. The existing offline, keyboard, RTL and normal-exit checks
 remain required. No end-user signing or installer certification is
 claimed.
+
+Security run 46076299085 verified all 246 extracted Linux package files
+but timed out before the first Razor render. This is a regression, not a
+pass. Pinned Photino Linux registers app:// as a custom scheme without
+explicit secure-origin registration, while Photino.Blazor uses that
+origin for bundled resources. The next candidate explicitly allows only
+app://localhost for local scripts/styles/images/base in addition to self,
+keeps connect-src none and inline-script rejection, and logs known asset
+resolution from the actual installation base directory. This tests a
+specific custom-scheme compatibility hypothesis; it does not establish
+the root cause until native evidence confirms it.

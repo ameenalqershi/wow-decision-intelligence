@@ -34,7 +34,8 @@ internal static class Program
             if (string.IsNullOrWhiteSpace(fixture.Revision) || string.IsNullOrWhiteSpace(fixture.Description))
                 throw new InvalidDataException("Invalid local qualification fixture.");
 
-            var builder = PhotinoBlazorAppBuilder.CreateDefault(Array.Empty<string>());
+            using var files = new QualificationFileProvider();
+            var builder = PhotinoBlazorAppBuilder.CreateDefault(files, Array.Empty<string>());
             builder.Services.AddLogging(logging => logging.AddConsole().SetMinimumLevel(LogLevel.Debug));
             builder.Services.AddSingleton(fixture);
             var focusBridge = new WindowsFocusBridge();
