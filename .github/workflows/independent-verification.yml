@@ -1,0 +1,40 @@
+name: Independent verification
+on:
+  pull_request:
+    paths:
+      - src/Verification.Independent/**
+      - src/Udir/**
+      - src/Manufacturing.Data/**
+      - src/Solver.Contracts/**
+      - src/Contracts/**
+      - tests/Verification.Independent/**
+      - tests/Udir/Fixtures/**
+      - tests/Manufacturing.Data/Fixtures/**
+      - .github/workflows/independent-verification.yml
+  push:
+    branches: [main]
+    paths:
+      - src/Verification.Independent/**
+      - src/Udir/**
+      - src/Manufacturing.Data/**
+      - src/Solver.Contracts/**
+      - src/Contracts/**
+      - tests/Verification.Independent/**
+      - tests/Udir/Fixtures/**
+      - tests/Manufacturing.Data/Fixtures/**
+      - .github/workflows/independent-verification.yml
+permissions:
+  contents: read
+jobs:
+  verify:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - run: dotnet restore tests/Verification.Independent/WowDi.Verification.Independent.Tests.csproj --locked-mode
+      - run: dotnet test tests/Verification.Independent/WowDi.Verification.Independent.Tests.csproj --no-restore -c Release
