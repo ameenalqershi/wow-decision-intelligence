@@ -1,0 +1,6 @@
+@namespace WowDi.Studio.DesignSystem.Localization
+@using Microsoft.AspNetCore.Components
+<bdi dir="ltr" class="wow-identity">@Value</bdi>
+@code {
+    [Parameter,EditorRequired] public string Value {get;set;}="";
+}

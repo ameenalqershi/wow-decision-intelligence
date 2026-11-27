@@ -1,0 +1,8 @@
+@namespace WowDi.Studio.DesignSystem.Localization
+@using Microsoft.AspNetCore.Components
+<bdi dir="ltr" class="wow-identity">@Language.Number(Value) @Unit</bdi>
+@code {
+    [Parameter] public StudioLanguage Language {get;set;}
+    [Parameter] public decimal Value {get;set;}
+    [Parameter,EditorRequired] public string Unit {get;set;}="";
+}
