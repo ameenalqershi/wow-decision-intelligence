@@ -1,0 +1,62 @@
+name: Studio native host qualification
+on:
+  pull_request:
+    paths: ['apps/Studio/HostQualification/**', 'tests/Studio/HostQualification/**', '.github/workflows/studio-host-qualification.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  native:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            rid: linux-x64
+          - os: windows-latest
+            rid: win-x64
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - name: Restore and publish self-contained package
+        shell: pwsh
+        run: |
+          $project = 'apps/Studio/HostQualification/WowDi.Studio.HostQualification.csproj'
+          dotnet restore $project --locked-mode -p:SelfContained=true
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          dotnet publish $project -c Release -r ${{ matrix.rid }} --self-contained true --no-restore -o (Join-Path $env:RUNNER_TEMP 'publish')
+      - name: Linux native dependencies
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libgtk-3-0t64 libwebkit2gtk-4.1-0 libnotify4 xvfb xauth xdotool openbox dbus-x11 imagemagick jq
+      - name: Linux packaged window in isolated network namespace
+        if: runner.os == 'Linux'
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/installed" "$RUNNER_TEMP/evidence"
+          tar -C "$RUNNER_TEMP/publish" -czf "$RUNNER_TEMP/wowdi-host-linux.tar.gz" .
+          tar -C "$RUNNER_TEMP/installed" -xzf "$RUNNER_TEMP/wowdi-host-linux.tar.gz"
+          ldd "$RUNNER_TEMP/installed/Photino.Native.so" | tee "$RUNNER_TEMP/evidence/ldd.txt"
+          if grep -q 'not found' "$RUNNER_TEMP/evidence/ldd.txt"; then exit 1; fi
+          sudo unshare --net -- runuser -u "$(id -un)" -- env HOME="$HOME" PATH="$PATH" timeout 90s xvfb-run -a dbus-run-session -- bash "$GITHUB_WORKSPACE/tests/Studio/HostQualification/linux-smoke.sh" "$RUNNER_TEMP/installed/WowDi.Studio.HostQualification" "$RUNNER_TEMP/evidence"
+      - name: Windows packaged window with process network blocks
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $out = Join-Path $env:RUNNER_TEMP 'evidence'
+          $installed = Join-Path $env:RUNNER_TEMP 'installed'
+          New-Item -ItemType Directory -Path $out, $installed | Out-Null
+          $package = Join-Path $env:RUNNER_TEMP 'wowdi-host-windows.zip'
+          Compress-Archive -Path (Join-Path $env:RUNNER_TEMP 'publish/*') -DestinationPath $package
+          Expand-Archive -LiteralPath $package -DestinationPath $installed
+          & tests/Studio/HostQualification/windows-smoke.ps1 -Executable (Join-Path $installed 'WowDi.Studio.HostQualification.exe') -EvidenceDirectory $out
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: native-host-${{ matrix.rid }}
+          path: ${{ runner.temp }}/evidence

@@ -1,0 +1,48 @@
+@namespace WowDi.Studio.HostQualification
+@using Microsoft.AspNetCore.Components
+@using Microsoft.AspNetCore.Components.Web
+@using Microsoft.JSInterop
+@inject LocalFixture Fixture
+@inject ProbeEvidence Evidence
+@inject IJSRuntime JS
+
+<main id="probe" lang="@(rtl ? "ar" : "en")" dir="@(rtl ? "rtl" : "ltr")">
+    <h1>WOW DI — desktop host qualification</h1>
+    <p>This is a bundled local presentation fixture, not a solver result.</p>
+    <p>@Fixture.Description</p>
+    <p>Fixture revision: <bdi>@Fixture.Revision</bdi></p>
+    <button id="direction" type="button" @onfocus="FocusDirection" @onclick="ToggleDirection">
+        @(rtl ? "التبديل إلى الإنجليزية" : "Switch to Arabic")
+    </button>
+    <button id="confirm" type="button" @onfocus="FocusConfirm" @onclick="Confirm">
+        @(rtl ? "تأكيد اختبار الإدخال" : "Confirm keyboard input")
+    </button>
+    <p role="status">@status</p>
+</main>
+
+@code {
+    private bool rtl;
+    private void FocusDirection() => Evidence.Record("focus:direction");
+    private void FocusConfirm() => Evidence.Record("focus:confirm");
+    private string status = "Ready for qualification.";
+
+    private void ToggleDirection()
+    {
+        rtl = !rtl;
+        Evidence.Record(rtl ? "direction:rtl" : "direction:ltr");
+        status = rtl ? "تم تغيير اتجاه العرض" : "Display direction changed.";
+    }
+
+    private void Confirm()
+    {
+        Evidence.Record("confirm");
+        status = rtl ? "تم تأكيد الإدخال" : "Input confirmed.";
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        var dom = await JS.InvokeAsync<DomState>("wowdiHostProbe.read");
+        if (firstRender) Evidence.Record("render");
+        Evidence.Save(Fixture, dom);
+    }
+}
