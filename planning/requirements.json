@@ -638,23 +638,32 @@
   {
     "issue": "M03",
     "number": 16,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Model",
-    "component": "Model",
-    "implementation": "Planned",
-    "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
-    "fieldScope": "No approved field mapping in this baseline.",
-    "apiScope": "No approved API mapping in this baseline.",
+    "priority": "P0",
+    "release": "MVP",
+    "component": "src/Udir",
+    "implementation": "Implemented; see the linked #16 pull request and its Windows/Linux checks.",
+    "verification": "dotnet restore tests/Udir/WowDi.Udir.Tests.csproj --locked-mode && dotnet test tests/Udir/WowDi.Udir.Tests.csproj --no-restore -c Release",
+    "fieldScope": "The UDIR v1 field table defines the representation. F-REV retains its trusted tenant/model namespace. Unit-bearing integer domains preserve the factory minute basis.",
+    "apiScope": "UdirDocument.Create, Read and Write provide the managed API-MODEL representation boundary. Domain solving and verification are separate consumers.",
     "specifications": [
-      "docs/design/language.md",
-      "docs/design/engine.md"
+      "docs/design/udir-v1.md",
+      "docs/design/engine.md",
+      "docs/design/pilot-field-dictionary-v1.md"
     ],
     "diagrams": [
-      "docs/design/operating-modes.md"
+      "docs/design/udir-v1.md"
     ],
-    "fields": [],
-    "apis": [],
-    "evidence": [],
+    "fields": [
+      "F-REV"
+    ],
+    "apis": [
+      "API-MODEL"
+    ],
+    "evidence": [
+      "tests/Udir/UdirTests.cs",
+      "tests/Udir/Fixtures/factory.json",
+      "tests/Udir/Fixtures/factory.txt"
+    ],
     "tests": [
       {
         "id": "TC-M03-A",
@@ -672,8 +681,8 @@
         "tests": [
           "TC-M03-A"
         ],
-        "coverage": "Partially Covered",
-        "reason": "The available source and acceptance statement are mapped. Detailed field, contract or fixture review remains open."
+        "coverage": "Fully Covered",
+        "reason": "Versioned wire fields, source spans, rejection criteria and executable round-trip fixtures are linked."
       }
     ]
   },
@@ -974,22 +983,30 @@
   {
     "issue": "M11",
     "number": 24,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Model",
-    "component": "Model",
-    "implementation": "Planned",
-    "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
-    "fieldScope": "No approved field mapping in this baseline.",
-    "apiScope": "No approved API mapping in this baseline.",
+    "priority": "P1",
+    "release": "MVP",
+    "component": "src/ModelRegistry",
+    "implementation": "Implemented; the linked issue records merge and platform evidence.",
+    "verification": "dotnet test tests/ModelRegistry -c Release after locked restore.",
+    "fieldScope": "Tenant, model and immutable revision identity; content and source digests in the component specification.",
+    "apiScope": "Managed boundary documented in the linked specification.",
     "specifications": [
+      "docs/design/model-registry.md",
       "docs/design/engine.md"
     ],
     "diagrams": [
-      "docs/design/operating-modes.md"
+      "docs/design/model-registry.md"
     ],
-    "fields": [],
-    "apis": [],
-    "evidence": [],
+    "fields": [
+      "F-REV"
+    ],
+    "apis": [
+      "API-MODEL",
+      "API-WORKSPACE"
+    ],
+    "evidence": [
+      "tests/ModelRegistry/ModelRegistryTests.cs"
+    ],
     "tests": [
       {
         "id": "TC-M11-A",
@@ -1007,8 +1024,8 @@
         "tests": [
           "TC-M11-A"
         ],
-        "coverage": "Partially Covered",
-        "reason": "The available source and acceptance statement are mapped. Detailed field, contract or fixture review remains open."
+        "coverage": "Fully Covered",
+        "reason": "Field contract and executable positive and negative acceptance fixtures are linked."
       }
     ]
   },
@@ -1056,22 +1073,38 @@
   {
     "issue": "S01",
     "number": 26,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Runtime",
-    "component": "Runtime",
-    "implementation": "Planned",
-    "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
-    "fieldScope": "No approved field mapping in this baseline.",
-    "apiScope": "No approved API mapping in this baseline.",
+    "priority": "P0",
+    "release": "MVP",
+    "component": "src/Solver.Contracts",
+    "implementation": "Implemented; the linked issue records merge and platform evidence.",
+    "verification": "dotnet test tests/Solver.Contracts -c Release after locked restore.",
+    "fieldScope": "Solver manifest and revision-scoped result fields preserve raw observations, tolerances and evidence attribution.",
+    "apiScope": "Managed boundary documented in the linked specification.",
     "specifications": [
+      "docs/design/solver-contract.md",
       "docs/design/engine.md"
     ],
     "diagrams": [
-      "docs/design/operating-modes.md"
+      "docs/design/solver-contract.md"
     ],
-    "fields": [],
-    "apis": [],
-    "evidence": [],
+    "fields": [
+      "F-REV",
+      "F-RUN",
+      "F-STATUS",
+      "F-TERM",
+      "F-OBJ",
+      "F-BOUND",
+      "F-CPU",
+      "F-MEM",
+      "F-ELAPSED"
+    ],
+    "apis": [
+      "API-SOLVE",
+      "API-RUN"
+    ],
+    "evidence": [
+      "tests/Solver.Contracts/SolverContractTests.cs"
+    ],
     "tests": [
       {
         "id": "TC-S01-A",
@@ -1089,8 +1122,8 @@
         "tests": [
           "TC-S01-A"
         ],
-        "coverage": "Partially Covered",
-        "reason": "The available source and acceptance statement are mapped. Detailed field, contract or fixture review remains open."
+        "coverage": "Fully Covered",
+        "reason": "Field contract and executable positive and negative acceptance fixtures are linked."
       }
     ]
   },
