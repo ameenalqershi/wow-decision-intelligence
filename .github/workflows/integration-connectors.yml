@@ -1,0 +1,30 @@
+name: Integration connector contracts
+on:
+  pull_request:
+    paths:
+      - src/Integration.Connectors/**
+      - tests/Integration.Connectors/**
+      - src/Contracts/**
+      - .github/workflows/integration-connectors.yml
+  push:
+    branches: [main]
+    paths:
+      - src/Integration.Connectors/**
+      - tests/Integration.Connectors/**
+      - src/Contracts/**
+      - .github/workflows/integration-connectors.yml
+permissions:
+  contents: read
+jobs:
+  connectors:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - run: dotnet restore tests/Integration.Connectors/WowDi.Integration.Connectors.Tests.csproj --locked-mode
+      - run: dotnet test tests/Integration.Connectors/WowDi.Integration.Connectors.Tests.csproj --no-restore -c Release
