@@ -1,0 +1,27 @@
+@namespace WowDi.Studio.DesignSystem.Tests
+@using Microsoft.AspNetCore.Components
+@using WowDi.Studio.DesignSystem
+
+@foreach (var theme in Enum.GetValues<StudioTheme>())
+{
+    <ThemeScope Theme="@theme">
+        <section class="fixture" aria-label="@theme.ToString()">
+            <h2>@theme — presentation fixture</h2>
+            <div class="chrome">Studio / Design system</div>
+            <nav class="nav" aria-label="Fixture navigation">
+                <span><svg class="wow-icon" viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="3" width="10" height="10" rx="2"/></svg> Overview</span>
+                <span class="active">Decision Graph</span>
+            </nav>
+            <div class="sample-card">
+                <span class="muted">Metric not available</span>
+                <strong class="metric">—</strong>
+                <span class="success">Success style sample</span>
+                <span class="warning">Warning style sample</span>
+                <span class="error">Error style sample</span>
+            </div>
+            <div class="graph"><span class="node">Node</span><span class="optimizer">Optimizer</span></div>
+            <div class="monitor"><button class="action" type="button">Evidence style sample</button></div>
+            <button class="control" type="button">Keyboard focus sample</button>
+        </section>
+    </ThemeScope>
+}

@@ -1,0 +1,191 @@
+/* DS01: reference geometry in logical CSS pixels. Dark is the original baseline. */
+.wow-theme {
+    --wow-font-family: "Segoe UI", Arial, sans-serif;
+    --wow-font-caption: 0.75rem;
+    --wow-font-body: 0.875rem;
+    --wow-font-heading: 1.125rem;
+    --wow-font-metric: 1.5rem;
+    --wow-weight-regular: 400;
+    --wow-weight-bold: 700;
+    --wow-space-1: 4px;
+    --wow-space-2: 8px;
+    --wow-space-3: 12px;
+    --wow-space-4: 16px;
+    --wow-reference-width: 720px;
+    --wow-reference-height: 460px;
+    --wow-title-height: 31px;
+    --wow-sidebar-width: 144px;
+    --wow-status-height: 22px;
+    --wow-kpi-width: 130px;
+    --wow-kpi-height: 58px;
+    --wow-kpi-gap: 9px;
+    --wow-panel-gap: 10px;
+    --wow-graph-width: 375px;
+    --wow-monitor-width: 167px;
+    --wow-panel-height: 276px;
+    --wow-node-width: 84px;
+    --wow-node-height: 30px;
+    --wow-active-marker-width: 3px;
+    --wow-nav-item-height: 28px;
+    --wow-reference-grid-step: 31px;
+    --wow-reference-progress-height: 6px;
+    --wow-radius-control: 4px;
+    --wow-radius-card: 5px;
+    --wow-border-width: 1px;
+    --wow-focus-width: 2px;
+    --wow-focus-offset: 2px;
+    --wow-icon-size: 16px;
+    --wow-icon-stroke: 1px;
+    --wow-icon-reference: 11px;
+    --wow-density-gap: var(--wow-space-2);
+    --wow-hit-target: 24px;
+    --wow-reference-caption: 9px;
+    --wow-reference-body: 11px;
+    --wow-reference-heading: 15px;
+    --wow-reference-metric: 20px;
+    --wow-shadow: none;
+    --wow-bg: #10151e;
+    --wow-sidebar: #151d29;
+    --wow-chrome: #1b2331;
+    --wow-card: #1c2735;
+    --wow-border: #2c3949;
+    --wow-text: #e2e8f0;
+    --wow-muted: #94a3b8;
+    --wow-nav-text: #aebacb;
+    --wow-brand: #36c9aa;
+    --wow-nav-icon: #8292a7;
+    --wow-active-icon: #5be1c2;
+    --wow-monitor-text: #bdc9d8;
+    --wow-active-bg: #23463f;
+    --wow-active-text: #62e4c6;
+    --wow-accent: #3ed5b3;
+    --wow-active-marker: #3ed5b3;
+    --wow-interactive-node-border: #8292a7;
+    --wow-interactive-axis: #8292a7;
+    --wow-success: #5ce0b6;
+    --wow-error: #ffb4ab;
+    --wow-warning: #facc70;
+    --wow-focus: #62e4c6;
+    --wow-graph-bg: #121b27;
+    --wow-graph-grid: #243040;
+    --wow-node-bg: #20374d;
+    --wow-node-border: #4276a0;
+    --wow-optimizer-bg: #20594d;
+    --wow-optimizer-border: #4cddb4;
+    --wow-edge: #477d9e;
+    --wow-monitor: #1b2533;
+    --wow-progress-track: #344255;
+    --wow-progress: #35c6a2;
+    --wow-chart: #4adeb0;
+    --wow-axis: #516172;
+    --wow-action-bg: #16785f;
+    --wow-action-text: #ffffff;
+    --wow-control-border: #8292a7;
+    color-scheme: dark;
+    color: var(--wow-text);
+    background: var(--wow-bg);
+    font-family: var(--wow-font-family);
+    font-size: var(--wow-font-body);
+    font-weight: var(--wow-weight-regular);
+}
+.wow-theme[data-wow-theme="light"] {
+    color-scheme: light;
+    --wow-bg: #f5f7fa;
+    --wow-sidebar: #e8edf2;
+    --wow-chrome: #e2e8f0;
+    --wow-card: #ffffff;
+    --wow-border: #a0aab7;
+    --wow-text: #17212e;
+    --wow-muted: #435367;
+    --wow-nav-text: #304155;
+    --wow-brand: #116b55;
+    --wow-nav-icon: #526477;
+    --wow-active-icon: #116b55;
+    --wow-monitor-text: #435367;
+    --wow-active-bg: #d2eee5;
+    --wow-active-text: #105344;
+    --wow-accent: #116b55;
+    --wow-active-marker: #116b55;
+    --wow-interactive-node-border: #3d6a92;
+    --wow-interactive-axis: #526477;
+    --wow-success: #14614c;
+    --wow-error: #a22020;
+    --wow-warning: #794b05;
+    --wow-focus: #0759a0;
+    --wow-graph-bg: #ffffff;
+    --wow-graph-grid: #e2e8f0;
+    --wow-node-bg: #dce9f4;
+    --wow-node-border: #3d6a92;
+    --wow-optimizer-bg: #d2eee5;
+    --wow-optimizer-border: #176853;
+    --wow-edge: #37688d;
+    --wow-monitor: #ffffff;
+    --wow-progress-track: #a0aab7;
+    --wow-progress: #16785f;
+    --wow-chart: #14614c;
+    --wow-axis: #526477;
+    --wow-action-bg: #16785f;
+    --wow-action-text: #ffffff;
+    --wow-control-border: #526477;
+}
+.wow-theme[data-wow-theme="high-contrast"] {
+    color-scheme: dark;
+    --wow-bg: #000000;
+    --wow-sidebar: #000000;
+    --wow-chrome: #000000;
+    --wow-card: #000000;
+    --wow-border: #ffffff;
+    --wow-text: #ffffff;
+    --wow-muted: #ffffff;
+    --wow-nav-text: #ffffff;
+    --wow-brand: #00ffff;
+    --wow-nav-icon: #ffffff;
+    --wow-active-icon: #000000;
+    --wow-monitor-text: #ffffff;
+    --wow-active-bg: #ffffff;
+    --wow-active-text: #000000;
+    --wow-accent: #00ffff;
+    --wow-active-marker: #000000;
+    --wow-interactive-node-border: #ffffff;
+    --wow-interactive-axis: #ffffff;
+    --wow-success: #00ff99;
+    --wow-error: #ffb4ab;
+    --wow-warning: #ffff00;
+    --wow-focus: #ffff00;
+    --wow-graph-bg: #000000;
+    --wow-graph-grid: #595959;
+    --wow-node-bg: #000000;
+    --wow-node-border: #ffffff;
+    --wow-optimizer-bg: #000000;
+    --wow-optimizer-border: #00ffff;
+    --wow-edge: #ffffff;
+    --wow-monitor: #000000;
+    --wow-progress-track: #595959;
+    --wow-progress: #00ffff;
+    --wow-chart: #00ffff;
+    --wow-axis: #ffffff;
+    --wow-action-bg: #ffffff;
+    --wow-action-text: #000000;
+    --wow-control-border: #ffffff;
+}
+.wow-theme :focus-visible {
+    outline: var(--wow-focus-width) solid var(--wow-focus);
+    outline-offset: var(--wow-focus-offset);
+}
+@media (forced-colors: active) {
+    .wow-theme :focus-visible { outline-color: Highlight; }
+}
+
+/* Reference strokes stay intact for visual parity. Interactive controls use
+   contrast-qualified control outlines; decorative grid/axis lines are not cues. */
+.wow-theme[data-wow-density="compact"] {
+    --wow-density-gap: var(--wow-space-1);
+}
+.wow-icon {
+    inline-size: var(--wow-icon-size);
+    block-size: var(--wow-icon-size);
+    stroke: currentColor;
+    stroke-width: var(--wow-icon-stroke);
+    fill: none;
+    flex: none;
+}
