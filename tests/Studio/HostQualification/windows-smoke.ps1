@@ -65,6 +65,31 @@ using System;
 using System.Runtime.InteropServices;
 public static class QualificationForeground {
     [DllImport("user32.dll")] public static extern IntPtr GetForegroundWindow();
+    [DllImport("user32.dll")] public static extern bool ShowWindow(IntPtr hwnd, int command);
+    [DllImport("user32.dll")] public static extern bool SetForegroundWindow(IntPtr hwnd);
+    [DllImport("user32.dll", SetLastError=true)] static extern uint SendInput(uint count, Input[] inputs, int size);
+    [StructLayout(LayoutKind.Sequential)]
+    struct KeyboardInput { public ushort key, scan; public uint flags, time; public UIntPtr extra; }
+    [StructLayout(LayoutKind.Sequential)]
+    struct MouseInput { public int x,y; public uint data, flags, time; public UIntPtr extra; }
+    [StructLayout(LayoutKind.Explicit)]
+    struct InputUnion {
+        [FieldOffset(0)] public KeyboardInput keyboard;
+        [FieldOffset(0)] public MouseInput mouse;
+    }
+    [StructLayout(LayoutKind.Sequential)]
+    struct Input { public uint type; public InputUnion value; }
+    static Input Key(ushort key, bool up) => new Input {
+        type = 1, value = new InputUnion { keyboard = new KeyboardInput { key = key, flags = up ? 2u : 0u } }
+    };
+    public static void SendKey(ushort key, bool shift) {
+        var sequence = shift
+            ? new[] { Key(0x10, false), Key(key, false), Key(key, true), Key(0x10, true) }
+            : new[] { Key(key, false), Key(key, true) };
+        var accepted = SendInput((uint)sequence.Length, sequence, Marshal.SizeOf<Input>());
+        if (accepted != sequence.Length)
+            throw new InvalidOperationException("SendInput accepted " + accepted + "/" + sequence.Length + "; last error=" + Marshal.GetLastWin32Error());
+    }
     [DllImport("user32.dll")] public static extern uint GetWindowThreadProcessId(IntPtr window, out uint processId);
     [DllImport("user32.dll", SetLastError=true)] static extern bool GetGUIThreadInfo(uint threadId, ref GuiThreadInfo info);
     [StructLayout(LayoutKind.Sequential)]
@@ -86,6 +111,17 @@ public static class QualificationForeground {
     $shell = New-Object -ComObject WScript.Shell
     if (-not $shell.AppActivate($process.Id)) { throw 'Could not activate the native window.' }
     Start-Sleep -Milliseconds 500
+    # Force a genuine activation transition on this fixture's own window only.
+    # Photino.Native v4.0.22 invokes WebView2 MoveFocus on WM_ACTIVATE.
+    # No DOM click or focus mutation is used to establish keyboard traversal.
+    $handle = $process.MainWindowHandle
+    [QualificationForeground]::ShowWindow($handle, 6) | Out-Null
+    Start-Sleep -Milliseconds 350
+    [QualificationForeground]::ShowWindow($handle, 9) | Out-Null
+    [QualificationForeground]::SetForegroundWindow($handle) | Out-Null
+    if (-not $shell.AppActivate($process.Id)) { throw 'Could not reactivate the fixture after restore.' }
+    Start-Sleep -Milliseconds 500
+    Write-Host ("After native reactivation: " + [QualificationForeground]::FocusState($handle))
     function Send-ProbeKey([string]$Key) {
         $process.Refresh()
         $foreground = [QualificationForeground]::GetForegroundWindow()
@@ -93,7 +129,12 @@ public static class QualificationForeground {
             throw "Probe window is not foreground (actual $foreground; expected $($process.MainWindowHandle))."
         }
         Write-Host ("Before key " + $Key + ": " + [QualificationForeground]::FocusState($foreground))
-        [System.Windows.Forms.SendKeys]::SendWait($Key)
+        switch ($Key) {
+            '{TAB}' { [QualificationForeground]::SendKey(9, $false) }
+            '+{TAB}' { [QualificationForeground]::SendKey(9, $true) }
+            '{ENTER}' { [QualificationForeground]::SendKey(13, $false) }
+            default { throw "Unsupported qualification key: $Key" }
+        }
         Start-Sleep -Milliseconds 250
         Write-Host ("After key " + $Key + ": " + [QualificationForeground]::FocusState($foreground))
     }

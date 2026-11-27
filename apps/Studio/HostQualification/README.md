@@ -66,3 +66,5 @@ gives initial focus explicitly, then requires actual forward/backward
 keyboard traversal and Enter activation while verifying the native
 foreground window. Initial programmatic focus is not counted as a
 keyboard success. WebView profile data is kept out of uploaded evidence.
+
+Run 46041393009: both Windows modes rendered and had initial DOM focus, but real Tab did not reach the second button; Win32 GUI thread focus stayed on the top-level window. The observed reports and focus logs are retained in evidence/windows-focus. Pinned upstream v4.0.22 source (Photino.Windows.cpp SHA-256 6cfec62b0c0f6296175f986efa8bd0bbcb748394bf1c03da5009a9d466d995f7) calls WebView2 controller MoveFocus on WM_ACTIVATE. The revised probe forces a genuine minimize/restore activation of only its own native window, then injects actual OS keyboard input using Win32 SendInput and checks its accepted count. This is a hypothesis under test, not a claimed fix. Both connected and process-network-blocked runs must still complete the original Tab, Shift+Tab, Enter and RTL assertions.
