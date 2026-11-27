@@ -16,12 +16,15 @@ public sealed record EvidenceBinding(VerificationScope Scope,string? FactsSha256
 public sealed record BoundObservation(EvidenceBinding Binding,SolverResult Result);
 public sealed record MeasurementSnapshot(ImmutableArray<UnitDefinition> Units,ImmutableArray<string> Currencies,ImmutableArray<string> Calendars);
 public enum EvidenceStrength { None, SolverAttestation, IndependentlyVerifiedPrimal, ExactEnumeration }
-public sealed record EnumerationProof(int Checked,int Feasible,string? Optimum,ImmutableDictionary<string,string>? Witness);
+public sealed record EnumerationProof(int Checked,int Feasible,string? Optimum,ImmutableDictionary<string,string>? Witness)
+{
+    public string Algorithm => "wowdi.s05.enumeration/1";
+}
 public sealed record BoundAssessment(EvidenceBinding Binding,bool Rejected,string? Diagnostic,MathematicalStatus Status,
     Termination Termination,EvidenceStrength Strength,string? Incumbent,string? Bound,EvidenceStrength BoundStrength,
     string? AbsoluteGap,string? RelativeGap,EnumerationProof? Proof,
     MathematicalStatus ReportedStatus,Evidence? ReportedStatusEvidence,string? ObjectiveId,Direction? Direction,string? Unit,string? Currency,
-    string? AbsoluteTolerance,string? RelativeTolerance);
+    string? AbsoluteTolerance,string? RelativeTolerance,SolverIdentity Solver,ObjectiveBound? ReportedBound);
 
 public static class EvidenceClassifier
 {
@@ -41,7 +44,7 @@ public static class EvidenceClassifier
         ArgumentNullException.ThrowIfNull(observation);ArgumentNullException.ThrowIfNull(manifest);
         var r=observation.Result;
         var scope=expected.Scope;
-        BoundAssessment Reject(string code)=>new(expected,true,code,MathematicalStatus.Unknown,r.Termination,EvidenceStrength.None,null,null,EvidenceStrength.None,null,null,null,r.MathematicalStatus,r.StatusEvidence,null,null,null,null,null,null);
+        BoundAssessment Reject(string code)=>new(expected,true,code,MathematicalStatus.Unknown,r.Termination,EvidenceStrength.None,null,null,EvidenceStrength.None,null,null,null,r.MathematicalStatus,r.StatusEvidence,null,null,null,null,null,null,r.Solver,null);
         ct.ThrowIfCancellationRequested();
         try
         {
@@ -61,6 +64,9 @@ public static class EvidenceClassifier
             document.ValidateMeasurements(measurements);
             r.ValidateAgainst(document,manifest);
             var model=document.Model;
+            var types=model.Types.ToDictionary(t=>t.Id,t=>t.Kind,StringComparer.Ordinal);
+            if(!manifest.MissingFeatures(document).IsEmpty||model.Symbols.Any(s=>s.Role==SymbolRole.Variable&&!manifest.Domains.Contains(types[s.TypeId])))
+                return Reject("bounds.capabilities");
             // S01 lacks a machine-verifiable higher-priority stage context. Never
             // interpret a secondary bound as a global bound or combine soft penalties.
             if(model.Objectives.Length!=1||model.Constraints.Any(c=>!c.Hard)||!model.Scenarios.IsEmpty||
@@ -125,7 +131,7 @@ public static class EvidenceClassifier
             string? absolute=null,relative=null;
             if(incumbent is not null&&bound is not null)
                 (absolute,relative)=Gap(incumbent,bound);
-            return new(expected,false,diagnostic,status,r.Termination,strength,incumbent,bound,boundStrength,absolute,relative,proof,r.MathematicalStatus,r.StatusEvidence,objective.Id,objective.Direction,objectiveType.Unit,objectiveType.Currency,row.AbsoluteTolerance,row.RelativeTolerance);
+            return new(expected,false,diagnostic,status,r.Termination,strength,incumbent,bound,boundStrength,absolute,relative,proof,r.MathematicalStatus,r.StatusEvidence,objective.Id,objective.Direction,objectiveType.Unit,objectiveType.Currency,row.AbsoluteTolerance,row.RelativeTolerance,r.Solver,row.Bound);
         }
         catch(ContractException){return Reject("bounds.contract");}
         catch(JsonException){return Reject("bounds.catalog");}

@@ -46,6 +46,9 @@ public sealed class BoundsTests
         Assert.Equal(13,a.Proof!.Checked);Assert.Equal(9,a.Proof.Feasible);
         Assert.Equal(x,a.Proof.Witness!["x"]);Assert.Equal(optimum,a.Proof.Optimum);
         Assert.Equal("USD",a.Currency);
+        Assert.Equal("wowdi.s05.enumeration/1",a.Proof.Algorithm);
+        Assert.Equal(Solver,a.Solver);
+        Assert.Equal(optimum,a.ReportedBound!.Value);
         Assert.Equal(Termination.Timeout,a.Termination); // independent proof, not a timeout-derived claim
     }
     [Fact]
@@ -78,6 +81,9 @@ public sealed class BoundsTests
         Assert.True(EvidenceClassifier.Assess(s.Doc,s.Binding,Catalog,Encoding.UTF8.GetBytes("{\"available\":\"9\"}"),new(s.Binding,Result(s.Binding,"3","7")),Manifest).Rejected);
         Assert.True(EvidenceClassifier.Assess(s.Doc,s.Binding,Encoding.UTF8.GetBytes("{}"),s.Facts,new(s.Binding,Result(s.Binding,"3","7")),Manifest).Rejected);
         Assert.True(Assess(s,Result(s.Binding,"3","7") with{RunId="old"}).Rejected);
+        var current=Setup(Direction.Minimize);
+        Assert.True(EvidenceClassifier.Assess(current.Doc,current.Binding,Catalog,current.Facts,new(s.Binding,Result(s.Binding,"3","7")),Manifest).Rejected);
+        Assert.Equal("bounds.capabilities",EvidenceClassifier.Assess(s.Doc,s.Binding,Catalog,s.Facts,new(s.Binding,Result(s.Binding,"3","7")),Manifest with{Features=[]}).Diagnostic);
     }
     [Fact]
     public void TimeoutAndInfeasibleAttestationAreUnknownWithoutCompleteEnumeration()
