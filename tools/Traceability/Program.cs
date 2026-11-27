@@ -5,6 +5,7 @@ try
 {
     var options = args.ToList();
     bool strict = options.Remove("--require-full");
+    bool writeDrawing = options.Remove("--write-dependency-graph");
     string? live = null;
     if (options.Count == 2 && options[0] == "--github")
     {
@@ -12,10 +13,10 @@ try
         options.Clear();
     }
     if (options.Count != 0)
-        throw new InvalidDataException("Usage: Traceability [--require-full] [--github paginated-issues.json]");
+        throw new InvalidDataException("Usage: Traceability [--require-full] [--write-dependency-graph] [--github paginated-issues.json]");
 
     var audit = new Audit(Directory.GetCurrentDirectory());
-    audit.Validate(strict, live);
+    audit.Validate(strict, live, writeDrawing);
     return 0;
 }
 catch (Exception e) when (e is IOException or UnauthorizedAccessException or JsonException
@@ -37,7 +38,7 @@ internal sealed partial class Audit(string root)
     private T Read<T>(string path) => JsonSerializer.Deserialize<T>(File.ReadAllText(Path.Combine(root, path)), Json)
         ?? throw new InvalidDataException($"Empty JSON in {path}");
 
-    internal void Validate(bool strict, string? livePath)
+    internal void Validate(bool strict, string? livePath, bool writeDrawing)
     {
         var rows = Read<Work[]>("planning/backlog.json").ToDictionary(r => r.Id, StringComparer.Ordinal);
         var map = Read<Dictionary<string, int>>("planning/issue-map.json");
@@ -94,6 +95,9 @@ internal sealed partial class Audit(string root)
             }
         }
         Require(seen.SetEquals(declared.Keys), "Source inventory contains an untraced requirement");
+        CheckStudioGates(rows, map, suites, upstream, apiIds);
+        if (writeDrawing)
+            File.WriteAllText(Path.Combine(root, "docs/audit/diagrams/dependencies.dot"), DependencyDrawing.Render(rows.Values, map));
         if (livePath != null) CheckGitHub(livePath, rows, map, parents);
         Console.WriteLine($"{rows.Count} issues, {seen.Count} requirements, {rows.Values.Sum(r => r.Deps.Length)} direct dependencies, {parents.Count} sub-issue relationships");
         foreach (var g in suites.Values.SelectMany(x => x.Requirements).GroupBy(r => r.Coverage).OrderBy(g => g.Key))

@@ -34,3 +34,9 @@ if dotnet "$dll" --require-full >out 2>&1; then
     exit 1
 fi
 grep -F 'Outstanding coverage' out
+cp "$root/planning/requirements.json" planning/requirements.json
+reject planning/studio-integration-gates.json '.[0].providerIssue=99999' 'Studio gate identity mismatch'
+reject planning/studio-integration-gates.json '.[0].disposition="hard"' 'Studio gate disposition mismatch'
+reject planning/studio-integration-gates.json '.[0].provider=.[0].consumer | .[0].providerIssue=.[0].consumerIssue' 'Studio gate cycle'
+reject planning/specialized-ports.json '.[0].approval="deployed"' 'Specialized port scope/approval mismatch'
+reject planning/specialized-ports.json '.[0].owners=["UNKNOWN"]' 'Specialized port owner mismatch'
