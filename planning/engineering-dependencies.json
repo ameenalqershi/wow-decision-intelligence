@@ -1,10 +1,150 @@
 [
-  {"issue":"G02","requires":["R07","SL01"],"excludes":["SL02","RT02","G04","G05","G06"],"reason":"Shipping a factory MVP requires native qualification and a factory replay. Enterprise and the workforce domain have independent gates."},
-  {"issue":"S12","requires":["S06","S04","S10","E01","S02"],"excludes":[],"reason":"An authenticated job must admit a supported plan, run it, independently check it and persist evidence."},
-  {"issue":"U01","requires":[],"excludes":["S12","RT02"],"reason":"The CLI can operate without an enterprise server."},
-  {"issue":"CLI05","requires":["S06","S04","RT01"],"excludes":["S12","RT02"],"reason":"Local solve needs planning and verification without any remote transport."},
-  {"issue":"RT05","requires":["S12","RT01","E01"],"excludes":[],"reason":"Only the hybrid binding needs both transports and explicit enterprise authorization."},
-  {"issue":"U03","requires":["M01","M02"],"excludes":[],"reason":"Graph exploration consumes immutable incidence and cross-revision impact."},
-  {"issue":"Q02","requires":["QA01","QA02","QA03","QA04","RT04"],"excludes":[],"reason":"The complete integration review covers desktop, CLI, local, embedded and enterprise."},
-  {"issue":"G01","requires":["R08","X01"],"excludes":["G04","G06"],"reason":"Research evidence can be published independently of later shipping gates."}
+  {
+    "issue": "G02",
+    "requires": [
+      "R07",
+      "SL01"
+    ],
+    "excludes": [
+      "SL02",
+      "RT02",
+      "G04",
+      "G05",
+      "G06"
+    ],
+    "reason": "Shipping a factory MVP requires native qualification and a factory replay. Enterprise and the workforce domain have independent gates."
+  },
+  {
+    "issue": "S12",
+    "requires": [
+      "S06",
+      "S04",
+      "S10",
+      "E01",
+      "S02"
+    ],
+    "excludes": [],
+    "reason": "An authenticated job must admit a supported plan, run it, independently check it and persist evidence."
+  },
+  {
+    "issue": "U01",
+    "requires": [],
+    "excludes": [
+      "S12",
+      "RT02"
+    ],
+    "reason": "The CLI can operate without an enterprise server."
+  },
+  {
+    "issue": "CLI05",
+    "requires": [
+      "S06",
+      "S04",
+      "RT01"
+    ],
+    "excludes": [
+      "S12",
+      "RT02"
+    ],
+    "reason": "Local solve needs planning and verification without any remote transport."
+  },
+  {
+    "issue": "RT05",
+    "requires": [
+      "S12",
+      "RT01",
+      "E01"
+    ],
+    "excludes": [],
+    "reason": "Only the hybrid binding needs both transports and explicit enterprise authorization."
+  },
+  {
+    "issue": "U03",
+    "requires": [
+      "M01",
+      "M02"
+    ],
+    "excludes": [],
+    "reason": "Graph exploration consumes immutable incidence and cross-revision impact."
+  },
+  {
+    "issue": "Q02",
+    "requires": [
+      "QA01",
+      "QA02",
+      "QA03",
+      "QA04",
+      "RT04"
+    ],
+    "excludes": [],
+    "reason": "The complete integration review covers desktop, CLI, local, embedded and enterprise."
+  },
+  {
+    "issue": "G01",
+    "requires": [
+      "R08",
+      "X01"
+    ],
+    "excludes": [
+      "G04",
+      "G06"
+    ],
+    "reason": "Research evidence can be published independently of later shipping gates."
+  },
+  {
+    "issue": "UI04",
+    "requires": [
+      "M07"
+    ],
+    "excludes": [],
+    "reason": "Normalized equivalent output must come from semantic analysis; structural UDIR alone is insufficient."
+  },
+  {
+    "issue": "UI05",
+    "requires": [
+      "DS04"
+    ],
+    "excludes": [],
+    "reason": "Reuse existing graph projection, never substitute static image. Already closed."
+  },
+  {
+    "issue": "UI11",
+    "requires": [
+      "DS04"
+    ],
+    "excludes": [],
+    "reason": "Convergence primitive is merged; metric projections preserve supplied event sequence."
+  },
+  {
+    "issue": "UI21",
+    "requires": [
+      "RT04"
+    ],
+    "excludes": [],
+    "reason": "Versioned SDK examples must match actual embedded SDK distribution."
+  },
+  {
+    "issue": "UI22",
+    "requires": [
+      "CLI01"
+    ],
+    "excludes": [],
+    "reason": "Registered invocation semantics should agree with common command registry; do not execute arbitrary shell."
+  },
+  {
+    "issue": "UI23",
+    "requires": [
+      "DS03"
+    ],
+    "excludes": [],
+    "reason": "Runtime language and native layout qualification are DS03-owned."
+  },
+  {
+    "issue": "QA02",
+    "requires": [
+      "U02"
+    ],
+    "excludes": [],
+    "reason": "Release-level desktop qualification requires host proof; UI shell does not replace native packaging/startup."
+  }
 ]

@@ -1,0 +1,922 @@
+[
+  {
+    "module": "UI01",
+    "state": "loading",
+    "fixture": "states/UI01-loading.svg",
+    "message": "Reading saved layout",
+    "mutationEnabled": false,
+    "recovery": null
+  },
+  {
+    "module": "UI01",
+    "state": "empty",
+    "fixture": "states/UI01-empty.svg",
+    "message": "No workspace selected",
+    "mutationEnabled": false,
+    "recovery": "Open workspace"
+  },
+  {
+    "module": "UI01",
+    "state": "invalid",
+    "fixture": "states/UI01-invalid.svg",
+    "message": "Layout version not supported",
+    "mutationEnabled": false,
+    "recovery": "Retry layout save"
+  },
+  {
+    "module": "UI01",
+    "state": "unavailable",
+    "fixture": "states/UI01-unavailable.svg",
+    "message": "Workspace access unavailable",
+    "mutationEnabled": false,
+    "recovery": "Retry layout save"
+  },
+  {
+    "module": "UI01",
+    "state": "failed",
+    "fixture": "states/UI01-failed.svg",
+    "message": "Layout save failed",
+    "mutationEnabled": false,
+    "recovery": "Retry layout save"
+  },
+  {
+    "module": "UI02",
+    "state": "loading",
+    "fixture": "states/UI02-loading.svg",
+    "message": "Reading workspace manifest",
+    "mutationEnabled": false,
+    "recovery": null
+  },
+  {
+    "module": "UI02",
+    "state": "empty",
+    "fixture": "states/UI02-empty.svg",
+    "message": "No recent workspaces",
+    "mutationEnabled": false,
+    "recovery": "Choose workspace"
+  },
+  {
+    "module": "UI02",
+    "state": "invalid",
+    "fixture": "states/UI02-invalid.svg",
+    "message": "Backup digest mismatch",
+    "mutationEnabled": false,
+    "recovery": "Retry manifest read"
+  },
+  {
+    "module": "UI02",
+    "state": "unavailable",
+    "fixture": "states/UI02-unavailable.svg",
+    "message": "Remote connection unavailable",
+    "mutationEnabled": false,
+    "recovery": "Retry manifest read"
+  },
+  {
+    "module": "UI02",
+    "state": "failed",
+    "fixture": "states/UI02-failed.svg",
+    "message": "Restore failed; prior workspace retained",
+    "mutationEnabled": false,
+    "recovery": "Retry manifest read"
+  },
+  {
+    "module": "UI03",
+    "state": "loading",
+    "fixture": "states/UI03-loading.svg",
+    "message": "Loading independent panels",
+    "mutationEnabled": false,
+    "recovery": null
+  },
+  {
+    "module": "UI03",
+    "state": "empty",
+    "fixture": "states/UI03-empty.svg",
+    "message": "No recorded runs",
+    "mutationEnabled": false,
+    "recovery": "Choose workspace"
+  },
+  {
+    "module": "UI03",
+    "state": "invalid",
+    "fixture": "states/UI03-invalid.svg",
+    "message": "Invalid observation scope",
+    "mutationEnabled": false,
+    "recovery": "Refresh failed panel"
+  },
+  {
+    "module": "UI03",
+    "state": "unavailable",
+    "fixture": "states/UI03-unavailable.svg",
+    "message": "Engine health unknown",
+    "mutationEnabled": false,
+    "recovery": "Refresh failed panel"
+  },
+  {
+    "module": "UI03",
+    "state": "failed",
+    "fixture": "states/UI03-failed.svg",
+    "message": "Health refresh failed",
+    "mutationEnabled": false,
+    "recovery": "Refresh failed panel"
+  },
+  {
+    "module": "UI04",
+    "state": "loading",
+    "fixture": "states/UI04-loading.svg",
+    "message": "Loading frozen model",
+    "mutationEnabled": false,
+    "recovery": null
+  },
+  {
+    "module": "UI04",
+    "state": "empty",
+    "fixture": "states/UI04-empty.svg",
+    "message": "No draft selected",
+    "mutationEnabled": false,
+    "recovery": "Open model"
+  },
+  {
+    "module": "UI04",
+    "state": "invalid",
+    "fixture": "states/UI04-invalid.svg",
+    "message": "Dangling expression reference",
+    "mutationEnabled": false,
+    "recovery": "Return to draft"
+  },
+  {
+    "module": "UI04",
+    "state": "unavailable",
+    "fixture": "states/UI04-unavailable.svg",
+    "message": "Model validation unavailable",
+    "mutationEnabled": false,
+    "recovery": "Return to draft"
+  },
+  {
+    "module": "UI04",
+    "state": "failed",
+    "fixture": "states/UI04-failed.svg",
+    "message": "Publication failed; draft retained",
+    "mutationEnabled": false,
+    "recovery": "Return to draft"
+  },
+  {
+    "module": "UI05",
+    "state": "loading",
+    "fixture": "states/UI05-loading.svg",
+    "message": "Reading graph snapshot",
+    "mutationEnabled": false,
+    "recovery": null
+  },
+  {
+    "module": "UI05",
+    "state": "empty",
+    "fixture": "states/UI05-empty.svg",
+    "message": "No graph revision selected",
+    "mutationEnabled": false,
+    "recovery": "Choose revision"
+  },
+  {
+    "module": "UI05",
+    "state": "invalid",
+    "fixture": "states/UI05-invalid.svg",
+    "message": "Revision comparison incompatible",
+    "mutationEnabled": false,
+    "recovery": "Retry graph read"
+  },
+  {
+    "module": "UI05",
+    "state": "unavailable",
+    "fixture": "states/UI05-unavailable.svg",
+    "message": "Provenance unavailable",
+    "mutationEnabled": false,
+    "recovery": "Retry graph read"
+  },
+  {
+    "module": "UI05",
+    "state": "failed",
+    "fixture": "states/UI05-failed.svg",
+    "message": "Graph snapshot read failed",
+    "mutationEnabled": false,
+    "recovery": "Retry graph read"
+  },
+  {
+    "module": "UI06",
+    "state": "loading",
+    "fixture": "states/UI06-loading.svg",
+    "message": "Reading source document",
+    "mutationEnabled": false,
+    "recovery": null
+  },
+  {
+    "module": "UI06",
+    "state": "empty",
+    "fixture": "states/UI06-empty.svg",
+    "message": "No source selected",
+    "mutationEnabled": false,
+    "recovery": "Open source"
+  },
+  {
+    "module": "UI06",
+    "state": "invalid",
+    "fixture": "states/UI06-invalid.svg",
+    "message": "Source diagnostic at exact span",
+    "mutationEnabled": false,
+    "recovery": "Return to editor"
+  },
+  {
+    "module": "UI06",
+    "state": "unavailable",
+    "fixture": "states/UI06-unavailable.svg",
+    "message": "Language service unavailable",
+    "mutationEnabled": false,
+    "recovery": "Return to editor"
+  },
+  {
+    "module": "UI06",
+    "state": "failed",
+    "fixture": "states/UI06-failed.svg",
+    "message": "Format failed; source retained",
+    "mutationEnabled": false,
+    "recovery": "Return to editor"
+  },
+  {
+    "module": "UI07",
+    "state": "loading",
+    "fixture": "states/UI07-loading.svg",
+    "message": "Loading typed constraint",
+    "mutationEnabled": false,
+    "recovery": null
+  },
+  {
+    "module": "UI07",
+    "state": "empty",
+    "fixture": "states/UI07-empty.svg",
+    "message": "No constraint selected",
+    "mutationEnabled": false,
+    "recovery": "Select constraint"
+  },
+  {
+    "module": "UI07",
+    "state": "invalid",
+    "fixture": "states/UI07-invalid.svg",
+    "message": "Soft penalty must be positive",
+    "mutationEnabled": false,
+    "recovery": "Correct operand"
+  },
+  {
+    "module": "UI07",
+    "state": "unavailable",
+    "fixture": "states/UI07-unavailable.svg",
+    "message": "Conflict proof unavailable",
+    "mutationEnabled": false,
+    "recovery": "Correct operand"
+  },
+  {
+    "module": "UI07",
+    "state": "failed",
+    "fixture": "states/UI07-failed.svg",
+    "message": "Validation failed; draft retained",
+    "mutationEnabled": false,
+    "recovery": "Correct operand"
+  },
+  {
+    "module": "UI08",
+    "state": "loading",
+    "fixture": "states/UI08-loading.svg",
+    "message": "Loading objective vector",
+    "mutationEnabled": false,
+    "recovery": null
+  },
+  {
+    "module": "UI08",
+    "state": "empty",
+    "fixture": "states/UI08-empty.svg",
+    "message": "No objective selected",
+    "mutationEnabled": false,
+    "recovery": "Select objective"
+  },
+  {
+    "module": "UI08",
+    "state": "invalid",
+    "fixture": "states/UI08-invalid.svg",
+    "message": "Duplicate lexicographic priority",
+    "mutationEnabled": false,
+    "recovery": "Correct priority"
+  },
+  {
+    "module": "UI08",
+    "state": "unavailable",
+    "fixture": "states/UI08-unavailable.svg",
+    "message": "Contribution preview unavailable",
+    "mutationEnabled": false,
+    "recovery": "Correct priority"
+  },
+  {
+    "module": "UI08",
+    "state": "failed",
+    "fixture": "states/UI08-failed.svg",
+    "message": "Objective save failed",
+    "mutationEnabled": false,
+    "recovery": "Correct priority"
+  },
+  {
+    "module": "UI09",
+    "state": "loading",
+    "fixture": "states/UI09-loading.svg",
+    "message": "Loading representation",
+    "mutationEnabled": false,
+    "recovery": null
+  },
+  {
+    "module": "UI09",
+    "state": "empty",
+    "fixture": "states/UI09-empty.svg",
+    "message": "No representation selected",
+    "mutationEnabled": false,
+    "recovery": "Select representation"
+  },
+  {
+    "module": "UI09",
+    "state": "invalid",
+    "fixture": "states/UI09-invalid.svg",
+    "message": "Source span outside revision",
+    "mutationEnabled": false,
+    "recovery": "Retry exact revision"
+  },
+  {
+    "module": "UI09",
+    "state": "unavailable",
+    "fixture": "states/UI09-unavailable.svg",
+    "message": "Solver lowering unavailable",
+    "mutationEnabled": false,
+    "recovery": "Retry exact revision"
+  },
+  {
+    "module": "UI09",
+    "state": "failed",
+    "fixture": "states/UI09-failed.svg",
+    "message": "Representation read failed",
+    "mutationEnabled": false,
+    "recovery": "Retry exact revision"
+  },
+  {
+    "module": "UI10",
+    "state": "loading",
+    "fixture": "states/UI10-loading.svg",
+    "message": "Reading solver manifest",
+    "mutationEnabled": false,
+    "recovery": null
+  },
+  {
+    "module": "UI10",
+    "state": "empty",
+    "fixture": "states/UI10-empty.svg",
+    "message": "No eligible profile selected",
+    "mutationEnabled": false,
+    "recovery": "Select solver profile"
+  },
+  {
+    "module": "UI10",
+    "state": "invalid",
+    "fixture": "states/UI10-invalid.svg",
+    "message": "Unsupported requested option",
+    "mutationEnabled": false,
+    "recovery": "Edit configuration"
+  },
+  {
+    "module": "UI10",
+    "state": "unavailable",
+    "fixture": "states/UI10-unavailable.svg",
+    "message": "Adapter manifest unavailable",
+    "mutationEnabled": false,
+    "recovery": "Edit configuration"
+  },
+  {
+    "module": "UI10",
+    "state": "failed",
+    "fixture": "states/UI10-failed.svg",
+    "message": "Eligibility request failed",
+    "mutationEnabled": false,
+    "recovery": "Edit configuration"
+  },
+  {
+    "module": "UI11",
+    "state": "loading",
+    "fixture": "states/UI11-loading.svg",
+    "message": "Loading run snapshot",
+    "mutationEnabled": false,
+    "recovery": null
+  },
+  {
+    "module": "UI11",
+    "state": "empty",
+    "fixture": "states/UI11-empty.svg",
+    "message": "No run selected",
+    "mutationEnabled": false,
+    "recovery": "Select run"
+  },
+  {
+    "module": "UI11",
+    "state": "invalid",
+    "fixture": "states/UI11-invalid.svg",
+    "message": "Event sequence gap",
+    "mutationEnabled": false,
+    "recovery": "Refresh snapshot"
+  },
+  {
+    "module": "UI11",
+    "state": "unavailable",
+    "fixture": "states/UI11-unavailable.svg",
+    "message": "Bound and metrics unavailable",
+    "mutationEnabled": false,
+    "recovery": "Refresh snapshot"
+  },
+  {
+    "module": "UI11",
+    "state": "failed",
+    "fixture": "states/UI11-failed.svg",
+    "message": "Subscription lost; refresh required",
+    "mutationEnabled": false,
+    "recovery": "Refresh snapshot"
+  },
+  {
+    "module": "UI12",
+    "state": "loading",
+    "fixture": "states/UI12-loading.svg",
+    "message": "Loading recorded trace",
+    "mutationEnabled": false,
+    "recovery": null
+  },
+  {
+    "module": "UI12",
+    "state": "empty",
+    "fixture": "states/UI12-empty.svg",
+    "message": "No trace selected",
+    "mutationEnabled": false,
+    "recovery": "Select recorded run"
+  },
+  {
+    "module": "UI12",
+    "state": "invalid",
+    "fixture": "states/UI12-invalid.svg",
+    "message": "Baseline scope incompatible",
+    "mutationEnabled": false,
+    "recovery": "Retry trace read"
+  },
+  {
+    "module": "UI12",
+    "state": "unavailable",
+    "fixture": "states/UI12-unavailable.svg",
+    "message": "Native search events unavailable",
+    "mutationEnabled": false,
+    "recovery": "Retry trace read"
+  },
+  {
+    "module": "UI12",
+    "state": "failed",
+    "fixture": "states/UI12-failed.svg",
+    "message": "Trace read failed",
+    "mutationEnabled": false,
+    "recovery": "Retry trace read"
+  },
+  {
+    "module": "UI13",
+    "state": "loading",
+    "fixture": "states/UI13-loading.svg",
+    "message": "Loading frozen revision pair",
+    "mutationEnabled": false,
+    "recovery": null
+  },
+  {
+    "module": "UI13",
+    "state": "empty",
+    "fixture": "states/UI13-empty.svg",
+    "message": "No alternative selected",
+    "mutationEnabled": false,
+    "recovery": "Select revision pair"
+  },
+  {
+    "module": "UI13",
+    "state": "invalid",
+    "fixture": "states/UI13-invalid.svg",
+    "message": "Objective units incompatible",
+    "mutationEnabled": false,
+    "recovery": "Retry alternative"
+  },
+  {
+    "module": "UI13",
+    "state": "unavailable",
+    "fixture": "states/UI13-unavailable.svg",
+    "message": "Risk comparison unavailable",
+    "mutationEnabled": false,
+    "recovery": "Retry alternative"
+  },
+  {
+    "module": "UI13",
+    "state": "failed",
+    "fixture": "states/UI13-failed.svg",
+    "message": "Alternative read failed",
+    "mutationEnabled": false,
+    "recovery": "Retry alternative"
+  },
+  {
+    "module": "UI14",
+    "state": "loading",
+    "fixture": "states/UI14-loading.svg",
+    "message": "Loading experiment profile",
+    "mutationEnabled": false,
+    "recovery": null
+  },
+  {
+    "module": "UI14",
+    "state": "empty",
+    "fixture": "states/UI14-empty.svg",
+    "message": "No experiment selected",
+    "mutationEnabled": false,
+    "recovery": "Select experiment"
+  },
+  {
+    "module": "UI14",
+    "state": "invalid",
+    "fixture": "states/UI14-invalid.svg",
+    "message": "Invalid sample count or seed",
+    "mutationEnabled": false,
+    "recovery": "Correct configuration"
+  },
+  {
+    "module": "UI14",
+    "state": "unavailable",
+    "fixture": "states/UI14-unavailable.svg",
+    "message": "Sampling capability unavailable",
+    "mutationEnabled": false,
+    "recovery": "Correct configuration"
+  },
+  {
+    "module": "UI14",
+    "state": "failed",
+    "fixture": "states/UI14-failed.svg",
+    "message": "Experiment failed; retain actual samples",
+    "mutationEnabled": false,
+    "recovery": "Correct configuration"
+  },
+  {
+    "module": "UI15",
+    "state": "loading",
+    "fixture": "states/UI15-loading.svg",
+    "message": "Reading schedule evidence",
+    "mutationEnabled": false,
+    "recovery": null
+  },
+  {
+    "module": "UI15",
+    "state": "empty",
+    "fixture": "states/UI15-empty.svg",
+    "message": "No candidate schedule",
+    "mutationEnabled": false,
+    "recovery": "Select schedule"
+  },
+  {
+    "module": "UI15",
+    "state": "invalid",
+    "fixture": "states/UI15-invalid.svg",
+    "message": "Calendar interval conflict",
+    "mutationEnabled": false,
+    "recovery": "Retry schedule read"
+  },
+  {
+    "module": "UI15",
+    "state": "unavailable",
+    "fixture": "states/UI15-unavailable.svg",
+    "message": "Verified assignment unavailable",
+    "mutationEnabled": false,
+    "recovery": "Retry schedule read"
+  },
+  {
+    "module": "UI15",
+    "state": "failed",
+    "fixture": "states/UI15-failed.svg",
+    "message": "Schedule read failed",
+    "mutationEnabled": false,
+    "recovery": "Retry schedule read"
+  },
+  {
+    "module": "UI16",
+    "state": "loading",
+    "fixture": "states/UI16-loading.svg",
+    "message": "Reading resource horizon",
+    "mutationEnabled": false,
+    "recovery": null
+  },
+  {
+    "module": "UI16",
+    "state": "empty",
+    "fixture": "states/UI16-empty.svg",
+    "message": "No resource selected",
+    "mutationEnabled": false,
+    "recovery": "Select resource"
+  },
+  {
+    "module": "UI16",
+    "state": "invalid",
+    "fixture": "states/UI16-invalid.svg",
+    "message": "Horizon or unit incompatible",
+    "mutationEnabled": false,
+    "recovery": "Retry same horizon"
+  },
+  {
+    "module": "UI16",
+    "state": "unavailable",
+    "fixture": "states/UI16-unavailable.svg",
+    "message": "Zero capacity: utilization undefined",
+    "mutationEnabled": false,
+    "recovery": "Retry same horizon"
+  },
+  {
+    "module": "UI16",
+    "state": "failed",
+    "fixture": "states/UI16-failed.svg",
+    "message": "Allocation read failed",
+    "mutationEnabled": false,
+    "recovery": "Retry same horizon"
+  },
+  {
+    "module": "UI17",
+    "state": "loading",
+    "fixture": "states/UI17-loading.svg",
+    "message": "Reading evidence bundle",
+    "mutationEnabled": false,
+    "recovery": null
+  },
+  {
+    "module": "UI17",
+    "state": "empty",
+    "fixture": "states/UI17-empty.svg",
+    "message": "No evidence selected",
+    "mutationEnabled": false,
+    "recovery": "Select evidence"
+  },
+  {
+    "module": "UI17",
+    "state": "invalid",
+    "fixture": "states/UI17-invalid.svg",
+    "message": "Frozen digest mismatch",
+    "mutationEnabled": false,
+    "recovery": "Choose trusted bundle"
+  },
+  {
+    "module": "UI17",
+    "state": "unavailable",
+    "fixture": "states/UI17-unavailable.svg",
+    "message": "Independent certificate unavailable",
+    "mutationEnabled": false,
+    "recovery": "Choose trusted bundle"
+  },
+  {
+    "module": "UI17",
+    "state": "failed",
+    "fixture": "states/UI17-failed.svg",
+    "message": "Verification request failed",
+    "mutationEnabled": false,
+    "recovery": "Choose trusted bundle"
+  },
+  {
+    "module": "UI18",
+    "state": "loading",
+    "fixture": "states/UI18-loading.svg",
+    "message": "Loading explanation capability",
+    "mutationEnabled": false,
+    "recovery": null
+  },
+  {
+    "module": "UI18",
+    "state": "empty",
+    "fixture": "states/UI18-empty.svg",
+    "message": "No baseline selected",
+    "mutationEnabled": false,
+    "recovery": "Select baseline"
+  },
+  {
+    "module": "UI18",
+    "state": "invalid",
+    "fixture": "states/UI18-invalid.svg",
+    "message": "Alternative budget incompatible",
+    "mutationEnabled": false,
+    "recovery": "Correct alternative"
+  },
+  {
+    "module": "UI18",
+    "state": "unavailable",
+    "fixture": "states/UI18-unavailable.svg",
+    "message": "Sensitivity not supported",
+    "mutationEnabled": false,
+    "recovery": "Correct alternative"
+  },
+  {
+    "module": "UI18",
+    "state": "failed",
+    "fixture": "states/UI18-failed.svg",
+    "message": "Comparison failed; baseline retained",
+    "mutationEnabled": false,
+    "recovery": "Correct alternative"
+  },
+  {
+    "module": "UI19",
+    "state": "loading",
+    "fixture": "states/UI19-loading.svg",
+    "message": "Loading trial manifest",
+    "mutationEnabled": false,
+    "recovery": null
+  },
+  {
+    "module": "UI19",
+    "state": "empty",
+    "fixture": "states/UI19-empty.svg",
+    "message": "No paired trials",
+    "mutationEnabled": false,
+    "recovery": "Select paired trials"
+  },
+  {
+    "module": "UI19",
+    "state": "invalid",
+    "fixture": "states/UI19-invalid.svg",
+    "message": "Measurement scope incompatible",
+    "mutationEnabled": false,
+    "recovery": "Retry manifest read"
+  },
+  {
+    "module": "UI19",
+    "state": "unavailable",
+    "fixture": "states/UI19-unavailable.svg",
+    "message": "Required trial metric unavailable",
+    "mutationEnabled": false,
+    "recovery": "Retry manifest read"
+  },
+  {
+    "module": "UI19",
+    "state": "failed",
+    "fixture": "states/UI19-failed.svg",
+    "message": "Trial manifest read failed",
+    "mutationEnabled": false,
+    "recovery": "Retry manifest read"
+  },
+  {
+    "module": "UI20",
+    "state": "loading",
+    "fixture": "states/UI20-loading.svg",
+    "message": "Reading connector schema",
+    "mutationEnabled": false,
+    "recovery": null
+  },
+  {
+    "module": "UI20",
+    "state": "empty",
+    "fixture": "states/UI20-empty.svg",
+    "message": "No mapping selected",
+    "mutationEnabled": false,
+    "recovery": "Select schema"
+  },
+  {
+    "module": "UI20",
+    "state": "invalid",
+    "fixture": "states/UI20-invalid.svg",
+    "message": "Required source row rejected",
+    "mutationEnabled": false,
+    "recovery": "Correct staged map"
+  },
+  {
+    "module": "UI20",
+    "state": "unavailable",
+    "fixture": "states/UI20-unavailable.svg",
+    "message": "Sync checkpoint unavailable",
+    "mutationEnabled": false,
+    "recovery": "Correct staged map"
+  },
+  {
+    "module": "UI20",
+    "state": "failed",
+    "fixture": "states/UI20-failed.svg",
+    "message": "Import rolled back; prior revision retained",
+    "mutationEnabled": false,
+    "recovery": "Correct staged map"
+  },
+  {
+    "module": "UI21",
+    "state": "loading",
+    "fixture": "states/UI21-loading.svg",
+    "message": "Reading effective permissions",
+    "mutationEnabled": false,
+    "recovery": null
+  },
+  {
+    "module": "UI21",
+    "state": "empty",
+    "fixture": "states/UI21-empty.svg",
+    "message": "No authorized tenant selected",
+    "mutationEnabled": false,
+    "recovery": "Choose authorized context"
+  },
+  {
+    "module": "UI21",
+    "state": "invalid",
+    "fixture": "states/UI21-invalid.svg",
+    "message": "Stale policy version",
+    "mutationEnabled": false,
+    "recovery": "Refresh permissions"
+  },
+  {
+    "module": "UI21",
+    "state": "unavailable",
+    "fixture": "states/UI21-unavailable.svg",
+    "message": "Operation denied by server",
+    "mutationEnabled": false,
+    "recovery": "Refresh permissions"
+  },
+  {
+    "module": "UI21",
+    "state": "failed",
+    "fixture": "states/UI21-failed.svg",
+    "message": "Policy refresh failed",
+    "mutationEnabled": false,
+    "recovery": "Refresh permissions"
+  },
+  {
+    "module": "UI22",
+    "state": "loading",
+    "fixture": "states/UI22-loading.svg",
+    "message": "Loading registered commands",
+    "mutationEnabled": false,
+    "recovery": null
+  },
+  {
+    "module": "UI22",
+    "state": "empty",
+    "fixture": "states/UI22-empty.svg",
+    "message": "No matching registered command",
+    "mutationEnabled": false,
+    "recovery": "Search commands"
+  },
+  {
+    "module": "UI22",
+    "state": "invalid",
+    "fixture": "states/UI22-invalid.svg",
+    "message": "Invalid structured arguments",
+    "mutationEnabled": false,
+    "recovery": "Return to palette"
+  },
+  {
+    "module": "UI22",
+    "state": "unavailable",
+    "fixture": "states/UI22-unavailable.svg",
+    "message": "Command capability denied",
+    "mutationEnabled": false,
+    "recovery": "Return to palette"
+  },
+  {
+    "module": "UI22",
+    "state": "failed",
+    "fixture": "states/UI22-failed.svg",
+    "message": "Invocation failed; focus restored",
+    "mutationEnabled": false,
+    "recovery": "Return to palette"
+  },
+  {
+    "module": "UI23",
+    "state": "loading",
+    "fixture": "states/UI23-loading.svg",
+    "message": "Reading effective configuration",
+    "mutationEnabled": false,
+    "recovery": null
+  },
+  {
+    "module": "UI23",
+    "state": "empty",
+    "fixture": "states/UI23-empty.svg",
+    "message": "No settings scope selected",
+    "mutationEnabled": false,
+    "recovery": "Choose settings scope"
+  },
+  {
+    "module": "UI23",
+    "state": "invalid",
+    "fixture": "states/UI23-invalid.svg",
+    "message": "Invalid configuration value",
+    "mutationEnabled": false,
+    "recovery": "Correct draft"
+  },
+  {
+    "module": "UI23",
+    "state": "unavailable",
+    "fixture": "states/UI23-unavailable.svg",
+    "message": "Runtime diagnostic unavailable",
+    "mutationEnabled": false,
+    "recovery": "Correct draft"
+  },
+  {
+    "module": "UI23",
+    "state": "failed",
+    "fixture": "states/UI23-failed.svg",
+    "message": "Save failed; effective configuration retained",
+    "mutationEnabled": false,
+    "recovery": "Correct draft"
+  }
+]
