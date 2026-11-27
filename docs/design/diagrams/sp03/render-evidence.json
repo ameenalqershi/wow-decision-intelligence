@@ -1,7 +1,7 @@
 {
-  "diagramCount": 15,
-  "nodeCount": 157,
-  "edgeCount": 179,
+  "diagramCount": 16,
+  "nodeCount": 172,
+  "edgeCount": 198,
   "requirementCount": 7,
   "lifecycleTransitions": 27,
   "uiModules": 23,
@@ -31,22 +31,22 @@
     {
       "diagram": "engine",
       "requirement": "SP03-01",
-      "nodes": 9,
-      "edges": 10,
-      "renderedText": 29,
-      "sourceSha256": "2086a011ff357b05b8b09ce8a8304491d5e74e1778372da6087754c97a3abd9f",
-      "renderedSha256": "9c7461d6454919aa5059a6fc44380a78a57116252244a4518e6b99194ac60a53",
-      "viewBox": "0.00 0.00 498.80 747.80"
+      "nodes": 10,
+      "edges": 11,
+      "renderedText": 32,
+      "sourceSha256": "97ac16df2e837178304fd46e442a4206e8963a5fa9b1e6f738ad5d93550e49e3",
+      "renderedSha256": "d2c015b5c6ba624838f50c3ef9e41454a834503a3b5ba53cee905d422d527b7e",
+      "viewBox": "0.00 0.00 501.80 747.80"
     },
     {
       "diagram": "udir-classes",
       "requirement": "SP03-02",
-      "nodes": 9,
-      "edges": 15,
-      "renderedText": 43,
-      "sourceSha256": "4657a59442c11208562751f172aa04758295b519f31492154f6d780c28447ec4",
-      "renderedSha256": "e82c04fdd2fc229ed14fee063ff00ff50693bc4259b97578a50954816aecf33a",
-      "viewBox": "0.00 0.00 1025.30 589.80"
+      "nodes": 10,
+      "edges": 16,
+      "renderedText": 47,
+      "sourceSha256": "2da7e1fc7d78940d0c4a7f2fe9812d5ed0e9aaaf09590a64418e5a4bb4fcb30f",
+      "renderedSha256": "248403c08ffd24275f67d5ff6503acb900c17b40ecab898917f5a6ceaa1b1eb9",
+      "viewBox": "0.00 0.00 1267.80 589.80"
     },
     {
       "diagram": "pilot-erd",
@@ -157,6 +157,16 @@
       "sourceSha256": "0a020f09563663b6b98b5b1d5eab20f32f12e15b4eb76d5317dd80f940ad426a",
       "renderedSha256": "edd8a9063fd66696a73b8182861aa434e46e833587a8827191e1674dd5c74e85",
       "viewBox": "0.00 0.00 708.80 277.80"
+    },
+    {
+      "diagram": "compiler-frontends",
+      "requirement": "SP03-01",
+      "nodes": 13,
+      "edges": 17,
+      "renderedText": 44,
+      "sourceSha256": "d5a1d1d36351161acddd78a02ac0ee13d05a4680d6d6ff6606ed669b827d0758",
+      "renderedSha256": "45bee22cfb448424d47b2efae6af3d2c7c0371c0d5065c4b1b6b6596d2342eed",
+      "viewBox": "0.00 0.00 1004.30 747.80"
     }
   ]
 }

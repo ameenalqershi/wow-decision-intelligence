@@ -19,6 +19,17 @@
       "links": 31
     },
     {
+      "file": "compiler-frontends.svg",
+      "viewBox": [
+        1004.2999877929688,
+        747.7999877929688
+      ],
+      "labels": 44,
+      "outside": [],
+      "collisions": [],
+      "links": 47
+    },
+    {
       "file": "containers.svg",
       "viewBox": [
         685.7999877929688,
@@ -87,13 +98,13 @@
     {
       "file": "engine.svg",
       "viewBox": [
-        498.79998779296875,
+        501.79998779296875,
         747.7999877929688
       ],
-      "labels": 29,
+      "labels": 32,
       "outside": [],
       "collisions": [],
-      "links": 29
+      "links": 32
     },
     {
       "file": "incremental.svg",
@@ -164,13 +175,13 @@
     {
       "file": "udir-classes.svg",
       "viewBox": [
-        1025.300048828125,
+        1267.800048828125,
         589.7999877929688
       ],
-      "labels": 43,
+      "labels": 47,
       "outside": [],
       "collisions": [],
-      "links": 39
+      "links": 42
     }
   ],
   "scope": "Actual SVG text geometry; not product UI or production deployment"

@@ -36,7 +36,8 @@ D	engine	SP03-01	graph	C4 Engine Components	The engine preserves original semant
 N	input	M05	DML / SDK / visual input
 N	bind	M07	Bind and type-check
 N	udir	M03	Normalized typed UDIR
-N	lower	M08	Exact presolve / lowering
+N	lower	M08	Exact affine lowering
+N	presolve	M12	Standalone safe presolve
 N	plan	S06	Capability planner
 N	worker	S07	Budgeted worker
 N	verify	S04	Original model verifier
@@ -44,7 +45,8 @@ N	evidence	S10	Immutable evidence
 N	reject	S04	Diagnostic / reject witness
 E	input	bind	Parse and bind	docs/design/engine.md	Parsing constructs an AST without external IO.	M07
 E	bind	udir	Validate units/domains	docs/design/engine.md	Validate units, domains and scopes	M07
-E	udir	lower	Exact presolve	docs/design/engine.md	Exact presolve and reconstruction ledger	M08
+E	udir	lower	Exact affine encoding	docs/design/solver-lowering-v1.md	The managed lowering layer consumes the admitted M07 normalized graph	M08
+E	udir	presolve	Independent projection	docs/design/safe-presolve.md	Consumes the M07 admitted normalized graph without modifying the original UDIR or its revision identity.	M12
 E	lower	plan	Eligible lowering	docs/design/engine.md	Unsupported exact lowering returns a diagnostic.	S06
 E	plan	worker	Admitted isolated execution	docs/design/architecture.md	one constrained native adapter process per admitted job	S07
 E	udir	verify	Original frozen input	docs/design/engine.md	Independent source-model evaluation	S04
@@ -62,14 +64,16 @@ N	constraint	M03	Constraint\nPredicateId / Hard / Penalty
 N	objective	M03	Objective\nExpressionId / Direction / Priority
 N	scenario	M03	Scenario\nParentId / Stage / Overrides
 N	span	M03	SourceSpan\nSourceId / Start / Length
-E	model	sources	1 to many	src/Udir/Model.cs	ImmutableArray<SourceDocument> Sources	M03
-E	model	type	1 to many	src/Udir/Model.cs	ImmutableArray<ScalarType> Types	M03
-E	model	symbol	1 to many	src/Udir/Model.cs	ImmutableArray<Symbol> Symbols	M03
-E	model	expr	1 to many	src/Udir/Model.cs	ImmutableArray<Expression> Expressions	M03
-E	model	constraint	1 to many	src/Udir/Model.cs	ImmutableArray<Constraint> Constraints	M03
-E	model	objective	1 to many	src/Udir/Model.cs	ImmutableArray<Objective> Objectives	M03
+N	time	M03	TimeBasis\nCalendarId / TimeZoneId / Origin / TickUnit
+E	model	sources	0 to many	src/Udir/Model.cs	ImmutableArray<SourceDocument> Sources	M03
+E	model	type	0 to many	src/Udir/Model.cs	ImmutableArray<ScalarType> Types	M03
+E	model	symbol	0 to many	src/Udir/Model.cs	ImmutableArray<Symbol> Symbols	M03
+E	model	expr	0 to many	src/Udir/Model.cs	ImmutableArray<Expression> Expressions	M03
+E	model	constraint	0 to many	src/Udir/Model.cs	ImmutableArray<Constraint> Constraints	M03
+E	model	objective	0 to many	src/Udir/Model.cs	ImmutableArray<Objective> Objectives	M03
 E	model	scenario	0 to many	src/Udir/Model.cs	ImmutableArray<Scenario> Scenarios	M03
-E	symbol	type	TypeId resolves	docs/design/udir-v1.md	Roles Variable, Parameter, Resource.	M03
+E	model	time	Exactly one	src/Udir/Model.cs	TimeBasis TimeBasis	M03
+E	symbol	type	TypeId resolves	src/Udir/ModelRules.cs	var type = Ref(types, symbol.TypeId);	M03
 E	expr	expr	Arguments DAG	docs/design/udir-v1.md	Expression IDs allow DAG sharing.	M03
 E	expr	symbol	SymbolId optional	docs/design/udir-v1.md	literal?, symbolId?, span	M03
 E	constraint	expr	Boolean predicate	docs/design/udir-v1.md	Predicate has Boolean type.	M03
@@ -353,3 +357,34 @@ E	outage	edd2	Observed same source digest	tests/Manufacturing.Dispatch/evidence/
 E	outage	exact2	Exhaustive small optimum	tests/Manufacturing.Data/evidence/oracle.txt	evaluated=121 feasible=12 optimum=12	V01
 E	edd1	verify	Candidate only	docs/design/manufacturing-dispatch-v1.md	NoCandidate is not an Infeasible mathematical status	S04
 E	edd2	verify	Candidate only	docs/design/manufacturing-dispatch-v1.md	No run ID, bound, certificate or evidence digest is	S04
+D	compiler-frontends	SP03-01	graph	Merged compiler and frontend boundaries	Merged M05–M09, M10, M12 and S04 managed interfaces, with independent branches for lowering and presolve. UI integration and native execution are not yet established by these interfaces.	واجهات المترجم الفعلية المدمجة: يشترك DML وSDK والاستيراد في النموذج الموثق والتحليل الدلالي، بينما يبقى التبسيط المسبق والخفض مسارين منفصلين، ولا يدعي المخطط تشغيل محرك أصلي أو اكتمال واجهة الاستوديو.
+N	dml	M05	DML UTF-8 + source ID
+N	parse	M05	DmlParser
+N	bind	M06	DmlBinder / BoundDocument
+N	compile	M07	DmlCompiler
+N	sdk	M09	ModelBuilder / BuiltModel
+N	json	M10	VersionedModelImport
+N	udir	M03	Original UdirDocument
+N	normalize	M07	ExactNormalizer
+N	facts	M09	Frozen facts + catalog
+N	lower	M08	ExactLowerer
+N	presolve	M12	SafePresolve
+N	verify	S04	OriginalVerifier
+N	diagnostic	M07	Source-linked diagnostic
+E	dml	parse	Bounded grammar	src/Dml.Syntax/DmlParser.cs	public static DmlParseResult Parse(string sourceId, ReadOnlyMemory<byte> utf8	M05
+E	parse	bind	Bound syntax AST	docs/design/dml-binding-v1.md	consumes the accepted M05 syntax AST	M06
+E	bind	compile	Bound document + trusted context	docs/design/dml-semantics-v1.md	consumes the actual M06 BoundDocument	M07
+E	compile	udir	Validated source-linked model	docs/design/dml-semantics-v1.md	generates a structurally validated UDIR document	M07
+E	sdk	udir	Freeze managed model	docs/design/modeling-sdk.md	constructs the existing `WowDi.Udir.Model`	M09
+E	json	udir	Bounded imported model	docs/design/modeling-sdk.md	VersionedModelImport on JSON	M10
+E	compile	facts	Exact string-valued facts	docs/design/dml-semantics-v1.md	generated flat JSON fact snapshot uses exact string values	M07
+E	sdk	facts	FreezeFacts explicitly	docs/design/modeling-sdk.md	produce the S04 flat JSON string-valued baseline snapshot	M09
+E	udir	normalize	Shared semantic admission	docs/design/dml-semantics-v1.md	validates the existing bounded UDIR wire and measurements before rewriting	M07
+E	normalize	lower	Admitted normalized graph	src/Dml.Lowering/ExactLowerer.cs	Lower(NormalizedModel model,SolverCapabilities manifest	M08
+E	normalize	presolve	Standalone exact projection	src/Dml.Presolve/SafePresolve.cs	Apply(NormalizedModel model	M12
+E	facts	lower	Verified immutable fact bytes	docs/design/solver-lowering-v1.md	optional frozen flat facts	M08
+E	udir	verify	Original source evaluation	src/Verification.Independent/OriginalVerifier.cs	Check(UdirDocument document,MeasurementSemantics measurements	S04
+E	facts	verify	Original frozen facts	docs/design/modeling-sdk.md	check the original model and supplied frozen bytes	S04
+E	compile	diagnostic	Unsupported operational features	docs/design/dml-semantics-v1.md	return DML-CAP-001 rather than silently dropping them	M07
+E	normalize	diagnostic	Unsafe numeric admission	docs/design/dml-semantics-v1.md	DML-DIV-001 identifies division that cannot be proved safe	M07
+E	lower	diagnostic	Unsupported encoding or capability	docs/design/solver-lowering-v1.md	It rejects scenarios, soft rows, unsupported objective policies	M08

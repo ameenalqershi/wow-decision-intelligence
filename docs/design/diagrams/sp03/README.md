@@ -58,14 +58,15 @@ Requirement: SP03-01; bilingual SP03-06; issue #161. [Editable DOT (alternate gr
 |---|---|---|---|
 | E01 | input → bind: Parse and bind | [#20](https://github.com/ameenalqershi/wow-decision-intelligence/issues/20) | [docs/design/engine.md](../../engine.md): Parsing constructs an AST without external IO. |
 | E02 | bind → udir: Validate units/domains | [#20](https://github.com/ameenalqershi/wow-decision-intelligence/issues/20) | [docs/design/engine.md](../../engine.md): Validate units, domains and scopes |
-| E03 | udir → lower: Exact presolve | [#21](https://github.com/ameenalqershi/wow-decision-intelligence/issues/21) | [docs/design/engine.md](../../engine.md): Exact presolve and reconstruction ledger |
-| E04 | lower → plan: Eligible lowering | [#31](https://github.com/ameenalqershi/wow-decision-intelligence/issues/31) | [docs/design/engine.md](../../engine.md): Unsupported exact lowering returns a diagnostic. |
-| E05 | plan → worker: Admitted isolated execution | [#32](https://github.com/ameenalqershi/wow-decision-intelligence/issues/32) | [docs/design/architecture.md](../../architecture.md): one constrained native adapter process per admitted job |
-| E06 | udir → verify: Original frozen input | [#29](https://github.com/ameenalqershi/wow-decision-intelligence/issues/29) | [docs/design/engine.md](../../engine.md): Independent source-model evaluation |
-| E07 | worker → verify: Untrusted candidate | [#29](https://github.com/ameenalqershi/wow-decision-intelligence/issues/29) | [docs/design/tenant-threat-model.md](../../tenant-threat-model.md): Treat candidate as untrusted. |
-| E08 | verify → evidence: Accepted witness | [#35](https://github.com/ameenalqershi/wow-decision-intelligence/issues/35) | [docs/design/operating-modes.md](../../operating-modes.md): Commit evidence for this revision |
-| E09 | verify → reject: Invalid witness | [#29](https://github.com/ameenalqershi/wow-decision-intelligence/issues/29) | [docs/design/engine.md](../../engine.md): Invalid witness → reject candidate and block proposal. |
-| E10 | plan → reject: Unsupported capability | [#31](https://github.com/ameenalqershi/wow-decision-intelligence/issues/31) | [docs/design/engine.md](../../engine.md): no eligible backend → unsupported |
+| E03 | udir → lower: Exact affine encoding | [#21](https://github.com/ameenalqershi/wow-decision-intelligence/issues/21) | [docs/design/solver-lowering-v1.md](../../solver-lowering-v1.md): The managed lowering layer consumes the admitted M07 normalized graph |
+| E04 | udir → presolve: Independent projection | [#25](https://github.com/ameenalqershi/wow-decision-intelligence/issues/25) | [docs/design/safe-presolve.md](../../safe-presolve.md): Consumes the M07 admitted normalized graph without modifying the original UDIR or its revision identity. |
+| E05 | lower → plan: Eligible lowering | [#31](https://github.com/ameenalqershi/wow-decision-intelligence/issues/31) | [docs/design/engine.md](../../engine.md): Unsupported exact lowering returns a diagnostic. |
+| E06 | plan → worker: Admitted isolated execution | [#32](https://github.com/ameenalqershi/wow-decision-intelligence/issues/32) | [docs/design/architecture.md](../../architecture.md): one constrained native adapter process per admitted job |
+| E07 | udir → verify: Original frozen input | [#29](https://github.com/ameenalqershi/wow-decision-intelligence/issues/29) | [docs/design/engine.md](../../engine.md): Independent source-model evaluation |
+| E08 | worker → verify: Untrusted candidate | [#29](https://github.com/ameenalqershi/wow-decision-intelligence/issues/29) | [docs/design/tenant-threat-model.md](../../tenant-threat-model.md): Treat candidate as untrusted. |
+| E09 | verify → evidence: Accepted witness | [#35](https://github.com/ameenalqershi/wow-decision-intelligence/issues/35) | [docs/design/operating-modes.md](../../operating-modes.md): Commit evidence for this revision |
+| E10 | verify → reject: Invalid witness | [#29](https://github.com/ameenalqershi/wow-decision-intelligence/issues/29) | [docs/design/engine.md](../../engine.md): Invalid witness → reject candidate and block proposal. |
+| E11 | plan → reject: Unsupported capability | [#31](https://github.com/ameenalqershi/wow-decision-intelligence/issues/31) | [docs/design/engine.md](../../engine.md): no eligible backend → unsupported |
 
 ## UDIR v1 managed classes
 
@@ -79,21 +80,22 @@ Requirement: SP03-02; bilingual SP03-06; issue #161. [Editable DOT (alternate gr
 
 | Edge | Relation | Issue | Reviewed source anchor |
 |---|---|---|---|
-| E01 | model → sources: 1 to many | [#16](https://github.com/ameenalqershi/wow-decision-intelligence/issues/16) | [src/Udir/Model.cs](../../../../src/Udir/Model.cs): ImmutableArray<SourceDocument> Sources |
-| E02 | model → type: 1 to many | [#16](https://github.com/ameenalqershi/wow-decision-intelligence/issues/16) | [src/Udir/Model.cs](../../../../src/Udir/Model.cs): ImmutableArray<ScalarType> Types |
-| E03 | model → symbol: 1 to many | [#16](https://github.com/ameenalqershi/wow-decision-intelligence/issues/16) | [src/Udir/Model.cs](../../../../src/Udir/Model.cs): ImmutableArray<Symbol> Symbols |
-| E04 | model → expr: 1 to many | [#16](https://github.com/ameenalqershi/wow-decision-intelligence/issues/16) | [src/Udir/Model.cs](../../../../src/Udir/Model.cs): ImmutableArray<Expression> Expressions |
-| E05 | model → constraint: 1 to many | [#16](https://github.com/ameenalqershi/wow-decision-intelligence/issues/16) | [src/Udir/Model.cs](../../../../src/Udir/Model.cs): ImmutableArray<Constraint> Constraints |
-| E06 | model → objective: 1 to many | [#16](https://github.com/ameenalqershi/wow-decision-intelligence/issues/16) | [src/Udir/Model.cs](../../../../src/Udir/Model.cs): ImmutableArray<Objective> Objectives |
+| E01 | model → sources: 0 to many | [#16](https://github.com/ameenalqershi/wow-decision-intelligence/issues/16) | [src/Udir/Model.cs](../../../../src/Udir/Model.cs): ImmutableArray<SourceDocument> Sources |
+| E02 | model → type: 0 to many | [#16](https://github.com/ameenalqershi/wow-decision-intelligence/issues/16) | [src/Udir/Model.cs](../../../../src/Udir/Model.cs): ImmutableArray<ScalarType> Types |
+| E03 | model → symbol: 0 to many | [#16](https://github.com/ameenalqershi/wow-decision-intelligence/issues/16) | [src/Udir/Model.cs](../../../../src/Udir/Model.cs): ImmutableArray<Symbol> Symbols |
+| E04 | model → expr: 0 to many | [#16](https://github.com/ameenalqershi/wow-decision-intelligence/issues/16) | [src/Udir/Model.cs](../../../../src/Udir/Model.cs): ImmutableArray<Expression> Expressions |
+| E05 | model → constraint: 0 to many | [#16](https://github.com/ameenalqershi/wow-decision-intelligence/issues/16) | [src/Udir/Model.cs](../../../../src/Udir/Model.cs): ImmutableArray<Constraint> Constraints |
+| E06 | model → objective: 0 to many | [#16](https://github.com/ameenalqershi/wow-decision-intelligence/issues/16) | [src/Udir/Model.cs](../../../../src/Udir/Model.cs): ImmutableArray<Objective> Objectives |
 | E07 | model → scenario: 0 to many | [#16](https://github.com/ameenalqershi/wow-decision-intelligence/issues/16) | [src/Udir/Model.cs](../../../../src/Udir/Model.cs): ImmutableArray<Scenario> Scenarios |
-| E08 | symbol → type: TypeId resolves | [#16](https://github.com/ameenalqershi/wow-decision-intelligence/issues/16) | [docs/design/udir-v1.md](../../udir-v1.md): Roles Variable, Parameter, Resource. |
-| E09 | expr → expr: Arguments DAG | [#16](https://github.com/ameenalqershi/wow-decision-intelligence/issues/16) | [docs/design/udir-v1.md](../../udir-v1.md): Expression IDs allow DAG sharing. |
-| E10 | expr → symbol: SymbolId optional | [#16](https://github.com/ameenalqershi/wow-decision-intelligence/issues/16) | [docs/design/udir-v1.md](../../udir-v1.md): literal?, symbolId?, span |
-| E11 | constraint → expr: Boolean predicate | [#16](https://github.com/ameenalqershi/wow-decision-intelligence/issues/16) | [docs/design/udir-v1.md](../../udir-v1.md): Predicate has Boolean type. |
-| E12 | objective → expr: Objective expression | [#16](https://github.com/ameenalqershi/wow-decision-intelligence/issues/16) | [docs/design/udir-v1.md](../../udir-v1.md): expressionId, direction, priority |
-| E13 | symbol → span: Source provenance | [#16](https://github.com/ameenalqershi/wow-decision-intelligence/issues/16) | [src/Udir/Model.cs](../../../../src/Udir/Model.cs): string TypeId, SourceSpan Span |
-| E14 | span → sources: SourceId + UTF16 range | [#16](https://github.com/ameenalqershi/wow-decision-intelligence/issues/16) | [docs/design/udir-v1.md](../../udir-v1.md): Half-open UTF-16 range relative to a frozen source. |
-| E15 | scenario → scenario: ParentId tree | [#16](https://github.com/ameenalqershi/wow-decision-intelligence/issues/16) | [docs/design/udir-v1.md](../../udir-v1.md): For branching models use one root |
+| E08 | model → time: Exactly one | [#16](https://github.com/ameenalqershi/wow-decision-intelligence/issues/16) | [src/Udir/Model.cs](../../../../src/Udir/Model.cs): TimeBasis TimeBasis |
+| E09 | symbol → type: TypeId resolves | [#16](https://github.com/ameenalqershi/wow-decision-intelligence/issues/16) | [src/Udir/ModelRules.cs](../../../../src/Udir/ModelRules.cs): var type = Ref(types, symbol.TypeId); |
+| E10 | expr → expr: Arguments DAG | [#16](https://github.com/ameenalqershi/wow-decision-intelligence/issues/16) | [docs/design/udir-v1.md](../../udir-v1.md): Expression IDs allow DAG sharing. |
+| E11 | expr → symbol: SymbolId optional | [#16](https://github.com/ameenalqershi/wow-decision-intelligence/issues/16) | [docs/design/udir-v1.md](../../udir-v1.md): literal?, symbolId?, span |
+| E12 | constraint → expr: Boolean predicate | [#16](https://github.com/ameenalqershi/wow-decision-intelligence/issues/16) | [docs/design/udir-v1.md](../../udir-v1.md): Predicate has Boolean type. |
+| E13 | objective → expr: Objective expression | [#16](https://github.com/ameenalqershi/wow-decision-intelligence/issues/16) | [docs/design/udir-v1.md](../../udir-v1.md): expressionId, direction, priority |
+| E14 | symbol → span: Source provenance | [#16](https://github.com/ameenalqershi/wow-decision-intelligence/issues/16) | [src/Udir/Model.cs](../../../../src/Udir/Model.cs): string TypeId, SourceSpan Span |
+| E15 | span → sources: SourceId + UTF16 range | [#16](https://github.com/ameenalqershi/wow-decision-intelligence/issues/16) | [docs/design/udir-v1.md](../../udir-v1.md): Half-open UTF-16 range relative to a frozen source. |
+| E16 | scenario → scenario: ParentId tree | [#16](https://github.com/ameenalqershi/wow-decision-intelligence/issues/16) | [docs/design/udir-v1.md](../../udir-v1.md): For branching models use one root |
 
 ## Factory logical ERD
 
@@ -377,3 +379,33 @@ Requirement: SP03-07; bilingual SP03-06; issue #161. [Editable DOT (alternate gr
 | E04 | outage → exact2: Exhaustive small optimum | [#48](https://github.com/ameenalqershi/wow-decision-intelligence/issues/48) | [tests/Manufacturing.Data/evidence/oracle.txt](../../../../tests/Manufacturing.Data/evidence/oracle.txt): evaluated=121 feasible=12 optimum=12 |
 | E05 | edd1 → verify: Candidate only | [#29](https://github.com/ameenalqershi/wow-decision-intelligence/issues/29) | [docs/design/manufacturing-dispatch-v1.md](../../manufacturing-dispatch-v1.md): NoCandidate is not an Infeasible mathematical status |
 | E06 | edd2 → verify: Candidate only | [#29](https://github.com/ameenalqershi/wow-decision-intelligence/issues/29) | [docs/design/manufacturing-dispatch-v1.md](../../manufacturing-dispatch-v1.md): No run ID, bound, certificate or evidence digest is |
+
+## Merged compiler and frontend boundaries
+
+Merged M05–M09, M10, M12 and S04 managed interfaces, with independent branches for lowering and presolve. UI integration and native execution are not yet established by these interfaces.
+
+واجهات المترجم الفعلية المدمجة: يشترك DML وSDK والاستيراد في النموذج الموثق والتحليل الدلالي، بينما يبقى التبسيط المسبق والخفض مسارين منفصلين، ولا يدعي المخطط تشغيل محرك أصلي أو اكتمال واجهة الاستوديو.
+
+Requirement: SP03-01; bilingual SP03-06; issue #161. [Editable DOT (alternate graph for sequences)](compiler-frontends.dot) · [Rendered SVG](compiler-frontends.svg).
+
+![Merged compiler and frontend boundaries](compiler-frontends.svg)
+
+| Edge | Relation | Issue | Reviewed source anchor |
+|---|---|---|---|
+| E01 | dml → parse: Bounded grammar | [#18](https://github.com/ameenalqershi/wow-decision-intelligence/issues/18) | [src/Dml.Syntax/DmlParser.cs](../../../../src/Dml.Syntax/DmlParser.cs): public static DmlParseResult Parse(string sourceId, ReadOnlyMemory<byte> utf8 |
+| E02 | parse → bind: Bound syntax AST | [#19](https://github.com/ameenalqershi/wow-decision-intelligence/issues/19) | [docs/design/dml-binding-v1.md](../../dml-binding-v1.md): consumes the accepted M05 syntax AST |
+| E03 | bind → compile: Bound document + trusted context | [#20](https://github.com/ameenalqershi/wow-decision-intelligence/issues/20) | [docs/design/dml-semantics-v1.md](../../dml-semantics-v1.md): consumes the actual M06 BoundDocument |
+| E04 | compile → udir: Validated source-linked model | [#20](https://github.com/ameenalqershi/wow-decision-intelligence/issues/20) | [docs/design/dml-semantics-v1.md](../../dml-semantics-v1.md): generates a structurally validated UDIR document |
+| E05 | sdk → udir: Freeze managed model | [#22](https://github.com/ameenalqershi/wow-decision-intelligence/issues/22) | [docs/design/modeling-sdk.md](../../modeling-sdk.md): constructs the existing `WowDi.Udir.Model` |
+| E06 | json → udir: Bounded imported model | [#23](https://github.com/ameenalqershi/wow-decision-intelligence/issues/23) | [docs/design/modeling-sdk.md](../../modeling-sdk.md): VersionedModelImport on JSON |
+| E07 | compile → facts: Exact string-valued facts | [#20](https://github.com/ameenalqershi/wow-decision-intelligence/issues/20) | [docs/design/dml-semantics-v1.md](../../dml-semantics-v1.md): generated flat JSON fact snapshot uses exact string values |
+| E08 | sdk → facts: FreezeFacts explicitly | [#22](https://github.com/ameenalqershi/wow-decision-intelligence/issues/22) | [docs/design/modeling-sdk.md](../../modeling-sdk.md): produce the S04 flat JSON string-valued baseline snapshot |
+| E09 | udir → normalize: Shared semantic admission | [#20](https://github.com/ameenalqershi/wow-decision-intelligence/issues/20) | [docs/design/dml-semantics-v1.md](../../dml-semantics-v1.md): validates the existing bounded UDIR wire and measurements before rewriting |
+| E10 | normalize → lower: Admitted normalized graph | [#21](https://github.com/ameenalqershi/wow-decision-intelligence/issues/21) | [src/Dml.Lowering/ExactLowerer.cs](../../../../src/Dml.Lowering/ExactLowerer.cs): Lower(NormalizedModel model,SolverCapabilities manifest |
+| E11 | normalize → presolve: Standalone exact projection | [#25](https://github.com/ameenalqershi/wow-decision-intelligence/issues/25) | [src/Dml.Presolve/SafePresolve.cs](../../../../src/Dml.Presolve/SafePresolve.cs): Apply(NormalizedModel model |
+| E12 | facts → lower: Verified immutable fact bytes | [#21](https://github.com/ameenalqershi/wow-decision-intelligence/issues/21) | [docs/design/solver-lowering-v1.md](../../solver-lowering-v1.md): optional frozen flat facts |
+| E13 | udir → verify: Original source evaluation | [#29](https://github.com/ameenalqershi/wow-decision-intelligence/issues/29) | [src/Verification.Independent/OriginalVerifier.cs](../../../../src/Verification.Independent/OriginalVerifier.cs): Check(UdirDocument document,MeasurementSemantics measurements |
+| E14 | facts → verify: Original frozen facts | [#29](https://github.com/ameenalqershi/wow-decision-intelligence/issues/29) | [docs/design/modeling-sdk.md](../../modeling-sdk.md): check the original model and supplied frozen bytes |
+| E15 | compile → diagnostic: Unsupported operational features | [#20](https://github.com/ameenalqershi/wow-decision-intelligence/issues/20) | [docs/design/dml-semantics-v1.md](../../dml-semantics-v1.md): return DML-CAP-001 rather than silently dropping them |
+| E16 | normalize → diagnostic: Unsafe numeric admission | [#20](https://github.com/ameenalqershi/wow-decision-intelligence/issues/20) | [docs/design/dml-semantics-v1.md](../../dml-semantics-v1.md): DML-DIV-001 identifies division that cannot be proved safe |
+| E17 | lower → diagnostic: Unsupported encoding or capability | [#21](https://github.com/ameenalqershi/wow-decision-intelligence/issues/21) | [docs/design/solver-lowering-v1.md](../../solver-lowering-v1.md): It rejects scenarios, soft rows, unsupported objective policies |
