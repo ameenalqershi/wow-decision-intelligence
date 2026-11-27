@@ -14,7 +14,7 @@
 | Expressions | id, op, typeId, arguments[], literal?, symbolId?, span | Tagged literal, symbol, unary or binary nodes. Resolve every reference, reject cycles and incorrect arity. Expression IDs allow DAG sharing. |
 | Constraints | id, predicateId, hard, penalty?, span | Predicate has Boolean type. A hard row has no penalty; a soft row has a positive exact penalty. Retain all hard and soft rows. |
 | Objectives | id, expressionId, direction, priority, weight, tolerance, span | Direction Minimize or Maximize. Unique positive lexicographic priority. Positive exact weight and nonnegative exact tolerance. Unsupported multi-objective policies require a new profile. |
-| Scenario tree | scenarios[].id, parentId?, stage, informationSet, probability?, span | Empty for deterministic input. For branching models use one root, explicit increasing stage and a nonblank information set. A supplied conditional probability lies in [0,1]. Sibling calibration and nonanticipativity are solver/semantic admission checks. |
+| Scenario tree | scenarios[].id, parentId?, stage, informationSet, probability?, overrides[], span | Empty for deterministic input. For branching models use one root, explicit increasing stage and a nonblank information set. Overrides identify a parameter or resource in the same revision and carry an exact typed value within its domain. A supplied conditional probability lies in [0,1]. Sibling calibration and nonanticipativity are solver/semantic admission checks. |
 | Capability requirements | requires[] | Unique ordinal names, including unknown requirements. A reader preserves these; the planner must reject an unsupported required capability. |
 | Exact numeric literal | string | Canonical signed integer or reduced numerator/positive denominator. No floating-point conversion. At most 256 ASCII digits in each part. An integer has no /1 suffix. |
 
@@ -35,3 +35,5 @@ flowchart TD
 ```
 
 Acceptance includes rejection fixtures for dangling references, malformed rational numbers, cycles, invalid source spans, duplicate priority, unsupported semantics, invalid uncertainty and inconsistent hard/soft rows. Persist no partial document after a rejection. يربط التمثيل الوسيط كل قيد وهدف بموضعه في المصدر. صحة البنية وحدها لا تعني أن النموذج قابل للحل أو أن محركاً بعينه يدعمه.
+
+**Factory dictionary mapping.** F-REV maps to revisionId inside the trusted tenant/model namespace. An operation duration or lower release limit expressed as a unit-bearing integer remains exact in minute ticks. F-WEIGHT requires its currency/cost-per-minute interpretation from the frozen source. Run status, CPU metrics, objective results and evidence belong to the run contracts and are not model inputs. [Pilot field dictionary](pilot-field-dictionary-v1.md)

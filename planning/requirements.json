@@ -638,23 +638,32 @@
   {
     "issue": "M03",
     "number": 16,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Model",
-    "component": "Model",
-    "implementation": "Planned",
-    "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
-    "fieldScope": "No approved field mapping in this baseline.",
-    "apiScope": "No approved API mapping in this baseline.",
+    "priority": "P0",
+    "release": "MVP",
+    "component": "src/Udir",
+    "implementation": "Implemented; see the linked #16 pull request and its Windows/Linux checks.",
+    "verification": "dotnet restore tests/Udir/WowDi.Udir.Tests.csproj --locked-mode && dotnet test tests/Udir/WowDi.Udir.Tests.csproj --no-restore -c Release",
+    "fieldScope": "The UDIR v1 field table defines the representation. F-REV retains its trusted tenant/model namespace. Unit-bearing integer domains preserve the factory minute basis.",
+    "apiScope": "UdirDocument.Create, Read and Write provide the managed API-MODEL representation boundary. Domain solving and verification are separate consumers.",
     "specifications": [
-      "docs/design/language.md",
-      "docs/design/engine.md"
+      "docs/design/udir-v1.md",
+      "docs/design/engine.md",
+      "docs/design/pilot-field-dictionary-v1.md"
     ],
     "diagrams": [
-      "docs/design/operating-modes.md"
+      "docs/design/udir-v1.md"
     ],
-    "fields": [],
-    "apis": [],
-    "evidence": [],
+    "fields": [
+      "F-REV"
+    ],
+    "apis": [
+      "API-MODEL"
+    ],
+    "evidence": [
+      "tests/Udir/UdirTests.cs",
+      "tests/Udir/Fixtures/factory.json",
+      "tests/Udir/Fixtures/factory.txt"
+    ],
     "tests": [
       {
         "id": "TC-M03-A",
@@ -672,8 +681,8 @@
         "tests": [
           "TC-M03-A"
         ],
-        "coverage": "Partially Covered",
-        "reason": "The available source and acceptance statement are mapped. Detailed field, contract or fixture review remains open."
+        "coverage": "Fully Covered",
+        "reason": "Versioned wire fields, source spans, rejection criteria and executable round-trip fixtures are linked."
       }
     ]
   },
