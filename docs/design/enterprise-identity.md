@@ -1,0 +1,25 @@
+# E01 — Enterprise identity and authorization seam
+
+Scope: #75 / REQ-E01 / TC-E01-A. F04-01, F04-02 and the application-context portion of F04-03. This is an ASP.NET Core component, not the complete enterprise host or persistence layer.
+
+## OIDC and membership
+
+Register `AddWowDiTenantIdentity(new TenantOidcOptions(authority, audience))`, a scoped or singleton implementation of `ITenantMembershipDirectory`, and a protected `ITenantDenialAudit` sink before building the server. Call `UseAuthentication` then `UseAuthorization` before mapping enterprise endpoints. The fallback policy requires the Bearer scheme. Use HTTPS for external HTTP, with trusted proxy configuration if applicable.
+
+Authority is the exact HTTPS issuer, audience is an explicit API identifier, and the tenant claim defaults to tenant_id (configurable). The first supported access-token profile is asymmetric signed JWT with at+jwt or application/at+jwt type; an ID token, opaque token or provider using another token type is not supported by this profile. OIDC discovery and signing keys are handled by ASP.NET Core JwtBearer; issuer, audience, signature, lifetime, required claims and live membership are validated. There is no clock grace, automatic tenant selection or token-role authority. Each request uses the validated Bearer identity, even if other authentication schemes are registered.
+
+Register `ConfiguredTenantMembershipDirectory` explicitly with trusted host configuration bound to `TenantDirectoryOptions` using the options monitor, or provide a live directory. Configured grants default inactive and require exact issuer, subject, tenant and model; duplicate entries deny, no wildcards or implicit admin privileges. Options reload is observed on the next check if the configured source supports reload. Persistent directory, transactional revocation and migration belong to the future server/store implementation; do not treat config as a distributed IAM database.
+
+## Authorization and downstream integration
+
+Use `TenantAccess.AuthorizeAsync(permission, resource)` before every model-scoped read/write, approval, evidence access, cancellation or external action. Pass the resource model and tenant from trusted routing/lookup context; the service compares the tenant with the authenticated actor before any directory resource check. The returned actor supplies the authoritative tenant for every storage query and composite key. Do not load foreign resources to authorize them. A foreign and nonexistent resource must produce indistinguishable safe responses (e.g. 404 after a valid token); unauthenticated requests challenge with 401. S12 owns final API routes/status mappings.
+
+`BindJobAsync` currently requires Propose on the model, returning an immutable tenant/actor/model binding constructed only by the access service. This is a conservative initial admission permission, not a wire contract; S12 must confirm the operation mapping before exposing submission. Durable job identity, fenced publication, cancellation, outbox and tenant-scoped EF queries are E02/S12/RT02 responsibilities. Background jobs must use persisted trusted binding, never ambient HTTP context. Recheck authorization for externally initiated changes; approval guards and actor separation remain S11/E04.
+
+The five permissions match ADR-004 (View, Write, Propose, Approve, Execute); a signed role claim alone does not grant any permission. No public API fields or schema changes. Consumers #37, #88, #76, #78, #110, #130, #133 and #146 should integrate this seam without duplicating token validation. CLI/SDK use access tokens for the configured enterprise audience; Studio must not grant permissions based on its own display state.
+
+Audit records contain only trusted tenant/subject when available, fixed action, server correlation identifier and UTC time; no token, raw request, target tenant or exception. Explicitly configure a durable protected sink before production (the provided logger adapter is not an append-only durable audit store). Configure platform logging to exclude request URLs/payloads, authorization headers, sensitive identity diagnostics and exception detail; prohibit PII logging. Directory/sink failures prevent protected operations from proceeding; operational handling and durable retention belong to E05.
+
+## Verification
+
+Run `dotnet restore tests/Enterprise.Identity/WowDi.Enterprise.Identity.Tests.csproj --locked-mode` and `dotnet test tests/Enterprise.Identity/WowDi.Enterprise.Identity.Tests.csproj --no-restore -c Release`. Tests exercise a real Kestrel HTTP pipeline with synthetic HTTPS OIDC discovery/JWKS responses and locally signed tokens, not a real external identity provider. They include valid two-tenant access, foreign lookup and job mutation denial, invalid token cases, live membership and permission changes, parallel requests, missing HTTP context, and invalid configuration. The configured directory is verified separately. The test resource/job store is synthetic; production PostgreSQL isolation and recovery must be qualified in E02/RT02/QA04. No vendor support or production security certification is claimed.
