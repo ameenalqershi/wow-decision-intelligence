@@ -10,6 +10,7 @@
     "Reference navigation, authorized workspace selection and keyboard tab selection preserve frozen revision",
     "Keyboard and real pointer resizing, logical docking and inspector visibility preserve revision",
     "Failed file write leaves live layout and explicit retry clears unsaved status",
+    "Discard unsaved layout is available with hidden inspector, restores saved geometry and returns focus",
     "Provider rejects previously authorized workspace without mutating prior tabs or revision",
     "Reload reopens exact persisted tab keys, active selection, ratio, dock and revision",
     "RTL logical geometry, stable identity, theme switching, accessible tablist and narrow DPR2 layout",
@@ -62,10 +63,10 @@
   },
   "restored": {
     "keys": [
-      "1f5e49bb5a344e92a05ceeb3bc1f6aa7",
-      "c71daac6245449158c03ab176b55dbbb"
+      "55dee95cb028451c94a1117d7d3b9a62",
+      "28bff44cabe141219afa6c3d1368917f"
     ],
-    "active": "1f5e49bb5a344e92a05ceeb3bc1f6aa7",
+    "active": "55dee95cb028451c94a1117d7d3b9a62",
     "share": "0.6000",
     "dock": "start"
   },

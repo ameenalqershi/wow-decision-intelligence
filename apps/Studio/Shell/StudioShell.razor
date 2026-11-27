@@ -98,10 +98,17 @@
                             <dt>@T("Connection","الاتصال")</dt><dd>@T("Runtime status unavailable","حالة التشغيل غير متاحة")</dd>
                             <dt>@T("Layout","التخطيط")</dt><dd data-layout-status>@(Session.IsUnsaved?T("Unsaved changes","تغييرات غير محفوظة"):T("No pending write","لا توجد كتابة معلقة"))</dd>
                         </dl>
-                        @if(Session.IsUnsaved){<button class="wow-button wow-shell-action" type="button" data-retry-save @onclick="RetrySave">@T("Retry layout save","إعادة محاولة حفظ التخطيط")</button>}
+
                     </StudioCard>
                 </aside>
             </div>
+            @if(Session.IsUnsaved)
+            {
+                <div class="wow-toolbar" aria-label="@T("Unsaved layout actions","إجراءات التخطيط غير المحفوظ")">
+                    <button class="wow-button wow-shell-action" type="button" data-retry-save disabled="@busy" @onclick="RetrySave">@T("Retry layout save","إعادة محاولة حفظ التخطيط")</button>
+                    <button class="wow-button" type="button" data-discard-layout disabled="@busy" @onclick="DiscardLayout">@T("Discard layout changes","تجاهل تغييرات التخطيط")</button>
+                </div>
+            }
             <StudioAnnouncements Status="@StatusNotice" Error="@ErrorNotice" />
         </main>
         <footer class="wow-shell-status"><StudioStatusIndicator State="StudioState.Empty" Text="@T("Engine status: unavailable","حالة المحرك: غير متاحة")" /><span><bdi>@Session.Layout.Context?.WorkspaceKey</bdi></span></footer>
@@ -130,7 +137,12 @@
     private string TabId(string key) => Id+"-tab-"+key;
     private string ShareText => Session.Layout.PrimaryShare.ToString("0.0000",CultureInfo.InvariantCulture);
     private string SplitStyle => "--shell-primary:"+ShareText+"fr;--shell-secondary:"+(1-Session.Layout.PrimaryShare).ToString("0.0000",CultureInfo.InvariantCulture)+"fr";
-    private string? StatusNotice => Session.Notice == ShellNotice.Recovered ? T("Layout recovered. Previous saved bytes retained until a layout change.","تمت استعادة التخطيط. لم تُستبدل النسخة المحفوظة بعد.") : null;
+    private string? StatusNotice => Session.Notice switch
+    {
+        ShellNotice.Recovered => T("Layout recovered. Previous saved bytes retained until a layout change.","تمت استعادة التخطيط. لم تُستبدل النسخة المحفوظة بعد."),
+        ShellNotice.LayoutDiscarded => T("Unsaved layout changes discarded.","تم تجاهل تغييرات التخطيط غير المحفوظة."),
+        _ => null
+    };
     private string? ErrorNotice => Session.Notice switch
     {
         ShellNotice.ContextUnavailable => T("Workspace or view unavailable. Previous context retained.","مساحة العمل أو العرض غير متاح. تم الاحتفاظ بالسياق السابق."),
@@ -171,7 +183,14 @@
     private Task CloseActive() => Run(async ct=>{if(Session.ActiveTab is { } t)await Session.CloseTabAsync(t.Key,ct);await FocusActive();});
     private Task ToggleInspector()=>Run(ct=>Session.SetInspectorAsync(!Session.Layout.InspectorVisible,Session.Layout.InspectorDock,ct));
     private Task DockInspector()=>Run(ct=>Session.SetInspectorAsync(true,Session.Layout.InspectorDock==InspectorDock.End?InspectorDock.Start:InspectorDock.End,ct));
-    private Task RetrySave()=>Run(ct=>Session.RetrySaveAsync(ct));
+    private Task RetrySave()=>Run(async ct=>{await Session.RetrySaveAsync(ct);if(!Session.IsUnsaved)await FocusActive();});
+    private Task DiscardLayout()=>Run(async ct=>{
+        if(await Session.DiscardUnsavedAsync(ct))
+        {
+            choiceIndex=Session.Choices.ToList().FindIndex(c=>c.Context==Session.Layout.Context);
+            await FocusActive();
+        }
+    });
     private async Task FocusActive()
     {
         // Render first, then allow JS to restore focus to the new tab (or to

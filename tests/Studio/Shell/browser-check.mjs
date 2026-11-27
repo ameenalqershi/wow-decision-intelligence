@@ -69,6 +69,17 @@ try{
  assert.equal(await revision(),'revision-17-A');
  await click('#fail-save');await click('[data-retry-save]');await wait("document.querySelector('[data-layout-status]').textContent.includes('No pending write')");await ready();
  checks.push('Failed file write leaves live layout and explicit retry clears unsaved status');
+ const acceptedShare=await share();
+ await click('#fail-save');await click('[data-toggle-inspector]');
+ await wait("document.querySelector('.wow-shell-split').dataset.inspectorVisible==='false'");await ready();
+ assert.ok(await evaluate("document.querySelector('[data-retry-save]').getClientRects().length>0&&document.querySelector('[data-discard-layout]').getClientRects().length>0"));
+ await click('[data-discard-layout]');
+ await wait("document.querySelector('.wow-shell-split').dataset.inspectorVisible==='true'");await ready();
+ await wait("document.querySelector('[data-layout-status]').textContent.includes('No pending write')");
+ await wait("document.activeElement?.dataset.tabKey===document.querySelector('[role=tab][aria-selected=true]')?.dataset.tabKey");
+ assert.equal(await share(),acceptedShare);assert.equal(await revision(),'revision-17-A');
+ await click('#fail-save');
+ checks.push('Discard unsaved layout is available with hidden inspector, restores saved geometry and returns focus');
  await focus('#studio-workspace');await key('End',35);await wait("document.querySelector('#studio-workspace').value==='2'");
  await key('Tab',9);await wait("!document.querySelector('[data-switch-workspace]').disabled");await focus('[data-switch-workspace]');await key('Enter',13);await wait("[...document.querySelectorAll('[role=alert]')].some(e=>e.textContent.includes('Previous context retained'))");await ready();
  assert.equal(await revision(),'revision-17-A');assert.equal(await selected(),'UI05');

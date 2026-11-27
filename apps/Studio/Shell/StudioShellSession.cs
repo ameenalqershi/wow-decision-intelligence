@@ -1,13 +1,14 @@
 using System.Collections.Immutable;
 
 namespace WowDi.Studio.Shell;
-public enum ShellNotice { None, Recovered, LayoutReadFailed, ContextUnavailable, LayoutUnsaved, DisplayUnavailable, ProviderUnavailable, TabLimit }
+public enum ShellNotice { None, Recovered, LayoutReadFailed, ContextUnavailable, LayoutUnsaved, DisplayUnavailable, ProviderUnavailable, TabLimit, LayoutDiscarded }
 
 // A single presentation session; UI dispatches operations serially. The
 // semaphore also serializes store writes and protects against async overlap.
 public sealed class StudioShellSession(IStudioLayoutStore store, IStudioWorkspaceContextProvider provider, IStudioDisplayHost? displayHost = null)
 {
     private readonly SemaphoreSlim gate = new(1, 1);
+    private ShellLayout lastAccepted = new();
     public ShellLayout Layout { get; private set; } = new();
     public IReadOnlyList<WorkspaceChoice> Choices { get; private set; } = [];
     public ShellNotice Notice { get; private set; }
@@ -51,6 +52,7 @@ public sealed class StudioShellSession(IStudioLayoutStore store, IStudioWorkspac
             }
             // A recovered or corrupt file is preserved until an explicit
             // user action changes/saves the layout.
+            lastAccepted = Layout;
             Initialized = true;
         }
         finally { gate.Release(); }
@@ -130,6 +132,44 @@ public sealed class StudioShellSession(IStudioLayoutStore store, IStudioWorkspac
     }
     public async ValueTask RetrySaveAsync(CancellationToken ct = default) =>
         await ChangeAsync(l => l, ct);
+    // Discard presentation changes only. Never restore an old workspace
+    // without fresh authorization, nor persist the discard over source bytes.
+    public async ValueTask<bool> DiscardUnsavedAsync(CancellationToken ct = default)
+    {
+        await gate.WaitAsync(ct);
+        try
+        {
+            if (!IsUnsaved) return false;
+            WorkspaceContext? confirmed = null;
+            if (lastAccepted.Context is { } requested)
+            {
+                try
+                {
+                    var actual = await provider.ResolveAsync(requested, ct);
+                    if (actual == requested) confirmed = actual;
+                }
+                catch (Exception ex) when (ex is not OperationCanceledException)
+                {
+                    Notice = ShellNotice.ProviderUnavailable;
+                    return false;
+                }
+                if (confirmed is null) { Notice = ShellNotice.ContextUnavailable; return false; }
+            }
+            var restored = ShellLayoutRecovery.Recover(lastAccepted, confirmed, out _);
+            if (displayHost is not null && restored.DisplayPlacement is { } placement)
+            {
+                var visible = await RecoverDisplayCoreAsync(placement, ct);
+                if (visible is null) return false;
+                restored = restored with { DisplayPlacement = visible };
+            }
+            Layout = restored;
+            IsUnsaved = false;
+            Notice = ShellNotice.LayoutDiscarded;
+            return true;
+        }
+        finally { gate.Release(); }
+    }
+
     public async ValueTask RestoreDisplayAsync(DisplayPlacement? placement, CancellationToken ct = default)
     {
         if (displayHost is null) return;
@@ -166,7 +206,7 @@ public sealed class StudioShellSession(IStudioLayoutStore store, IStudioWorkspac
     private async ValueTask SaveCoreAsync(CancellationToken ct)
     {
         IsUnsaved = true;
-        try { await store.SaveAsync(Layout, ct); IsUnsaved = false; Notice = ShellNotice.None; }
+        try { await store.SaveAsync(Layout, ct); lastAccepted = Layout; IsUnsaved = false; Notice = ShellNotice.None; }
         catch (Exception ex) when (ex is not OperationCanceledException) { Notice = ShellNotice.LayoutUnsaved; }
     }
 }

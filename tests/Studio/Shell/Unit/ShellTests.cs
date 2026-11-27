@@ -124,6 +124,30 @@ public sealed class ShellTests
         Assert.False(session.IsUnsaved);Assert.Equal(session.Layout,store.Saved);
     }
     [Fact]
+    public async Task DiscardReturnsToLastAcceptedLayoutWithoutWritingOrReopeningRevokedContext()
+    {
+        var store=new MemoryStore();var p=new Provider();var s=new StudioShellSession(store,p);
+        await s.InitializeAsync();await s.SwitchWorkspaceAsync(B);await s.NavigateAsync("UI05");
+        var accepted=s.Layout;
+        store.Fail=true;await s.SwitchWorkspaceAsync(A);await s.NavigateAsync("UI04");
+        Assert.True(s.IsUnsaved);Assert.Equal(A,s.Layout.Context);
+        p.DenyB=true;
+        Assert.False(await s.DiscardUnsavedAsync());Assert.Equal(A,s.Layout.Context);Assert.True(s.IsUnsaved);
+        Assert.Equal(ShellNotice.ContextUnavailable,s.Notice);
+        p.DenyB=false;
+        Assert.True(await s.DiscardUnsavedAsync());Assert.False(s.IsUnsaved);
+        Assert.Equal(accepted.Context,s.Layout.Context);Assert.Equal(accepted.ActiveTabKey,s.Layout.ActiveTabKey);
+        Assert.Equal(ShellNotice.LayoutDiscarded,s.Notice);Assert.Same(accepted,store.Saved);
+    }
+    [Fact]
+    public async Task DiscardRestoresInitialSafeStateWithoutCreatingFile()
+    {
+        var store=new MemoryStore{Fail=true};var s=new StudioShellSession(store,new Provider());
+        await s.InitializeAsync();await s.SwitchWorkspaceAsync(A);
+        Assert.True(s.IsUnsaved);Assert.True(await s.DiscardUnsavedAsync());
+        Assert.Null(s.Layout.Context);Assert.Empty(s.Layout.Tabs);Assert.False(s.IsUnsaved);Assert.Null(store.Saved);
+    }
+    [Fact]
     public async Task RealFileRoundtripAndMalformedLayoutNeverOverwritesOnRestore()
     {
         var directory=Path.Combine(Path.GetTempPath(),"wowdi-layout-"+Guid.NewGuid().ToString("N"));Directory.CreateDirectory(directory);

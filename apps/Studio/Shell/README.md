@@ -39,3 +39,9 @@ The browser JSON and PNG in tests/Studio/Shell/evidence are actual local
 Chromium output, not a mockup. The studio-shell workflow repeats the tests on
 Ubuntu and Windows. Native host and physical multi-monitor tests remain
 conditional integration gates under #71/#127; runtime conformance under RT01.
+
+The reviewed Unsaved state also supports explicit discard: restore the last
+accepted presentation snapshot, re-resolve any former workspace revision
+through the authoritative provider, and reject discard if access was revoked.
+Do not write any file during discard. Recovery buttons remain visible when
+the inspector is hidden. Discard affects layout only, not a feature document.

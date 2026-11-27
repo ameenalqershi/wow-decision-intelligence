@@ -54,6 +54,6 @@ export function detach(split){registrations.get(split)?.abort();registrations.de
 export function focusTab(root,key){
     requestAnimationFrame(()=>{
         const button=Array.from(root.querySelectorAll('[data-tab-key]')).find(e=>e.dataset.tabKey===key);
-        (button??root.querySelector('[data-new-tab]'))?.focus();
+        (button??root.querySelector('[data-new-tab]:not(:disabled)')??root.querySelector('select[id$=-workspace]:not(:disabled)')??root.querySelector('[data-nav]:not(:disabled)'))?.focus();
     });
 }
