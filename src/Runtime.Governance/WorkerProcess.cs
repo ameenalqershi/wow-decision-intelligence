@@ -140,7 +140,8 @@ public sealed class WorkerProcessBoundary(IWorkerProcessScopeFactory scopes,Work
             candidate=null;
             if(clean){termination=ct.IsCancellationRequested?Termination.Cancelled:Termination.Timeout;}
         }
-        return new(termination,exit,candidate,new(clock.ElapsedMilliseconds,cpu,null),clean,diagnostic,peak,peakMetric,checked(clock.ElapsedMilliseconds*lease.Request.Budget.Threads));
+        var elapsedMs=clock.ElapsedMilliseconds;
+        return new(termination,exit,candidate,new(elapsedMs,cpu,null),clean,diagnostic,peak,peakMetric,checked(elapsedMs*lease.Request.Budget.Threads));
     }
 
     private static void ValidateProgram(WorkerProgram program)

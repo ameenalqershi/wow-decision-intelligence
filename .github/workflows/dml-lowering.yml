@@ -1,0 +1,52 @@
+name: Exact affine lowering conformance
+on:
+  pull_request:
+    paths:
+      - src/Udir/**
+      - src/Dml.Syntax/**
+      - src/Dml.Binding/**
+      - src/Dml.Semantics/**
+      - src/Dml.Lowering/**
+      - tests/Dml.Lowering/**
+      - src/Verification.Independent/**
+      - src/Solver.Contracts/**
+      - src/Manufacturing.Data/**
+      - tests/Dml.Semantics/**
+      - tests/Dml.Binding/**
+      - tests/Udir/Fixtures/**
+      - src/Contracts/**
+      - tests/Dml.Syntax/**
+      - .github/workflows/dml-lowering.yml
+  push:
+    branches: [main]
+    paths:
+      - src/Udir/**
+      - src/Dml.Syntax/**
+      - src/Dml.Binding/**
+      - src/Dml.Semantics/**
+      - src/Dml.Lowering/**
+      - tests/Dml.Lowering/**
+      - src/Verification.Independent/**
+      - src/Solver.Contracts/**
+      - src/Manufacturing.Data/**
+      - tests/Dml.Semantics/**
+      - tests/Dml.Binding/**
+      - tests/Udir/Fixtures/**
+      - src/Contracts/**
+      - tests/Dml.Syntax/**
+      - .github/workflows/dml-lowering.yml
+permissions:
+  contents: read
+jobs:
+  dml-lowering:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - run: dotnet restore tests/Dml.Lowering/WowDi.Dml.Lowering.Tests.csproj --locked-mode
+      - run: dotnet test tests/Dml.Lowering/WowDi.Dml.Lowering.Tests.csproj --no-restore -c Release
