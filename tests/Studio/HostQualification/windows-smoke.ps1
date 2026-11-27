@@ -50,7 +50,7 @@ try {
         $rules += $name
     }
     }
-    $env:WEBVIEW2_USER_DATA_FOLDER = Join-Path $out "webview-profile"
+    $env:WEBVIEW2_USER_DATA_FOLDER = Join-Path ([System.IO.Path]::GetTempPath()) ("wowdi-host-" + [guid]::NewGuid().ToString("N"))
     Write-Host "Native probe network mode: $NetworkMode"
     Set-Content -Path (Join-Path $out "network-mode.txt") -Value $NetworkMode
     $process = Start-Process -FilePath $exe -WorkingDirectory (Split-Path $exe) -ArgumentList @('--evidence', ('"' + $report + '"')) -PassThru
@@ -59,17 +59,37 @@ try {
     if ($process.MainWindowHandle -eq [IntPtr]::Zero -or $process.MainWindowTitle -ne 'WOW DI Host Qualification') {
         throw 'Expected native window was not found.'
     }
+    Add-Type -AssemblyName System.Windows.Forms
+    Add-Type -TypeDefinition @'
+using System;
+using System.Runtime.InteropServices;
+public static class QualificationForeground {
+    [DllImport("user32.dll")] public static extern IntPtr GetForegroundWindow();
+}
+'@
     $shell = New-Object -ComObject WScript.Shell
     if (-not $shell.AppActivate($process.Id)) { throw 'Could not activate the native window.' }
-    if ($initial.FocusedId -ne 'direction') {
-        $shell.SendKeys('{TAB}')
-        $null = Wait-Probe { param($p) $p.FocusedId -eq 'direction' }
+    Start-Sleep -Milliseconds 500
+    function Send-ProbeKey([string]$Key) {
+        $process.Refresh()
+        $foreground = [QualificationForeground]::GetForegroundWindow()
+        if ($foreground -ne $process.MainWindowHandle) {
+            throw "Probe window is not foreground (actual $foreground; expected $($process.MainWindowHandle))."
+        }
+        [System.Windows.Forms.SendKeys]::SendWait($Key)
     }
-    $shell.SendKeys('{ENTER}')
-    $null = Wait-Probe { param($p) $p.Direction -eq 'rtl' -and $p.Events -contains 'direction:rtl' }
-    $shell.SendKeys('{TAB}')
+    # Initial focus is an explicit app accessibility behavior, not a keyboard test.
+    $null = Wait-Probe { param($p) $p.FocusedId -eq 'direction' }
+    # Real forward and backward OS keyboard navigation must both work.
+    Send-ProbeKey '{TAB}'
     $null = Wait-Probe { param($p) $p.FocusedId -eq 'confirm' -and $p.Events -contains 'focus:confirm' }
-    $shell.SendKeys('{ENTER}')
+    Send-ProbeKey '+{TAB}'
+    $null = Wait-Probe { param($p) $p.FocusedId -eq 'direction' }
+    Send-ProbeKey '{ENTER}'
+    $null = Wait-Probe { param($p) $p.Direction -eq 'rtl' -and $p.Events -contains 'direction:rtl' }
+    Send-ProbeKey '{TAB}'
+    $null = Wait-Probe { param($p) $p.FocusedId -eq 'confirm' }
+    Send-ProbeKey '{ENTER}'
     $null = Wait-Probe { param($p) $p.Events -contains 'confirm' }
     if (-not $process.CloseMainWindow() -or -not $process.WaitForExit(20000) -or $process.ExitCode -ne 0) { throw 'Native window did not close normally.' }
     Get-Content $report
@@ -77,5 +97,6 @@ try {
 finally {
     if ($process -and -not $process.HasExited) { Stop-Process -Id $process.Id -Force }
     foreach ($name in $rules) { Remove-NetFirewallRule -Name $name }
+    if ($env:WEBVIEW2_USER_DATA_FOLDER) { Remove-Item -LiteralPath $env:WEBVIEW2_USER_DATA_FOLDER -Recurse -Force -ErrorAction SilentlyContinue }
     Remove-Item Env:WEBVIEW2_USER_DATA_FOLDER -ErrorAction SilentlyContinue
 }

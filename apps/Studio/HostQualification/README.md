@@ -58,3 +58,11 @@ local runtime. No production claims or issue closure are justified by
 compilation and portable extraction alone.
 
 First CI run 46035411702: Linux native window/offline namespace/keyboard/RTL/normal closure passed (host.json and window.png retained under evidence/). Windows timed out at the first render predicate and did not produce a host report. No cause is established. Added durable startup logging and timeout diagnostics for the next run; Windows remains unqualified.
+
+Run 46039614781 established Windows native startup and Razor DOM interop
+in both Connected and Blocked modes (evidence/windows-startup/*.json).
+Both modes failed at first keyboard focus acquisition. The new probe
+gives initial focus explicitly, then requires actual forward/backward
+keyboard traversal and Enter activation while verifying the native
+foreground window. Initial programmatic focus is not counted as a
+keyboard success. WebView profile data is kept out of uploaded evidence.

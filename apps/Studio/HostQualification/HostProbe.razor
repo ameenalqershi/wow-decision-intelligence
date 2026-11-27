@@ -11,7 +11,7 @@
     <p>This is a bundled local presentation fixture, not a solver result.</p>
     <p>@Fixture.Description</p>
     <p>Fixture revision: <bdi>@Fixture.Revision</bdi></p>
-    <button id="direction" type="button" @onfocus="FocusDirection" @onclick="ToggleDirection">
+    <button @ref="directionButton" id="direction" type="button" @onfocus="FocusDirection" @onclick="ToggleDirection">
         @(rtl ? "التبديل إلى الإنجليزية" : "Switch to Arabic")
     </button>
     <button id="confirm" type="button" @onfocus="FocusConfirm" @onclick="Confirm">
@@ -22,6 +22,7 @@
 
 @code {
     private bool rtl;
+    private ElementReference directionButton;
     private void FocusDirection() => Evidence.Record("focus:direction");
     private void FocusConfirm() => Evidence.Record("focus:confirm");
     private string status = "Ready for qualification.";
@@ -42,8 +43,12 @@
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         Console.WriteLine($"Razor rendered, firstRender={firstRender}");
+        if (firstRender)
+        {
+            Evidence.Record("render");
+            await directionButton.FocusAsync();
+        }
         var dom = await JS.InvokeAsync<DomState>("wowdiHostProbe.read");
-        if (firstRender) Evidence.Record("render");
         Evidence.Save(Fixture, dom);
     }
 }
