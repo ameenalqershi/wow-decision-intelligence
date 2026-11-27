@@ -1,0 +1,18 @@
+@inject MetricSeries Series
+<ThemeScope>
+    <main class="visual-gallery" data-interactive="@interactive.ToString().ToLowerInvariant()">
+        <h1>Graph and chart qualification</h1>
+        <p>Local stored fixtures — not solver measurements.</p>
+        <DecisionGraphView Snapshot="@graph" @bind-SelectedId="edge" />
+        <ConvergenceView Series="@Series" @bind-SelectedEventId="eventId" />
+    </main>
+</ThemeScope>
+@code {
+    private bool interactive;
+    private string? edge,eventId;
+    private static readonly SourceStamp source=new("fixture","record","v1",DateTimeOffset.UnixEpoch);
+    private readonly DecisionGraphSnapshot graph=DecisionGraphSnapshot.Create(new("fixture-tenant","fixture-model","revision-1"),
+        [new("optimizer",EntityKind.Decision,source),new("demand",EntityKind.Parameter,source),new("materials",EntityKind.Resource,source)],
+        [new("input-scope",RelationKind.Requires,"optimizer",["demand","materials"],source)]);
+    protected override void OnAfterRender(bool firstRender) { if(firstRender){interactive=true;StateHasChanged();} }
+}
