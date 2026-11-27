@@ -1,0 +1,60 @@
+name: Worker resource governance
+on:
+  pull_request:
+    paths:
+      - src/Runtime.Governance/**
+      - src/Runtime.WorkerBootstrap/**
+      - src/Solver.Contracts/**
+      - tests/Runtime.Governance/**
+      - tests/Runtime.Governance.Fixture/**
+      - .github/workflows/worker-governance.yml
+      - tools/run-governance-cgroup-tests.sh
+  push:
+    branches: [main]
+    paths:
+      - src/Runtime.Governance/**
+      - src/Runtime.WorkerBootstrap/**
+      - src/Solver.Contracts/**
+      - tests/Runtime.Governance/**
+      - tests/Runtime.Governance.Fixture/**
+      - .github/workflows/worker-governance.yml
+      - tools/run-governance-cgroup-tests.sh
+permissions:
+  contents: read
+jobs:
+  governance:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - run: dotnet restore tests/Runtime.Governance/WowDi.Runtime.Governance.Tests.csproj --locked-mode
+      - run: dotnet build src/Runtime.WorkerBootstrap/WowDi.Runtime.WorkerBootstrap.csproj -c Release
+      - run: dotnet build tests/Runtime.Governance.Fixture/WowDi.Runtime.Governance.Fixture.csproj -c Release
+      - run: dotnet build tests/Runtime.Governance/WowDi.Runtime.Governance.Tests.csproj --no-restore -c Release
+      - name: Portable tests on Linux
+        if: runner.os == 'Linux'
+        shell: bash
+        run: |
+          export WOWDI_TEST_DOTNET="$(readlink -f "$(command -v dotnet)")"
+          export WOWDI_TEST_BOOTSTRAP="$PWD/src/Runtime.WorkerBootstrap/bin/Release/net10.0/WowDi.Runtime.WorkerBootstrap.dll"
+          export WOWDI_TEST_FIXTURE="$PWD/tests/Runtime.Governance.Fixture/bin/Release/net10.0/WowDi.Runtime.Governance.Fixture.dll"
+          dotnet test tests/Runtime.Governance/WowDi.Runtime.Governance.Tests.csproj --no-build -c Release --filter 'Category!=OSContainment'
+      - name: Kernel cgroup v2 tests on disposable hosted runner
+        if: runner.os == 'Linux'
+        shell: bash
+        run: |
+          sudo systemd-run --wait --pipe --collect --property=Delegate=yes --property="User=$(id -un)" --working-directory="$PWD" --setenv="WOWDI_TEST_DOTNET=$(readlink -f "$(command -v dotnet)")" /bin/bash "$PWD/tools/run-governance-cgroup-tests.sh"
+      - name: Portable and Job Object tests on Windows
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $env:WOWDI_TEST_DOTNET = (Get-Command dotnet).Source
+          $env:WOWDI_TEST_BOOTSTRAP = Join-Path $PWD 'src/Runtime.WorkerBootstrap/bin/Release/net10.0/WowDi.Runtime.WorkerBootstrap.dll'
+          $env:WOWDI_TEST_FIXTURE = Join-Path $PWD 'tests/Runtime.Governance.Fixture/bin/Release/net10.0/WowDi.Runtime.Governance.Fixture.dll'
+          dotnet test tests/Runtime.Governance/WowDi.Runtime.Governance.Tests.csproj --no-build -c Release
