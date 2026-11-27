@@ -30,6 +30,7 @@ public static class CliApplication
         var version = new Command("version", "Show the installed WOW DI build version.");
         version.SetAction((parsed, token) => Task.FromResult(PrintVersion(output, error, options.Read(parsed), token)));
         root.Subcommands.Add(version);
+        DiagnosticCommands.Register(root, options, output, error);
 
         var parsed = root.Parse(args, new ParserConfiguration { ResponseFileTokenReplacer = null });
         if (!ReferenceEquals(parsed.Action, suggest.Action) && (parsed.Errors.Count != 0 || options.Read(parsed) is { Quiet: true, Verbose: true }))
