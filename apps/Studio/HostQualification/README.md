@@ -78,3 +78,17 @@ focus; on strict keyboard failure only, it probes a real click in blank
 fixture space followed by two real Tabs. That secondary diagnostic cannot
 satisfy the original keyboard-only acceptance; it distinguishes focus
 acquisition from keyboard dispatch. No external window is clicked.
+
+Run 46071873692 isolated the focus acquisition problem: after a blank
+native-area click, GUI-thread focus moved from the top-level HWND to
+Chrome_WidgetWin_1 and two real Tabs reached confirm in both network
+modes. The diagnostic run still failed the original startup criterion.
+The new WindowsFocusBridge is a candidate, host-owned compatibility
+adapter that transfers focus only inside the foreground fixture on its
+own UI thread after renderer readiness and on activation. It preserves
+existing child focus and checks the exact visible descendant hierarchy.
+No queue attachment, external activation, keyboard injection or DOM
+mutation is performed by the bridge. This uses an observed private
+WebView2 HWND hierarchy, not a documented controller API: it is not
+approved for product adoption without independent host review and
+version conformance. Original strict keyboard tests remain mandatory.

@@ -4,6 +4,7 @@
 @using Microsoft.JSInterop
 @inject LocalFixture Fixture
 @inject ProbeEvidence Evidence
+@inject WindowsFocusBridge FocusBridge
 @inject IJSRuntime JS
 
 <main id="probe" lang="@(rtl ? "ar" : "en")" dir="@(rtl ? "rtl" : "ltr")">
@@ -46,6 +47,7 @@
         if (firstRender)
         {
             Evidence.Record("render");
+            FocusBridge.RendererReady();
             await directionButton.FocusAsync();
         }
         var dom = await JS.InvokeAsync<DomState>("wowdiHostProbe.read");

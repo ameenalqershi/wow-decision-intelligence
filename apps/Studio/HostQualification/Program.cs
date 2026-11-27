@@ -37,10 +37,13 @@ internal static class Program
             var builder = PhotinoBlazorAppBuilder.CreateDefault(Array.Empty<string>());
             builder.Services.AddLogging(logging => logging.AddConsole().SetMinimumLevel(LogLevel.Debug));
             builder.Services.AddSingleton(fixture);
+            var focusBridge = new WindowsFocusBridge();
+            builder.Services.AddSingleton(focusBridge);
             builder.Services.AddSingleton(new ProbeEvidence(args.Length == 2 ? Path.GetFullPath(args[1]) : null));
             builder.RootComponents.Add<HostProbe>("#app");
             var app = builder.Build();
             Console.WriteLine("Photino application built");
+            focusBridge.Bind(app.MainWindow);
             app.MainWindow.SetTitle("WOW DI Host Qualification")
                 .SetUseOsDefaultLocation(true)
                 .SetWidth(800)
