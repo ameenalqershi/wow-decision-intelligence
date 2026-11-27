@@ -1,0 +1,862 @@
+[
+  {
+    "id": "R01",
+    "area": "Research",
+    "title": "Map enterprise planning and decision platforms",
+    "deps": [],
+    "accept": "Distinguish vendor claims from implementation evidence for DIOS, o9, Maestro, Blue Yonder, SAP, Siemens, Oracle and Foundry. Record integration, scenarios and undisclosed limits."
+  },
+  {
+    "id": "R02",
+    "area": "Research",
+    "title": "Compare optimizers and modeling languages",
+    "deps": [],
+    "accept": "Compare AIMMS, Gurobi, Xpress, CPLEX, OR-Tools, Timefold, Hexaly, Pyomo, JuMP, MiniZinc and OptaPlanner by abstraction, license and capabilities."
+  },
+  {
+    "id": "R03",
+    "area": "Research",
+    "title": "Map optimization science and computational limits",
+    "deps": [],
+    "accept": "Cover every method in section 4.2 with assumptions, complexity, memory, guarantees and integration priority. Include a relationship diagram."
+  },
+  {
+    "id": "R04",
+    "area": "Research",
+    "title": "Review prior art, publications and patent claims",
+    "deps": [
+      "R02"
+    ],
+    "accept": "Compare component reuse, IR lowering and algorithm selection with published precedents. Record identifiers, overlap and unknowns."
+  },
+  {
+    "id": "R05",
+    "area": "Research",
+    "title": "Model pilot economics and select verticals",
+    "deps": [
+      "R01"
+    ],
+    "accept": "Score manufacturing against other verticals. Expose cost inputs, delivery assumptions and a falsifiable buyer hypothesis."
+  },
+  {
+    "id": "R06",
+    "area": "Research",
+    "title": "Validate demand and pilot data with a design partner",
+    "deps": [
+      "R05"
+    ],
+    "accept": "Obtain authorized anonymized data, planner baseline, signed metric definitions and buying feedback. Keep customer records outside git."
+  },
+  {
+    "id": "R07",
+    "area": "Research",
+    "title": "Qualify native adapters and redistribution",
+    "deps": [
+      "R02"
+    ],
+    "accept": "Run pinned OR-Tools and HiGHS fixtures on Windows and Linux. Inventory native components, ABI, notices and transitive licenses. Assess SCIP, Math.NET and ML.NET separately."
+  },
+  {
+    "id": "R08",
+    "area": "Research",
+    "title": "Approve the phase-zero evidence dossier",
+    "deps": [
+      "R01",
+      "R02",
+      "R03",
+      "R04",
+      "R05"
+    ],
+    "accept": "Review source gaps, solver claims and product scope. Record go, revise or stop before releasing production software."
+  },
+  {
+    "id": "F01",
+    "area": "Foundation",
+    "title": "Publish system boundaries and architecture decisions",
+    "deps": [],
+    "accept": "Diagram component ownership, compare deployment alternatives, describe storage and UI decisions and extraction triggers."
+  },
+  {
+    "id": "F02",
+    "area": "Foundation",
+    "title": "Establish contributor intake and coordination",
+    "deps": [],
+    "accept": "Publish English and Arabic entry points, claim protocol, isolated worktrees, PR checklist and contract-owner policy."
+  },
+  {
+    "id": "F03",
+    "area": "Foundation",
+    "title": "Build cross-platform validation pipeline",
+    "deps": [
+      "F02"
+    ],
+    "accept": "Run portable research checks on Linux and Windows. Surface reproducible commands and failures on pull requests."
+  },
+  {
+    "id": "F04",
+    "area": "Foundation",
+    "title": "Design tenant threat model and trust boundaries",
+    "deps": [
+      "F01"
+    ],
+    "accept": "Review imports, plugins, cache isolation, identity, evidence export and system-of-record writes. Define defensive tests."
+  },
+  {
+    "id": "F05",
+    "area": "Foundation",
+    "title": "Version API, schema and extension contracts",
+    "deps": [
+      "F01"
+    ],
+    "accept": "Publish compatibility policy with a backward-compatible extension, breaking migration example and rejection fixtures."
+  },
+  {
+    "id": "M01",
+    "area": "Model",
+    "title": "Define revisioned entity and hyperedge graph",
+    "deps": [
+      "F05"
+    ],
+    "accept": "Represent all named EDG concepts and interval, capacity and provenance relationships. Show multi-variable constraint scopes."
+  },
+  {
+    "id": "M02",
+    "area": "Model",
+    "title": "Index dependencies and impact across revisions",
+    "deps": [
+      "M01"
+    ],
+    "accept": "Compare incremental reachability to complete traversal including deleted and newly introduced edges and global objectives."
+  },
+  {
+    "id": "M03",
+    "area": "Model",
+    "title": "Implement typed UDIR and source spans",
+    "deps": [
+      "F05"
+    ],
+    "accept": "Encode domains, rational literals, units, currencies, time basis, uncertainty, requirements and semantic versions. Round-trip fixtures."
+  },
+  {
+    "id": "M04",
+    "area": "Model",
+    "title": "Validate dimensions, calendars and currency conversion",
+    "deps": [
+      "M03"
+    ],
+    "accept": "Reject implicit currency conversion, inconsistent time bases and overflow. Accept an explicit versioned rate and exact scale."
+  },
+  {
+    "id": "M05",
+    "area": "Model",
+    "title": "Specify DML grammar, AST and diagnostics",
+    "deps": [
+      "M03"
+    ],
+    "accept": "Parse valid and invalid examples with spans and stable error codes. Define grammar extension rules for scenarios and triggers."
+  },
+  {
+    "id": "M06",
+    "area": "Model",
+    "title": "Build bounded declarative parser and binder",
+    "deps": [
+      "M05"
+    ],
+    "accept": "Reject unknown symbols, cycles in derived expressions, excessive input and arbitrary executable constructs."
+  },
+  {
+    "id": "M07",
+    "area": "Model",
+    "title": "Implement semantic analysis and normalization",
+    "deps": [
+      "M04",
+      "M06"
+    ],
+    "accept": "Normalize equivalent exact expressions, retain provenance and compare finite feasible sets before and after transformation."
+  },
+  {
+    "id": "M08",
+    "area": "Model",
+    "title": "Implement capability-checked solver lowering",
+    "deps": [
+      "M07"
+    ],
+    "accept": "Reject unsupported requirements and rounding. Map native indices to source constraints and distinguish exact from approximate transformations."
+  },
+  {
+    "id": "M09",
+    "area": "Model",
+    "title": "Expose typed C# modeling SDK",
+    "deps": [
+      "M03",
+      "M04"
+    ],
+    "accept": "Construct a production and workforce model with no strings for unit arithmetic. Compare normalized IR with DML equivalents."
+  },
+  {
+    "id": "M10",
+    "area": "Model",
+    "title": "Deliver JSON Schema and versioned model import",
+    "deps": [
+      "M03",
+      "F05"
+    ],
+    "accept": "Validate domain and schema separately. Reject unknown mandatory semantics, malformed bounds and duplicate keys."
+  },
+  {
+    "id": "M11",
+    "area": "Model",
+    "title": "Implement immutable model registry and provenance",
+    "deps": [
+      "M01",
+      "M03"
+    ],
+    "accept": "Persist tenant-scoped model revisions, source hashes and snapshots. Resolve old revisions after schema migration."
+  },
+  {
+    "id": "M12",
+    "area": "Model",
+    "title": "Implement safe presolve and transformation ledger",
+    "deps": [
+      "M07"
+    ],
+    "accept": "Check tautologies, duplicates, unused variables and empty domains; preserve reconstruction metadata and counterexamples."
+  },
+  {
+    "id": "S01",
+    "area": "Runtime",
+    "title": "Define solver capability and result contracts",
+    "deps": [
+      "M03"
+    ],
+    "accept": "Separate mathematical status, termination reason, incumbent, bounds, tolerances, trust source and resource use."
+  },
+  {
+    "id": "S02",
+    "area": "Runtime",
+    "title": "Integrate integer scheduling adapter",
+    "deps": [
+      "M08",
+      "S01",
+      "R07"
+    ],
+    "accept": "Solve a precedence and no-overlap fixture using CP-SAT; preserve domain bounds, horizon semantics and native status."
+  },
+  {
+    "id": "S03",
+    "area": "Runtime",
+    "title": "Integrate LP and MILP adapter",
+    "deps": [
+      "M08",
+      "S01",
+      "R07"
+    ],
+    "accept": "Solve and independently check LP and integer fixtures via HiGHS; handle native failures and unsupported certificates."
+  },
+  {
+    "id": "S04",
+    "area": "Runtime",
+    "title": "Implement independent feasibility and cost checker",
+    "deps": [
+      "M03",
+      "S01"
+    ],
+    "accept": "Check original-model assignments, integrality, intervals, capacities and every objective without calling the lowering layer."
+  },
+  {
+    "id": "S05",
+    "area": "Runtime",
+    "title": "Validate bounds and classify evidence strength",
+    "deps": [
+      "S04"
+    ],
+    "accept": "Reject wrong-direction and stale bounds. Reproduce a primal/dual or enumeration proof; distinguish solver attestation."
+  },
+  {
+    "id": "S06",
+    "area": "Runtime",
+    "title": "Implement capability-first solver planning",
+    "deps": [
+      "S01",
+      "M08"
+    ],
+    "accept": "Filter by semantics then choose an eligible algorithm using features, budget and a documented tie-break; explain rejections."
+  },
+  {
+    "id": "S07",
+    "area": "Runtime",
+    "title": "Govern worker CPU, memory, queues and deadlines",
+    "deps": [
+      "S01"
+    ],
+    "accept": "Exercise quotas with competing tenants, solver subprocess crashes, cancellation and timeouts without leaking leases."
+  },
+  {
+    "id": "S08",
+    "area": "Runtime",
+    "title": "Implement budgeted solver portfolio",
+    "deps": [
+      "S06",
+      "S07"
+    ],
+    "accept": "Charge cumulative core-seconds, cap concurrent native threads and compare equal-budget single solver runs."
+  },
+  {
+    "id": "S09",
+    "area": "Runtime",
+    "title": "Enable compatible hints and solver switching",
+    "deps": [
+      "S08",
+      "S04"
+    ],
+    "accept": "Map hints to the current revision, discard invalid bounds and stop workers on budget expiry, retaining best verified incumbent."
+  },
+  {
+    "id": "S10",
+    "area": "Runtime",
+    "title": "Persist evidence, lineage and audit reports",
+    "deps": [
+      "S04",
+      "S05",
+      "M11"
+    ],
+    "accept": "Export input hash, solver version, termination, tolerances, verifier, hardware, timestamps and reproducible invocation."
+  },
+  {
+    "id": "S11",
+    "area": "Runtime",
+    "title": "Implement decision state machine and approval policies",
+    "deps": [
+      "S10",
+      "F04"
+    ],
+    "accept": "Test each allowed and forbidden transition; bind sensitive approvals to verified immutable revisions with separation of duties."
+  },
+  {
+    "id": "S12",
+    "area": "Runtime",
+    "title": "Expose REST API and idempotent job worker",
+    "deps": [
+      "S07",
+      "S11"
+    ],
+    "accept": "Submit, poll, cancel and replay a job with tenant isolation and idempotency conflict detection; publish OpenAPI."
+  },
+  {
+    "id": "X01",
+    "area": "Research engineering",
+    "title": "Run exhaustive separability and reuse experiment",
+    "deps": [
+      "R03",
+      "R04"
+    ],
+    "accept": "Compare full enumeration with component reuse after a local change, then test shared capacities, coupled objectives and stale cache inputs."
+  },
+  {
+    "id": "X02",
+    "area": "Research engineering",
+    "title": "Detect exact components and certify separability",
+    "deps": [
+      "M02",
+      "M07",
+      "X01"
+    ],
+    "accept": "Check complete constraint and objective scopes, including implicit global resources; reconstruct a verified solution from independent components."
+  },
+  {
+    "id": "X03",
+    "area": "Research engineering",
+    "title": "Produce canonical fingerprints and reuse permissions",
+    "deps": [
+      "M11",
+      "M07"
+    ],
+    "accept": "Separate structure, data, constraints, objectives and solver config; exercise deletion, reordered input, tenant and compiler version."
+  },
+  {
+    "id": "X04",
+    "area": "Research engineering",
+    "title": "Validate cache entries and prevent stale bound reuse",
+    "deps": [
+      "X03",
+      "S05"
+    ],
+    "accept": "Replay changed units, objectives, adapter versions and data. Cache misses or revalidation must preserve evidence strength."
+  },
+  {
+    "id": "X05",
+    "area": "Research engineering",
+    "title": "Implement bounded repair and full-solve fallback",
+    "deps": [
+      "X02",
+      "X04",
+      "S04"
+    ],
+    "accept": "Treat fixed-boundary solutions as feasible unless certified. Re-expand on failed verification, crossing constraints or insufficient quality."
+  },
+  {
+    "id": "X06",
+    "area": "Research engineering",
+    "title": "Evaluate separators, SCCs and coordinated decomposition",
+    "deps": [
+      "X02",
+      "S03"
+    ],
+    "accept": "Contrast SCCs with primal incidence components. Test Benders or pricing only for structures satisfying documented assumptions."
+  },
+  {
+    "id": "X07",
+    "area": "Research engineering",
+    "title": "Build reproducible benchmark harness and corpus",
+    "deps": [
+      "R03",
+      "F03"
+    ],
+    "accept": "Record seed, dataset license, hardware, warm/cold setup, wall time, core seconds, peak RSS, gap and timeout censoring."
+  },
+  {
+    "id": "X08",
+    "area": "Research engineering",
+    "title": "Evaluate incremental and portfolio hypotheses",
+    "deps": [
+      "X05",
+      "X07",
+      "S08"
+    ],
+    "accept": "Compare cold full, hinted full, component reuse and repair under matched budgets; publish failures, confidence intervals and ablations."
+  },
+  {
+    "id": "X09",
+    "area": "Research engineering",
+    "title": "Evaluate learned selection against deterministic policy",
+    "deps": [
+      "S06",
+      "X07"
+    ],
+    "accept": "Hold out instance families; include feature extraction overhead and single-best baseline. Disable ML unless acceptance threshold holds."
+  },
+  {
+    "id": "X10",
+    "area": "Research engineering",
+    "title": "Maintain innovation register and stop decisions",
+    "deps": [
+      "R04",
+      "X01"
+    ],
+    "accept": "Record prior art, proof assumptions, benchmark results, failure regions and novelty status per hypothesis."
+  },
+  {
+    "id": "V01",
+    "area": "Manufacturing",
+    "title": "Specify manufacturing datasets and optimization model",
+    "deps": [
+      "R05",
+      "M03"
+    ],
+    "accept": "Define machine calendars, materials, precedence, release dates, due dates and cost units. Hand-check at least one optimum."
+  },
+  {
+    "id": "V02",
+    "area": "Manufacturing",
+    "title": "Implement deterministic dispatch baseline",
+    "deps": [
+      "V01"
+    ],
+    "accept": "Provide earliest-due-date baseline with stable tie-break and explicit failure for infeasible material or calendar assignments."
+  },
+  {
+    "id": "V03",
+    "area": "Manufacturing",
+    "title": "Implement finite-capacity production scheduling",
+    "deps": [
+      "V01",
+      "S02",
+      "S04"
+    ],
+    "accept": "Output a checkable schedule with finite materials, machines, deadlines and weighted tardiness. Explain any infeasible fixture."
+  },
+  {
+    "id": "V04",
+    "area": "Manufacturing",
+    "title": "Deliver outage and demand-change scenarios",
+    "deps": [
+      "V03",
+      "S10"
+    ],
+    "accept": "Branch immutable inputs for machine downtime and changed demand. Compare lateness, cost and stability using the same units."
+  },
+  {
+    "id": "V05",
+    "area": "Manufacturing",
+    "title": "Validate pilot against planner historical schedule",
+    "deps": [
+      "V02",
+      "V04",
+      "R06"
+    ],
+    "accept": "Replay an agreed horizon, expose all exclusions and measure verified outcomes against planner and dispatch baselines."
+  },
+  {
+    "id": "V06",
+    "area": "Second sector",
+    "title": "Specify independent workforce coverage model",
+    "deps": [
+      "M09"
+    ],
+    "accept": "Encode shifts, skills and capacity with cost and coverage, using no manufacturing dependencies."
+  },
+  {
+    "id": "V07",
+    "area": "Second sector",
+    "title": "Demonstrate core reuse across sectors",
+    "deps": [
+      "V06",
+      "S03",
+      "S04"
+    ],
+    "accept": "Run workforce fixtures including infeasible coverage. Identify reused contracts and domain-specific code by dependency checks."
+  },
+  {
+    "id": "I01",
+    "area": "Integrations",
+    "title": "Define connector SDK and mapping manifests",
+    "deps": [
+      "F05",
+      "F04"
+    ],
+    "accept": "Specify field type, unit, provenance, mapping version, cursor, retries, reconciliation and credentials by reference."
+  },
+  {
+    "id": "I02",
+    "area": "Integrations",
+    "title": "Implement CSV and JSON snapshot import",
+    "deps": [
+      "I01",
+      "M10"
+    ],
+    "accept": "Test encoding, decimal conventions, errors per row, repeat ingestion and reversed input order."
+  },
+  {
+    "id": "I03",
+    "area": "Integrations",
+    "title": "Implement REST ingestion and authenticated webhooks",
+    "deps": [
+      "I01",
+      "S12"
+    ],
+    "accept": "Test duplicate delivery, ordering gaps, replay, pagination and retry ceilings using fake peers."
+  },
+  {
+    "id": "I04",
+    "area": "Integrations",
+    "title": "Implement incremental sync, recovery and health",
+    "deps": [
+      "I02",
+      "I03"
+    ],
+    "accept": "Persist cursor atomically with writes, recover after process failure, quarantine invalid data and report freshness."
+  },
+  {
+    "id": "I05",
+    "area": "Integrations",
+    "title": "Deliver optional WOW ERP connector",
+    "deps": [
+      "I04",
+      "V01"
+    ],
+    "accept": "Provide sandbox contract fixtures, mapped fields and opt-in scopes. Core tests must pass with the adapter absent."
+  },
+  {
+    "id": "I06",
+    "area": "Integrations",
+    "title": "Qualify SAP, Oracle and Dynamics adapters",
+    "deps": [
+      "I04"
+    ],
+    "accept": "For each vendor pin the supported API, mapping and replay contract; require authorized sandbox evidence before enabling."
+  },
+  {
+    "id": "I07",
+    "area": "Integrations",
+    "title": "Qualify Odoo, ERPNext and custom ERP adapters",
+    "deps": [
+      "I04"
+    ],
+    "accept": "Exercise independent versioned field mappings and cursor reconciliation per platform; publish adapter capability sheets."
+  },
+  {
+    "id": "I08",
+    "area": "Integrations",
+    "title": "Add SQL, Excel and event-stream adapters",
+    "deps": [
+      "I04"
+    ],
+    "accept": "Test read-only queries, workbook data types, offsets and replay semantics. Reject invalid units and partial snapshots."
+  },
+  {
+    "id": "I09",
+    "area": "Integrations",
+    "title": "Qualify CRM, MES, WMS and IoT feeds",
+    "deps": [
+      "I04"
+    ],
+    "accept": "Validate freshness, event IDs, clock skew and schema revisions per source with recorded non-customer fixtures."
+  },
+  {
+    "id": "A01",
+    "area": "Intelligence",
+    "title": "Implement immutable scenario comparison",
+    "deps": [
+      "M11",
+      "S10"
+    ],
+    "accept": "Compare baseline and scenario on matched units and horizon, distinguishing changed inputs from output differences."
+  },
+  {
+    "id": "A02",
+    "area": "Intelligence",
+    "title": "Explain decisions, alternatives and conflicts",
+    "deps": [
+      "S04",
+      "S05",
+      "A01"
+    ],
+    "accept": "Report objective decomposition, binding constraints and a forced alternative re-solve. Distinguish IIS from minimum repair."
+  },
+  {
+    "id": "A03",
+    "area": "Intelligence",
+    "title": "Implement LP sensitivity and relaxation analysis",
+    "deps": [
+      "S03",
+      "A02"
+    ],
+    "accept": "Restrict dual prices to valid LP assumptions and ranges. Verify discrete alternatives by re-solving."
+  },
+  {
+    "id": "A04",
+    "area": "Intelligence",
+    "title": "Add discrete-event and Monte Carlo simulation",
+    "deps": [
+      "A01"
+    ],
+    "accept": "Validate queue dynamics on a deterministic fixture and reject biased causal claims from simulated trials."
+  },
+  {
+    "id": "A05",
+    "area": "Intelligence",
+    "title": "Model forecast uncertainty and risk",
+    "deps": [
+      "A04"
+    ],
+    "accept": "Backtest prediction intervals, robust sets and stochastic plans with held-out scenarios; report coverage and downside metrics."
+  },
+  {
+    "id": "A06",
+    "area": "Intelligence",
+    "title": "Add verified advisory recommendations and optional MCP",
+    "deps": [
+      "S12",
+      "A02"
+    ],
+    "accept": "Recommendations reference verified evidence. Test read-only scoped MCP access and operation without an LLM or paid service."
+  },
+  {
+    "id": "U01",
+    "area": "Applications",
+    "title": "Ship cross-platform professional CLI",
+    "deps": [
+      "S12"
+    ],
+    "accept": "Provide validate, compile, solve, compare and evidence commands with stable JSON, human tables, cancellation and exit codes."
+  },
+  {
+    "id": "U02",
+    "area": "Applications",
+    "title": "Qualify Microsoft Blazor desktop delivery",
+    "deps": [
+      "F01"
+    ],
+    "accept": "Test installable window, offline startup, keyboard navigation, RTL and packaging on Windows and Linux. Document host ownership."
+  },
+  {
+    "id": "U03",
+    "area": "Applications",
+    "title": "Build visual modeling studio and graph explorer",
+    "deps": [
+      "U02",
+      "M05",
+      "M09"
+    ],
+    "accept": "Round-trip typed model edits, show source-linked hyperedges and prevent invalid saves."
+  },
+  {
+    "id": "U04",
+    "area": "Applications",
+    "title": "Build scheduling and scenario workspace",
+    "deps": [
+      "U02",
+      "V04",
+      "A01"
+    ],
+    "accept": "Show resource usage, timeline, alternatives and changed constraints. Test keyboard and screen-reader flows."
+  },
+  {
+    "id": "U05",
+    "area": "Applications",
+    "title": "Build evidence viewer and benchmark dashboard",
+    "deps": [
+      "U02",
+      "S10",
+      "X07"
+    ],
+    "accept": "Display solver and verifier statuses separately, export reproducible evidence, surface unknown gaps and censored runs."
+  },
+  {
+    "id": "U06",
+    "area": "Applications",
+    "title": "Build administration and developer portals",
+    "deps": [
+      "U02",
+      "E01",
+      "I01"
+    ],
+    "accept": "Exercise tenant roles, connector health, schemas, SDK examples and audit search using a least-privilege account."
+  },
+  {
+    "id": "E01",
+    "area": "Enterprise",
+    "title": "Implement tenant-aware identity and authorization",
+    "deps": [
+      "F04",
+      "F05"
+    ],
+    "accept": "Authenticate through OIDC, bind jobs to tenant, reject cross-tenant lookups and audit denied access without secrets."
+  },
+  {
+    "id": "E02",
+    "area": "Enterprise",
+    "title": "Persist models and jobs with EF Core",
+    "deps": [
+      "F01",
+      "E01",
+      "M11"
+    ],
+    "accept": "Exercise PostgreSQL migrations, tenant keys, concurrent revision writes and backup restore. Document SQL Server portability differences."
+  },
+  {
+    "id": "E03",
+    "area": "Enterprise",
+    "title": "Implement outbox, scheduling and notifications",
+    "deps": [
+      "E02",
+      "S12"
+    ],
+    "accept": "Crash between commit and publish, replay duplicate events and show a single logical notification with bounded retries."
+  },
+  {
+    "id": "E04",
+    "area": "Enterprise",
+    "title": "Implement human approvals and gated external execution",
+    "deps": [
+      "S11",
+      "E01",
+      "I04"
+    ],
+    "accept": "Require authorized approval for a verified revision and single logical execution; stale approvals and ambiguous side effects fail closed."
+  },
+  {
+    "id": "E05",
+    "area": "Enterprise",
+    "title": "Add telemetry, audit retention and operations tools",
+    "deps": [
+      "E02",
+      "S07"
+    ],
+    "accept": "Trace model-to-run without exposing customer input; verify retention, redaction, restore drills and per-tenant cost attribution."
+  },
+  {
+    "id": "E06",
+    "area": "Enterprise",
+    "title": "Package self-hosted Docker and SaaS profiles",
+    "deps": [
+      "E02",
+      "E05"
+    ],
+    "accept": "Smoke-test air-gapped install and hosted configuration, upgrade/rollback with data compatibility and secret rotation."
+  },
+  {
+    "id": "E07",
+    "area": "Enterprise",
+    "title": "Isolate extension code and native workers",
+    "deps": [
+      "F04",
+      "S07"
+    ],
+    "accept": "Run plugins out of process with explicit permissions; test resource limits, process expiry and fail-closed startup."
+  },
+  {
+    "id": "E08",
+    "area": "Enterprise",
+    "title": "Implement scale-out queue and resource fairness",
+    "deps": [
+      "E03",
+      "E07"
+    ],
+    "accept": "Exercise competing tenants, duplicate workers, lease expiry and overload; publish throughput and fairness by workload."
+  },
+  {
+    "id": "Q01",
+    "area": "Quality",
+    "title": "Add compiler property and differential tests",
+    "deps": [
+      "M07",
+      "M08"
+    ],
+    "accept": "Generate bounded models and compare original, normalized and lowered feasible assignments, objectives and diagnostic spans."
+  },
+  {
+    "id": "Q02",
+    "area": "Quality",
+    "title": "Run integration, accessibility and isolation tests",
+    "deps": [
+      "U04",
+      "E01",
+      "S12"
+    ],
+    "accept": "Cover CLI and desktop workflows, RTL, tenant isolation, backup and approval bypass denial using synthetic records."
+  },
+  {
+    "id": "Q03",
+    "area": "Quality",
+    "title": "Publish release evidence and licensing inventory",
+    "deps": [
+      "E06",
+      "Q01",
+      "Q02"
+    ],
+    "accept": "Produce checksums, dependency inventory, notices, supported OS matrix, operator guide and reproducible release checklist."
+  },
+  {
+    "id": "Q04",
+    "area": "Quality",
+    "title": "Decide MVP, enterprise and scale release gates",
+    "deps": [
+      "V05",
+      "V07",
+      "Q03",
+      "X08"
+    ],
+    "accept": "Map measured results to gates, document exclusions and decide release independently at each tier."
+  },
+  {
+    "id": "P01",
+    "area": "Portfolio",
+    "title": "Evaluate expansion across proposed sectors",
+    "deps": [
+      "V07",
+      "R06"
+    ],
+    "accept": "Score inventory, logistics, transport, retail, health, finance, cash flow, energy, construction, projects, agriculture, telecom, cloud and data centers by data availability, risk and value before opening delivery epics."
+  }
+]

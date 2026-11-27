@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "dependencies": {
+    "net10.0": {
+      "Highs.Native": {
+        "type": "Direct",
+        "requested": "[1.16.0, )",
+        "resolved": "1.16.0",
+        "contentHash": "rnomEdJ0cQ2C3NofiBFffa8io53Zauh8wHfH77se6JJWOhe5iC3NTNlhxHGGeXF8SYCp2GoUwtLN59ulMiqf3Q=="
+      }
+    }
+  }
+}

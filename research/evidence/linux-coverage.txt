@@ -1,0 +1,1 @@
+Coverage LP verified: x0=1.5, x1=0, objective=1.5, analytic lower bound=1.5.
