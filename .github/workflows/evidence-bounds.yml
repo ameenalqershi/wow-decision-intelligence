@@ -1,0 +1,40 @@
+name: Independent evidence bounds
+on:
+  pull_request:
+    paths:
+      - src/Verification.Bounds/**
+      - src/Verification.Independent/**
+      - src/Udir/**
+      - src/Solver.Contracts/**
+      - src/Contracts/**
+      - src/Manufacturing.Data/**
+      - tests/Verification.Bounds/**
+      - tests/Udir/Fixtures/**
+      - .github/workflows/evidence-bounds.yml
+  push:
+    branches: [main]
+    paths:
+      - src/Verification.Bounds/**
+      - src/Verification.Independent/**
+      - src/Udir/**
+      - src/Solver.Contracts/**
+      - src/Contracts/**
+      - src/Manufacturing.Data/**
+      - tests/Verification.Bounds/**
+      - tests/Udir/Fixtures/**
+      - .github/workflows/evidence-bounds.yml
+permissions:
+  contents: read
+jobs:
+  bounds:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - run: dotnet restore tests/Verification.Bounds/WowDi.Verification.Bounds.Tests.csproj --locked-mode
+      - run: dotnet test tests/Verification.Bounds/WowDi.Verification.Bounds.Tests.csproj --no-restore -c Release
