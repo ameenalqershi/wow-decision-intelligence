@@ -7,7 +7,7 @@ internal sealed record DiagnosticReport(int ExitCode, IReadOnlyDictionary<string
 
 internal static class LocalDiagnostics
 {
-    public static DiagnosticReport Inspect(string command, string? workspace, CancellationToken cancellationToken)
+    public static DiagnosticReport Inspect(string command, string? workspace, CancellationToken cancellationToken, Action<StageEvent>? observe = null)
     {
         cancellationToken.ThrowIfCancellationRequested();
         var fields = new Dictionary<string, string?>(StringComparer.Ordinal)
@@ -19,8 +19,10 @@ internal static class LocalDiagnostics
 
         try
         {
+            observe?.Invoke(new("configuration", "Load local configuration", StageState.Started));
             using var host = CliApplication.CreateHost();
             fields["configuration"] = "loaded";
+            observe?.Invoke(new("configuration", "Load local configuration", StageState.Completed));
             if (command == "config")
             {
                 fields["sources"] = "optional user configuration; WOWDI_ environment overrides";
@@ -36,6 +38,7 @@ internal static class LocalDiagnostics
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or FormatException or ArgumentException or InvalidOperationException)
         {
             fields["configuration"] = "unreadable or invalid";
+            observe?.Invoke(new("configuration", "Load local configuration", StageState.Failed));
             return new(5, fields, "Check the user configuration file and its access permissions. Configuration values are not displayed.");
         }
 
@@ -49,15 +52,18 @@ internal static class LocalDiagnostics
         try
         {
             // Enumerate only to verify access, never disclose a filename or path.
+            observe?.Invoke(new("workspace", "Check directory access", StageState.Started));
             using var entries = Directory.EnumerateFileSystemEntries(workspace).GetEnumerator();
             _ = entries.MoveNext();
             cancellationToken.ThrowIfCancellationRequested();
             fields["workspace"] = "readable directory";
+            observe?.Invoke(new("workspace", "Check directory access", StageState.Completed));
             return new(0, fields, "Directory access verified; workspace data and solver health were not assessed.");
         }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or ArgumentException or NotSupportedException)
         {
             fields["workspace"] = "unreadable or not a directory";
+            observe?.Invoke(new("workspace", "Check directory access", StageState.Failed));
             return new(5, fields, "Check that the selected workspace is an existing readable directory and verify permissions.");
         }
     }
