@@ -1,0 +1,12 @@
+using System.Text.Json;
+using WowDi.Studio.Visualizations;
+using WowDi.Studio.VisualizationGallery.Components;
+var builder=WebApplication.CreateBuilder(args);
+builder.Services.AddRazorComponents().AddInteractiveServerComponents();
+var observations=JsonSerializer.Deserialize<MetricObservation[]>(File.ReadAllText(Path.Combine(AppContext.BaseDirectory,"run-events.json")))!;
+builder.Services.AddSingleton(MetricSeries.Create("fixture-run","Illustrative cost","units",observations));
+var app=builder.Build();
+app.UseAntiforgery();
+app.MapStaticAssets();
+app.MapRazorComponents<App>().AddInteractiveServerRenderMode();
+app.Run();

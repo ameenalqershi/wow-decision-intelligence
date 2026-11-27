@@ -1,0 +1,59 @@
+name: Studio visualization primitives
+on:
+  push:
+    branches: [main]
+    paths: ['apps/Studio/Visualizations/**', 'apps/Studio/DesignSystem/**', 'src/DecisionGraph/**', 'tests/Studio/Visualizations/**', '.github/workflows/studio-visualizations.yml']
+  pull_request:
+    paths: ['apps/Studio/Visualizations/**', 'apps/Studio/DesignSystem/**', 'src/DecisionGraph/**', 'tests/Studio/Visualizations/**', '.github/workflows/studio-visualizations.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  visualizations:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: dotnet restore tests/Studio/Visualizations/Unit --locked-mode
+      - run: dotnet test tests/Studio/Visualizations/Unit -c Release --no-restore
+      - run: dotnet restore tests/Studio/Visualizations/Gallery --locked-mode
+      - name: Publish and exercise the interactive gallery
+        shell: pwsh
+        run: |
+          $out = Join-Path $env:RUNNER_TEMP 'ds04'
+          $publish = Join-Path $env:RUNNER_TEMP 'ds04-publish'
+          New-Item -ItemType Directory -Force -Path $out | Out-Null
+          dotnet publish tests/Studio/Visualizations/Gallery -c Release --no-restore -o $publish
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          $url = 'http://127.0.0.1:48264/'
+          $server = Start-Process dotnet -ArgumentList @('WowDi.Studio.VisualizationGallery.dll','--urls',$url) -WorkingDirectory $publish -RedirectStandardOutput (Join-Path $out 'server.log') -RedirectStandardError (Join-Path $out 'server-error.log') -PassThru
+          try {
+            $ready = $false
+            for ($i = 0; $i -lt 60; $i++) {
+              try { $ready = (Invoke-WebRequest -Uri $url -TimeoutSec 2).StatusCode -eq 200 } catch {}
+              if ($ready) { break }
+              if ($server.HasExited) { throw 'Gallery exited before readiness' }
+              Start-Sleep -Milliseconds 250
+            }
+            if (!$ready) { throw 'Gallery startup timed out' }
+            if ($IsWindows) { $chrome = Join-Path $env:ProgramFiles 'Google\Chrome\Application\chrome.exe' }
+            else { $chrome = (Get-Command google-chrome).Source }
+            node tests/Studio/Visualizations/browser-check.mjs $chrome $url (Join-Path $out 'gallery.png') | Tee-Object -FilePath (Join-Path $out 'browser.json')
+            if ($LASTEXITCODE -ne 0) { throw 'Browser qualification failed' }
+          } finally {
+            if (!$server.HasExited) { Stop-Process -Id $server.Id }
+          }
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ds04-${{ matrix.os }}
+          path: ${{ runner.temp }}/ds04

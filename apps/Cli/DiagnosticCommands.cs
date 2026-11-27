@@ -18,11 +18,19 @@ internal static class DiagnosticCommands
             if (acceptsWorkspace) command.Options.Add(workspace);
             command.SetAction((parsed, token) =>
             {
-                var report = LocalDiagnostics.Inspect(name, acceptsWorkspace ? parsed.GetValue(workspace) : null, token);
+                var outputOptions = options.Read(parsed);
+                var progressCapabilities = TerminalCapabilities.Detect(error, outputOptions, error: true);
+                var progress = progressCapabilities.Interactive ? new TerminalPresenter(error, progressCapabilities) : null;
+                var report = LocalDiagnostics.Inspect(name, acceptsWorkspace ? parsed.GetValue(workspace) : null, token,
+                    progress is null ? null : progress.WriteStage);
                 var writer = new CliOutput(output, error, options.Read(parsed));
                 var fields = new Dictionary<string, string?>(report.Fields) { ["message"] = report.Message };
-                var text = string.Join(Environment.NewLine, fields.Select(pair => $"{pair.Key}: {pair.Value}"));
-                writer.WriteResult(name, fields, text);
+                var text = string.Join(Environment.NewLine, fields.Select(pair => $"{TerminalPresenter.SafeText(pair.Key)}: {TerminalPresenter.SafeText(pair.Value ?? "Unknown")}"));
+                var presentation = TerminalCapabilities.Detect(output, options.Read(parsed));
+                if (presentation.Interactive)
+                    new TerminalPresenter(output, presentation).WriteTable("WOW DI · " + name, fields);
+                else
+                    writer.WriteResult(name, fields, text);
                 if (report.ExitCode != 0) writer.Error(report.Message);
                 return Task.FromResult(report.ExitCode);
             });

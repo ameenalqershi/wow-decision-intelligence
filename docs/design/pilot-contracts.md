@@ -50,3 +50,17 @@ erDiagram
 ```
 
 مفتاح العملية والآلة مرتبط بنسخة النموذج. يعاد حساب الهدف والتحقق من التداخل قبل حفظ دليل الحل. لا تُعرض قيمة صفرية مكان قياس غائب.
+
+## Additional Studio logical ports — design baseline
+
+These approved logical port boundaries distinguish specialized Studio operations from common run and workspace reads. See [edition 1 field profiles, ownership and acceptance](specialized-studio-ports-v1.md). Concrete wire payloads and provider implementation remain feature-owner gates. A front end cannot route administration through a local workspace command.
+
+| Contract ID | Inputs / outputs | Validation, failure and retry |
+|---|---|---|
+| API-SIMULATION | Frozen scenario, model, seed and sample budget → distributions, actual sample count and diagnostics | Reject invalid parameters. Persist explicit termination and deterministic replay settings. A04, UI14. |
+| API-ALLOCATION | Revision, resource and horizon → occupied/available capacity plus contributing assignments | Normalize units and horizon. Zero denominator yields no utilization. V03, UI16. |
+| API-EXPLAIN | Run, counterfactual choice, evidence revision and budget → verified comparison and binding rows | Reject mixed revisions and unsupported sensitivity. A02, A03, UI18. |
+| API-BENCHMARK | Suite manifest, budgets and solver profiles → paired samples, failures and environment | Group by held-out family. Mark missing or incomparable observations. X07, UI19. |
+| API-MAPPING | Authorized connector schema, field map, target units and preview rows → normalized values or row diagnostics | Stage before commit. Do not leak secrets or partially apply bad mappings. I01, I02, UI20. |
+| API-ADMIN | Authenticated tenant context, actor, intended role mutation and expected policy version → audit outcome | Enforce permission and tenant isolation on server even for direct API clients. E01, U06, UI21. |
+| API-SETTINGS | Workspace/user scope, typed settings and expected config revision → effective config and redacted diagnostics | Validate before atomic replace and retain last valid configuration. UI23, CLI10. |
