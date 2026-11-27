@@ -7,6 +7,7 @@ import {createHash} from 'node:crypto';
 const dir=path.dirname(fileURLToPath(import.meta.url)),root=path.resolve(dir,'../../../../..');
 const read=p=>fs.readFileSync(path.resolve(root,p),'utf8');
 const hash=p=>createHash('sha256').update(read(p)).digest('hex');
+const hashJson=value=>createHash('sha256').update(JSON.stringify(value)).digest('hex');
 const data=JSON.parse(fs.readFileSync(path.join(dir,'acceptance-data.json'),'utf8'));
 const transitions=JSON.parse(fs.readFileSync(path.join(dir,'transitions.json'),'utf8'));
 const requirements=JSON.parse(read('planning/requirements.json'));
@@ -84,7 +85,7 @@ assert.equal(ids.size,120);
 const consumers=new Set(['SP02']);let changed=true;while(changed){changed=false;for(const b of backlog)if(!consumers.has(b.id)&&b.deps.some(d=>consumers.has(d))){consumers.add(b.id);changed=true;}}
 consumers.delete('SP02');
 const downstream=[...consumers].map(k=>({scope:k,issue:map[k],direct:backlog.find(x=>x.id===k).deps.includes('SP02'),otherDependencies:backlog.find(x=>x.id===k).deps.filter(d=>d!=='SP02').map(d=>({scope:d,issue:map[d]}))})).sort((a,b)=>a.issue-b.issue);
-const result={sourceRevision:fs.readFileSync(path.join(dir,'source-revision.txt'),'utf8').trim(),requirementsHash:hash('planning/requirements.json'),backlogHash:hash('planning/backlog.json'),modules:rows,downstream,reviewCaseCount:ids.size,specializedPortsHash:hash('planning/specialized-ports.json'),integrationGatesHash:hash('planning/studio-integration-gates.json'),warning:'Logical design baseline only; concrete provider conformance and feature acceptance remain required.'};
+const result={sourceRevision:fs.readFileSync(path.join(dir,'source-revision.txt'),'utf8').trim(),requirementsHash:hashJson(modules.map(m=>({issue:m.issue,number:m.number,fields:m.fields,apis:m.apis,requirements:m.requirements.map(r=>({id:r.id,title:r.title,description:r.description,acceptance:r.acceptance,tests:r.tests})),tests:m.tests}))),backlogHash:hashJson({modules:rows.map(r=>({module:r.module,dependencies:r.dependencies})),downstream}),hashScope:'Current Studio requirement semantics and effective dependency projection; sourceRevision identifies original review baseline, not the entire mutable planning ledger',modules:rows,downstream,reviewCaseCount:ids.size,specializedPortsHash:hash('planning/specialized-ports.json'),integrationGatesHash:hash('planning/studio-integration-gates.json'),warning:'Logical design baseline only; concrete provider conformance and feature acceptance remain required.'};
 fs.writeFileSync(path.join(dir,'matrix.json'),JSON.stringify(result,null,2)+'\n');
 fs.writeFileSync(path.join(dir,'README.md'),'# Studio module review matrix\n\n'+rows.map(r=>'- ['+r.module+']('+r.module+'.md) · #'+r.issue+' · '+r.cases.length+' distinct requirement cases').join('\n')+'\n\n[Machine-readable matrix](matrix.json). '+ids.size+' cases across '+rows.length+' modules; '+downstream.length+' downstream issues.\n\nAll cases are proposed acceptance oracles, not passed feature tests.\n');
 console.log(JSON.stringify({modules:rows.length,uniqueRequirements:ids.size,directConsumers:downstream.filter(d=>d.direct).length,transitiveConsumers:downstream.length},null,2));

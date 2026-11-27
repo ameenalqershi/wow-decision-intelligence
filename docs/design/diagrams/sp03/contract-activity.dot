@@ -1,0 +1,20 @@
+digraph G {
+  graph [rankdir=TB, bgcolor="#ffffff", pad=0.2, nodesep=0.28, ranksep=0.65, fontname="DejaVu Sans", labelloc=t, fontsize=15, label="Contract admission activity — design / specification"];
+  node [shape=box, style="rounded,filled", fillcolor="#e8f4f1", color="#277664", fontname="DejaVu Sans", fontsize=10, fontcolor="#18352e"];
+  edge [color="#49697b", fontcolor="#263d4b", fontname="DejaVu Sans", fontsize=9, arrowsize=0.65];
+  "input" [label="HTTP / file / SDK\n#13", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/13"];
+  "json" [label="Bounded unique JSON\n#13", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/13"];
+  "version" [label="Family and major?\n#13", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/13"];
+  "ext" [label="Required extensions known?\n#13", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/13"];
+  "payload" [label="Domain validation\n#16", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/16"];
+  "publish" [label="Admit revision\n#24", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/24"];
+  "diag" [label="Diagnostic / preserve original\n#13", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/13", fillcolor="#fbece7", color="#a55236", fontcolor="#78351f"];
+  "input" -> "json" [label="E01 Parse bounded envelope", tooltip="docs/design/contract-compatibility.md: Bounded JSON and unique names", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/13"];
+  "json" -> "version" [label="E02 Contract identity", tooltip="docs/design/contract-compatibility.md: Matching family and major?", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/13"];
+  "version" -> "ext" [label="E03 Yes", tooltip="docs/design/contract-compatibility.md: Required extensions understood?", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/13"];
+  "version" -> "diag" [label="E04 No", tooltip="docs/design/contract-compatibility.md: Reject with contract.major.", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/13"];
+  "ext" -> "payload" [label="E05 Yes", tooltip="docs/design/contract-compatibility.md: Domain payload validation", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/16"];
+  "ext" -> "diag" [label="E06 No", tooltip="docs/design/contract-compatibility.md: Reject with extension.required.", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/13"];
+  "payload" -> "publish" [label="E07 All domain checks pass", tooltip="docs/design/contract-compatibility.md: admission, writes and cache publication take place only after all checks succeed.", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/24"];
+  "payload" -> "diag" [label="E08 Invalid payload", tooltip="docs/design/contract-compatibility.md: Reject malformed data before persistence", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/13"];
+}

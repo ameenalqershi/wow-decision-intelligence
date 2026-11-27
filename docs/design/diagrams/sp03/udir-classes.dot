@@ -1,0 +1,31 @@
+digraph G {
+  graph [rankdir=TB, bgcolor="#ffffff", pad=0.2, nodesep=0.28, ranksep=0.65, fontname="DejaVu Sans", labelloc=t, fontsize=15, label="UDIR v1 managed classes — design / specification"];
+  node [shape=box, style="rounded,filled", fillcolor="#e8f4f1", color="#277664", fontname="DejaVu Sans", fontsize=10, fontcolor="#18352e"];
+  edge [color="#49697b", fontcolor="#263d4b", fontname="DejaVu Sans", fontsize=9, arrowsize=0.65];
+  "model" [label="Model\nTenantId / ModelId / RevisionId\n#16", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/16"];
+  "sources" [label="SourceDocument\nId / Sha256 / Utf16Length\n#16", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/16"];
+  "type" [label="ScalarType\nId / Kind / Unit / Currency\n#16", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/16"];
+  "symbol" [label="Symbol\nId / Role / TypeId / Span\n#16", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/16"];
+  "expr" [label="Expression\nId / Op / Arguments / SymbolId\n#16", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/16"];
+  "constraint" [label="Constraint\nPredicateId / Hard / Penalty\n#16", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/16"];
+  "objective" [label="Objective\nExpressionId / Direction / Priority\n#16", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/16"];
+  "scenario" [label="Scenario\nParentId / Stage / Overrides\n#16", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/16"];
+  "span" [label="SourceSpan\nSourceId / Start / Length\n#16", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/16"];
+  "time" [label="TimeBasis\nCalendarId / TimeZoneId / Origin / TickUnit\n#16", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/16"];
+  "model" -> "sources" [label="E01 0 to many", tooltip="src/Udir/Model.cs: ImmutableArray<SourceDocument> Sources", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/16"];
+  "model" -> "type" [label="E02 0 to many", tooltip="src/Udir/Model.cs: ImmutableArray<ScalarType> Types", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/16"];
+  "model" -> "symbol" [label="E03 0 to many", tooltip="src/Udir/Model.cs: ImmutableArray<Symbol> Symbols", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/16"];
+  "model" -> "expr" [label="E04 0 to many", tooltip="src/Udir/Model.cs: ImmutableArray<Expression> Expressions", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/16"];
+  "model" -> "constraint" [label="E05 0 to many", tooltip="src/Udir/Model.cs: ImmutableArray<Constraint> Constraints", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/16"];
+  "model" -> "objective" [label="E06 0 to many", tooltip="src/Udir/Model.cs: ImmutableArray<Objective> Objectives", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/16"];
+  "model" -> "scenario" [label="E07 0 to many", tooltip="src/Udir/Model.cs: ImmutableArray<Scenario> Scenarios", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/16"];
+  "model" -> "time" [label="E08 Exactly one", tooltip="src/Udir/Model.cs: TimeBasis TimeBasis", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/16"];
+  "symbol" -> "type" [label="E09 TypeId resolves", tooltip="src/Udir/ModelRules.cs: var type = Ref(types, symbol.TypeId);", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/16"];
+  "expr" -> "expr" [label="E10 Arguments DAG", tooltip="docs/design/udir-v1.md: Expression IDs allow DAG sharing.", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/16"];
+  "expr" -> "symbol" [label="E11 SymbolId optional", tooltip="docs/design/udir-v1.md: literal?, symbolId?, span", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/16"];
+  "constraint" -> "expr" [label="E12 Boolean predicate", tooltip="docs/design/udir-v1.md: Predicate has Boolean type.", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/16"];
+  "objective" -> "expr" [label="E13 Objective expression", tooltip="docs/design/udir-v1.md: expressionId, direction, priority", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/16"];
+  "symbol" -> "span" [label="E14 Source provenance", tooltip="src/Udir/Model.cs: string TypeId, SourceSpan Span", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/16"];
+  "span" -> "sources" [label="E15 SourceId + UTF16 range", tooltip="docs/design/udir-v1.md: Half-open UTF-16 range relative to a frozen source.", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/16"];
+  "scenario" -> "scenario" [label="E16 ParentId tree", tooltip="docs/design/udir-v1.md: For branching models use one root", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/16"];
+}

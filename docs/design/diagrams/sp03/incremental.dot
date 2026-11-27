@@ -1,0 +1,26 @@
+digraph G {
+  graph [rankdir=TB, bgcolor="#ffffff", pad=0.2, nodesep=0.28, ranksep=0.65, fontname="DejaVu Sans", labelloc=t, fontsize=15, label="Before and after incremental reuse — design / specification"];
+  node [shape=box, style="rounded,filled", fillcolor="#e8f4f1", color="#277664", fontname="DejaVu Sans", fontsize=10, fontcolor="#18352e"];
+  edge [color="#49697b", fontcolor="#263d4b", fontname="DejaVu Sans", fontsize=9, arrowsize=0.65];
+  "before" [label="Before: changed revision\n#42", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/42"];
+  "full" [label="Full eligible solve\n#31", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/31"];
+  "after" [label="After: old + new incidence\n#42", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/42"];
+  "closure" [label="Expand affected closure\n#15", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/15"];
+  "proof" [label="Prove separability / equal local cost\n#38", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/38"];
+  "reuse" [label="Reuse eligible exact artifact\n#41", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/41"];
+  "recompute" [label="Recompute affected components\n#42", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/42"];
+  "verify" [label="Verify original complete model\n#29", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/29"];
+  "bound" [label="Compatible bound or unknown\n#30", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/30"];
+  "reject" [label="Invalid candidate / fallback\n#29", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/29", fillcolor="#fbece7", color="#a55236", fontcolor="#78351f"];
+  "before" -> "full" [label="E01 Full solve reference", tooltip="docs/design/engine.md: Initial deterministic preference", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/42"];
+  "after" -> "closure" [label="E02 Union old and new scopes", tooltip="docs/design/engine.md: compute closure on both old and new incidence", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/15"];
+  "closure" -> "proof" [label="E03 All constraint/objective scopes", tooltip="docs/design/engine.md: Recalculate connected components using all constraint and objective-term scopes.", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/38"];
+  "proof" -> "reuse" [label="E04 Certified equal component", tooltip="docs/design/engine.md: Equal canonical local feasible set and cost", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/41"];
+  "proof" -> "recompute" [label="E05 Changed component", tooltip="docs/design/engine.md: A crossing edge merges components", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/42"];
+  "proof" -> "full" [label="E06 No separation proof", tooltip="docs/design/engine.md: Heuristic graph partitioning can propose candidates but cannot prove independence.", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/42"];
+  "reuse" -> "verify" [label="E07 Remap and check original", tooltip="docs/design/engine.md: Remap stable IDs and verify against current complete model", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/29"];
+  "recompute" -> "verify" [label="E08 Recombined candidate", tooltip="docs/design/engine.md: reoptimization can produce only a candidate until a global bound closes.", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/29"];
+  "full" -> "verify" [label="E09 Independent original checks", tooltip="docs/design/engine.md: Independently evaluate all original hard rows", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/29"];
+  "verify" -> "bound" [label="E10 Valid comparable proof or unknown", tooltip="docs/design/engine.md: Unknown bound → unknown gap.", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/30"];
+  "verify" -> "reject" [label="E11 Invalid witness", tooltip="docs/design/engine.md: Invalid witness → reject candidate and block proposal.", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/29"];
+}

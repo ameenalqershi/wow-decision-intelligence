@@ -1,0 +1,390 @@
+# Each diagram: D id requirement type title English-explanation Arabic-explanation
+# Each node: N id issue-key label
+# Each edge: E from to label source-path exact-anchor issue-key
+# Source anchors are literal substrings of reviewed authoritative sources.
+D	context	SP03-01	graph	C4 System Context	Operators and external systems interact through managed application boundaries. Untrusted data is staged and denied operations return scoped diagnostics.	يتفاعل المخطط والمستخدم والأنظمة الخارجية عبر عقود التطبيقات، ولا يُسمح بالوصول المباشر أو تنفيذ قرار دون قبول موثق.
+N	operator	UI01	Planner / Studio
+N	cli	CLI01	CLI and SDK consumer
+N	wow	F01	WOW DI decision platform
+N	erp	I01	Authorized external source
+N	approval	S11	Human approval
+N	diagnostic	F04	Scoped diagnostic
+E	operator	wow	Shared application ports	docs/design/architecture.md	Both clients call the same application ports.	UI01
+E	cli	wow	Explicit workspace or API	docs/design/operating-modes.md	Same local or remote bindings	RT03
+E	erp	wow	Staged input	docs/design/operating-modes.md	Map authorized source schemas and units into a staged import	I01
+E	wow	approval	Verified proposal	docs/design/lifecycle.md	Only a verified feasible incumbent satisfying policy may be proposed	S11
+E	wow	diagnostic	Denied or invalid input	docs/design/tenant-threat-model.md	Missing context denies	F04
+D	containers	SP03-01	graph	C4 Containers	Target modular host and isolated worker; local SQLite and enterprise PostgreSQL are different modes, never simultaneous mandatory services.	يفصل المخطط بين المضيف المحلي وقاعدة SQLite، والخادم المؤسسي وقاعدة PostgreSQL، وعامل الحساب المعزول؛ ولا يوجد اشتراط لتشغيل الخادم في الوضع المحلي.
+N	client	UI01	Studio / CLI / SDK
+N	local	RT01	Local managed host
+N	api	RT02	ASP.NET Core enterprise
+N	sqlite	RT01	Workspace SQLite
+N	pg	E02	Tenant PostgreSQL
+N	engine	M03	Shared engine + verifier
+N	worker	S07	Isolated worker process
+N	diag	F04	Denied transfer / unsupported
+E	client	local	Explicit local mode	docs/design/operating-modes.md	Local application host	RT01
+E	client	api	Enterprise or authorized hybrid	docs/design/tenant-threat-model.md	remote server reauthorizes independently	F04
+E	client	diag	Unauthorized hybrid transfer	docs/design/operating-modes.md	Reject unauthorized upload	RT05
+E	local	sqlite	Local transaction	docs/design/operating-modes.md	One workspace database and immutable evidence store	RT01
+E	api	pg	Tenant transaction	docs/design/operating-modes.md	PostgreSQL and transactional outbox	RT02
+E	local	engine	Managed application ports	docs/design/operating-modes.md	Shared engine and verifier	RT01
+E	api	engine	Freeze and plan	docs/design/architecture.md	A job freezes input snapshots	RT02
+E	engine	worker	Constrained adapter process	docs/design/architecture.md	one constrained native adapter process per admitted job	S07
+E	worker	engine	Candidate only	docs/design/operating-modes.md	A process exit cannot turn an unverified incumbent into a verified result.	S04
+D	engine	SP03-01	graph	C4 Engine Components	The engine preserves original semantics and separates lowering from independent verification. Unsupported capability and invalid witness have distinct rejection paths.	يحافظ المحرك على دلالات النموذج الأصلية ويعزل المترجم عن التحقق المستقل، مع رفض القدرة غير المدعومة أو الشاهد غير الصحيح.
+N	input	M05	DML / SDK / visual input
+N	bind	M07	Bind and type-check
+N	udir	M03	Normalized typed UDIR
+N	lower	M08	Exact affine lowering
+N	presolve	M12	Standalone safe presolve
+N	plan	S06	Capability planner
+N	worker	S07	Budgeted worker
+N	verify	S04	Original model verifier
+N	evidence	S10	Immutable evidence
+N	reject	S04	Diagnostic / reject witness
+E	input	bind	Parse and bind	docs/design/engine.md	Parsing constructs an AST without external IO.	M07
+E	bind	udir	Validate units/domains	docs/design/engine.md	Validate units, domains and scopes	M07
+E	udir	lower	Exact affine encoding	docs/design/solver-lowering-v1.md	The managed lowering layer consumes the admitted M07 normalized graph	M08
+E	udir	presolve	Independent projection	docs/design/safe-presolve.md	Consumes the M07 admitted normalized graph without modifying the original UDIR or its revision identity.	M12
+E	lower	plan	Eligible lowering	docs/design/engine.md	Unsupported exact lowering returns a diagnostic.	S06
+E	plan	worker	Admitted isolated execution	docs/design/architecture.md	one constrained native adapter process per admitted job	S07
+E	udir	verify	Original frozen input	docs/design/engine.md	Independent source-model evaluation	S04
+E	worker	verify	Untrusted candidate	docs/design/tenant-threat-model.md	Treat candidate as untrusted.	S04
+E	verify	evidence	Accepted witness	docs/design/operating-modes.md	Commit evidence for this revision	S10
+E	verify	reject	Invalid witness	docs/design/engine.md	Invalid witness → reject candidate and block proposal.	S04
+E	plan	reject	Unsupported capability	docs/design/engine.md	no eligible backend → unsupported	S06
+D	udir-classes	SP03-02	graph	UDIR v1 managed classes	These are actual merged M03 record relationships, not proposed database tables. Expression references are DAG IDs, not object pointers.	هذه علاقات سجلات C# الفعلية في UDIR، وليست أعمدة قاعدة بيانات؛ وتعتمد التعبيرات على معرفات رسم غير دوري.
+N	model	M03	Model\nTenantId / ModelId / RevisionId
+N	sources	M03	SourceDocument\nId / Sha256 / Utf16Length
+N	type	M03	ScalarType\nId / Kind / Unit / Currency
+N	symbol	M03	Symbol\nId / Role / TypeId / Span
+N	expr	M03	Expression\nId / Op / Arguments / SymbolId
+N	constraint	M03	Constraint\nPredicateId / Hard / Penalty
+N	objective	M03	Objective\nExpressionId / Direction / Priority
+N	scenario	M03	Scenario\nParentId / Stage / Overrides
+N	span	M03	SourceSpan\nSourceId / Start / Length
+N	time	M03	TimeBasis\nCalendarId / TimeZoneId / Origin / TickUnit
+E	model	sources	0 to many	src/Udir/Model.cs	ImmutableArray<SourceDocument> Sources	M03
+E	model	type	0 to many	src/Udir/Model.cs	ImmutableArray<ScalarType> Types	M03
+E	model	symbol	0 to many	src/Udir/Model.cs	ImmutableArray<Symbol> Symbols	M03
+E	model	expr	0 to many	src/Udir/Model.cs	ImmutableArray<Expression> Expressions	M03
+E	model	constraint	0 to many	src/Udir/Model.cs	ImmutableArray<Constraint> Constraints	M03
+E	model	objective	0 to many	src/Udir/Model.cs	ImmutableArray<Objective> Objectives	M03
+E	model	scenario	0 to many	src/Udir/Model.cs	ImmutableArray<Scenario> Scenarios	M03
+E	model	time	Exactly one	src/Udir/Model.cs	TimeBasis TimeBasis	M03
+E	symbol	type	TypeId resolves	src/Udir/ModelRules.cs	var type = Ref(types, symbol.TypeId);	M03
+E	expr	expr	Arguments DAG	docs/design/udir-v1.md	Expression IDs allow DAG sharing.	M03
+E	expr	symbol	SymbolId optional	docs/design/udir-v1.md	literal?, symbolId?, span	M03
+E	constraint	expr	Boolean predicate	docs/design/udir-v1.md	Predicate has Boolean type.	M03
+E	objective	expr	Objective expression	docs/design/udir-v1.md	expressionId, direction, priority	M03
+E	symbol	span	Source provenance	src/Udir/Model.cs	string TypeId, SourceSpan Span	M03
+E	span	sources	SourceId + UTF16 range	docs/design/udir-v1.md	Half-open UTF-16 range relative to a frozen source.	M03
+E	scenario	scenario	ParentId tree	docs/design/udir-v1.md	For branching models use one root	M03
+D	pilot-erd	SP03-02	graph	Factory logical ERD	Approved pilot vocabulary, not an executable migration. All revision and run relationships remain tenant scoped; missing rows and unauthorized references fail before publication.	علاقات بيانات المصنع من القاموس المعتمد، لا تمثل DDL؛ ترتبط جميع العمليات والآلات والنتائج بنسخة ثابتة وسياق مستأجر مصرح به.
+N	workspace	RT01	WORKSPACE
+N	revision	M11	REVISION / F-REV
+N	machine	V01	MACHINE / F-MACHINE
+N	operation	V01	OPERATION / F-OP
+N	run	S07	RUN / F-RUN
+N	assign	V03	ASSIGNMENT / F-START
+N	evidence	S10	EVIDENCE / F-EVID
+E	workspace	revision	1 to many	docs/design/pilot-contracts.md	WORKSPACE ||--o{ REVISION : contains	RT01
+E	revision	machine	1 to many	docs/design/pilot-contracts.md	REVISION ||--o{ MACHINE : defines	V01
+E	revision	operation	1 to many	docs/design/pilot-contracts.md	REVISION ||--o{ OPERATION : freezes	V01
+E	machine	operation	1 to many	docs/design/pilot-contracts.md	MACHINE ||--o{ OPERATION : serves	V01
+E	revision	run	1 to many	docs/design/pilot-contracts.md	REVISION ||--o{ RUN : evaluated_by	S07
+E	run	evidence	1 to 0..1	docs/design/pilot-contracts.md	RUN ||--o| EVIDENCE : records	S10
+E	run	assign	1 to many	docs/design/pilot-contracts.md	RUN ||--o{ ASSIGNMENT : proposes	V03
+E	operation	assign	1 to many	docs/design/pilot-contracts.md	OPERATION ||--o{ ASSIGNMENT : scheduled_in	V03
+D	run-sequence	SP03-03	sequence	Decision execution sequence	Ordered messages from frozen submission through independent checking. The invalid branch returns diagnostics and never publishes accepted evidence.	تسلسل تنفيذ قرار من تجميد المدخلات حتى التحقق المستقل، وتعود التشخيصات في فرع الرفض دون نشر دليل مقبول.
+N	caller	UI01	Caller
+N	app	RT02	Application
+N	store	M11	Registry / evidence
+N	worker	S07	Worker
+N	verify	S04	Verifier
+E	caller	app	1 Submit revision + budget	docs/design/operating-modes.md	Submit revision and budget	RT02
+E	app	store	2 Freeze and record request	docs/design/operating-modes.md	Freeze source and record request	M11
+E	app	worker	3 Execute eligible plan	docs/design/operating-modes.md	Execute eligible plan	S07
+E	worker	app	4 Candidate / termination / bound	docs/design/operating-modes.md	Candidate, termination, optional bound	S07
+E	app	verify	5 Evaluate frozen source	docs/design/operating-modes.md	Evaluate against frozen source	S04
+E	verify	store	6a Accepted: commit evidence	docs/design/operating-modes.md	Commit evidence for this revision	S10
+E	store	caller	7a Decision and evidence IDs	docs/design/operating-modes.md	Decision and evidence IDs	S10
+E	verify	caller	6b Rejected: diagnostics	docs/design/operating-modes.md	Diagnostics and actual termination	S04
+D	contract-activity	SP03-03	graph	Contract admission activity	Envelope and payload acceptance are separate. A rejected or unknown required extension never reaches a domain mutation.	تُفحص الحاوية والإصدار والإضافات الإلزامية قبل تحقق المجال؛ ولا تؤدي رسالة غير متوافقة إلى تعديل البيانات.
+N	input	F05	HTTP / file / SDK
+N	json	F05	Bounded unique JSON
+N	version	F05	Family and major?
+N	ext	F05	Required extensions known?
+N	payload	M03	Domain validation
+N	publish	M11	Admit revision
+N	diag	F05	Diagnostic / preserve original
+E	input	json	Parse bounded envelope	docs/design/contract-compatibility.md	Bounded JSON and unique names	F05
+E	json	version	Contract identity	docs/design/contract-compatibility.md	Matching family and major?	F05
+E	version	ext	Yes	docs/design/contract-compatibility.md	Required extensions understood?	F05
+E	version	diag	No	docs/design/contract-compatibility.md	Reject with contract.major.	F05
+E	ext	payload	Yes	docs/design/contract-compatibility.md	Domain payload validation	M03
+E	ext	diag	No	docs/design/contract-compatibility.md	Reject with extension.required.	F05
+E	payload	publish	All domain checks pass	docs/design/contract-compatibility.md	admission, writes and cache publication take place only after all checks succeed.	M11
+E	payload	diag	Invalid payload	docs/design/contract-compatibility.md	Reject malformed data before persistence	F05
+D	decision-state	SP03-03	graph	Decision workflow state machine	All permitted transitions from the lifecycle table, including failure and cancellation. Mathematical status and termination are separate. Terminal retries create linked new revisions.	جميع الانتقالات المسموحة من جدول دورة القرار؛ حالة سير العمل منفصلة عن الحالة الرياضية وسبب التوقف، وتكون المحاولة الجديدة بسجل مرتبط.
+N	draft	S11	Draft
+N	validated	S11	Validated
+N	compiled	S11	Compiled
+N	queued	S11	Queued
+N	solving	S11	Solving
+N	solved	S11	Solved
+N	verified	S11	Verified
+N	proposed	S11	Proposed
+N	approved	S11	Approved
+N	executing	S11	Executing
+N	executed	S11	Executed
+N	monitoring	S11	Monitoring
+N	rejected	S11	Rejected (terminal)
+N	superseded	S11	Superseded (terminal)
+N	failed	S11	Failed (terminal)
+N	cancelled	S11	Cancelled (terminal)
+E	draft	validated	Schema / policy checks	docs/design/lifecycle.md	Draft | Validated, Cancelled	S11
+E	draft	cancelled	Cancel draft	docs/design/lifecycle.md	Draft | Validated, Cancelled	S11
+E	validated	compiled	Supported lowering	docs/design/lifecycle.md	Validated | Compiled, Failed, Cancelled	S11
+E	validated	failed	Lowering fails	docs/design/lifecycle.md	Validated | Compiled, Failed, Cancelled	S11
+E	validated	cancelled	Cancel	docs/design/lifecycle.md	Validated | Compiled, Failed, Cancelled	S11
+E	compiled	queued	Frozen profile and budget	docs/design/lifecycle.md	Compiled | Queued, Cancelled	S11
+E	compiled	cancelled	Cancel	docs/design/lifecycle.md	Compiled | Queued, Cancelled	S11
+E	queued	solving	Fenced lease	docs/design/lifecycle.md	Queued | Solving, Cancelled, Failed	S11
+E	queued	cancelled	Cancel	docs/design/lifecycle.md	Queued | Solving, Cancelled, Failed	S11
+E	queued	failed	Admission failure	docs/design/lifecycle.md	Queued | Solving, Cancelled, Failed	S11
+E	solving	solved	Actual outcome	docs/design/lifecycle.md	Solving | Solved, Failed, Cancelled	S11
+E	solving	failed	Infrastructure failure	docs/design/lifecycle.md	Solving | Solved, Failed, Cancelled	S11
+E	solving	cancelled	User cancellation	docs/design/lifecycle.md	Solving | Solved, Failed, Cancelled	S11
+E	solved	verified	Independent check	docs/design/lifecycle.md	Solved | Verified, Failed, Superseded	S11
+E	solved	failed	Invalid evidence	docs/design/lifecycle.md	Solved | Verified, Failed, Superseded	S11
+E	solved	superseded	New revision	docs/design/lifecycle.md	Solved | Verified, Failed, Superseded	S11
+E	verified	proposed	Verified feasible + policy	docs/design/lifecycle.md	Verified | Proposed, Superseded	S11
+E	verified	superseded	New revision	docs/design/lifecycle.md	Verified | Proposed, Superseded	S11
+E	proposed	approved	Authorized approver	docs/design/lifecycle.md	Proposed | Approved, Rejected, Superseded	S11
+E	proposed	rejected	Refusal audited	docs/design/lifecycle.md	Proposed | Approved, Rejected, Superseded	S11
+E	proposed	superseded	Stale revision	docs/design/lifecycle.md	Proposed | Approved, Rejected, Superseded	S11
+E	approved	executing	Policy gate; disabled by default	docs/design/lifecycle.md	Approved | Executing, Superseded	S11
+E	approved	superseded	Stale approval	docs/design/lifecycle.md	Approved | Executing, Superseded	S11
+E	executing	executed	Acknowledged external outcome	docs/design/lifecycle.md	Executing | Executed, Failed	S11
+E	executing	failed	Definitive failure	docs/design/lifecycle.md	Executing | Executed, Failed	S11
+E	executed	monitoring	Acknowledged observation	docs/design/lifecycle.md	Executed | Monitoring	S11
+E	monitoring	superseded	New revision	docs/design/lifecycle.md	Monitoring | Superseded	S11
+D	trust	SP03-04	graph	Tenant trust boundaries	Target controls B1–B7 with fail-closed behavior. These are security specifications, not an attestation that all controls are deployed.	حدود الثقة السبعة توضح المصادقة والعزل والاستيراد والعامل والأدلة والتنفيذ والعمليات؛ وهي مواصفات أمان لا شهادة نشر إنتاجي.
+N	caller	F04	Untrusted client
+N	identity	E01	B1 Identity + authorization
+N	store	E02	B2 Tenant services / store
+N	source	I01	Untrusted connector peer
+N	import	I02	B3 Staged import
+N	worker	E07	B4 Isolated worker
+N	verify	S04	Independent verifier
+N	export	SEC01	B5 Authorized recipient
+N	outbox	E04	B6 External write gate
+N	target	I04	External system
+N	ops	E05	B7 Operations domain
+N	deny	F04	Denied / quarantine
+E	caller	identity	TLS token; untrusted body	docs/design/tenant-threat-model.md	Validate issuer/audience/signature/lifetime	E01
+E	identity	store	Authorized tenant scope	docs/design/tenant-threat-model.md	Scoped application context	E01
+E	identity	deny	Missing or foreign context	docs/design/tenant-threat-model.md	Missing context denies	F04
+E	source	import	Authorized schema import	docs/design/tenant-threat-model.md	Authorized connector	I01
+E	import	store	Validated frozen snapshot	docs/design/tenant-threat-model.md	Validated immutable snapshot	I02
+E	import	deny	Quarantine invalid import	docs/design/tenant-threat-model.md	quarantine without advancing state	I02
+E	store	worker	Fenced lease; no credentials	docs/design/tenant-threat-model.md	Frozen input + fenced lease	E07
+E	worker	verify	Untrusted candidate	docs/design/tenant-threat-model.md	Untrusted candidate	S04
+E	verify	store	Accepted evidence only	docs/design/tenant-threat-model.md	Accepted evidence only	S10
+E	store	export	Scoped authorized export	docs/design/tenant-threat-model.md	Export authorized scope	SEC01
+E	store	outbox	Approval + outbox; write disabled by default	docs/design/tenant-threat-model.md	Disabled by default for financial, industrial and sensitive decisions	S11
+E	outbox	target	Target-bound key / reconcile	docs/design/tenant-threat-model.md	Target-bound key	I04
+E	store	ops	Redacted telemetry / backup	docs/design/tenant-threat-model.md	Redacted signals / encrypted backup	E05
+D	deployment	SP03-04	graph	Deployment and operating modes	Target topology for local, enterprise, headless, embedded and hybrid modes. Local has no listener requirement; hybrid transfer must be explicit.	طبولوجيا أوضاع التشغيل الخمسة؛ لا يشترط الوضع المحلي خادماً أو شبكة، والوضع الهجين يحتاج تصريحاً صريحاً.
+N	studio	U02	Studio native candidate
+N	cli	RT03	Headless CLI
+N	sdk	RT04	Embedded SDK
+N	mode	RT01	Explicit mode selection
+N	local	RT01	Local application + SQLite
+N	remote	RT02	Enterprise API + PostgreSQL
+N	hybrid	RT05	Hybrid transfer gate
+N	worker	S07	Isolated native adapter
+N	deny	RT05	Retain local state / deny
+E	studio	mode	Select workspace	docs/design/operating-modes.md	Select the workspace context first.	UI01
+E	cli	mode	Explicit arguments	docs/design/operating-modes.md	Configuration comes from explicit arguments and host configuration.	RT03
+E	sdk	local	Managed embedded options	docs/design/operating-modes.md	Consumer supplies managed options and a cancellation token	RT04
+E	mode	local	Local without listener	docs/design/operating-modes.md	No listener or external network prerequisite.	RT01
+E	mode	remote	Authenticated enterprise	docs/design/operating-modes.md	Resolve tenant from authentication	RT02
+E	mode	hybrid	Explicit remote submit	docs/design/operating-modes.md	Local revision remains authoritative until explicit remote submit.	RT05
+E	hybrid	remote	Authorized destination	docs/design/operating-modes.md	Pin destination, digest and permitted transfer scope.	RT05
+E	hybrid	deny	Unauthorized or disconnected	docs/design/operating-modes.md	A disconnected client can inspect local history.	RT05
+E	local	worker	Local IPC	docs/design/operating-modes.md	Start a worker over local IPC.	RT01
+E	remote	worker	Fenced job lease	docs/design/operating-modes.md	acquire a fenced job lease	RT02
+D	cli-tree	SP03-05	graph	CLI command families	Command families are the approved CLI design, not a claim all handlers exist. Help/version require no workspace, solver or network.	شجرة عائلات أوامر الطرفية وفق التصميم المعتمد؛ لا يعني الرسم أن جميع المعالجات منفذة، والمساعدة والإصدار بلا اعتماد على المحرك.
+N	root	CLI01	wowdi
+N	help	CLI01	help / version
+N	workspace	CLI01	init / workspace create list inspect open export
+N	model	CLI01	model create validate compile inspect compare export
+N	solve	CLI01	solve / solver list capabilities profile
+N	graph	CLI01	graph inspect dependencies impact export
+N	scenario	CLI01	scenario create compare / simulate
+N	evidence	CLI01	decision verify explain / evidence inspect export
+N	benchmark	CLI01	benchmark run compare report
+N	diagnostics	CLI01	doctor / config / logs / health
+N	fail	CLI01	Usage or unsupported / stderr
+E	root	help	No workspace or solver	docs/design/cli-contract.md	Help, version and syntax validation never require network access	CLI01
+E	root	workspace	API-WORKSPACE	docs/design/cli-contract.md	init, workspace create/list/inspect/open/export	CLI01
+E	root	model	API-MODEL	docs/design/cli-contract.md	model create/validate/compile/inspect/compare/export	CLI01
+E	root	solve	API-SOLVE / manifests	docs/design/cli-contract.md	solver list/capabilities/profile	CLI01
+E	root	graph	API-GRAPH	docs/design/cli-contract.md	graph inspect/dependencies/impact/export	CLI01
+E	root	scenario	API-SCENARIO	docs/design/cli-contract.md	scenario create/compare, simulate	CLI01
+E	root	evidence	API-EVIDENCE	docs/design/cli-contract.md	decision verify/explain, evidence inspect/export	CLI01
+E	root	benchmark	Paired benchmark	docs/design/cli-contract.md	benchmark run/compare/report	CLI01
+E	root	diagnostics	API-COMMAND	docs/design/cli-contract.md	doctor, version, config, logs, health	CLI01
+E	root	fail	Unknown command / invalid syntax	docs/design/cli-contract.md	Unknown commands return a nonzero usage status.	CLI01
+D	incremental	SP03-07	graph	Before and after incremental reuse	Reference full solve versus proposed exact reuse. New coupling invalidates affected scope; independent checker and valid global bound remain necessary. No unmeasured speedup is claimed.	مقارنة الحل الكامل بإعادة الاستخدام المشروطة بالفصل الرياضي؛ العلاقة الجديدة تبطل النطاق المتأثر، ولا يُدعى تحسن الأداء دون قياس.
+N	before	X05	Before: changed revision
+N	full	S06	Full eligible solve
+N	after	X05	After: old + new incidence
+N	closure	M02	Expand affected closure
+N	proof	X01	Prove separability / equal local cost
+N	reuse	X04	Reuse eligible exact artifact
+N	recompute	X05	Recompute affected components
+N	verify	S04	Verify original complete model
+N	bound	S05	Compatible bound or unknown
+N	reject	S04	Invalid candidate / fallback
+E	before	full	Full solve reference	docs/design/engine.md	Initial deterministic preference	X05
+E	after	closure	Union old and new scopes	docs/design/engine.md	compute closure on both old and new incidence	M02
+E	closure	proof	All constraint/objective scopes	docs/design/engine.md	Recalculate connected components using all constraint and objective-term scopes.	X01
+E	proof	reuse	Certified equal component	docs/design/engine.md	Equal canonical local feasible set and cost	X04
+E	proof	recompute	Changed component	docs/design/engine.md	A crossing edge merges components	X05
+E	proof	full	No separation proof	docs/design/engine.md	Heuristic graph partitioning can propose candidates but cannot prove independence.	X05
+E	reuse	verify	Remap and check original	docs/design/engine.md	Remap stable IDs and verify against current complete model	S04
+E	recompute	verify	Recombined candidate	docs/design/engine.md	reoptimization can produce only a candidate until a global bound closes.	S04
+E	full	verify	Independent original checks	docs/design/engine.md	Independently evaluate all original hard rows	S04
+E	verify	bound	Valid comparable proof or unknown	docs/design/engine.md	Unknown bound → unknown gap.	S05
+E	verify	reject	Invalid witness	docs/design/engine.md	Invalid witness → reject candidate and block proposal.	S04
+D	mathematical-fixture	SP03-07	graph	Factory mathematical example (observed synthetic proof)	Synthetic baseline and outage hand-proved optimum using V01 independent exhaustive checks. These costs are weighted minutes, not revenue or measured production savings.	مثال اصطناعي موثق بتعداد مستقل: القيمة المثلى 3 قبل التوقف و12 بعده، بوحدة دقائق موزونة وليست وفراً تجارياً.
+N	base	V01	Baseline: H=10, stock 1 + receipt at 3
+N	outage	V01	Outage: machine [1,3)
+N	opt1	V01	A=[0,3), B=[3,5)\nobjective=3
+N	opt2	V01	A=[3,6), B=[6,8)\nobjective=12
+N	proof	V01	Independent 121 start pairs per revision
+N	unknown	S05	No general optimality claim
+E	base	opt1	Hand bound attained	docs/design/manufacturing-source-v1.md	A=0,B=3 attains 3.	V01
+E	outage	opt2	Hand bound attained	docs/design/manufacturing-source-v1.md	A=3,B=6 attains 12.	V01
+E	opt1	proof	Exact independent enumeration	tests/Manufacturing.Data/evidence/oracle.txt	evaluated=121 feasible=41 optimum=3	V01
+E	opt2	proof	Exact independent enumeration	tests/Manufacturing.Data/evidence/oracle.txt	evaluated=121 feasible=12 optimum=12	V01
+E	proof	unknown	Restricted fixture only	docs/design/manufacturing-source-v1.md	This is not a production optimizer or verifier.	V01
+D	studio-navigation	SP03-05	graph	Studio navigation and module registry	All 23 reviewed module identities, organized by the ten official sidebar groups. Group placement is a presentation design decision, and unavailable feature providers remain explicitly unavailable.	توزيع الوحدات الثلاث والعشرين على مجموعات القائمة العشر المعتمدة؛ لا يعني ظهور الوحدة أن مزود الخدمة أو التنفيذ جاهز، ولا يجوز اختلاق البيانات.
+N	shell	UI01	Studio shell / authorized context
+N	unavailable	UI01	Unavailable provider / keep prior context
+N	overview	UI01	Overview
+E	shell	overview	Registered group	docs/design/references/IMPLEMENTATION-SPEC.md	Sidebar order: Overview, Decision Models, Decision Graph, Optimization, Scenarios, Simulation, Integrations, Benchmarks, Evidence, Settings.	UI01
+N	UI01	UI01	UI01 · Application shell
+E	overview	UI01	Registered view	docs/design/studio/UI01.md	# UI01 · Application shell	UI01
+N	UI02	UI02	UI02 · Workspace manager
+E	overview	UI02	Registered view	docs/design/studio/UI02.md	# UI02 · Workspace manager	UI02
+N	UI03	UI03	UI03 · Overview dashboard
+E	overview	UI03	Registered view	docs/design/studio/UI03.md	# UI03 · Overview dashboard	UI03
+N	UI22	UI22	UI22 · Command palette and productivity
+E	overview	UI22	Registered view	docs/design/studio/UI22.md	# UI22 · Command palette and productivity	UI22
+N	models	UI01	Decision Models
+E	shell	models	Registered group	docs/design/references/IMPLEMENTATION-SPEC.md	Sidebar order: Overview, Decision Models, Decision Graph, Optimization, Scenarios, Simulation, Integrations, Benchmarks, Evidence, Settings.	UI01
+N	UI04	UI04	UI04 · Visual model designer
+E	models	UI04	Registered view	docs/design/studio/UI04.md	# UI04 · Visual model designer	UI04
+N	UI06	UI06	UI06 · Decision DSL editor
+E	models	UI06	Registered view	docs/design/studio/UI06.md	# UI06 · Decision DSL editor	UI06
+N	UI07	UI07	UI07 · Constraint editor
+E	models	UI07	Registered view	docs/design/studio/UI07.md	# UI07 · Constraint editor	UI07
+N	UI08	UI08	UI08 · Objective editor
+E	models	UI08	Registered view	docs/design/studio/UI08.md	# UI08 · Objective editor	UI08
+N	UI09	UI09	UI09 · Mathematical model inspector
+E	models	UI09	Registered view	docs/design/studio/UI09.md	# UI09 · Mathematical model inspector	UI09
+N	graph	UI01	Decision Graph
+E	shell	graph	Registered group	docs/design/references/IMPLEMENTATION-SPEC.md	Sidebar order: Overview, Decision Models, Decision Graph, Optimization, Scenarios, Simulation, Integrations, Benchmarks, Evidence, Settings.	UI01
+N	UI05	UI05	UI05 · Enterprise decision graph explorer
+E	graph	UI05	Registered view	docs/design/studio/UI05.md	# UI05 · Enterprise decision graph explorer	UI05
+N	optimization	UI01	Optimization
+E	shell	optimization	Registered group	docs/design/references/IMPLEMENTATION-SPEC.md	Sidebar order: Overview, Decision Models, Decision Graph, Optimization, Scenarios, Simulation, Integrations, Benchmarks, Evidence, Settings.	UI01
+N	UI10	UI10	UI10 · Solver configuration
+E	optimization	UI10	Registered view	docs/design/studio/UI10.md	# UI10 · Solver configuration	UI10
+N	UI11	UI11	UI11 · Optimization monitor
+E	optimization	UI11	Registered view	docs/design/studio/UI11.md	# UI11 · Optimization monitor	UI11
+N	UI12	UI12	UI12 · Algorithm execution visualizer
+E	optimization	UI12	Registered view	docs/design/studio/UI12.md	# UI12 · Algorithm execution visualizer	UI12
+N	UI15	UI15	UI15 · Production scheduling studio
+E	optimization	UI15	Registered view	docs/design/studio/UI15.md	# UI15 · Production scheduling studio	UI15
+N	UI16	UI16	UI16 · Resource allocation visualizer
+E	optimization	UI16	Registered view	docs/design/studio/UI16.md	# UI16 · Resource allocation visualizer	UI16
+N	scenarios	UI01	Scenarios
+E	shell	scenarios	Registered group	docs/design/references/IMPLEMENTATION-SPEC.md	Sidebar order: Overview, Decision Models, Decision Graph, Optimization, Scenarios, Simulation, Integrations, Benchmarks, Evidence, Settings.	UI01
+N	UI13	UI13	UI13 · Scenario comparison studio
+E	scenarios	UI13	Registered view	docs/design/studio/UI13.md	# UI13 · Scenario comparison studio	UI13
+N	simulation	UI01	Simulation
+E	shell	simulation	Registered group	docs/design/references/IMPLEMENTATION-SPEC.md	Sidebar order: Overview, Decision Models, Decision Graph, Optimization, Scenarios, Simulation, Integrations, Benchmarks, Evidence, Settings.	UI01
+N	UI14	UI14	UI14 · Simulation studio
+E	simulation	UI14	Registered view	docs/design/studio/UI14.md	# UI14 · Simulation studio	UI14
+N	integrations	UI01	Integrations
+E	shell	integrations	Registered group	docs/design/references/IMPLEMENTATION-SPEC.md	Sidebar order: Overview, Decision Models, Decision Graph, Optimization, Scenarios, Simulation, Integrations, Benchmarks, Evidence, Settings.	UI01
+N	UI20	UI20	UI20 · Integration mapping designer
+E	integrations	UI20	Registered view	docs/design/studio/UI20.md	# UI20 · Integration mapping designer	UI20
+N	benchmarks	UI01	Benchmarks
+E	shell	benchmarks	Registered group	docs/design/references/IMPLEMENTATION-SPEC.md	Sidebar order: Overview, Decision Models, Decision Graph, Optimization, Scenarios, Simulation, Integrations, Benchmarks, Evidence, Settings.	UI01
+N	UI19	UI19	UI19 · Performance and benchmark studio
+E	benchmarks	UI19	Registered view	docs/design/studio/UI19.md	# UI19 · Performance and benchmark studio	UI19
+N	evidence	UI01	Evidence
+E	shell	evidence	Registered group	docs/design/references/IMPLEMENTATION-SPEC.md	Sidebar order: Overview, Decision Models, Decision Graph, Optimization, Scenarios, Simulation, Integrations, Benchmarks, Evidence, Settings.	UI01
+N	UI17	UI17	UI17 · Decision evidence viewer
+E	evidence	UI17	Registered view	docs/design/studio/UI17.md	# UI17 · Decision evidence viewer	UI17
+N	UI18	UI18	UI18 · Explainability studio
+E	evidence	UI18	Registered view	docs/design/studio/UI18.md	# UI18 · Explainability studio	UI18
+N	settings	UI01	Settings
+E	shell	settings	Registered group	docs/design/references/IMPLEMENTATION-SPEC.md	Sidebar order: Overview, Decision Models, Decision Graph, Optimization, Scenarios, Simulation, Integrations, Benchmarks, Evidence, Settings.	UI01
+N	UI21	UI21	UI21 · Administration and developer portal
+E	settings	UI21	Registered view	docs/design/studio/UI21.md	# UI21 · Administration and developer portal	UI21
+N	UI23	UI23	UI23 · Settings and diagnostics
+E	settings	UI23	Registered view	docs/design/studio/UI23.md	# UI23 · Settings and diagnostics	UI23
+E	shell	unavailable	Denied workspace or unavailable revision	docs/design/studio/review/UI01/shell-contract.md	restore only if still available and authorized	UI01
+D	dispatch-comparison	SP03-07	graph	EDD reference versus exact small optimum	The merged V02 reference and V01 exhaustive oracle use identical synthetic input hashes. Observed cost difference is algorithmic for these fixtures; no speed or commercial savings claims.	مقارنة عادلة بين الخوارزمية المرجعية والحل الأمثل في أمثلة ثابتة؛ اختلاف التكلفة مرتبط بالجدولة هنا ولا يمثل قياس سرعة أو وفراً تجارياً.
+N	baseline	V01	Baseline frozen source
+N	outage	V01	Outage frozen source
+N	edd1	V02	EDD=6 / B then A
+N	edd2	V02	EDD=15 / B then A
+N	exact1	V01	Optimum=3 / A then B
+N	exact2	V01	Optimum=12 / A then B
+N	verify	S04	Independent production checks required
+E	baseline	edd1	Observed same source digest	tests/Manufacturing.Dispatch/evidence/reference-dispatch.txt	EDD=6 starts=3,0	V02
+E	baseline	exact1	Exhaustive small optimum	tests/Manufacturing.Data/evidence/oracle.txt	evaluated=121 feasible=41 optimum=3	V01
+E	outage	edd2	Observed same source digest	tests/Manufacturing.Dispatch/evidence/reference-dispatch.txt	EDD=15 starts=5,3	V02
+E	outage	exact2	Exhaustive small optimum	tests/Manufacturing.Data/evidence/oracle.txt	evaluated=121 feasible=12 optimum=12	V01
+E	edd1	verify	Candidate only	docs/design/manufacturing-dispatch-v1.md	NoCandidate is not an Infeasible mathematical status	S04
+E	edd2	verify	Candidate only	docs/design/manufacturing-dispatch-v1.md	No run ID, bound, certificate or evidence digest is	S04
+D	compiler-frontends	SP03-01	graph	Merged compiler and frontend boundaries	Merged M05–M09, M10, M12 and S04 managed interfaces, with independent branches for lowering and presolve. UI integration and native execution are not yet established by these interfaces.	واجهات المترجم الفعلية المدمجة: يشترك DML وSDK والاستيراد في النموذج الموثق والتحليل الدلالي، بينما يبقى التبسيط المسبق والخفض مسارين منفصلين، ولا يدعي المخطط تشغيل محرك أصلي أو اكتمال واجهة الاستوديو.
+N	dml	M05	DML UTF-8 + source ID
+N	parse	M05	DmlParser
+N	bind	M06	DmlBinder / BoundDocument
+N	compile	M07	DmlCompiler
+N	sdk	M09	ModelBuilder / BuiltModel
+N	json	M10	VersionedModelImport
+N	udir	M03	Original UdirDocument
+N	normalize	M07	ExactNormalizer
+N	facts	M09	Frozen facts + catalog
+N	lower	M08	ExactLowerer
+N	presolve	M12	SafePresolve
+N	verify	S04	OriginalVerifier
+N	diagnostic	M07	Source-linked diagnostic
+E	dml	parse	Bounded grammar	src/Dml.Syntax/DmlParser.cs	public static DmlParseResult Parse(string sourceId, ReadOnlyMemory<byte> utf8	M05
+E	parse	bind	Bound syntax AST	docs/design/dml-binding-v1.md	consumes the accepted M05 syntax AST	M06
+E	bind	compile	Bound document + trusted context	docs/design/dml-semantics-v1.md	consumes the actual M06 BoundDocument	M07
+E	compile	udir	Validated source-linked model	docs/design/dml-semantics-v1.md	generates a structurally validated UDIR document	M07
+E	sdk	udir	Freeze managed model	docs/design/modeling-sdk.md	constructs the existing `WowDi.Udir.Model`	M09
+E	json	udir	Bounded imported model	docs/design/modeling-sdk.md	VersionedModelImport on JSON	M10
+E	compile	facts	Exact string-valued facts	docs/design/dml-semantics-v1.md	generated flat JSON fact snapshot uses exact string values	M07
+E	sdk	facts	FreezeFacts explicitly	docs/design/modeling-sdk.md	produce the S04 flat JSON string-valued baseline snapshot	M09
+E	udir	normalize	Shared semantic admission	docs/design/dml-semantics-v1.md	validates the existing bounded UDIR wire and measurements before rewriting	M07
+E	normalize	lower	Admitted normalized graph	src/Dml.Lowering/ExactLowerer.cs	Lower(NormalizedModel model,SolverCapabilities manifest	M08
+E	normalize	presolve	Standalone exact projection	src/Dml.Presolve/SafePresolve.cs	Apply(NormalizedModel model	M12
+E	facts	lower	Verified immutable fact bytes	docs/design/solver-lowering-v1.md	optional frozen flat facts	M08
+E	udir	verify	Original source evaluation	src/Verification.Independent/OriginalVerifier.cs	Check(UdirDocument document,MeasurementSemantics measurements	S04
+E	facts	verify	Original frozen facts	docs/design/modeling-sdk.md	check the original model and supplied frozen bytes	S04
+E	compile	diagnostic	Unsupported operational features	docs/design/dml-semantics-v1.md	return DML-CAP-001 rather than silently dropping them	M07
+E	normalize	diagnostic	Unsafe numeric admission	docs/design/dml-semantics-v1.md	DML-DIV-001 identifies division that cannot be proved safe	M07
+E	lower	diagnostic	Unsupported encoding or capability	docs/design/solver-lowering-v1.md	It rejects scenarios, soft rows, unsupported objective policies	M08

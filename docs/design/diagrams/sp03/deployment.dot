@@ -1,0 +1,24 @@
+digraph G {
+  graph [rankdir=TB, bgcolor="#ffffff", pad=0.2, nodesep=0.28, ranksep=0.65, fontname="DejaVu Sans", labelloc=t, fontsize=15, label="Deployment and operating modes — design / specification"];
+  node [shape=box, style="rounded,filled", fillcolor="#e8f4f1", color="#277664", fontname="DejaVu Sans", fontsize=10, fontcolor="#18352e"];
+  edge [color="#49697b", fontcolor="#263d4b", fontname="DejaVu Sans", fontsize=9, arrowsize=0.65];
+  "studio" [label="Studio native candidate\n#71", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/71"];
+  "cli" [label="Headless CLI\n#131", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/131"];
+  "sdk" [label="Embedded SDK\n#132", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/132"];
+  "mode" [label="Explicit mode selection\n#129", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/129"];
+  "local" [label="Local application + SQLite\n#129", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/129"];
+  "remote" [label="Enterprise API + PostgreSQL\n#130", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/130"];
+  "hybrid" [label="Hybrid transfer gate\n#133", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/133"];
+  "worker" [label="Isolated native adapter\n#32", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/32"];
+  "deny" [label="Retain local state / deny\n#133", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/133", fillcolor="#fbece7", color="#a55236", fontcolor="#78351f"];
+  "studio" -> "mode" [label="E01 Select workspace", tooltip="docs/design/operating-modes.md: Select the workspace context first.", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/90"];
+  "cli" -> "mode" [label="E02 Explicit arguments", tooltip="docs/design/operating-modes.md: Configuration comes from explicit arguments and host configuration.", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/131"];
+  "sdk" -> "local" [label="E03 Managed embedded options", tooltip="docs/design/operating-modes.md: Consumer supplies managed options and a cancellation token", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/132"];
+  "mode" -> "local" [label="E04 Local without listener", tooltip="docs/design/operating-modes.md: No listener or external network prerequisite.", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/129"];
+  "mode" -> "remote" [label="E05 Authenticated enterprise", tooltip="docs/design/operating-modes.md: Resolve tenant from authentication", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/130"];
+  "mode" -> "hybrid" [label="E06 Explicit remote submit", tooltip="docs/design/operating-modes.md: Local revision remains authoritative until explicit remote submit.", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/133"];
+  "hybrid" -> "remote" [label="E07 Authorized destination", tooltip="docs/design/operating-modes.md: Pin destination, digest and permitted transfer scope.", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/133"];
+  "hybrid" -> "deny" [label="E08 Unauthorized or disconnected", tooltip="docs/design/operating-modes.md: A disconnected client can inspect local history.", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/133"];
+  "local" -> "worker" [label="E09 Local IPC", tooltip="docs/design/operating-modes.md: Start a worker over local IPC.", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/129"];
+  "remote" -> "worker" [label="E10 Fenced job lease", tooltip="docs/design/operating-modes.md: acquire a fenced job lease", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/130"];
+}
