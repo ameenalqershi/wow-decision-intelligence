@@ -1,0 +1,28 @@
+name: Contract compatibility
+on:
+  pull_request:
+    paths:
+      - src/Contracts/**
+      - tests/Contracts/**
+      - .github/workflows/contract-compatibility.yml
+  push:
+    branches: [main]
+    paths:
+      - src/Contracts/**
+      - tests/Contracts/**
+      - .github/workflows/contract-compatibility.yml
+permissions:
+  contents: read
+jobs:
+  contracts:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - run: dotnet restore tests/Contracts/WowDi.Contracts.Tests.csproj --locked-mode
+      - run: dotnet test tests/Contracts/WowDi.Contracts.Tests.csproj --no-restore -c Release
