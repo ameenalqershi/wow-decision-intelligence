@@ -1,0 +1,12 @@
+problem Batch {
+  source orders schema "orders.v1";
+  resource stock : Int[kg] = 10[kg];
+  param consumption : Int[kg/batch] = 2[kg/batch];
+  param margin : Int[USD/batch] = 4[USD/batch];
+  decision qty : Int[batch] in [0[batch], 8[batch]];
+  constraint available : qty * consumption <= stock;
+  maximize profit priority 1 : qty * margin;
+  policy material hard available;
+  on change orders reoptimize;
+  scenario shortage { set stock = 4[kg]; }
+}

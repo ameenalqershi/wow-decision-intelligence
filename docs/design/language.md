@@ -56,3 +56,5 @@ Expected optimum: five batches, USD 20. Under shortage: two batches, USD 8. AST:
 | Submit deeply nested input or executable constructs | Bounded diagnostic. No evaluation or connector invocation during parsing |
 
 JSON Schema validates structure, enums and required properties. A semantic pass still checks symbols, compatible units, unique priorities, references and horizon. Keep extension namespaces distinct; an unknown must-understand property is an error. Suggested API: Build → Validate → Compile(profile) → Run(snapshot,budget) → Verify(originalModel, candidate). Future interval/cumulative constructs, multi-stage uncertainty and time types require versioned grammar and equivalent round-trip fixtures.
+
+**M05 syntax implementation:** [DML 0.1 syntax contract](dml-syntax-v1.md) specifies the implemented grammar clarifications for implicit Boolean domains and explicit soft penalties, AST/source spans, deterministic diagnostics, bounds, and scenario/trigger extension rules. Binding and semantic admission remain M06/M07.
