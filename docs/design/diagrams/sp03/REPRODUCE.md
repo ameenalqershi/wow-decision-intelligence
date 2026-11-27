@@ -42,3 +42,12 @@ transitions, 23 Studio views, 16 actual Chromium geometry checks and
 bilingual explanations. TC-SP03-B is covered by explicit target-design
 labels, source-linked managed interfaces and observed synthetic evidence
 only. This is specification acceptance, not production functionality.
+
+The first hosted SP03 run passed its diagram renderer but exposed a prior
+SP02 CI defect: hashing the entire mutable planning ledger made unrelated
+SP03 coverage changes invalidate the Studio matrix. The generator now
+hashes the reviewed Studio requirement semantics and effective dependency
+projection; the original review sourceRevision remains provenance, not
+a claim that the current full planning ledger equals that historical commit.
+Actual isolated-worktree regression: changing only SP03 implementation
+metadata passes, changing a UI01 requirement description fails verification.

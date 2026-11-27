@@ -1,7 +1,8 @@
 {
   "sourceRevision": "2e5513490a6710be659fd2c545125a2a69aa9fb5",
-  "requirementsHash": "abbc5a8917448dad55350130b0ec1d0088e4297cf082e2b01b040759b9ba302f",
-  "backlogHash": "6fe1d1b857331a06c83f1e2c8b859c4b8975a2cd565f9ad598450c26060c1909",
+  "requirementsHash": "7fcfaeee083bbf6d782ce80c34b49f8164aa3016f10c311be491ae9fb29b1d7e",
+  "backlogHash": "1872c7c56d0d1fabc5f8a2117c01e94caf00193a33af3fab1bdecaaf577cf0ed",
+  "hashScope": "Current Studio requirement semantics and effective dependency projection; sourceRevision identifies original review baseline, not the entire mutable planning ledger",
   "modules": [
     {
       "module": "UI01",
