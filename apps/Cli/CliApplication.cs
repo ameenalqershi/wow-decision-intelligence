@@ -1,5 +1,6 @@
 using System.CommandLine;
 using System.CommandLine.Invocation;
+using System.CommandLine.Completions;
 using System.Reflection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,18 +21,22 @@ public static class CliApplication
 
         var root = new RootCommand("WOW DI · Decision Intelligence Engine");
         // Replace the default action so the flag and subcommand use the same build identity.
+        var options = new CommandOptions();
+        options.Register(root);
+        var suggest = new SuggestDirective();
+        root.Directives.Add(suggest);
         var versionFlag = root.Options.OfType<VersionOption>().Single();
-        versionFlag.Action = new PrintVersionAction(output);
+        versionFlag.Action = new PrintVersionAction(output, error, options);
         var version = new Command("version", "Show the installed WOW DI build version.");
-        version.SetAction((_, token) => Task.FromResult(PrintVersion(output, token)));
+        version.SetAction((parsed, token) => Task.FromResult(PrintVersion(output, error, options.Read(parsed), token)));
         root.Subcommands.Add(version);
 
         var parsed = root.Parse(args, new ParserConfiguration { ResponseFileTokenReplacer = null });
-        if (parsed.Errors.Count != 0)
+        if (!ReferenceEquals(parsed.Action, suggest.Action) && (parsed.Errors.Count != 0 || options.Read(parsed) is { Quiet: true, Verbose: true }))
         {
             error.WriteLine("Invalid command or arguments.");
             error.WriteLine("Use --help for usage.");
-            return 2;
+            return (int)CliExitCode.Usage;
         }
 
         try
@@ -47,21 +52,24 @@ public static class CliApplication
         catch (OperationCanceledException)
         {
             error.WriteLine("Operation cancelled.");
-            return 130;
+            return (int)CliExitCode.Cancelled;
         }
         catch (Exception)
         {
             // Do not print configuration values, credentials or arbitrary exception payloads.
             error.WriteLine("WOW DI could not execute the command.");
-            return 5;
+            return (int)CliExitCode.InfrastructureFailure;
         }
     }
 
-    private static int PrintVersion(TextWriter output, CancellationToken token)
+    private static int PrintVersion(TextWriter output, TextWriter error, CliOutputOptions options, CancellationToken token)
     {
         token.ThrowIfCancellationRequested();
         using var host = CreateHost();
-        output.WriteLine(host.Services.GetRequiredService<BuildVersion>().Value);
+        var value = host.Services.GetRequiredService<BuildVersion>().Value;
+        var writer = new CliOutput(output, error, options);
+        writer.Verbose("Resolved installed build version.");
+        writer.WriteResult("version", new Dictionary<string, string?> { ["version"] = value }, value);
         return 0;
     }
 
@@ -83,9 +91,9 @@ public static class CliApplication
         return builder.Build();
     }
 
-    private sealed class PrintVersionAction(TextWriter output) : SynchronousCommandLineAction
+    private sealed class PrintVersionAction(TextWriter output, TextWriter error, CommandOptions options) : SynchronousCommandLineAction
     {
-        public override int Invoke(ParseResult parseResult) => PrintVersion(output, CancellationToken.None);
+        public override int Invoke(ParseResult parseResult) => PrintVersion(output, error, options.Read(parseResult), CancellationToken.None);
     }
 }
 
