@@ -1,0 +1,46 @@
+name: Immutable run evidence
+on:
+  pull_request:
+    paths:
+      - src/Verification.Evidence/**
+      - src/Verification.Bounds/**
+      - src/Verification.Independent/**
+      - src/ModelRegistry/**
+      - src/Udir/**
+      - src/Solver.Contracts/**
+      - src/Contracts/**
+      - src/DecisionGraph/**
+      - src/Manufacturing.Data/**
+      - tests/Verification.Evidence/**
+      - tests/Udir/Fixtures/**
+      - .github/workflows/evidence-lineage.yml
+  push:
+    branches: [main]
+    paths:
+      - src/Verification.Evidence/**
+      - src/Verification.Bounds/**
+      - src/Verification.Independent/**
+      - src/ModelRegistry/**
+      - src/Udir/**
+      - src/Solver.Contracts/**
+      - src/Contracts/**
+      - src/DecisionGraph/**
+      - src/Manufacturing.Data/**
+      - tests/Verification.Evidence/**
+      - tests/Udir/Fixtures/**
+      - .github/workflows/evidence-lineage.yml
+permissions:
+  contents: read
+jobs:
+  evidence:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - run: dotnet restore tests/Verification.Evidence/WowDi.Verification.Evidence.Tests.csproj --locked-mode
+      - run: dotnet test tests/Verification.Evidence/WowDi.Verification.Evidence.Tests.csproj --no-restore -c Release
