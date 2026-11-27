@@ -4,7 +4,7 @@ using WowDi.Enterprise.Identity;
 using Xunit;
 
 namespace WowDi.Enterprise.Operations.Tests;
-public sealed class DenialTests:IAsyncLifetime
+public sealed partial class DenialTests:IAsyncLifetime
 {
     private string _admin=null!,_db=null!,_connection=null!;
     private static readonly byte[] Key=Enumerable.Range(1,32).Select(x=>(byte)x).ToArray();
@@ -15,6 +15,7 @@ public sealed class DenialTests:IAsyncLifetime
         await using var c=new NpgsqlConnection(_admin);await c.OpenAsync();
         await using var cmd=new NpgsqlCommand($"CREATE DATABASE {_db}",c);await cmd.ExecuteNonQueryAsync();
         _connection=new NpgsqlConnectionStringBuilder(_admin){Database=_db,Pooling=false}.ConnectionString;
+        await using(var enterprise=new WowDi.Enterprise.Persistence.EnterpriseDb(WowDi.Enterprise.Persistence.EnterpriseDb.Configure(_connection)))await enterprise.Database.MigrateAsync();
         await using var db=new OperationsDb(OperationsDb.Configure(_connection));await db.Database.MigrateAsync();
     }
     public async Task DisposeAsync()
@@ -52,7 +53,7 @@ public sealed class DenialTests:IAsyncLifetime
     {
         var options=OperationsDb.Configure(_connection);
         await using(var db=new OperationsDb(options))
-        {Assert.False(db.Database.HasPendingModelChanges());await db.Database.MigrateAsync();Assert.Single(await db.Database.GetAppliedMigrationsAsync());}
+        {Assert.False(db.Database.HasPendingModelChanges());await db.Database.MigrateAsync();Assert.Equal(2,(await db.Database.GetAppliedMigrationsAsync()).Count());}
         await using(var c=new NpgsqlConnection(_connection))
         {await c.OpenAsync();await using var cmd=new NpgsqlCommand("DROP TABLE wowdi_ops.denials",c);await cmd.ExecuteNonQueryAsync();}
         var audit=new DurableDenialAudit(options,Key,TimeProvider.System);

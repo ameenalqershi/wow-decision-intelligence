@@ -27,7 +27,7 @@ public sealed class DurableDenialAudit : ITenantDenialAudit
         var correlation=Valid(denial.CorrelationId)?Digest("correlation",tenant??"",denial.CorrelationId):Digest("correlation",tenant??"","invalid");
         var action=denial.Action switch
         {
-            "View" or "Write" or "Propose" or "Approve" or "Execute" or "UnknownPermission"=>denial.Action,
+            "View" or "Write" or "Propose" or "Approve" or "Execute" or "Authenticate" or "UnknownPermission"=>denial.Action,
             _=>"Unknown"
         };
         await using var db=new OperationsDb(_options);
