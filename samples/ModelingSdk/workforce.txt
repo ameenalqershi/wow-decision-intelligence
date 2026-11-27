@@ -1,0 +1,9 @@
+Workforce planning requirements:
+Staff decision: integer between zero and twelve employees.
+Hours per employee: 8 hours.
+Hourly wage: 15 USD per hour.
+Demand: at least 64 hours.
+Labor capacity expression: staff times hours per employee.
+Coverage constraint: total hours meet demand.
+Cost expression: total hours times hourly wage.
+Cost objective: minimize total wages.
