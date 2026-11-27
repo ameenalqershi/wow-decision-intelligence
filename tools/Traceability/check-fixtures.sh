@@ -5,7 +5,7 @@ tmp=$(mktemp -d)
 trap 'rm -rf "$tmp"' EXIT
 dotnet build "$root/tools/Traceability" -c Release --nologo >/dev/null
 dll="$root/tools/Traceability/bin/Release/net10.0/Traceability.dll"
-cp -r "$root/planning" "$root/docs" "$root/research" "$tmp/"
+git -C "$root" ls-files -z --cached --others --exclude-standard | tar -C "$root" -cf - --null -T - | tar -C "$tmp" -xf -
 cd "$tmp"
 dotnet "$dll" > baseline
 reject() {
