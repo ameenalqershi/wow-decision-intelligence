@@ -1,0 +1,69 @@
+{
+  "profile": "wowdi.factory.source/1",
+  "revisionId": "synthetic-base-v1",
+  "clock": {
+    "calendarId": "factory-clock",
+    "timeZoneId": "UTC",
+    "origin": "2026-01-01T00:00:00Z",
+    "tickUnit": "minute",
+    "horizonMinutes": 10
+  },
+  "objectiveUnit": "weighted-minute",
+  "calendars": [
+    {
+      "machineId": "M1",
+      "downtime": []
+    }
+  ],
+  "materials": [
+    {
+      "materialId": "raw",
+      "unit": "piece",
+      "initialQuantity": "1"
+    }
+  ],
+  "receipts": [
+    {
+      "receiptId": "R1",
+      "materialId": "raw",
+      "unit": "piece",
+      "quantity": "1",
+      "availableMinute": 3
+    }
+  ],
+  "operations": [
+    {
+      "operationId": "A",
+      "jobId": "JA",
+      "machineId": "M1",
+      "releaseMinute": 0,
+      "durationMinutes": 3,
+      "dueMinute": 4,
+      "tardinessWeight": "3",
+      "materials": [
+        {
+          "materialId": "raw",
+          "unit": "piece",
+          "quantity": "1"
+        }
+      ]
+    },
+    {
+      "operationId": "B",
+      "jobId": "JB",
+      "machineId": "M1",
+      "releaseMinute": 0,
+      "durationMinutes": 2,
+      "dueMinute": 2,
+      "tardinessWeight": "1",
+      "materials": [
+        {
+          "materialId": "raw",
+          "unit": "piece",
+          "quantity": "1"
+        }
+      ]
+    }
+  ],
+  "precedence": []
+}

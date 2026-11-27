@@ -1,0 +1,112 @@
+{
+  "profile": "wowdi.factory.source/1",
+  "revisionId": "synthetic-multi-v1",
+  "clock": {
+    "calendarId": "factory-clock",
+    "timeZoneId": "UTC",
+    "origin": "2026-01-01T00:00:00Z",
+    "tickUnit": "minute",
+    "horizonMinutes": 12
+  },
+  "objectiveUnit": "USD",
+  "calendars": [
+    {
+      "machineId": "M1",
+      "downtime": []
+    },
+    {
+      "machineId": "M2",
+      "downtime": [
+        {
+          "startMinute": 3,
+          "endMinute": 4
+        }
+      ]
+    }
+  ],
+  "materials": [
+    {
+      "materialId": "raw",
+      "unit": "piece",
+      "initialQuantity": "1"
+    },
+    {
+      "materialId": "resin",
+      "unit": "kg",
+      "initialQuantity": "1/2"
+    }
+  ],
+  "receipts": [
+    {
+      "receiptId": "R1",
+      "materialId": "raw",
+      "unit": "piece",
+      "quantity": "1",
+      "availableMinute": 3
+    },
+    {
+      "receiptId": "R2",
+      "materialId": "resin",
+      "unit": "kg",
+      "quantity": "1/2",
+      "availableMinute": 4
+    }
+  ],
+  "operations": [
+    {
+      "operationId": "A",
+      "jobId": "JA",
+      "machineId": "M1",
+      "releaseMinute": 0,
+      "durationMinutes": 3,
+      "dueMinute": 4,
+      "tardinessWeight": "3",
+      "materials": [
+        {
+          "materialId": "raw",
+          "unit": "piece",
+          "quantity": "1"
+        }
+      ]
+    },
+    {
+      "operationId": "B",
+      "jobId": "JB",
+      "machineId": "M2",
+      "releaseMinute": 3,
+      "durationMinutes": 2,
+      "dueMinute": 5,
+      "tardinessWeight": "1/2",
+      "materials": [
+        {
+          "materialId": "raw",
+          "unit": "piece",
+          "quantity": "1"
+        },
+        {
+          "materialId": "resin",
+          "unit": "kg",
+          "quantity": "1"
+        }
+      ]
+    },
+    {
+      "operationId": "C",
+      "jobId": "JA",
+      "machineId": "M2",
+      "releaseMinute": 0,
+      "durationMinutes": 2,
+      "dueMinute": 9,
+      "tardinessWeight": "0",
+      "hardDeadlineMinute": 12,
+      "materials": []
+    }
+  ],
+  "precedence": [
+    {
+      "predecessor": "A",
+      "successor": "C"
+    }
+  ],
+  "currency": "USD"
+}
