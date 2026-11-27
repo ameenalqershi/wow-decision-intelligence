@@ -6,6 +6,9 @@ on:
       - src/Dml.Syntax/**
       - src/Dml.Binding/**
       - src/Dml.Semantics/**
+      - src/Verification.Independent/**
+      - src/Solver.Contracts/**
+      - src/Manufacturing.Data/**
       - tests/Dml.Semantics/**
       - tests/Dml.Binding/**
       - tests/Udir/Fixtures/**
@@ -19,6 +22,9 @@ on:
       - src/Dml.Syntax/**
       - src/Dml.Binding/**
       - src/Dml.Semantics/**
+      - src/Verification.Independent/**
+      - src/Solver.Contracts/**
+      - src/Manufacturing.Data/**
       - tests/Dml.Semantics/**
       - tests/Dml.Binding/**
       - tests/Udir/Fixtures/**

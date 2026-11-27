@@ -129,6 +129,22 @@ public sealed class NormalizationTests
         Assert.Equal("measure.expression",ExactNormalizer.Normalize(doc,Catalog()).Diagnostic!.Code);
     }
 
+    [Theory]
+    [InlineData("1/3","2/3",true)]
+    [InlineData("1/2","3/4",false)]
+    [InlineData("1/2",null,false)]
+    [InlineData(null,null,true)]
+    public void ScenarioProbabilitiesRequireCompleteExactSiblingMass(string? a,string? b,bool accepted)
+    {
+        var model=Document([],[],[],[]).Model with {Scenarios=[
+            new("root",0,"before",Span,[]),
+            new("a",1,"a",Span,[],"root",a),
+            new("b",1,"b",Span,[],"root",b)]};
+        var result=ExactNormalizer.Normalize(UdirDocument.Create(model),Catalog());
+        Assert.Equal(accepted,result.Accepted);
+        if(!accepted)Assert.Equal("DML-SCENARIO-002",result.Diagnostic!.Code);
+    }
+
     [Fact]
     public void SemanticProjectionPreservesDirectionAndDomainAndIgnoresSourceIdsOnly()
     {

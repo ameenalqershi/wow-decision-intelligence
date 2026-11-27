@@ -47,6 +47,7 @@ public static class ExactNormalizer
         internal NormalizedModel Run()
         {
             var model=document.Model;
+            ValidateScenarios(model.Scenarios);
             var originals=model.Expressions.ToDictionary(e=>e.Id,StringComparer.Ordinal);
             var pending=originals.Values.ToDictionary(e=>e.Id,e=>e.Arguments.Length,StringComparer.Ordinal);
             var reverse=originals.Keys.ToDictionary(k=>k,_=>new List<string>(),StringComparer.Ordinal);
@@ -89,6 +90,26 @@ public static class ExactNormalizer
             return new(document,nodes.ToImmutableDictionary(StringComparer.Ordinal),
                 [..origins.OrderBy(o=>o.OriginalId,StringComparer.Ordinal)],constraints,objectives,
                 ImmutableArray.CreateRange(bytes),Convert.ToHexStringLower(SHA256.HashData(bytes)));
+        }
+
+        private void ValidateScenarios(ImmutableArray<Scenario> scenarios)
+        {
+            foreach(var siblings in scenarios.Where(s=>s.ParentId is not null).GroupBy(s=>s.ParentId,StringComparer.Ordinal))
+            {
+                cancellation.ThrowIfCancellationRequested();
+                var first=siblings.First();
+                if(siblings.All(s=>s.Probability is null))continue;
+                if(siblings.Any(s=>s.Probability is null))
+                    throw new Failure("DML-SCENARIO-002","Conditional probabilities must be supplied for every sibling or none.",first.Span);
+                try
+                {
+                    var sum=Rational.Origin;
+                    foreach(var branch in siblings)sum+=Rational.Parse(branch.Probability!);
+                    if(sum!=Rational.One)
+                        throw new Failure("DML-SCENARIO-002","Sibling conditional probabilities must sum exactly to one.",first.Span);
+                }
+                catch(OverflowException){throw new Failure("DML-NUM-001","Exact scenario arithmetic exceeds the supported profile.",first.Span);}
+            }
         }
 
         private Fact Normalize(Expression e)

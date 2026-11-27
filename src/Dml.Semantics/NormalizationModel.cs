@@ -12,7 +12,7 @@ public sealed record NormalizedExpression(string Id,Operation Operation,Semantic
 public sealed record ExpressionOrigin(string OriginalId,SourceSpan Span,string NormalizedId,string Rewrite);
 public sealed record NormalizedConstraint(string Id,string PredicateId,bool Hard,string? Penalty,SourceSpan Span);
 public sealed record NormalizedObjective(string Id,string ExpressionId,Direction Direction,int Priority,string Weight,string Tolerance,SourceSpan Span);
-public sealed record SemanticDiagnostic(string Code,string Message,SourceSpan? Span);
+public sealed record SemanticDiagnostic(string Code,string Message,SourceSpan? Span,SourceSpan? RelatedSpan=null);
 
 public sealed class NormalizedModel
 {
