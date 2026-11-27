@@ -1,0 +1,22 @@
+digraph G {
+  graph [rankdir=TB, bgcolor="#ffffff", pad=0.2, nodesep=0.28, ranksep=0.65, fontname="DejaVu Sans", labelloc=t, fontsize=15, label="C4 Containers — design / specification"];
+  node [shape=box, style="rounded,filled", fillcolor="#e8f4f1", color="#277664", fontname="DejaVu Sans", fontsize=10, fontcolor="#18352e"];
+  edge [color="#49697b", fontcolor="#263d4b", fontname="DejaVu Sans", fontsize=9, arrowsize=0.65];
+  "client" [label="Studio / CLI / SDK\n#90", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/90"];
+  "local" [label="Local managed host\n#129", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/129"];
+  "api" [label="ASP.NET Core enterprise\n#130", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/130"];
+  "sqlite" [label="Workspace SQLite\n#129", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/129"];
+  "pg" [label="Tenant PostgreSQL\n#76", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/76"];
+  "engine" [label="Shared engine + verifier\n#16", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/16"];
+  "worker" [label="Isolated worker process\n#32", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/32"];
+  "diag" [label="Denied transfer / unsupported\n#12", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/12", fillcolor="#fbece7", color="#a55236", fontcolor="#78351f"];
+  "client" -> "local" [label="E01 Explicit local mode", tooltip="docs/design/operating-modes.md: Local application host", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/129"];
+  "client" -> "api" [label="E02 Enterprise or authorized hybrid", tooltip="docs/design/tenant-threat-model.md: remote server reauthorizes independently", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/12"];
+  "client" -> "diag" [label="E03 Unauthorized hybrid transfer", tooltip="docs/design/operating-modes.md: Reject unauthorized upload", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/133"];
+  "local" -> "sqlite" [label="E04 Local transaction", tooltip="docs/design/operating-modes.md: One workspace database and immutable evidence store", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/129"];
+  "api" -> "pg" [label="E05 Tenant transaction", tooltip="docs/design/operating-modes.md: PostgreSQL and transactional outbox", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/130"];
+  "local" -> "engine" [label="E06 Managed application ports", tooltip="docs/design/operating-modes.md: Shared engine and verifier", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/129"];
+  "api" -> "engine" [label="E07 Freeze and plan", tooltip="docs/design/architecture.md: A job freezes input snapshots", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/130"];
+  "engine" -> "worker" [label="E08 Constrained adapter process", tooltip="docs/design/architecture.md: one constrained native adapter process per admitted job", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/32"];
+  "worker" -> "engine" [label="E09 Candidate only", tooltip="docs/design/operating-modes.md: A process exit cannot turn an unverified incumbent into a verified result.", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/29"];
+}

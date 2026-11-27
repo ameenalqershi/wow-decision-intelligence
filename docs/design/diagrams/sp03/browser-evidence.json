@@ -1,0 +1,177 @@
+{
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Chrome/141.0.7390.37",
+    "revision": "@9f043f63b0e5b728c8d09f3e3ddfc1681a4bd58e",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.0.0 Safari/537.36",
+    "jsVersion": "14.1.146.11"
+  },
+  "diagrams": [
+    {
+      "file": "cli-tree.svg",
+      "viewBox": [
+        598.7999877929688,
+        627.9400024414062
+      ],
+      "labels": 33,
+      "outside": [],
+      "collisions": [],
+      "links": 31
+    },
+    {
+      "file": "containers.svg",
+      "viewBox": [
+        685.7999877929688,
+        371.79998779296875
+      ],
+      "labels": 26,
+      "outside": [],
+      "collisions": [],
+      "links": 26
+    },
+    {
+      "file": "context.svg",
+      "viewBox": [
+        467.29998779296875,
+        277.79998779296875
+      ],
+      "labels": 18,
+      "outside": [],
+      "collisions": [],
+      "links": 16
+    },
+    {
+      "file": "contract-activity.svg",
+      "viewBox": [
+        473.79998779296875,
+        559.7999877929688
+      ],
+      "labels": 23,
+      "outside": [],
+      "collisions": [],
+      "links": 23
+    },
+    {
+      "file": "decision-state.svg",
+      "viewBox": [
+        1219.800048828125,
+        1217.800048828125
+      ],
+      "labels": 60,
+      "outside": [],
+      "collisions": [],
+      "links": 70
+    },
+    {
+      "file": "deployment.svg",
+      "viewBox": [
+        636.2999877929688,
+        465.79998779296875
+      ],
+      "labels": 29,
+      "outside": [],
+      "collisions": [],
+      "links": 29
+    },
+    {
+      "file": "dispatch-comparison.svg",
+      "viewBox": [
+        708.7999877929688,
+        277.79998779296875
+      ],
+      "labels": 21,
+      "outside": [],
+      "collisions": [],
+      "links": 19
+    },
+    {
+      "file": "engine.svg",
+      "viewBox": [
+        498.79998779296875,
+        747.7999877929688
+      ],
+      "labels": 29,
+      "outside": [],
+      "collisions": [],
+      "links": 29
+    },
+    {
+      "file": "incremental.svg",
+      "viewBox": [
+        643.7999877929688,
+        559.7999877929688
+      ],
+      "labels": 32,
+      "outside": [],
+      "collisions": [],
+      "links": 32
+    },
+    {
+      "file": "mathematical-fixture.svg",
+      "viewBox": [
+        663.7999877929688,
+        376.79998779296875
+      ],
+      "labels": 20,
+      "outside": [],
+      "collisions": [],
+      "links": 16
+    },
+    {
+      "file": "pilot-erd.svg",
+      "viewBox": [
+        452.79998779296875,
+        465.79998779296875
+      ],
+      "labels": 23,
+      "outside": [],
+      "collisions": [],
+      "links": 23
+    },
+    {
+      "file": "run-sequence.svg",
+      "viewBox": [
+        1200,
+        848
+      ],
+      "labels": 19,
+      "outside": [],
+      "collisions": [],
+      "links": 13
+    },
+    {
+      "file": "studio-navigation.svg",
+      "viewBox": [
+        1039.800048828125,
+        1321.800048828125
+      ],
+      "labels": 105,
+      "outside": [],
+      "collisions": [],
+      "links": 103
+    },
+    {
+      "file": "trust.svg",
+      "viewBox": [
+        938.2999877929688,
+        465.79998779296875
+      ],
+      "labels": 38,
+      "outside": [],
+      "collisions": [],
+      "links": 38
+    },
+    {
+      "file": "udir-classes.svg",
+      "viewBox": [
+        1025.300048828125,
+        589.7999877929688
+      ],
+      "labels": 43,
+      "outside": [],
+      "collisions": [],
+      "links": 39
+    }
+  ],
+  "scope": "Actual SVG text geometry; not product UI or production deployment"
+}

@@ -1,0 +1,24 @@
+digraph G {
+  graph [rankdir=TB, bgcolor="#ffffff", pad=0.2, nodesep=0.28, ranksep=0.65, fontname="DejaVu Sans", labelloc=t, fontsize=15, label="C4 Engine Components — design / specification"];
+  node [shape=box, style="rounded,filled", fillcolor="#e8f4f1", color="#277664", fontname="DejaVu Sans", fontsize=10, fontcolor="#18352e"];
+  edge [color="#49697b", fontcolor="#263d4b", fontname="DejaVu Sans", fontsize=9, arrowsize=0.65];
+  "input" [label="DML / SDK / visual input\n#18", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/18"];
+  "bind" [label="Bind and type-check\n#20", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/20"];
+  "udir" [label="Normalized typed UDIR\n#16", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/16"];
+  "lower" [label="Exact presolve / lowering\n#21", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/21"];
+  "plan" [label="Capability planner\n#31", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/31"];
+  "worker" [label="Budgeted worker\n#32", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/32"];
+  "verify" [label="Original model verifier\n#29", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/29"];
+  "evidence" [label="Immutable evidence\n#35", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/35"];
+  "reject" [label="Diagnostic / reject witness\n#29", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/29", fillcolor="#fbece7", color="#a55236", fontcolor="#78351f"];
+  "input" -> "bind" [label="E01 Parse and bind", tooltip="docs/design/engine.md: Parsing constructs an AST without external IO.", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/20"];
+  "bind" -> "udir" [label="E02 Validate units/domains", tooltip="docs/design/engine.md: Validate units, domains and scopes", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/20"];
+  "udir" -> "lower" [label="E03 Exact presolve", tooltip="docs/design/engine.md: Exact presolve and reconstruction ledger", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/21"];
+  "lower" -> "plan" [label="E04 Eligible lowering", tooltip="docs/design/engine.md: Unsupported exact lowering returns a diagnostic.", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/31"];
+  "plan" -> "worker" [label="E05 Admitted isolated execution", tooltip="docs/design/architecture.md: one constrained native adapter process per admitted job", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/32"];
+  "udir" -> "verify" [label="E06 Original frozen input", tooltip="docs/design/engine.md: Independent source-model evaluation", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/29"];
+  "worker" -> "verify" [label="E07 Untrusted candidate", tooltip="docs/design/tenant-threat-model.md: Treat candidate as untrusted.", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/29"];
+  "verify" -> "evidence" [label="E08 Accepted witness", tooltip="docs/design/operating-modes.md: Commit evidence for this revision", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/35"];
+  "verify" -> "reject" [label="E09 Invalid witness", tooltip="docs/design/engine.md: Invalid witness → reject candidate and block proposal.", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/29"];
+  "plan" -> "reject" [label="E10 Unsupported capability", tooltip="docs/design/engine.md: no eligible backend → unsupported", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/31"];
+}

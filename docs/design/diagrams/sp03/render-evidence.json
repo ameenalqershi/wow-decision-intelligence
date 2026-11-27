@@ -1,0 +1,162 @@
+{
+  "diagramCount": 15,
+  "nodeCount": 157,
+  "edgeCount": 179,
+  "requirementCount": 7,
+  "lifecycleTransitions": 27,
+  "uiModules": 23,
+  "renderer": "dot - graphviz version 2.43.0 (0)",
+  "scope": "Rendered specification, not deployment or functional acceptance",
+  "diagrams": [
+    {
+      "diagram": "context",
+      "requirement": "SP03-01",
+      "nodes": 6,
+      "edges": 5,
+      "renderedText": 18,
+      "sourceSha256": "3ccea25dbcdd2dc2714b0cdaa9b56e132d645c5d5975a2fc956d4555174a24b3",
+      "renderedSha256": "1e6f3619661655bb01df9772863caf6f89652a001d8cd94a142cdbeb8d3665c8",
+      "viewBox": "0.00 0.00 467.30 277.80"
+    },
+    {
+      "diagram": "containers",
+      "requirement": "SP03-01",
+      "nodes": 8,
+      "edges": 9,
+      "renderedText": 26,
+      "sourceSha256": "b443600652a7ca878623db153103d2fc3315a6b05310005412fba05d86124a7f",
+      "renderedSha256": "e0f2b576f0546fccf3c3e56d8c0e05a5562eeb8da3f60445037db87eb5fc5312",
+      "viewBox": "0.00 0.00 685.80 371.80"
+    },
+    {
+      "diagram": "engine",
+      "requirement": "SP03-01",
+      "nodes": 9,
+      "edges": 10,
+      "renderedText": 29,
+      "sourceSha256": "2086a011ff357b05b8b09ce8a8304491d5e74e1778372da6087754c97a3abd9f",
+      "renderedSha256": "9c7461d6454919aa5059a6fc44380a78a57116252244a4518e6b99194ac60a53",
+      "viewBox": "0.00 0.00 498.80 747.80"
+    },
+    {
+      "diagram": "udir-classes",
+      "requirement": "SP03-02",
+      "nodes": 9,
+      "edges": 15,
+      "renderedText": 43,
+      "sourceSha256": "4657a59442c11208562751f172aa04758295b519f31492154f6d780c28447ec4",
+      "renderedSha256": "e82c04fdd2fc229ed14fee063ff00ff50693bc4259b97578a50954816aecf33a",
+      "viewBox": "0.00 0.00 1025.30 589.80"
+    },
+    {
+      "diagram": "pilot-erd",
+      "requirement": "SP03-02",
+      "nodes": 7,
+      "edges": 8,
+      "renderedText": 23,
+      "sourceSha256": "edec3ad2927ba41888f72b950359e42ef224e5722d23f1b65525010240bb0817",
+      "renderedSha256": "294195a9d82bb826e328577f140287ebaba95b6c52ada2ffe77eda98920c4cc9",
+      "viewBox": "0.00 0.00 452.80 465.80"
+    },
+    {
+      "diagram": "run-sequence",
+      "requirement": "SP03-03",
+      "nodes": 5,
+      "edges": 8,
+      "renderedText": 19,
+      "sourceSha256": "80df3047d5e9fb95aa6527b7ab278a2167b9bae7f5e23bf538bd2720e80854e8",
+      "renderedSha256": "756c89b959e3769aac2bc0c54885f30f2ce81523fc149c0b2c45ba7f766ee2cc",
+      "viewBox": "0 0 1200 848"
+    },
+    {
+      "diagram": "contract-activity",
+      "requirement": "SP03-03",
+      "nodes": 7,
+      "edges": 8,
+      "renderedText": 23,
+      "sourceSha256": "a952bbec58c1f78128e804fe1ee203e8d5a36f1c622d7dd12f6e0af402f3c272",
+      "renderedSha256": "a41226a98d7523b31b2aaedc5600df8b2f5d9fc0b5155089fbb90b47c525d6d6",
+      "viewBox": "0.00 0.00 473.80 559.80"
+    },
+    {
+      "diagram": "decision-state",
+      "requirement": "SP03-03",
+      "nodes": 16,
+      "edges": 27,
+      "renderedText": 60,
+      "sourceSha256": "c6b2eb52862dffdec883602fc25e7265dea4813ef35994b0b920fc6db13fa650",
+      "renderedSha256": "f53cb4e567235f93bcb1b9d8d4aeff54955bc63ced4569b32787e2754018398c",
+      "viewBox": "0.00 0.00 1219.80 1217.80"
+    },
+    {
+      "diagram": "trust",
+      "requirement": "SP03-04",
+      "nodes": 12,
+      "edges": 13,
+      "renderedText": 38,
+      "sourceSha256": "6c3c3c78ea91d8fbfe9b32ebbc85d58b5c0a112d1d50fa18f815cf4f482a6108",
+      "renderedSha256": "c141f88734ec7e727d1bbfd704a550add4907ff19a29082655f8d289137906f8",
+      "viewBox": "0.00 0.00 938.30 465.80"
+    },
+    {
+      "diagram": "deployment",
+      "requirement": "SP03-04",
+      "nodes": 9,
+      "edges": 10,
+      "renderedText": 29,
+      "sourceSha256": "863a816e2906648969175713bf943be3fd9b2fdca4ed3873704175824c85750f",
+      "renderedSha256": "d25349c8603ebca1691ceddeb2de3d1dd81fc4180026b6eac51664cf4d6a7403",
+      "viewBox": "0.00 0.00 636.30 465.80"
+    },
+    {
+      "diagram": "cli-tree",
+      "requirement": "SP03-05",
+      "nodes": 11,
+      "edges": 10,
+      "renderedText": 33,
+      "sourceSha256": "2ba70fc1f968dde3d9b30eca06f127d1e7b51f6a360470ac7155edd18dbbb563",
+      "renderedSha256": "19d4c45b5b660a222bb95dc5913101855b31aa89f0e34197310e7916f0330975",
+      "viewBox": "0.00 0.00 598.80 627.94"
+    },
+    {
+      "diagram": "incremental",
+      "requirement": "SP03-07",
+      "nodes": 10,
+      "edges": 11,
+      "renderedText": 32,
+      "sourceSha256": "de82facb65bcce8eccc27372eee01efb2a98cd7dcb6ce3203d50e52a1ff6666b",
+      "renderedSha256": "11578910ce6757ac3aea4955f4293438e452a69d2746341ca7acd726bff4f417",
+      "viewBox": "0.00 0.00 643.80 559.80"
+    },
+    {
+      "diagram": "mathematical-fixture",
+      "requirement": "SP03-07",
+      "nodes": 6,
+      "edges": 5,
+      "renderedText": 20,
+      "sourceSha256": "d2fba8946d5e6084e6a03456388fe539c12751d7bcd390143c29ffd1503bafc0",
+      "renderedSha256": "dc8e622b6d08597eb3fab4d10597acd68cbadce53661cf83059d415f68512daf",
+      "viewBox": "0.00 0.00 663.80 376.80"
+    },
+    {
+      "diagram": "studio-navigation",
+      "requirement": "SP03-05",
+      "nodes": 35,
+      "edges": 34,
+      "renderedText": 105,
+      "sourceSha256": "31a5625b82e5984c96eae9a2c4a2eff0efaa436857241868a209cada010b10d3",
+      "renderedSha256": "4d45e06ecdb8a9faa1844afeae08e77cfbba177f6dccc211749837a9882814ef",
+      "viewBox": "0.00 0.00 1039.80 1321.80"
+    },
+    {
+      "diagram": "dispatch-comparison",
+      "requirement": "SP03-07",
+      "nodes": 7,
+      "edges": 6,
+      "renderedText": 21,
+      "sourceSha256": "0a020f09563663b6b98b5b1d5eab20f32f12e15b4eb76d5317dd80f940ad426a",
+      "renderedSha256": "edd8a9063fd66696a73b8182861aa434e46e833587a8827191e1674dd5c74e85",
+      "viewBox": "0.00 0.00 708.80 277.80"
+    }
+  ]
+}
