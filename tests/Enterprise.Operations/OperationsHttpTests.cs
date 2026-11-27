@@ -28,7 +28,13 @@ public sealed partial class DenialTests
 {
     private const string Issuer="https://issuer.example.test", Audience="wowdi-operations";
     [Fact]
-    public async Task RealHttpJwtAndRegistryAdmissionScopeUsageAndDenialAudit()
+    public Task RealHttpJwtAndRegistryAdmissionScopeUsageAndDenialAudit()=>ExerciseHttpAsync(false);
+
+    [Fact]
+    [Trait("Category","OSContainment")]
+    public Task RealOsMeasuredWorkerThroughActualRegistryAndHttp()=>ExerciseHttpAsync(true);
+
+    private async Task ExerciseHttpAsync(bool actualWorker)
     {
         using var rsa=RSA.Create(2048);
         var builder=WebApplication.CreateBuilder();
@@ -83,23 +89,51 @@ public sealed partial class DenialTests
             return await client.SendAsync(req);
         }
         var recorder=new RunUsageRecorder(OperationsDb.Configure(_connection));
+        BoundaryResult? expected=null;
         foreach(var tenant in new[]{"tenant-a","tenant-b"})
         {
             using var admitted=await Send(HttpMethod.Post,"/fixture/admit/"+tenant,Token(tenant));
             Assert.Equal(HttpStatusCode.OK,admitted.StatusCode);
             var job=(await admitted.Content.ReadFromJsonAsync<string>())!;
-            var lease=new WorkerLease(new(new(tenant,"factory","r17",job),new(1,1048576,TimeSpan.FromSeconds(30)),new string('a',64)),Guid.NewGuid(),1,TimeSpan.FromSeconds(20));
-            await recorder.RecordAsync(lease,new(Termination.Completed,0,[1],new(100,tenant=="tenant-a"?50:80,null),true,null,1024,"cgroup-v2-charged-memory",100));
+            WorkerLease lease;
+            BoundaryResult measurement;
+            if(actualWorker)
+            {
+                string Env(string name)=>Environment.GetEnvironmentVariable(name)??throw new InvalidOperationException(name+" required.");
+                const long memory=256*1024*1024;
+                var governor=new WorkerGovernor(new(1,memory,1,8),new Dictionary<string,TenantCapacity>{{tenant,new(1,memory,1,4)}});
+                var digest=Convert.ToHexStringLower(SHA256.HashData(UdirDocument.Create(UdirDocument.Read(File.ReadAllBytes(Path.Combine(AppContext.BaseDirectory,"Fixtures","factory.json"))).Model with{TenantId=tenant}).Write()));
+                var request=new WorkerRequest(new(tenant,"factory","r17",job),new(1,memory,TimeSpan.FromSeconds(30)),digest);
+                Assert.Equal(Admission.Accepted,governor.Submit(request));
+                lease=governor.TryAcquire()!;
+                var boundary=new WorkerProcessBoundary(new LinuxCgroupScopeFactory(Env("WOWDI_TEST_CGROUP_ROOT")),
+                    new(Env("WOWDI_TEST_DOTNET"),[Env("WOWDI_TEST_BOOTSTRAP")],AppContext.BaseDirectory));
+                var executor=new WorkerExecutor(governor,boundary);
+                var (completion,result)=await executor.RunAsync(lease,new(Env("WOWDI_TEST_DOTNET"),[Env("WOWDI_TEST_FIXTURE"),"cpu"],AppContext.BaseDirectory));
+                Assert.True(completion.CandidateEligible,result.Diagnostic);
+                Assert.True(result.CleanupConfirmed);
+                Assert.True(result.Resources.CpuMs>0);
+                Assert.True(result.ScopePeakBytes>0);
+                Assert.Equal(0,governor.Snapshot().Running);
+                measurement=result;
+            }
+            else
+            {
+                lease=new(new(new(tenant,"factory","r17",job),new(1,1048576,TimeSpan.FromSeconds(30)),new string('a',64)),Guid.NewGuid(),1,TimeSpan.FromSeconds(20));
+                measurement=new(Termination.Completed,0,[1],new(100,tenant=="tenant-a"?50:80,null),true,null,1024,"cgroup-v2-charged-memory",100);
+            }
+            await recorder.RecordAsync(lease,measurement);
+            if(tenant=="tenant-a")expected=measurement;
         }
         using var allowed=await Send(HttpMethod.Get,"/fixture/usage/tenant-a/factory",Token("tenant-a"));
         Assert.Equal(HttpStatusCode.OK,allowed.StatusCode);
         Assert.True(allowed.Headers.CacheControl!.NoStore);
         var totals=(await allowed.Content.ReadFromJsonAsync<UsageTotals>())!;
         Assert.Equal(1,totals.Attempts);
-        Assert.Equal(100m,totals.ReservedCoreMs);
-        Assert.Equal(50m,totals.MeasuredCpuMs);
+        Assert.Equal((decimal)expected!.ReservedCoreMilliseconds,totals.ReservedCoreMs);
+        Assert.Equal((decimal?)expected.Resources.CpuMs,totals.MeasuredCpuMs);
         Assert.Equal(1,totals.CpuMeasuredAttempts);
-        Assert.Equal(1024,totals.PeakScopeBytes);
+        Assert.Equal(expected.ScopePeakBytes,totals.PeakScopeBytes);
         using var foreign=await Send(HttpMethod.Get,"/fixture/usage/tenant-b/factory",Token("tenant-a"));
         using var wrongModel=await Send(HttpMethod.Get,"/fixture/usage/tenant-a/foreign-model",Token("tenant-a"));
         using var wrongRole=await Send(HttpMethod.Get,"/fixture/usage/tenant-a/factory",Token("tenant-a","denied"));

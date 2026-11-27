@@ -5,6 +5,9 @@ on:
       - src/Enterprise/Operations/**
       - src/Enterprise/Persistence/**
       - src/Runtime.Governance/**
+      - src/Runtime.WorkerBootstrap/**
+      - tests/Runtime.Governance.Fixture/**
+      - tools/run-operations-cgroup-tests.sh
       - src/Solver.Contracts/**
       - src/Enterprise.Identity/**
       - src/Udir/**
@@ -19,6 +22,9 @@ on:
       - src/Enterprise/Operations/**
       - src/Enterprise/Persistence/**
       - src/Runtime.Governance/**
+      - src/Runtime.WorkerBootstrap/**
+      - tests/Runtime.Governance.Fixture/**
+      - tools/run-operations-cgroup-tests.sh
       - src/Solver.Contracts/**
       - src/Enterprise.Identity/**
       - src/Udir/**
@@ -57,4 +63,10 @@ jobs:
       - run: echo /usr/lib/postgresql/16/bin >> "$GITHUB_PATH"
       - run: pg_dump --version | grep -E "PostgreSQL\) 16\." && pg_restore --version | grep -E "PostgreSQL\) 16\."
       - run: dotnet restore tests/Enterprise.Operations/WowDi.Enterprise.Operations.Tests.csproj --locked-mode
-      - run: dotnet test tests/Enterprise.Operations/WowDi.Enterprise.Operations.Tests.csproj --no-restore -c Release
+      - run: dotnet test tests/Enterprise.Operations/WowDi.Enterprise.Operations.Tests.csproj --no-restore -c Release --filter 'Category!=OSContainment'
+      - run: dotnet build src/Runtime.WorkerBootstrap/WowDi.Runtime.WorkerBootstrap.csproj -c Release
+      - run: dotnet build tests/Runtime.Governance.Fixture/WowDi.Runtime.Governance.Fixture.csproj -c Release
+      - name: Actual worker resource accounting with PostgreSQL
+        shell: bash
+        run: |
+          sudo systemd-run --wait --pipe --collect --property=Delegate=yes --property="User=$(id -un)" --working-directory="$PWD" --setenv="WOWDI_TEST_DOTNET=$(readlink -f "$(command -v dotnet)")" --setenv="WOWDI_PG=$WOWDI_PG" /bin/bash "$PWD/tools/run-operations-cgroup-tests.sh"
