@@ -1,0 +1,1504 @@
+[
+  {
+    "id": "R01",
+    "issue": 1,
+    "state": "CLOSED",
+    "labels": [],
+    "milestone": "Research",
+    "assignees": [
+      "ameenalqershi"
+    ],
+    "discussion": 1,
+    "scopeMatches": true,
+    "dependencyCount": 0,
+    "title": "Map enterprise planning and decision platforms",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "R02",
+    "issue": 2,
+    "state": "CLOSED",
+    "labels": [],
+    "milestone": "Research",
+    "assignees": [
+      "ameenalqershi"
+    ],
+    "discussion": 1,
+    "scopeMatches": true,
+    "dependencyCount": 0,
+    "title": "Compare optimizers and modeling languages",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "R03",
+    "issue": 3,
+    "state": "CLOSED",
+    "labels": [],
+    "milestone": "Research",
+    "assignees": [
+      "ameenalqershi"
+    ],
+    "discussion": 1,
+    "scopeMatches": true,
+    "dependencyCount": 0,
+    "title": "Map optimization science and computational limits",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "R04",
+    "issue": 4,
+    "state": "CLOSED",
+    "labels": [],
+    "milestone": "Research",
+    "assignees": [
+      "ameenalqershi"
+    ],
+    "discussion": 1,
+    "scopeMatches": true,
+    "dependencyCount": 1,
+    "title": "Review prior art, publications and patent claims",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "R05",
+    "issue": 5,
+    "state": "CLOSED",
+    "labels": [],
+    "milestone": "Research",
+    "assignees": [
+      "ameenalqershi"
+    ],
+    "discussion": 1,
+    "scopeMatches": true,
+    "dependencyCount": 1,
+    "title": "Model pilot economics and select verticals",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "R06",
+    "issue": 6,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Research",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 1,
+    "title": "Validate demand and pilot data with a design partner",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "R07",
+    "issue": 7,
+    "state": "OPEN",
+    "labels": [
+      "status:blocked"
+    ],
+    "milestone": "Research",
+    "assignees": [
+      "ameenalqershi"
+    ],
+    "discussion": 2,
+    "scopeMatches": true,
+    "dependencyCount": 1,
+    "title": "Qualify native adapters and redistribution",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "R08",
+    "issue": 8,
+    "state": "OPEN",
+    "labels": [
+      "status:active"
+    ],
+    "milestone": "Research",
+    "assignees": [
+      "ameenalqershi"
+    ],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 5,
+    "title": "Approve the phase-zero evidence dossier",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "F01",
+    "issue": 9,
+    "state": "CLOSED",
+    "labels": [],
+    "milestone": "Foundation",
+    "assignees": [
+      "ameenalqershi"
+    ],
+    "discussion": 1,
+    "scopeMatches": true,
+    "dependencyCount": 0,
+    "title": "Publish system boundaries and architecture decisions",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "F02",
+    "issue": 10,
+    "state": "CLOSED",
+    "labels": [],
+    "milestone": "Foundation",
+    "assignees": [
+      "ameenalqershi"
+    ],
+    "discussion": 1,
+    "scopeMatches": true,
+    "dependencyCount": 0,
+    "title": "Establish contributor intake and coordination",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "F03",
+    "issue": 11,
+    "state": "OPEN",
+    "labels": [
+      "status:blocked"
+    ],
+    "milestone": "Foundation",
+    "assignees": [
+      "ameenalqershi"
+    ],
+    "discussion": 1,
+    "scopeMatches": true,
+    "dependencyCount": 1,
+    "title": "Build cross-platform validation pipeline",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "F04",
+    "issue": 12,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Foundation",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 1,
+    "title": "Design tenant threat model and trust boundaries",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "F05",
+    "issue": 13,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Foundation",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 1,
+    "title": "Version API, schema and extension contracts",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "M01",
+    "issue": 14,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Model",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 1,
+    "title": "Define revisioned entity and hyperedge graph",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "M02",
+    "issue": 15,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Model",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 1,
+    "title": "Index dependencies and impact across revisions",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "M03",
+    "issue": 16,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Model",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 1,
+    "title": "Implement typed UDIR and source spans",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "M04",
+    "issue": 17,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Model",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 1,
+    "title": "Validate dimensions, calendars and currency conversion",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "M05",
+    "issue": 18,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Model",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 1,
+    "title": "Specify DML grammar, AST and diagnostics",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "M06",
+    "issue": 19,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Model",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 1,
+    "title": "Build bounded declarative parser and binder",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "M07",
+    "issue": 20,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Model",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 2,
+    "title": "Implement semantic analysis and normalization",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "M08",
+    "issue": 21,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Model",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 1,
+    "title": "Implement capability-checked solver lowering",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "M09",
+    "issue": 22,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Model",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 2,
+    "title": "Expose typed C# modeling SDK",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "M10",
+    "issue": 23,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Model",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 2,
+    "title": "Deliver JSON Schema and versioned model import",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "M11",
+    "issue": 24,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Model",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 2,
+    "title": "Implement immutable model registry and provenance",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "M12",
+    "issue": 25,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Model",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 1,
+    "title": "Implement safe presolve and transformation ledger",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "S01",
+    "issue": 26,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Runtime",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 1,
+    "title": "Define solver capability and result contracts",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "S02",
+    "issue": 27,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Runtime",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 3,
+    "title": "Integrate integer scheduling adapter",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "S03",
+    "issue": 28,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Runtime",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 3,
+    "title": "Integrate LP and MILP adapter",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "S04",
+    "issue": 29,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Runtime",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 2,
+    "title": "Implement independent feasibility and cost checker",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "S05",
+    "issue": 30,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Runtime",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 1,
+    "title": "Validate bounds and classify evidence strength",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "S06",
+    "issue": 31,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Runtime",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 2,
+    "title": "Implement capability-first solver planning",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "S07",
+    "issue": 32,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Runtime",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 1,
+    "title": "Govern worker CPU, memory, queues and deadlines",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "S08",
+    "issue": 33,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Runtime",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 2,
+    "title": "Implement budgeted solver portfolio",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "S09",
+    "issue": 34,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Runtime",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 2,
+    "title": "Enable compatible hints and solver switching",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "S10",
+    "issue": 35,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Runtime",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 3,
+    "title": "Persist evidence, lineage and audit reports",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "S11",
+    "issue": 36,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Runtime",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 2,
+    "title": "Implement decision state machine and approval policies",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "S12",
+    "issue": 37,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Runtime",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 2,
+    "title": "Expose REST API and idempotent job worker",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "X01",
+    "issue": 38,
+    "state": "CLOSED",
+    "labels": [],
+    "milestone": "Research engineering",
+    "assignees": [
+      "ameenalqershi"
+    ],
+    "discussion": 1,
+    "scopeMatches": true,
+    "dependencyCount": 2,
+    "title": "Run exhaustive separability and reuse experiment",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "X02",
+    "issue": 39,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Research engineering",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 3,
+    "title": "Detect exact components and certify separability",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "X03",
+    "issue": 40,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Research engineering",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 2,
+    "title": "Produce canonical fingerprints and reuse permissions",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "X04",
+    "issue": 41,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Research engineering",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 2,
+    "title": "Validate cache entries and prevent stale bound reuse",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "X05",
+    "issue": 42,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Research engineering",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 3,
+    "title": "Implement bounded repair and full-solve fallback",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "X06",
+    "issue": 43,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Research engineering",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 2,
+    "title": "Evaluate separators, SCCs and coordinated decomposition",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "X07",
+    "issue": 44,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Research engineering",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 2,
+    "title": "Build reproducible benchmark harness and corpus",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "X08",
+    "issue": 45,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Research engineering",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 3,
+    "title": "Evaluate incremental and portfolio hypotheses",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "X09",
+    "issue": 46,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Research engineering",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 2,
+    "title": "Evaluate learned selection against deterministic policy",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "X10",
+    "issue": 47,
+    "state": "CLOSED",
+    "labels": [],
+    "milestone": "Research engineering",
+    "assignees": [
+      "ameenalqershi"
+    ],
+    "discussion": 1,
+    "scopeMatches": true,
+    "dependencyCount": 2,
+    "title": "Maintain innovation register and stop decisions",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "V01",
+    "issue": 48,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Manufacturing",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 2,
+    "title": "Specify manufacturing datasets and optimization model",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "V02",
+    "issue": 49,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Manufacturing",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 1,
+    "title": "Implement deterministic dispatch baseline",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "V03",
+    "issue": 50,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Manufacturing",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 3,
+    "title": "Implement finite-capacity production scheduling",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "V04",
+    "issue": 51,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Manufacturing",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 2,
+    "title": "Deliver outage and demand-change scenarios",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "V05",
+    "issue": 52,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Manufacturing",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 3,
+    "title": "Validate pilot against planner historical schedule",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "V06",
+    "issue": 53,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Second sector",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 1,
+    "title": "Specify independent workforce coverage model",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "V07",
+    "issue": 54,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Second sector",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 3,
+    "title": "Demonstrate core reuse across sectors",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "I01",
+    "issue": 55,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Integrations",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 2,
+    "title": "Define connector SDK and mapping manifests",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "I02",
+    "issue": 56,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Integrations",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 2,
+    "title": "Implement CSV and JSON snapshot import",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "I03",
+    "issue": 57,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Integrations",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 2,
+    "title": "Implement REST ingestion and authenticated webhooks",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "I04",
+    "issue": 58,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Integrations",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 2,
+    "title": "Implement incremental sync, recovery and health",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "I05",
+    "issue": 59,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Integrations",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 2,
+    "title": "Deliver optional WOW ERP connector",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "I06",
+    "issue": 60,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Integrations",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 1,
+    "title": "Qualify SAP, Oracle and Dynamics adapters",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "I07",
+    "issue": 61,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Integrations",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 1,
+    "title": "Qualify Odoo, ERPNext and custom ERP adapters",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "I08",
+    "issue": 62,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Integrations",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 1,
+    "title": "Add SQL, Excel and event-stream adapters",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "I09",
+    "issue": 63,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Integrations",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 1,
+    "title": "Qualify CRM, MES, WMS and IoT feeds",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "A01",
+    "issue": 64,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Intelligence",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 2,
+    "title": "Implement immutable scenario comparison",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "A02",
+    "issue": 65,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Intelligence",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 3,
+    "title": "Explain decisions, alternatives and conflicts",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "A03",
+    "issue": 66,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Intelligence",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 2,
+    "title": "Implement LP sensitivity and relaxation analysis",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "A04",
+    "issue": 67,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Intelligence",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 1,
+    "title": "Add discrete-event and Monte Carlo simulation",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "A05",
+    "issue": 68,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Intelligence",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 1,
+    "title": "Model forecast uncertainty and risk",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "A06",
+    "issue": 69,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Intelligence",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 2,
+    "title": "Add verified advisory recommendations and optional MCP",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "U01",
+    "issue": 70,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Applications",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 1,
+    "title": "Ship cross-platform professional CLI",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "U02",
+    "issue": 71,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Applications",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 1,
+    "title": "Qualify Microsoft Blazor desktop delivery",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "U03",
+    "issue": 72,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Applications",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 3,
+    "title": "Build visual modeling studio and graph explorer",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "U04",
+    "issue": 73,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Applications",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 3,
+    "title": "Build scheduling and scenario workspace",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "U05",
+    "issue": 74,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Applications",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 3,
+    "title": "Build evidence viewer and benchmark dashboard",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "U06",
+    "issue": 88,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Applications",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 3,
+    "title": "Build administration and developer portals",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "E01",
+    "issue": 75,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Enterprise",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 2,
+    "title": "Implement tenant-aware identity and authorization",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "E02",
+    "issue": 76,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Enterprise",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 3,
+    "title": "Persist models and jobs with EF Core",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "E03",
+    "issue": 77,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Enterprise",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 2,
+    "title": "Implement outbox, scheduling and notifications",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "E04",
+    "issue": 78,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Enterprise",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 3,
+    "title": "Implement human approvals and gated external execution",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "E05",
+    "issue": 79,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Enterprise",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 2,
+    "title": "Add telemetry, audit retention and operations tools",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "E06",
+    "issue": 80,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Enterprise",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 2,
+    "title": "Package self-hosted Docker and SaaS profiles",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "E07",
+    "issue": 81,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Enterprise",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 2,
+    "title": "Isolate extension code and native workers",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "E08",
+    "issue": 82,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Enterprise",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 2,
+    "title": "Implement scale-out queue and resource fairness",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "Q01",
+    "issue": 83,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Quality",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 2,
+    "title": "Add compiler property and differential tests",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "Q02",
+    "issue": 84,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Quality",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 3,
+    "title": "Run integration, accessibility and isolation tests",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "Q03",
+    "issue": 85,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Quality",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 3,
+    "title": "Publish release evidence and licensing inventory",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "Q04",
+    "issue": 86,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Quality",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 4,
+    "title": "Decide MVP, enterprise and scale release gates",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  },
+  {
+    "id": "P01",
+    "issue": 87,
+    "state": "OPEN",
+    "labels": [
+      "status:backlog"
+    ],
+    "milestone": "Portfolio",
+    "assignees": [],
+    "discussion": 0,
+    "scopeMatches": true,
+    "dependencyCount": 2,
+    "title": "Evaluate expansion across proposed sectors",
+    "hasAcceptanceHeading": true,
+    "hasTestCaseIds": false,
+    "hasRequirementIds": false
+  }
+]
