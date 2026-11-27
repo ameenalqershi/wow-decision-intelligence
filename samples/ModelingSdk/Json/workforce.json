@@ -1,0 +1,232 @@
+{
+  "contract": "wowdi.udir",
+  "version": "1.0",
+  "payload": {
+    "tenantId": "example",
+    "modelId": "workforce",
+    "revisionId": "json-r1",
+    "semanticsVersion": "udir/1",
+    "inputDigests": [
+      "50d19aebff84399417b2facca3a18ad2481d04bebd7154ab65ac0755649b847d",
+      "5d261a0492bfb1110844449e5f52cdf5ccc463b90f50db457a7820c479153959",
+      "8053654ef6dbc709e021415bcac9b74dbebb19f1f8f25cf10355ff926e1ccd47"
+    ],
+    "sources": [
+      {
+        "id": "workforce-requirements",
+        "sha256": "50d19aebff84399417b2facca3a18ad2481d04bebd7154ab65ac0755649b847d",
+        "utf16Length": 369
+      }
+    ],
+    "timeBasis": {
+      "calendarId": "shift",
+      "timeZoneId": "UTC",
+      "origin": "2026-01-01T00:00:00Z",
+      "tickUnit": "minute"
+    },
+    "types": [
+      {
+        "id": "staffType",
+        "kind": "Integer",
+        "unit": "employee"
+      },
+      {
+        "id": "hourRate",
+        "kind": "Rate",
+        "unit": "hour/employee"
+      },
+      {
+        "id": "wageRate",
+        "kind": "Rate",
+        "unit": "USD/hour"
+      },
+      {
+        "id": "duration",
+        "kind": "Duration",
+        "unit": "hour"
+      },
+      {
+        "id": "money",
+        "kind": "Money",
+        "currency": "USD"
+      },
+      {
+        "id": "bool",
+        "kind": "Boolean"
+      }
+    ],
+    "symbols": [
+      {
+        "id": "demand",
+        "role": "Parameter",
+        "typeId": "duration",
+        "lower": "64",
+        "upper": "64",
+        "span": {
+          "sourceId": "workforce-requirements",
+          "start": 151,
+          "length": 26
+        }
+      },
+      {
+        "id": "staff",
+        "role": "Variable",
+        "typeId": "staffType",
+        "lower": "0",
+        "upper": "12",
+        "span": {
+          "sourceId": "workforce-requirements",
+          "start": 33,
+          "length": 58
+        }
+      },
+      {
+        "id": "wage",
+        "role": "Parameter",
+        "typeId": "wageRate",
+        "lower": "15",
+        "upper": "15",
+        "span": {
+          "sourceId": "workforce-requirements",
+          "start": 121,
+          "length": 29
+        }
+      },
+      {
+        "id": "hoursPerStaff",
+        "role": "Parameter",
+        "typeId": "hourRate",
+        "lower": "8",
+        "upper": "8",
+        "span": {
+          "sourceId": "workforce-requirements",
+          "start": 92,
+          "length": 28
+        }
+      }
+    ],
+    "expressions": [
+      {
+        "id": "staffRef",
+        "op": "Symbol",
+        "typeId": "staffType",
+        "arguments": [],
+        "span": {
+          "sourceId": "workforce-requirements",
+          "start": 178,
+          "length": 58
+        },
+        "symbolId": "staff"
+      },
+      {
+        "id": "hoursRef",
+        "op": "Symbol",
+        "typeId": "hourRate",
+        "arguments": [],
+        "span": {
+          "sourceId": "workforce-requirements",
+          "start": 178,
+          "length": 58
+        },
+        "symbolId": "hoursPerStaff"
+      },
+      {
+        "id": "capacity",
+        "op": "Multiply",
+        "typeId": "duration",
+        "arguments": [
+          "hoursRef",
+          "staffRef"
+        ],
+        "span": {
+          "sourceId": "workforce-requirements",
+          "start": 178,
+          "length": 58
+        }
+      },
+      {
+        "id": "demandRef",
+        "op": "Symbol",
+        "typeId": "duration",
+        "arguments": [],
+        "span": {
+          "sourceId": "workforce-requirements",
+          "start": 237,
+          "length": 45
+        },
+        "symbolId": "demand"
+      },
+      {
+        "id": "covers",
+        "op": "GreaterOrEqual",
+        "typeId": "bool",
+        "arguments": [
+          "capacity",
+          "demandRef"
+        ],
+        "span": {
+          "sourceId": "workforce-requirements",
+          "start": 237,
+          "length": 45
+        }
+      },
+      {
+        "id": "wageRef",
+        "op": "Symbol",
+        "typeId": "wageRate",
+        "arguments": [],
+        "span": {
+          "sourceId": "workforce-requirements",
+          "start": 283,
+          "length": 47
+        },
+        "symbolId": "wage"
+      },
+      {
+        "id": "totalCost",
+        "op": "Multiply",
+        "typeId": "money",
+        "arguments": [
+          "wageRef",
+          "capacity"
+        ],
+        "span": {
+          "sourceId": "workforce-requirements",
+          "start": 283,
+          "length": 47
+        }
+      }
+    ],
+    "constraints": [
+      {
+        "id": "coverage",
+        "predicateId": "covers",
+        "hard": true,
+        "span": {
+          "sourceId": "workforce-requirements",
+          "start": 237,
+          "length": 45
+        }
+      }
+    ],
+    "objectives": [
+      {
+        "id": "cost",
+        "expressionId": "totalCost",
+        "direction": "Minimize",
+        "priority": 1,
+        "weight": "1",
+        "tolerance": "0",
+        "span": {
+          "sourceId": "workforce-requirements",
+          "start": 331,
+          "length": 37
+        }
+      }
+    ],
+    "scenarios": [],
+    "requires": [
+      "integer.linear"
+    ]
+  }
+}
