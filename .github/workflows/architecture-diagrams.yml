@@ -1,0 +1,52 @@
+name: Architecture diagrams
+on:
+  pull_request:
+    paths:
+      - 'docs/design/**'
+      - 'tools/ArchitectureDiagrams/**'
+      - 'tests/ArchitectureDiagrams/**'
+      - 'planning/issue-map.json'
+      - 'planning/requirements.json'
+      - 'src/Udir/Model.cs'
+      - 'tests/Manufacturing.Data/evidence/**'
+      - 'tests/Manufacturing.Dispatch/evidence/**'
+      - '.github/workflows/architecture-diagrams.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'docs/design/**'
+      - 'tools/ArchitectureDiagrams/**'
+      - 'tests/ArchitectureDiagrams/**'
+      - 'planning/issue-map.json'
+      - 'planning/requirements.json'
+      - 'src/Udir/Model.cs'
+      - 'tests/Manufacturing.Data/evidence/**'
+      - 'tests/Manufacturing.Dispatch/evidence/**'
+      - '.github/workflows/architecture-diagrams.yml'
+permissions:
+  contents: read
+jobs:
+  diagrams:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: sudo apt-get update && sudo apt-get install -y graphviz fonts-dejavu-core
+      - run: dotnet restore tools/ArchitectureDiagrams --locked-mode
+      - run: |
+          dotnet run --project tools/ArchitectureDiagrams -c Release --no-restore -- "$PWD" "$RUNNER_TEMP/sp03"
+          for file in "$RUNNER_TEMP/sp03/"*.dot; do
+            cmp "$file" "docs/design/diagrams/sp03/$(basename "$file")"
+          done
+          cmp "$RUNNER_TEMP/sp03/README.md" docs/design/diagrams/sp03/README.md
+          node tests/ArchitectureDiagrams/browser-check.mjs "$(command -v google-chrome)" "$RUNNER_TEMP/sp03" "$RUNNER_TEMP/sp03/browser-evidence.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: architecture-diagrams
+          path: ${{ runner.temp }}/sp03

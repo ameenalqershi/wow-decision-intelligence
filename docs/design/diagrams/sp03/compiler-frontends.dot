@@ -1,0 +1,35 @@
+digraph G {
+  graph [rankdir=TB, bgcolor="#ffffff", pad=0.2, nodesep=0.28, ranksep=0.65, fontname="DejaVu Sans", labelloc=t, fontsize=15, label="Merged compiler and frontend boundaries — design / specification"];
+  node [shape=box, style="rounded,filled", fillcolor="#e8f4f1", color="#277664", fontname="DejaVu Sans", fontsize=10, fontcolor="#18352e"];
+  edge [color="#49697b", fontcolor="#263d4b", fontname="DejaVu Sans", fontsize=9, arrowsize=0.65];
+  "dml" [label="DML UTF-8 + source ID\n#18", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/18"];
+  "parse" [label="DmlParser\n#18", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/18"];
+  "bind" [label="DmlBinder / BoundDocument\n#19", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/19"];
+  "compile" [label="DmlCompiler\n#20", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/20"];
+  "sdk" [label="ModelBuilder / BuiltModel\n#22", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/22"];
+  "json" [label="VersionedModelImport\n#23", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/23"];
+  "udir" [label="Original UdirDocument\n#16", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/16"];
+  "normalize" [label="ExactNormalizer\n#20", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/20"];
+  "facts" [label="Frozen facts + catalog\n#22", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/22"];
+  "lower" [label="ExactLowerer\n#21", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/21"];
+  "presolve" [label="SafePresolve\n#25", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/25"];
+  "verify" [label="OriginalVerifier\n#29", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/29"];
+  "diagnostic" [label="Source-linked diagnostic\n#20", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/20", fillcolor="#fbece7", color="#a55236", fontcolor="#78351f"];
+  "dml" -> "parse" [label="E01 Bounded grammar", tooltip="src/Dml.Syntax/DmlParser.cs: public static DmlParseResult Parse(string sourceId, ReadOnlyMemory<byte> utf8", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/18"];
+  "parse" -> "bind" [label="E02 Bound syntax AST", tooltip="docs/design/dml-binding-v1.md: consumes the accepted M05 syntax AST", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/19"];
+  "bind" -> "compile" [label="E03 Bound document + trusted context", tooltip="docs/design/dml-semantics-v1.md: consumes the actual M06 BoundDocument", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/20"];
+  "compile" -> "udir" [label="E04 Validated source-linked model", tooltip="docs/design/dml-semantics-v1.md: generates a structurally validated UDIR document", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/20"];
+  "sdk" -> "udir" [label="E05 Freeze managed model", tooltip="docs/design/modeling-sdk.md: constructs the existing `WowDi.Udir.Model`", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/22"];
+  "json" -> "udir" [label="E06 Bounded imported model", tooltip="docs/design/modeling-sdk.md: VersionedModelImport on JSON", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/23"];
+  "compile" -> "facts" [label="E07 Exact string-valued facts", tooltip="docs/design/dml-semantics-v1.md: generated flat JSON fact snapshot uses exact string values", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/20"];
+  "sdk" -> "facts" [label="E08 FreezeFacts explicitly", tooltip="docs/design/modeling-sdk.md: produce the S04 flat JSON string-valued baseline snapshot", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/22"];
+  "udir" -> "normalize" [label="E09 Shared semantic admission", tooltip="docs/design/dml-semantics-v1.md: validates the existing bounded UDIR wire and measurements before rewriting", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/20"];
+  "normalize" -> "lower" [label="E10 Admitted normalized graph", tooltip="src/Dml.Lowering/ExactLowerer.cs: Lower(NormalizedModel model,SolverCapabilities manifest", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/21"];
+  "normalize" -> "presolve" [label="E11 Standalone exact projection", tooltip="src/Dml.Presolve/SafePresolve.cs: Apply(NormalizedModel model", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/25"];
+  "facts" -> "lower" [label="E12 Verified immutable fact bytes", tooltip="docs/design/solver-lowering-v1.md: optional frozen flat facts", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/21"];
+  "udir" -> "verify" [label="E13 Original source evaluation", tooltip="src/Verification.Independent/OriginalVerifier.cs: Check(UdirDocument document,MeasurementSemantics measurements", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/29"];
+  "facts" -> "verify" [label="E14 Original frozen facts", tooltip="docs/design/modeling-sdk.md: check the original model and supplied frozen bytes", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/29"];
+  "compile" -> "diagnostic" [label="E15 Unsupported operational features", tooltip="docs/design/dml-semantics-v1.md: return DML-CAP-001 rather than silently dropping them", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/20"];
+  "normalize" -> "diagnostic" [label="E16 Unsafe numeric admission", tooltip="docs/design/dml-semantics-v1.md: DML-DIV-001 identifies division that cannot be proved safe", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/20"];
+  "lower" -> "diagnostic" [label="E17 Unsupported encoding or capability", tooltip="docs/design/solver-lowering-v1.md: It rejects scenarios, soft rows, unsupported objective policies", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/21"];
+}

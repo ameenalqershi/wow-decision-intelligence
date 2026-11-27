@@ -1,0 +1,16 @@
+digraph G {
+  graph [rankdir=TB, bgcolor="#ffffff", pad=0.2, nodesep=0.28, ranksep=0.65, fontname="DejaVu Sans", labelloc=t, fontsize=15, label="C4 System Context — design / specification"];
+  node [shape=box, style="rounded,filled", fillcolor="#e8f4f1", color="#277664", fontname="DejaVu Sans", fontsize=10, fontcolor="#18352e"];
+  edge [color="#49697b", fontcolor="#263d4b", fontname="DejaVu Sans", fontsize=9, arrowsize=0.65];
+  "operator" [label="Planner / Studio\n#90", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/90"];
+  "cli" [label="CLI and SDK consumer\n#113", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/113"];
+  "wow" [label="WOW DI decision platform\n#9", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/9"];
+  "erp" [label="Authorized external source\n#55", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/55"];
+  "approval" [label="Human approval\n#36", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/36"];
+  "diagnostic" [label="Scoped diagnostic\n#12", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/12", fillcolor="#fbece7", color="#a55236", fontcolor="#78351f"];
+  "operator" -> "wow" [label="E01 Shared application ports", tooltip="docs/design/architecture.md: Both clients call the same application ports.", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/90"];
+  "cli" -> "wow" [label="E02 Explicit workspace or API", tooltip="docs/design/operating-modes.md: Same local or remote bindings", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/131"];
+  "erp" -> "wow" [label="E03 Staged input", tooltip="docs/design/operating-modes.md: Map authorized source schemas and units into a staged import", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/55"];
+  "wow" -> "approval" [label="E04 Verified proposal", tooltip="docs/design/lifecycle.md: Only a verified feasible incumbent satisfying policy may be proposed", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/36"];
+  "wow" -> "diagnostic" [label="E05 Denied or invalid input", tooltip="docs/design/tenant-threat-model.md: Missing context denies", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/12"];
+}
