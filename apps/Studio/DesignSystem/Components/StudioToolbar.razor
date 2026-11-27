@@ -1,0 +1,7 @@
+<div class="wow-toolbar" role="group" aria-label="@Label">
+    @ChildContent
+</div>
+@code {
+    [Parameter, EditorRequired] public string Label { get; set; } = "";
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+}
