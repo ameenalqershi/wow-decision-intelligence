@@ -5,7 +5,8 @@ window.wowdiHostProbe = {
         return {
             direction: getComputedStyle(probe).direction,
             focusedId: document.activeElement?.id ?? '',
-            documentUrl: document.location.href
+            documentUrl: document.location.href,
+            hasFocus: document.hasFocus()
         };
     }
 };

@@ -50,7 +50,9 @@
             FocusBridge.RendererReady();
             await directionButton.FocusAsync();
         }
+        var observation = Evidence.BeginObservation();
         var dom = await JS.InvokeAsync<DomState>("wowdiHostProbe.read");
-        Evidence.Save(Fixture, dom);
+        if (!Evidence.TrySave(Fixture, observation, dom))
+            Console.WriteLine($"Discarded superseded DOM observation {observation.Sequence}");
     }
 }

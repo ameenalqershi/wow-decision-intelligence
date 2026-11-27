@@ -1,0 +1,18 @@
+{
+  "FixtureRevision": "host-qualification-v1",
+  "Os": "Microsoft Windows NT 10.0.26100.0",
+  "Runtime": "10.0.15",
+  "Rendered": true,
+  "Direction": "ltr",
+  "FocusedId": "confirm",
+  "DocumentUrl": "http://localhost/",
+  "Events": [
+    "render",
+    "focus:direction",
+    "focus:direction",
+    "focus:direction",
+    "focus:direction",
+    "focus:direction",
+    "focus:confirm"
+  ]
+}

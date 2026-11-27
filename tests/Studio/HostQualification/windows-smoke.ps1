@@ -2,7 +2,8 @@
 param(
     [Parameter(Mandatory=$true)][string]$Executable,
     [Parameter(Mandatory=$true)][string]$EvidenceDirectory,
-    [ValidateSet("Connected","Blocked")][string]$NetworkMode = "Blocked"
+    [ValidateSet("Connected","Blocked")][string]$NetworkMode = "Blocked",
+    [ValidateSet("Cold","Restore")][string]$Activation = "Restore"
 )
 $ErrorActionPreference = 'Stop'
 $exe = (Resolve-Path $Executable).Path
@@ -11,12 +12,25 @@ $report = Join-Path $out 'host.json'
 if (Test-Path $report) { throw 'Evidence path must be fresh.' }
 $rules = @()
 $process = $null
-function Wait-Probe([scriptblock]$Condition) {
+function Read-Probe {
+    # Permit atomic replacement while holding the old immutable snapshot.
+    $stream = [System.IO.File]::Open($report, [System.IO.FileMode]::Open, [System.IO.FileAccess]::Read, ([System.IO.FileShare]::ReadWrite -bor [System.IO.FileShare]::Delete))
+    try {
+        $reader = [System.IO.StreamReader]::new($stream)
+        try { return ($reader.ReadToEnd() | ConvertFrom-Json) } finally { $reader.Dispose() }
+    } finally { $stream.Dispose() }
+}
+function Wait-Probe([scriptblock]$Condition, [long]$AfterObservation=0, [long]$AfterEvent=0, [string]$RequiredEvent="") {
     for ($i = 0; $i -lt 240; $i++) {
         if (Test-Path $report) {
-            try { $value = Get-Content $report -Raw | ConvertFrom-Json }
+            try { $value = Read-Probe }
             catch { Start-Sleep -Milliseconds 250; continue }
-            if (& $Condition $value) { return $value }
+            if ($value.ObservationSequence -le $AfterObservation -or $value.EventCount -lt $AfterEvent) { Start-Sleep -Milliseconds 250; continue }
+            if ($RequiredEvent -and -not @($value.EventTrace | Where-Object { $_.Sequence -gt $AfterEvent -and $_.Name -eq $RequiredEvent }).Count) { Start-Sleep -Milliseconds 250; continue }
+            if (& $Condition $value) {
+                Write-Host ("Accepted observation=" + $value.ObservationSequence + "; events=" + $value.EventCount + "; focus=" + $value.FocusedId + "; documentFocus=" + $value.HasFocus)
+                return $value
+            }
         }
         if ($process.HasExited) { throw "Host exited before evidence: $($process.ExitCode)" }
         Start-Sleep -Milliseconds 250
@@ -146,13 +160,15 @@ public static class QualificationForeground {
     # Photino.Native v4.0.22 invokes WebView2 MoveFocus on WM_ACTIVATE.
     # No DOM click or focus mutation is used to establish keyboard traversal.
     $handle = $process.MainWindowHandle
+    if ($Activation -eq "Restore") {
     [QualificationForeground]::ShowWindow($handle, 6) | Out-Null
     Start-Sleep -Milliseconds 350
     [QualificationForeground]::ShowWindow($handle, 9) | Out-Null
     [QualificationForeground]::SetForegroundWindow($handle) | Out-Null
     if (-not $shell.AppActivate($process.Id)) { throw 'Could not reactivate the fixture after restore.' }
     Start-Sleep -Milliseconds 500
-    Write-Host ("After native reactivation: " + [QualificationForeground]::FocusState($handle))
+    }
+    Write-Host ("Activation " + $Activation + ": " + [QualificationForeground]::FocusState($handle))
     function Send-ProbeKey([string]$Key) {
         $process.Refresh()
         $foreground = [QualificationForeground]::GetForegroundWindow()
@@ -170,39 +186,19 @@ public static class QualificationForeground {
         Write-Host ("After key " + $Key + ": " + [QualificationForeground]::FocusState($foreground))
     }
     # Initial focus is an explicit app accessibility behavior, not a keyboard test.
-    $null = Wait-Probe { param($p) $p.FocusedId -eq 'direction' }
-    # Real forward and backward OS keyboard navigation must both work.
-    Write-Host ("Native descendants before keyboard: " + [QualificationForeground]::Children($handle))
-    Send-ProbeKey '{TAB}'
-    try {
-        $null = Wait-Probe { param($p) $p.FocusedId -eq 'confirm' -and $p.Events -contains 'focus:confirm' }
-    } catch {
-        $original = $_
-        Write-Host ("Native descendants after failed keyboard: " + [QualificationForeground]::Children($handle))
-        # Distinguish OS/WebView focus acquisition from general keyboard dispatch.
-        # This branch cannot turn the failed qualification green.
-        try {
-            [QualificationForeground]::ClickBlank($handle)
-            Start-Sleep -Milliseconds 350
-            Write-Host ("Native descendants after blank activation: " + [QualificationForeground]::Children($handle))
-            Send-ProbeKey '{TAB}'
-            Send-ProbeKey '{TAB}'
-            Start-Sleep -Milliseconds 350
-            if (Test-Path $report) {
-                Copy-Item $report (Join-Path $out 'after-blank-activation.json')
-                Get-Content $report -Raw | Write-Host
-            }
-        } catch { Write-Warning "Secondary focus diagnostic failed: $_" }
-        throw $original
+    $before = Wait-Probe { param($p) $p.FocusedId -eq 'direction' }
+    function Invoke-KeyboardStep([string]$Key, [string]$EventName, [scriptblock]$Condition) {
+        $prior = Read-Probe
+        Send-ProbeKey $Key
+        return Wait-Probe $Condition -AfterObservation $prior.ObservationSequence -AfterEvent $prior.EventCount -RequiredEvent $EventName
     }
-    Send-ProbeKey '+{TAB}'
-    $null = Wait-Probe { param($p) $p.FocusedId -eq 'direction' }
-    Send-ProbeKey '{ENTER}'
-    $null = Wait-Probe { param($p) $p.Direction -eq 'rtl' -and $p.Events -contains 'direction:rtl' }
-    Send-ProbeKey '{TAB}'
-    $null = Wait-Probe { param($p) $p.FocusedId -eq 'confirm' }
-    Send-ProbeKey '{ENTER}'
-    $null = Wait-Probe { param($p) $p.Events -contains 'confirm' }
+    # No diagnostic clicks in acceptance runs. Preserve exact failing snapshot.
+    Write-Host ("Native descendants before keyboard: " + [QualificationForeground]::Children($handle))
+    $null = Invoke-KeyboardStep '{TAB}' 'focus:confirm' { param($p) $p.FocusedId -eq 'confirm' -and $p.HasFocus }
+    $null = Invoke-KeyboardStep '+{TAB}' 'focus:direction' { param($p) $p.FocusedId -eq 'direction' -and $p.HasFocus }
+    $null = Invoke-KeyboardStep '{ENTER}' 'direction:rtl' { param($p) $p.Direction -eq 'rtl' -and $p.HasFocus }
+    $null = Invoke-KeyboardStep '{TAB}' 'focus:confirm' { param($p) $p.FocusedId -eq 'confirm' -and $p.HasFocus }
+    $null = Invoke-KeyboardStep '{ENTER}' 'confirm' { param($p) $p.Events -contains 'confirm' -and $p.HasFocus }
     if (-not $process.CloseMainWindow() -or -not $process.WaitForExit(20000) -or $process.ExitCode -ne 0) { throw 'Native window did not close normally.' }
     Get-Content $report
 }

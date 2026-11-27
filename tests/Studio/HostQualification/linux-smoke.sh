@@ -33,12 +33,17 @@ if ! jq -e '.FocusedId == "direction"' "$report" >/dev/null; then
     xdotool key --clearmodifiers Tab
     wait_json '.FocusedId == "direction"'
 fi
-xdotool key --clearmodifiers Return
-wait_json '.Direction == "rtl" and (.Events | index("direction:rtl") != null)'
-xdotool key --clearmodifiers Tab
-wait_json '.FocusedId == "confirm" and (.Events | index("focus:confirm") != null)'
-xdotool key --clearmodifiers Return
-wait_json '.Events | index("confirm") != null'
+keyboard_step() {
+    local key="$1" event="$2" condition="$3" before
+    before=$(jq -r '.EventCount' "$report")
+    xdotool key --clearmodifiers "$key"
+    wait_json "(.EventTrace | any(.Sequence > $before and .Name == \"$event\")) and .HasFocus and ($condition)"
+}
+keyboard_step Tab focus:confirm '.FocusedId == "confirm"'
+keyboard_step shift+Tab focus:direction '.FocusedId == "direction"'
+keyboard_step Return direction:rtl '.Direction == "rtl"'
+keyboard_step Tab focus:confirm '.FocusedId == "confirm"'
+keyboard_step Return confirm '.Events | index("confirm") != null'
 import -window "$window" "$out/window.png"
 xdotool key --clearmodifiers alt+F4
 for ((i=0;i<80;i++)); do

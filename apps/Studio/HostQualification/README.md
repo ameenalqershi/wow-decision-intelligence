@@ -92,3 +92,36 @@ mutation is performed by the bridge. This uses an observed private
 WebView2 HWND hierarchy, not a documented controller API: it is not
 approved for product adoption without independent host review and
 version conformance. Original strict keyboard tests remain mandatory.
+
+### 69e178f failure timeline and deferred activation experiment
+
+Run 46072873224 shows that the final confirm report is not evidence of a
+polling false negative. The Connected first Tab at 21:51:37.459Z retained
+top-level HWND focus; at timeout 21:52:38.500Z FocusedId was direction.
+Only after the failure-only blank click and two more Tabs did confirm
+appear (21:52:39.811Z). Blocked follows the same chronology. See
+evidence/windows-69e178f/timeline.txt. Both keyboard-only paths failed.
+The focus bridge's synchronous activation callback observed an existing
+child focus, yet after activation completed Win32 focus was the parent.
+This establishes a native focus-transition ordering problem; whether the
+parent default procedure or subsequent WebView activation owns the last
+focus write remains to be verified with the new message trace.
+
+The revised host confines native state to the UI thread, observes
+WM_SETFOCUS/WM_ACTIVATE through a window subclass and posts a recovery
+message after default processing. It transfers only from the foreground
+owned parent, never from an existing descendant or unrelated window.
+Subclass removal on WM_NCDESTROY prevents a retained native callback.
+The private WebView2 HWND dependency remains a qualification candidate,
+not a production-approved API.
+
+Separately, asynchronous JS observations can complete out of order.
+Evidence now rejects an older observation or a changed event epoch,
+records monotonic event sequence and elapsed ticks, and atomically
+publishes immutable snapshots. Four C# tests exercise the race, concurrent
+publication and a shared-delete file reader. Windows reads with explicit
+share-delete; each actual OS key must generate a new matching event and
+a later DOM observation. No diagnostic click is part of the new tests.
+Windows tests four fresh profiles (Connected/Blocked × Cold/Restore);
+Linux also tests forward/backward Tab, activation and RTL with fresh
+events. Existing timeout bounds are unchanged. Native results pending.
