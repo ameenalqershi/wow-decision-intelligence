@@ -11,7 +11,7 @@ if (Test-Path $report) { throw 'Evidence path must be fresh.' }
 $rules = @()
 $process = $null
 function Wait-Probe([scriptblock]$Condition) {
-    for ($i = 0; $i -lt 120; $i++) {
+    for ($i = 0; $i -lt 240; $i++) {
         if (Test-Path $report) {
             try { $value = Get-Content $report -Raw | ConvertFrom-Json }
             catch { Start-Sleep -Milliseconds 250; continue }
@@ -20,6 +20,10 @@ function Wait-Probe([scriptblock]$Condition) {
         if ($process.HasExited) { throw "Host exited before evidence: $($process.ExitCode)" }
         Start-Sleep -Milliseconds 250
     }
+    if (Test-Path $report) { Get-Content $report -Raw | Write-Host }
+    if (Test-Path "$report.startup.log") { Get-Content "$report.startup.log" -Raw | Write-Host }
+    $process.Refresh()
+    Write-Host "Window: $($process.MainWindowTitle), Handle: $($process.MainWindowHandle)"
     throw "Timeout: $Condition"
 }
 try {

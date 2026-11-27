@@ -41,6 +41,7 @@
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
+        Console.WriteLine($"Razor rendered, firstRender={firstRender}");
         var dom = await JS.InvokeAsync<DomState>("wowdiHostProbe.read");
         if (firstRender) Evidence.Record("render");
         Evidence.Save(Fixture, dom);

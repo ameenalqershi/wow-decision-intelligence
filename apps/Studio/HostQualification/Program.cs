@@ -9,6 +9,16 @@ internal static class Program
     [STAThread]
     private static int Main(string[] args)
     {
+        if (args.Length == 2 && args[0] == "--evidence")
+        {
+            var log = Path.GetFullPath(args[1]) + ".startup.log";
+            Directory.CreateDirectory(Path.GetDirectoryName(log)!);
+            var writer = new StreamWriter(log, append: false) { AutoFlush = true };
+            Console.SetOut(writer);
+            Console.SetError(writer);
+            AppDomain.CurrentDomain.UnhandledException += (_, e) => Console.Error.WriteLine(e.ExceptionObject);
+            Console.WriteLine($"Starting on {Environment.OSVersion}, {Environment.Version}");
+        }
         if (args.Length != 0 && (args.Length != 2 || args[0] != "--evidence"))
         {
             Console.Error.WriteLine("Usage: WowDi.Studio.HostQualification [--evidence FILE]");
@@ -29,10 +39,12 @@ internal static class Program
             builder.Services.AddSingleton(new ProbeEvidence(args.Length == 2 ? Path.GetFullPath(args[1]) : null));
             builder.RootComponents.Add<HostProbe>("#app");
             var app = builder.Build();
+            Console.WriteLine("Photino application built");
             app.MainWindow.SetTitle("WOW DI Host Qualification")
                 .SetUseOsDefaultLocation(true)
                 .SetWidth(800)
                 .SetHeight(520);
+            Console.WriteLine("Entering native event loop");
             app.Run();
             return 0;
         }

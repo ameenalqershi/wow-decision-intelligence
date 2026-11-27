@@ -56,3 +56,5 @@ U02 owns the host/packaging proof only. UI01 owns the application shell,
 DS02 the Fluent component integration, and RT01 the actual workspace and
 local runtime. No production claims or issue closure are justified by
 compilation and portable extraction alone.
+
+First CI run 46035411702: Linux native window/offline namespace/keyboard/RTL/normal closure passed (host.json and window.png retained under evidence/). Windows timed out at the first render predicate and did not produce a host report. No cause is established. Added durable startup logging and timeout diagnostics for the next run; Windows remains unqualified.
