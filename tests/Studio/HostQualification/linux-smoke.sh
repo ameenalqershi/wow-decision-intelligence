@@ -6,22 +6,28 @@ out=$(realpath "$2")
 mkdir -p "$out"
 report="$out/host.json"
 test ! -e "$report"
+test ! -e "$report.observations"
 export GDK_BACKEND=x11
 openbox >"$out/window-manager.log" 2>&1 &
 wm=$!
 "$exe" --evidence "$report" >"$out/host.log" 2>&1 &
 pid=$!
 trap 'kill "$pid" "$wm" 2>/dev/null || true' EXIT
+latest_observation() {
+    local files=("$report.observations/"*.json)
+    local last="${files[${#files[@]}-1]}"
+    [[ -f "$last" ]] && printf '%s\n' "$last"
+}
 wait_json() {
-    local query="$1"
+    local query="$1" latest
     for ((i=0;i<120;i++)); do
-        if [[ -f "$report" ]] && jq -e "$query" "$report" >/dev/null 2>&1; then return; fi
+        if latest=$(latest_observation) && jq -e "$query" "$latest" >/dev/null 2>&1; then cp "$latest" "$report"; return; fi
         if ! kill -0 "$pid" 2>/dev/null; then cat "$out/host.log"; return 1; fi
         sleep .25
     done
     echo "Timed out: $query" >&2
     cat "$out/host.log" >&2
-    [[ ! -f "$report" ]] || cat "$report" >&2
+    if latest=$(latest_observation); then cp "$latest" "$report"; cat "$report" >&2; fi
     return 1
 }
 wait_json '.Rendered and .Direction == "ltr" and .FixtureRevision == "host-qualification-v1" and .DocumentUrl == "app://localhost/"'
@@ -35,7 +41,7 @@ if ! jq -e '.FocusedId == "direction"' "$report" >/dev/null; then
 fi
 keyboard_step() {
     local key="$1" event="$2" condition="$3" before
-    before=$(jq -r '.EventCount' "$report")
+    before=$(jq -r '.EventCount' "$(latest_observation)")
     xdotool key --clearmodifiers "$key"
     wait_json "(.EventTrace | any(.Sequence > $before and .Name == \"$event\")) and .HasFocus and ($condition)"
 }

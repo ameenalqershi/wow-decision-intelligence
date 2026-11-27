@@ -1,0 +1,7 @@
+2026-11-27T22:01:53.0742838Z [xUnit.net 00:00:01.18]     EvidenceTests.AtomicReplacementWithSharedDeleteReaderKeepsCompleteOldAndNewSnapshots [FAIL]
+2026-11-27T22:01:53.2473590Z   Failed EvidenceTests.AtomicReplacementWithSharedDeleteReaderKeepsCompleteOldAndNewSnapshots [52 ms]
+2026-11-27T22:01:53.2475808Z    System.UnauthorizedAccessException : Access to the path is denied.
+2026-11-27T22:01:53.2477207Z      at System.IO.FileSystem.MoveFile(String sourceFullPath, String destFullPath, Boolean overwrite)
+2026-11-27T22:01:53.2479646Z    at WowDi.Studio.HostQualification.ProbeEvidence.TrySave(LocalFixture fixture, Observation observation, DomState dom) in D:\a\wow-decision-intelligence\wow-decision-intelligence\apps\Studio\HostQualification\ProbeEvidence.cs:line 49
+2026-11-27T22:01:53.2482999Z    at EvidenceTests.AtomicReplacementWithSharedDeleteReaderKeepsCompleteOldAndNewSnapshots() in D:\a\wow-decision-intelligence\wow-decision-intelligence\tests\Studio\HostQualification\Unit\EvidenceTests.cs:line 62
+2026-11-27T22:01:53.2547949Z Failed!  - Failed:     1, Passed:     3, Skipped:     0, Total:     4, Duration: 466 ms - WowDi.Studio.HostEvidence.Tests.dll (net10.0)

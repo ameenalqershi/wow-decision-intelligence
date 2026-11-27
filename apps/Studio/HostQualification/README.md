@@ -125,3 +125,14 @@ a later DOM observation. No diagnostic click is part of the new tests.
 Windows tests four fresh profiles (Connected/Blocked × Cold/Restore);
 Linux also tests forward/backward Tab, activation and RTL with fresh
 events. Existing timeout bounds are unchanged. Native results pending.
+
+Run 46073960434: Linux passed the native forward/backward keyboard and
+RTL checks. Windows failed before the native launch in the new regression
+test: File.Move(overwrite:true) threw UnauthorizedAccessException with an
+open share-delete reader. That is a demonstrated independent publication
+race, not evidence that it caused the earlier focus failure. The immutable
+observation directory stages each generation and renames it to a previously
+unused 20-digit filename. Readers select completed JSON files and retain
+the accepted/failing snapshot as host.json. No overwrite of a reader-held
+file, no retry masking. Regression holds an exclusive reader of the old
+generation while publishing the new one. Windows native proof is pending.

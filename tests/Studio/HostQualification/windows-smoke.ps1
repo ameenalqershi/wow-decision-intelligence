@@ -9,25 +9,27 @@ $ErrorActionPreference = 'Stop'
 $exe = (Resolve-Path $Executable).Path
 $out = (Resolve-Path $EvidenceDirectory).Path
 $report = Join-Path $out 'host.json'
-if (Test-Path $report) { throw 'Evidence path must be fresh.' }
+if ((Test-Path $report) -or (Test-Path "$report.observations")) { throw 'Evidence path must be fresh.' }
 $rules = @()
 $process = $null
 function Read-Probe {
-    # Permit atomic replacement while holding the old immutable snapshot.
-    $stream = [System.IO.File]::Open($report, [System.IO.FileMode]::Open, [System.IO.FileAccess]::Read, ([System.IO.FileShare]::ReadWrite -bor [System.IO.FileShare]::Delete))
-    try {
-        $reader = [System.IO.StreamReader]::new($stream)
-        try { return ($reader.ReadToEnd() | ConvertFrom-Json) } finally { $reader.Dispose() }
-    } finally { $stream.Dispose() }
+    $latest = Get-ChildItem -LiteralPath "$report.observations" -File -Filter '*.json' -ErrorAction Stop |
+        Where-Object { $_.Name -match '^\d{20}\.json$' } | Sort-Object Name -Descending | Select-Object -First 1
+    if (-not $latest) { throw 'No committed observation yet.' }
+    $value = Get-Content -LiteralPath $latest.FullName -Raw | ConvertFrom-Json
+    if ([long]$latest.BaseName -ne $value.ObservationSequence) { throw 'Observation filename/content mismatch.' }
+    $script:lastObservationPath = $latest.FullName
+    return $value
 }
 function Wait-Probe([scriptblock]$Condition, [long]$AfterObservation=0, [long]$AfterEvent=0, [string]$RequiredEvent="") {
     for ($i = 0; $i -lt 240; $i++) {
-        if (Test-Path $report) {
+        if (Test-Path "$report.observations") {
             try { $value = Read-Probe }
             catch { Start-Sleep -Milliseconds 250; continue }
             if ($value.ObservationSequence -le $AfterObservation -or $value.EventCount -lt $AfterEvent) { Start-Sleep -Milliseconds 250; continue }
             if ($RequiredEvent -and -not @($value.EventTrace | Where-Object { $_.Sequence -gt $AfterEvent -and $_.Name -eq $RequiredEvent }).Count) { Start-Sleep -Milliseconds 250; continue }
             if (& $Condition $value) {
+                Copy-Item -LiteralPath $script:lastObservationPath -Destination $report -Force
                 Write-Host ("Accepted observation=" + $value.ObservationSequence + "; events=" + $value.EventCount + "; focus=" + $value.FocusedId + "; documentFocus=" + $value.HasFocus)
                 return $value
             }
@@ -35,7 +37,7 @@ function Wait-Probe([scriptblock]$Condition, [long]$AfterObservation=0, [long]$A
         if ($process.HasExited) { throw "Host exited before evidence: $($process.ExitCode)" }
         Start-Sleep -Milliseconds 250
     }
-    if (Test-Path $report) { Get-Content $report -Raw | Write-Host }
+    try { $null = Read-Probe; Copy-Item -LiteralPath $script:lastObservationPath -Destination $report -Force; Get-Content $report -Raw | Write-Host } catch { Write-Warning "No final observation: $_" }
     if (Test-Path "$report.startup.log") { Get-Content "$report.startup.log" -Raw | Write-Host }
     $process.Refresh()
     Write-Host "Window: $($process.MainWindowTitle), Handle: $($process.MainWindowHandle)"

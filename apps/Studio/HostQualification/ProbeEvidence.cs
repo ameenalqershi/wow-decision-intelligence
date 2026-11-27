@@ -16,6 +16,7 @@ public sealed class ProbeEvidence(string? evidencePath)
     private readonly object sync = new();
     private readonly Stopwatch clock = Stopwatch.StartNew();
     private readonly List<ProbeEvent> events = [];
+    private const long MaxObservations = 4096;
     private long issued;
     private long published;
 
@@ -25,7 +26,11 @@ public sealed class ProbeEvidence(string? evidencePath)
     }
     public Observation BeginObservation()
     {
-        lock (sync) return new(++issued, events.Count);
+        lock (sync)
+        {
+            if (issued >= MaxObservations) throw new InvalidOperationException("Qualification observation limit exceeded.");
+            return new(++issued, events.Count);
+        }
     }
     // Blazor can reenter at the awaited JS call. Discard results from an
     // older render or an event epoch that changed during the DOM query.
@@ -41,12 +46,17 @@ public sealed class ProbeEvidence(string? evidencePath)
                     Environment.Version.ToString(), true, dom.Direction, dom.FocusedId, dom.DocumentUrl,
                     events.Select(e => e.Name).ToArray(), observation.Sequence, events.Count, dom.HasFocus,
                     Stopwatch.Frequency, events.ToArray());
-                Directory.CreateDirectory(Path.GetDirectoryName(evidencePath)!);
-                var temporary = evidencePath + "." + Guid.NewGuid().ToString("N") + ".tmp";
+                // Publish each immutable generation to a new name. Windows
+                // cannot reliably replace a destination held open by a reader,
+                // even when that reader grants FileShare.Delete.
+                var directory = evidencePath + ".observations";
+                Directory.CreateDirectory(directory);
+                var destination = Path.Combine(directory, observation.Sequence.ToString("D20", System.Globalization.CultureInfo.InvariantCulture) + ".json");
+                var temporary = destination + "." + Guid.NewGuid().ToString("N") + ".tmp";
                 try
                 {
                     File.WriteAllText(temporary, JsonSerializer.Serialize(evidence, new JsonSerializerOptions { WriteIndented = true }));
-                    File.Move(temporary, evidencePath, overwrite: true);
+                    File.Move(temporary, destination, overwrite: false);
                 }
                 finally { if (File.Exists(temporary)) File.Delete(temporary); }
             }
