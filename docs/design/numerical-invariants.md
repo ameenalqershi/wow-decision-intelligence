@@ -18,3 +18,12 @@ dotnet test tests/Numerical.Invariants -c Release --no-restore
 sudo unshare -n sh -c 'ip link set lo up && dotnet test tests/Numerical.Invariants -c Release --no-build --no-restore'
 dotnet run --project tools/Traceability -c Release
 ```
+
+## Supplementary native research repetition (not production qualification)
+
+On Linux x86_64 / .NET SDK 10.0.115, base main 1c30ac6, restored existing ScheduleStudy and CoverageStudy with their committed lockfiles, built in Release and executed each DLL three times via `unshare -n dotnet <absolute DLL>` without enabling loopback. All three extracted semantic result files for each study were byte-identical:
+
+- OR-Tools 9.15.6755 / Google.Protobuf 3.33.1: existing CP-SAT study uses one search worker and seed 1; independently enumerated verified costs and bounds 3 and 12 for the two scheduling fixtures. Semantic result SHA-256 `93b707f7838311b4a093ffe979350e751d11c61147f30bf1ad0e4eedd5e6ed6d`.
+- Highs.Native 1.16.0: existing coverage LP produced x0=1.5, x1=0, objective and analytical lower bound 1.5. Semantic result SHA-256 `cf805fa58171b40de842cbf402b0049ea0cc8c57135a4938c33b61f4e08b1405`.
+
+The extracted result lines exclude solver logs and timing. The HiGHS research study does not pin all native options or seed; these repetitions are limited research evidence, not a production determinism guarantee. Windows repeat qualification and the production adapter/evidence path remain open. Package hashes and limitations were reported to R07.
