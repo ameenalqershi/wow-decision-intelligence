@@ -1,0 +1,38 @@
+name: Local hosting conformance
+on:
+  pull_request:
+    paths:
+      - src/Hosting/**
+      - src/ModelRegistry/**
+      - src/Udir/**
+      - src/DecisionGraph/**
+      - src/Contracts/**
+      - tests/Hosting/**
+      - tests/Udir/Fixtures/**
+      - .github/workflows/local-hosting.yml
+  push:
+    branches: [main]
+    paths:
+      - src/Hosting/**
+      - src/ModelRegistry/**
+      - src/Udir/**
+      - src/DecisionGraph/**
+      - src/Contracts/**
+      - tests/Hosting/**
+      - tests/Udir/Fixtures/**
+      - .github/workflows/local-hosting.yml
+permissions:
+  contents: read
+jobs:
+  local-hosting:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - run: dotnet restore tests/Hosting/WowDi.Hosting.Tests.csproj --locked-mode
+      - run: dotnet test tests/Hosting/WowDi.Hosting.Tests.csproj --no-restore -c Release
