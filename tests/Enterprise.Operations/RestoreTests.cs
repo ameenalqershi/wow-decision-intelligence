@@ -23,6 +23,7 @@ public sealed partial class DenialTests
             VALUES (gen_random_uuid(),'tenant-a',NULL,repeat('a',64),'View',clock_timestamp()-interval '40 days'),
                    (gen_random_uuid(),'tenant-b',NULL,repeat('b',64),'View',clock_timestamp()-interval '40 days')
             """);
+        await SeedRetentionPolicies();
         var operation=Guid.NewGuid();
         var cutoff=DateTimeOffset.UtcNow.AddDays(-30);
         Assert.Equal(1,await new DenialRetention(OperationsDb.Configure(_connection)).ExpireBatchAsync(operation,"tenant-a",cutoff,10));

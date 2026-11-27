@@ -77,6 +77,7 @@ public sealed partial class DenialTests
                          ('tenant-a',interval '40 days'),('tenant-b',interval '40 days'),
                          (NULL,interval '40 days'),('tenant-a',interval '1 day')) AS fixture(tenant,age);
             """);
+        await SeedRetentionPolicies();
         var retention=new DenialRetention(options);
         var cutoff=DateTimeOffset.UtcNow.AddDays(-30);
         var id=Guid.NewGuid();

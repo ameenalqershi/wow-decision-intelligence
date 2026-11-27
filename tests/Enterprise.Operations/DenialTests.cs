@@ -53,7 +53,7 @@ public sealed partial class DenialTests:IAsyncLifetime
     {
         var options=OperationsDb.Configure(_connection);
         await using(var db=new OperationsDb(options))
-        {Assert.False(db.Database.HasPendingModelChanges());await db.Database.MigrateAsync();Assert.Equal(2,(await db.Database.GetAppliedMigrationsAsync()).Count());}
+        {Assert.False(db.Database.HasPendingModelChanges());await db.Database.MigrateAsync();Assert.Equal(3,(await db.Database.GetAppliedMigrationsAsync()).Count());}
         await using(var c=new NpgsqlConnection(_connection))
         {await c.OpenAsync();await using var cmd=new NpgsqlCommand("DROP TABLE wowdi_ops.denials",c);await cmd.ExecuteNonQueryAsync();}
         var audit=new DurableDenialAudit(options,Key,TimeProvider.System);
