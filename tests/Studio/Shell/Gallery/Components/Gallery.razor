@@ -1,0 +1,23 @@
+@using WowDi.Studio.ShellGallery
+@inject StudioShellSession Session
+@inject FixtureStore Store
+<div class="qualification-controls">
+    <strong>Presentation qualification — synthetic fixture, no solver data</strong>
+    <button id="toggle-language" type="button" @onclick="()=>Arabic=!Arabic">@(Arabic?"English":"العربية")</button>
+    <button id="toggle-theme" type="button" @onclick="CycleTheme">Theme: @Theme</button>
+    <label><input type="checkbox" id="fail-save" @bind="Store.Fail" /> Simulate failed layout write</label>
+</div>
+<StudioShell Session="@Session" Arabic="@Arabic" Theme="@Theme" AvailableViews="@available">
+    <Content Context="view">
+        <h2>@(Arabic?view.View.Arabic:view.View.English)</h2>
+        <p>@(Arabic?"عينة عرض فقط، لا توجد بيانات تشغيل فعلية.":"Presentation fixture only; no runtime observations.")</p>
+        <p><bdi data-fixture-revision>@view.Workspace.RevisionId</bdi></p>
+        <p><bdi data-fixture-view>@view.View.Id</bdi></p>
+    </Content>
+</StudioShell>
+@code {
+    private bool Arabic;
+    private StudioTheme Theme=StudioTheme.Dark;
+    private readonly IReadOnlySet<string> available=new HashSet<string>(StringComparer.Ordinal){"UI03","UI05","UI04"};
+    private void CycleTheme()=>Theme=Theme switch{StudioTheme.Dark=>StudioTheme.Light,StudioTheme.Light=>StudioTheme.HighContrast,_=>StudioTheme.Dark};
+}

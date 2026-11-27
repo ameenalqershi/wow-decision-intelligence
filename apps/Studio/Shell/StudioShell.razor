@@ -1,0 +1,226 @@
+@namespace WowDi.Studio.Shell
+@implements IAsyncDisposable
+@inject IJSRuntime JS
+
+<ThemeScope Theme="@Theme" Density="@Density">
+    <div @ref="root" class="wow-shell" lang="@(Arabic ? "ar" : "en")" dir="@(Arabic ? "rtl" : "ltr")" data-shell-ready="@Session.Initialized.ToString().ToLowerInvariant()" data-busy="@busy.ToString().ToLowerInvariant()" data-revision="@Session.Layout.Context?.RevisionId">
+        <header class="wow-shell-title">
+            <span class="wow-shell-brand" aria-hidden="true"></span>
+            <strong>@T("WOW Decision Intelligence Studio", "استوديو ذكاء القرارات WOW DI")</strong>
+            <span class="wow-shell-title-context"><bdi>@Session.Layout.Context?.WorkspaceKey</bdi></span>
+        </header>
+        <nav class="wow-shell-nav" aria-label="@T("Main navigation","التنقل الرئيسي")">
+            @foreach (var group in StudioViews.Navigation)
+            {
+                <button @key="group.Id" type="button" class="wow-shell-nav-item" data-nav="@group.Id" aria-current="@(ActiveGroup == group.Id ? "page" : null)" disabled="@(busy || !Session.Initialized)" @onclick="() => Navigate(group.ViewId)">
+                    <span class="wow-shell-nav-icon" aria-hidden="true"></span><span>@T(group.English,group.Arabic)</span>
+                </button>
+            }
+        </nav>
+        <main class="wow-shell-main" aria-label="@T("Workspace","مساحة العمل")">
+            <div class="wow-shell-heading">
+                <h1>@Title</h1>
+                <span class="wow-muted">@T("Decision workspace","مساحة القرارات") @if(Session.Layout.Context is { } context){<span> / <bdi>@context.WorkspaceKey</bdi> / <bdi data-context-revision>@context.RevisionId</bdi></span>}</span>
+            </div>
+            <div class="wow-shell-workspace">
+                <label for="@(Id+"-workspace")">@T("Workspace and revision","مساحة العمل والنسخة")</label>
+                <select id="@(Id+"-workspace")" class="wow-input" @bind="choiceIndex" disabled="@(busy || Session.Choices.Count == 0)">
+                    <option value="-1">@T("Select authorized workspace","اختر مساحة عمل مصرحاً بها")</option>
+                    @for(var i=0;i<Session.Choices.Count;i++)
+                    {
+                        var choice=Session.Choices[i];
+                        <option value="@i">@choice.Label — @choice.Context.RevisionId</option>
+                    }
+                </select>
+                <button class="wow-button wow-shell-action" type="button" data-switch-workspace disabled="@(busy || choiceIndex < 0 || choiceIndex >= Session.Choices.Count)" @onclick="SwitchWorkspace">@T("Switch workspace","تبديل مساحة العمل")</button>
+            </div>
+            <div class="wow-shell-tabbar">
+                <div class="wow-shell-tabs" role="tablist" aria-label="@T("Open views","العروض المفتوحة")">
+                    @foreach(var tab in Session.Layout.Tabs)
+                    {
+                        var selected=tab.Key==Session.Layout.ActiveTabKey;
+                        <button @key="tab.Key" id="@TabId(tab.Key)" class="wow-shell-tab" role="tab" type="button" aria-selected="@selected.ToString().ToLowerInvariant()" aria-controls="@(Id+"-panel-"+tab.Key)" tabindex="@(selected?0:-1)" data-tab-key="@tab.Key" data-view-id="@tab.ViewId" @onclick="() => Select(tab.Key)" @onkeydown="e => TabKey(e,tab.Key)">@ViewLabel(tab.ViewId)</button>
+                    }
+                </div>
+                <label class="wow-shell-view-picker">
+                    <span class="wow-shell-visually-hidden">@T("View to open","العرض المراد فتحه")</span>
+                    <select class="wow-input" data-view-picker @bind="nextView" disabled="@(busy || Session.Layout.Context is null)">
+                        @foreach(var view in StudioViews.All){<option value="@view.Id">@T(view.English,view.Arabic)</option>}
+                    </select>
+                </label>
+                <button class="wow-button" type="button" data-new-tab disabled="@(busy || Session.Layout.Context is null)" @onclick="OpenNew">@T("New tab","تبويب جديد")</button>
+                <button class="wow-button" type="button" data-close-tab disabled="@(busy || Session.ActiveTab is null)" @onclick="CloseActive">@T("Close tab","إغلاق التبويب")</button>
+            </div>
+            <div class="wow-shell-dock-toolbar">
+                <button class="wow-button" type="button" data-toggle-inspector aria-pressed="@Session.Layout.InspectorVisible.ToString().ToLowerInvariant()" @onclick="ToggleInspector" disabled="@(busy || !Session.Initialized)">@T(Session.Layout.InspectorVisible?"Hide inspector":"Show inspector",Session.Layout.InspectorVisible?"إخفاء الفاحص":"إظهار الفاحص")</button>
+                <button class="wow-button" type="button" data-dock-inspector disabled="@(busy || !Session.Initialized)" @onclick="DockInspector">@T("Move inspector","نقل الفاحص")</button>
+            </div>
+            <div @ref="split" class="wow-shell-split" data-inspector-visible="@Session.Layout.InspectorVisible.ToString().ToLowerInvariant()" data-dock="@Session.Layout.InspectorDock.ToString().ToLowerInvariant()" data-share="@ShareText" style="@SplitStyle">
+                <section class="wow-shell-primary" id="@(Id+"-primary")" aria-label="@T("Workspace content","محتوى مساحة العمل")">
+                    @if (!Session.Initialized)
+                    {
+                        <StudioStateView State="StudioState.Loading" LoadingText="@T("Loading layout","جارٍ تحميل التخطيط")" />
+                    }
+                    else if(Session.Layout.Context is null)
+                    {
+                        <StudioStateView State="StudioState.Empty" EmptyText="@T("No authorized workspace selected. Choose an explicit workspace.","لم تُحدد مساحة عمل مصرح بها. اختر مساحة عمل.")" />
+                    }
+                    else if(Session.ActiveTab is not { } active)
+                    {
+                        <StudioStateView State="StudioState.Empty" EmptyText="@T("No document selected. Choose a registered view.","لم يُحدد مستند. اختر عرضاً مسجلاً.")" />
+                    }
+                    else
+                    {
+                        @foreach(var tab in Session.Layout.Tabs)
+                        {
+                            <div @key="tab.Key" id="@(Id+"-panel-"+tab.Key)" role="tabpanel" aria-labelledby="@TabId(tab.Key)" hidden="@(tab.Key!=active.Key)" tabindex="0">
+                                @if(tab.Key==active.Key)
+                                {
+                                    @if(Content is not null && AvailableViews.Contains(tab.ViewId))
+                                    {
+                                        @Content(new StudioViewContext(StudioViews.Find(tab.ViewId)!,Session.Layout.Context,tab.Key))
+                                    }
+                                    else
+                                    {
+                                        <h2 class="wow-card-heading">@ViewLabel(tab.ViewId)</h2>
+                                        <StudioStateView State="StudioState.Empty" EmptyText="@T("View provider unavailable. No runtime data has been loaded.","مزود العرض غير متاح. لم تُحمّل بيانات التشغيل.")" />
+                                    }
+                                }
+                            </div>
+                        }
+                    }
+                </section>
+                <div @ref="separator" class="wow-shell-separator" id="@(Id+"-splitter")" role="separator" aria-label="@T("Resize workspace panels","تغيير حجم اللوحات")" aria-orientation="vertical" aria-controls="@(Id+"-primary "+Id+"-inspector")" aria-valuemin="25" aria-valuemax="75" aria-valuenow="@((int)Math.Round(Session.Layout.PrimaryShare*100))" tabindex="@(Session.Layout.InspectorVisible?0:-1)" hidden="@(!Session.Layout.InspectorVisible)" @onkeydown="ResizeKey"></div>
+                <aside class="wow-shell-inspector" id="@(Id+"-inspector")" aria-label="@T("Workspace inspector","فاحص مساحة العمل")" hidden="@(!Session.Layout.InspectorVisible)">
+                    <StudioCard HeadingId="@(Id+"-inspector-title")" Title="@T("Workspace inspector","فاحص مساحة العمل")">
+                        <dl>
+                            <dt>@T("Revision","النسخة")</dt><dd><bdi>@(Session.Layout.Context?.RevisionId ?? T("Not selected","غير محددة"))</bdi></dd>
+                            <dt>@T("Connection","الاتصال")</dt><dd>@T("Runtime status unavailable","حالة التشغيل غير متاحة")</dd>
+                            <dt>@T("Layout","التخطيط")</dt><dd data-layout-status>@(Session.IsUnsaved?T("Unsaved changes","تغييرات غير محفوظة"):T("No pending write","لا توجد كتابة معلقة"))</dd>
+                        </dl>
+
+                    </StudioCard>
+                </aside>
+            </div>
+            @if(Session.IsUnsaved)
+            {
+                <div class="wow-toolbar" aria-label="@T("Unsaved layout actions","إجراءات التخطيط غير المحفوظ")">
+                    <button class="wow-button wow-shell-action" type="button" data-retry-save disabled="@busy" @onclick="RetrySave">@T("Retry layout save","إعادة محاولة حفظ التخطيط")</button>
+                    <button class="wow-button" type="button" data-discard-layout disabled="@busy" @onclick="DiscardLayout">@T("Discard layout changes","تجاهل تغييرات التخطيط")</button>
+                </div>
+            }
+            <StudioAnnouncements Status="@StatusNotice" Error="@ErrorNotice" />
+        </main>
+        <footer class="wow-shell-status"><StudioStatusIndicator State="StudioState.Empty" Text="@T("Engine status: unavailable","حالة المحرك: غير متاحة")" /><span><bdi>@Session.Layout.Context?.WorkspaceKey</bdi></span></footer>
+    </div>
+</ThemeScope>
+
+@code {
+    [Parameter, EditorRequired] public StudioShellSession Session { get; set; } = default!;
+    [Parameter] public string Id { get; set; } = "studio";
+    [Parameter] public bool Arabic { get; set; }
+    [Parameter] public StudioTheme Theme { get; set; } = StudioTheme.Dark;
+    [Parameter] public StudioDensity Density { get; set; } = StudioDensity.Comfortable;
+    [Parameter] public RenderFragment<StudioViewContext>? Content { get; set; }
+    [Parameter] public IReadOnlySet<string> AvailableViews { get; set; } = new HashSet<string>(StringComparer.Ordinal);
+    private bool busy;
+    private int choiceIndex = -1;
+    private string nextView = "UI03";
+    private ElementReference root, split, separator;
+    private IJSObjectReference? module;
+    private DotNetObjectReference<StudioShell>? self;
+    private readonly CancellationTokenSource lifetime = new();
+    private string T(string en,string ar) => Arabic?ar:en;
+    private string ViewLabel(string id) => StudioViews.Find(id) is { } v?T(v.English,v.Arabic):id;
+    private string Title => Session.ActiveTab is { } tab?ViewLabel(tab.ViewId):T("Workspace overview","نظرة عامة لمساحة العمل");
+    private string ActiveGroup => StudioViews.Find(Session.ActiveTab?.ViewId)?.GroupId ?? "overview";
+    private string TabId(string key) => Id+"-tab-"+key;
+    private string ShareText => Session.Layout.PrimaryShare.ToString("0.0000",CultureInfo.InvariantCulture);
+    private string SplitStyle => "--shell-primary:"+ShareText+"fr;--shell-secondary:"+(1-Session.Layout.PrimaryShare).ToString("0.0000",CultureInfo.InvariantCulture)+"fr";
+    private string? StatusNotice => Session.Notice switch
+    {
+        ShellNotice.Recovered => T("Layout recovered. Previous saved bytes retained until a layout change.","تمت استعادة التخطيط. لم تُستبدل النسخة المحفوظة بعد."),
+        ShellNotice.LayoutDiscarded => T("Unsaved layout changes discarded.","تم تجاهل تغييرات التخطيط غير المحفوظة."),
+        _ => null
+    };
+    private string? ErrorNotice => Session.Notice switch
+    {
+        ShellNotice.ContextUnavailable => T("Workspace or view unavailable. Previous context retained.","مساحة العمل أو العرض غير متاح. تم الاحتفاظ بالسياق السابق."),
+        ShellNotice.LayoutReadFailed => T("Layout read failed. Safe defaults loaded.","تعذرت قراءة التخطيط. تم تحميل الإعدادات الآمنة."),
+        ShellNotice.LayoutUnsaved => T("Layout save failed. Current session retained.","تعذر حفظ التخطيط. تم الاحتفاظ بالجلسة الحالية."),
+        ShellNotice.DisplayUnavailable => T("Display placement could not be restored.","تعذرت استعادة موضع العرض."),
+        ShellNotice.ProviderUnavailable => T("Workspace provider unavailable.","مزود مساحة العمل غير متاح."),
+        ShellNotice.TabLimit => T("Tab limit reached.","تم بلوغ حد التبويبات."),
+        _ => null
+    };
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if(!firstRender)return;
+        await Session.InitializeAsync(lifetime.Token);
+        choiceIndex=Session.Choices.ToList().FindIndex(c=>c.Context==Session.Layout.Context);
+        module=await JS.InvokeAsync<IJSObjectReference>("import", "./_content/WowDi.Studio.Shell/shell.js");
+        self=DotNetObjectReference.Create(this);
+        await module.InvokeVoidAsync("attach",split,separator,self);
+        await InvokeAsync(StateHasChanged);
+    }
+    private async Task Run(Func<CancellationToken,ValueTask> action)
+    {
+        if(busy||!Session.Initialized)return;
+        busy=true;
+        try{await action(lifetime.Token);}
+        finally{busy=false;await InvokeAsync(StateHasChanged);}
+    }
+    private Task SwitchWorkspace() => Run(async ct=>{
+        if(choiceIndex>=0&&choiceIndex<Session.Choices.Count)
+        {
+            if(!await Session.SwitchWorkspaceAsync(Session.Choices[choiceIndex].Context,ct))
+                choiceIndex=Session.Choices.ToList().FindIndex(c=>c.Context==Session.Layout.Context);
+        }
+    });
+    private Task Navigate(string view) => Run(async ct=>{await Session.NavigateAsync(view,false,ct);});
+    private Task OpenNew() => Run(async ct=>{await Session.NavigateAsync(nextView,true,ct);await FocusActive();});
+    private Task Select(string key) => Run(async ct=>await Session.SelectTabAsync(key,ct));
+    private Task CloseActive() => Run(async ct=>{if(Session.ActiveTab is { } t)await Session.CloseTabAsync(t.Key,ct);await FocusActive();});
+    private Task ToggleInspector()=>Run(ct=>Session.SetInspectorAsync(!Session.Layout.InspectorVisible,Session.Layout.InspectorDock,ct));
+    private Task DockInspector()=>Run(ct=>Session.SetInspectorAsync(true,Session.Layout.InspectorDock==InspectorDock.End?InspectorDock.Start:InspectorDock.End,ct));
+    private Task RetrySave()=>Run(async ct=>{await Session.RetrySaveAsync(ct);if(!Session.IsUnsaved)await FocusActive();});
+    private Task DiscardLayout()=>Run(async ct=>{
+        if(await Session.DiscardUnsavedAsync(ct))
+        {
+            choiceIndex=Session.Choices.ToList().FindIndex(c=>c.Context==Session.Layout.Context);
+            await FocusActive();
+        }
+    });
+    private async Task FocusActive()
+    {
+        // Render first, then allow JS to restore focus to the new tab (or to
+        // the new-tab button if the last tab was closed).
+        await InvokeAsync(StateHasChanged);
+        if(module is not null)await module.InvokeVoidAsync("focusTab",root,Session.Layout.ActiveTabKey);
+    }
+    private Task TabKey(KeyboardEventArgs e,string key)=>e.Key is not ("Delete" or "Home" or "End" or "ArrowRight" or "ArrowLeft")?Task.CompletedTask:Run(async ct=>{
+        var tabs=Session.Layout.Tabs;
+        var index=tabs.ToList().FindIndex(t=>t.Key==key);
+        if(index<0)return;
+        if(e.Key=="Delete"){await Session.CloseTabAsync(key,ct);await FocusActive();return;}
+        var next=e.Key switch{"Home"=>0,"End"=>tabs.Length-1,"ArrowRight"=>(index+(Arabic?-1:1)+tabs.Length)%tabs.Length,"ArrowLeft"=>(index+(Arabic?1:-1)+tabs.Length)%tabs.Length,_=>-1};
+        if(next>=0){await Session.SelectTabAsync(tabs[next].Key,ct);await FocusActive();}
+    });
+    private Task ResizeKey(KeyboardEventArgs e)
+    {
+        var sign=(Arabic?-1:1)*(Session.Layout.InspectorDock==InspectorDock.End?1:-1);
+        var next=e.Key switch{"Home"=>.25,"End"=>.75,"ArrowLeft"=>Session.Layout.PrimaryShare-.02*sign,"ArrowRight"=>Session.Layout.PrimaryShare+.02*sign,_=>double.NaN};
+        return double.IsNaN(next)?Task.CompletedTask:Run(ct=>Session.ResizeAsync(next,ct));
+    }
+    [JSInvokable] public Task CommitPointerResize(double share)=>Run(ct=>Session.ResizeAsync(share,ct));
+    public async ValueTask DisposeAsync()
+    {
+        lifetime.Cancel();
+        if(module is not null)
+        {
+            try{await module.InvokeVoidAsync("detach",split);await module.DisposeAsync();}
+            catch(JSDisconnectedException){}
+        }
+        self?.Dispose();lifetime.Dispose();
+    }
+}
