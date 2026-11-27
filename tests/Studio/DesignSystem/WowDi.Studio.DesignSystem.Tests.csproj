@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../../apps/Studio/DesignSystem/WowDi.Studio.DesignSystem.csproj" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
+    <PackageReference Include="xunit" Version="2.9.3" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="3.1.5" PrivateAssets="all" />
+    <None Include="../../../apps/Studio/DesignSystem/wwwroot/tokens.css" Link="tokens.css" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../../../docs/design/references/01-WOW-DI-Studio.svg" Link="reference.svg" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="gallery.css" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>
