@@ -1065,22 +1065,38 @@
   {
     "issue": "S01",
     "number": 26,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Runtime",
-    "component": "Runtime",
-    "implementation": "Planned",
-    "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
-    "fieldScope": "No approved field mapping in this baseline.",
-    "apiScope": "No approved API mapping in this baseline.",
+    "priority": "P0",
+    "release": "MVP",
+    "component": "src/Solver.Contracts",
+    "implementation": "Implemented; the linked issue records merge and platform evidence.",
+    "verification": "dotnet test tests/Solver.Contracts -c Release after locked restore.",
+    "fieldScope": "Solver manifest and revision-scoped result fields preserve raw observations, tolerances and evidence attribution.",
+    "apiScope": "Managed boundary documented in the linked specification.",
     "specifications": [
+      "docs/design/solver-contract.md",
       "docs/design/engine.md"
     ],
     "diagrams": [
-      "docs/design/operating-modes.md"
+      "docs/design/solver-contract.md"
     ],
-    "fields": [],
-    "apis": [],
-    "evidence": [],
+    "fields": [
+      "F-REV",
+      "F-RUN",
+      "F-STATUS",
+      "F-TERM",
+      "F-OBJ",
+      "F-BOUND",
+      "F-CPU",
+      "F-MEM",
+      "F-ELAPSED"
+    ],
+    "apis": [
+      "API-SOLVE",
+      "API-RUN"
+    ],
+    "evidence": [
+      "tests/Solver.Contracts/SolverContractTests.cs"
+    ],
     "tests": [
       {
         "id": "TC-S01-A",
@@ -1098,8 +1114,8 @@
         "tests": [
           "TC-S01-A"
         ],
-        "coverage": "Partially Covered",
-        "reason": "The available source and acceptance statement are mapped. Detailed field, contract or fixture review remains open."
+        "coverage": "Fully Covered",
+        "reason": "Field contract and executable positive and negative acceptance fixtures are linked."
       }
     ]
   },
