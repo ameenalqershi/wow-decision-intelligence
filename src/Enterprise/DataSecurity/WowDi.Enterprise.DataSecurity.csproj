@@ -9,5 +9,6 @@
   <ItemGroup>
     <PackageReference Include="System.IO.Hashing" Version="10.0.15" />
     <ProjectReference Include="../../Enterprise.Identity/WowDi.Enterprise.Identity.csproj" />
+    <ProjectReference Include="../../Integration.Snapshots/WowDi.Integration.Snapshots.csproj" />
   </ItemGroup>
 </Project>

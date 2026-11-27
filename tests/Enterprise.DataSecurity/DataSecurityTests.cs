@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using WowDi.Enterprise.Identity;
+using WowDi.Integration.Snapshots;
+using WowDi.Integration.Connectors;
+using System.Text.Json;
 using Xunit;
 
 namespace WowDi.Enterprise.DataSecurity.Tests;
@@ -279,6 +282,63 @@ public sealed class DataSecurityTests
     }
 
     // Synthetic transactional reference store: no claim of database durability.
+    [Fact]
+    public async Task SnapshotAndZipShareAdmissionBudgetAndStageOnlyAuthorizedBytes()
+    {
+        using var auth = new AccessFixture("A");
+        var clock = new FakeClock();
+        var budget = new TenantAdmissionLimiter(1, TimeSpan.FromMinutes(1), 4, clock);
+        var target = new TargetSchema("fixture-target","1",[new("id","text",null,true,false)]);
+        var manifest = new ConnectorManifest
+        {
+            ConnectorKind="file", SourceSchema="fixture", SourceSchemaVersion="1", TargetSchema=target.Id,
+            TargetSchemaVersion=target.Version, MappingVersion="1.0",
+            Fields=[new(){SourceField="id",TargetField="id",SourceType="text",TargetType="text",
+                SourceUnit=null,TargetUnit=null,Required=true,AllowNull=false,TransformId="identity",TransformVersion="1.0"}],
+            Provenance=new(){SourceKeyFields=["id"],SourceTimestampField="updated"},
+            Cursor=new(){Mode="snapshot",MaxBatchRows=10},Retry=new(){MaxAttempts=1,InitialDelayMs=1,MaxDelayMs=1},
+            Reconciliation="none",TimePolicy="utc-only",TimeZoneId=null,CurrencyPolicy="none",CredentialReference=null
+        };
+        var bytes=JsonSerializer.SerializeToUtf8Bytes(new{contract=ConnectorManifestReader.ContractId,version="1.0",payload=manifest},
+            new JsonSerializerOptions{PropertyNamingPolicy=JsonNamingPolicy.CamelCase});
+        var registry=new MappingRegistry(new(new("A","connector","1.0","stream"),bytes,target));
+        var preview=new SecureSnapshotPreview(auth.Gate(clock),budget,new MappingPreview(auth.Access,registry));
+        var zipGate=new SecureTransferGate(auth.Gate(clock),budget,new(1,TimeSpan.FromMinutes(1),4,clock),new DestinationPolicy([]));
+        using var source=new MemoryStream(Encoding.UTF8.GetBytes("id,updated\nA,2026-01-01T00:00:00Z\n"));
+        var options=new SnapshotOptions(SnapshotFormat.Csv);
+        Assert.Null(await preview.PreviewAsync(new("B","model"),"connector","1.0","stream",source,options));
+        Assert.Equal(0,source.Position);
+        auth.Policy.Allowed=false;
+        Assert.Null(await preview.PreviewAsync(new("A","model"),"connector","1.0","stream",source,options));
+        Assert.Equal(0,source.Position);
+        auth.Policy.Allowed=true;
+        var result=await preview.PreviewAsync(new("A","model"),"connector","1.0","stream",source,options);
+        Assert.True(result!.Accepted);
+        using var zip=Zip(File("input.json"));
+        Assert.Equal("admission.limit",(await Assert.ThrowsAsync<DataSecurityException>(async()=>
+            await zipGate.StageArchiveAsync(new("A","model"),zip,new()))).Code);
+        Assert.Equal(0,zip.Position);
+        clock.Advance(TimeSpan.FromMinutes(1));
+        using var oversized=new MemoryStream(new byte[SecureSnapshotPreview.MaximumSourceBytes+1]);
+        Assert.Equal("snapshot.size",(await Assert.ThrowsAsync<DataSecurityException>(async()=>
+            await preview.PreviewAsync(new("A","model"),"connector","1.0","stream",oversized,options))).Code);
+        clock.Advance(TimeSpan.FromMinutes(1));
+        using var revoked=new RevokingStream(source.ToArray(),()=>auth.Policy.Allowed=false);
+        Assert.Null(await preview.PreviewAsync(new("A","model"),"connector","1.0","stream",revoked,options));
+    }
+
+    private sealed class RevokingStream(byte[] bytes,Action revoke):MemoryStream(bytes)
+    {
+        public override ValueTask<int> ReadAsync(Memory<byte> buffer,CancellationToken ct=default)
+        { revoke(); return base.ReadAsync(buffer,ct); }
+    }
+
+    private sealed class MappingRegistry(RegisteredMapping mapping):IAuthorizedMappingRegistry
+    {
+        public ValueTask<RegisteredMapping?> FindAsync(TenantActor actor,string modelId,string connectorId,string mappingVersion,string streamId,CancellationToken ct)
+            =>ValueTask.FromResult<RegisteredMapping?>(mapping);
+    }
+
     private sealed class Store : IEvidenceMovementStore
     {
         private readonly object _gate = new();
