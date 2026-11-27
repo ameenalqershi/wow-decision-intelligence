@@ -1,0 +1,25 @@
+name: CLI host conformance
+on:
+  push:
+    branches: [main]
+    paths: ['apps/Cli/**', 'tests/Cli/**', '.github/workflows/cli-host.yml']
+  pull_request:
+    paths: ['apps/Cli/**', 'tests/Cli/**', '.github/workflows/cli-host.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  cli:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - run: dotnet restore tests/Cli/WowDi.Cli.Tests.csproj --locked-mode
+      - run: dotnet test tests/Cli/WowDi.Cli.Tests.csproj --no-restore -c Release
