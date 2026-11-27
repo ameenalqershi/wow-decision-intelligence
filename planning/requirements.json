@@ -689,23 +689,33 @@
   {
     "issue": "M04",
     "number": 17,
-    "priority": "Baseline priority pending review",
-    "release": "Baseline milestone: Model",
-    "component": "Model",
-    "implementation": "Planned",
-    "verification": "Execute the linked acceptance cases and attach observed evidence to the issue.",
-    "fieldScope": "No approved field mapping in this baseline.",
-    "apiScope": "No approved API mapping in this baseline.",
+    "priority": "P0",
+    "release": "MVP",
+    "component": "src/Udir",
+    "implementation": "Implemented; the linked issue records merge and platform evidence.",
+    "verification": "dotnet test tests/Udir -c Release after locked restore.",
+    "fieldScope": "Typed dimensions, exact scales, dated FX and calendar/time-basis contract.",
+    "apiScope": "Managed boundary documented in the linked specification.",
     "specifications": [
+      "docs/design/measurement-semantics.md",
       "docs/design/language.md",
       "docs/design/engine.md"
     ],
     "diagrams": [
-      "docs/design/operating-modes.md"
+      "docs/design/measurement-semantics.md"
     ],
-    "fields": [],
-    "apis": [],
-    "evidence": [],
+    "fields": [
+      "F-DURATION",
+      "F-RELEASE",
+      "F-DUE",
+      "F-WEIGHT"
+    ],
+    "apis": [
+      "API-MODEL"
+    ],
+    "evidence": [
+      "tests/Udir/MeasurementSemanticsTests.cs"
+    ],
     "tests": [
       {
         "id": "TC-M04-A",
@@ -723,8 +733,8 @@
         "tests": [
           "TC-M04-A"
         ],
-        "coverage": "Partially Covered",
-        "reason": "The available source and acceptance statement are mapped. Detailed field, contract or fixture review remains open."
+        "coverage": "Fully Covered",
+        "reason": "Field contract and executable positive and negative acceptance fixtures are linked."
       }
     ]
   },
