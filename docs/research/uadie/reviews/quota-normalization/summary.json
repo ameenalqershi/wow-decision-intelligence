@@ -1,0 +1,678 @@
+{
+  "dev": {
+    "rows": 666,
+    "valid": 666,
+    "independentRows": 648,
+    "distinctModels": 333,
+    "summary": [
+      {
+        "key": "4/unit-free",
+        "models": 16,
+        "baselineMedianUs": 2.255,
+        "normalizedMedianUs": 4.135,
+        "pairedMedianSpeedup": 0.5119792852264967,
+        "pairedWins": 2,
+        "baselineMedianBytes": 376,
+        "normalizedMedianBytes": 1304
+      },
+      {
+        "key": "4/unit-pairs",
+        "models": 16,
+        "baselineMedianUs": 2.0300000000000002,
+        "normalizedMedianUs": 3.235,
+        "pairedMedianSpeedup": 0.5944598658339115,
+        "pairedWins": 2,
+        "baselineMedianBytes": 680,
+        "normalizedMedianBytes": 1168
+      },
+      {
+        "key": "4/equal-pairs",
+        "models": 16,
+        "baselineMedianUs": 1.94,
+        "normalizedMedianUs": 2.285,
+        "pairedMedianSpeedup": 0.8460068314899154,
+        "pairedWins": 3,
+        "baselineMedianBytes": 704,
+        "normalizedMedianBytes": 1080
+      },
+      {
+        "key": "4/uniform-stars",
+        "models": 16,
+        "baselineMedianUs": 1.89,
+        "normalizedMedianUs": 2.325,
+        "pairedMedianSpeedup": 0.7643961639159302,
+        "pairedWins": 1,
+        "baselineMedianBytes": 696,
+        "normalizedMedianBytes": 968
+      },
+      {
+        "key": "4/mixed-blocks",
+        "models": 16,
+        "baselineMedianUs": 2,
+        "normalizedMedianUs": 2.455,
+        "pairedMedianSpeedup": 0.8036870854467422,
+        "pairedWins": 3,
+        "baselineMedianBytes": 688,
+        "normalizedMedianBytes": 968
+      },
+      {
+        "key": "4/adversarial",
+        "models": 16,
+        "baselineMedianUs": 1.64,
+        "normalizedMedianUs": 2.445,
+        "pairedMedianSpeedup": 0.7860839988169182,
+        "pairedWins": 0,
+        "baselineMedianBytes": 516,
+        "normalizedMedianBytes": 920
+      },
+      {
+        "key": "8/unit-free",
+        "models": 16,
+        "baselineMedianUs": 3.715,
+        "normalizedMedianUs": 7.515,
+        "pairedMedianSpeedup": 0.5544063266576356,
+        "pairedWins": 3,
+        "baselineMedianBytes": 680,
+        "normalizedMedianBytes": 2344
+      },
+      {
+        "key": "8/unit-pairs",
+        "models": 16,
+        "baselineMedianUs": 2.72,
+        "normalizedMedianUs": 4.445,
+        "pairedMedianSpeedup": 0.6110944116999432,
+        "pairedWins": 2,
+        "baselineMedianBytes": 1040,
+        "normalizedMedianBytes": 2104
+      },
+      {
+        "key": "8/equal-pairs",
+        "models": 16,
+        "baselineMedianUs": 2.575,
+        "normalizedMedianUs": 3.205,
+        "pairedMedianSpeedup": 0.7926443003550311,
+        "pairedWins": 2,
+        "baselineMedianBytes": 1072,
+        "normalizedMedianBytes": 1816
+      },
+      {
+        "key": "8/uniform-stars",
+        "models": 16,
+        "baselineMedianUs": 2.63,
+        "normalizedMedianUs": 3.1900000000000004,
+        "pairedMedianSpeedup": 0.8343217856064775,
+        "pairedWins": 3,
+        "baselineMedianBytes": 1064,
+        "normalizedMedianBytes": 1504
+      },
+      {
+        "key": "8/mixed-blocks",
+        "models": 16,
+        "baselineMedianUs": 2.83,
+        "normalizedMedianUs": 3.545,
+        "pairedMedianSpeedup": 0.8001486308809238,
+        "pairedWins": 1,
+        "baselineMedianBytes": 1020,
+        "normalizedMedianBytes": 1592
+      },
+      {
+        "key": "8/adversarial",
+        "models": 16,
+        "baselineMedianUs": 2.5700000000000003,
+        "normalizedMedianUs": 3.9349999999999996,
+        "pairedMedianSpeedup": 0.7376373626373627,
+        "pairedWins": 2,
+        "baselineMedianBytes": 832,
+        "normalizedMedianBytes": 1384
+      },
+      {
+        "key": "12/unit-free",
+        "models": 16,
+        "baselineMedianUs": 6.32,
+        "normalizedMedianUs": 10.375,
+        "pairedMedianSpeedup": 0.5769725925039382,
+        "pairedWins": 2,
+        "baselineMedianBytes": 1168,
+        "normalizedMedianBytes": 3648
+      },
+      {
+        "key": "12/unit-pairs",
+        "models": 16,
+        "baselineMedianUs": 4.9350000000000005,
+        "normalizedMedianUs": 8.355,
+        "pairedMedianSpeedup": 0.5698462308601222,
+        "pairedWins": 2,
+        "baselineMedianBytes": 1608,
+        "normalizedMedianBytes": 3168
+      },
+      {
+        "key": "12/equal-pairs",
+        "models": 16,
+        "baselineMedianUs": 4.105,
+        "normalizedMedianUs": 5.4350000000000005,
+        "pairedMedianSpeedup": 0.7732005531570426,
+        "pairedWins": 2,
+        "baselineMedianBytes": 1664,
+        "normalizedMedianBytes": 2712
+      },
+      {
+        "key": "12/uniform-stars",
+        "models": 16,
+        "baselineMedianUs": 3.8200000000000003,
+        "normalizedMedianUs": 4.93,
+        "pairedMedianSpeedup": 0.7824143982369505,
+        "pairedWins": 2,
+        "baselineMedianBytes": 1424,
+        "normalizedMedianBytes": 2048
+      },
+      {
+        "key": "12/mixed-blocks",
+        "models": 16,
+        "baselineMedianUs": 3.95,
+        "normalizedMedianUs": 5.3100000000000005,
+        "pairedMedianSpeedup": 0.7727020390036182,
+        "pairedWins": 0,
+        "baselineMedianBytes": 1460,
+        "normalizedMedianBytes": 2212
+      },
+      {
+        "key": "12/adversarial",
+        "models": 16,
+        "baselineMedianUs": 4.234999999999999,
+        "normalizedMedianUs": 5.24,
+        "pairedMedianSpeedup": 0.7781660692951016,
+        "pairedWins": 1,
+        "baselineMedianBytes": 1340,
+        "normalizedMedianBytes": 2040
+      },
+      {
+        "key": "64/unit-free",
+        "models": 3,
+        "baselineMedianUs": 126.01,
+        "normalizedMedianUs": 43.511,
+        "pairedMedianSpeedup": 2.8960492748960034,
+        "pairedWins": 2,
+        "baselineMedianBytes": 4816,
+        "normalizedMedianBytes": 16432
+      },
+      {
+        "key": "64/unit-pairs",
+        "models": 3,
+        "baselineMedianUs": 52.31,
+        "normalizedMedianUs": 38.529,
+        "pairedMedianSpeedup": 1.5279883381924197,
+        "pairedWins": 2,
+        "baselineMedianBytes": 7544,
+        "normalizedMedianBytes": 14624
+      },
+      {
+        "key": "64/equal-pairs",
+        "models": 3,
+        "baselineMedianUs": 34.65,
+        "normalizedMedianUs": 21.19,
+        "pairedMedianSpeedup": 1.561113732892874,
+        "pairedWins": 3,
+        "baselineMedianBytes": 7704,
+        "normalizedMedianBytes": 13144
+      },
+      {
+        "key": "64/uniform-stars",
+        "models": 3,
+        "baselineMedianUs": 37.77,
+        "normalizedMedianUs": 21.83,
+        "pairedMedianSpeedup": 1.7301878149335779,
+        "pairedWins": 3,
+        "baselineMedianBytes": 6928,
+        "normalizedMedianBytes": 9928
+      },
+      {
+        "key": "64/mixed-blocks",
+        "models": 3,
+        "baselineMedianUs": 32.76,
+        "normalizedMedianUs": 27.12,
+        "pairedMedianSpeedup": 1.484513274336283,
+        "pairedWins": 2,
+        "baselineMedianBytes": 7176,
+        "normalizedMedianBytes": 10688
+      },
+      {
+        "key": "512/unit-free",
+        "models": 3,
+        "baselineMedianUs": 468.549,
+        "normalizedMedianUs": 311.77,
+        "pairedMedianSpeedup": 1.502867498476441,
+        "pairedWins": 3,
+        "baselineMedianBytes": 34872,
+        "normalizedMedianBytes": 128128
+      },
+      {
+        "key": "512/unit-pairs",
+        "models": 3,
+        "baselineMedianUs": 199.429,
+        "normalizedMedianUs": 229.9,
+        "pairedMedianSpeedup": 0.8674597651152675,
+        "pairedWins": 0,
+        "baselineMedianBytes": 57760,
+        "normalizedMedianBytes": 113776
+      },
+      {
+        "key": "512/equal-pairs",
+        "models": 3,
+        "baselineMedianUs": 223.269,
+        "normalizedMedianUs": 140.3,
+        "pairedMedianSpeedup": 1.1342030957911944,
+        "pairedWins": 2,
+        "baselineMedianBytes": 60192,
+        "normalizedMedianBytes": 103264
+      },
+      {
+        "key": "512/uniform-stars",
+        "models": 3,
+        "baselineMedianUs": 344.119,
+        "normalizedMedianUs": 166.151,
+        "pairedMedianSpeedup": 2.071122051627736,
+        "pairedWins": 3,
+        "baselineMedianBytes": 52456,
+        "normalizedMedianBytes": 77720
+      },
+      {
+        "key": "512/mixed-blocks",
+        "models": 3,
+        "baselineMedianUs": 185.31,
+        "normalizedMedianUs": 376.999,
+        "pairedMedianSpeedup": 0.40642017618083864,
+        "pairedWins": 0,
+        "baselineMedianBytes": 61240,
+        "normalizedMedianBytes": 84416
+      },
+      {
+        "key": "4096/unit-free",
+        "models": 3,
+        "baselineMedianUs": 12401.571,
+        "normalizedMedianUs": 4473.033,
+        "pairedMedianSpeedup": 2.4714177158988093,
+        "pairedWins": 3,
+        "baselineMedianBytes": 263584,
+        "normalizedMedianBytes": 1020688
+      },
+      {
+        "key": "4096/unit-pairs",
+        "models": 3,
+        "baselineMedianUs": 3309.245,
+        "normalizedMedianUs": 1584.379,
+        "pairedMedianSpeedup": 2.083767025773452,
+        "pairedWins": 3,
+        "baselineMedianBytes": 453512,
+        "normalizedMedianBytes": 905984
+      },
+      {
+        "key": "4096/equal-pairs",
+        "models": 3,
+        "baselineMedianUs": 3960.684,
+        "normalizedMedianUs": 710.389,
+        "pairedMedianSpeedup": 5.909440042970323,
+        "pairedWins": 3,
+        "baselineMedianBytes": 479592,
+        "normalizedMedianBytes": 823720
+      },
+      {
+        "key": "4096/uniform-stars",
+        "models": 3,
+        "baselineMedianUs": 1383.108,
+        "normalizedMedianUs": 567.249,
+        "pairedMedianSpeedup": 2.438273139309192,
+        "pairedWins": 3,
+        "baselineMedianBytes": 407664,
+        "normalizedMedianBytes": 619048
+      },
+      {
+        "key": "4096/mixed-blocks",
+        "models": 3,
+        "baselineMedianUs": 3644.634,
+        "normalizedMedianUs": 821.199,
+        "pairedMedianSpeedup": 5.372393293221254,
+        "pairedWins": 3,
+        "baselineMedianBytes": 435384,
+        "normalizedMedianBytes": 634448
+      }
+    ]
+  },
+  "holdout": {
+    "rows": 14904,
+    "valid": 14904,
+    "independentRows": 14688,
+    "distinctModels": 2484,
+    "summary": [
+      {
+        "key": "4/unit-free",
+        "models": 128,
+        "baselineMedianUs": 1.37,
+        "normalizedMedianUs": 2.475,
+        "pairedMedianSpeedup": 0.5464050368630522,
+        "pairedWins": 0,
+        "baselineMedianBytes": 376,
+        "normalizedMedianBytes": 1304
+      },
+      {
+        "key": "4/unit-pairs",
+        "models": 128,
+        "baselineMedianUs": 1.35,
+        "normalizedMedianUs": 1.955,
+        "pairedMedianSpeedup": 0.6784414796846574,
+        "pairedWins": 2,
+        "baselineMedianBytes": 680,
+        "normalizedMedianBytes": 1168
+      },
+      {
+        "key": "4/equal-pairs",
+        "models": 128,
+        "baselineMedianUs": 1.355,
+        "normalizedMedianUs": 1.64,
+        "pairedMedianSpeedup": 0.8268641288850869,
+        "pairedWins": 1,
+        "baselineMedianBytes": 704,
+        "normalizedMedianBytes": 1080
+      },
+      {
+        "key": "4/uniform-stars",
+        "models": 128,
+        "baselineMedianUs": 1.32,
+        "normalizedMedianUs": 1.63,
+        "pairedMedianSpeedup": 0.8081671415004748,
+        "pairedWins": 2,
+        "baselineMedianBytes": 712,
+        "normalizedMedianBytes": 968
+      },
+      {
+        "key": "4/mixed-blocks",
+        "models": 128,
+        "baselineMedianUs": 1.435,
+        "normalizedMedianUs": 1.7,
+        "pairedMedianSpeedup": 0.847823756432247,
+        "pairedWins": 6,
+        "baselineMedianBytes": 680,
+        "normalizedMedianBytes": 968
+      },
+      {
+        "key": "4/adversarial",
+        "models": 128,
+        "baselineMedianUs": 1.43,
+        "normalizedMedianUs": 1.87,
+        "pairedMedianSpeedup": 0.7781459083890891,
+        "pairedWins": 4,
+        "baselineMedianBytes": 528,
+        "normalizedMedianBytes": 960
+      },
+      {
+        "key": "8/unit-free",
+        "models": 128,
+        "baselineMedianUs": 4.4,
+        "normalizedMedianUs": 5.140000000000001,
+        "pairedMedianSpeedup": 0.7969452387285543,
+        "pairedWins": 22,
+        "baselineMedianBytes": 672,
+        "normalizedMedianBytes": 2344
+      },
+      {
+        "key": "8/unit-pairs",
+        "models": 128,
+        "baselineMedianUs": 3.245,
+        "normalizedMedianUs": 4.3,
+        "pairedMedianSpeedup": 0.7440358722744254,
+        "pairedWins": 4,
+        "baselineMedianBytes": 1032,
+        "normalizedMedianBytes": 2104
+      },
+      {
+        "key": "8/equal-pairs",
+        "models": 128,
+        "baselineMedianUs": 3.2,
+        "normalizedMedianUs": 3.425,
+        "pairedMedianSpeedup": 0.9312368167030138,
+        "pairedWins": 19,
+        "baselineMedianBytes": 1072,
+        "normalizedMedianBytes": 1816
+      },
+      {
+        "key": "8/uniform-stars",
+        "models": 128,
+        "baselineMedianUs": 3.035,
+        "normalizedMedianUs": 3.4455,
+        "pairedMedianSpeedup": 0.8638013013013013,
+        "pairedWins": 16,
+        "baselineMedianBytes": 1064,
+        "normalizedMedianBytes": 1504
+      },
+      {
+        "key": "8/mixed-blocks",
+        "models": 128,
+        "baselineMedianUs": 3.4299999999999997,
+        "normalizedMedianUs": 3.745,
+        "pairedMedianSpeedup": 0.9183873840486318,
+        "pairedWins": 25,
+        "baselineMedianBytes": 1048,
+        "normalizedMedianBytes": 1592
+      },
+      {
+        "key": "8/adversarial",
+        "models": 128,
+        "baselineMedianUs": 2.49,
+        "normalizedMedianUs": 3.22,
+        "pairedMedianSpeedup": 0.8493766353701708,
+        "pairedWins": 9,
+        "baselineMedianBytes": 856,
+        "normalizedMedianBytes": 1392
+      },
+      {
+        "key": "12/unit-free",
+        "models": 128,
+        "baselineMedianUs": 7.59,
+        "normalizedMedianUs": 9.249500000000001,
+        "pairedMedianSpeedup": 0.8098372420442531,
+        "pairedWins": 20,
+        "baselineMedianBytes": 1160,
+        "normalizedMedianBytes": 3648
+      },
+      {
+        "key": "12/unit-pairs",
+        "models": 128,
+        "baselineMedianUs": 5.43,
+        "normalizedMedianUs": 7.135,
+        "pairedMedianSpeedup": 0.7390052978753984,
+        "pairedWins": 2,
+        "baselineMedianBytes": 1608,
+        "normalizedMedianBytes": 3168
+      },
+      {
+        "key": "12/equal-pairs",
+        "models": 128,
+        "baselineMedianUs": 5.075,
+        "normalizedMedianUs": 5.03,
+        "pairedMedianSpeedup": 0.9980156777208642,
+        "pairedWins": 62,
+        "baselineMedianBytes": 1664,
+        "normalizedMedianBytes": 2712
+      },
+      {
+        "key": "12/uniform-stars",
+        "models": 128,
+        "baselineMedianUs": 4.555,
+        "normalizedMedianUs": 4.99,
+        "pairedMedianSpeedup": 0.8716269072079307,
+        "pairedWins": 10,
+        "baselineMedianBytes": 1424,
+        "normalizedMedianBytes": 2048
+      },
+      {
+        "key": "12/mixed-blocks",
+        "models": 128,
+        "baselineMedianUs": 4.88,
+        "normalizedMedianUs": 5.55,
+        "pairedMedianSpeedup": 0.8794548027430917,
+        "pairedWins": 17,
+        "baselineMedianBytes": 1448,
+        "normalizedMedianBytes": 2208
+      },
+      {
+        "key": "12/adversarial",
+        "models": 128,
+        "baselineMedianUs": 3.145,
+        "normalizedMedianUs": 3.9400000000000004,
+        "pairedMedianSpeedup": 0.8591608391608392,
+        "pairedWins": 19,
+        "baselineMedianBytes": 1120,
+        "normalizedMedianBytes": 1648
+      },
+      {
+        "key": "64/unit-free",
+        "models": 12,
+        "baselineMedianUs": 43.5305,
+        "normalizedMedianUs": 44.66,
+        "pairedMedianSpeedup": 0.993125704208443,
+        "pairedWins": 5,
+        "baselineMedianBytes": 4528,
+        "normalizedMedianBytes": 16432
+      },
+      {
+        "key": "64/unit-pairs",
+        "models": 12,
+        "baselineMedianUs": 42.21,
+        "normalizedMedianUs": 34.8655,
+        "pairedMedianSpeedup": 1.2241144154621748,
+        "pairedWins": 12,
+        "baselineMedianBytes": 7400,
+        "normalizedMedianBytes": 14624
+      },
+      {
+        "key": "64/equal-pairs",
+        "models": 12,
+        "baselineMedianUs": 30.895000000000003,
+        "normalizedMedianUs": 24.71,
+        "pairedMedianSpeedup": 1.2582885520512916,
+        "pairedWins": 12,
+        "baselineMedianBytes": 7696,
+        "normalizedMedianBytes": 13144
+      },
+      {
+        "key": "64/uniform-stars",
+        "models": 12,
+        "baselineMedianUs": 28.2,
+        "normalizedMedianUs": 26.185000000000002,
+        "pairedMedianSpeedup": 1.0950554651643831,
+        "pairedWins": 9,
+        "baselineMedianBytes": 6728,
+        "normalizedMedianBytes": 10076
+      },
+      {
+        "key": "64/mixed-blocks",
+        "models": 12,
+        "baselineMedianUs": 33.349999999999994,
+        "normalizedMedianUs": 26.4,
+        "pairedMedianSpeedup": 1.250356572823495,
+        "pairedWins": 9,
+        "baselineMedianBytes": 7232,
+        "normalizedMedianBytes": 10280
+      },
+      {
+        "key": "512/unit-free",
+        "models": 12,
+        "baselineMedianUs": 447.9295,
+        "normalizedMedianUs": 325.5095,
+        "pairedMedianSpeedup": 1.4650015905409617,
+        "pairedWins": 8,
+        "baselineMedianBytes": 35280,
+        "normalizedMedianBytes": 128128
+      },
+      {
+        "key": "512/unit-pairs",
+        "models": 12,
+        "baselineMedianUs": 179.4495,
+        "normalizedMedianUs": 223.3745,
+        "pairedMedianSpeedup": 0.7743491057015088,
+        "pairedWins": 1,
+        "baselineMedianBytes": 57976,
+        "normalizedMedianBytes": 113776
+      },
+      {
+        "key": "512/equal-pairs",
+        "models": 12,
+        "baselineMedianUs": 143.994,
+        "normalizedMedianUs": 141.2295,
+        "pairedMedianSpeedup": 1.0604901789479126,
+        "pairedWins": 10,
+        "baselineMedianBytes": 60184,
+        "normalizedMedianBytes": 103264
+      },
+      {
+        "key": "512/uniform-stars",
+        "models": 12,
+        "baselineMedianUs": 138.599,
+        "normalizedMedianUs": 169.6695,
+        "pairedMedianSpeedup": 0.8857541147885228,
+        "pairedWins": 2,
+        "baselineMedianBytes": 52752,
+        "normalizedMedianBytes": 78316
+      },
+      {
+        "key": "512/mixed-blocks",
+        "models": 12,
+        "baselineMedianUs": 168.186,
+        "normalizedMedianUs": 156.465,
+        "pairedMedianSpeedup": 0.9766079375773019,
+        "pairedWins": 5,
+        "baselineMedianBytes": 58236,
+        "normalizedMedianBytes": 79800
+      },
+      {
+        "key": "4096/unit-free",
+        "models": 12,
+        "baselineMedianUs": 24023.7685,
+        "normalizedMedianUs": 1897.702,
+        "pairedMedianSpeedup": 11.839077244506193,
+        "pairedWins": 12,
+        "baselineMedianBytes": 279648,
+        "normalizedMedianBytes": 1020688
+      },
+      {
+        "key": "4096/unit-pairs",
+        "models": 12,
+        "baselineMedianUs": 6902.825000000001,
+        "normalizedMedianUs": 1474.158,
+        "pairedMedianSpeedup": 4.356328934145093,
+        "pairedWins": 12,
+        "baselineMedianBytes": 461536,
+        "normalizedMedianBytes": 905984
+      },
+      {
+        "key": "4096/equal-pairs",
+        "models": 12,
+        "baselineMedianUs": 3529.3305,
+        "normalizedMedianUs": 638.7035,
+        "pairedMedianSpeedup": 5.604238504474159,
+        "pairedWins": 12,
+        "baselineMedianBytes": 479584,
+        "normalizedMedianBytes": 823720
+      },
+      {
+        "key": "4096/uniform-stars",
+        "models": 12,
+        "baselineMedianUs": 2743.1555,
+        "normalizedMedianUs": 794.6179999999999,
+        "pairedMedianSpeedup": 3.4980236638777917,
+        "pairedWins": 12,
+        "baselineMedianBytes": 419720,
+        "normalizedMedianBytes": 623228
+      },
+      {
+        "key": "4096/mixed-blocks",
+        "models": 12,
+        "baselineMedianUs": 3967.9939999999997,
+        "normalizedMedianUs": 763.8645,
+        "pairedMedianSpeedup": 5.248283781288185,
+        "pairedWins": 12,
+        "baselineMedianBytes": 459512,
+        "normalizedMedianBytes": 665040
+      }
+    ]
+  }
+}
