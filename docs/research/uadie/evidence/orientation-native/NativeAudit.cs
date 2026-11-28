@@ -18,8 +18,15 @@ static (int? Value,int Mask) SolveNative(Model model,int? hint)
     if(status!=CpSolverStatus.Optimal)throw new Exception("Native status: "+status);
     int mask=0;
     for(int i=0;i<vars.Length;i++)if(solver.Value(vars[i])==1)mask|=1<<i;
-    int val=checked((int)solver.ObjectiveValue);
-    if(solver.ObjectiveValue!=val || solver.BestObjectiveBound!=val)throw new Exception(JsonSerializer.Serialize(new {message="Native objective bound mismatch", model, mask, hint, reportedObjective=solver.ObjectiveValue, reportedBound=solver.BestObjectiveBound, truncated=val, exactWitness=model.Costs.Where((_,i)=>(mask&(1<<i))!=0).Sum(c=>(long)c.Weight)}));
+    // The CP-SAT API reports objective/bound as binary64, not an integer proof.
+    // Reconstruct exact cost from the original unary terms; compare the reports
+    // within a fixed, explicit tolerance only. Exhaustive verification remains exact.
+    int val=checked((int)model.Costs.Where((_,i)=>(mask&(1<<i))!=0).Sum(c=>(long)c.Weight));
+    double objectiveError=Math.Abs(solver.ObjectiveValue-val), boundError=Math.Abs(solver.BestObjectiveBound-val);
+    if(!double.IsFinite(objectiveError) || !double.IsFinite(boundError) || objectiveError>1e-6 || boundError>1e-6)
+        throw new Exception(JsonSerializer.Serialize(new {model,mask,hint,val,reportedObjective=solver.ObjectiveValue,reportedBound=solver.BestObjectiveBound}));
+    if(objectiveError!=0 || boundError!=0)
+        Console.Error.WriteLine(JsonSerializer.Serialize(new {kind="binary64-report",val,objectiveError,boundError}));
     return(val,mask);
 }
 static bool Verify(Model model,int? value,int mask,int? expected)
@@ -124,11 +131,15 @@ for(int rep=0;rep<3;rep++)
     cp.Minimize(LinearExpr.WeightedSum(x,cost.Select(c=>(long)c)));
     var solver=new CpSolver{StringParameters="num_search_workers:1 random_seed:791001 max_time_in_seconds:2"};
     var status=solver.Solve(cp);
-    long? expected=status==CpSolverStatus.Infeasible?null:status==CpSolverStatus.Optimal?checked((long)solver.ObjectiveValue):throw new Exception("Wide native status: "+status);
-    if(expected!=null){
+    if(status!=CpSolverStatus.Infeasible && status!=CpSolverStatus.Optimal)throw new Exception("Wide native status: "+status);
+    long? expected=null;
+    if(status==CpSolverStatus.Optimal){
         var bits=x.Select(v=>solver.Value(v)).ToArray();
-        if(edges.Any(e=>bits[e.A]+bits[e.B]!=1)||Enumerable.Range(0,n).Sum(i=>bits[i]*cost[i])!=expected||
-            solver.BestObjectiveBound!=expected || solver.ObjectiveValue!=expected)throw new Exception("Wide native witness");
+        expected=Enumerable.Range(0,n).Sum(i=>bits[i]*cost[i]);
+        double oe=Math.Abs(solver.ObjectiveValue-expected.Value),be=Math.Abs(solver.BestObjectiveBound-expected.Value);
+        if(edges.Any(e=>bits[e.A]+bits[e.B]!=1)||bits.Any(b=>b is not (0 or 1)) ||
+           !double.IsFinite(oe)||!double.IsFinite(be)||oe>1e-6||be>1e-6)throw new Exception("Wide native witness or reporting mismatch");
+        if(oe!=0||be!=0)Console.Error.WriteLine(JsonSerializer.Serialize(new{kind="binary64-report",n,expected,objectiveError=oe,boundError=be}));
     }
     long nativeTicks=Stopwatch.GetTimestamp()-t;
     if(value!=expected)throw new Exception("Wide disagreement");
