@@ -110,3 +110,61 @@ All of this is research evidence, not a production claim. Production use needs:
 - repeated runs on reference hardware
 - benchmark libraries (MIPLIB, MiniZinc)
 - a scalable model representation
+
+---
+
+# Run 3: safe stop rules and difficulty-adaptive escalation (`portfolio-study-run3-policies.json`)
+
+The setup is unchanged: 35 instances, 6,000 core-ms, a 2-thread cap, 1 GiB of memory and a 3 s wall clock. HiGHS gets a 700 ms soft-limit margin, and CP-SAT runs an in-process `StopSearch` watchdog.
+
+| Config | Best-known reached | Median wall ms | Median charged core-ms | Stop reasons | Escalated | Lost to hard kill |
+|---|---|---|---|---|---|---|
+| CP-SAT alone | 27/35 | 1216 | 2026 | completed 35 | – | 0 |
+| HiGHS alone | 26/35 | 1500 | 2109 | completed 35 | – | 0 |
+| race, **ProofOnly** (default) | **34/35** | 1711 | 3044 | completed 35 | – | 0 |
+| race, Concordant | **34/35** | 1691 | 3000 | concordant 19, completed 16 | – | 0 |
+| escalate, SingleAttestation | 32/35 | 2014 | 3496 | single 21, completed 14 | 19 | 1 |
+| escalate, Concordant | 33/35 | 2394 | 3868 | concordant 17, completed 18 | 35 | 0 |
+
+**Paired comparisons:**
+
+| Pair | Wins / losses / ties | Sign test |
+|---|---|---|
+| race-ProofOnly vs CP-SAT | 8/1/26 | p = 0.039 |
+| race-ProofOnly vs HiGHS | 8/0/27 | p = 0.008 |
+| race-Concordant vs race-ProofOnly | 0/0/35 | identical quality |
+| escalate-single vs CP-SAT | 6/3/26 | p = 0.51 (not significant) |
+
+**Easy instances.** On the 23 instances where every config reaches the same attested optimum:
+
+| Config | Median wall ms | Median charged core-ms |
+|---|---|---|
+| CP-SAT | 418 | 489 |
+| escalate-single | **420** | **494** |
+| race-ProofOnly | 550 | 845 |
+| race-Concordant | 573 | 891 |
+| escalate-concordant | 932 | 1350 |
+
+**Interpretation.**
+- The safe default race (ProofOnly) gives the best quality.
+- Concordant stopping costs nothing in quality and lets 19/35 runs end early on independent agreement.
+- Single-engine cost on easy models is achievable with escalate-single. It pays for that by relying on a **single solver attestation** to stop, and it loses 2 hard instances. It must therefore stay an explicit, labelled host choice, never the default.
+
+**Soft limits after the fixes (elapsed minus soft limit):**
+
+| Engine | Runs | p50 | p95 | Max |
+|---|---|---|---|---|
+| CP-SAT | 218 | −162 ms | 150 ms | 278 ms |
+| HiGHS | 156 | 86 ms | 134 ms | 506 ms |
+
+One CP-SAT escalation stage still overran into the hard kill: it was killed 343 ms after its soft limit despite `StopSearch`, inside presolve.
+
+**Containment, 18/18 over two runs.** The worker spawned 3 CPU-burning grandchildren plus a 64 or 400 MiB memory hog. In every case:
+- all processes were killed at the deadline
+- cleanup was confirmed
+- CPU stayed ≤ threads × (wall + 100 ms)
+- peak memory stayed ≤ `memory.max` (a 400 MiB hog was held at a 215 MiB peak under a 256 MiB limit)
+
+**Residual processes.** `worker.residualProcesses` occurred in 1 of 400 CP-SAT 2-worker governed runs (0.25 %): 1/200 in run 3a (`run3a-console.log`) and 0/200 in run 3b (95 % upper bound 1.5 %). It was always contained: the candidate was discarded and the slot quarantined. The root cause lies in the S07 boundary/cgroup timing, which is outside this stream's ownership; it is reported to the runtime owner.
+
+**Simulated scale-up.** 100,000 seeded cases (all 3 modes × 3 stop rules, 249,941 members) produced 0 invariant violations, including I10: the stop rule is respected and proof is never manufactured. See `randomized-100000-summary.json`.
