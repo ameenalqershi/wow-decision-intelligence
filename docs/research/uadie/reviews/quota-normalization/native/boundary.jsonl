@@ -1,0 +1,13 @@
+{"kind":"boundary","name":"large-signed-delta","valid":true}
+{"kind":"boundary","name":"large-positive-exact","valid":true}
+{"kind":"boundary","name":"long-min-rejected","valid":true}
+{"kind":"boundary","name":"sentinel-rejected","valid":true}
+{"kind":"boundary","name":"aggregate-overflow-rejected","valid":true}
+{"kind":"boundary","name":"empty-domain-rejected","valid":true}
+{"kind":"boundary","name":"unknown-endpoint-rejected","valid":true}
+{"kind":"boundary","name":"bad-quota-length","valid":true}
+{"kind":"boundary","name":"bad-quota-count","valid":true}
+{"kind":"boundary","name":"cancelled","valid":true}
+{"kind":"boundary","name":"odd-cycle","valid":true}
+{"kind":"boundary","name":"gcd-infeasible","valid":true}
+{"kind":"boundary","name":"duplicate-order","valid":true}
