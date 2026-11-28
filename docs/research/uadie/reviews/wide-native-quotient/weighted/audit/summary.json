@@ -1,0 +1,8 @@
+{
+  "kind": "summary",
+  "finite": 96,
+  "assignments": 24576,
+  "tamper": 480,
+  "contradiction": 19,
+  "overflow": true
+}

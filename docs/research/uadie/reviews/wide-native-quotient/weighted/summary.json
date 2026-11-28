@@ -1,0 +1,191 @@
+{
+  "study": {
+    "rows": 480,
+    "models": 240,
+    "distinctDigests": 240,
+    "histories": 120,
+    "summaries": [
+      {
+        "arm": "original",
+        "rows": 240,
+        "statuses": {
+          "Optimal": 192,
+          "Infeasible": 48
+        },
+        "formal": 0,
+        "medianUs": 2657.736,
+        "p95Us": 9979.896999999997,
+        "p99Us": 18831.71649,
+        "medianBytes": 181396,
+        "medianEvidenceBytes": 3075.5,
+        "dropped": 0,
+        "gcdRows": 0,
+        "phases": {
+          "digest": {
+            "calls": 240,
+            "medianUs": 77.38499999999999
+          },
+          "solve": {
+            "calls": 240,
+            "medianUs": 2341.127
+          },
+          "replay": {
+            "calls": 240,
+            "medianUs": 200.75900000000001
+          },
+          "encode": {
+            "calls": 240,
+            "medianUs": 79.605
+          }
+        }
+      },
+      {
+        "arm": "G21",
+        "rows": 240,
+        "statuses": {
+          "Optimal": 192,
+          "Infeasible": 48
+        },
+        "formal": 48,
+        "medianUs": 2541.7960000000003,
+        "p95Us": 10826.006499999996,
+        "p99Us": 16695.154339999954,
+        "medianBytes": 68988,
+        "medianEvidenceBytes": 5224,
+        "dropped": 480,
+        "gcdRows": 4848,
+        "phases": {
+          "digest": {
+            "calls": 240,
+            "medianUs": 77.0195
+          },
+          "solve": {
+            "calls": 240,
+            "medianUs": 2266.761
+          },
+          "replay": {
+            "calls": 240,
+            "medianUs": 277.92
+          },
+          "encode": {
+            "calls": 240,
+            "medianUs": 107.36949999999999
+          }
+        }
+      }
+    ],
+    "comparisons": [
+      {
+        "candidate": "G21",
+        "base": "original",
+        "histories": 120,
+        "totalHistories": 120,
+        "clusters": 12,
+        "medianSpeedup": 0.9465772222817712,
+        "ci95": [
+          0.9321509433736106,
+          0.9650229602691222
+        ],
+        "wins": 40,
+        "min": 0.7082133234907287
+      }
+    ],
+    "byFamily": [
+      {
+        "family": "gcd",
+        "comparisons": [
+          {
+            "candidate": "G21",
+            "base": "original",
+            "histories": 24,
+            "totalHistories": 24,
+            "clusters": 12,
+            "medianSpeedup": 0.912870078933676,
+            "ci95": [
+              0.8809113479373479,
+              0.965094278617878
+            ],
+            "wins": 5,
+            "min": 0.7082133234907287
+          }
+        ]
+      },
+      {
+        "family": "coprime",
+        "comparisons": [
+          {
+            "candidate": "G21",
+            "base": "original",
+            "histories": 24,
+            "totalHistories": 24,
+            "clusters": 12,
+            "medianSpeedup": 0.8701261926925676,
+            "ci95": [
+              0.8625022716191798,
+              0.8959819503985541
+            ],
+            "wins": 1,
+            "min": 0.7564553185909223
+          }
+        ]
+      },
+      {
+        "family": "overlap",
+        "comparisons": [
+          {
+            "candidate": "G21",
+            "base": "original",
+            "histories": 24,
+            "totalHistories": 24,
+            "clusters": 12,
+            "medianSpeedup": 0.9377517569736165,
+            "ci95": [
+              0.9018771873708631,
+              0.9536756810623245
+            ],
+            "wins": 4,
+            "min": 0.830544083150031
+          }
+        ]
+      },
+      {
+        "family": "redundant",
+        "comparisons": [
+          {
+            "candidate": "G21",
+            "base": "original",
+            "histories": 24,
+            "totalHistories": 24,
+            "clusters": 12,
+            "medianSpeedup": 0.9819109342804195,
+            "ci95": [
+              0.9442704602518054,
+              0.9975463316800806
+            ],
+            "wins": 6,
+            "min": 0.7395757294601619
+          }
+        ]
+      },
+      {
+        "family": "contradiction",
+        "comparisons": [
+          {
+            "candidate": "G21",
+            "base": "original",
+            "histories": 24,
+            "totalHistories": 24,
+            "clusters": 12,
+            "medianSpeedup": 2.520241840538385,
+            "ci95": [
+              2.3516904929464113,
+              2.625027628777056
+            ],
+            "wins": 24,
+            "min": 1.8789082528487868
+          }
+        ]
+      }
+    ]
+  }
+}

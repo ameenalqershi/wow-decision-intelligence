@@ -1,0 +1,1536 @@
+{
+  "holdout": {
+    "rows": 1680,
+    "models": 420,
+    "distinctDigests": 420,
+    "histories": 84,
+    "summaries": [
+      {
+        "arm": "gate-json",
+        "rows": 420,
+        "statuses": {
+          "Optimal": 420
+        },
+        "formal": 348,
+        "medianUs": 1209.4879999999998,
+        "p95Us": 6067.330949999997,
+        "p99Us": 17835.324340000025,
+        "medianBytes": 106704,
+        "medianEvidenceBytes": 2556,
+        "dropped": 0,
+        "gcdRows": 0,
+        "phases": {
+          "context": {
+            "calls": 420,
+            "medianUs": 77.03999999999999
+          },
+          "network-gate": {
+            "calls": 420,
+            "medianUs": 120.396
+          },
+          "simple-gate": {
+            "calls": 240,
+            "medianUs": 5.32
+          },
+          "fallback-gate": {
+            "calls": 192,
+            "medianUs": 0.515
+          },
+          "identity": {
+            "calls": 120,
+            "medianUs": 2.17
+          },
+          "structural-transform": {
+            "calls": 72,
+            "medianUs": 134.199
+          },
+          "structural-proof": {
+            "calls": 72,
+            "medianUs": 91.37899999999999
+          },
+          "objective-transform": {
+            "calls": 120,
+            "medianUs": 11.985
+          },
+          "objective-proof": {
+            "calls": 120,
+            "medianUs": 14.105
+          },
+          "solve": {
+            "calls": 120,
+            "medianUs": 104.3005
+          },
+          "optimality-proof": {
+            "calls": 120,
+            "medianUs": 13.975
+          },
+          "solve-rest": {
+            "calls": 420,
+            "medianUs": 224.899
+          },
+          "independent-replay": {
+            "calls": 420,
+            "medianUs": 243.959
+          },
+          "encode": {
+            "calls": 420,
+            "medianUs": 57.3005
+          },
+          "partition": {
+            "calls": 120,
+            "medianUs": 77.245
+          },
+          "block-solve": {
+            "calls": 60,
+            "medianUs": 240.6895
+          }
+        }
+      },
+      {
+        "arm": "gate-typed",
+        "rows": 420,
+        "statuses": {
+          "Optimal": 420
+        },
+        "formal": 348,
+        "medianUs": 952.5135,
+        "p95Us": 5676.774499999998,
+        "p99Us": 6797.5351,
+        "medianBytes": 93128,
+        "medianEvidenceBytes": 2556,
+        "dropped": 0,
+        "gcdRows": 0,
+        "phases": {
+          "context": {
+            "calls": 420,
+            "medianUs": 77.67099999999999
+          },
+          "network-gate": {
+            "calls": 420,
+            "medianUs": 109.82
+          },
+          "simple-gate": {
+            "calls": 240,
+            "medianUs": 5.234999999999999
+          },
+          "fallback-gate": {
+            "calls": 192,
+            "medianUs": 0.49
+          },
+          "identity": {
+            "calls": 120,
+            "medianUs": 2.21
+          },
+          "structural-transform": {
+            "calls": 72,
+            "medianUs": 134.4395
+          },
+          "structural-proof": {
+            "calls": 72,
+            "medianUs": 93.49950000000001
+          },
+          "objective-transform": {
+            "calls": 120,
+            "medianUs": 12.145
+          },
+          "objective-proof": {
+            "calls": 120,
+            "medianUs": 13.440000000000001
+          },
+          "solve": {
+            "calls": 120,
+            "medianUs": 98.44
+          },
+          "optimality-proof": {
+            "calls": 120,
+            "medianUs": 14.274999999999999
+          },
+          "typed-export": {
+            "calls": 420,
+            "medianUs": 6.69
+          },
+          "solve-rest": {
+            "calls": 420,
+            "medianUs": 0.46
+          },
+          "independent-replay": {
+            "calls": 420,
+            "medianUs": 240.1005
+          },
+          "encode": {
+            "calls": 420,
+            "medianUs": 62.144999999999996
+          },
+          "partition": {
+            "calls": 120,
+            "medianUs": 77.62950000000001
+          },
+          "block-solve": {
+            "calls": 60,
+            "medianUs": 202.64499999999998
+          }
+        }
+      },
+      {
+        "arm": "G20",
+        "rows": 420,
+        "statuses": {
+          "Optimal": 420
+        },
+        "formal": 348,
+        "medianUs": 878.434,
+        "p95Us": 5608.0695,
+        "p99Us": 6696.3927,
+        "medianBytes": 86624,
+        "medianEvidenceBytes": 2556,
+        "dropped": 0,
+        "gcdRows": 0,
+        "phases": {
+          "context": {
+            "calls": 420,
+            "medianUs": 76.6305
+          },
+          "network-gate": {
+            "calls": 420,
+            "medianUs": 2.975
+          },
+          "simple-gate": {
+            "calls": 240,
+            "medianUs": 4.46
+          },
+          "fallback-gate": {
+            "calls": 192,
+            "medianUs": 0.47
+          },
+          "identity": {
+            "calls": 120,
+            "medianUs": 1.94
+          },
+          "structural-transform": {
+            "calls": 72,
+            "medianUs": 138.2355
+          },
+          "structural-proof": {
+            "calls": 72,
+            "medianUs": 86.0695
+          },
+          "objective-transform": {
+            "calls": 120,
+            "medianUs": 11.245000000000001
+          },
+          "objective-proof": {
+            "calls": 120,
+            "medianUs": 13.265
+          },
+          "solve": {
+            "calls": 120,
+            "medianUs": 58.885000000000005
+          },
+          "optimality-proof": {
+            "calls": 120,
+            "medianUs": 7.460500000000001
+          },
+          "typed-export": {
+            "calls": 420,
+            "medianUs": 9.15
+          },
+          "solve-rest": {
+            "calls": 420,
+            "medianUs": 0.4
+          },
+          "independent-replay": {
+            "calls": 420,
+            "medianUs": 234.219
+          },
+          "encode": {
+            "calls": 420,
+            "medianUs": 63.1845
+          },
+          "partition": {
+            "calls": 120,
+            "medianUs": 76.3295
+          },
+          "block-solve": {
+            "calls": 60,
+            "medianUs": 174.209
+          }
+        }
+      },
+      {
+        "arm": "G16",
+        "rows": 420,
+        "statuses": {
+          "Optimal": 420
+        },
+        "formal": 120,
+        "medianUs": 3551.1245,
+        "p95Us": 6119.753999999994,
+        "p99Us": 6716.7314,
+        "medianBytes": 80604,
+        "medianEvidenceBytes": 1982,
+        "dropped": 0,
+        "gcdRows": 0,
+        "phases": {
+          "context": {
+            "calls": 420,
+            "medianUs": 74.855
+          },
+          "identity": {
+            "calls": 120,
+            "medianUs": 3.1550000000000002
+          },
+          "structural-transform": {
+            "calls": 72,
+            "medianUs": 136.7595
+          },
+          "structural-proof": {
+            "calls": 72,
+            "medianUs": 91.3495
+          },
+          "objective-transform": {
+            "calls": 120,
+            "medianUs": 11.225000000000001
+          },
+          "objective-proof": {
+            "calls": 120,
+            "medianUs": 12.870000000000001
+          },
+          "solve": {
+            "calls": 120,
+            "medianUs": 57.7045
+          },
+          "optimality-proof": {
+            "calls": 120,
+            "medianUs": 7.9399999999999995
+          },
+          "solve-rest": {
+            "calls": 420,
+            "medianUs": 3335.5545
+          },
+          "independent-replay": {
+            "calls": 420,
+            "medianUs": 127.235
+          },
+          "encode": {
+            "calls": 420,
+            "medianUs": 50.739999999999995
+          }
+        }
+      }
+    ],
+    "comparisons": [
+      {
+        "candidate": "G20",
+        "base": "gate-json",
+        "histories": 84,
+        "totalHistories": 84,
+        "clusters": 12,
+        "medianSpeedup": 1.3646186692868267,
+        "ci95": [
+          1.3292626220363977,
+          1.3992886888690332
+        ],
+        "wins": 83,
+        "min": 0.9212312295577286
+      },
+      {
+        "candidate": "G20",
+        "base": "gate-typed",
+        "histories": 84,
+        "totalHistories": 84,
+        "clusters": 12,
+        "medianSpeedup": 1.1038142740530272,
+        "ci95": [
+          1.0737364495266544,
+          1.1319981520344402
+        ],
+        "wins": 75,
+        "min": 0.9200551198688586
+      },
+      {
+        "candidate": "G20",
+        "base": "G16",
+        "histories": 84,
+        "totalHistories": 84,
+        "clusters": 12,
+        "medianSpeedup": 2.600322374412624,
+        "ci95": [
+          2.374067963242749,
+          2.719476203174005
+        ],
+        "wins": 60,
+        "min": 0.8183501437606138
+      },
+      {
+        "candidate": "gate-typed",
+        "base": "gate-json",
+        "histories": 84,
+        "totalHistories": 84,
+        "clusters": 12,
+        "medianSpeedup": 1.1959591183959932,
+        "ci95": [
+          1.1857387101207477,
+          1.215821897024633
+        ],
+        "wins": 77,
+        "min": 0.7047849250723329
+      }
+    ],
+    "byFamily": [
+      {
+        "family": "blocks",
+        "comparisons": [
+          {
+            "candidate": "G20",
+            "base": "gate-json",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.3416002948438313,
+            "ci95": [
+              1.3244040573813707,
+              1.3812173225084576
+            ],
+            "wins": 12,
+            "min": 1.2525391467078857
+          },
+          {
+            "candidate": "G20",
+            "base": "gate-typed",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.1038142740530272,
+            "ci95": [
+              1.0751417630949263,
+              1.5600814305648036
+            ],
+            "wins": 12,
+            "min": 1.0335053367594278
+          },
+          {
+            "candidate": "G20",
+            "base": "G16",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 0.9905479624920848,
+            "ci95": [
+              0.9807857736506802,
+              1.0110245963143074
+            ],
+            "wins": 5,
+            "min": 0.9326029508466661
+          },
+          {
+            "candidate": "gate-typed",
+            "base": "gate-json",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.2113578312619382,
+            "ci95": [
+              1.0051833593299804,
+              1.2695925999628326
+            ],
+            "wins": 9,
+            "min": 0.7047849250723329
+          }
+        ]
+      },
+      {
+        "family": "quotas",
+        "comparisons": [
+          {
+            "candidate": "G20",
+            "base": "gate-json",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.4093315995652835,
+            "ci95": [
+              1.299865027557345,
+              1.4469062857956307
+            ],
+            "wins": 12,
+            "min": 1.1739873478533127
+          },
+          {
+            "candidate": "G20",
+            "base": "gate-typed",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.0552233831632911,
+            "ci95": [
+              0.9648302441564309,
+              1.1512745522231183
+            ],
+            "wins": 7,
+            "min": 0.9200551198688586
+          },
+          {
+            "candidate": "G20",
+            "base": "G16",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 0.9863723981433159,
+            "ci95": [
+              0.905442265837238,
+              1.0175306187448525
+            ],
+            "wins": 5,
+            "min": 0.8183501437606138
+          },
+          {
+            "candidate": "gate-typed",
+            "base": "gate-json",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.2822201648726694,
+            "ci95": [
+              1.2154218619986867,
+              1.3685768680016772
+            ],
+            "wins": 12,
+            "min": 1.1715900939904953
+          }
+        ]
+      },
+      {
+        "family": "assignment",
+        "comparisons": [
+          {
+            "candidate": "G20",
+            "base": "gate-json",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.4066074704545755,
+            "ci95": [
+              1.3857995466561486,
+              1.4341364116398267
+            ],
+            "wins": 12,
+            "min": 1.218671323892327
+          },
+          {
+            "candidate": "G20",
+            "base": "gate-typed",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.1825960079004765,
+            "ci95": [
+              1.152057561044999,
+              1.200687978339574
+            ],
+            "wins": 11,
+            "min": 0.9905205209005657
+          },
+          {
+            "candidate": "G20",
+            "base": "G16",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 9.954720587433961,
+            "ci95": [
+              8.924347669434912,
+              10.752468698450842
+            ],
+            "wins": 12,
+            "min": 6.9595817608868975
+          },
+          {
+            "candidate": "gate-typed",
+            "base": "gate-json",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.187943966115292,
+            "ci95": [
+              1.1820900413911986,
+              1.229524065196082
+            ],
+            "wins": 12,
+            "min": 1.1628518477204872
+          }
+        ]
+      },
+      {
+        "family": "sparse",
+        "comparisons": [
+          {
+            "candidate": "G20",
+            "base": "gate-json",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.424893579637786,
+            "ci95": [
+              1.3299663162142754,
+              1.5430321989364746
+            ],
+            "wins": 12,
+            "min": 1.2501906586308653
+          },
+          {
+            "candidate": "G20",
+            "base": "gate-typed",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.1537832538271524,
+            "ci95": [
+              1.096423781428382,
+              1.2050686089517364
+            ],
+            "wins": 12,
+            "min": 1.0346473747950635
+          },
+          {
+            "candidate": "G20",
+            "base": "G16",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 5.315235345349814,
+            "ci95": [
+              5.190582514131963,
+              6.158027797801125
+            ],
+            "wins": 12,
+            "min": 4.494392902595127
+          },
+          {
+            "candidate": "gate-typed",
+            "base": "gate-json",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.2130095654506907,
+            "ci95": [
+              1.2039088047145676,
+              1.3084740150445175
+            ],
+            "wins": 12,
+            "min": 1.1680257668687246
+          }
+        ]
+      },
+      {
+        "family": "rectangular",
+        "comparisons": [
+          {
+            "candidate": "G20",
+            "base": "gate-json",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.4086942886117217,
+            "ci95": [
+              1.3926315597450156,
+              1.4744190433954452
+            ],
+            "wins": 12,
+            "min": 1.267917596278862
+          },
+          {
+            "candidate": "G20",
+            "base": "gate-typed",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.1738606948927686,
+            "ci95": [
+              1.1004930525376664,
+              1.211781579062014
+            ],
+            "wins": 12,
+            "min": 1.0672147435935453
+          },
+          {
+            "candidate": "G20",
+            "base": "G16",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 7.2167460205657035,
+            "ci95": [
+              6.518362439692051,
+              7.756987688520795
+            ],
+            "wins": 12,
+            "min": 5.698595646777824
+          },
+          {
+            "candidate": "gate-typed",
+            "base": "gate-json",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.209367316668288,
+            "ci95": [
+              1.169033217413168,
+              1.3020179528672624
+            ],
+            "wins": 12,
+            "min": 1.129975000553085
+          }
+        ]
+      },
+      {
+        "family": "mixed",
+        "comparisons": [
+          {
+            "candidate": "G20",
+            "base": "gate-json",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.216234667648755,
+            "ci95": [
+              1.1801323285003291,
+              1.2740282293488865
+            ],
+            "wins": 12,
+            "min": 1.1071521645366442
+          },
+          {
+            "candidate": "G20",
+            "base": "gate-typed",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.0567282600664272,
+            "ci95": [
+              1.0195985184725598,
+              1.100415495965681
+            ],
+            "wins": 10,
+            "min": 0.9857329482150924
+          },
+          {
+            "candidate": "G20",
+            "base": "G16",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 2.600322374412624,
+            "ci95": [
+              2.374067963242749,
+              2.719476203174005
+            ],
+            "wins": 12,
+            "min": 2.116489360307825
+          },
+          {
+            "candidate": "gate-typed",
+            "base": "gate-json",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.1570889594726204,
+            "ci95": [
+              1.1209642568648452,
+              1.1929464378502583
+            ],
+            "wins": 12,
+            "min": 1.023626245199314
+          }
+        ]
+      },
+      {
+        "family": "overlap",
+        "comparisons": [
+          {
+            "candidate": "G20",
+            "base": "gate-json",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.0463847520537055,
+            "ci95": [
+              1.0182640953617796,
+              1.0639924213089897
+            ],
+            "wins": 11,
+            "min": 0.9212312295577286
+          },
+          {
+            "candidate": "G20",
+            "base": "gate-typed",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.0379076273117191,
+            "ci95": [
+              1.0189131060117556,
+              1.0520756830121685
+            ],
+            "wins": 11,
+            "min": 0.9945311662222092
+          },
+          {
+            "candidate": "G20",
+            "base": "G16",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 0.987954010192427,
+            "ci95": [
+              0.9692916590128988,
+              0.9971846463303832
+            ],
+            "wins": 2,
+            "min": 0.9265869049862838
+          },
+          {
+            "candidate": "gate-typed",
+            "base": "gate-json",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.003593234088324,
+            "ci95": [
+              0.9945061028515266,
+              1.0265230082298828
+            ],
+            "wins": 8,
+            "min": 0.8147190884155973
+          }
+        ]
+      }
+    ]
+  },
+  "disk": {
+    "rows": 140,
+    "models": 35,
+    "distinctDigests": 35,
+    "histories": 7,
+    "summaries": [
+      {
+        "arm": "gate-json",
+        "rows": 35,
+        "statuses": {
+          "Optimal": 35
+        },
+        "formal": 29,
+        "medianUs": 2311.646,
+        "p95Us": 28730.75619999997,
+        "p99Us": 134631.4107999995,
+        "medianBytes": 107032,
+        "medianEvidenceBytes": 2565,
+        "dropped": 0,
+        "gcdRows": 0,
+        "phases": {
+          "context": {
+            "calls": 35,
+            "medianUs": 98.271
+          },
+          "network-gate": {
+            "calls": 35,
+            "medianUs": 123.849
+          },
+          "simple-gate": {
+            "calls": 20,
+            "medianUs": 4.15
+          },
+          "fallback-gate": {
+            "calls": 16,
+            "medianUs": 0.6100000000000001
+          },
+          "identity": {
+            "calls": 10,
+            "medianUs": 3.1
+          },
+          "structural-transform": {
+            "calls": 6,
+            "medianUs": 2035.3765
+          },
+          "structural-proof": {
+            "calls": 6,
+            "medianUs": 1969.472
+          },
+          "objective-transform": {
+            "calls": 10,
+            "medianUs": 16.025
+          },
+          "objective-proof": {
+            "calls": 10,
+            "medianUs": 12.565000000000001
+          },
+          "solve": {
+            "calls": 10,
+            "medianUs": 129.98
+          },
+          "optimality-proof": {
+            "calls": 10,
+            "medianUs": 13.365
+          },
+          "solve-rest": {
+            "calls": 35,
+            "medianUs": 325.919
+          },
+          "independent-replay": {
+            "calls": 35,
+            "medianUs": 297.88
+          },
+          "encode": {
+            "calls": 35,
+            "medianUs": 71.21
+          },
+          "flush": {
+            "calls": 35,
+            "medianUs": 665.499
+          },
+          "partition": {
+            "calls": 10,
+            "medianUs": 69.965
+          },
+          "block-solve": {
+            "calls": 5,
+            "medianUs": 532.619
+          }
+        }
+      },
+      {
+        "arm": "gate-typed",
+        "rows": 35,
+        "statuses": {
+          "Optimal": 35
+        },
+        "formal": 29,
+        "medianUs": 1961.327,
+        "p95Us": 7606.674299999999,
+        "p99Us": 7856.4755399999995,
+        "medianBytes": 93224,
+        "medianEvidenceBytes": 2565,
+        "dropped": 0,
+        "gcdRows": 0,
+        "phases": {
+          "context": {
+            "calls": 35,
+            "medianUs": 97.591
+          },
+          "network-gate": {
+            "calls": 35,
+            "medianUs": 106.96
+          },
+          "simple-gate": {
+            "calls": 20,
+            "medianUs": 3.1799999999999997
+          },
+          "fallback-gate": {
+            "calls": 16,
+            "medianUs": 0.775
+          },
+          "identity": {
+            "calls": 10,
+            "medianUs": 3.135
+          },
+          "structural-transform": {
+            "calls": 6,
+            "medianUs": 167.781
+          },
+          "structural-proof": {
+            "calls": 6,
+            "medianUs": 95.8245
+          },
+          "objective-transform": {
+            "calls": 10,
+            "medianUs": 10.895
+          },
+          "objective-proof": {
+            "calls": 10,
+            "medianUs": 10.184999999999999
+          },
+          "solve": {
+            "calls": 10,
+            "medianUs": 67.845
+          },
+          "optimality-proof": {
+            "calls": 10,
+            "medianUs": 8.225000000000001
+          },
+          "typed-export": {
+            "calls": 35,
+            "medianUs": 15.25
+          },
+          "solve-rest": {
+            "calls": 35,
+            "medianUs": 0.46
+          },
+          "independent-replay": {
+            "calls": 35,
+            "medianUs": 270.379
+          },
+          "encode": {
+            "calls": 35,
+            "medianUs": 61.75
+          },
+          "flush": {
+            "calls": 35,
+            "medianUs": 705.458
+          },
+          "partition": {
+            "calls": 10,
+            "medianUs": 77.12
+          },
+          "block-solve": {
+            "calls": 5,
+            "medianUs": 134.771
+          }
+        }
+      },
+      {
+        "arm": "G20",
+        "rows": 35,
+        "statuses": {
+          "Optimal": 35
+        },
+        "formal": 29,
+        "medianUs": 1676.507,
+        "p95Us": 7186.065299999999,
+        "p99Us": 7690.001879999998,
+        "medianBytes": 86608,
+        "medianEvidenceBytes": 2565,
+        "dropped": 0,
+        "gcdRows": 0,
+        "phases": {
+          "context": {
+            "calls": 35,
+            "medianUs": 93.06
+          },
+          "network-gate": {
+            "calls": 35,
+            "medianUs": 2.78
+          },
+          "simple-gate": {
+            "calls": 20,
+            "medianUs": 3.125
+          },
+          "fallback-gate": {
+            "calls": 16,
+            "medianUs": 0.505
+          },
+          "identity": {
+            "calls": 10,
+            "medianUs": 2.3449999999999998
+          },
+          "structural-transform": {
+            "calls": 6,
+            "medianUs": 214.47000000000003
+          },
+          "structural-proof": {
+            "calls": 6,
+            "medianUs": 82.28
+          },
+          "objective-transform": {
+            "calls": 10,
+            "medianUs": 11.265
+          },
+          "objective-proof": {
+            "calls": 10,
+            "medianUs": 12.474499999999999
+          },
+          "solve": {
+            "calls": 10,
+            "medianUs": 61.46
+          },
+          "optimality-proof": {
+            "calls": 10,
+            "medianUs": 7.89
+          },
+          "typed-export": {
+            "calls": 35,
+            "medianUs": 17.85
+          },
+          "solve-rest": {
+            "calls": 35,
+            "medianUs": 0.4
+          },
+          "independent-replay": {
+            "calls": 35,
+            "medianUs": 249.379
+          },
+          "encode": {
+            "calls": 35,
+            "medianUs": 61.561
+          },
+          "flush": {
+            "calls": 35,
+            "medianUs": 639.28
+          },
+          "partition": {
+            "calls": 10,
+            "medianUs": 65.15
+          },
+          "block-solve": {
+            "calls": 5,
+            "medianUs": 130.95
+          }
+        }
+      },
+      {
+        "arm": "G16",
+        "rows": 35,
+        "statuses": {
+          "Optimal": 35
+        },
+        "formal": 10,
+        "medianUs": 3279.824,
+        "p95Us": 7125.4877,
+        "p99Us": 81081.88585999962,
+        "medianBytes": 80888,
+        "medianEvidenceBytes": 2033,
+        "dropped": 0,
+        "gcdRows": 0,
+        "phases": {
+          "context": {
+            "calls": 35,
+            "medianUs": 96.921
+          },
+          "identity": {
+            "calls": 10,
+            "medianUs": 4.085
+          },
+          "structural-transform": {
+            "calls": 6,
+            "medianUs": 141.5745
+          },
+          "structural-proof": {
+            "calls": 6,
+            "medianUs": 84.6045
+          },
+          "objective-transform": {
+            "calls": 10,
+            "medianUs": 7.47
+          },
+          "objective-proof": {
+            "calls": 10,
+            "medianUs": 16.72
+          },
+          "solve": {
+            "calls": 10,
+            "medianUs": 65.81949999999999
+          },
+          "optimality-proof": {
+            "calls": 10,
+            "medianUs": 7.6
+          },
+          "solve-rest": {
+            "calls": 35,
+            "medianUs": 2362.626
+          },
+          "independent-replay": {
+            "calls": 35,
+            "medianUs": 127.84
+          },
+          "encode": {
+            "calls": 35,
+            "medianUs": 50.42
+          },
+          "flush": {
+            "calls": 35,
+            "medianUs": 676.289
+          }
+        }
+      }
+    ],
+    "comparisons": [
+      {
+        "candidate": "G20",
+        "base": "gate-json",
+        "histories": 7,
+        "totalHistories": 7,
+        "clusters": 1,
+        "medianSpeedup": 2.9991549779318207,
+        "ci95": null,
+        "wins": 7,
+        "min": 1.0302720295648171
+      },
+      {
+        "candidate": "G20",
+        "base": "gate-typed",
+        "histories": 7,
+        "totalHistories": 7,
+        "clusters": 1,
+        "medianSpeedup": 1.1630359194377677,
+        "ci95": null,
+        "wins": 7,
+        "min": 1.0326310105519254
+      },
+      {
+        "candidate": "G20",
+        "base": "G16",
+        "histories": 7,
+        "totalHistories": 7,
+        "clusters": 1,
+        "medianSpeedup": 2.2842888815873703,
+        "ci95": null,
+        "wins": 4,
+        "min": 0.9601727379457811
+      },
+      {
+        "candidate": "gate-typed",
+        "base": "gate-json",
+        "histories": 7,
+        "totalHistories": 7,
+        "clusters": 1,
+        "medianSpeedup": 2.8221618888732105,
+        "ci95": null,
+        "wins": 6,
+        "min": 0.9977155625165204
+      }
+    ],
+    "byFamily": [
+      {
+        "family": "blocks",
+        "comparisons": [
+          {
+            "candidate": "G20",
+            "base": "gate-json",
+            "histories": 1,
+            "totalHistories": 1,
+            "clusters": 1,
+            "medianSpeedup": 24.115777935601937,
+            "ci95": null,
+            "wins": 1,
+            "min": 24.115777935601937
+          },
+          {
+            "candidate": "G20",
+            "base": "gate-typed",
+            "histories": 1,
+            "totalHistories": 1,
+            "clusters": 1,
+            "medianSpeedup": 1.7425960794694446,
+            "ci95": null,
+            "wins": 1,
+            "min": 1.7425960794694446
+          },
+          {
+            "candidate": "G20",
+            "base": "G16",
+            "histories": 1,
+            "totalHistories": 1,
+            "clusters": 1,
+            "medianSpeedup": 0.968422268049297,
+            "ci95": null,
+            "wins": 0,
+            "min": 0.968422268049297
+          },
+          {
+            "candidate": "gate-typed",
+            "base": "gate-json",
+            "histories": 1,
+            "totalHistories": 1,
+            "clusters": 1,
+            "medianSpeedup": 13.838994715828978,
+            "ci95": null,
+            "wins": 1,
+            "min": 13.838994715828978
+          }
+        ]
+      },
+      {
+        "family": "quotas",
+        "comparisons": [
+          {
+            "candidate": "G20",
+            "base": "gate-json",
+            "histories": 1,
+            "totalHistories": 1,
+            "clusters": 1,
+            "medianSpeedup": 2.9991549779318207,
+            "ci95": null,
+            "wins": 1,
+            "min": 2.9991549779318207
+          },
+          {
+            "candidate": "G20",
+            "base": "gate-typed",
+            "histories": 1,
+            "totalHistories": 1,
+            "clusters": 1,
+            "medianSpeedup": 1.0627154274021033,
+            "ci95": null,
+            "wins": 1,
+            "min": 1.0627154274021033
+          },
+          {
+            "candidate": "G20",
+            "base": "G16",
+            "histories": 1,
+            "totalHistories": 1,
+            "clusters": 1,
+            "medianSpeedup": 0.9896235897742868,
+            "ci95": null,
+            "wins": 0,
+            "min": 0.9896235897742868
+          },
+          {
+            "candidate": "gate-typed",
+            "base": "gate-json",
+            "histories": 1,
+            "totalHistories": 1,
+            "clusters": 1,
+            "medianSpeedup": 2.8221618888732105,
+            "ci95": null,
+            "wins": 1,
+            "min": 2.8221618888732105
+          }
+        ]
+      },
+      {
+        "family": "assignment",
+        "comparisons": [
+          {
+            "candidate": "G20",
+            "base": "gate-json",
+            "histories": 1,
+            "totalHistories": 1,
+            "clusters": 1,
+            "medianSpeedup": 5.045926188251027,
+            "ci95": null,
+            "wins": 1,
+            "min": 5.045926188251027
+          },
+          {
+            "candidate": "G20",
+            "base": "gate-typed",
+            "histories": 1,
+            "totalHistories": 1,
+            "clusters": 1,
+            "medianSpeedup": 1.4332993151184064,
+            "ci95": null,
+            "wins": 1,
+            "min": 1.4332993151184064
+          },
+          {
+            "candidate": "G20",
+            "base": "G16",
+            "histories": 1,
+            "totalHistories": 1,
+            "clusters": 1,
+            "medianSpeedup": 22.761123253117255,
+            "ci95": null,
+            "wins": 1,
+            "min": 22.761123253117255
+          },
+          {
+            "candidate": "gate-typed",
+            "base": "gate-json",
+            "histories": 1,
+            "totalHistories": 1,
+            "clusters": 1,
+            "medianSpeedup": 3.520497173916655,
+            "ci95": null,
+            "wins": 1,
+            "min": 3.520497173916655
+          }
+        ]
+      },
+      {
+        "family": "sparse",
+        "comparisons": [
+          {
+            "candidate": "G20",
+            "base": "gate-json",
+            "histories": 1,
+            "totalHistories": 1,
+            "clusters": 1,
+            "medianSpeedup": 5.902377775890024,
+            "ci95": null,
+            "wins": 1,
+            "min": 5.902377775890024
+          },
+          {
+            "candidate": "G20",
+            "base": "gate-typed",
+            "histories": 1,
+            "totalHistories": 1,
+            "clusters": 1,
+            "medianSpeedup": 1.7310875033179998,
+            "ci95": null,
+            "wins": 1,
+            "min": 1.7310875033179998
+          },
+          {
+            "candidate": "G20",
+            "base": "G16",
+            "histories": 1,
+            "totalHistories": 1,
+            "clusters": 1,
+            "medianSpeedup": 3.2364695382668502,
+            "ci95": null,
+            "wins": 1,
+            "min": 3.2364695382668502
+          },
+          {
+            "candidate": "gate-typed",
+            "base": "gate-json",
+            "histories": 1,
+            "totalHistories": 1,
+            "clusters": 1,
+            "medianSpeedup": 3.4096357142991636,
+            "ci95": null,
+            "wins": 1,
+            "min": 3.4096357142991636
+          }
+        ]
+      },
+      {
+        "family": "rectangular",
+        "comparisons": [
+          {
+            "candidate": "G20",
+            "base": "gate-json",
+            "histories": 1,
+            "totalHistories": 1,
+            "clusters": 1,
+            "medianSpeedup": 1.3202842984936318,
+            "ci95": null,
+            "wins": 1,
+            "min": 1.3202842984936318
+          },
+          {
+            "candidate": "G20",
+            "base": "gate-typed",
+            "histories": 1,
+            "totalHistories": 1,
+            "clusters": 1,
+            "medianSpeedup": 1.1630359194377677,
+            "ci95": null,
+            "wins": 1,
+            "min": 1.1630359194377677
+          },
+          {
+            "candidate": "G20",
+            "base": "G16",
+            "histories": 1,
+            "totalHistories": 1,
+            "clusters": 1,
+            "medianSpeedup": 3.13769523158612,
+            "ci95": null,
+            "wins": 1,
+            "min": 3.13769523158612
+          },
+          {
+            "candidate": "gate-typed",
+            "base": "gate-json",
+            "histories": 1,
+            "totalHistories": 1,
+            "clusters": 1,
+            "medianSpeedup": 1.1352050924892163,
+            "ci95": null,
+            "wins": 1,
+            "min": 1.1352050924892163
+          }
+        ]
+      },
+      {
+        "family": "mixed",
+        "comparisons": [
+          {
+            "candidate": "G20",
+            "base": "gate-json",
+            "histories": 1,
+            "totalHistories": 1,
+            "clusters": 1,
+            "medianSpeedup": 1.4894114400615537,
+            "ci95": null,
+            "wins": 1,
+            "min": 1.4894114400615537
+          },
+          {
+            "candidate": "G20",
+            "base": "gate-typed",
+            "histories": 1,
+            "totalHistories": 1,
+            "clusters": 1,
+            "medianSpeedup": 1.0487694017943228,
+            "ci95": null,
+            "wins": 1,
+            "min": 1.0487694017943228
+          },
+          {
+            "candidate": "G20",
+            "base": "G16",
+            "histories": 1,
+            "totalHistories": 1,
+            "clusters": 1,
+            "medianSpeedup": 2.2842888815873703,
+            "ci95": null,
+            "wins": 1,
+            "min": 2.2842888815873703
+          },
+          {
+            "candidate": "gate-typed",
+            "base": "gate-json",
+            "histories": 1,
+            "totalHistories": 1,
+            "clusters": 1,
+            "medianSpeedup": 1.4201515009051022,
+            "ci95": null,
+            "wins": 1,
+            "min": 1.4201515009051022
+          }
+        ]
+      },
+      {
+        "family": "overlap",
+        "comparisons": [
+          {
+            "candidate": "G20",
+            "base": "gate-json",
+            "histories": 1,
+            "totalHistories": 1,
+            "clusters": 1,
+            "medianSpeedup": 1.0302720295648171,
+            "ci95": null,
+            "wins": 1,
+            "min": 1.0302720295648171
+          },
+          {
+            "candidate": "G20",
+            "base": "gate-typed",
+            "histories": 1,
+            "totalHistories": 1,
+            "clusters": 1,
+            "medianSpeedup": 1.0326310105519254,
+            "ci95": null,
+            "wins": 1,
+            "min": 1.0326310105519254
+          },
+          {
+            "candidate": "G20",
+            "base": "G16",
+            "histories": 1,
+            "totalHistories": 1,
+            "clusters": 1,
+            "medianSpeedup": 0.9601727379457811,
+            "ci95": null,
+            "wins": 0,
+            "min": 0.9601727379457811
+          },
+          {
+            "candidate": "gate-typed",
+            "base": "gate-json",
+            "histories": 1,
+            "totalHistories": 1,
+            "clusters": 1,
+            "medianSpeedup": 0.9977155625165204,
+            "ci95": null,
+            "wins": 0,
+            "min": 0.9977155625165204
+          }
+        ]
+      }
+    ]
+  }
+}

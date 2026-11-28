@@ -1,0 +1,243 @@
+{
+  "study": {
+    "rows": 432,
+    "models": 144,
+    "distinctDigests": 144,
+    "histories": 72,
+    "summaries": [
+      {
+        "arm": "CP-SAT",
+        "rows": 144,
+        "statuses": {
+          "Optimal": 96,
+          "Infeasible": 48
+        },
+        "formal": 0,
+        "medianUs": 3606.804,
+        "p95Us": 36931.722649999996,
+        "p99Us": 47078.51577999993,
+        "medianBytes": 339896,
+        "medianEvidenceBytes": 11238,
+        "dropped": 0,
+        "gcdRows": 0,
+        "phases": {
+          "admit": {
+            "calls": 144,
+            "medianUs": 401.0235
+          },
+          "solve": {
+            "calls": 144,
+            "medianUs": 3238.3045
+          },
+          "verify": {
+            "calls": 144,
+            "medianUs": 15.120000000000001
+          },
+          "encode": {
+            "calls": 144,
+            "medianUs": 263.85450000000003
+          }
+        }
+      },
+      {
+        "arm": "native-flow",
+        "rows": 144,
+        "statuses": {
+          "Optimal": 96,
+          "Infeasible": 48
+        },
+        "formal": 0,
+        "medianUs": 841.159,
+        "p95Us": 1915.7096499999993,
+        "p99Us": 2471.554299999996,
+        "medianBytes": 25836,
+        "medianEvidenceBytes": 11238,
+        "dropped": 0,
+        "gcdRows": 0,
+        "phases": {
+          "admit": {
+            "calls": 144,
+            "medianUs": 347.4145
+          },
+          "solve": {
+            "calls": 144,
+            "medianUs": 150.874
+          },
+          "verify": {
+            "calls": 144,
+            "medianUs": 12.14
+          },
+          "encode": {
+            "calls": 144,
+            "medianUs": 243.9205
+          }
+        }
+      },
+      {
+        "arm": "G22",
+        "rows": 144,
+        "statuses": {
+          "Optimal": 96,
+          "Infeasible": 48
+        },
+        "formal": 144,
+        "medianUs": 1258.8925,
+        "p95Us": 2160.4954999999995,
+        "p99Us": 10346.187089999992,
+        "medianBytes": 32760,
+        "medianEvidenceBytes": 11320,
+        "dropped": 0,
+        "gcdRows": 0,
+        "phases": {
+          "admit": {
+            "calls": 144,
+            "medianUs": 302.9845
+          },
+          "solve": {
+            "calls": 144,
+            "medianUs": 501.4145
+          },
+          "verify": {
+            "calls": 144,
+            "medianUs": 34.180499999999995
+          },
+          "encode": {
+            "calls": 144,
+            "medianUs": 258.5395
+          }
+        }
+      }
+    ],
+    "comparisons": [
+      {
+        "candidate": "G22",
+        "base": "CP-SAT",
+        "histories": 72,
+        "totalHistories": 72,
+        "clusters": 12,
+        "medianSpeedup": 15.963859348497248,
+        "ci95": [
+          14.906385691490062,
+          17.678508470756217
+        ],
+        "wins": 70,
+        "min": 0.09763943871119052
+      },
+      {
+        "candidate": "G22",
+        "base": "native-flow",
+        "histories": 72,
+        "totalHistories": 72,
+        "clusters": 12,
+        "medianSpeedup": 0.9179152827476831,
+        "ci95": [
+          0.8798812368664719,
+          0.9387992259362308
+        ],
+        "wins": 21,
+        "min": 0.016385995485730907
+      }
+    ],
+    "byFamily": [
+      {
+        "family": "signed",
+        "comparisons": [
+          {
+            "candidate": "G22",
+            "base": "CP-SAT",
+            "histories": 24,
+            "totalHistories": 24,
+            "clusters": 12,
+            "medianSpeedup": 17.68603831476892,
+            "ci95": [
+              15.71372828703291,
+              18.451870357423523
+            ],
+            "wins": 24,
+            "min": 4.3989122263686395
+          },
+          {
+            "candidate": "G22",
+            "base": "native-flow",
+            "histories": 24,
+            "totalHistories": 24,
+            "clusters": 12,
+            "medianSpeedup": 0.9824755519402102,
+            "ci95": [
+              0.9496521701382983,
+              1.0174157276037175
+            ],
+            "wins": 12,
+            "min": 0.2630281981492755
+          }
+        ]
+      },
+      {
+        "family": "lower",
+        "comparisons": [
+          {
+            "candidate": "G22",
+            "base": "CP-SAT",
+            "histories": 24,
+            "totalHistories": 24,
+            "clusters": 12,
+            "medianSpeedup": 18.748620287243703,
+            "ci95": [
+              18.210138612308313,
+              20.532778034860403
+            ],
+            "wins": 24,
+            "min": 11.385765612379302
+          },
+          {
+            "candidate": "G22",
+            "base": "native-flow",
+            "histories": 24,
+            "totalHistories": 24,
+            "clusters": 12,
+            "medianSpeedup": 0.9630408312663612,
+            "ci95": [
+              0.9459520584415624,
+              1.039722273185665
+            ],
+            "wins": 9,
+            "min": 0.48200550325268376
+          }
+        ]
+      },
+      {
+        "family": "infeasible",
+        "comparisons": [
+          {
+            "candidate": "G22",
+            "base": "CP-SAT",
+            "histories": 24,
+            "totalHistories": 24,
+            "clusters": 12,
+            "medianSpeedup": 2.286578750663602,
+            "ci95": [
+              2.1712583680284787,
+              2.501749529682542
+            ],
+            "wins": 22,
+            "min": 0.09763943871119052
+          },
+          {
+            "candidate": "G22",
+            "base": "native-flow",
+            "histories": 24,
+            "totalHistories": 24,
+            "clusters": 12,
+            "medianSpeedup": 0.6180367432906554,
+            "ci95": [
+              0.5760558546974186,
+              0.6583257594898051
+            ],
+            "wins": 0,
+            "min": 0.016385995485730907
+          }
+        ]
+      }
+    ]
+  }
+}
