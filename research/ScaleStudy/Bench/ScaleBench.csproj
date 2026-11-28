@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- RESEARCH executable (proposed X12/X13). Engines here are research harnesses, not S02/S03 adapters. -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <ServerGarbageCollection>false</ServerGarbageCollection>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../Sparse/WowDi.Research.Sparse.csproj" />
+    <ProjectReference Include="../../Certificates/Certificates/WowDi.Research.Certificates.csproj" />
+    <ProjectReference Include="../../../src/Verification.Independent/WowDi.Verification.Independent.csproj" />
+    <ProjectReference Include="../../../src/Dml.Binding/WowDi.Dml.Binding.csproj" />
+    <PackageReference Include="Highs.Native" Version="1.16.0" />
+  </ItemGroup>
+</Project>

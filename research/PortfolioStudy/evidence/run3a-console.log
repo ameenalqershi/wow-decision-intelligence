@@ -1,0 +1,245 @@
+Running as unit: run-p1382369-i1384593.service
+contain t=1 hog=64MB limit=512MB cpu=1497 elapsed=1511 peak=90MB term=Timeout clean=True worker.cancelled
+contain t=1 hog=64MB limit=512MB cpu=1506 elapsed=1525 peak=89MB term=Timeout clean=True worker.timeout
+contain t=1 hog=64MB limit=512MB cpu=1546 elapsed=1526 peak=89MB term=Timeout clean=True worker.timeout
+contain t=2 hog=64MB limit=512MB cpu=2740 elapsed=1526 peak=91MB term=Timeout clean=True worker.timeout
+contain t=2 hog=64MB limit=512MB cpu=2777 elapsed=1526 peak=90MB term=Timeout clean=True worker.timeout
+contain t=2 hog=64MB limit=512MB cpu=2700 elapsed=1526 peak=90MB term=Timeout clean=True worker.timeout
+contain t=1 hog=400MB limit=256MB cpu=3044 elapsed=3050 peak=215MB term=Timeout clean=True worker.timeout
+contain t=1 hog=400MB limit=256MB cpu=3024 elapsed=3026 peak=215MB term=Timeout clean=True worker.timeout
+contain t=1 hog=400MB limit=256MB cpu=3054 elapsed=3026 peak=216MB term=Timeout clean=True worker.timeout
+residual Completed:ok=199 Failed:worker.residualProcesses=1
+mkp-n30-m5-s1          cpsat     VerifiedFeasible obj=926      bound=926      sel=cpsat wall=612ms cpu=456 alerts=0
+mkp-n30-m5-s1          highs     VerifiedFeasible obj=926      bound=926      sel=highs wall=659ms cpu=585 alerts=0
+mkp-n30-m5-s1          race-proof VerifiedFeasible obj=926      bound=926      sel=highs wall=563ms cpu=888 alerts=0
+mkp-n30-m5-s1          race-concordant VerifiedFeasible obj=926      bound=926      sel=cpsat wall=584ms cpu=864 alerts=0
+mkp-n30-m5-s1          escalate-single VerifiedFeasible obj=926      bound=926      sel=cpsat wall=426ms cpu=443 alerts=0
+mkp-n30-m5-s1          escalate-concordant VerifiedFeasible obj=926      bound=926      sel=cpsat wall=852ms cpu=1287 alerts=0
+mkp-n60-m5-s1          cpsat     VerifiedFeasible obj=1849     bound=1849     sel=cpsat wall=2191ms cpu=3767 alerts=0
+mkp-n60-m5-s1          highs     VerifiedFeasible obj=1849     bound=1858     sel=highs wall=2416ms cpu=3238 alerts=0
+mkp-n60-m5-s1          race-proof VerifiedFeasible obj=1849     bound=1849     sel=cpsat wall=2566ms cpu=4631 alerts=0
+mkp-n60-m5-s1          race-concordant VerifiedFeasible obj=1849     bound=1849     sel=cpsat wall=2464ms cpu=4595 alerts=0
+mkp-n60-m5-s1          escalate-single VerifiedFeasible obj=1849     bound=1860     sel=cpsat wall=2801ms cpu=4673 alerts=0
+mkp-n60-m5-s1          escalate-concordant VerifiedFeasible obj=1849     bound=1860     sel=cpsat wall=2786ms cpu=4608 alerts=0
+mkp-n100-m5-s1         cpsat     VerifiedFeasible obj=3231     bound=3241     sel=cpsat wall=2666ms cpu=4790 alerts=0
+mkp-n100-m5-s1         highs     VerifiedFeasible obj=3232     bound=3240     sel=highs wall=2405ms cpu=3731 alerts=0
+mkp-n100-m5-s1         race-proof VerifiedFeasible obj=3232     bound=3241     sel=cpsat wall=2674ms cpu=4790 alerts=0
+mkp-n100-m5-s1         race-concordant VerifiedFeasible obj=3232     bound=3241     sel=cpsat wall=2686ms cpu=4810 alerts=0
+mkp-n100-m5-s1         escalate-single VerifiedFeasible obj=3232     bound=3241     sel=cpsat wall=2778ms cpu=4606 alerts=0
+mkp-n100-m5-s1         escalate-concordant VerifiedFeasible obj=3232     bound=3241     sel=cpsat wall=2837ms cpu=4685 alerts=0
+gap-a5-j20-s101        cpsat     VerifiedFeasible obj=1255     bound=1255     sel=cpsat wall=1533ms cpu=2594 alerts=0
+gap-a5-j20-s101        highs     VerifiedFeasible obj=1255     bound=1255     sel=highs wall=2371ms cpu=3459 alerts=0
+gap-a5-j20-s101        race-proof VerifiedFeasible obj=1255     bound=1255     sel=cpsat wall=2132ms cpu=3232 alerts=0
+gap-a5-j20-s101        race-concordant VerifiedFeasible obj=1255     bound=1255     sel=cpsat wall=2448ms cpu=3672 alerts=0
+gap-a5-j20-s101        escalate-single VerifiedFeasible obj=1271     bound=1237     sel=highs wall=3027ms cpu=4433 alerts=0
+gap-a5-j20-s101        escalate-concordant VerifiedFeasible obj=1255     bound=1255     sel=cpsat wall=2470ms cpu=3756 alerts=0
+gap-a8-j30-s101        cpsat     VerifiedFeasible obj=1681     bound=1653     sel=cpsat wall=2744ms cpu=4771 alerts=0
+gap-a8-j30-s101        highs     VerifiedFeasible obj=1701     bound=1651     sel=highs wall=2448ms cpu=3223 alerts=0
+gap-a8-j30-s101        race-proof VerifiedFeasible obj=1685     bound=1657     sel=cpsat wall=2724ms cpu=4824 alerts=0
+gap-a8-j30-s101        race-concordant VerifiedFeasible obj=1685     bound=1657     sel=cpsat wall=2715ms cpu=4882 alerts=0
+gap-a8-j30-s101        escalate-single VerifiedFeasible obj=1687     bound=1657     sel=cpsat wall=2794ms cpu=4603 alerts=0
+gap-a8-j30-s101        escalate-concordant VerifiedFeasible obj=1687     bound=1657     sel=cpsat wall=2801ms cpu=4582 alerts=0
+cov-n30-m20-s201       cpsat     VerifiedFeasible obj=200      bound=200      sel=cpsat wall=316ms cpu=323 alerts=0
+cov-n30-m20-s201       highs     VerifiedFeasible obj=200      bound=200      sel=highs wall=256ms cpu=289 alerts=0
+cov-n30-m20-s201       race-proof VerifiedFeasible obj=200      bound=200      sel=cpsat wall=344ms cpu=571 alerts=0
+cov-n30-m20-s201       race-concordant VerifiedFeasible obj=200      bound=200      sel=cpsat wall=358ms cpu=627 alerts=0
+cov-n30-m20-s201       escalate-single VerifiedFeasible obj=200      bound=200      sel=cpsat wall=341ms cpu=316 alerts=0
+cov-n30-m20-s201       escalate-concordant VerifiedFeasible obj=200      bound=200      sel=cpsat wall=647ms cpu=887 alerts=0
+cov-n60-m40-s201       cpsat     VerifiedFeasible obj=148      bound=148      sel=cpsat wall=383ms cpu=413 alerts=0
+cov-n60-m40-s201       highs     VerifiedFeasible obj=148      bound=148      sel=highs wall=502ms cpu=612 alerts=0
+cov-n60-m40-s201       race-proof VerifiedFeasible obj=148      bound=148      sel=cpsat wall=517ms cpu=798 alerts=0
+cov-n60-m40-s201       race-concordant VerifiedFeasible obj=148      bound=148      sel=cpsat wall=515ms cpu=835 alerts=0
+cov-n60-m40-s201       escalate-single VerifiedFeasible obj=148      bound=148      sel=cpsat wall=370ms cpu=396 alerts=0
+cov-n60-m40-s201       escalate-concordant VerifiedFeasible obj=148      bound=148      sel=cpsat wall=911ms cpu=1246 alerts=0
+mkp-n30-m5-s2          cpsat     VerifiedFeasible obj=977      bound=977      sel=cpsat wall=381ms cpu=429 alerts=0
+mkp-n30-m5-s2          highs     VerifiedFeasible obj=977      bound=977      sel=highs wall=427ms cpu=589 alerts=0
+mkp-n30-m5-s2          race-proof VerifiedFeasible obj=977      bound=977      sel=cpsat wall=515ms cpu=890 alerts=0
+mkp-n30-m5-s2          race-concordant VerifiedFeasible obj=977      bound=977      sel=cpsat wall=538ms cpu=855 alerts=0
+mkp-n30-m5-s2          escalate-single VerifiedFeasible obj=977      bound=977      sel=cpsat wall=391ms cpu=488 alerts=0
+mkp-n30-m5-s2          escalate-concordant VerifiedFeasible obj=977      bound=977      sel=cpsat wall=905ms cpu=1334 alerts=0
+mkp-n60-m5-s2          cpsat     VerifiedFeasible obj=2013     bound=2013     sel=cpsat wall=2367ms cpu=4265 alerts=0
+mkp-n60-m5-s2          highs     VerifiedFeasible obj=2013     bound=2017     sel=highs wall=2410ms cpu=4005 alerts=0
+mkp-n60-m5-s2          race-proof VerifiedFeasible obj=2013     bound=2025     sel=cpsat wall=2675ms cpu=4847 alerts=0
+mkp-n60-m5-s2          race-concordant VerifiedFeasible obj=2013     bound=2025     sel=cpsat wall=2678ms cpu=4848 alerts=0
+mkp-n60-m5-s2          escalate-single VerifiedFeasible obj=2013     bound=2027     sel=cpsat wall=2767ms cpu=4620 alerts=0
+mkp-n60-m5-s2          escalate-concordant VerifiedFeasible obj=2013     bound=2027     sel=cpsat wall=2792ms cpu=4691 alerts=0
+mkp-n100-m5-s2         cpsat     VerifiedFeasible obj=3412     bound=3426     sel=cpsat wall=2695ms cpu=4874 alerts=0
+mkp-n100-m5-s2         highs     VerifiedFeasible obj=3409     bound=3426     sel=highs wall=2411ms cpu=4100 alerts=0
+mkp-n100-m5-s2         race-proof VerifiedFeasible obj=3413     bound=3427     sel=highs wall=2671ms cpu=4852 alerts=0
+mkp-n100-m5-s2         race-concordant VerifiedFeasible obj=3413     bound=3427     sel=highs wall=2709ms cpu=4924 alerts=0
+mkp-n100-m5-s2         escalate-single VerifiedFeasible obj=3412     bound=3427     sel=cpsat wall=2882ms cpu=4612 alerts=0
+mkp-n100-m5-s2         escalate-concordant VerifiedFeasible obj=3413     bound=3427     sel=highs wall=2798ms cpu=4476 alerts=0
+gap-a5-j20-s102        cpsat     VerifiedFeasible obj=1184     bound=1184     sel=cpsat wall=1274ms cpu=2145 alerts=0
+gap-a5-j20-s102        highs     VerifiedFeasible obj=1184     bound=1178     sel=highs wall=2414ms cpu=3739 alerts=0
+gap-a5-j20-s102        race-proof VerifiedFeasible obj=1184     bound=1184     sel=cpsat wall=2413ms cpu=3554 alerts=0
+gap-a5-j20-s102        race-concordant VerifiedFeasible obj=1184     bound=1184     sel=cpsat wall=2405ms cpu=3583 alerts=0
+gap-a5-j20-s102        escalate-single VerifiedFeasible obj=1184     bound=1184     sel=cpsat wall=2083ms cpu=3574 alerts=0
+gap-a5-j20-s102        escalate-concordant VerifiedFeasible obj=1184     bound=1184     sel=cpsat wall=2394ms cpu=4008 alerts=0
+gap-a8-j30-s102        cpsat     VerifiedFeasible obj=1613     bound=1573     sel=cpsat wall=2697ms cpu=4810 alerts=0
+gap-a8-j30-s102        highs     VerifiedFeasible obj=1618     bound=1575     sel=highs wall=2436ms cpu=3442 alerts=0
+gap-a8-j30-s102        race-proof VerifiedFeasible obj=1607     bound=1573     sel=cpsat wall=2702ms cpu=4763 alerts=0
+gap-a8-j30-s102        race-concordant VerifiedFeasible obj=1607     bound=1573     sel=cpsat wall=2696ms cpu=4890 alerts=0
+gap-a8-j30-s102        escalate-single VerifiedFeasible obj=1607     bound=1573     sel=cpsat wall=2788ms cpu=4565 alerts=0
+gap-a8-j30-s102        escalate-concordant VerifiedFeasible obj=1607     bound=1573     sel=cpsat wall=2803ms cpu=4626 alerts=0
+cov-n30-m20-s202       cpsat     VerifiedFeasible obj=144      bound=144      sel=cpsat wall=333ms cpu=343 alerts=0
+cov-n30-m20-s202       highs     VerifiedFeasible obj=144      bound=144      sel=highs wall=293ms cpu=323 alerts=0
+cov-n30-m20-s202       race-proof VerifiedFeasible obj=144      bound=144      sel=cpsat wall=400ms cpu=652 alerts=0
+cov-n30-m20-s202       race-concordant VerifiedFeasible obj=144      bound=144      sel=cpsat wall=380ms cpu=633 alerts=0
+cov-n30-m20-s202       escalate-single VerifiedFeasible obj=144      bound=144      sel=cpsat wall=334ms cpu=343 alerts=0
+cov-n30-m20-s202       escalate-concordant VerifiedFeasible obj=144      bound=144      sel=cpsat wall=732ms cpu=999 alerts=0
+cov-n60-m40-s202       cpsat     VerifiedFeasible obj=80       bound=80       sel=cpsat wall=383ms cpu=358 alerts=0
+cov-n60-m40-s202       highs     VerifiedFeasible obj=80       bound=80       sel=highs wall=463ms cpu=539 alerts=0
+cov-n60-m40-s202       race-proof VerifiedFeasible obj=80       bound=80       sel=cpsat wall=495ms cpu=785 alerts=0
+cov-n60-m40-s202       race-concordant VerifiedFeasible obj=80       bound=80       sel=cpsat wall=492ms cpu=747 alerts=0
+cov-n60-m40-s202       escalate-single VerifiedFeasible obj=80       bound=80       sel=cpsat wall=363ms cpu=329 alerts=0
+cov-n60-m40-s202       escalate-concordant VerifiedFeasible obj=80       bound=80       sel=cpsat wall=816ms cpu=1097 alerts=0
+mkp-n30-m5-s3          cpsat     VerifiedFeasible obj=975      bound=975      sel=cpsat wall=413ms cpu=503 alerts=0
+mkp-n30-m5-s3          highs     VerifiedFeasible obj=975      bound=975      sel=highs wall=433ms cpu=545 alerts=0
+mkp-n30-m5-s3          race-proof VerifiedFeasible obj=975      bound=975      sel=cpsat wall=416ms cpu=767 alerts=0
+mkp-n30-m5-s3          race-concordant VerifiedFeasible obj=975      bound=975      sel=cpsat wall=422ms cpu=768 alerts=0
+mkp-n30-m5-s3          escalate-single VerifiedFeasible obj=975      bound=975      sel=cpsat wall=383ms cpu=453 alerts=0
+mkp-n30-m5-s3          escalate-concordant VerifiedFeasible obj=975      bound=975      sel=cpsat wall=836ms cpu=1271 alerts=0
+mkp-n60-m5-s3          cpsat     VerifiedFeasible obj=1957     bound=1974     sel=cpsat wall=2669ms cpu=4891 alerts=0
+mkp-n60-m5-s3          highs     VerifiedFeasible obj=1958     bound=1971     sel=highs wall=2413ms cpu=4154 alerts=0
+mkp-n60-m5-s3          race-proof VerifiedFeasible obj=1959     bound=1972     sel=cpsat wall=2688ms cpu=4862 alerts=0
+mkp-n60-m5-s3          race-concordant VerifiedFeasible obj=1959     bound=1972     sel=cpsat wall=2682ms cpu=4864 alerts=0
+mkp-n60-m5-s3          escalate-single VerifiedFeasible obj=1959     bound=1974     sel=cpsat wall=2773ms cpu=4700 alerts=0
+mkp-n60-m5-s3          escalate-concordant VerifiedFeasible obj=1959     bound=1974     sel=cpsat wall=2795ms cpu=4662 alerts=0
+mkp-n100-m5-s3         cpsat     VerifiedFeasible obj=3311     bound=3323     sel=cpsat wall=2745ms cpu=4913 alerts=0
+mkp-n100-m5-s3         highs     VerifiedFeasible obj=3306     bound=3322     sel=highs wall=2483ms cpu=3348 alerts=0
+mkp-n100-m5-s3         race-proof VerifiedFeasible obj=3311     bound=3322     sel=highs wall=2717ms cpu=4889 alerts=0
+mkp-n100-m5-s3         race-concordant VerifiedFeasible obj=3311     bound=3322     sel=cpsat wall=2684ms cpu=4829 alerts=0
+mkp-n100-m5-s3         escalate-single VerifiedFeasible obj=3311     bound=3323     sel=cpsat wall=2820ms cpu=4666 alerts=0
+mkp-n100-m5-s3         escalate-concordant VerifiedFeasible obj=3311     bound=3323     sel=cpsat wall=2790ms cpu=4628 alerts=0
+gap-a5-j20-s103        cpsat     VerifiedFeasible obj=1242     bound=1242     sel=cpsat wall=1743ms cpu=3064 alerts=0
+gap-a5-j20-s103        highs     VerifiedFeasible obj=1242     bound=1242     sel=highs wall=1504ms cpu=2128 alerts=0
+gap-a5-j20-s103        race-proof VerifiedFeasible obj=1242     bound=1242     sel=cpsat wall=1693ms cpu=3025 alerts=0
+gap-a5-j20-s103        race-concordant VerifiedFeasible obj=1242     bound=1242     sel=cpsat wall=1746ms cpu=3090 alerts=0
+gap-a5-j20-s103        escalate-single VerifiedFeasible obj=1242     bound=1242     sel=cpsat wall=2325ms cpu=4100 alerts=0
+gap-a5-j20-s103        escalate-concordant VerifiedFeasible obj=1242     bound=1242     sel=cpsat wall=2406ms cpu=4216 alerts=0
+gap-a8-j30-s103        cpsat     VerifiedFeasible obj=1617     bound=1581     sel=cpsat wall=2703ms cpu=4906 alerts=0
+gap-a8-j30-s103        highs     VerifiedFeasible obj=1597     bound=1580     sel=highs wall=2462ms cpu=2697 alerts=0
+gap-a8-j30-s103        race-proof VerifiedFeasible obj=1597     bound=1581     sel=highs wall=2726ms cpu=4916 alerts=0
+gap-a8-j30-s103        race-concordant VerifiedFeasible obj=1597     bound=1580     sel=highs wall=2709ms cpu=4854 alerts=0
+gap-a8-j30-s103        escalate-single VerifiedFeasible obj=1597     bound=1580     sel=highs wall=2798ms cpu=4577 alerts=0
+gap-a8-j30-s103        escalate-concordant VerifiedFeasible obj=1597     bound=1580     sel=highs wall=2803ms cpu=4599 alerts=0
+cov-n30-m20-s203       cpsat     VerifiedFeasible obj=96       bound=96       sel=cpsat wall=331ms cpu=337 alerts=0
+cov-n30-m20-s203       highs     VerifiedFeasible obj=96       bound=96       sel=highs wall=293ms cpu=329 alerts=0
+cov-n30-m20-s203       race-proof VerifiedFeasible obj=96       bound=96       sel=cpsat wall=369ms cpu=610 alerts=0
+cov-n30-m20-s203       race-concordant VerifiedFeasible obj=96       bound=96       sel=cpsat wall=319ms cpu=565 alerts=0
+cov-n30-m20-s203       escalate-single VerifiedFeasible obj=96       bound=96       sel=cpsat wall=314ms cpu=322 alerts=0
+cov-n30-m20-s203       escalate-concordant VerifiedFeasible obj=96       bound=96       sel=cpsat wall=622ms cpu=838 alerts=0
+cov-n60-m40-s203       cpsat     VerifiedFeasible obj=117      bound=117      sel=cpsat wall=352ms cpu=375 alerts=0
+cov-n60-m40-s203       highs     VerifiedFeasible obj=117      bound=117      sel=highs wall=524ms cpu=637 alerts=0
+cov-n60-m40-s203       race-proof VerifiedFeasible obj=117      bound=117      sel=cpsat wall=563ms cpu=866 alerts=0
+cov-n60-m40-s203       race-concordant VerifiedFeasible obj=117      bound=117      sel=cpsat wall=552ms cpu=854 alerts=0
+cov-n60-m40-s203       escalate-single VerifiedFeasible obj=117      bound=117      sel=cpsat wall=404ms cpu=421 alerts=0
+cov-n60-m40-s203       escalate-concordant VerifiedFeasible obj=117      bound=117      sel=cpsat wall=924ms cpu=1283 alerts=0
+mkp-n30-m5-s4          cpsat     VerifiedFeasible obj=976      bound=976      sel=cpsat wall=417ms cpu=529 alerts=0
+mkp-n30-m5-s4          highs     VerifiedFeasible obj=976      bound=976      sel=highs wall=444ms cpu=625 alerts=0
+mkp-n30-m5-s4          race-proof VerifiedFeasible obj=976      bound=976      sel=cpsat wall=625ms cpu=1122 alerts=0
+mkp-n30-m5-s4          race-concordant VerifiedFeasible obj=976      bound=976      sel=cpsat wall=698ms cpu=1181 alerts=0
+mkp-n30-m5-s4          escalate-single VerifiedFeasible obj=976      bound=976      sel=cpsat wall=419ms cpu=527 alerts=0
+mkp-n30-m5-s4          escalate-concordant VerifiedFeasible obj=976      bound=976      sel=cpsat wall=962ms cpu=1510 alerts=0
+mkp-n60-m5-s4          cpsat     VerifiedFeasible obj=1995     bound=1995     sel=cpsat wall=2233ms cpu=4017 alerts=0
+mkp-n60-m5-s4          highs     VerifiedFeasible obj=1995     bound=2004     sel=highs wall=2399ms cpu=4104 alerts=0
+mkp-n60-m5-s4          race-proof VerifiedFeasible obj=1995     bound=1995     sel=cpsat wall=2437ms cpu=4521 alerts=0
+mkp-n60-m5-s4          race-concordant VerifiedFeasible obj=1995     bound=1995     sel=cpsat wall=2580ms cpu=4780 alerts=0
+mkp-n60-m5-s4          escalate-single VerifiedFeasible obj=1995     bound=2008     sel=cpsat wall=2822ms cpu=4619 alerts=0
+mkp-n60-m5-s4          escalate-concordant VerifiedFeasible obj=1995     bound=2006     sel=cpsat wall=2782ms cpu=4649 alerts=0
+mkp-n100-m5-s4         cpsat     VerifiedFeasible obj=3300     bound=3311     sel=cpsat wall=2675ms cpu=4817 alerts=0
+mkp-n100-m5-s4         highs     VerifiedFeasible obj=3296     bound=3311     sel=highs wall=2424ms cpu=3940 alerts=0
+mkp-n100-m5-s4         race-proof VerifiedFeasible obj=3300     bound=3311     sel=cpsat wall=2680ms cpu=4684 alerts=0
+mkp-n100-m5-s4         race-concordant VerifiedFeasible obj=3300     bound=3311     sel=cpsat wall=2686ms cpu=4871 alerts=0
+mkp-n100-m5-s4         escalate-single VerifiedFeasible obj=3300     bound=3311     sel=cpsat wall=2800ms cpu=4693 alerts=0
+mkp-n100-m5-s4         escalate-concordant VerifiedFeasible obj=3300     bound=3311     sel=cpsat wall=2817ms cpu=4692 alerts=0
+gap-a5-j20-s104        cpsat     VerifiedFeasible obj=1128     bound=1128     sel=cpsat wall=599ms cpu=845 alerts=0
+gap-a5-j20-s104        highs     VerifiedFeasible obj=1128     bound=1128     sel=highs wall=852ms cpu=1067 alerts=0
+gap-a5-j20-s104        race-proof VerifiedFeasible obj=1128     bound=1128     sel=cpsat wall=937ms cpu=1413 alerts=0
+gap-a5-j20-s104        race-concordant VerifiedFeasible obj=1128     bound=1128     sel=cpsat wall=936ms cpu=1360 alerts=0
+gap-a5-j20-s104        escalate-single VerifiedFeasible obj=1128     bound=1128     sel=cpsat wall=494ms cpu=649 alerts=0
+gap-a5-j20-s104        escalate-concordant VerifiedFeasible obj=1128     bound=1128     sel=cpsat wall=1521ms cpu=2134 alerts=0
+gap-a8-j30-s104        cpsat     VerifiedFeasible obj=1669     bound=1656     sel=cpsat wall=2694ms cpu=4745 alerts=0
+gap-a8-j30-s104        highs     VerifiedFeasible obj=1676     bound=1655     sel=highs wall=2431ms cpu=3560 alerts=0
+gap-a8-j30-s104        race-proof VerifiedFeasible obj=1668     bound=1655     sel=cpsat wall=2711ms cpu=4809 alerts=0
+gap-a8-j30-s104        race-concordant VerifiedFeasible obj=1668     bound=1655     sel=cpsat wall=2722ms cpu=4876 alerts=0
+gap-a8-j30-s104        escalate-single VerifiedFeasible obj=1676     bound=1655     sel=cpsat wall=2804ms cpu=4604 alerts=0
+gap-a8-j30-s104        escalate-concordant VerifiedFeasible obj=1669     bound=1655     sel=cpsat wall=2788ms cpu=4630 alerts=0
+cov-n30-m20-s204       cpsat     VerifiedFeasible obj=128      bound=128      sel=cpsat wall=319ms cpu=332 alerts=0
+cov-n30-m20-s204       highs     VerifiedFeasible obj=128      bound=128      sel=highs wall=272ms cpu=290 alerts=0
+cov-n30-m20-s204       race-proof VerifiedFeasible obj=128      bound=128      sel=cpsat wall=362ms cpu=611 alerts=0
+cov-n30-m20-s204       race-concordant VerifiedFeasible obj=128      bound=128      sel=cpsat wall=301ms cpu=534 alerts=0
+cov-n30-m20-s204       escalate-single VerifiedFeasible obj=128      bound=128      sel=cpsat wall=320ms cpu=326 alerts=0
+cov-n30-m20-s204       escalate-concordant VerifiedFeasible obj=128      bound=128      sel=cpsat wall=597ms cpu=816 alerts=0
+cov-n60-m40-s204       cpsat     VerifiedFeasible obj=120      bound=120      sel=cpsat wall=308ms cpu=299 alerts=0
+cov-n60-m40-s204       highs     VerifiedFeasible obj=120      bound=120      sel=highs wall=325ms cpu=332 alerts=0
+cov-n60-m40-s204       race-proof VerifiedFeasible obj=120      bound=120      sel=cpsat wall=347ms cpu=558 alerts=0
+cov-n60-m40-s204       race-concordant VerifiedFeasible obj=120      bound=120      sel=cpsat wall=397ms cpu=567 alerts=0
+cov-n60-m40-s204       escalate-single VerifiedFeasible obj=120      bound=120      sel=cpsat wall=321ms cpu=310 alerts=0
+cov-n60-m40-s204       escalate-concordant VerifiedFeasible obj=120      bound=120      sel=cpsat wall=670ms cpu=891 alerts=0
+mkp-n30-m5-s5          cpsat     VerifiedFeasible obj=920      bound=920      sel=cpsat wall=328ms cpu=352 alerts=0
+mkp-n30-m5-s5          highs     VerifiedFeasible obj=920      bound=920      sel=highs wall=380ms cpu=523 alerts=0
+mkp-n30-m5-s5          race-proof VerifiedFeasible obj=920      bound=920      sel=cpsat wall=413ms cpu=706 alerts=0
+mkp-n30-m5-s5          race-concordant VerifiedFeasible obj=920      bound=920      sel=cpsat wall=394ms cpu=718 alerts=0
+mkp-n30-m5-s5          escalate-single VerifiedFeasible obj=920      bound=920      sel=cpsat wall=343ms cpu=366 alerts=0
+mkp-n30-m5-s5          escalate-concordant VerifiedFeasible obj=920      bound=920      sel=cpsat wall=728ms cpu=1072 alerts=0
+mkp-n60-m5-s5          cpsat     VerifiedFeasible obj=1957     bound=1973     sel=cpsat wall=2679ms cpu=4843 alerts=0
+mkp-n60-m5-s5          highs     VerifiedFeasible obj=1954     bound=1971     sel=highs wall=2391ms cpu=3968 alerts=0
+mkp-n60-m5-s5          race-proof VerifiedFeasible obj=1962     bound=1962     sel=cpsat wall=2406ms cpu=4177 alerts=0
+mkp-n60-m5-s5          race-concordant VerifiedFeasible obj=1962     bound=1962     sel=cpsat wall=2560ms cpu=4554 alerts=0
+mkp-n60-m5-s5          escalate-single VerifiedFeasible obj=1962     bound=1973     sel=cpsat wall=2855ms cpu=4510 alerts=0
+mkp-n60-m5-s5          escalate-concordant VerifiedFeasible obj=1962     bound=1962     sel=cpsat wall=2656ms cpu=4525 alerts=0
+mkp-n100-m5-s5         cpsat     VerifiedFeasible obj=3271     bound=3284     sel=cpsat wall=2682ms cpu=4815 alerts=0
+mkp-n100-m5-s5         highs     VerifiedFeasible obj=3273     bound=3282     sel=highs wall=2411ms cpu=4109 alerts=0
+mkp-n100-m5-s5         race-proof VerifiedFeasible obj=3273     bound=3283     sel=highs wall=2709ms cpu=4890 alerts=0
+mkp-n100-m5-s5         race-concordant VerifiedFeasible obj=3273     bound=3283     sel=highs wall=2681ms cpu=4871 alerts=0
+mkp-n100-m5-s5         escalate-single VerifiedFeasible obj=3273     bound=3284     sel=highs wall=2775ms cpu=4642 alerts=0
+mkp-n100-m5-s5         escalate-concordant VerifiedFeasible obj=3273     bound=3284     sel=highs wall=2794ms cpu=4654 alerts=0
+gap-a5-j20-s105        cpsat     VerifiedFeasible obj=1102     bound=1102     sel=cpsat wall=1727ms cpu=3026 alerts=0
+gap-a5-j20-s105        highs     VerifiedFeasible obj=1102     bound=1102     sel=highs wall=1205ms cpu=1662 alerts=0
+gap-a5-j20-s105        race-proof VerifiedFeasible obj=1102     bound=1102     sel=cpsat wall=1534ms cpu=2811 alerts=0
+gap-a5-j20-s105        race-concordant VerifiedFeasible obj=1102     bound=1102     sel=cpsat wall=1576ms cpu=2791 alerts=0
+gap-a5-j20-s105        escalate-single VerifiedFeasible obj=1102     bound=1102     sel=highs wall=2170ms cpu=3784 alerts=0
+gap-a5-j20-s105        escalate-concordant VerifiedFeasible obj=1102     bound=1102     sel=cpsat wall=2228ms cpu=3903 alerts=0
+gap-a8-j30-s105        cpsat     VerifiedFeasible obj=1695     bound=1669     sel=cpsat wall=2698ms cpu=4819 alerts=0
+gap-a8-j30-s105        highs     VerifiedFeasible obj=1696     bound=1672     sel=highs wall=2460ms cpu=3520 alerts=0
+gap-a8-j30-s105        race-proof VerifiedFeasible obj=1696     bound=1670     sel=highs wall=2721ms cpu=4817 alerts=0
+gap-a8-j30-s105        race-concordant VerifiedFeasible obj=1696     bound=1670     sel=highs wall=2695ms cpu=4805 alerts=0
+gap-a8-j30-s105        escalate-single VerifiedFeasible obj=1696     bound=1670     sel=highs wall=2791ms cpu=4591 alerts=0
+gap-a8-j30-s105        escalate-concordant VerifiedFeasible obj=1695     bound=1670     sel=cpsat wall=2806ms cpu=4652 alerts=0
+cov-n30-m20-s205       cpsat     VerifiedFeasible obj=152      bound=152      sel=cpsat wall=323ms cpu=335 alerts=0
+cov-n30-m20-s205       highs     VerifiedFeasible obj=152      bound=152      sel=highs wall=271ms cpu=304 alerts=0
+cov-n30-m20-s205       race-proof VerifiedFeasible obj=152      bound=152      sel=cpsat wall=340ms cpu=599 alerts=0
+cov-n30-m20-s205       race-concordant VerifiedFeasible obj=152      bound=152      sel=cpsat wall=346ms cpu=585 alerts=0
+cov-n30-m20-s205       escalate-single VerifiedFeasible obj=152      bound=152      sel=cpsat wall=340ms cpu=343 alerts=0
+cov-n30-m20-s205       escalate-concordant VerifiedFeasible obj=152      bound=152      sel=cpsat wall=678ms cpu=942 alerts=0
+cov-n60-m40-s205       cpsat     VerifiedFeasible obj=51       bound=51       sel=cpsat wall=361ms cpu=346 alerts=0
+cov-n60-m40-s205       highs     VerifiedFeasible obj=51       bound=51       sel=highs wall=273ms cpu=271 alerts=0
+cov-n60-m40-s205       race-proof VerifiedFeasible obj=51       bound=51       sel=cpsat wall=384ms cpu=589 alerts=0
+cov-n60-m40-s205       race-concordant VerifiedFeasible obj=51       bound=51       sel=cpsat wall=376ms cpu=562 alerts=0
+cov-n60-m40-s205       escalate-single VerifiedFeasible obj=51       bound=51       sel=cpsat wall=343ms cpu=329 alerts=0
+cov-n60-m40-s205       escalate-concordant VerifiedFeasible obj=51       bound=51       sel=cpsat wall=692ms cpu=918 alerts=0
+Unhandled exception. System.ArgumentException: .NET number values such as positive and negative infinity cannot be written as valid JSON. To make it work when using 'JsonSerializer', consider specifying 'JsonNumberHandling.AllowNamedFloatingPointLiterals' (see https://learn.microsoft.com/dotnet/api/system.text.json.serialization.jsonnumberhandling).
+   at System.Text.Json.ThrowHelper.ThrowArgumentException_ValueNotSupported()
+   at System.Text.Json.Utf8JsonWriter.WriteNumberValue(Double value)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWriteAsObject(Utf8JsonWriter writer, Object value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Converters.DictionaryOfTKeyTValueConverter`3.OnWriteResume(Utf8JsonWriter writer, TCollection value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonDictionaryConverter`3.OnTryWrite(Utf8JsonWriter writer, TDictionary dictionary, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.WriteCore(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.Serialize(Utf8JsonWriter writer, T& rootValue, Object rootValueBoxed)
+   at System.Text.Json.JsonSerializer.WriteString[TValue](TValue& value, JsonTypeInfo`1 jsonTypeInfo)
+   at System.Text.Json.JsonSerializer.Serialize[TValue](TValue value, JsonSerializerOptions options)
+   at Study.RunAsync(String outDir, Boolean quick, String[] only) in /root/wowdi-algorithm-1/research/PortfolioStudy/Program.cs:line 53
+   at Program.<Main>$(String[] args) in /root/wowdi-algorithm-1/research/PortfolioStudy/Program.cs:line 23
+   at Program.<Main>(String[] args)
+/root/wowdi-algorithm-1/research/PortfolioStudy/run-study.sh: line 17: 1382379 Aborted                    "$WOWDI_STUDY_DOTNET" "$PWD/research/PortfolioStudy/bin/Release/net10.0/PortfolioStudy.dll" study "$@"
+          Finished with result: exit-code
+Main processes terminated with: code=exited, status=134/n/a
+               Service runtime: 9min 35.641s
+             CPU time consumed: 16min 4.388s
+                   Memory peak: 261.4M (swap: 0B)

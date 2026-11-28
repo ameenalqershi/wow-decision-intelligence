@@ -1,0 +1,3 @@
+portfolio: score=66.95% killed=393 timeout=4 survived=171 noCoverage=25 (Stryker.NET 5.1.0)
+sparse: score=73.91% killed=538 timeout=3 survived=179 noCoverage=12 (Stryker.NET 5.1.0)
+certificates: score=60.27% killed=131 timeout=4 survived=88 noCoverage=1 (Stryker.NET 5.1.0)

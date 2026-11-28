@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Research executable (S08 evidence). Not a production adapter: S02/S03 remain gated by R07. -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <InvariantGlobalization>true</InvariantGlobalization>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../src/Solver.Portfolio/WowDi.Solver.Portfolio.csproj" />
+    <ProjectReference Include="../../src/Dml.Binding/WowDi.Dml.Binding.csproj" />
+    <PackageReference Include="Google.OrTools" Version="9.15.6755" />
+    <PackageReference Include="Highs.Native" Version="1.16.0" />
+  </ItemGroup>
+</Project>
