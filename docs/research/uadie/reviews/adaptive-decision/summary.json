@@ -1,0 +1,982 @@
+{
+  "dev": {
+    "rows": 3360,
+    "valid": 3360,
+    "histories": 60,
+    "summary": [
+      {
+        "name": "full",
+        "rows": 480,
+        "valid": 480,
+        "transported": 0,
+        "eligibleRevisions": 420,
+        "medianUs": 50.1605,
+        "p90Us": 127.39300000000001,
+        "p95Us": 166.00044999999992,
+        "p99Us": 223.43959999999987,
+        "medianBytes": 2584,
+        "routes": {
+          "full": 480
+        },
+        "certificates": {},
+        "attempts": 0,
+        "cacheHits": 0
+      },
+      {
+        "name": "warm",
+        "rows": 480,
+        "valid": 480,
+        "transported": 0,
+        "eligibleRevisions": 420,
+        "medianUs": 33.879999999999995,
+        "p90Us": 78.5509,
+        "p95Us": 117.93859999999991,
+        "p99Us": 234.73209999999963,
+        "medianBytes": 2496,
+        "routes": {
+          "warm": 480
+        },
+        "certificates": {},
+        "attempts": 0,
+        "cacheHits": 0
+      },
+      {
+        "name": "orientation",
+        "rows": 480,
+        "valid": 480,
+        "transported": 0,
+        "eligibleRevisions": 420,
+        "medianUs": 42.4755,
+        "p90Us": 62.129,
+        "p95Us": 70.01949999999997,
+        "p99Us": 203.59199999999993,
+        "medianBytes": 6144,
+        "routes": {
+          "orientation": 480
+        },
+        "certificates": {},
+        "attempts": 0,
+        "cacheHits": 0
+      },
+      {
+        "name": "parity-warm",
+        "rows": 480,
+        "valid": 480,
+        "transported": 262,
+        "eligibleRevisions": 420,
+        "medianUs": 36.96,
+        "p90Us": 76.44200000000001,
+        "p95Us": 109.96804999999998,
+        "p99Us": 207.1377999999999,
+        "medianBytes": 3904,
+        "routes": {
+          "parity-warm": 480
+        },
+        "certificates": {},
+        "attempts": 0,
+        "cacheHits": 0
+      },
+      {
+        "name": "component-reuse",
+        "rows": 480,
+        "valid": 480,
+        "transported": 0,
+        "eligibleRevisions": 420,
+        "medianUs": 77.0445,
+        "p90Us": 273.4671,
+        "p95Us": 309.0429999999997,
+        "p99Us": 554.0243999999986,
+        "medianBytes": 13472,
+        "routes": {
+          "component-reuse": 480
+        },
+        "certificates": {},
+        "attempts": 0,
+        "cacheHits": 0
+      },
+      {
+        "name": "hierarchy",
+        "rows": 480,
+        "valid": 480,
+        "transported": 264,
+        "eligibleRevisions": 420,
+        "medianUs": 45.695,
+        "p90Us": 82.1649,
+        "p95Us": 93.46549999999999,
+        "p99Us": 529.8775999999995,
+        "medianBytes": 4328,
+        "routes": {
+          "warm": 110,
+          "transport": 264,
+          "orientation": 106
+        },
+        "certificates": {
+          "identity/restriction": 70,
+          "parity": 149,
+          "box": 43,
+          "normalized-quota": 2
+        },
+        "attempts": 721,
+        "cacheHits": 20
+      },
+      {
+        "name": "adaptive",
+        "rows": 480,
+        "valid": 480,
+        "transported": 151,
+        "eligibleRevisions": 420,
+        "medianUs": 42.049499999999995,
+        "p90Us": 73.8699,
+        "p95Us": 84.65905,
+        "p99Us": 127.48530999999866,
+        "medianBytes": 3732,
+        "routes": {
+          "warm": 173,
+          "transport": 151,
+          "orientation": 156
+        },
+        "certificates": {
+          "identity/restriction": 70,
+          "box": 28,
+          "parity": 37,
+          "normalized-quota": 16
+        },
+        "attempts": 312,
+        "cacheHits": 7
+      }
+    ],
+    "comparisons": [
+      {
+        "name": "adaptive",
+        "base": "full",
+        "histories": 60,
+        "medianSpeedup": 0.9720542478121748,
+        "wins": 28,
+        "seedClusterMedian": 0.9109864619294088,
+        "ci95": [
+          0.8734155319998227,
+          1.038293871271049
+        ]
+      },
+      {
+        "name": "adaptive",
+        "base": "warm",
+        "histories": 60,
+        "medianSpeedup": 0.7889578834297236,
+        "wins": 17,
+        "seedClusterMedian": 0.8064953599237126,
+        "ci95": [
+          0.6900968232760545,
+          0.844302159389854
+        ]
+      },
+      {
+        "name": "adaptive",
+        "base": "orientation",
+        "histories": 60,
+        "medianSpeedup": 0.9767902352857311,
+        "wins": 28,
+        "seedClusterMedian": 0.9920931515222866,
+        "ci95": [
+          0.909640426354658,
+          1.0223675031502555
+        ]
+      },
+      {
+        "name": "adaptive",
+        "base": "parity-warm",
+        "histories": 60,
+        "medianSpeedup": 0.9617285764204915,
+        "wins": 26,
+        "seedClusterMedian": 0.9562805748757415,
+        "ci95": [
+          0.8924905701120441,
+          1.0602322018221229
+        ]
+      },
+      {
+        "name": "adaptive",
+        "base": "component-reuse",
+        "histories": 60,
+        "medianSpeedup": 2.1861122014592267,
+        "wins": 60,
+        "seedClusterMedian": 2.322201628258138,
+        "ci95": [
+          1.815418466976775,
+          2.5274459917766756
+        ]
+      },
+      {
+        "name": "adaptive",
+        "base": "hierarchy",
+        "histories": 60,
+        "medianSpeedup": 1.1603721504861255,
+        "wins": 50,
+        "seedClusterMedian": 1.1663824930627262,
+        "ci95": [
+          1.0835675066092323,
+          1.2029038099857288
+        ]
+      },
+      {
+        "name": "hierarchy",
+        "base": "full",
+        "histories": 60,
+        "medianSpeedup": 0.8276629029465346,
+        "wins": 24,
+        "seedClusterMedian": 0.8228978912800524,
+        "ci95": [
+          0.7325408206498715,
+          0.939756505840277
+        ]
+      },
+      {
+        "name": "hierarchy",
+        "base": "warm",
+        "histories": 60,
+        "medianSpeedup": 0.6573943018131996,
+        "wins": 13,
+        "seedClusterMedian": 0.6659502292814923,
+        "ci95": [
+          0.6446750928003839,
+          0.6979102203106627
+        ]
+      },
+      {
+        "name": "hierarchy",
+        "base": "orientation",
+        "histories": 60,
+        "medianSpeedup": 0.8723767160585786,
+        "wins": 16,
+        "seedClusterMedian": 0.8519715253001685,
+        "ci95": [
+          0.8045478798570899,
+          0.8880181571944821
+        ]
+      },
+      {
+        "name": "hierarchy",
+        "base": "parity-warm",
+        "histories": 60,
+        "medianSpeedup": 0.829778591174112,
+        "wins": 14,
+        "seedClusterMedian": 0.829778591174112,
+        "ci95": [
+          0.7983594322604829,
+          0.9100182139856271
+        ]
+      },
+      {
+        "name": "hierarchy",
+        "base": "component-reuse",
+        "histories": 60,
+        "medianSpeedup": 1.7297810684547765,
+        "wins": 56,
+        "seedClusterMedian": 1.7273192606985042,
+        "ci95": [
+          1.5526682153188172,
+          2.077993009030003
+        ]
+      },
+      {
+        "name": "hierarchy",
+        "base": "adaptive",
+        "histories": 60,
+        "medianSpeedup": 0.8617995196554213,
+        "wins": 10,
+        "seedClusterMedian": 0.8574726414821741,
+        "ci95": [
+          0.831321666536133,
+          0.9228774339397302
+        ]
+      }
+    ],
+    "byFamily": [
+      {
+        "family": "flat",
+        "name": "adaptive",
+        "base": "warm",
+        "histories": 12,
+        "medianSpeedup": 0.9406409697955195,
+        "wins": 5,
+        "seedClusterMedian": 0.9406409697955195,
+        "ci95": [
+          0.7053187796157784,
+          1.064733258050166
+        ]
+      },
+      {
+        "family": "flat",
+        "name": "adaptive",
+        "base": "orientation",
+        "histories": 12,
+        "medianSpeedup": 1.0680469322524924,
+        "wins": 7,
+        "seedClusterMedian": 1.0680469322524924,
+        "ci95": [
+          0.9822221626260459,
+          1.1766013372467865
+        ]
+      },
+      {
+        "family": "flat",
+        "name": "adaptive",
+        "base": "hierarchy",
+        "histories": 12,
+        "medianSpeedup": 1.1489907614389754,
+        "wins": 10,
+        "seedClusterMedian": 1.214052160256597,
+        "ci95": [
+          1.1428478989037758,
+          2.700020531772919
+        ]
+      },
+      {
+        "family": "sparse",
+        "name": "adaptive",
+        "base": "warm",
+        "histories": 12,
+        "medianSpeedup": 0.6933087500988491,
+        "wins": 0,
+        "seedClusterMedian": 0.6832202361956874,
+        "ci95": [
+          0.6710321296748494,
+          0.7870813331164229
+        ]
+      },
+      {
+        "family": "sparse",
+        "name": "adaptive",
+        "base": "orientation",
+        "histories": 12,
+        "medianSpeedup": 1.2105678406391327,
+        "wins": 10,
+        "seedClusterMedian": 1.2105678406391327,
+        "ci95": [
+          1.0638554093562265,
+          4.095393922072971
+        ]
+      },
+      {
+        "family": "sparse",
+        "name": "adaptive",
+        "base": "hierarchy",
+        "histories": 12,
+        "medianSpeedup": 1.24371043574372,
+        "wins": 11,
+        "seedClusterMedian": 1.2148448132725282,
+        "ci95": [
+          1.0645718126025567,
+          1.3003060274094114
+        ]
+      },
+      {
+        "family": "quota",
+        "name": "adaptive",
+        "base": "warm",
+        "histories": 12,
+        "medianSpeedup": 0.7661597291936899,
+        "wins": 3,
+        "seedClusterMedian": 0.7666343872386865,
+        "ci95": [
+          0.7340018089637642,
+          0.8221562861044008
+        ]
+      },
+      {
+        "family": "quota",
+        "name": "adaptive",
+        "base": "orientation",
+        "histories": 12,
+        "medianSpeedup": 0.9520173244788255,
+        "wins": 4,
+        "seedClusterMedian": 0.9642002131296911,
+        "ci95": [
+          0.909640426354658,
+          1.2636563161879903
+        ]
+      },
+      {
+        "family": "quota",
+        "name": "adaptive",
+        "base": "hierarchy",
+        "histories": 12,
+        "medianSpeedup": 1.240500769402525,
+        "wins": 11,
+        "seedClusterMedian": 1.240500769402525,
+        "ci95": [
+          1.2029038099857288,
+          2.3286785170791404
+        ]
+      },
+      {
+        "family": "edits",
+        "name": "adaptive",
+        "base": "warm",
+        "histories": 12,
+        "medianSpeedup": 1.0109373638939614,
+        "wins": 6,
+        "seedClusterMedian": 1.0109373638939614,
+        "ci95": [
+          0.850473833972535,
+          1.7961769553016964
+        ]
+      },
+      {
+        "family": "edits",
+        "name": "adaptive",
+        "base": "orientation",
+        "histories": 12,
+        "medianSpeedup": 0.8828084487404755,
+        "wins": 5,
+        "seedClusterMedian": 0.8828084487404755,
+        "ci95": [
+          0.832460720029692,
+          1.2885505695732222
+        ]
+      },
+      {
+        "family": "edits",
+        "name": "adaptive",
+        "base": "hierarchy",
+        "histories": 12,
+        "medianSpeedup": 1.2007141774003949,
+        "wins": 12,
+        "seedClusterMedian": 1.198687489181541,
+        "ci95": [
+          1.1135222071013238,
+          1.2531044996412235
+        ]
+      },
+      {
+        "family": "mixed",
+        "name": "adaptive",
+        "base": "warm",
+        "histories": 12,
+        "medianSpeedup": 0.7856667544430606,
+        "wins": 3,
+        "seedClusterMedian": 0.8176822009373388,
+        "ci95": [
+          0.5528709037151112,
+          0.89573679548739
+        ]
+      },
+      {
+        "family": "mixed",
+        "name": "adaptive",
+        "base": "orientation",
+        "histories": 12,
+        "medianSpeedup": 0.8599553114673401,
+        "wins": 2,
+        "seedClusterMedian": 0.8475478509366269,
+        "ci95": [
+          0.7933480050944943,
+          0.8877262487549772
+        ]
+      },
+      {
+        "family": "mixed",
+        "name": "adaptive",
+        "base": "hierarchy",
+        "histories": 12,
+        "medianSpeedup": 1.0091675191897724,
+        "wins": 6,
+        "seedClusterMedian": 1.0107470952439286,
+        "ci95": [
+          0.8304119334113085,
+          1.0469235591778248
+        ]
+      }
+    ]
+  },
+  "holdout": {
+    "rows": 13440,
+    "valid": 13440,
+    "histories": 240,
+    "summary": [
+      {
+        "name": "adaptive",
+        "rows": 1920,
+        "valid": 1920,
+        "transported": 585,
+        "eligibleRevisions": 1680,
+        "medianUs": 38.07,
+        "p90Us": 62.5621,
+        "p95Us": 72.97359999999999,
+        "p99Us": 204.63299999999998,
+        "medianBytes": 3752,
+        "routes": {
+          "warm": 684,
+          "transport": 585,
+          "orientation": 651
+        },
+        "certificates": {
+          "identity/restriction": 285,
+          "box": 100,
+          "parity": 143,
+          "normalized-quota": 57
+        },
+        "attempts": 1246,
+        "cacheHits": 38
+      },
+      {
+        "name": "full",
+        "rows": 1920,
+        "valid": 1920,
+        "transported": 0,
+        "eligibleRevisions": 1680,
+        "medianUs": 45.379999999999995,
+        "p90Us": 146.34510000000003,
+        "p95Us": 174.01244999999997,
+        "p99Us": 240.13538999999972,
+        "medianBytes": 2584,
+        "routes": {
+          "full": 1920
+        },
+        "certificates": {},
+        "attempts": 0,
+        "cacheHits": 0
+      },
+      {
+        "name": "warm",
+        "rows": 1920,
+        "valid": 1920,
+        "transported": 0,
+        "eligibleRevisions": 1680,
+        "medianUs": 30.955,
+        "p90Us": 90.68310000000008,
+        "p95Us": 132.72305,
+        "p99Us": 209.89630999999991,
+        "medianBytes": 2512,
+        "routes": {
+          "warm": 1920
+        },
+        "certificates": {},
+        "attempts": 0,
+        "cacheHits": 0
+      },
+      {
+        "name": "orientation",
+        "rows": 1920,
+        "valid": 1920,
+        "transported": 0,
+        "eligibleRevisions": 1680,
+        "medianUs": 38.059,
+        "p90Us": 52.932,
+        "p95Us": 62.8,
+        "p99Us": 206.14760999999962,
+        "medianBytes": 6128,
+        "routes": {
+          "orientation": 1920
+        },
+        "certificates": {},
+        "attempts": 0,
+        "cacheHits": 0
+      },
+      {
+        "name": "parity-warm",
+        "rows": 1920,
+        "valid": 1920,
+        "transported": 1026,
+        "eligibleRevisions": 1680,
+        "medianUs": 32.665,
+        "p90Us": 84.74300000000004,
+        "p95Us": 135.18909999999994,
+        "p99Us": 229.27109999999982,
+        "medianBytes": 3904,
+        "routes": {
+          "parity-warm": 1920
+        },
+        "certificates": {},
+        "attempts": 0,
+        "cacheHits": 0
+      },
+      {
+        "name": "component-reuse",
+        "rows": 1920,
+        "valid": 1920,
+        "transported": 0,
+        "eligibleRevisions": 1680,
+        "medianUs": 63.735,
+        "p90Us": 277.481,
+        "p95Us": 308.64555,
+        "p99Us": 538.9967999999998,
+        "medianBytes": 13464,
+        "routes": {
+          "component-reuse": 1920
+        },
+        "certificates": {},
+        "attempts": 0,
+        "cacheHits": 0
+      },
+      {
+        "name": "hierarchy",
+        "rows": 1920,
+        "valid": 1920,
+        "transported": 1044,
+        "eligibleRevisions": 1680,
+        "medianUs": 41.4905,
+        "p90Us": 74.14100000000003,
+        "p95Us": 87.27494999999998,
+        "p99Us": 222.3129099999999,
+        "medianBytes": 4360,
+        "routes": {
+          "warm": 423,
+          "transport": 1044,
+          "orientation": 453
+        },
+        "certificates": {
+          "parity": 585,
+          "identity/restriction": 285,
+          "box": 156,
+          "normalized-quota": 18
+        },
+        "attempts": 2891,
+        "cacheHits": 93
+      }
+    ],
+    "comparisons": [
+      {
+        "name": "adaptive",
+        "base": "full",
+        "histories": 240,
+        "medianSpeedup": 1.0114386152231871,
+        "wins": 121,
+        "seedClusterMedian": 0.9828195311081386,
+        "ci95": [
+          0.9486717351681546,
+          1.10582934339711
+        ]
+      },
+      {
+        "name": "adaptive",
+        "base": "warm",
+        "histories": 240,
+        "medianSpeedup": 0.7872171962293123,
+        "wins": 76,
+        "seedClusterMedian": 0.7778345043872796,
+        "ci95": [
+          0.7518431124609081,
+          0.8167990426421597
+        ]
+      },
+      {
+        "name": "adaptive",
+        "base": "orientation",
+        "histories": 240,
+        "medianSpeedup": 0.9522860826673276,
+        "wins": 103,
+        "seedClusterMedian": 0.9601343964727447,
+        "ci95": [
+          0.9099032575581212,
+          1.0071709410197331
+        ]
+      },
+      {
+        "name": "adaptive",
+        "base": "parity-warm",
+        "histories": 240,
+        "medianSpeedup": 0.931420606517601,
+        "wins": 94,
+        "seedClusterMedian": 0.9343418666411151,
+        "ci95": [
+          0.9087864519914967,
+          0.9914011755421773
+        ]
+      },
+      {
+        "name": "adaptive",
+        "base": "component-reuse",
+        "histories": 240,
+        "medianSpeedup": 1.9651174281042318,
+        "wins": 235,
+        "seedClusterMedian": 1.972379162561782,
+        "ci95": [
+          1.8062875126075428,
+          2.098975340276547
+        ]
+      },
+      {
+        "name": "adaptive",
+        "base": "hierarchy",
+        "histories": 240,
+        "medianSpeedup": 1.1131938960796737,
+        "wins": 184,
+        "seedClusterMedian": 1.1249129710269234,
+        "ci95": [
+          1.078115506770895,
+          1.145564132388707
+        ]
+      },
+      {
+        "name": "hierarchy",
+        "base": "adaptive",
+        "histories": 240,
+        "medianSpeedup": 0.8983172984406211,
+        "wins": 56,
+        "seedClusterMedian": 0.8889629224045859,
+        "ci95": [
+          0.8729323585880963,
+          0.9284266086838748
+        ]
+      },
+      {
+        "name": "hierarchy",
+        "base": "full",
+        "histories": 240,
+        "medianSpeedup": 0.95673080582435,
+        "wins": 113,
+        "seedClusterMedian": 0.991603682941723,
+        "ci95": [
+          0.9033642807227712,
+          1.0793641208747933
+        ]
+      },
+      {
+        "name": "hierarchy",
+        "base": "warm",
+        "histories": 240,
+        "medianSpeedup": 0.7369171260388039,
+        "wins": 73,
+        "seedClusterMedian": 0.7256047492765261,
+        "ci95": [
+          0.7030517441170089,
+          0.7849655660500793
+        ]
+      },
+      {
+        "name": "hierarchy",
+        "base": "orientation",
+        "histories": 240,
+        "medianSpeedup": 0.8775837560396728,
+        "wins": 55,
+        "seedClusterMedian": 0.8835551001526862,
+        "ci95": [
+          0.8615297231319564,
+          0.9158897283394952
+        ]
+      },
+      {
+        "name": "hierarchy",
+        "base": "parity-warm",
+        "histories": 240,
+        "medianSpeedup": 0.8574470890661898,
+        "wins": 73,
+        "seedClusterMedian": 0.8540003995391048,
+        "ci95": [
+          0.8329922620389153,
+          0.8705267218103117
+        ]
+      },
+      {
+        "name": "hierarchy",
+        "base": "component-reuse",
+        "histories": 240,
+        "medianSpeedup": 1.7747126067562713,
+        "wins": 223,
+        "seedClusterMedian": 1.757780952112731,
+        "ci95": [
+          1.6053771861132862,
+          1.8531156596420866
+        ]
+      }
+    ],
+    "byFamily": [
+      {
+        "family": "flat",
+        "name": "adaptive",
+        "base": "warm",
+        "histories": 48,
+        "medianSpeedup": 0.7342798722402386,
+        "wins": 13,
+        "seedClusterMedian": 0.7184925492023588,
+        "ci95": [
+          0.666931887132737,
+          0.890465617260214
+        ]
+      },
+      {
+        "family": "flat",
+        "name": "adaptive",
+        "base": "orientation",
+        "histories": 48,
+        "medianSpeedup": 0.9718854940136947,
+        "wins": 22,
+        "seedClusterMedian": 0.970709192085057,
+        "ci95": [
+          0.8204296864072509,
+          1.0602703523693804
+        ]
+      },
+      {
+        "family": "flat",
+        "name": "adaptive",
+        "base": "hierarchy",
+        "histories": 48,
+        "medianSpeedup": 0.9542810760153897,
+        "wins": 23,
+        "seedClusterMedian": 0.9887022418380293,
+        "ci95": [
+          0.8312026184015441,
+          1.0901140226620107
+        ]
+      },
+      {
+        "family": "sparse",
+        "name": "adaptive",
+        "base": "warm",
+        "histories": 48,
+        "medianSpeedup": 0.7156664937445092,
+        "wins": 8,
+        "seedClusterMedian": 0.7181508035001848,
+        "ci95": [
+          0.6635598653630388,
+          0.7518431124609081
+        ]
+      },
+      {
+        "family": "sparse",
+        "name": "adaptive",
+        "base": "orientation",
+        "histories": 48,
+        "medianSpeedup": 1.1308964415394918,
+        "wins": 38,
+        "seedClusterMedian": 1.1260989286768734,
+        "ci95": [
+          1.062738201074562,
+          1.2446476680358576
+        ]
+      },
+      {
+        "family": "sparse",
+        "name": "adaptive",
+        "base": "hierarchy",
+        "histories": 48,
+        "medianSpeedup": 1.1412625870960826,
+        "wins": 40,
+        "seedClusterMedian": 1.1597877679126198,
+        "ci95": [
+          1.0651597799089687,
+          1.1874221946303205
+        ]
+      },
+      {
+        "family": "quota",
+        "name": "adaptive",
+        "base": "warm",
+        "histories": 48,
+        "medianSpeedup": 0.8109715000361082,
+        "wins": 16,
+        "seedClusterMedian": 0.7879791197268424,
+        "ci95": [
+          0.7168528101653011,
+          0.9919094735691245
+        ]
+      },
+      {
+        "family": "quota",
+        "name": "adaptive",
+        "base": "orientation",
+        "histories": 48,
+        "medianSpeedup": 0.9001911940977949,
+        "wins": 16,
+        "seedClusterMedian": 0.8438307921207494,
+        "ci95": [
+          0.8161050009400264,
+          0.9382889948411235
+        ]
+      },
+      {
+        "family": "quota",
+        "name": "adaptive",
+        "base": "hierarchy",
+        "histories": 48,
+        "medianSpeedup": 1.1548161359928946,
+        "wins": 38,
+        "seedClusterMedian": 1.1443117768545217,
+        "ci95": [
+          1.0849719590320377,
+          1.2323853394752653
+        ]
+      },
+      {
+        "family": "edits",
+        "name": "adaptive",
+        "base": "warm",
+        "histories": 48,
+        "medianSpeedup": 0.9014935724344615,
+        "wins": 23,
+        "seedClusterMedian": 0.8829531855351962,
+        "ci95": [
+          0.8169903053383464,
+          1.2174157109069674
+        ]
+      },
+      {
+        "family": "edits",
+        "name": "adaptive",
+        "base": "orientation",
+        "histories": 48,
+        "medianSpeedup": 0.9010122328451354,
+        "wins": 14,
+        "seedClusterMedian": 0.9010122328451354,
+        "ci95": [
+          0.8677906269020085,
+          0.9076962859442327
+        ]
+      },
+      {
+        "family": "edits",
+        "name": "adaptive",
+        "base": "hierarchy",
+        "histories": 48,
+        "medianSpeedup": 1.1254718766207872,
+        "wins": 41,
+        "seedClusterMedian": 1.1254718766207872,
+        "ci95": [
+          1.1041056355582388,
+          1.1546415168872208
+        ]
+      },
+      {
+        "family": "mixed",
+        "name": "adaptive",
+        "base": "warm",
+        "histories": 48,
+        "medianSpeedup": 0.8237905962803063,
+        "wins": 16,
+        "seedClusterMedian": 0.8494661578270424,
+        "ci95": [
+          0.7691509787332131,
+          0.8973643099809093
+        ]
+      },
+      {
+        "family": "mixed",
+        "name": "adaptive",
+        "base": "orientation",
+        "histories": 48,
+        "medianSpeedup": 0.9212918045705124,
+        "wins": 13,
+        "seedClusterMedian": 0.9118576059259698,
+        "ci95": [
+          0.8580737464914457,
+          0.939478672605065
+        ]
+      },
+      {
+        "family": "mixed",
+        "name": "adaptive",
+        "base": "hierarchy",
+        "histories": 48,
+        "medianSpeedup": 1.0975777899943207,
+        "wins": 42,
+        "seedClusterMedian": 1.0975777899943207,
+        "ci95": [
+          1.043139904610493,
+          1.1347073549723756
+        ]
+      }
+    ]
+  }
+}
