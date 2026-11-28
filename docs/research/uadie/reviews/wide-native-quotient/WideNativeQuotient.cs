@@ -10,6 +10,7 @@ if(args is ["incremental-audit"]){IncrementalAudit.Run(Original);return;}
 if(args is ["template-audit"]){IncrementalAudit.Run(Original,true);return;}
 if(args is ["scale-independent",var scaleEvidence]){TemplateStudy.ScaleAudit(scaleEvidence,Check);return;}
 if(args is ["template",var templateSplit]){TemplateStudy.Run(templateSplit,Original,m=>Quotient(m),Check);return;}
+if(args is ["certified",var certSplit,var threshold]){CertifiedStudy.Run(certSplit,double.Parse(threshold,System.Globalization.CultureInfo.InvariantCulture));return;}
 if(args.Length!=1)throw new ArgumentException("dev|holdout|audit");
 bool dev=args[0]=="dev";if(!dev&&args[0]!="holdout")throw new ArgumentException("split");
 foreach(int n in dev?new[]{64,512}:new[]{64,512,4096,10000})

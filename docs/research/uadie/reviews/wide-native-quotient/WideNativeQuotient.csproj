@@ -5,6 +5,8 @@
 <Compile Include="IncrementalQuotient.cs"/>
 <Compile Include="IncrementalAudit.cs"/>
 <Compile Include="TemplateStudy.cs"/>
+<Compile Include="CertifiedQuotient.cs"/>
+<Compile Include="CertifiedStudy.cs"/>
 <Compile Include="../../../../../research/AlgorithmDiscoveryLab/*.cs" Exclude="../../../../../research/AlgorithmDiscoveryLab/Program.cs"/>
 <Compile Include="../../../../../research/ComponentStudy/Model.cs"/>
 <Compile Include="../../../../../research/ComponentStudy/Oracle.cs"/>
