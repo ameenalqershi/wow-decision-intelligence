@@ -1,0 +1,1124 @@
+{
+  "holdout": {
+    "rows": 864,
+    "models": 288,
+    "distinctDigests": 288,
+    "histories": 144,
+    "summaries": [
+      {
+        "arm": "CP-SAT",
+        "rows": 288,
+        "statuses": {
+          "Optimal": 240,
+          "Infeasible": 48
+        },
+        "formal": 0,
+        "medianUs": 3113.4545,
+        "p95Us": 6892.131349999998,
+        "p99Us": 9039.7511,
+        "medianBytes": 55748,
+        "medianEvidenceBytes": 1510.5,
+        "dropped": 0,
+        "gcdRows": 0,
+        "phases": {
+          "matrix-context": {
+            "calls": 288,
+            "medianUs": 114.00899999999999
+          },
+          "solve": {
+            "calls": 288,
+            "medianUs": 2852.395
+          },
+          "replay": {
+            "calls": 288,
+            "medianUs": 147.25
+          },
+          "encode": {
+            "calls": 288,
+            "medianUs": 44.405
+          }
+        }
+      },
+      {
+        "arm": "HiGHS",
+        "rows": 288,
+        "statuses": {
+          "Optimal": 240,
+          "Infeasible": 48
+        },
+        "formal": 0,
+        "medianUs": 5338.196,
+        "p95Us": 13296.837,
+        "p99Us": 14706.18713,
+        "medianBytes": 25584,
+        "medianEvidenceBytes": 1509.5,
+        "dropped": 0,
+        "gcdRows": 0,
+        "phases": {
+          "matrix-context": {
+            "calls": 288,
+            "medianUs": 106.295
+          },
+          "solve": {
+            "calls": 288,
+            "medianUs": 4911.802
+          },
+          "replay": {
+            "calls": 288,
+            "medianUs": 160.54
+          },
+          "encode": {
+            "calls": 288,
+            "medianUs": 51.54
+          }
+        }
+      },
+      {
+        "arm": "G24",
+        "rows": 288,
+        "statuses": {
+          "Optimal": 240,
+          "Infeasible": 48
+        },
+        "formal": 156,
+        "medianUs": 1618.2730000000001,
+        "p95Us": 8156.472499999998,
+        "p99Us": 21292.840939999995,
+        "medianBytes": 101152,
+        "medianEvidenceBytes": 2540,
+        "dropped": 0,
+        "gcdRows": 0,
+        "phases": {
+          "matrix-context": {
+            "calls": 288,
+            "medianUs": 110.66
+          },
+          "network-discovery": {
+            "calls": 168,
+            "medianUs": 10.620000000000001
+          },
+          "solve": {
+            "calls": 288,
+            "medianUs": 171.7455
+          },
+          "replay": {
+            "calls": 288,
+            "medianUs": 358.985
+          },
+          "encode": {
+            "calls": 288,
+            "medianUs": 66.3
+          },
+          "context": {
+            "calls": 120,
+            "medianUs": 106.979
+          },
+          "network-gate": {
+            "calls": 120,
+            "medianUs": 2.715
+          },
+          "simple-gate": {
+            "calls": 96,
+            "medianUs": 3.665
+          },
+          "fallback-gate": {
+            "calls": 84,
+            "medianUs": 0.84
+          },
+          "identity": {
+            "calls": 38,
+            "medianUs": 2.725
+          },
+          "structural-transform": {
+            "calls": 19,
+            "medianUs": 188.529
+          },
+          "structural-proof": {
+            "calls": 19,
+            "medianUs": 192.889
+          },
+          "objective-transform": {
+            "calls": 38,
+            "medianUs": 9.5
+          },
+          "objective-proof": {
+            "calls": 38,
+            "medianUs": 12.8
+          },
+          "optimality-proof": {
+            "calls": 38,
+            "medianUs": 13.655000000000001
+          },
+          "typed-export": {
+            "calls": 120,
+            "medianUs": 19.585
+          },
+          "partition": {
+            "calls": 72,
+            "medianUs": 67.88499999999999
+          },
+          "block-solve": {
+            "calls": 24,
+            "medianUs": 413.3145
+          }
+        }
+      }
+    ],
+    "comparisons": [
+      {
+        "candidate": "G24",
+        "base": "CP-SAT",
+        "histories": 144,
+        "totalHistories": 144,
+        "clusters": 12,
+        "medianSpeedup": 1.0762268157358066,
+        "ci95": [
+          1.0194049374746048,
+          1.1788264070283845
+        ],
+        "wins": 80,
+        "min": 0.06139534003984423
+      },
+      {
+        "candidate": "G24",
+        "base": "HiGHS",
+        "histories": 144,
+        "totalHistories": 144,
+        "clusters": 12,
+        "medianSpeedup": 2.118050105246726,
+        "ci95": [
+          1.468676311080962,
+          2.622784513715517
+        ],
+        "wins": 118,
+        "min": 0.0835255610981781
+      }
+    ],
+    "byFamily": [
+      {
+        "family": "flow",
+        "comparisons": [
+          {
+            "candidate": "G24",
+            "base": "CP-SAT",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 5.6649690973725875,
+            "ci95": [
+              4.798714072491591,
+              5.768169704559215
+            ],
+            "wins": 12,
+            "min": 1.619354429352162
+          },
+          {
+            "candidate": "G24",
+            "base": "HiGHS",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 7.55889625934063,
+            "ci95": [
+              5.252834286815345,
+              11.30369426525965
+            ],
+            "wins": 11,
+            "min": 0.4816221520667707
+          }
+        ]
+      },
+      {
+        "family": "lower",
+        "comparisons": [
+          {
+            "candidate": "G24",
+            "base": "CP-SAT",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 5.493913240223615,
+            "ci95": [
+              4.984281966352943,
+              6.235804486550659
+            ],
+            "wins": 12,
+            "min": 4.622933072002401
+          },
+          {
+            "candidate": "G24",
+            "base": "HiGHS",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 7.185639774936108,
+            "ci95": [
+              5.697605908164169,
+              11.956313831416459
+            ],
+            "wins": 12,
+            "min": 4.364062336314448
+          }
+        ]
+      },
+      {
+        "family": "infeasible",
+        "comparisons": [
+          {
+            "candidate": "G24",
+            "base": "CP-SAT",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.3213044270680818,
+            "ci95": [
+              1.1358598410059102,
+              1.4670038555478007
+            ],
+            "wins": 11,
+            "min": 0.1878541960726745
+          },
+          {
+            "candidate": "G24",
+            "base": "HiGHS",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.2125123190187532,
+            "ci95": [
+              1.143678688795989,
+              1.4617771993402842
+            ],
+            "wins": 11,
+            "min": 0.5499808135447853
+          }
+        ]
+      },
+      {
+        "family": "side",
+        "comparisons": [
+          {
+            "candidate": "G24",
+            "base": "CP-SAT",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 0.9704831788015298,
+            "ci95": [
+              0.9466487584948767,
+              1.0224383800108368
+            ],
+            "wins": 4,
+            "min": 0.8713311421367302
+          },
+          {
+            "candidate": "G24",
+            "base": "HiGHS",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.4795470093624141,
+            "ci95": [
+              1.1258995157958591,
+              2.094182138252437
+            ],
+            "wins": 9,
+            "min": 0.7788126198815217
+          }
+        ]
+      },
+      {
+        "family": "weighted",
+        "comparisons": [
+          {
+            "candidate": "G24",
+            "base": "CP-SAT",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 0.8372891245304606,
+            "ci95": [
+              0.776234717295837,
+              0.9195250146494497
+            ],
+            "wins": 1,
+            "min": 0.21305756251618005
+          },
+          {
+            "candidate": "G24",
+            "base": "HiGHS",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 0.5479850960436217,
+            "ci95": [
+              0.47375548872862816,
+              0.737888080213112
+            ],
+            "wins": 2,
+            "min": 0.1305715281740115
+          }
+        ]
+      },
+      {
+        "family": "contradiction",
+        "comparisons": [
+          {
+            "candidate": "G24",
+            "base": "CP-SAT",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.5333832613008913,
+            "ci95": [
+              1.3330746092047998,
+              1.5978553117060024
+            ],
+            "wins": 11,
+            "min": 0.4637880967144226
+          },
+          {
+            "candidate": "G24",
+            "base": "HiGHS",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.2629820026036833,
+            "ci95": [
+              1.0921592759023049,
+              1.4299430094469936
+            ],
+            "wins": 10,
+            "min": 0.40980090881154435
+          }
+        ]
+      },
+      {
+        "family": "signed-domain",
+        "comparisons": [
+          {
+            "candidate": "G24",
+            "base": "CP-SAT",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 0.7937211878849022,
+            "ci95": [
+              0.6963806604102256,
+              0.9361341217589043
+            ],
+            "wins": 2,
+            "min": 0.637758595057511
+          },
+          {
+            "candidate": "G24",
+            "base": "HiGHS",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 17.232813671122976,
+            "ci95": [
+              15.122592211305118,
+              21.703998285860088
+            ],
+            "wins": 12,
+            "min": 14.851570643896528
+          }
+        ]
+      },
+      {
+        "family": "quotas",
+        "comparisons": [
+          {
+            "candidate": "G24",
+            "base": "CP-SAT",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.168293777480788,
+            "ci95": [
+              1.1027555826868392,
+              1.1916538421745582
+            ],
+            "wins": 11,
+            "min": 0.06139534003984423
+          },
+          {
+            "candidate": "G24",
+            "base": "HiGHS",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 2.9332454803589494,
+            "ci95": [
+              1.5826904920021319,
+              3.9710005822386356
+            ],
+            "wins": 11,
+            "min": 0.0835255610981781
+          }
+        ]
+      },
+      {
+        "family": "assignment",
+        "comparisons": [
+          {
+            "candidate": "G24",
+            "base": "CP-SAT",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 4.176903580275548,
+            "ci95": [
+              4.030147906733471,
+              4.934469004256394
+            ],
+            "wins": 11,
+            "min": 0.4719620501404913
+          },
+          {
+            "candidate": "G24",
+            "base": "HiGHS",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 6.764457920868309,
+            "ci95": [
+              5.716624777197104,
+              7.551024813224326
+            ],
+            "wins": 11,
+            "min": 0.5241124647960035
+          }
+        ]
+      },
+      {
+        "family": "sparse",
+        "comparisons": [
+          {
+            "candidate": "G24",
+            "base": "CP-SAT",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 0.7326447802923355,
+            "ci95": [
+              0.6700561237199643,
+              0.8327283637416757
+            ],
+            "wins": 0,
+            "min": 0.37107013377531683
+          },
+          {
+            "candidate": "G24",
+            "base": "HiGHS",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 2.7580229729381402,
+            "ci95": [
+              2.2508731259405717,
+              3.1015482557798437
+            ],
+            "wins": 11,
+            "min": 0.37030569662624946
+          }
+        ]
+      },
+      {
+        "family": "mixed",
+        "comparisons": [
+          {
+            "candidate": "G24",
+            "base": "CP-SAT",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 0.909104759794382,
+            "ci95": [
+              0.8285480006076832,
+              2.5651657152844045
+            ],
+            "wins": 5,
+            "min": 0.611444497415456
+          },
+          {
+            "candidate": "G24",
+            "base": "HiGHS",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.4326131827878994,
+            "ci95": [
+              1.1397685113212943,
+              3.6461186762962168
+            ],
+            "wins": 10,
+            "min": 0.9504626596278103
+          }
+        ]
+      },
+      {
+        "family": "overlap",
+        "comparisons": [
+          {
+            "candidate": "G24",
+            "base": "CP-SAT",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 0.8751892868172925,
+            "ci95": [
+              0.8131700272823413,
+              0.8987396054464204
+            ],
+            "wins": 0,
+            "min": 0.7861133517308077
+          },
+          {
+            "candidate": "G24",
+            "base": "HiGHS",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.1019838253194374,
+            "ci95": [
+              0.926485236896861,
+              1.2430989514852584
+            ],
+            "wins": 8,
+            "min": 0.6439795368464014
+          }
+        ]
+      }
+    ]
+  },
+  "disk": {
+    "rows": 72,
+    "models": 24,
+    "distinctDigests": 24,
+    "histories": 12,
+    "summaries": [
+      {
+        "arm": "CP-SAT",
+        "rows": 24,
+        "statuses": {
+          "Optimal": 20,
+          "Infeasible": 4
+        },
+        "formal": 0,
+        "medianUs": 4472.267,
+        "p95Us": 9642.718399999994,
+        "p99Us": 199294.78812999988,
+        "medianBytes": 55908,
+        "medianEvidenceBytes": 1509,
+        "dropped": 0,
+        "gcdRows": 0,
+        "phases": {
+          "matrix-context": {
+            "calls": 24,
+            "medianUs": 136.4195
+          },
+          "solve": {
+            "calls": 24,
+            "medianUs": 3165.5395
+          },
+          "replay": {
+            "calls": 24,
+            "medianUs": 163.20999999999998
+          },
+          "encode": {
+            "calls": 24,
+            "medianUs": 53.994
+          },
+          "flush": {
+            "calls": 24,
+            "medianUs": 874.0435
+          }
+        }
+      },
+      {
+        "arm": "HiGHS",
+        "rows": 24,
+        "statuses": {
+          "Optimal": 20,
+          "Infeasible": 4
+        },
+        "formal": 0,
+        "medianUs": 8236.735499999999,
+        "p95Us": 14734.090149999998,
+        "p99Us": 30131.77314999999,
+        "medianBytes": 26008,
+        "medianEvidenceBytes": 1508,
+        "dropped": 0,
+        "gcdRows": 0,
+        "phases": {
+          "matrix-context": {
+            "calls": 24,
+            "medianUs": 148.864
+          },
+          "solve": {
+            "calls": 24,
+            "medianUs": 6873.263000000001
+          },
+          "replay": {
+            "calls": 24,
+            "medianUs": 188.97
+          },
+          "encode": {
+            "calls": 24,
+            "medianUs": 52.605000000000004
+          },
+          "flush": {
+            "calls": 24,
+            "medianUs": 866.2185
+          }
+        }
+      },
+      {
+        "arm": "G24",
+        "rows": 24,
+        "statuses": {
+          "Optimal": 20,
+          "Infeasible": 4
+        },
+        "formal": 14,
+        "medianUs": 4755.096,
+        "p95Us": 55829.00664999992,
+        "p99Us": 73366.92734,
+        "medianBytes": 85240,
+        "medianEvidenceBytes": 2523.5,
+        "dropped": 0,
+        "gcdRows": 0,
+        "phases": {
+          "matrix-context": {
+            "calls": 24,
+            "medianUs": 134.8295
+          },
+          "network-discovery": {
+            "calls": 14,
+            "medianUs": 24.015
+          },
+          "solve": {
+            "calls": 24,
+            "medianUs": 230.565
+          },
+          "replay": {
+            "calls": 24,
+            "medianUs": 567.2685
+          },
+          "encode": {
+            "calls": 24,
+            "medianUs": 99.6345
+          },
+          "flush": {
+            "calls": 24,
+            "medianUs": 979.698
+          },
+          "context": {
+            "calls": 10,
+            "medianUs": 126.199
+          },
+          "network-gate": {
+            "calls": 10,
+            "medianUs": 2.85
+          },
+          "simple-gate": {
+            "calls": 8,
+            "medianUs": 3.975
+          },
+          "fallback-gate": {
+            "calls": 6,
+            "medianUs": 0.905
+          },
+          "identity": {
+            "calls": 2,
+            "medianUs": 1474.4025000000001
+          },
+          "structural-transform": {
+            "calls": 1,
+            "medianUs": 18463.408
+          },
+          "structural-proof": {
+            "calls": 1,
+            "medianUs": 11531.451
+          },
+          "objective-transform": {
+            "calls": 2,
+            "medianUs": 335.559
+          },
+          "objective-proof": {
+            "calls": 2,
+            "medianUs": 256.5895
+          },
+          "optimality-proof": {
+            "calls": 2,
+            "medianUs": 390.98900000000003
+          },
+          "typed-export": {
+            "calls": 10,
+            "medianUs": 2153.0815
+          },
+          "partition": {
+            "calls": 6,
+            "medianUs": 75.97999999999999
+          },
+          "block-solve": {
+            "calls": 2,
+            "medianUs": 5995.7505
+          }
+        }
+      }
+    ],
+    "comparisons": [
+      {
+        "candidate": "G24",
+        "base": "CP-SAT",
+        "histories": 12,
+        "totalHistories": 12,
+        "clusters": 1,
+        "medianSpeedup": 0.6597053946753318,
+        "ci95": null,
+        "wins": 2,
+        "min": 0.08011884379336745
+      },
+      {
+        "candidate": "G24",
+        "base": "HiGHS",
+        "histories": 12,
+        "totalHistories": 12,
+        "clusters": 1,
+        "medianSpeedup": 0.8371886946082481,
+        "ci95": null,
+        "wins": 5,
+        "min": 0.09799536946497116
+      }
+    ],
+    "byFamily": [
+      {
+        "family": "flow",
+        "comparisons": [
+          {
+            "candidate": "G24",
+            "base": "CP-SAT",
+            "histories": 1,
+            "totalHistories": 1,
+            "clusters": 1,
+            "medianSpeedup": 4.180136947347104,
+            "ci95": null,
+            "wins": 1,
+            "min": 4.180136947347104
+          },
+          {
+            "candidate": "G24",
+            "base": "HiGHS",
+            "histories": 1,
+            "totalHistories": 1,
+            "clusters": 1,
+            "medianSpeedup": 0.63650956386703,
+            "ci95": null,
+            "wins": 0,
+            "min": 0.63650956386703
+          }
+        ]
+      },
+      {
+        "family": "lower",
+        "comparisons": [
+          {
+            "candidate": "G24",
+            "base": "CP-SAT",
+            "histories": 1,
+            "totalHistories": 1,
+            "clusters": 1,
+            "medianSpeedup": 2.7114067367756696,
+            "ci95": null,
+            "wins": 1,
+            "min": 2.7114067367756696
+          },
+          {
+            "candidate": "G24",
+            "base": "HiGHS",
+            "histories": 1,
+            "totalHistories": 1,
+            "clusters": 1,
+            "medianSpeedup": 4.941287386198268,
+            "ci95": null,
+            "wins": 1,
+            "min": 4.941287386198268
+          }
+        ]
+      },
+      {
+        "family": "infeasible",
+        "comparisons": [
+          {
+            "candidate": "G24",
+            "base": "CP-SAT",
+            "histories": 1,
+            "totalHistories": 1,
+            "clusters": 1,
+            "medianSpeedup": 0.2130065360969312,
+            "ci95": null,
+            "wins": 0,
+            "min": 0.2130065360969312
+          },
+          {
+            "candidate": "G24",
+            "base": "HiGHS",
+            "histories": 1,
+            "totalHistories": 1,
+            "clusters": 1,
+            "medianSpeedup": 0.1665124714165787,
+            "ci95": null,
+            "wins": 0,
+            "min": 0.1665124714165787
+          }
+        ]
+      },
+      {
+        "family": "side",
+        "comparisons": [
+          {
+            "candidate": "G24",
+            "base": "CP-SAT",
+            "histories": 1,
+            "totalHistories": 1,
+            "clusters": 1,
+            "medianSpeedup": 0.9373065520278634,
+            "ci95": null,
+            "wins": 0,
+            "min": 0.9373065520278634
+          },
+          {
+            "candidate": "G24",
+            "base": "HiGHS",
+            "histories": 1,
+            "totalHistories": 1,
+            "clusters": 1,
+            "medianSpeedup": 1.5302333651716744,
+            "ci95": null,
+            "wins": 1,
+            "min": 1.5302333651716744
+          }
+        ]
+      },
+      {
+        "family": "weighted",
+        "comparisons": [
+          {
+            "candidate": "G24",
+            "base": "CP-SAT",
+            "histories": 1,
+            "totalHistories": 1,
+            "clusters": 1,
+            "medianSpeedup": 0.3330008130969284,
+            "ci95": null,
+            "wins": 0,
+            "min": 0.3330008130969284
+          },
+          {
+            "candidate": "G24",
+            "base": "HiGHS",
+            "histories": 1,
+            "totalHistories": 1,
+            "clusters": 1,
+            "medianSpeedup": 0.5310944947308583,
+            "ci95": null,
+            "wins": 0,
+            "min": 0.5310944947308583
+          }
+        ]
+      },
+      {
+        "family": "contradiction",
+        "comparisons": [
+          {
+            "candidate": "G24",
+            "base": "CP-SAT",
+            "histories": 1,
+            "totalHistories": 1,
+            "clusters": 1,
+            "medianSpeedup": 0.6110913446130507,
+            "ci95": null,
+            "wins": 0,
+            "min": 0.6110913446130507
+          },
+          {
+            "candidate": "G24",
+            "base": "HiGHS",
+            "histories": 1,
+            "totalHistories": 1,
+            "clusters": 1,
+            "medianSpeedup": 0.6285211495817821,
+            "ci95": null,
+            "wins": 0,
+            "min": 0.6285211495817821
+          }
+        ]
+      },
+      {
+        "family": "signed-domain",
+        "comparisons": [
+          {
+            "candidate": "G24",
+            "base": "CP-SAT",
+            "histories": 1,
+            "totalHistories": 1,
+            "clusters": 1,
+            "medianSpeedup": 0.9797050719789162,
+            "ci95": null,
+            "wins": 0,
+            "min": 0.9797050719789162
+          },
+          {
+            "candidate": "G24",
+            "base": "HiGHS",
+            "histories": 1,
+            "totalHistories": 1,
+            "clusters": 1,
+            "medianSpeedup": 10.32481526823724,
+            "ci95": null,
+            "wins": 1,
+            "min": 10.32481526823724
+          }
+        ]
+      },
+      {
+        "family": "quotas",
+        "comparisons": [
+          {
+            "candidate": "G24",
+            "base": "CP-SAT",
+            "histories": 1,
+            "totalHistories": 1,
+            "clusters": 1,
+            "medianSpeedup": 0.08011884379336745,
+            "ci95": null,
+            "wins": 0,
+            "min": 0.08011884379336745
+          },
+          {
+            "candidate": "G24",
+            "base": "HiGHS",
+            "histories": 1,
+            "totalHistories": 1,
+            "clusters": 1,
+            "medianSpeedup": 0.09799536946497116,
+            "ci95": null,
+            "wins": 0,
+            "min": 0.09799536946497116
+          }
+        ]
+      },
+      {
+        "family": "assignment",
+        "comparisons": [
+          {
+            "candidate": "G24",
+            "base": "CP-SAT",
+            "histories": 1,
+            "totalHistories": 1,
+            "clusters": 1,
+            "medianSpeedup": 0.4892171152096402,
+            "ci95": null,
+            "wins": 0,
+            "min": 0.4892171152096402
+          },
+          {
+            "candidate": "G24",
+            "base": "HiGHS",
+            "histories": 1,
+            "totalHistories": 1,
+            "clusters": 1,
+            "medianSpeedup": 0.693269361421807,
+            "ci95": null,
+            "wins": 0,
+            "min": 0.693269361421807
+          }
+        ]
+      },
+      {
+        "family": "sparse",
+        "comparisons": [
+          {
+            "candidate": "G24",
+            "base": "CP-SAT",
+            "histories": 1,
+            "totalHistories": 1,
+            "clusters": 1,
+            "medianSpeedup": 0.42314642212288794,
+            "ci95": null,
+            "wins": 0,
+            "min": 0.42314642212288794
+          },
+          {
+            "candidate": "G24",
+            "base": "HiGHS",
+            "histories": 1,
+            "totalHistories": 1,
+            "clusters": 1,
+            "medianSpeedup": 1.1800280955434304,
+            "ci95": null,
+            "wins": 1,
+            "min": 1.1800280955434304
+          }
+        ]
+      },
+      {
+        "family": "mixed",
+        "comparisons": [
+          {
+            "candidate": "G24",
+            "base": "CP-SAT",
+            "histories": 1,
+            "totalHistories": 1,
+            "clusters": 1,
+            "medianSpeedup": 0.708319444737613,
+            "ci95": null,
+            "wins": 0,
+            "min": 0.708319444737613
+          },
+          {
+            "candidate": "G24",
+            "base": "HiGHS",
+            "histories": 1,
+            "totalHistories": 1,
+            "clusters": 1,
+            "medianSpeedup": 1.1127668426335926,
+            "ci95": null,
+            "wins": 1,
+            "min": 1.1127668426335926
+          }
+        ]
+      },
+      {
+        "family": "overlap",
+        "comparisons": [
+          {
+            "candidate": "G24",
+            "base": "CP-SAT",
+            "histories": 1,
+            "totalHistories": 1,
+            "clusters": 1,
+            "medianSpeedup": 0.9298355417659068,
+            "ci95": null,
+            "wins": 0,
+            "min": 0.9298355417659068
+          },
+          {
+            "candidate": "G24",
+            "base": "HiGHS",
+            "histories": 1,
+            "totalHistories": 1,
+            "clusters": 1,
+            "medianSpeedup": 0.9811080277946891,
+            "ci95": null,
+            "wins": 0,
+            "min": 0.9811080277946891
+          }
+        ]
+      }
+    ]
+  }
+}

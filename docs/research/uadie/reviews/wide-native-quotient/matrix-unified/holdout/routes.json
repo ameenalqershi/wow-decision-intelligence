@@ -1,0 +1,96 @@
+[
+  {
+    "route": "boolean/assignment",
+    "records": 24,
+    "assurance": [
+      {
+        "a": "ProvenOptimal",
+        "n": 24
+      }
+    ]
+  },
+  {
+    "route": "boolean/components",
+    "records": 12,
+    "assurance": [
+      {
+        "a": "ProvenOptimal",
+        "n": 12
+      }
+    ]
+  },
+  {
+    "route": "boolean/direct",
+    "records": 24,
+    "assurance": [
+      {
+        "a": "ProvenOptimal",
+        "n": 24
+      }
+    ]
+  },
+  {
+    "route": "boolean/native-quotient",
+    "records": 14,
+    "assurance": [
+      {
+        "a": "SolverOptimal",
+        "n": 14
+      }
+    ]
+  },
+  {
+    "route": "boolean/original",
+    "records": 46,
+    "assurance": [
+      {
+        "a": "SolverOptimal",
+        "n": 46
+      }
+    ]
+  },
+  {
+    "route": "network",
+    "records": 72,
+    "assurance": [
+      {
+        "a": "ProvenInfeasible",
+        "n": 24
+      },
+      {
+        "a": "ProvenOptimal",
+        "n": 48
+      }
+    ]
+  },
+  {
+    "route": "original",
+    "records": 48,
+    "assurance": [
+      {
+        "a": "SolverOptimal",
+        "n": 48
+      }
+    ]
+  },
+  {
+    "route": "weighted/arithmetic-infeasible",
+    "records": 24,
+    "assurance": [
+      {
+        "a": "ProvenInfeasible",
+        "n": 24
+      }
+    ]
+  },
+  {
+    "route": "weighted/original",
+    "records": 24,
+    "assurance": [
+      {
+        "a": "SolverOptimal",
+        "n": 24
+      }
+    ]
+  }
+]

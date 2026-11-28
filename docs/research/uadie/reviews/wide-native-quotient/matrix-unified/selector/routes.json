@@ -1,0 +1,131 @@
+[
+  {
+    "arm": "G24",
+    "hits": 0,
+    "formal": 356,
+    "routes": [
+      {
+        "route": "boolean/assignment",
+        "n": 48
+      },
+      {
+        "route": "boolean/components",
+        "n": 20
+      },
+      {
+        "route": "boolean/direct",
+        "n": 96
+      },
+      {
+        "route": "boolean/native-quotient",
+        "n": 28
+      },
+      {
+        "route": "boolean/original",
+        "n": 96
+      },
+      {
+        "route": "network",
+        "n": 144
+      },
+      {
+        "route": "original",
+        "n": 48
+      },
+      {
+        "route": "weighted/arithmetic-infeasible",
+        "n": 48
+      },
+      {
+        "route": "weighted/original",
+        "n": 48
+      }
+    ]
+  },
+  {
+    "arm": "preserve",
+    "hits": 0,
+    "formal": 432,
+    "routes": [
+      {
+        "route": "boolean/assignment",
+        "n": 48
+      },
+      {
+        "route": "boolean/components",
+        "n": 48
+      },
+      {
+        "route": "boolean/direct",
+        "n": 96
+      },
+      {
+        "route": "boolean/flow",
+        "n": 48
+      },
+      {
+        "route": "boolean/original",
+        "n": 48
+      },
+      {
+        "route": "network",
+        "n": 144
+      },
+      {
+        "route": "original",
+        "n": 48
+      },
+      {
+        "route": "weighted/arithmetic-infeasible",
+        "n": 48
+      },
+      {
+        "route": "weighted/original",
+        "n": 48
+      }
+    ]
+  },
+  {
+    "arm": "preserve-reuse",
+    "hits": 120,
+    "formal": 432,
+    "routes": [
+      {
+        "route": "boolean/assignment",
+        "n": 48
+      },
+      {
+        "route": "boolean/components",
+        "n": 48
+      },
+      {
+        "route": "boolean/direct",
+        "n": 96
+      },
+      {
+        "route": "boolean/flow",
+        "n": 48
+      },
+      {
+        "route": "boolean/original",
+        "n": 48
+      },
+      {
+        "route": "network",
+        "n": 144
+      },
+      {
+        "route": "original",
+        "n": 48
+      },
+      {
+        "route": "weighted/arithmetic-infeasible",
+        "n": 48
+      },
+      {
+        "route": "weighted/original",
+        "n": 48
+      }
+    ]
+  }
+]

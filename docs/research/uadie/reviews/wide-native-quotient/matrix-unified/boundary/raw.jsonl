@@ -1,0 +1,6 @@
+{"kind":"check","name":"initial-network","valid":true}
+{"kind":"check","name":"current-objective-envelope-fallback","valid":true}
+{"kind":"check","name":"recovery","valid":true}
+{"kind":"check","name":"supply-edit-invalidates","valid":true}
+{"kind":"check","name":"disconnected-negative-cycle","valid":true}
+{"kind":"summary","checks":5,"valid":true}

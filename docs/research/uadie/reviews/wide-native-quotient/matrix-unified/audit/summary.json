@@ -1,0 +1,8 @@
+{
+  "kind": "summary",
+  "finite": 96,
+  "vectors": 10368,
+  "tamper": 384,
+  "abstain": 96,
+  "checks": 4
+}

@@ -1,0 +1,708 @@
+{
+  "selector": {
+    "rows": 1728,
+    "models": 576,
+    "distinctDigests": 576,
+    "histories": 144,
+    "summaries": [
+      {
+        "arm": "G24",
+        "rows": 576,
+        "statuses": {
+          "Optimal": 480,
+          "Infeasible": 96
+        },
+        "formal": 356,
+        "medianUs": 1972.637,
+        "p95Us": 6617.8805,
+        "p99Us": 10756.10175,
+        "medianBytes": 119184,
+        "medianEvidenceBytes": 2565,
+        "dropped": 0,
+        "gcdRows": 0,
+        "phases": {
+          "matrix-context": {
+            "calls": 576,
+            "medianUs": 122.1605
+          },
+          "network-discovery": {
+            "calls": 288,
+            "medianUs": 22.17
+          },
+          "solve": {
+            "calls": 576,
+            "medianUs": 127.99000000000001
+          },
+          "replay": {
+            "calls": 576,
+            "medianUs": 394.05899999999997
+          },
+          "encode": {
+            "calls": 576,
+            "medianUs": 67.015
+          },
+          "context": {
+            "calls": 288,
+            "medianUs": 104.4005
+          },
+          "network-gate": {
+            "calls": 288,
+            "medianUs": 2
+          },
+          "simple-gate": {
+            "calls": 240,
+            "medianUs": 3.075
+          },
+          "fallback-gate": {
+            "calls": 220,
+            "medianUs": 0.82
+          },
+          "identity": {
+            "calls": 124,
+            "medianUs": 2.04
+          },
+          "structural-transform": {
+            "calls": 62,
+            "medianUs": 161.25900000000001
+          },
+          "structural-proof": {
+            "calls": 62,
+            "medianUs": 108.535
+          },
+          "objective-transform": {
+            "calls": 124,
+            "medianUs": 8.8205
+          },
+          "objective-proof": {
+            "calls": 124,
+            "medianUs": 10.05
+          },
+          "optimality-proof": {
+            "calls": 124,
+            "medianUs": 2.21
+          },
+          "typed-export": {
+            "calls": 288,
+            "medianUs": 13.184999999999999
+          },
+          "partition": {
+            "calls": 144,
+            "medianUs": 61.305
+          },
+          "block-solve": {
+            "calls": 48,
+            "medianUs": 209.915
+          }
+        }
+      },
+      {
+        "arm": "preserve",
+        "rows": 576,
+        "statuses": {
+          "Optimal": 480,
+          "Infeasible": 96
+        },
+        "formal": 432,
+        "medianUs": 1499.992,
+        "p95Us": 6006.46725,
+        "p99Us": 8665.89475,
+        "medianBytes": 106664,
+        "medianEvidenceBytes": 2751,
+        "dropped": 0,
+        "gcdRows": 0,
+        "phases": {
+          "matrix-context": {
+            "calls": 576,
+            "medianUs": 123.289
+          },
+          "network-discovery": {
+            "calls": 288,
+            "medianUs": 21.6845
+          },
+          "solve": {
+            "calls": 576,
+            "medianUs": 110.33500000000001
+          },
+          "replay": {
+            "calls": 576,
+            "medianUs": 369.96500000000003
+          },
+          "encode": {
+            "calls": 576,
+            "medianUs": 72.5445
+          },
+          "context": {
+            "calls": 288,
+            "medianUs": 116.4445
+          },
+          "network-gate": {
+            "calls": 288,
+            "medianUs": 2.38
+          },
+          "simple-gate": {
+            "calls": 192,
+            "medianUs": 3.8950000000000005
+          },
+          "fallback-gate": {
+            "calls": 144,
+            "medianUs": 0.935
+          },
+          "identity": {
+            "calls": 96,
+            "medianUs": 1.85
+          },
+          "structural-transform": {
+            "calls": 48,
+            "medianUs": 180.5345
+          },
+          "structural-proof": {
+            "calls": 48,
+            "medianUs": 165.1045
+          },
+          "objective-transform": {
+            "calls": 96,
+            "medianUs": 9.405000000000001
+          },
+          "objective-proof": {
+            "calls": 96,
+            "medianUs": 12.25
+          },
+          "optimality-proof": {
+            "calls": 96,
+            "medianUs": 8.155
+          },
+          "typed-export": {
+            "calls": 288,
+            "medianUs": 9.025
+          },
+          "partition": {
+            "calls": 96,
+            "medianUs": 75.3095
+          },
+          "block-solve": {
+            "calls": 48,
+            "medianUs": 280.9495
+          }
+        }
+      },
+      {
+        "arm": "preserve-reuse",
+        "rows": 576,
+        "statuses": {
+          "Optimal": 480,
+          "Infeasible": 96
+        },
+        "formal": 432,
+        "medianUs": 1460.2825,
+        "p95Us": 5840.315,
+        "p99Us": 9010.394750000001,
+        "medianBytes": 109196,
+        "medianEvidenceBytes": 2751,
+        "dropped": 0,
+        "gcdRows": 0,
+        "phases": {
+          "matrix-context": {
+            "calls": 576,
+            "medianUs": 123.4
+          },
+          "network-discovery": {
+            "calls": 288,
+            "medianUs": 9.96
+          },
+          "solve": {
+            "calls": 576,
+            "medianUs": 105.2595
+          },
+          "replay": {
+            "calls": 576,
+            "medianUs": 364.119
+          },
+          "encode": {
+            "calls": 576,
+            "medianUs": 74.31450000000001
+          },
+          "context": {
+            "calls": 288,
+            "medianUs": 114.5095
+          },
+          "network-gate": {
+            "calls": 288,
+            "medianUs": 2.4
+          },
+          "simple-gate": {
+            "calls": 192,
+            "medianUs": 4.455
+          },
+          "fallback-gate": {
+            "calls": 144,
+            "medianUs": 0.935
+          },
+          "identity": {
+            "calls": 96,
+            "medianUs": 1.865
+          },
+          "structural-transform": {
+            "calls": 48,
+            "medianUs": 180.84
+          },
+          "structural-proof": {
+            "calls": 48,
+            "medianUs": 190.416
+          },
+          "objective-transform": {
+            "calls": 96,
+            "medianUs": 9.23
+          },
+          "objective-proof": {
+            "calls": 96,
+            "medianUs": 12.21
+          },
+          "optimality-proof": {
+            "calls": 96,
+            "medianUs": 7.885
+          },
+          "typed-export": {
+            "calls": 288,
+            "medianUs": 8.83
+          },
+          "partition": {
+            "calls": 96,
+            "medianUs": 75.66550000000001
+          },
+          "block-solve": {
+            "calls": 48,
+            "medianUs": 276.855
+          }
+        }
+      }
+    ],
+    "comparisons": [
+      {
+        "candidate": "preserve-reuse",
+        "base": "G24",
+        "histories": 144,
+        "totalHistories": 144,
+        "clusters": 12,
+        "medianSpeedup": 1.0117345586691426,
+        "ci95": [
+          0.9899543604404398,
+          1.039363611700566
+        ],
+        "wins": 82,
+        "min": 0.22006330793098172
+      },
+      {
+        "candidate": "preserve-reuse",
+        "base": "preserve",
+        "histories": 144,
+        "totalHistories": 144,
+        "clusters": 12,
+        "medianSpeedup": 0.9954801144779405,
+        "ci95": [
+          0.9865945966547897,
+          1.0049357134240335
+        ],
+        "wins": 69,
+        "min": 0.22482138879188449
+      }
+    ],
+    "byFamily": [
+      {
+        "family": "flow",
+        "comparisons": [
+          {
+            "candidate": "preserve-reuse",
+            "base": "G24",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.0170933031799505,
+            "ci95": [
+              0.9516932499986044,
+              1.0808089385736934
+            ],
+            "wins": 6,
+            "min": 0.4717654567381028
+          },
+          {
+            "candidate": "preserve-reuse",
+            "base": "preserve",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.0168887228190755,
+            "ci95": [
+              0.9663284087005305,
+              1.0918983717044317
+            ],
+            "wins": 7,
+            "min": 0.46810973850977544
+          }
+        ]
+      },
+      {
+        "family": "lower",
+        "comparisons": [
+          {
+            "candidate": "preserve-reuse",
+            "base": "G24",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 0.9878443234649824,
+            "ci95": [
+              0.9360395498323062,
+              1.0905959990153022
+            ],
+            "wins": 5,
+            "min": 0.4444689838223652
+          },
+          {
+            "candidate": "preserve-reuse",
+            "base": "preserve",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 0.9868642980831037,
+            "ci95": [
+              0.9333146116010638,
+              1.0678726468112012
+            ],
+            "wins": 5,
+            "min": 0.4352778895017748
+          }
+        ]
+      },
+      {
+        "family": "infeasible",
+        "comparisons": [
+          {
+            "candidate": "preserve-reuse",
+            "base": "G24",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 0.9794092751714609,
+            "ci95": [
+              0.8559793374186436,
+              1.1912349395018151
+            ],
+            "wins": 5,
+            "min": 0.22006330793098172
+          },
+          {
+            "candidate": "preserve-reuse",
+            "base": "preserve",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 0.9635189656461087,
+            "ci95": [
+              0.9385043050505044,
+              1.0952494478828645
+            ],
+            "wins": 5,
+            "min": 0.22482138879188449
+          }
+        ]
+      },
+      {
+        "family": "side",
+        "comparisons": [
+          {
+            "candidate": "preserve-reuse",
+            "base": "G24",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.0051570702155375,
+            "ci95": [
+              0.9932142587953308,
+              1.0136115520747695
+            ],
+            "wins": 7,
+            "min": 0.9204465706542525
+          },
+          {
+            "candidate": "preserve-reuse",
+            "base": "preserve",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.004261475869686,
+            "ci95": [
+              0.9876973407320504,
+              1.0270314513322485
+            ],
+            "wins": 7,
+            "min": 0.9441201722406025
+          }
+        ]
+      },
+      {
+        "family": "weighted",
+        "comparisons": [
+          {
+            "candidate": "preserve-reuse",
+            "base": "G24",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 0.9836175583825739,
+            "ci95": [
+              0.9682851952180045,
+              0.9924168045861075
+            ],
+            "wins": 2,
+            "min": 0.9435823393936258
+          },
+          {
+            "candidate": "preserve-reuse",
+            "base": "preserve",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 0.9890015628657169,
+            "ci95": [
+              0.9766142608149722,
+              0.9985089098133131
+            ],
+            "wins": 3,
+            "min": 0.9345006300928826
+          }
+        ]
+      },
+      {
+        "family": "contradiction",
+        "comparisons": [
+          {
+            "candidate": "preserve-reuse",
+            "base": "G24",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.0262119782035461,
+            "ci95": [
+              0.9614014816428248,
+              1.043587066965524
+            ],
+            "wins": 8,
+            "min": 0.9260997402556664
+          },
+          {
+            "candidate": "preserve-reuse",
+            "base": "preserve",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.0019546658452005,
+            "ci95": [
+              0.9695059466395299,
+              1.0696043031024085
+            ],
+            "wins": 6,
+            "min": 0.9209395296591253
+          }
+        ]
+      },
+      {
+        "family": "quotas",
+        "comparisons": [
+          {
+            "candidate": "preserve-reuse",
+            "base": "G24",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.004300642561481,
+            "ci95": [
+              0.9590915556097648,
+              1.0398745265325755
+            ],
+            "wins": 7,
+            "min": 0.8713224287222424
+          },
+          {
+            "candidate": "preserve-reuse",
+            "base": "preserve",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 0.9879008521196517,
+            "ci95": [
+              0.9581976723753066,
+              1.084928920456316
+            ],
+            "wins": 6,
+            "min": 0.8928151242373245
+          }
+        ]
+      },
+      {
+        "family": "assignment",
+        "comparisons": [
+          {
+            "candidate": "preserve-reuse",
+            "base": "G24",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.0375856864130748,
+            "ci95": [
+              0.9722886701607802,
+              1.0947772925208898
+            ],
+            "wins": 9,
+            "min": 0.8810408800845497
+          },
+          {
+            "candidate": "preserve-reuse",
+            "base": "preserve",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.0033277595008587,
+            "ci95": [
+              0.9627059640708242,
+              1.1454631087957714
+            ],
+            "wins": 6,
+            "min": 0.892751584492247
+          }
+        ]
+      },
+      {
+        "family": "sparse",
+        "comparisons": [
+          {
+            "candidate": "preserve-reuse",
+            "base": "G24",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 4.018922599590834,
+            "ci95": [
+              3.493427772074932,
+              4.639469376304547
+            ],
+            "wins": 12,
+            "min": 2.674065492284324
+          },
+          {
+            "candidate": "preserve-reuse",
+            "base": "preserve",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 0.9945145191415804,
+            "ci95": [
+              0.9629114381245131,
+              1.0214165463798472
+            ],
+            "wins": 6,
+            "min": 0.6903242817871356
+          }
+        ]
+      },
+      {
+        "family": "mixed",
+        "comparisons": [
+          {
+            "candidate": "preserve-reuse",
+            "base": "G24",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 2.7016974409390353,
+            "ci95": [
+              1.0201614176368667,
+              3.0327324597366694
+            ],
+            "wins": 11,
+            "min": 0.9874408382348047
+          },
+          {
+            "candidate": "preserve-reuse",
+            "base": "preserve",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.0551065611036212,
+            "ci95": [
+              0.9720328734046229,
+              1.091991562297693
+            ],
+            "wins": 8,
+            "min": 0.9229950057378853
+          }
+        ]
+      },
+      {
+        "family": "overlap",
+        "comparisons": [
+          {
+            "candidate": "preserve-reuse",
+            "base": "G24",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 0.9881673421595379,
+            "ci95": [
+              0.9756990446103222,
+              1.0086047221426004
+            ],
+            "wins": 5,
+            "min": 0.8578378735801935
+          },
+          {
+            "candidate": "preserve-reuse",
+            "base": "preserve",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 0.984360384909037,
+            "ci95": [
+              0.9558543180942809,
+              1.0137788616659988
+            ],
+            "wins": 5,
+            "min": 0.9366246424421731
+          }
+        ]
+      },
+      {
+        "family": "blocks",
+        "comparisons": [
+          {
+            "candidate": "preserve-reuse",
+            "base": "G24",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 0.9602784407347854,
+            "ci95": [
+              0.9154614508706316,
+              1.0501773742079503
+            ],
+            "wins": 5,
+            "min": 0.8604869702770369
+          },
+          {
+            "candidate": "preserve-reuse",
+            "base": "preserve",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 0.9895130952294333,
+            "ci95": [
+              0.9159870481847229,
+              1.0259205183251998
+            ],
+            "wins": 5,
+            "min": 0.8576582674912508
+          }
+        ]
+      }
+    ]
+  }
+}
