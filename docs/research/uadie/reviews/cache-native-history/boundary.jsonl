@@ -1,0 +1,13 @@
+{"kind":"boundary","name":"initial","valid":true}
+{"kind":"boundary","name":"fresh-cost","valid":true}
+{"kind":"boundary","name":"same-array-membership","valid":true}
+{"kind":"boundary","name":"same-array-edge","valid":true}
+{"kind":"boundary","name":"restore-after-infeasible","valid":true}
+{"kind":"boundary","name":"rejected-edge","valid":true}
+{"kind":"boundary","name":"recover-after-invalid","valid":true}
+{"kind":"boundary","name":"pre-cancelled","valid":true}
+{"kind":"boundary","name":"recover-after-cancel","valid":true}
+{"kind":"boundary","name":"numeric-overflow","valid":true}
+{"kind":"boundary","name":"recover-after-overflow","valid":true}
+{"kind":"boundary","name":"empty-domain","valid":true}
+{"kind":"boundary","name":"concurrent-isolated-instances","valid":true}
