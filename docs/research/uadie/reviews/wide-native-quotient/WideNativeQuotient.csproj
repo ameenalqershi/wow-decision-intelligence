@@ -11,6 +11,8 @@
 <Compile Include="IndustrialAdmission.cs"/>
 <Compile Include="ProofReuse.cs"/>
 <Compile Include="ProofReuseStudy.cs"/>
+<Compile Include="ProofReuseAudit.cs"/>
+<Compile Include="MpsMatrixAudit.cs"/>
 <Compile Include="../../../../../research/AlgorithmDiscoveryLab/*.cs" Exclude="../../../../../research/AlgorithmDiscoveryLab/Program.cs"/>
 <Compile Include="../../../../../research/ComponentStudy/Model.cs"/>
 <Compile Include="../../../../../research/ComponentStudy/Oracle.cs"/>

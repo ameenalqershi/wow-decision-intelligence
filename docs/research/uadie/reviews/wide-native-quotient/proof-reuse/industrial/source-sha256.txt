@@ -1,0 +1,6 @@
+3ad400c1afb949cf75b3da5fd7e74cff034684f3acdeb893e8e2c6e9fa934557  /root/uadie-industrial.jvWuX3/air03.mps.gz
+54f5958f9d3395c45b7dfe70507117777ad914f42f4cd07d50d291bdb6a324a6  /root/uadie-industrial.jvWuX3/air04.mps.gz
+8e03d2b90834dc1fe15c908247fdd8baf76e208aa310508caa0734e5245692cc  /root/uadie-industrial.jvWuX3/air05.mps.gz
+5f73e7922fa51cfb3a15243223a20458dfc258f684b10cd1be630356fd2ef31e  /root/uadie-industrial.jvWuX3/10teams.mps.gz
+e41ed01bfa1a3180e8180e35617319564516bc932296d537358933b87483891e  /root/uadie-industrial.jvWuX3/mod010.mps.gz
+305c26c9eee8da7242f2f42504cb0988c9503f65972859ad5f26d9615086cde3  /root/uadie-industrial.jvWuX3/assign1-5-8.mps.gz
