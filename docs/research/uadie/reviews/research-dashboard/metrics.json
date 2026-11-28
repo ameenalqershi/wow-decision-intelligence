@@ -1,0 +1,356 @@
+{
+  "schema": 1,
+  "scope": "Separate denominators; not an overall success rate. Timed rows share models and arms.",
+  "original": {
+    "records": 3360,
+    "valid": 3360,
+    "invalid": 0,
+    "missingValidity": 0
+  },
+  "G3": {
+    "records": 7680,
+    "valid": 7680,
+    "invalid": 0,
+    "missingValidity": 0
+  },
+  "G4": {
+    "records": 9600,
+    "valid": 9600,
+    "invalid": 0,
+    "missingValidity": 0
+  },
+  "historicalNativeCorrected": {
+    "records": 9920,
+    "valid": 9920,
+    "invalid": 0,
+    "missingValidity": 0
+  },
+  "historicalWide": {
+    "records": 48,
+    "valid": 48,
+    "invalid": 0,
+    "missingValidity": 0
+  },
+  "parityFinite": {
+    "checks": 40000,
+    "inconsistent": 14375,
+    "strictBox": 15344,
+    "strictPair": 7320,
+    "duplicateAndOrderChecks": 40000,
+    "boundaryCases": 3,
+    "failures": 0
+  },
+  "G5": {
+    "records": 15570,
+    "valid": 15570,
+    "invalid": 0,
+    "missingValidity": 0
+  },
+  "G6": {
+    "records": 4800,
+    "valid": 4800,
+    "invalid": 0,
+    "missingValidity": 0
+  },
+  "G7": {
+    "records": 16800,
+    "valid": 16800,
+    "invalid": 0,
+    "missingValidity": 0
+  },
+  "G8": {
+    "records": 10800,
+    "valid": 10800,
+    "invalid": 0,
+    "missingValidity": 0
+  },
+  "G5Native": {
+    "records": 36,
+    "valid": 36,
+    "invalid": 0,
+    "missingValidity": 0,
+    "conclusive": 36
+  },
+  "G5Boundary": {
+    "records": 13,
+    "valid": 13,
+    "invalid": 0,
+    "missingValidity": 0
+  },
+  "G6Native": {
+    "records": 96,
+    "valid": 96,
+    "invalid": 0,
+    "missingValidity": 0,
+    "conclusive": 96
+  },
+  "G6Boundary": {
+    "records": 13,
+    "valid": 13,
+    "invalid": 0,
+    "missingValidity": 0
+  },
+  "metrics": {
+    "G6HistoricalHits": {
+      "numerator": 1680,
+      "denominator": 2400
+    },
+    "G6NativeHistoryHits": {
+      "numerator": 12,
+      "denominator": 96
+    },
+    "G7Transport": {
+      "numerator": 585,
+      "denominator": 1680
+    },
+    "G7SolveAvoidanceAll": {
+      "numerator": 585,
+      "denominator": 1920
+    },
+    "G7WarmWins": {
+      "numerator": 76,
+      "denominator": 240
+    },
+    "G8WarmWins": {
+      "numerator": 152,
+      "denominator": 288
+    },
+    "G7Holdout": [
+      {
+        "name": "adaptive",
+        "rows": 1920,
+        "valid": 1920,
+        "transported": 585,
+        "eligibleRevisions": 1680,
+        "medianUs": 38.07,
+        "p90Us": 62.5621,
+        "p95Us": 72.97359999999999,
+        "p99Us": 204.63299999999998,
+        "medianBytes": 3752,
+        "routes": {
+          "warm": 684,
+          "transport": 585,
+          "orientation": 651
+        },
+        "certificates": {
+          "identity/restriction": 285,
+          "box": 100,
+          "parity": 143,
+          "normalized-quota": 57
+        },
+        "attempts": 1246,
+        "cacheHits": 38
+      },
+      {
+        "name": "full",
+        "rows": 1920,
+        "valid": 1920,
+        "transported": 0,
+        "eligibleRevisions": 1680,
+        "medianUs": 45.379999999999995,
+        "p90Us": 146.34510000000003,
+        "p95Us": 174.01244999999997,
+        "p99Us": 240.13538999999972,
+        "medianBytes": 2584,
+        "routes": {
+          "full": 1920
+        },
+        "certificates": {},
+        "attempts": 0,
+        "cacheHits": 0
+      },
+      {
+        "name": "warm",
+        "rows": 1920,
+        "valid": 1920,
+        "transported": 0,
+        "eligibleRevisions": 1680,
+        "medianUs": 30.955,
+        "p90Us": 90.68310000000008,
+        "p95Us": 132.72305,
+        "p99Us": 209.89630999999991,
+        "medianBytes": 2512,
+        "routes": {
+          "warm": 1920
+        },
+        "certificates": {},
+        "attempts": 0,
+        "cacheHits": 0
+      },
+      {
+        "name": "orientation",
+        "rows": 1920,
+        "valid": 1920,
+        "transported": 0,
+        "eligibleRevisions": 1680,
+        "medianUs": 38.059,
+        "p90Us": 52.932,
+        "p95Us": 62.8,
+        "p99Us": 206.14760999999962,
+        "medianBytes": 6128,
+        "routes": {
+          "orientation": 1920
+        },
+        "certificates": {},
+        "attempts": 0,
+        "cacheHits": 0
+      },
+      {
+        "name": "parity-warm",
+        "rows": 1920,
+        "valid": 1920,
+        "transported": 1026,
+        "eligibleRevisions": 1680,
+        "medianUs": 32.665,
+        "p90Us": 84.74300000000004,
+        "p95Us": 135.18909999999994,
+        "p99Us": 229.27109999999982,
+        "medianBytes": 3904,
+        "routes": {
+          "parity-warm": 1920
+        },
+        "certificates": {},
+        "attempts": 0,
+        "cacheHits": 0
+      },
+      {
+        "name": "component-reuse",
+        "rows": 1920,
+        "valid": 1920,
+        "transported": 0,
+        "eligibleRevisions": 1680,
+        "medianUs": 63.735,
+        "p90Us": 277.481,
+        "p95Us": 308.64555,
+        "p99Us": 538.9967999999998,
+        "medianBytes": 13464,
+        "routes": {
+          "component-reuse": 1920
+        },
+        "certificates": {},
+        "attempts": 0,
+        "cacheHits": 0
+      },
+      {
+        "name": "hierarchy",
+        "rows": 1920,
+        "valid": 1920,
+        "transported": 1044,
+        "eligibleRevisions": 1680,
+        "medianUs": 41.4905,
+        "p90Us": 74.14100000000003,
+        "p95Us": 87.27494999999998,
+        "p99Us": 222.3129099999999,
+        "medianBytes": 4360,
+        "routes": {
+          "warm": 423,
+          "transport": 1044,
+          "orientation": 453
+        },
+        "certificates": {
+          "parity": 585,
+          "identity/restriction": 285,
+          "box": 156,
+          "normalized-quota": 18
+        },
+        "attempts": 2891,
+        "cacheHits": 93
+      }
+    ],
+    "G8Holdout": [
+      {
+        "name": "warm",
+        "rows": 1728,
+        "valid": 1728,
+        "transported": 0,
+        "eligibleRevisions": 1440,
+        "medianUs": 37.545500000000004,
+        "p90Us": 225.89729999999997,
+        "p95Us": 249.9039999999999,
+        "p99Us": 331.41413000000006,
+        "medianBytes": 2728,
+        "routes": {
+          "undefined": 1728
+        },
+        "certificates": {},
+        "attempts": 0,
+        "cacheHits": 0
+      },
+      {
+        "name": "orientation",
+        "rows": 1728,
+        "valid": 1728,
+        "transported": 0,
+        "eligibleRevisions": 1440,
+        "medianUs": 47.29,
+        "p90Us": 162.06069999999985,
+        "p95Us": 229.02449999999996,
+        "p99Us": 482.1125600000005,
+        "medianBytes": 6592,
+        "routes": {
+          "undefined": 1728
+        },
+        "certificates": {},
+        "attempts": 0,
+        "cacheHits": 0
+      },
+      {
+        "name": "adaptive",
+        "rows": 1728,
+        "valid": 1728,
+        "transported": 282,
+        "eligibleRevisions": 1440,
+        "medianUs": 45.961,
+        "p90Us": 106.74529999999999,
+        "p95Us": 253.8635,
+        "p99Us": 281.87430000000006,
+        "medianBytes": 3632,
+        "routes": {
+          "undefined": 1728
+        },
+        "certificates": {},
+        "attempts": 0,
+        "cacheHits": 0
+      },
+      {
+        "name": "propagation",
+        "rows": 1728,
+        "valid": 1728,
+        "transported": 0,
+        "eligibleRevisions": 1440,
+        "medianUs": 30.67,
+        "p90Us": 59.669999999999995,
+        "p95Us": 77.28184999999999,
+        "p99Us": 194.4345,
+        "medianBytes": 2640,
+        "routes": {
+          "undefined": 1728
+        },
+        "certificates": {},
+        "attempts": 0,
+        "cacheHits": 0
+      },
+      {
+        "name": "full",
+        "rows": 1728,
+        "valid": 1728,
+        "transported": 0,
+        "eligibleRevisions": 1440,
+        "medianUs": 45.42,
+        "p90Us": 231.7417,
+        "p95Us": 250.08534999999992,
+        "p99Us": 311.30307,
+        "medianBytes": 2796,
+        "routes": {
+          "undefined": 1728
+        },
+        "certificates": {},
+        "attempts": 0,
+        "cacheHits": 0
+      }
+    ],
+    "partialRepair": null,
+    "optimalStrategySelection": null,
+    "productionQualified": false
+  }
+}

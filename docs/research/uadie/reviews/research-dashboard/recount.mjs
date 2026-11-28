@@ -1,0 +1,23 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import zlib from 'node:zlib';
+const root=path.resolve(import.meta.dirname,'../..');
+const walk=d=>fs.readdirSync(d,{withFileTypes:true}).flatMap(e=>e.isDirectory()?walk(path.join(d,e.name)):[path.join(d,e.name)]);
+const read=p=>{const bytes=fs.readFileSync(p);return (p.endsWith('.gz')?zlib.gunzipSync(bytes):bytes).toString().trim().split('\n').filter(Boolean).map(JSON.parse)};
+const validate=(files)=>{const rows=files.flatMap(read);return {records:rows.length,valid:rows.filter(r=>r.valid===true).length,invalid:rows.filter(r=>r.valid===false).length,missingValidity:rows.filter(r=>typeof r.valid!=='boolean').length}};
+const get=p=>JSON.parse(fs.readFileSync(path.join(root,p),'utf8'));
+const reviews=path.join(root,'reviews'),exp=path.join(root,'experiments');
+const data={schema:1,scope:"Separate denominators; not an overall success rate. Timed rows share models and arms.",original:validate(['first','second','final'].map(s=>path.join(exp,s,'raw.jsonl.gz'))),G3:validate(walk(path.join(exp,'parity-v1')).filter(x=>x.endsWith('.jsonl'))),G4:validate(walk(path.join(exp,'orientation-v1')).filter(x=>x.endsWith('.jsonl'))),historicalNativeCorrected:validate([path.join(root,'evidence/orientation-native/small.jsonl')]),historicalWide:validate([path.join(root,'evidence/orientation-native/wide.jsonl')]),parityFinite:get('experiments/parity-v1/finite-audit.json')};
+for(const [key,dir] of [['G5','quota-normalization'],['G6','quota-revision-cache'],['G7','adaptive-decision'],['G8','propagation-search']])
+ data[key]=validate(['dev','holdout'].map(s=>path.join(reviews,dir,s,'raw.jsonl')));
+const n5=path.join(reviews,'quota-normalization/native'),n6=path.join(reviews,'cache-native-history');
+for(const [key,dir] of [['G5',n5],['G6',n6]]){
+ data[key+'Native']=validate([path.join(dir,'native.jsonl')]);
+ data[key+'Native'].conclusive=read(path.join(dir,'native.jsonl')).filter(r=>r.conclusive===true).length;
+ data[key+'Boundary']=validate([path.join(dir,'boundary.jsonl')]);
+}
+const cache=get('reviews/quota-revision-cache/summary.json');const g7=get('reviews/adaptive-decision/summary.json').holdout;
+const g8=get('reviews/propagation-search/summary.json').holdout;
+const a=g7.summary.find(x=>x.name==='adaptive');
+data.metrics={G6HistoricalHits:{numerator:cache.dev.cacheHits+cache.holdout.cacheHits,denominator:cache.dev.cacheHits+cache.holdout.cacheHits+cache.dev.cacheMisses+cache.holdout.cacheMisses},G6NativeHistoryHits:{numerator:read(path.join(n6,'native.jsonl')).filter(x=>x.hit).length,denominator:read(path.join(n6,'native.jsonl')).length},G7Transport:{numerator:a.transported,denominator:a.eligibleRevisions},G7SolveAvoidanceAll:{numerator:a.transported,denominator:a.rows},G7WarmWins:{numerator:g7.comparisons.find(x=>x.name==='adaptive'&&x.base==='warm').wins,denominator:g7.histories},G8WarmWins:{numerator:g8.comparisons.find(x=>x.base==='warm').wins,denominator:g8.histories},G7Holdout:g7.summary,G8Holdout:g8.summary,partialRepair:null,optimalStrategySelection:null,productionQualified:false};
+console.log(JSON.stringify(data,null,2));
