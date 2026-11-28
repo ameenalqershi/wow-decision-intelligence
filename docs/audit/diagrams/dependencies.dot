@@ -580,4 +580,7 @@ digraph Dependencies {
   "F04" -> "EP05";
   "EP06" [label="EP06  #184", tooltip="Foundation / Cross-product vertical slice acceptance", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/184"];
   "F01" -> "EP06";
+  "X11" [label="X11  #236", tooltip="Research engineering / Research supplement: verify objective-perturbation certificates and publish a bilingual reproducible dossier", URL="https://github.com/ameenalqershi/wow-decision-intelligence/issues/236"];
+  "SP05" -> "X11";
+  "X01" -> "X11";
 }

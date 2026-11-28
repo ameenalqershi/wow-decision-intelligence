@@ -14801,5 +14801,47 @@
         "reason": "Study planned after the independent second-sector model. Commercial implementation requires domain data, review and a qualified baseline."
       }
     ]
+  },
+  {
+    "issue": "X11",
+    "number": 236,
+    "priority": "P1",
+    "release": "Research",
+    "component": "Research engineering",
+    "implementation": "Independent laboratory experiment; production scope unchanged",
+    "verification": "Reproduce paired experiment, counterexamples, exact certificates and costs; independent review required",
+    "fieldScope": "No new production fields",
+    "apiScope": "No new production API",
+    "specifications": [
+      "docs/research/innovation.md",
+      "docs/research/comparison-protocol.md"
+    ],
+    "diagrams": [
+      "docs/design/operating-modes.md"
+    ],
+    "fields": [],
+    "apis": [],
+    "evidence": [],
+    "tests": [
+      {
+        "id": "TC-X11-A",
+        "oracle": "Publish source, independent counterexamples, per-run costs and bilingual mathematical documentation. Scope is the new laboratory experiment and evidence, leaving production implementation and the benchmark platform to #39–46 and the business comparison to #142. Completion requires independent review and an auditable evidence archive."
+      }
+    ],
+    "requirements": [
+      {
+        "title": "Research supplement: verify objective-perturbation certificates and publish a bilingual reproducible dossier",
+        "id": "REQ-X11",
+        "source": "Owner-directed research supplement #236 (2026-11-28)",
+        "description": "Publish source, independent counterexamples, per-run costs and bilingual mathematical documentation. Scope is the new laboratory experiment and evidence, leaving production implementation and the benchmark platform to #39–46 and the business comparison to #142. Completion requires independent review and an auditable evidence archive.",
+        "classification": "Non-Functional",
+        "acceptance": "Publish source, independent counterexamples, per-run costs and bilingual mathematical documentation. Scope is the new laboratory experiment and evidence, leaving production implementation and the benchmark platform to #39–46 and the business comparison to #142. Completion requires independent review and an auditable evidence archive.",
+        "tests": [
+          "TC-X11-A"
+        ],
+        "coverage": "Research Hypothesis",
+        "reason": "Research result is not qualified until reproduced and independently reviewed."
+      }
+    ]
   }
 ]
