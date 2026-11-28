@@ -32,6 +32,7 @@
 <Compile Include="MatrixUnified.cs"/>
 <Compile Include="MatrixReference.cs"/>
 <Compile Include="MatrixStudy.cs"/>
+<Compile Include="MatrixSelectorStudy.cs"/>
 <Compile Include="../../../../../research/AlgorithmDiscoveryLab/*.cs" Exclude="../../../../../research/AlgorithmDiscoveryLab/Program.cs"/>
 <Compile Include="../../../../../research/ComponentStudy/Model.cs"/>
 <Compile Include="../../../../../research/ComponentStudy/Oracle.cs"/>

@@ -113,10 +113,18 @@ internal static class MatrixVerifier
         if(!m.Rows.Select(Key).Order(StringComparer.Ordinal).SequenceEqual(p.Rows.Select(Key).Order(StringComparer.Ordinal)))throw new Exception("boolean rows");
     }
 }
-internal sealed class MatrixDispatcher(bool network=true,bool weighted=true,bool boolean=true)
+internal sealed class MatrixDispatcher(bool network=true,bool weighted=true,bool boolean=true,bool preserveNetworkRows=false,bool reuseStructure=false)
 {
     private readonly DependencyDispatcher session=new(true,true,true,true);
     private int busy;
+    private IntegralMatrix? previousShape;
+    private MatrixNetworkProof? previousNetwork;
+    private WeightedCertificate? previousWeighted;
+    internal int StructuralHits {get;private set;}
+    private static bool SameShape(IntegralMatrix a,IntegralMatrix b){
+        if(a.N!=b.N||!a.Lower.AsSpan().SequenceEqual(b.Lower)||!a.Upper.AsSpan().SequenceEqual(b.Upper)||a.Rows.Length!=b.Rows.Length)return false;
+        for(int i=0;i<a.Rows.Length;i++){var x=a.Rows[i];var y=b.Rows[i];if(x.L!=y.L||x.U!=y.U||!x.Index.AsSpan().SequenceEqual(y.Index)||!x.Coeff.AsSpan().SequenceEqual(y.Coeff))return false;}return true;
+    }
     internal MatrixEvidence Decide(IntegralMatrix input,PhaseTrace trace,bool normalize=false)
     {
         if(Interlocked.Exchange(ref busy,1)!=0)throw new InvalidOperationException("single owner");
@@ -125,22 +133,44 @@ internal sealed class MatrixDispatcher(bool network=true,bool weighted=true,bool
             MatrixEvidence Pack(string route,string st,long? v,long[]? x,bool formal,MatrixNetworkProof? p=null,NetworkDecision? f=null,UnifiedEvidence? b=null,WeightedDecision? w=null)
                 =>new(d,m,route,st,v.HasValue?checked((m.Sense=="min"?v.Value:-v.Value)+m.Offset):null,x,MatrixVerifier.Assurance(st,formal),p,f,b,w);
             bool bits=m.Lower.All(x=>x==0)&&m.Upper.All(x=>x==1);
+            bool same=reuseStructure&&previousShape!=null&&SameShape(previousShape,m);
+            if(!same){previousShape=null;previousNetwork=null;previousWeighted=null;}
             if(boolean&&bits&&m.Rows.All(r=>r.L>=0&&r.U<=r.Index.Length&&r.Coeff.All(a=>a==1))){
                 var edges=new List<(int,int)>();var fixes=new List<(int,int)>();var rows=new List<WideRow>();
-                foreach(var r in m.Rows){if(r.Index.Length==2&&r.L==1&&r.U==1)edges.Add((r.Index[0],r.Index[1]));else if(r.Index.Length==1&&r.L==r.U)fixes.Add((r.Index[0],(int)r.L));else rows.Add(new(r.Index.ToArray(),(int)r.L,(int)r.U));}
+                var count=new int[preserveNetworkRows?m.N:0];var unit=new int[count.Length];
+                if(preserveNetworkRows)foreach(var r in m.Rows)foreach(int i in r.Index){count[i]++;if(r.U==1)unit[i]++;}
+                foreach(var r in m.Rows){
+                    bool keep=preserveNetworkRows&&r.U==1&&r.Index.Length>0&&r.Index.All(i=>count[i]==2&&unit[i]==2);
+                    if(!keep&&r.Index.Length==2&&r.L==1&&r.U==1)edges.Add((r.Index[0],r.Index[1]));
+                    else if(!keep&&r.Index.Length==1&&r.L==r.U)fixes.Add((r.Index[0],(int)r.L));
+                    else rows.Add(new(r.Index.ToArray(),(int)r.L,(int)r.U));
+                }
                 var b=session.DecideEvidence(new(m.N,edges.ToArray(),fixes.ToArray(),rows.ToArray(),MatrixAdmission.MinCost(m)),trace,true);var r0=b.Outcome.Result;
                 return Pack("boolean/"+b.Outcome.Route,r0.Status,r0.Value,r0.Bits?.Select(i=>(long)i).ToArray(),b.Outcome.Formal,b:b);
             }
-            var p=network?MatrixDiscovery.Find(m,d):null;trace.Mark("network-discovery");
+            MatrixNetworkProof? p=null;
+            if(network){
+                if(same&&previousNetwork!=null){p=previousNetwork with{Digest=d,From=previousNetwork.From.ToArray(),To=previousNetwork.To.ToArray()};StructuralHits++;}
+                else p=MatrixDiscovery.Find(m,d);
+            }
+            trace.Mark("network-discovery");
             if(p!=null){
                 var n=MatrixVerifier.VerifyNetwork(m,d,p);var f=GeneralFlow.Solve(n,true);
-                if(f.Status!="Unknown"){if(!NetworkVerifier.Verify(n,f,true))throw new Exception("proof");return Pack("network",f.Status,f.Value,f.Flow,true,p,f);}
+                if(f.Status!="Unknown"){
+                    if(!NetworkVerifier.Verify(n,f,true))throw new Exception("proof");
+                    if(reuseStructure&&!same){previousShape=MatrixAdmission.Snapshot(m);previousNetwork=p with{From=p.From.ToArray(),To=p.To.ToArray()};}
+                    return Pack("network",f.Status,f.Value,f.Flow,true,p,f);
+                }
             }
             if(weighted&&bits){
                 var w=new WeightedModel(m.N,m.Rows,MatrixAdmission.MinCost(m));WeightedReduction.Admit(w);
                 // Arithmetic proof always considered in weighted grammar; normalization optional.
-                string wd=WeightedReduction.Digest(w);var c=WeightedReduction.Produce(w,wd);
+                string wd=WeightedReduction.Digest(w);
+                WeightedCertificate c;
+                if(same&&previousWeighted!=null){c=previousWeighted with{Digest=wd,Rows=previousWeighted.Rows.ToArray()};StructuralHits++;}
+                else c=WeightedReduction.Produce(w,wd);
                 if(!WeightedVerifier.Verify(w,wd,c))throw new Exception("weighted proof");
+                if(reuseStructure&&(!same||previousWeighted==null)){previousShape=MatrixAdmission.Snapshot(m);previousWeighted=c with{Rows=c.Rows.ToArray()};}
                 WeightedDecision decision;
                 if(c.Rows.Any(r=>r.Impossible))decision=new("arithmetic-infeasible",new("Infeasible",null,null,m.N,m.Rows.Length),c,true);
                 else decision=WeightedReduction.Decide(w,normalize);

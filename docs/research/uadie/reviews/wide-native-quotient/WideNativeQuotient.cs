@@ -35,6 +35,8 @@ if(args is ["general-flow-audit"]){GeneralFlowStudy.Audit();return;}
 if(args is ["weighted-industrial",var weightedDir]){WeightedIndustrial.Run(weightedDir);return;}
 if(args is ["matrix-study",var matrixSplit]){MatrixStudy.Run(matrixSplit);return;}
 if(args is ["matrix-audit"]){MatrixStudy.Audit();return;}
+if(args is ["matrix-selector"]){MatrixSelectorStudy.Run();return;}
+if(args is ["matrix-selector-audit"]){MatrixSelectorStudy.Audit();return;}
 if(args is ["matrix-readback",var matrixFile]){MatrixStudy.Readback(matrixFile);return;}
 if(args is ["unified-journal-child",var childDir,var childSource,var childStage,var childSeq,var childHash]){UnifiedJournal.Child(childDir,childSource,childStage,childSeq,childHash);return;}
 if(args.Length!=1)throw new ArgumentException("dev|holdout|audit");
