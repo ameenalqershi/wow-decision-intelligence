@@ -3,7 +3,8 @@ using Google.OrTools.Sat;
 using System.Diagnostics;
 using System.Text.Json;
 
-if(args.Length!=1)throw new ArgumentException("dev|holdout");
+if(args is ["audit"]){Audit();return;}
+if(args.Length!=1)throw new ArgumentException("dev|holdout|audit");
 bool dev=args[0]=="dev";if(!dev&&args[0]!="holdout")throw new ArgumentException("split");
 foreach(int n in dev?new[]{64,512}:new[]{64,512,4096,10000})
 foreach(string family in dev?new[]{"pair","linked"}:new[]{"pair","sparse-quota","linked"})
@@ -152,6 +153,52 @@ static WideResult Quotient(WideModel m)
     long cost=Check(m,bits);Reports(solver,cost,status==CpSolverStatus.Optimal);
     return new(status.ToString(),cost,bits,free.Count,nr);
 }
+
+static void Audit()
+{
+    var options=new JsonSerializerOptions{IncludeFields=true};
+    foreach(int n in new[]{64,512,4096,10000})
+    foreach(string family in new[]{"uncompressed","sparse-matching","odd-cycle","opposite-fixes","impossible-row","overlapping"})
+    for(int h=0;h<2;h++)
+    {
+        int seed=1457101+h;var rng=new Random(seed+n);
+        var edges=new List<(int A,int B)>();
+        var planted=Enumerable.Range(0,n).Select(_=>rng.Next(2)).ToArray();
+        if(family=="sparse-matching"||family=="overlapping"||family=="opposite-fixes")
+            for(int i=0;i<n/8;i++){int a=2*i,b=a+1;edges.Add((a,b));planted[b]=1-planted[a];}
+        if(family=="odd-cycle"){edges.Add((0,1));edges.Add((1,2));edges.Add((2,0));}
+        var fixes=new List<(int Bit,int Value)>();
+        if(family=="opposite-fixes"){fixes.Add((0,0));fixes.Add((1,0));}
+        if(family=="impossible-row"){fixes.Add((0,0));fixes.Add((1,0));}
+        var rows=new List<WideRow>();
+        if(family=="impossible-row")rows.Add(new([0,1],1,2));
+        if(family=="uncompressed"||family=="sparse-matching")
+            for(int i=0;i<n;i+=8){int[] scope=Enumerable.Range(i,Math.Min(8,n-i)).ToArray();int v=scope.Sum(j=>planted[j]);rows.Add(new(scope,v,v));}
+        if(family=="overlapping")
+            for(int i=0;i<n-7;i+=4){int[] scope=Enumerable.Range(i,8).ToArray();int v=scope.Sum(j=>planted[j]);rows.Add(new(scope,Math.Max(0,v-1),Math.Min(8,v+1)));}
+        bool expectedInfeasible=family is "odd-cycle" or "opposite-fixes" or "impossible-row";
+        var model=new WideModel(n,edges.ToArray(),fixes.ToArray(),rows.ToArray(),Enumerable.Range(0,n).Select(_=>(long)rng.Next(-100,101)).ToArray());
+        if(!expectedInfeasible)_=Check(model,planted);
+        var results=new Dictionary<string,WideResult>();
+        foreach(string arm in h%2==0?new[]{"original","quotient"}:new[]{"quotient","original"})
+        {
+            long t=Stopwatch.GetTimestamp();
+            var r=arm=="original"?Original(model):Quotient(model);
+            if(r.Bits!=null&&Check(model,r.Bits)!=r.Value)throw new Exception("witness");
+            if(r.Status is "ModelInvalid" or "Invalid")throw new Exception("model invalid");
+            if(expectedInfeasible&&r.Bits!=null||!expectedInfeasible&&r.Status=="Infeasible")throw new Exception("planted truth mismatch");
+            var evidence=JsonSerializer.SerializeToUtf8Bytes(new{n,family,seed,r.Status,r.Value,r.Bits},options);
+            long ticks=Stopwatch.GetTimestamp()-t;
+            results.Add(arm,r);
+            Console.WriteLine(JsonSerializer.Serialize(new{n,family,seed,arm,expectedInfeasible,status=r.Status,value=r.Value,variables=r.Variables,rows=r.Rows,verifiedWitness=r.Bits!=null,ticks,frequency=Stopwatch.Frequency,evidenceBytes=evidence.Length,model,bits=r.Bits},options));
+        }
+        var a=results["original"];var b=results["quotient"];
+        bool ca=a.Status is "Optimal" or "Infeasible",cb=b.Status is "Optimal" or "Infeasible";
+        if(ca&&cb&&(a.Status!=b.Status||a.Value!=b.Value))throw new Exception("conclusive mismatch");
+        if(a.Status=="Optimal"&&b.Value<a.Value||b.Status=="Optimal"&&a.Value<b.Value)throw new Exception("bound mismatch");
+    }
+}
+
 internal record WideRow(int[] Scope,int L,int U);
 internal record WideModel(int N,(int A,int B)[] Edges,(int Bit,int Value)[] Fixes,WideRow[] Rows,long[] Cost);
 internal record WideResult(string Status,long? Value,int[]? Bits,int Variables,int Rows);
