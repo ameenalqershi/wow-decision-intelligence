@@ -1,0 +1,157 @@
+using AlgorithmDiscoveryLab;
+using Google.OrTools.Sat;
+using System.Diagnostics;
+using System.Text.Json;
+
+if(args.Length!=1)throw new ArgumentException("dev|holdout");
+bool dev=args[0]=="dev";if(!dev&&args[0]!="holdout")throw new ArgumentException("split");
+foreach(int n in dev?new[]{64,512}:new[]{64,512,4096,10000})
+foreach(string family in dev?new[]{"pair","linked"}:new[]{"pair","sparse-quota","linked"})
+for(int h=0;h<(dev?1:2);h++)
+{
+    int seed=(dev?1290101:1320101)+h;var rng=new Random(seed+n);
+    var edges=new List<(int A,int B)>();var planted=new int[n];
+    var roots=new List<int>();
+    for(int start=0;start<n;)
+    {
+        int width=Math.Min(n-start,rng.Next(3,10));roots.Add(start);
+        planted[start]=rng.Next(2);
+        for(int j=1;j<width;j++){int parent=start+rng.Next(j);edges.Add((parent,start+j));planted[start+j]=1-planted[parent];}
+        start+=width;
+    }
+    var fixedBits=new List<(int Bit,int Value)>();
+    for(int i=0;i<roots.Count;i+=7)fixedBits.Add((roots[i],planted[roots[i]]));
+    var rows=new List<WideRow>();
+    if(family=="sparse-quota")
+        for(int i=0;i<roots.Count;i+=16)
+        {
+            int[] scope=roots.Skip(i).Take(16).ToArray();int target=scope.Sum(j=>planted[j]);
+            rows.Add(new(scope,target,target));
+        }
+    if(family=="linked")
+        for(int i=0;i<roots.Count-1;i++)
+        {
+            int[] scope=[roots[i],roots[i+1]];int v=scope.Sum(j=>planted[j]);
+            rows.Add(new(scope,Math.Max(0,v-1),Math.Min(2,v+1)));
+        }
+    for(int rev=0;rev<3;rev++)
+    {
+        var d=Enumerable.Range(0,n).Select(_=>(long)rng.Next(-100,101)).ToArray();
+        var current=edges.ToArray();
+        var fixes=fixedBits.ToArray();
+        if(rev==1)Array.Reverse(current);
+        if(rev==2)
+        {
+            // New constraint fixes a planted value. Some models have no feasible old optimum after this edit.
+            fixes=fixes.Append((n-1,planted[n-1])).ToArray();
+        }
+        var m=new WideModel(n,current,fixes,rows.ToArray(),d);
+        var results=new Dictionary<string,WideResult>();
+        foreach(string arm in (h+rev)%2==0?new[]{"original","quotient"}:new[]{"quotient","original"})
+        {
+            long t=Stopwatch.GetTimestamp();
+            var result=arm=="original"?Original(m):Quotient(m);
+            long solved=Stopwatch.GetTimestamp();
+            long? witness=result.Bits==null?null:Check(m,result.Bits);
+            if(result.Bits!=null&&witness!=result.Value)throw new Exception("bad reconstructed witness");
+            if(result.Status=="Optimal"&&result.Bits==null)throw new Exception("missing optimum");
+            if(result.Status is "ModelInvalid" or "Invalid")throw new Exception("bad model");
+            var encoded=JsonSerializer.SerializeToUtf8Bytes(new{n,family,seed,rev,result.Status,result.Value,result.Bits});
+            long end=Stopwatch.GetTimestamp();
+            results.Add(arm,result);
+            Console.WriteLine(JsonSerializer.Serialize(new{split=args[0],n,family,seed,revision=rev,arm,status=result.Status,value=result.Value,variables=result.Variables,rows=result.Rows,verifiedWitness=result.Bits!=null,solveTicks=solved-t,ticks=end-t,frequency=Stopwatch.Frequency,evidenceBytes=encoded.Length}));
+        }
+        var a=results["original"];var b=results["quotient"];
+        bool ca=a.Status is "Optimal" or "Infeasible",cb=b.Status is "Optimal" or "Infeasible";
+        if(ca&&cb&&(a.Status!=b.Status||a.Value!=b.Value))throw new Exception("conclusive mismatch");
+        if((a.Status=="Infeasible"&&b.Bits!=null)||(b.Status=="Infeasible"&&a.Bits!=null))throw new Exception("feasibility mismatch");
+        if(a.Status=="Optimal"&&b.Value<a.Value||b.Status=="Optimal"&&a.Value<b.Value)throw new Exception("better than proven optimum");
+    }
+}
+
+static long Check(WideModel m,int[] x)
+{
+    if(x.Length!=m.N||x.Any(v=>v is not(0 or 1)))throw new Exception("domain");
+    foreach(var (a,b) in m.Edges)if(x[a]+x[b]!=1)throw new Exception("edge");
+    foreach(var (bit,v) in m.Fixes)if(x[bit]!=v)throw new Exception("fix");
+    foreach(var r in m.Rows){int count=r.Scope.Sum(i=>x[i]);if(count<r.L||count>r.U)throw new Exception("row");}
+    long total=0;for(int i=0;i<m.N;i++)total+=m.Cost[i]*x[i];return total;
+}
+static CpSolver Solver()=>new(){StringParameters="num_search_workers:1 random_seed:1320101 max_time_in_seconds:0.5"};
+static void Reports(CpSolver solver,long value,bool optimal)
+{
+    if(!double.IsFinite(solver.ObjectiveValue)||Math.Abs(solver.ObjectiveValue-value)>1e-6)throw new Exception("objective report");
+    if(optimal&&(!double.IsFinite(solver.BestObjectiveBound)||Math.Abs(solver.BestObjectiveBound-value)>1e-6))throw new Exception("bound report");
+}
+static WideResult Original(WideModel m)
+{
+    var cp=new CpModel();var x=Enumerable.Range(0,m.N).Select(i=>cp.NewBoolVar("x"+i)).ToArray();
+    foreach(var(a,b) in m.Edges)cp.Add(x[a]+x[b]==1);
+    foreach(var(bit,value) in m.Fixes)cp.Add(x[bit]==value);
+    foreach(var r in m.Rows)cp.AddLinearConstraint(LinearExpr.Sum(r.Scope.Select(i=>x[i])),r.L,r.U);
+    cp.Minimize(LinearExpr.WeightedSum(x,m.Cost));
+    var solver=Solver();var status=solver.Solve(cp);
+    if(status is not(CpSolverStatus.Optimal or CpSolverStatus.Feasible))return new(status.ToString(),null,null,m.N,m.Edges.Length+m.Fixes.Length+m.Rows.Length);
+    var bits=x.Select(v=>checked((int)solver.Value(v))).ToArray();long cost=Check(m,bits);
+    Reports(solver,cost,status==CpSolverStatus.Optimal);
+    return new(status.ToString(),cost,bits,m.N,m.Edges.Length+m.Fixes.Length+m.Rows.Length);
+}
+static WideResult Quotient(WideModel m)
+{
+    var partition=OrientationPartition.Build(m.N,m.Edges);
+    if(partition==null)return new("Infeasible",null,null,0,0);
+    int[] owner=new int[m.N],side=new int[m.N],fixedChoice=new int[partition.Count];
+    Array.Fill(fixedChoice,-1);
+    for(int j=0;j<partition.Count;j++)
+    {
+        foreach(int i in partition[j].Zero){owner[i]=j;side[i]=0;}
+        foreach(int i in partition[j].One){owner[i]=j;side[i]=1;}
+    }
+    foreach(var (i,value) in m.Fixes)
+    {
+        int y=value==1?side[i]:1-side[i];
+        if(fixedChoice[owner[i]]>=0&&fixedChoice[owner[i]]!=y)return new("Infeasible",null,null,0,0);
+        fixedChoice[owner[i]]=y;
+    }
+    var cp=new CpModel();var free=new Dictionary<int,BoolVar>();
+    long offset=0;var objVars=new List<BoolVar>();var objCost=new List<long>();
+    for(int j=0;j<partition.Count;j++)
+    {
+        long a=partition[j].Zero.Sum(i=>m.Cost[i]),b=partition[j].One.Sum(i=>m.Cost[i]);
+        if(fixedChoice[j]>=0){offset+=fixedChoice[j]==0?a:b;continue;}
+        var y=cp.NewBoolVar("y"+j);free[j]=y;offset+=a;objVars.Add(y);objCost.Add(b-a);
+    }
+    int nr=0;
+    foreach(var r in m.Rows)
+    {
+        int baseline=0;var coeff=new Dictionary<int,long>();
+        foreach(int i in r.Scope)
+        {
+            int j=owner[i];
+            if(fixedChoice[j]>=0){if(fixedChoice[j]==side[i])baseline++;continue;}
+            if(side[i]==0)baseline++;
+            coeff[j]=coeff.GetValueOrDefault(j)+(side[i]==0?-1:1);
+        }
+        long low=baseline+coeff.Values.Sum(x=>Math.Min(0,x)),high=baseline+coeff.Values.Sum(x=>Math.Max(0,x));
+        if(low>r.U||high<r.L)return new("Infeasible",null,null,free.Count,nr);
+        if(low>=r.L&&high<=r.U)continue;
+        var active=coeff.Where(x=>x.Value!=0).ToArray();
+        cp.AddLinearConstraint(LinearExpr.WeightedSum(active.Select(x=>free[x.Key]),active.Select(x=>x.Value)),r.L-baseline,r.U-baseline);
+        nr++;
+    }
+    cp.Minimize(LinearExpr.WeightedSum(objVars,objCost)+offset);
+    var solver=Solver();var status=solver.Solve(cp);
+    if(status is not(CpSolverStatus.Optimal or CpSolverStatus.Feasible))return new(status.ToString(),null,null,free.Count,nr);
+    var bits=new int[m.N];
+    for(int j=0;j<partition.Count;j++)
+    {
+        int y=fixedChoice[j]>=0?fixedChoice[j]:checked((int)solver.Value(free[j]));
+        if(y is not(0 or 1))throw new Exception("quotient domain");
+        foreach(int i in y==0?partition[j].Zero:partition[j].One)bits[i]=1;
+    }
+    long cost=Check(m,bits);Reports(solver,cost,status==CpSolverStatus.Optimal);
+    return new(status.ToString(),cost,bits,free.Count,nr);
+}
+internal record WideRow(int[] Scope,int L,int U);
+internal record WideModel(int N,(int A,int B)[] Edges,(int Bit,int Value)[] Fixes,WideRow[] Rows,long[] Cost);
+internal record WideResult(string Status,long? Value,int[]? Bits,int Variables,int Rows);
