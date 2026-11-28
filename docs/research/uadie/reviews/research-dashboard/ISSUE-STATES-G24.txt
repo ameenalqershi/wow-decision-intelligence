@@ -1,0 +1,31 @@
+7	OPEN	status:blocked,priority:P0,release:MVP,risk:medium,type:research,dependencies:tracked,research:study,area:Research,complexity:integrated
+21	CLOSED	priority:P0,release:MVP,risk:high,type:feature,dependencies:tracked,area:Model,complexity:integrated
+25	CLOSED	priority:P1,release:Production,risk:high,type:feature,dependencies:tracked,area:Model,complexity:integrated
+27	OPEN	status:backlog,priority:P0,release:MVP,risk:high,type:feature,complexity:cross-component,dependencies:tracked,area:Runtime
+28	OPEN	status:backlog,priority:P1,release:Multi-Sector,risk:high,type:feature,complexity:cross-component,dependencies:tracked,area:Runtime
+29	CLOSED	priority:P0,release:MVP,risk:high,type:feature,dependencies:tracked,area:Runtime,complexity:integrated
+30	CLOSED	priority:P1,release:MVP,risk:high,type:feature,dependencies:tracked,area:Runtime,complexity:integrated
+31	CLOSED	priority:P0,release:MVP,risk:high,type:feature,dependencies:tracked,area:Runtime,complexity:integrated
+32	CLOSED	priority:P0,release:MVP,risk:high,type:feature,dependencies:tracked,area:Runtime,complexity:integrated
+33	OPEN	status:backlog,priority:P1,release:Production,risk:high,type:feature,dependencies:tracked,area:Runtime,complexity:integrated
+34	OPEN	status:backlog,priority:P1,release:Production,risk:high,type:feature,dependencies:tracked,area:Runtime,complexity:integrated
+35	CLOSED	priority:P0,release:MVP,risk:high,type:feature,complexity:cross-component,dependencies:tracked,area:Runtime
+38	CLOSED	priority:P1,release:Research,risk:medium,type:research,dependencies:tracked,research:study,area:Research engineering,complexity:integrated
+39	CLOSED	priority:P1,release:MVP,risk:medium,type:research,complexity:cross-component,dependencies:tracked,research:study,area:Research engineering
+40	CLOSED	priority:P1,release:MVP,risk:medium,type:research,dependencies:tracked,research:study,area:Research engineering,complexity:integrated
+41	OPEN	status:active,priority:P1,release:MVP,risk:medium,type:research,dependencies:tracked,research:study,area:Research engineering,complexity:integrated
+42	OPEN	status:backlog,priority:P1,release:MVP,risk:medium,type:research,complexity:cross-component,dependencies:tracked,research:study,area:Research engineering
+43	OPEN	status:backlog,priority:P1,release:Research,risk:medium,type:research,dependencies:tracked,research:study,area:Research engineering,complexity:integrated
+44	OPEN	status:backlog,priority:P1,release:Scale,risk:medium,type:research,dependencies:tracked,research:study,area:Research engineering,complexity:integrated
+45	OPEN	status:backlog,priority:P1,release:Research,risk:medium,type:research,complexity:cross-component,dependencies:tracked,research:study,area:Research engineering
+46	OPEN	status:backlog,priority:P1,release:Research,risk:medium,type:research,dependencies:tracked,research:study,area:Research engineering,complexity:integrated
+47	CLOSED	priority:P1,release:Research,risk:medium,type:research,dependencies:tracked,research:study,area:Research engineering,complexity:integrated
+83	CLOSED	priority:P1,release:Production,risk:high,type:qualification,dependencies:tracked,area:Quality,complexity:integrated
+134	OPEN	status:active,priority:P1,release:MVP,risk:high,type:feature,complexity:cross-component,dependencies:tracked,area:Model
+135	OPEN	status:backlog,priority:P1,release:Production,risk:high,type:feature,complexity:cross-component,dependencies:tracked,area:Model
+136	OPEN	status:backlog,priority:P1,release:Research,risk:high,type:research,complexity:cross-component,dependencies:tracked,research:study,area:Model
+137	OPEN	status:backlog,priority:P1,release:Research,risk:high,type:research,complexity:cross-component,dependencies:tracked,research:study,area:Model
+142	OPEN	status:backlog,priority:P1,release:Research,risk:medium,type:research,complexity:cross-component,dependencies:tracked,research:study,area:Research engineering
+147	CLOSED	priority:P1,release:MVP,risk:medium,type:qualification,complexity:cross-component,dependencies:tracked,area:Quality
+163	CLOSED	priority:P1,release:Research,risk:medium,type:research,complexity:cross-component,dependencies:tracked,research:study,area:Research engineering
+236	OPEN	status:active

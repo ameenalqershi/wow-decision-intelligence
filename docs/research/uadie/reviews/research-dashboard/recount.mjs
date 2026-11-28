@@ -124,4 +124,15 @@ data.metrics.G21IndustrialAdmission={numerator:data.G21.industrial.supported,den
 data.metrics.G22FormalOptimum={numerator:a22.statuses.Optimal,denominator:a22.rows};
 data.metrics.G22FormalInfeasibility={numerator:a22.statuses.Infeasible,denominator:a22.rows};
 data.metrics.G22ProofRejection={numerator:data.G22.audit.tamper,denominator:data.G22.audit.tamper};
+const matrix=get('reviews/wide-native-quotient/matrix-unified/summary.json'),matrixSelector=get('reviews/wide-native-quotient/matrix-unified/selector/summary.json');
+data.G23G24={comparison:matrix,selector:matrixSelector,routes:get('reviews/wide-native-quotient/matrix-unified/holdout/routes.json'),selectorRoutes:get('reviews/wide-native-quotient/matrix-unified/selector/routes.json'),audit:get('reviews/wide-native-quotient/matrix-unified/audit/summary.json'),selectorAudit:get('reviews/wide-native-quotient/matrix-unified/selector/audit-summary.json'),boundary:get('reviews/wide-native-quotient/matrix-unified/boundary/summary.json'),readback:get('reviews/wide-native-quotient/matrix-unified/disk/readback.json'),external:{acquired:1080,classes:54,solved:0,license:'CC BY 4.0',source:get('reviews/wide-native-quotient/matrix-unified/external/gap-source.json')}};
+const a24=matrix.holdout.summaries.find(x=>x.arm==='G24'),routes24=data.G23G24.routes;
+const proven24=(a)=>routes24.flatMap(x=>x.assurance).filter(x=>x.a===a).reduce((n,x)=>n+x.n,0);
+const pres24=matrixSelector.selector.summaries.find(x=>x.arm==='preserve');
+data.metrics.G24FormalOptimum={numerator:proven24('ProvenOptimal'),denominator:a24.statuses.Optimal};
+data.metrics.G24FormalInfeasibility={numerator:proven24('ProvenInfeasible'),denominator:a24.statuses.Infeasible};
+data.metrics.G24FormalAll={numerator:a24.formal,denominator:a24.rows};
+data.metrics.G24PreserveFormalAll={numerator:pres24.formal,denominator:pres24.rows};
+data.metrics.G24ProofRejection={numerator:data.G23G24.audit.tamper,denominator:data.G23G24.audit.tamper};
+data.metrics.G24DiskReplay={numerator:data.G23G24.readback.records,denominator:matrix.disk.rows};
 console.log(JSON.stringify(data,null,2));
