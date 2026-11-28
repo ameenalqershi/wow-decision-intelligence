@@ -1,0 +1,18 @@
+flowchart TD
+  n0["[I] Scan all admitted rows"]:::I
+  n1["[T] Pair + fixed only?"]:::T
+  n2["[I] Exact direct optimum"]:::I
+  n3["[I] Mixed: coverage gate"]:::I
+  n4["[I] G8 or Warm"]:::I
+  n5["[C] Verify original"]:::C
+  n0 --> n1
+  n1 --> n2
+  n1 --> n3
+  n3 --> n4
+  n2 --> n5
+  n4 --> n5
+  classDef I fill:#23463f,color:#fff,stroke:#23463f
+  classDef P fill:#224f75,color:#fff,stroke:#224f75
+  classDef T fill:#326437,color:#fff,stroke:#326437
+  classDef C fill:#83551c,color:#fff,stroke:#83551c
+  classDef U fill:#86404a,color:#fff,stroke:#86404a

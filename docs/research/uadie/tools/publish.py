@@ -66,7 +66,7 @@ def render(source,output=None):
     for name,en,ar,*_ in FIGURES:
         if name not in known:blocks.append(('figure',ar if rtl else en,ROOT/'diagrams'/f'{name}.svg'))
     pdf=Book(dest.with_suffix('.pdf'),rtl);doc=Word(rtl)
-    subtitle=('طبعة المراجعة البحثية R3  ·  هندسة القرار' if rtl else 'Research review edition R3   /   Algorithm research and engineering')
+    subtitle=('طبعة المراجعة البحثية R4  ·  هندسة القرار' if rtl else 'Research review edition R4   /   Algorithm research and engineering')
     pdf.cover(title,subtitle)
     doc.t('WOW DI',48,True,'165D52',rtl=False);doc.t(title,55,True,'1B2331',style='Heading1');doc.t(subtitle,27);doc.t('2026-11-28',21,rtl=False);doc.newpage()
     def both(v,sz=10,bold=False,col='233245',**args):

@@ -38,6 +38,7 @@ FIGURES = [
 ("quota-reuse","G6 exact plan reuse","إعادة استخدام البنية",["I|Current structure","I|Compare full content","I|Match: reuse plan","I|Miss: rebuild plan","I|Recompute costs","T|Exact residual"],[(0,1),(1,2),(1,3),(2,4),(3,4),(4,5)]),
 ("adaptive-g7","G7 bounded research policy","سياسة الشهادات المحدودة",["C|Prior proof valid?","I|Identity or Box","I|Parity or quota","I|Exact fallback","T|Closed bound only","I|Check witness"],[(0,1),(0,3),(1,2),(1,4),(2,3),(2,4),(3,5),(4,5)]),
 ("propagation-g8","G8 cardinality propagation","نشر القيود الإجبارية",["I|Partial assignment","T|Count interval","T|Force or reject","I|Repeat to stable","I|Bound / branch","T|Exact result"],[(0,1),(1,2),(2,3),(3,4),(4,5)]),
+("structural-g9","G9 structural admission","اختيار المسار البنيوي",["I|Scan all admitted rows","T|Pair + fixed only?","I|Exact direct optimum","I|Mixed: coverage gate","I|G8 or Warm","C|Verify original"],[(0,1),(1,2),(1,3),(3,4),(2,5),(4,5)]),
 ("research-pipeline","Measured research decision pipeline","مراحل القياس البحثي",["I|Snapshot + admit","I|Digest + choose","I|Solve or transport","I|Verify witness","I|Encode evidence","U|Disk / product out"],[(0,1),(1,2),(2,3),(3,4),(4,5)]),
 ]
 def build(stems=None):

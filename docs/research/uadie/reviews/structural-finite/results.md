@@ -1,0 +1,2 @@
+# Finite audit
+419,904 primary combinations passed (279,369 infeasible), 5,184 reorder/duplicate replays passed, one explicit conflicting-force case passed. The frozen protocol stated 414,720 in error; the product of its stated dimensions 64*81*81 is 419,904, exactly as implemented before execution. No change to frozen loop or protocol. Actual process wall 2.40s, CPU 2.39s, peak RSS 49,864 KiB. No independent reviewer or general proof claim.

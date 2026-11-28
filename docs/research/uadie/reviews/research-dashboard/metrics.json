@@ -64,6 +64,12 @@
     "invalid": 0,
     "missingValidity": 0
   },
+  "G9": {
+    "records": 16128,
+    "valid": 16128,
+    "invalid": 0,
+    "missingValidity": 0
+  },
   "G5Native": {
     "records": 36,
     "valid": 36,
@@ -351,6 +357,218 @@
     ],
     "partialRepair": null,
     "optimalStrategySelection": null,
-    "productionQualified": false
+    "productionQualified": false,
+    "G9WarmWins": {
+      "numerator": 259,
+      "denominator": 288
+    },
+    "G9PropagationWins": {
+      "numerator": 210,
+      "denominator": 288
+    },
+    "G9Routes": {
+      "direct": 1344,
+      "propagation": 880,
+      "warm": 80
+    },
+    "G9Holdout": [
+      {
+        "name": "propagation",
+        "rows": 2304,
+        "valid": 2304,
+        "transported": 0,
+        "eligibleRevisions": 2016,
+        "medianUs": 27.384500000000003,
+        "p90Us": 53.04930000000002,
+        "p95Us": 64.20649999999999,
+        "p99Us": 98.07662999999978,
+        "medianBytes": 2432,
+        "routes": {
+          "propagation": 2304
+        },
+        "certificates": {},
+        "attempts": 0,
+        "cacheHits": 0
+      },
+      {
+        "name": "gate-only",
+        "rows": 2304,
+        "valid": 2304,
+        "transported": 0,
+        "eligibleRevisions": 2016,
+        "medianUs": 28.865000000000002,
+        "p90Us": 68.777,
+        "p95Us": 216.9764999999993,
+        "p99Us": 312.78293999999863,
+        "medianBytes": 2472,
+        "routes": {
+          "propagation": 1744,
+          "warm": 560
+        },
+        "certificates": {},
+        "attempts": 0,
+        "cacheHits": 0
+      },
+      {
+        "name": "structural",
+        "rows": 2304,
+        "valid": 2304,
+        "transported": 0,
+        "eligibleRevisions": 2016,
+        "medianUs": 21.835,
+        "p90Us": 50.91730000000004,
+        "p95Us": 65.031,
+        "p99Us": 207.90399999999997,
+        "medianBytes": 2432,
+        "routes": {
+          "direct": 1344,
+          "propagation": 880,
+          "warm": 80
+        },
+        "certificates": {},
+        "attempts": 0,
+        "cacheHits": 0
+      },
+      {
+        "name": "full",
+        "rows": 2304,
+        "valid": 2304,
+        "transported": 0,
+        "eligibleRevisions": 2016,
+        "medianUs": 51.355000000000004,
+        "p90Us": 253.12370000000016,
+        "p95Us": 289.54035,
+        "p99Us": 394.47889999999927,
+        "medianBytes": 2552,
+        "routes": {
+          "full": 2304
+        },
+        "certificates": {},
+        "attempts": 0,
+        "cacheHits": 0
+      },
+      {
+        "name": "warm",
+        "rows": 2304,
+        "valid": 2304,
+        "transported": 0,
+        "eligibleRevisions": 2016,
+        "medianUs": 41.4,
+        "p90Us": 229.11230000000015,
+        "p95Us": 270.746,
+        "p99Us": 364.2189299999998,
+        "medianBytes": 2528,
+        "routes": {
+          "warm": 2304
+        },
+        "certificates": {},
+        "attempts": 0,
+        "cacheHits": 0
+      },
+      {
+        "name": "orientation",
+        "rows": 2304,
+        "valid": 2304,
+        "transported": 0,
+        "eligibleRevisions": 2016,
+        "medianUs": 37.055,
+        "p90Us": 63.75030000000001,
+        "p95Us": 77.74765,
+        "p99Us": 244.36412999999823,
+        "medianBytes": 5720,
+        "routes": {
+          "orientation": 2304
+        },
+        "certificates": {},
+        "attempts": 0,
+        "cacheHits": 0
+      }
+    ],
+    "G9Durable": {
+      "rows": 864,
+      "valid": 864,
+      "models": 288,
+      "conclusive": 288,
+      "statuses": {
+        "Infeasible": 158,
+        "Optimal": 130
+      },
+      "histories": 48,
+      "summary": [
+        {
+          "name": "warm",
+          "rows": 288,
+          "valid": 288,
+          "verifiedReadback": 288,
+          "medianUs": 659.7235000000001,
+          "p95Us": 1055.9295,
+          "computeMedianUs": 69.765,
+          "flushMedianUs": 499.209,
+          "routes": {
+            "warm": 288
+          }
+        },
+        {
+          "name": "propagation",
+          "rows": 288,
+          "valid": 288,
+          "verifiedReadback": 288,
+          "medianUs": 556.1590000000001,
+          "p95Us": 819.2023499999998,
+          "computeMedianUs": 43.775000000000006,
+          "flushMedianUs": 501.069,
+          "routes": {
+            "propagation": 288
+          }
+        },
+        {
+          "name": "structural",
+          "rows": 288,
+          "valid": 288,
+          "verifiedReadback": 288,
+          "medianUs": 552.044,
+          "p95Us": 845.0063499999998,
+          "computeMedianUs": 41.0205,
+          "flushMedianUs": 499.59400000000005,
+          "routes": {
+            "direct": 160,
+            "propagation": 97,
+            "warm": 31
+          }
+        }
+      ],
+      "comparisons": [
+        {
+          "base": "warm",
+          "histories": 48,
+          "medianSpeedup": 1.0978538133375724,
+          "wins": 34
+        },
+        {
+          "base": "propagation",
+          "histories": 48,
+          "medianSpeedup": 0.9751764565164098,
+          "wins": 22
+        }
+      ]
+    }
+  },
+  "G9Native": {
+    "models": 288,
+    "conclusive": 288,
+    "records": 864,
+    "valid": 864,
+    "statuses": {
+      "Infeasible": 158,
+      "Optimal": 130
+    }
+  },
+  "G9Finite": {
+    "checks": 419904,
+    "infeasible": 279369,
+    "reordered": 5184,
+    "explicitConflicts": 1,
+    "failures": 0,
+    "valid": true
   }
 }
