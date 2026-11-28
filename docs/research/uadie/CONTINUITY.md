@@ -36,3 +36,6 @@ Canonical publication checkpoint 1697a27bef1af21104efa089a489fda59a5eb083 was pu
 - Arabic source mirror: https://docs.google.com/document/d/1tRXopHKayyrwHyQs89GIA-__41ftDD_QMyPAtMcDrkw/edit
 - Pinned artifact index: https://docs.google.com/document/d/17eMPDdqQzYesxolCXogTe3ImRiliKBX5bwVgI4KCUsk/edit
 Exact PDF, DOCX, Markdown, diagram and raw evidence bytes remain in GitHub and on the server. The Drive connector cannot consume a remote-server path or GitHub connector base64 result as a file reference; raw URL download into local artifact environment failed. Binary copying to Drive is therefore pending, not attested. Index points to exact immutable GitHub versions. No prior Drive files overwritten.
+
+## R3 continuation (isolated research branch, 2026-11-28)
+G7/G8, native revision qualification, publication and metrics: see [current continuation](reviews/research-dashboard/CONTINUITY.md). Previous R2 archive remains in Git history.
