@@ -1,0 +1,223 @@
+{
+  "rows": 162,
+  "witnesses": 135,
+  "statuses": {
+    "original": {
+      "Optimal": 45,
+      "Infeasible": 9
+    },
+    "quotient": {
+      "Optimal": 45,
+      "Infeasible": 9
+    },
+    "adaptive": {
+      "Optimal": 45,
+      "Infeasible": 9
+    }
+  },
+  "all": {
+    "models": 54,
+    "allConclusive": 54,
+    "allOptimal": 45,
+    "allInfeasible": 9,
+    "vsOriginal": 1.90334770143464,
+    "vsQuotient": 1.0131215659696369,
+    "winsOriginal": 43,
+    "winsQuotient": 29,
+    "medianMs": {
+      "original": 36.07477,
+      "quotient": 20.791877,
+      "adaptive": 18.054757000000002
+    },
+    "routes": {
+      "original-fast": 9,
+      "original-low-reduction": 9,
+      "quotient": 27,
+      "odd-cycle": 9
+    }
+  },
+  "byFamily": [
+    {
+      "family": "none",
+      "models": 9,
+      "allConclusive": 9,
+      "allOptimal": 9,
+      "allInfeasible": 0,
+      "vsOriginal": 1.0231537474307184,
+      "vsQuotient": 1.4283079133420458,
+      "winsOriginal": 6,
+      "winsQuotient": 8,
+      "medianMs": {
+        "original": 39.059549,
+        "quotient": 44.64866,
+        "adaptive": 42.909532
+      },
+      "routes": {
+        "original-fast": 9
+      }
+    },
+    {
+      "family": "weak",
+      "models": 9,
+      "allConclusive": 9,
+      "allOptimal": 9,
+      "allInfeasible": 0,
+      "vsOriginal": 0.9989738895686668,
+      "vsQuotient": 0.939093565697435,
+      "winsOriginal": 4,
+      "winsQuotient": 2,
+      "medianMs": {
+        "original": 35.586516,
+        "quotient": 32.285442,
+        "adaptive": 35.031556
+      },
+      "routes": {
+        "original-low-reduction": 9
+      }
+    },
+    {
+      "family": "medium",
+      "models": 9,
+      "allConclusive": 9,
+      "allOptimal": 9,
+      "allInfeasible": 0,
+      "vsOriginal": 2.721321533564932,
+      "vsQuotient": 1.0700620628103752,
+      "winsOriginal": 8,
+      "winsQuotient": 6,
+      "medianMs": {
+        "original": 50.354969,
+        "quotient": 22.800289,
+        "adaptive": 20.740993
+      },
+      "routes": {
+        "quotient": 9
+      }
+    },
+    {
+      "family": "strong",
+      "models": 9,
+      "allConclusive": 9,
+      "allOptimal": 9,
+      "allInfeasible": 0,
+      "vsOriginal": 6.065154320995142,
+      "vsQuotient": 0.8752835015922342,
+      "winsOriginal": 8,
+      "winsQuotient": 4,
+      "medianMs": {
+        "original": 57.588015,
+        "quotient": 8.483745,
+        "adaptive": 12.365427
+      },
+      "routes": {
+        "quotient": 9
+      }
+    },
+    {
+      "family": "odd",
+      "models": 9,
+      "allConclusive": 9,
+      "allOptimal": 0,
+      "allInfeasible": 9,
+      "vsOriginal": 198.90024986118823,
+      "vsQuotient": 1.0554859967051071,
+      "winsOriginal": 9,
+      "winsQuotient": 5,
+      "medianMs": {
+        "original": 14.328774,
+        "quotient": 0.07378,
+        "adaptive": 0.07204
+      },
+      "routes": {
+        "odd-cycle": 9
+      }
+    },
+    {
+      "family": "fixed",
+      "models": 9,
+      "allConclusive": 9,
+      "allOptimal": 9,
+      "allInfeasible": 0,
+      "vsOriginal": 1.6087844784699574,
+      "vsQuotient": 0.9793801179749994,
+      "winsOriginal": 8,
+      "winsQuotient": 4,
+      "medianMs": {
+        "original": 32.57697,
+        "quotient": 24.255966,
+        "adaptive": 18.381636
+      },
+      "routes": {
+        "quotient": 9
+      }
+    }
+  ],
+  "bySize": [
+    {
+      "n": 512,
+      "models": 18,
+      "allConclusive": 18,
+      "allOptimal": 15,
+      "allInfeasible": 3,
+      "vsOriginal": 1.5831243477902122,
+      "vsQuotient": 0.9839822539478846,
+      "winsOriginal": 12,
+      "winsQuotient": 7,
+      "medianMs": {
+        "original": 5.223091,
+        "quotient": 3.4382289999999998,
+        "adaptive": 4.6779415
+      },
+      "routes": {
+        "original-fast": 3,
+        "original-low-reduction": 3,
+        "quotient": 9,
+        "odd-cycle": 3
+      }
+    },
+    {
+      "n": 4096,
+      "models": 18,
+      "allConclusive": 18,
+      "allOptimal": 15,
+      "allInfeasible": 3,
+      "vsOriginal": 2.072851002862957,
+      "vsQuotient": 1.0246774591148284,
+      "winsOriginal": 14,
+      "winsQuotient": 12,
+      "medianMs": {
+        "original": 35.7305805,
+        "quotient": 23.652433000000002,
+        "adaptive": 19.0845605
+      },
+      "routes": {
+        "original-fast": 3,
+        "original-low-reduction": 3,
+        "quotient": 9,
+        "odd-cycle": 3
+      }
+    },
+    {
+      "n": 10000,
+      "models": 18,
+      "allConclusive": 18,
+      "allOptimal": 15,
+      "allInfeasible": 3,
+      "vsOriginal": 2.298828859119948,
+      "vsQuotient": 1.0627740297577413,
+      "winsOriginal": 17,
+      "winsQuotient": 10,
+      "medianMs": {
+        "original": 123.61887,
+        "quotient": 61.972367500000004,
+        "adaptive": 61.788737499999996
+      },
+      "routes": {
+        "original-fast": 3,
+        "original-low-reduction": 3,
+        "quotient": 9,
+        "odd-cycle": 3
+      }
+    }
+  ]
+}
