@@ -39,6 +39,8 @@ if(args is ["matrix-selector"]){MatrixSelectorStudy.Run();return;}
 if(args is ["matrix-selector-audit"]){MatrixSelectorStudy.Audit();return;}
 if(args is ["matrix-boundary-audit"]){MatrixBoundaryAudit.Run();return;}
 if(args is ["gap-source-audit",var gapZip,var gapSplit]){GapSourceAudit.Run(gapZip,gapSplit);return;}
+if(args is ["matrix-repo-audit",var repoFile,var repoRoot]){MatrixRepositoryAudit.Run(repoFile,repoRoot);return;}
+if(args is ["matrix-repo-child",var repoDir,var repoSource,var repoStage]){MatrixRepositoryAudit.Child(repoDir,repoSource,repoStage);return;}
 if(args is ["matrix-readback",var matrixFile]){MatrixStudy.Readback(matrixFile);return;}
 if(args is ["unified-journal-child",var childDir,var childSource,var childStage,var childSeq,var childHash]){UnifiedJournal.Child(childDir,childSource,childStage,childSeq,childHash);return;}
 if(args.Length!=1)throw new ArgumentException("dev|holdout|audit");
