@@ -165,7 +165,7 @@ static void Audit()
         var edges=new List<(int A,int B)>();
         var planted=Enumerable.Range(0,n).Select(_=>rng.Next(2)).ToArray();
         if(family=="sparse-matching"||family=="overlapping"||family=="opposite-fixes")
-            for(int i=0;i<n/8;i++){int a=2*i,b=a+1;edges.Add((a,b));planted[b]=1-planted[a];}
+            for(int i=0;i<n/8;i++){int left=2*i,right=left+1;edges.Add((left,right));planted[right]=1-planted[left];}
         if(family=="odd-cycle"){edges.Add((0,1));edges.Add((1,2));edges.Add((2,0));}
         var fixes=new List<(int Bit,int Value)>();
         if(family=="opposite-fixes"){fixes.Add((0,0));fixes.Add((1,0));}
