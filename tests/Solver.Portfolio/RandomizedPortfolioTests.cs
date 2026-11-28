@@ -53,9 +53,10 @@ public sealed class RandomizedPortfolioTests(ITestOutputHelper output)
             }
             var threads=r.Next(1,7);
             var budget=new PortfolioBudget(r.Next(40,2000),threads,1<<24,TimeSpan.FromMilliseconds(r.Next(30,150)));
-            var policy=new PortfolioPolicy(r.Next(3)==0?PortfolioMode.Sequential:PortfolioMode.Race,
+            var policy=new PortfolioPolicy((PortfolioMode)r.Next(3),
                 r.Next(3) switch{0=>null,1=>TimeSpan.Zero,_=>TimeSpan.FromMilliseconds(10)},
-                Enumerate:r.Next(4)!=0,CleanupGrace:TimeSpan.FromMilliseconds(30),SmallModelVariables:r.Next(2)*64);
+                Enumerate:r.Next(4)!=0,CleanupGrace:TimeSpan.FromMilliseconds(30),SmallModelVariables:r.Next(2)*64,
+                Stop:(StopRule)r.Next(3),ProbeFraction:0.1+0.5*r.NextDouble());
             var result=await PortfolioRunner.RunAsync(Fixtures.Request(ilp,budget,policy,"case"+seed),members);
             string Ctx()=>$"seed={seed} status={result.Status} obj={result.Objective} opt={opt} mode={policy.Mode} "+
                 string.Join(",",members.Select(m=>m.Profile.Manifest.Solver.SolverId+":"+m.Behaviour));
@@ -93,6 +94,12 @@ public sealed class RandomizedPortfolioTests(ITestOutputHelper output)
             // I9 a falsified bound is never reported as the portfolio bound
             if(result.BoundSource is {} src)Assert.DoesNotContain(result.Alerts,a=>a.Solver==src&&a.Code.StartsWith("portfolio.falsified",StringComparison.Ordinal));
 
+            // I10 stopping is governed by the rule and never manufactures proof
+            if(policy.Stop==StopRule.ProofOnly)Assert.True(result.StopReason is StopReason.Completed or StopReason.Proof,"I10 "+Ctx());
+            if(policy.Stop==StopRule.Concordant)Assert.NotEqual(StopReason.SingleAttestation,result.StopReason);
+            if(result.Status==PortfolioStatus.ProvenOptimal)Assert.Contains(result.Members,m=>m.Assessment is {Rejected:false,Strength:EvidenceStrength.ExactEnumeration});
+            if(result.StopReason==StopReason.Concordant)Assert.True(result.Members.Where(m=>m.Assessment is {Rejected:false,ReportedStatus:MathematicalStatus.Optimal}).Select(m=>m.Family).Distinct().Count()>=2,"I10c "+Ctx());
+            Count("stop."+result.StopReason);Count("rule."+policy.Stop);if(result.Escalated)Count("escalated");
             Count("status."+result.Status);Count("accepted."+result.Accepted);Count("mode."+policy.Mode);
             Count("members",count);Count("membersStarted",probe.Started);
             Count("alerts",result.Alerts.Length);foreach(var a in result.Alerts)Count("alert."+a.Code);

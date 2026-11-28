@@ -172,10 +172,78 @@ public sealed class PortfolioTests
     {
         var ilp=Small();
         var hanger=new SimulatedMember(Profile("b",SolverFamily.CpSat),ilp,Behaviour.HangCooperative,0,new());
-        var r=await Run(ilp,Budget(wallMs:5000),new(Enumerate:false,AttestedStopGrace:TimeSpan.FromMilliseconds(100)),
+        var r=await Run(ilp,Budget(wallMs:5000),new(Enumerate:false,AttestedStopGrace:TimeSpan.FromMilliseconds(100),Stop:StopRule.SingleAttestation),
             new SimulatedMember(Profile("a",SolverFamily.CpSat),ilp,Behaviour.HonestOptimal,0,new()),hanger);
         Assert.True(hanger.SawCancellation);Assert.True(r.WallMs<2000);
         Assert.Equal("a",r.Selected!.Solver.SolverId);
+    }
+
+    [Fact]
+    public async Task ProofOnlyNeverStopsOnASolverClaim()
+    {
+        var ilp=Small();
+        var hanger=new SimulatedMember(Profile("b",SolverFamily.Highs),ilp,Behaviour.HangCooperative,0,new());
+        var r=await Run(ilp,Budget(wallMs:400),new(Enumerate:false),
+            new SimulatedMember(Profile("a",SolverFamily.CpSat),ilp,Behaviour.HonestOptimal,0,new()),hanger);
+        Assert.Equal(StopReason.Completed,r.StopReason);
+        Assert.True(r.WallMs>=380,$"stopped early at {r.WallMs} ms on an unproven claim");
+        Assert.Equal(PortfolioStatus.VerifiedFeasible,r.Status);                 // the claim did not become a proof
+    }
+
+    [Fact]
+    public async Task ConcordanceRequiresTwoSolverFamiliesAgreeingOnAVerifiedValue()
+    {
+        var ilp=Small();
+        var stopPolicy=new PortfolioPolicy(Enumerate:false,Stop:StopRule.Concordant);
+        var hanger=new SimulatedMember(Profile("z",SolverFamily.CpSat),ilp,Behaviour.HangCooperative,0,new());
+        var two=await Run(ilp,Budget(wallMs:5000),stopPolicy,
+            new SimulatedMember(Profile("a",SolverFamily.CpSat),ilp,Behaviour.HonestOptimal,0,new()),
+            new SimulatedMember(Profile("h",SolverFamily.Highs),ilp,Behaviour.HonestOptimal,20,new()),hanger);
+        Assert.Equal(StopReason.Concordant,two.StopReason);Assert.True(hanger.SawCancellation);
+        Assert.Equal(PortfolioStatus.VerifiedFeasible,two.Status);Assert.Equal(2,two.ConcordantAttestations);
+        // same family twice is not independent; a liar from another family cannot form concordance
+        var same=await Run(ilp,Budget(wallMs:300),stopPolicy,
+            new SimulatedMember(Profile("a",SolverFamily.CpSat),ilp,Behaviour.HonestOptimal,0,new()),
+            new SimulatedMember(Profile("b",SolverFamily.CpSat),ilp,Behaviour.HonestOptimal,0,new()),
+            new SimulatedMember(Profile("z",SolverFamily.Highs),ilp,Behaviour.HangCooperative,0,new()));
+        Assert.Equal(StopReason.Completed,same.StopReason);
+        var liar=await Run(ilp,Budget(wallMs:300),stopPolicy,
+            new SimulatedMember(Profile("a",SolverFamily.CpSat),ilp,Behaviour.HonestOptimal,0,new()),
+            new SimulatedMember(Profile("l",SolverFamily.Highs),ilp,Behaviour.LiarOptimal,0,new()),
+            new SimulatedMember(Profile("z",SolverFamily.CpSat),ilp,Behaviour.HangCooperative,0,new()));
+        Assert.Equal(StopReason.Completed,liar.StopReason);
+        Assert.Contains(liar.Alerts,x=>x.Code=="portfolio.falsifiedOptimality");
+    }
+
+    [Fact]
+    public async Task EscalateProbesOneSolverAndRacesOnlyWhenNeeded()
+    {
+        var ilp=Small();
+        // easy + single-attestation policy: the probe settles it, no race
+        var easy=await Run(ilp,Budget(wallMs:2000),new(Mode:PortfolioMode.Escalate,Enumerate:false,Stop:StopRule.SingleAttestation),
+            new SimulatedMember(Profile("a",SolverFamily.CpSat),ilp,Behaviour.HonestOptimal,0,new()),
+            new SimulatedMember(Profile("h",SolverFamily.Highs),ilp,Behaviour.HonestOptimal,0,new()));
+        Assert.False(easy.Escalated);Assert.Equal(StopReason.SingleAttestation,easy.StopReason);
+        Assert.Single(easy.Members,m=>m.Phase==MemberPhase.Completed);
+        // proof in the probe also ends it
+        var proven=await Run(ilp,Budget(wallMs:2000),new(Mode:PortfolioMode.Escalate),
+            new SimulatedMember(Profile("a",SolverFamily.CpSat),ilp,Behaviour.HonestOptimal,0,new()),
+            new SimulatedMember(Profile("h",SolverFamily.Highs),ilp,Behaviour.HonestOptimal,0,new()));
+        Assert.False(proven.Escalated);Assert.Equal(PortfolioStatus.ProvenOptimal,proven.Status);
+        // a weak probe escalates to the race, and the race result is selected
+        var hard=await Run(ilp,Budget(wallMs:2000),new(Mode:PortfolioMode.Escalate,Enumerate:false,Stop:StopRule.SingleAttestation),
+            new SimulatedMember(Profile("a",SolverFamily.CpSat),ilp,Behaviour.HonestFeasible,0,new()),
+            new SimulatedMember(Profile("h",SolverFamily.Highs),ilp,Behaviour.HonestOptimal,0,new()));
+        Assert.True(hard.Escalated);Assert.Equal("11",hard.Objective);Assert.Equal("h",hard.Selected!.Solver.SolverId);
+        Assert.Contains(hard.Members,m=>m.Stage==1);
+    }
+
+    [Fact]
+    public void MemberGraceWidensTheSoftLimitMarginPerSolver()
+    {
+        var p=new PortfolioPolicy(SoftLimitFraction:0.9,MemberGrace:new Dictionary<string,TimeSpan>{["highs"]=TimeSpan.FromMilliseconds(1500)});
+        Assert.Equal(TimeSpan.FromMilliseconds(2700),Allocation.SoftLimit(TimeSpan.FromSeconds(3),p,"cpsat"));
+        Assert.Equal(TimeSpan.FromMilliseconds(1500),Allocation.SoftLimit(TimeSpan.FromSeconds(3),p,"highs"));
     }
 
     [Fact]

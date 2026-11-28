@@ -23,7 +23,7 @@ public static class PortfolioRunner
     private sealed class Run(IPortfolioMember member,AdapterProfile profile,int rank,PlannedExecution plan)
     {
         internal IPortfolioMember Member=member;internal AdapterProfile Profile=profile;internal int Rank=rank;
-        internal PlannedExecution Plan=plan;internal MemberRecord? Record;
+        internal PlannedExecution Plan=plan;internal readonly List<MemberRecord> Records=[];
         internal readonly CancellationTokenSource Stop=new();
     }
 
@@ -64,18 +64,21 @@ public static class PortfolioRunner
         var modelSha=Sha(document.Write());
         var factsSha=facts is {} fb?Sha(fb.ToArray()):null;
         var catalogSha=Sha(catalogBytes);
+        var direction=document.Model.Objectives.SingleOrDefault()?.Direction??Direction.Minimize;
 
         var ledger=new CoreLedger(b.CoreMilliseconds,b.MaxConcurrentThreads,b.MemoryBytes);
         var alerts=new ConcurrentQueue<PortfolioAlert>();
         using var all=CancellationTokenSource.CreateLinkedTokenSource(ct);
-        var wallLimit=b.WallDeadline;
+        var gate=new object();var completed=new List<MemberRecord>();
+        var stopReason=StopReason.Completed;bool stopped=false;
 
-        async Task Execute(Run run,AllocationSlot slot)
+        async Task Execute(Run run,AllocationSlot slot,int stage)
         {
             var reservation=ledger.TryReserve(slot.Threads,slot.MemoryBytes,slot.HardDeadline);
-            if(reservation is null){run.Record=Empty(run.Profile,run.Rank,MemberPhase.NotScheduled,"portfolio.budget");return;}
-            var assignment=new MemberAssignment(request.RunId+".m"+run.Rank.ToString(System.Globalization.CultureInfo.InvariantCulture),
-                slot.Threads,slot.MemoryBytes,slot.HardDeadline,slot.SoftLimit,run.Plan with{Budget=new(slot.Threads,slot.MemoryBytes,slot.HardDeadline)});
+            if(reservation is null){lock(gate)run.Records.Add(Empty(run.Profile,run.Rank,MemberPhase.NotScheduled,"portfolio.budget") with{Stage=stage});return;}
+            var runId=request.RunId+".m"+run.Rank.ToString(System.Globalization.CultureInfo.InvariantCulture)+(stage==0?"":".s"+stage.ToString(System.Globalization.CultureInfo.InvariantCulture));
+            var assignment=new MemberAssignment(runId,slot.Threads,slot.MemoryBytes,slot.HardDeadline,slot.SoftLimit,
+                run.Plan with{Budget=new(slot.Threads,slot.MemoryBytes,slot.HardDeadline)});
             var started=clock.ElapsedMilliseconds;
             using var member=CancellationTokenSource.CreateLinkedTokenSource(all.Token,run.Stop.Token);
             member.CancelAfter(slot.HardDeadline);
@@ -87,14 +90,16 @@ public static class PortfolioRunner
             var watchdog=Task.Delay(slot.HardDeadline+policy.Cleanup,CancellationToken.None);
             var finished=await Task.WhenAny(task,watchdog).ConfigureAwait(false);
             var elapsedFallback=clock.ElapsedMilliseconds-started;
+            MemberRecord record;
             if(finished!=task)
             {
                 member.Cancel();
                 ledger.Settle(reservation,reservation.CoreMs,cleanupConfirmed:false);
                 alerts.Enqueue(new("portfolio.abandoned",run.Profile.Manifest.Solver,null,"Member did not return after its hard deadline and cleanup grace."));
-                run.Record=Empty(run.Profile,run.Rank,MemberPhase.Abandoned,"portfolio.abandoned") with
+                record=Empty(run.Profile,run.Rank,MemberPhase.Abandoned,"portfolio.abandoned") with
                     {Assignment=assignment,ReservedCoreMs=reservation.CoreMs,ChargedCoreMs=reservation.CoreMs,ElapsedMs=elapsedFallback,
-                     StartedAtMs=started,FinishedAtMs=clock.ElapsedMilliseconds};
+                     StartedAtMs=started,FinishedAtMs=clock.ElapsedMilliseconds,Stage=stage};
+                lock(gate)run.Records.Add(record);
                 return;
             }
             MemberExecution exec;
@@ -126,47 +131,66 @@ public static class PortfolioRunner
                     else objective=assessment.Incumbent;
                 }
             }
-            run.Record=new(run.Profile.Manifest.Solver,run.Profile.Family,run.Rank,MemberPhase.Completed,diagnostic??"portfolio.completed",
+            record=new(run.Profile.Manifest.Solver,run.Profile.Family,run.Rank,MemberPhase.Completed,diagnostic??"portfolio.completed",
                 assignment,exec.Termination,reservation.CoreMs,charged,over,exec.CpuMs,source,exec.ElapsedMs,exec.PeakBytes,exec.CleanupConfirmed,
-                diagnostic,assessment,objective,started,clock.ElapsedMilliseconds);
-            // Early stop: an exhaustive proof cannot be improved. An attested optimum may stop others after a cross-check grace.
-            if(assessment is {Rejected:false} a)
-            {
-                if(a.Status is MathematicalStatus.Optimal or MathematicalStatus.Infeasible&&a.Strength==EvidenceStrength.ExactEnumeration)
-                    StopOthers(run,TimeSpan.Zero);
-                else if(policy.AttestedStopGrace is {} grace&&a.ReportedStatus==MathematicalStatus.Optimal&&a.Incumbent is not null&&a.AbsoluteGap=="0")
-                    StopOthers(run,grace);
-            }
+                diagnostic,assessment,objective,started,clock.ElapsedMilliseconds,stage);
+            lock(gate){run.Records.Add(record);completed.Add(record);Decide(run);}
         }
-        void StopOthers(Run winner,TimeSpan grace)
+        // Early-stop decision on all evidence so far (called under the gate). A claim never upgrades evidence; it can only
+        // end the search when the host's rule allows it.
+        void Decide(Run current)
         {
-            foreach(var r in runs)if(!ReferenceEquals(r,winner))
+            if(stopped)return;
+            var ok=completed.Where(r=>r.Assessment is {Rejected:false}).ToArray();
+            bool Better(string a,string c)=>direction==Direction.Minimize?ExactValues.Compare(a,c)<0:ExactValues.Compare(a,c)>0;
+            if(ok.Any(r=>r.Assessment!.Strength==EvidenceStrength.ExactEnumeration&&r.Assessment.Status is MathematicalStatus.Optimal or MathematicalStatus.Infeasible))
+            {Fire(StopReason.Proof,TimeSpan.Zero);return;}
+            if(policy.Stop==StopRule.ProofOnly)return;
+            var attested=ok.Where(r=>r.VerifiedObjective is not null&&r.Assessment!.ReportedStatus==MathematicalStatus.Optimal&&r.Assessment.AbsoluteGap=="0").ToArray();
+            // A claim is only usable if no verified incumbent from any member beats it.
+            var unbeaten=attested.Where(a=>!ok.Any(w=>w.VerifiedObjective is not null&&Better(w.VerifiedObjective!,a.VerifiedObjective!))).ToArray();
+            if(unbeaten.GroupBy(a=>a.VerifiedObjective).Any(g=>g.Select(r=>r.Family).Distinct().Count()>=2))
+            {Fire(StopReason.Concordant,TimeSpan.Zero);return;}
+            if(policy.Stop==StopRule.SingleAttestation&&unbeaten.Length>0)Fire(StopReason.SingleAttestation,policy.AttestedStopGrace??TimeSpan.Zero);
+        }
+        void Fire(StopReason reason,TimeSpan grace)
+        {
+            stopped=true;stopReason=reason;
+            foreach(var r in runs)
             {
                 try{if(grace<=TimeSpan.Zero)r.Stop.Cancel();else r.Stop.CancelAfter(grace);}
                 catch(ObjectDisposedException){}
             }
         }
+        bool IsStopped(){lock(gate)return stopped;}
 
         // 3. Schedule.
+        bool escalated=false;
         try
         {
-            if(policy.Mode==PortfolioMode.Race)
+            if(policy.Mode==PortfolioMode.Race)await RaceAsync(b,0).ConfigureAwait(false);
+            else if(policy.Mode==PortfolioMode.Escalate&&runs.Count>0)
             {
-                var slots=Allocation.Race(runs.Select(r=>r.Profile).ToArray(),features,b,policy,ledger.Available,ledger.FreeThreads,ledger.FreeMemory);
-                for(int i=slots.Count;i<runs.Count;i++)runs[i].Record=Empty(runs[i].Profile,runs[i].Rank,MemberPhase.NotScheduled,"portfolio.capacity");
-                await Task.WhenAll(slots.Select(s=>Execute(runs[s.Rank],s))).ConfigureAwait(false);
+                var probe=Allocation.Stage(runs[0].Profile,0,1,features,policy,(long)(ledger.Available*policy.ProbeFraction),ledger.FreeThreads,
+                    ledger.FreeMemory,b.WallDeadline*policy.ProbeFraction);
+                if(probe is not null)await Execute(runs[0],probe,0).ConfigureAwait(false);
+                if(!IsStopped()&&!all.IsCancellationRequested)
+                {
+                    escalated=true;
+                    var left=b.WallDeadline-clock.Elapsed;
+                    if(left>TimeSpan.Zero)await RaceAsync(b with{WallDeadline=left},1).ConfigureAwait(false);
+                }
             }
             else
             {
                 for(int i=0;i<runs.Count;i++)
                 {
                     var r=runs[i];
-                    if(all.IsCancellationRequested||r.Stop.IsCancellationRequested)
-                    {r.Record=Empty(r.Profile,r.Rank,MemberPhase.NotScheduled,"portfolio.stopped");continue;}
-                    var left=wallLimit-clock.Elapsed;
+                    if(all.IsCancellationRequested||IsStopped()){lock(gate)r.Records.Add(Empty(r.Profile,r.Rank,MemberPhase.NotScheduled,"portfolio.stopped"));continue;}
+                    var left=b.WallDeadline-clock.Elapsed;
                     var slot=Allocation.Stage(r.Profile,i,runs.Count-i,features,policy,ledger.Available,ledger.FreeThreads,ledger.FreeMemory,left);
-                    if(slot is null){r.Record=Empty(r.Profile,r.Rank,MemberPhase.NotScheduled,"portfolio.budget");continue;}
-                    await Execute(r,slot).ConfigureAwait(false);
+                    if(slot is null){lock(gate)r.Records.Add(Empty(r.Profile,r.Rank,MemberPhase.NotScheduled,"portfolio.budget"));continue;}
+                    await Execute(r,slot,0).ConfigureAwait(false);
                 }
             }
         }
@@ -174,9 +198,17 @@ public static class PortfolioRunner
         {
             foreach(var r in runs)r.Stop.Dispose();
         }
-        records.AddRange(runs.Select(r=>r.Record??Empty(r.Profile,r.Rank,MemberPhase.NotScheduled,"portfolio.unscheduled")));
-        records.Sort((x,y)=>x.Rank.CompareTo(y.Rank));
-        return Conclude(request,features,records,alerts,ledger,ct.IsCancellationRequested,clock.ElapsedMilliseconds);
+        async Task RaceAsync(PortfolioBudget budget,int stage)
+        {
+            var slots=Allocation.Race(runs.Select(r=>r.Profile).ToArray(),features,budget,policy,ledger.Available,ledger.FreeThreads,ledger.FreeMemory);
+            for(int i=slots.Count;i<runs.Count;i++)lock(gate)runs[i].Records.Add(Empty(runs[i].Profile,runs[i].Rank,MemberPhase.NotScheduled,"portfolio.capacity") with{Stage=stage});
+            await Task.WhenAll(slots.Select(s=>Execute(runs[s.Rank],s,stage))).ConfigureAwait(false);
+        }
+        foreach(var r in runs)records.AddRange(r.Records.Count>0?r.Records:[Empty(r.Profile,r.Rank,MemberPhase.NotScheduled,"portfolio.unscheduled")]);
+        records.Sort((x,y)=>x.Rank!=y.Rank?x.Rank.CompareTo(y.Rank):x.Stage.CompareTo(y.Stage));
+        var cancelledByHost=ct.IsCancellationRequested;
+        return Conclude(request,features,records,alerts,ledger,cancelledByHost,clock.ElapsedMilliseconds) with
+            {StopReason=cancelledByHost?StopReason.HostCancelled:stopReason,Escalated=escalated};
     }
 
     private static PortfolioResult Conclude(PortfolioRequest request,ModelFeatures features,List<MemberRecord> records,
@@ -204,7 +236,7 @@ public static class PortfolioRunner
         }
         // Selection: verified objective, then evidence strength, then rank. Elapsed time is not a criterion.
         MemberRecord? selected=null;
-        foreach(var r in verified.OrderBy(r=>r.Rank))
+        foreach(var r in verified.OrderBy(r=>r.Rank).ThenBy(r=>r.Stage))
         {
             if(selected is null||Better(r.VerifiedObjective!,selected.VerifiedObjective!)||
                ExactValues.Compare(r.VerifiedObjective!,selected.VerifiedObjective!)==0&&r.Assessment!.Strength>selected.Assessment!.Strength)
@@ -232,8 +264,8 @@ public static class PortfolioRunner
             var d=ExactValues.Compare(obj,bestBound)>=0?Subtract(obj,bestBound):Subtract(bestBound,obj);
             gap=d;
         }
-        var concordant=selected is null?0:verified.Count(r=>r.Assessment!.ReportedStatus==MathematicalStatus.Optimal&&!falsified.Contains(r.Solver)&&
-            ExactValues.Compare(r.VerifiedObjective!,selected.VerifiedObjective!)==0);
+        var concordant=selected is null?0:verified.Where(r=>r.Assessment!.ReportedStatus==MathematicalStatus.Optimal&&!falsified.Contains(r.Solver)&&
+            ExactValues.Compare(r.VerifiedObjective!,selected.VerifiedObjective!)==0).Select(r=>r.Solver).Distinct().Count();
         var strength=selected?.Assessment!.Strength??(status==PortfolioStatus.ProvenInfeasible?EvidenceStrength.ExactEnumeration:EvidenceStrength.None);
         return new(request.RunId,features,cancelled&&status!=PortfolioStatus.ProvenInfeasible?PortfolioStatus.Unknown:status,
             selected is not null&&!cancelled,cancelled?null:selected,cancelled?null:selected?.VerifiedObjective,cancelled?EvidenceStrength.None:strength,
@@ -262,7 +294,8 @@ public static class PortfolioRunner
            b.CoreMilliseconds<1||b.MaxConcurrentThreads is <1 or >4096||b.MemoryBytes<1||
            b.WallDeadline<=TimeSpan.Zero||b.WallDeadline>TimeSpan.FromDays(7)||
            !Enum.IsDefined(p.Mode)||!(p.SoftLimitFraction is >0 and <1)||p.Grace<TimeSpan.Zero||p.Cleanup<TimeSpan.Zero||
-           p.SmallModelVariables<0||p.AttestedStopGrace<TimeSpan.Zero||r.CatalogBytes.Length is <1 or >262144)
+           p.SmallModelVariables<0||p.AttestedStopGrace<TimeSpan.Zero||r.CatalogBytes.Length is <1 or >262144||
+           !Enum.IsDefined(p.Stop)||!(p.ProbeFraction is >0 and <1)||p.MemberGrace is {} g&&g.Values.Any(v=>v<TimeSpan.Zero))
             throw new ContractException("portfolio.request","Invalid portfolio request.");
     }
 

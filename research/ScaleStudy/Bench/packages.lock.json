@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "dependencies": {
+    "net10.0": {
+      "Highs.Native": {
+        "type": "Direct",
+        "requested": "[1.16.0, )",
+        "resolved": "1.16.0",
+        "contentHash": "rnomEdJ0cQ2C3NofiBFffa8io53Zauh8wHfH77se6JJWOhe5iC3NTNlhxHGGeXF8SYCp2GoUwtLN59ulMiqf3Q=="
+      },
+      "wowdi.contracts": {
+        "type": "Project"
+      },
+      "wowdi.dml.binding": {
+        "type": "Project",
+        "dependencies": {
+          "WowDi.Dml.Syntax": "[1.0.0, )"
+        }
+      },
+      "wowdi.dml.lowering": {
+        "type": "Project",
+        "dependencies": {
+          "WowDi.Dml.Semantics": "[1.0.0, )",
+          "WowDi.Solver.Contracts": "[1.0.0, )"
+        }
+      },
+      "wowdi.dml.semantics": {
+        "type": "Project",
+        "dependencies": {
+          "WowDi.Dml.Binding": "[1.0.0, )"
+        }
+      },
+      "wowdi.dml.syntax": {
+        "type": "Project",
+        "dependencies": {
+          "WowDi.Udir": "[1.0.0, )"
+        }
+      },
+      "wowdi.manufacturing.data": {
+        "type": "Project",
+        "dependencies": {
+          "WowDi.Udir": "[1.0.0, )"
+        }
+      },
+      "wowdi.research.certificates": {
+        "type": "Project",
+        "dependencies": {
+          "WowDi.Research.Sparse": "[1.0.0, )"
+        }
+      },
+      "wowdi.research.sparse": {
+        "type": "Project",
+        "dependencies": {
+          "WowDi.Dml.Lowering": "[1.0.0, )"
+        }
+      },
+      "wowdi.solver.contracts": {
+        "type": "Project",
+        "dependencies": {
+          "WowDi.Udir": "[1.0.0, )"
+        }
+      },
+      "wowdi.udir": {
+        "type": "Project",
+        "dependencies": {
+          "WowDi.Contracts": "[1.0.0, )"
+        }
+      },
+      "wowdi.verification.independent": {
+        "type": "Project",
+        "dependencies": {
+          "WowDi.Manufacturing.Data": "[1.0.0, )",
+          "WowDi.Solver.Contracts": "[1.0.0, )",
+          "WowDi.Udir": "[1.0.0, )"
+        }
+      }
+    }
+  }
+}

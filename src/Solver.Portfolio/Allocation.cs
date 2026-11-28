@@ -16,9 +16,10 @@ public static class Allocation
         return Math.Max(p.MinimumThreads,max);
     }
 
-    public static TimeSpan SoftLimit(TimeSpan hard,PortfolioPolicy policy)
+    public static TimeSpan SoftLimit(TimeSpan hard,PortfolioPolicy policy,string? solverId=null)
     {
-        var soft=Math.Min(hard.TotalMilliseconds*policy.SoftLimitFraction,hard.TotalMilliseconds-policy.Grace.TotalMilliseconds);
+        var grace=solverId is null?policy.Grace:policy.GraceFor(solverId);
+        var soft=Math.Min(hard.TotalMilliseconds*policy.SoftLimitFraction,hard.TotalMilliseconds-grace.TotalMilliseconds);
         if(soft<=0)soft=hard.TotalMilliseconds/2;
         return TimeSpan.FromMilliseconds(Math.Floor(soft));
     }
@@ -51,8 +52,8 @@ public static class Allocation
             var deadlineMs=Math.Min((long)Math.Floor(budget.WallDeadline.TotalMilliseconds),availableCoreMs/threads.Sum());
             var hard=TimeSpan.FromMilliseconds(deadlineMs);
             if(deadlineMs<1||admitted.Any(p=>p.MinimumDeadline>hard))continue;
-            var soft=SoftLimit(hard,policy);
-            return admitted.Select((p,i)=>new AllocationSlot(i,threads[i],p.MinimumMemoryBytes+extra,hard,soft)).ToArray();
+            return admitted.Select((p,i)=>new AllocationSlot(i,threads[i],p.MinimumMemoryBytes+extra,hard,
+                SoftLimit(hard,policy,p.Manifest.Solver.SolverId))).ToArray();
         }
         return [];
     }
@@ -67,6 +68,6 @@ public static class Allocation
         var shareMs=Math.Min(availableCoreMs/threads/remainingMembers,(long)Math.Floor(wallLeft.TotalMilliseconds/remainingMembers));
         var hard=TimeSpan.FromMilliseconds(shareMs);
         if(shareMs<1||p.MinimumDeadline>hard)return null;
-        return new(rank,threads,freeMemory,hard,SoftLimit(hard,policy));
+        return new(rank,threads,freeMemory,hard,SoftLimit(hard,policy,p.Manifest.Solver.SolverId));
     }
 }

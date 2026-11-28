@@ -18,7 +18,10 @@ using WowDi.Udir;
 if(args.Length>=6&&args[0]=="worker")
     return Engines.Worker(args[1],args[2],int.Parse(args[3],CultureInfo.InvariantCulture),int.Parse(args[4],CultureInfo.InvariantCulture),args[5]);
 if(args.Length==2&&args[0]=="burn")return Engines.Burn(int.Parse(args[1],CultureInfo.InvariantCulture));
-if(args.Length>=2&&args[0]=="study")return await Study.RunAsync(args[1],args.Length>2&&args[2]=="quick");
+if(args.Length==2&&args[0]=="hog")return Engines.Hog(int.Parse(args[1],CultureInfo.InvariantCulture));
+if(args.Length==3&&args[0]=="spawn")return Engines.Spawn(int.Parse(args[1],CultureInfo.InvariantCulture),int.Parse(args[2],CultureInfo.InvariantCulture));
+if(args.Length>=2&&args[0]=="study")return await Study.RunAsync(args[1],args.Skip(2).Contains("quick"),
+    args.Skip(2).FirstOrDefault(a=>a.StartsWith("only=",StringComparison.Ordinal))?[5..].Split(','));
 Console.Error.WriteLine("usage: worker|burn|study");
 return 2;
 
@@ -27,8 +30,9 @@ static class Study
     static string Env(string k)=>Environment.GetEnvironmentVariable(k)??throw new InvalidOperationException(k+" is required.");
     static string Sha(byte[] b)=>Convert.ToHexStringLower(SHA256.HashData(b));
 
-    public static async Task<int> RunAsync(string outDir,bool quick)
+    public static async Task<int> RunAsync(string outDir,bool quick,string[]? only=null)
     {
+        bool Want(string k)=>only is null||only.Contains(k);
         Directory.CreateDirectory(outDir);
         var dotnet=Env("WOWDI_STUDY_DOTNET");var bootstrap=Env("WOWDI_STUDY_BOOTSTRAP");var root=Env("WOWDI_STUDY_CGROUP_ROOT");
         var self=typeof(Study).Assembly.Location;var work=Path.GetDirectoryName(self)!;
@@ -39,10 +43,12 @@ static class Study
             ["dotnet"]=Environment.Version.ToString(),["ortools"]="9.15.6755",["highs"]="1.16.0",["utc"]=DateTime.UtcNow.ToString("O"),
             ["readiness"]="RESEARCH: engines run through the production S08/S07/S05 path, but S02/S03 adapters are not qualified (R07 open)."
         };
-        var overspend=await OverspendAsync(boundary,dotnet,self,work,quick);
-        var scale=ScaleProbe(quick);
-        var comparison=await CompareAsync(boundary,dotnet,self,work,outDir,quick);
-        var doc=new Dictionary<string,object>{["environment"]=env,["overspend"]=overspend,["scaleProbe"]=scale,["comparison"]=comparison};
+        var doc=new Dictionary<string,object>{["environment"]=env};
+        if(Want("overspend"))doc["overspend"]=await OverspendAsync(boundary,dotnet,self,work,quick);
+        if(Want("scale"))doc["scaleProbe"]=ScaleProbe(quick);
+        if(Want("contain"))doc["containment"]=await ContainmentAsync(boundary,dotnet,self,work);
+        if(Want("residual"))doc["residualStress"]=await ResidualAsync(boundary,dotnet,self,work,outDir,quick?20:200);
+        if(Want("compare"))doc["comparison"]=await CompareAsync(boundary,dotnet,self,work,outDir,quick);
         var path=Path.Combine(outDir,"portfolio-study.json");
         await File.WriteAllTextAsync(path,JsonSerializer.Serialize(doc,new JsonSerializerOptions{WriteIndented=true}));
         Console.WriteLine("evidence: "+path);
@@ -76,6 +82,47 @@ static class Study
         return new Dictionary<string,object>{["runs"]=rows.Count,["allCleanupConfirmed"]=rows.All(r=>(bool)r["cleanup"]),
             ["overspendCoreMs"]=new{max=over[^1],p95=P(over,0.95),p50=P(over,0.5)},["wallOverrunMs"]=new{max=lat[^1],p95=P(lat,0.95),p50=P(lat,0.5),min=lat[0]},
             ["cpuOverReserved"]=new{max=ratio[^1],p50=P(ratio,0.5)},["rows"]=rows};
+    }
+
+    // ---------------------------------------------------------------- 1b. containment of grandchildren (CPU, memory, kill)
+    static async Task<object> ContainmentAsync(WorkerProcessBoundary boundary,string dotnet,string self,string work)
+    {
+        var rows=new List<object>();
+        foreach(var (threads,mb,limitMb,deadline) in new[]{(1,64,512,1500),(2,64,512,1500),(1,400,256,3000)})
+        for(int rep=0;rep<3;rep++)
+        {
+            var pool=new GovernedPool("study",threads,(long)limitMb<<20,1,boundary);
+            var key=new WorkerRunKey("study","contain","r",$"contain-{threads}-{mb}-{rep}");
+            var (_,res)=await pool.RunAsync(new WorkerRequest(key,new WorkerBudget(threads,(long)limitMb<<20,TimeSpan.FromMilliseconds(deadline)),new string('0',64)),
+                new WorkerProgram(dotnet,[self,"spawn","3",mb.ToString(CultureInfo.InvariantCulture)],work),CancellationToken.None);
+            var cpu=res.Resources.CpuMs??-1;var elapsed=res.Resources.ElapsedMs??-1;
+            rows.Add(new{threads,childMemoryMB=mb,limitMB=limitMb,deadlineMs=deadline,elapsedMs=elapsed,cpuMs=cpu,cpuBoundMs=threads*(elapsed+100),
+                withinCpuQuota=cpu<=threads*(elapsed+100),peakMB=(res.ScopePeakBytes??-1)>>20,withinMemory=(res.ScopePeakBytes??0)<=((long)limitMb<<20),
+                termination=res.Termination.ToString(),cleanup=res.CleanupConfirmed,diagnostic=res.Diagnostic});
+            Console.WriteLine($"contain t={threads} hog={mb}MB limit={limitMb}MB cpu={cpu} elapsed={elapsed} peak={(res.ScopePeakBytes??-1)>>20}MB term={res.Termination} clean={res.CleanupConfirmed} {res.Diagnostic}");
+        }
+        return rows;
+    }
+
+    // ---------------------------------------------------------------- 1c. residual-process stress (CP-SAT, 2 workers)
+    static async Task<object> ResidualAsync(WorkerProcessBoundary boundary,string dotnet,string self,string work,string outDir,int runs)
+    {
+        var inst=Generators.Knapsack(60,5,7);var (c,_,_)=Generators.Compile(inst);var m=c!.Original.Model;
+        var varIds=Enumerable.Range(0,inst.N).Select(j=>m.Symbols.Single(s=>s.Role==SymbolRole.Variable&&(s.Id=="x"+j||s.Id.EndsWith(".x"+j,StringComparison.Ordinal))).Id).ToArray();
+        var input=Path.Combine(outDir,"residual-input.json");
+        File.WriteAllBytes(input,JsonSerializer.SerializeToUtf8Bytes(new WorkerInput(inst,varIds,m.TenantId,m.ModelId,m.RevisionId,m.Objectives[0].Id,new("cpsat","research","linux-x64")),Engines.Json));
+        var counts=new Dictionary<string,int>();
+        for(int i=0;i<runs;i++)
+        {
+            var pool=new GovernedPool("study",2,512L<<20,1,boundary);
+            var key=new WorkerRunKey("study","residual","r",$"res-{i}");
+            var (_,res)=await pool.RunAsync(new WorkerRequest(key,new WorkerBudget(2,512L<<20,TimeSpan.FromMilliseconds(2500)),new string('0',64)),
+                new WorkerProgram(dotnet,[self,"worker","cpsat",input,"2",(300+(i%10)*150).ToString(CultureInfo.InvariantCulture),$"res-{i}"],work),CancellationToken.None);
+            var k=res.Termination+":"+(res.Diagnostic??"ok");counts[k]=counts.GetValueOrDefault(k)+1;
+        }
+        Console.WriteLine("residual "+string.Join(" ",counts.Select(kv=>kv.Key+"="+kv.Value)));
+        var residual=counts.Where(kv=>kv.Key.Contains("residual",StringComparison.Ordinal)).Sum(kv=>kv.Value);
+        return new{runs,outcomes=counts,residual,upper95=residual==0?3.0/runs:double.NaN};
     }
 
     // ---------------------------------------------------------------- 2. where does the current front end stop?
@@ -118,7 +165,15 @@ static class Study
         }
         const int Threads=2;const long Memory=1L<<30;const int WallMs=3000;
         var budget=new PortfolioBudget((long)Threads*WallMs,Threads,Memory,TimeSpan.FromMilliseconds(WallMs));
-        var configs=new (string Name,AdapterProfile[] Members,TimeSpan? Stop)[]{("cpsat",[cpsat],null),("highs",[highs],null),("portfolio",[cpsat,highs],null),("portfolio-stop",[cpsat,highs],TimeSpan.Zero)};
+        // HiGHS has no interrupt in the managed API and overran its time limit in the scale study: wider soft-limit margin.
+        var grace=new Dictionary<string,TimeSpan>{["highs"]=TimeSpan.FromMilliseconds(700)};
+        PortfolioPolicy Pol(PortfolioMode mode,StopRule rule)=>new(mode,SmallModelVariables:0,Enumerate:true,CleanupGrace:TimeSpan.FromSeconds(15),
+            Stop:rule,ProbeFraction:0.3,MemberGrace:grace);
+        var configs=new (string Name,AdapterProfile[] Members,PortfolioPolicy Policy)[]{
+            ("cpsat",[cpsat],Pol(PortfolioMode.Race,StopRule.ProofOnly)),("highs",[highs],Pol(PortfolioMode.Race,StopRule.ProofOnly)),
+            ("race-proof",[cpsat,highs],Pol(PortfolioMode.Race,StopRule.ProofOnly)),("race-concordant",[cpsat,highs],Pol(PortfolioMode.Race,StopRule.Concordant)),
+            ("escalate-single",[cpsat,highs],Pol(PortfolioMode.Escalate,StopRule.SingleAttestation)),
+            ("escalate-concordant",[cpsat,highs],Pol(PortfolioMode.Escalate,StopRule.Concordant))};
         var rows=new List<Dictionary<string,object?>>();
         var inputs=Path.Combine(outDir,"inputs");Directory.CreateDirectory(inputs);
         foreach(var inst in instances)
@@ -128,7 +183,7 @@ static class Study
             var m=c.Original.Model;
             var varIds=Enumerable.Range(0,inst.N).Select(j=>m.Symbols.Single(s=>s.Role==SymbolRole.Variable&&(s.Id=="x"+j||s.Id.EndsWith(".x"+j,StringComparison.Ordinal))).Id).ToArray();
             var facts=c.GeneratedInputs[c.FactsDigest].ToArray();
-            foreach(var (name,members,stop) in configs)
+            foreach(var (name,members,policy) in configs)
             {
                 var pool=new GovernedPool("study",Threads,Memory,2,boundary);
                 var portfolioMembers=members.Select(p=>
@@ -140,8 +195,7 @@ static class Study
                         a.Threads.ToString(CultureInfo.InvariantCulture),((int)a.SoftLimit.TotalMilliseconds).ToString(CultureInfo.InvariantCulture),a.RunId],work),
                         Engines.Decode,c.FactsDigest);
                 }).ToArray();
-                var request=new PortfolioRequest($"{name}-{inst.Name}",c.Normalized,Generators.Catalog,facts,"linux-x64",NumericRequirement.ExactInput,budget,
-                    new PortfolioPolicy(PortfolioMode.Race,AttestedStopGrace:stop,SmallModelVariables:0,Enumerate:true,CleanupGrace:TimeSpan.FromSeconds(15)));
+                var request=new PortfolioRequest($"{name}-{inst.Name}",c.Normalized,Generators.Catalog,facts,"linux-x64",NumericRequirement.ExactInput,budget,policy);
                 var r=await PortfolioRunner.RunAsync(request,portfolioMembers);
                 var row=new Dictionary<string,object?>
                 {
@@ -149,11 +203,12 @@ static class Study
                     ["accepted"]=r.Accepted,["objective"]=r.Objective,["strength"]=r.Strength.ToString(),["bound"]=r.BestBound,["boundStrength"]=r.BoundStrength.ToString(),
                     ["gap"]=r.AbsoluteGap,["selected"]=r.Selected?.Solver.SolverId,["wallMs"]=r.WallMs,["chargedCoreMs"]=r.Ledger.ChargedCoreMs,
                     ["reservedCoreMs"]=r.Ledger.ReservedCoreMs,["overspendCoreMs"]=r.Ledger.OverspendCoreMs,["peakThreads"]=r.Ledger.PeakConcurrentThreads,
-                    ["alerts"]=r.Alerts.Select(a=>a.Code+":"+a.Solver.SolverId).ToArray(),
+                    ["alerts"]=r.Alerts.Select(a=>a.Code+":"+a.Solver.SolverId).ToArray(),["stopReason"]=r.StopReason.ToString(),["escalated"]=r.Escalated,
+                    ["concordant"]=r.ConcordantAttestations,
                     ["members"]=r.Members.Select(x=>new{solver=x.Solver.SolverId,phase=x.Phase.ToString(),code=x.Code,threads=x.Assignment?.Threads,
                         termination=x.Termination?.ToString(),reported=x.Assessment?.ReportedStatus.ToString(),verified=x.VerifiedObjective,
                         rejected=x.Assessment?.Rejected,diagnostic=x.Assessment?.Diagnostic??x.Diagnostic,cpuMs=x.CpuMs,cpuSource=x.CpuSource?.ToString(),
-                        elapsedMs=x.ElapsedMs,peakBytes=x.PeakBytes,bound=x.Assessment?.Bound}).ToArray()
+                        elapsedMs=x.ElapsedMs,peakBytes=x.PeakBytes,bound=x.Assessment?.Bound,stage=x.Stage,softMs=(long?)x.Assignment?.SoftLimit.TotalMilliseconds,hardMs=(long?)x.Assignment?.HardDeadline.TotalMilliseconds}).ToArray()
                 };
                 rows.Add(row);
                 Console.WriteLine($"{inst.Name,-22} {name,-9} {r.Status,-16} obj={r.Objective,-8} bound={r.BestBound,-8} sel={r.Selected?.Solver.SolverId,-5} wall={r.WallMs}ms cpu={r.Ledger.ChargedCoreMs} alerts={r.Alerts.Length}");

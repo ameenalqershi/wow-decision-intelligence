@@ -75,6 +75,9 @@ public static class Engines
         if(x.Maximize)model.Maximize(obj);else model.Minimize(obj);
         var solver=new CpSolver{StringParameters=FormattableString.Invariant(
             $"num_workers:{threads} random_seed:1 max_time_in_seconds:{softMs/1000.0} log_search_progress:false")};
+        // In-process watchdog: CP-SAT may overrun max_time_in_seconds (presolve, LNS); StopSearch at the soft limit makes it
+        // return its incumbent before the boundary's hard kill (which would discard everything).
+        using var watchdog=new Timer(_=>solver.StopSearch(),null,softMs,Timeout.Infinite);
         var s=solver.Solve(model);
         long[]? values=s is CpSolverStatus.Optimal or CpSolverStatus.Feasible?vars.Select(v=>solver.Value(v)).ToArray():null;
         var status=s switch{CpSolverStatus.Optimal=>MathematicalStatus.Optimal,CpSolverStatus.Feasible=>MathematicalStatus.Feasible,
@@ -112,6 +115,24 @@ public static class Engines
             HighsModelStatus.kInfeasible=>MathematicalStatus.Infeasible,_ when values is not null=>MathematicalStatus.Feasible,_=>MathematicalStatus.Unknown};
         var term=ms is HighsModelStatus.kOptimal or HighsModelStatus.kInfeasible?Termination.Completed:Termination.Timeout;
         return (status,term,values,values is null?null:SafeBound(info.DualBound,x.Maximize));
+    }
+
+    /// <summary>Containment probe: allocate and touch <paramref name="mb"/> MiB, then wait to be killed.</summary>
+    public static int Hog(int mb)
+    {
+        var blocks=new List<byte[]>();
+        for(int i=0;i<mb;i++){var b=new byte[1<<20];for(int j=0;j<b.Length;j+=4096)b[j]=1;blocks.Add(b);}
+        Thread.Sleep(Timeout.Infinite);GC.KeepAlive(blocks);return 0;
+    }
+    /// <summary>Containment probe: spawn <paramref name="burners"/> CPU-burning grandchildren and one memory hog, then wait.
+    /// Everything must be charged to, limited by and killed with the worker's cgroup.</summary>
+    public static int Spawn(int burners,int mb)
+    {
+        var dotnet=Environment.ProcessPath!;var self=typeof(Engines).Assembly.Location;
+        var kids=new List<System.Diagnostics.Process>();
+        for(int i=0;i<burners;i++)kids.Add(System.Diagnostics.Process.Start(dotnet,[self,"burn","1"]));
+        kids.Add(System.Diagnostics.Process.Start(dotnet,[self,"hog",mb.ToString(CultureInfo.InvariantCulture)]));
+        Burn(1);GC.KeepAlive(kids);return 0;
     }
 
     /// <summary>CPU burner for the overspend study: T busy threads until killed.</summary>
