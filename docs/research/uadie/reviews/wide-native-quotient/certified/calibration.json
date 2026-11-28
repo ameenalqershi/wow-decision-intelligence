@@ -1,0 +1,32 @@
+{
+  "developmentRows": 360,
+  "models": 90,
+  "selected": 0.125,
+  "candidates": [
+    {
+      "threshold": 0.125,
+      "ticks": 4215934155,
+      "cert": 72
+    },
+    {
+      "threshold": 0.25,
+      "ticks": 4969672285,
+      "cert": 54
+    },
+    {
+      "threshold": 0.5,
+      "ticks": 4969672285,
+      "cert": 54
+    },
+    {
+      "threshold": 0.75,
+      "ticks": 4969672285,
+      "cert": 54
+    },
+    {
+      "threshold": 1.1,
+      "ticks": 5152274432,
+      "cert": 36
+    }
+  ]
+}
