@@ -52,6 +52,7 @@ internal sealed class DependencyDispatcher(bool reuse,bool decompose,bool flow=t
             LocalProof? top=networkCandidate?TryLocal(whole,tokens.GetValueOrDefault(0),out topHit,out topTransport,true):null;
             trace.Mark("network-gate");
             if(top!=null){
+                ct.ThrowIfCancellationRequested();
                 tokens=reuse?new(){[0]=new(whole,top)}:new();
                 return new(top.Assignment!=null?"assignment":top.Flow!=null?"flow":"direct",top.Result,[top],topHit?1:0,topTransport?1:0,topHit||topTransport?0:1,true);
             }
@@ -143,7 +144,8 @@ internal sealed class DependencyDispatcher(bool reuse,bool decompose,bool flow=t
         // Snapshot must not race with caller mutation.
         var m=IncrementalQuotient.Admit(ProofReuse.Snapshot(input));
         var o=Solve(m,trace,ct);
-        return JsonSerializer.Deserialize<UnifiedOutcome>(JsonSerializer.SerializeToUtf8Bytes(o,CertifiedQuotient.Json),CertifiedQuotient.Json)!;
+        var exported=JsonSerializer.Deserialize<UnifiedOutcome>(JsonSerializer.SerializeToUtf8Bytes(o,CertifiedQuotient.Json),CertifiedQuotient.Json)!;
+        ct.ThrowIfCancellationRequested();return exported;
     }
 }
 internal static class UnifiedVerifier
@@ -154,7 +156,9 @@ internal static class UnifiedVerifier
         if(CertifiedQuotient.Digest(m)!=e.Digest)throw new Exception("digest");
         var r=o.Result;
         if(r.Bits!=null&&CertifiedStudy.Verify(m,r.Bits)!=r.Value)throw new Exception("source witness");
-        if((r.Status is "Optimal" or "Feasible")!=(r.Bits!=null&&r.Value.HasValue))throw new Exception("status witness");
+        if(r.Status is not("Optimal" or "Feasible" or "Infeasible" or "Unknown"))throw new Exception("unsupported status");
+        if(r.Status is "Optimal" or "Feasible"){if(r.Bits==null||!r.Value.HasValue)throw new Exception("missing witness");}
+        else if(r.Bits!=null||r.Value.HasValue)throw new Exception("nonconclusive witness");
         if(o.Blocks.Length==0){if(o.Formal)throw new Exception("missing proof");return;}
         // Independent partition: ownership check against ALL original scopes, not producer DSU.
         int[] owner=Enumerable.Repeat(-1,m.N).ToArray(),local=new int[m.N];
