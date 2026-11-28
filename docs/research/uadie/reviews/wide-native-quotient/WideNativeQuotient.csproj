@@ -21,6 +21,8 @@
 <Compile Include="UnifiedStudy.cs"/>
 <Compile Include="UnifiedJournal.cs"/>
 <Compile Include="UnifiedAdversarial.cs"/>
+<Compile Include="OwnedEvidence.cs"/>
+<Compile Include="LowOverheadStudy.cs"/>
 <Compile Include="../../../../../research/AlgorithmDiscoveryLab/*.cs" Exclude="../../../../../research/AlgorithmDiscoveryLab/Program.cs"/>
 <Compile Include="../../../../../research/ComponentStudy/Model.cs"/>
 <Compile Include="../../../../../research/ComponentStudy/Oracle.cs"/>

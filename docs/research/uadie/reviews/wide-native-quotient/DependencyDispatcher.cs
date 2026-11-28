@@ -39,17 +39,17 @@ internal sealed class DependencyDispatcher(bool reuse,bool decompose,bool flow=t
     private Dictionary<int,Token> tokens=[];
     private readonly ProofReuse monolithic=new(reuse);
     private int busy;
-    private UnifiedOutcome Solve(WideModel m,PhaseTrace trace,CancellationToken ct=default)
+    private UnifiedOutcome Solve(WideModel m,PhaseTrace trace,CancellationToken ct=default,string? admittedDigest=null)
     {
         if(Interlocked.Exchange(ref busy,1)!=0)throw new InvalidOperationException("single owner");
         try{
             ct.ThrowIfCancellationRequested();
-            string digest=CertifiedQuotient.Digest(m);
+            string digest=admittedDigest??CertifiedQuotient.Digest(m);
             var whole=new LocalBlock(Enumerable.Range(0,m.N).ToArray(),m);
             // First specialized assignment/flow, then cheap component gate; no warm hint.
             bool networkCandidate=m.Edges.Length==0&&m.Fixes.Length==0&&m.Rows.Length>=2&&m.Rows.All(r=>r.U==1&&r.Scope.Length>0);
             bool topHit=false,topTransport=false;
-            LocalProof? top=networkCandidate?TryLocal(whole,tokens.GetValueOrDefault(0),out topHit,out topTransport,true):null;
+            LocalProof? top=networkCandidate?TryLocal(whole,tokens.GetValueOrDefault(0),out topHit,out topTransport,true,admittedDigest):null;
             trace.Mark("network-gate");
             if(top!=null){
                 ct.ThrowIfCancellationRequested();
@@ -90,9 +90,9 @@ internal sealed class DependencyDispatcher(bool reuse,bool decompose,bool flow=t
             return new("original",original,[],0,0,0,false);
         }finally{Volatile.Write(ref busy,0);}
     }
-    private LocalProof? TryLocal(LocalBlock b,Token? old,out bool hit,out bool transported,bool networkOnly)
+    private LocalProof? TryLocal(LocalBlock b,Token? old,out bool hit,out bool transported,bool networkOnly,string? admittedDigest=null)
     {
-        hit=false;transported=false;var m=b.Model;string d=CertifiedQuotient.Digest(m);
+        hit=false;transported=false;var m=b.Model;string d=admittedDigest??CertifiedQuotient.Digest(m);
         bool same=reuse&&old!=null&&old.Block.Members.AsSpan().SequenceEqual(b.Members)&&DependencyPartition.SameShape(old.Block.Model,m);
         if(same&&old!.Block.Model.Cost.AsSpan().SequenceEqual(m.Cost)){hit=true;return old.Proof;}
         if(same&&old!.Proof.Quotient?.Cert is {} oldCert&&!networkOnly){
@@ -137,6 +137,26 @@ internal sealed class DependencyDispatcher(bool reuse,bool decompose,bool flow=t
         var x=Enumerable.Range(0,m.N).Select(i=>t.Base[i]^(t.Map[i]<0?0:reduced[t.Map[i]])).ToArray();
         var result=new WideResult("Optimal",CertifiedStudy.Verify(m,x),x,t.Free,t.Rows.Length);
         return new(b.Members,new(result,t,reduced,"direct",true,true),null,null,result);
+    }
+    // Ownership context is private, never accepted from a caller. Read-only by convention
+    // inside this trusted laboratory; no claim of runtime immutable array types.
+    private sealed class ExecutionContext
+    {
+        internal WideModel Model {get;}
+        internal string Digest {get;}
+        internal ExecutionContext(WideModel input)
+        {Model=IncrementalQuotient.Admit(ProofReuse.Snapshot(input));Digest=CertifiedQuotient.Digest(Model);}
+    }
+    internal UnifiedEvidence DecideEvidence(WideModel input,PhaseTrace trace,bool sharedContext,CancellationToken ct=default)
+    {
+        ct.ThrowIfCancellationRequested();
+        var context=new ExecutionContext(input);trace.Mark("context");
+        UnifiedOutcome result;
+        if(sharedContext)result=Solve(context.Model,trace,ct,context.Digest);
+        else result=Solve(IncrementalQuotient.Admit(ProofReuse.Snapshot(context.Model)),trace,ct);
+        // Even the exported source may not alias the private whole-model token.
+        var exported=new UnifiedEvidence(context.Digest,sharedContext?ProofReuse.Snapshot(context.Model):context.Model,OwnedEvidence.Copy(result));
+        trace.Mark("typed-export");ct.ThrowIfCancellationRequested();return exported;
     }
     // Caller boundary: never expose arrays owned by tokens; caller must use this API.
     internal UnifiedOutcome Decide(WideModel input,PhaseTrace trace,CancellationToken ct=default)

@@ -26,6 +26,8 @@ if(args is ["unified-audit"]){UnifiedStudy.Audit();return;}
 if(args is ["unified-readback",var unifiedFile]){UnifiedStudy.Readback(unifiedFile);return;}
 if(args is ["unified-journal-audit",var journalSource,var journalRoot]){UnifiedJournal.Audit(journalSource,journalRoot);return;}
 if(args is ["unified-adversarial"]){UnifiedAdversarial.Run();return;}
+if(args is ["low-overhead",var lowSplit]){LowOverheadStudy.Run(lowSplit);return;}
+if(args is ["low-overhead-audit"]){LowOverheadStudy.Audit();return;}
 if(args is ["unified-journal-child",var childDir,var childSource,var childStage,var childSeq,var childHash]){UnifiedJournal.Child(childDir,childSource,childStage,childSeq,childHash);return;}
 if(args.Length!=1)throw new ArgumentException("dev|holdout|audit");
 bool dev=args[0]=="dev";if(!dev&&args[0]!="holdout")throw new ArgumentException("split");
