@@ -1,0 +1,20 @@
+{
+  "records": 12,
+  "distinctModelDigests": 8,
+  "optimalMatches": 12,
+  "verifiedReadbackWitnesses": 12,
+  "bySize": [
+    {
+      "n": 50000,
+      "records": 6,
+      "optimal": 6,
+      "distinctDigests": 4
+    },
+    {
+      "n": 100000,
+      "records": 6,
+      "optimal": 6,
+      "distinctDigests": 4
+    }
+  ]
+}
