@@ -53,13 +53,13 @@ internal static class UnifiedStudy
     internal static UnifiedOutcome Wrap(WideModel m,ProofOutcome o)=>new(o.Route,o.Result,[new(Enumerable.Range(0,m.N).ToArray(),o,null,null,o.Result)],0,0,0,o.OptimalityProved);
     internal static void Run(string split)
     {
-        bool disk=split=="disk";if(!disk&&split!="holdout")throw new ArgumentException("split");
-        string[] arms=["original","G13","G14","G16","unified-mono","unified-cold","unified-reuse"];
+        bool disk=split=="disk",selector=split=="selector";if(!disk&&!selector&&split!="holdout")throw new ArgumentException("split");
+        string[] arms=selector?["original","G16","unified-mono","unified-reuse","unified-gate","unified-gate-flow"]:["original","G13","G14","G16","unified-mono","unified-cold","unified-reuse"];
         using FileStream? output=disk?new("unified-evidence.jsonl",FileMode.CreateNew):null;
         foreach(string family in new[]{"blocks","quotas","assignment","sparse","rectangular","mixed","overlap"})
         for(int h=0;h<(disk?1:12);h++){
-            int seed=(disk?2720101:2690101)+h;var g13=new IncrementalQuotient(true);var g14=new IncrementalQuotient(true,true,true);var g16=new ProofReuse(true);
-            var mono=new DependencyDispatcher(true,false);var cold=new DependencyDispatcher(false,true);var reuse=new DependencyDispatcher(true,true);
+            int seed=(disk?2720101:selector?2810101:2690101)+h;var g13=new IncrementalQuotient(true);var g14=new IncrementalQuotient(true,true,true);var g16=new ProofReuse(true);
+            var mono=new DependencyDispatcher(true,false);var cold=new DependencyDispatcher(false,true);var reuse=new DependencyDispatcher(true,true);var gate=new DependencyDispatcher(true,true,true,true);var gateFlow=new DependencyDispatcher(true,true,true,true,true);
             int rev=0;
             foreach(var input in History(family,seed)){
                 var results=new Dictionary<string,WideResult>();
@@ -68,7 +68,7 @@ internal static class UnifiedStudy
                     var m=IncrementalQuotient.Admit(ProofReuse.Snapshot(input));string d=CertifiedQuotient.Digest(m);trace.Mark("admit-digest");
                     UnifiedOutcome o;
                     if(arm.StartsWith("unified",StringComparison.Ordinal)){
-                        var s=arm=="unified-mono"?mono:arm=="unified-cold"?cold:reuse;
+                        var s=arm switch{"unified-mono"=>mono,"unified-cold"=>cold,"unified-gate"=>gate,"unified-gate-flow"=>gateFlow,_=>reuse};
                         o=s.Decide(m,trace);
                     }else if(arm=="G16"){
                         var f=CertifiedStudy.Features(m);

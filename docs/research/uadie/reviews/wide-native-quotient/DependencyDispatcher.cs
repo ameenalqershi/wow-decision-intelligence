@@ -33,7 +33,7 @@ internal static class DependencyPartition
         return true;
     }
 }
-internal sealed class DependencyDispatcher(bool reuse,bool decompose,bool flow=true)
+internal sealed class DependencyDispatcher(bool reuse,bool decompose,bool flow=true,bool preferSimple=false,bool flowTransport=false)
 {
     private sealed record Token(LocalBlock Block,LocalProof Proof);
     private Dictionary<int,Token> tokens=[];
@@ -55,7 +55,9 @@ internal sealed class DependencyDispatcher(bool reuse,bool decompose,bool flow=t
                 tokens=reuse?new(){[0]=new(whole,top)}:new();
                 return new(top.Assignment!=null?"assignment":top.Flow!=null?"flow":"direct",top.Result,[top],topHit?1:0,topTransport?1:0,topHit||topTransport?0:1,true);
             }
-            if(decompose&&m.N>=16){
+            (bool Disjoint,double ReductionProxy)? features=preferSimple?CertifiedStudy.Features(m):null;
+            if(preferSimple)trace.Mark("simple-gate");
+            if(decompose&&m.N>=16&&!(features?.Disjoint??false)){
                 var parts=DependencyPartition.Build(m);trace.Mark("partition");
                 // Avoid huge singleton fanout or dense monolithic redundant work.
                 if(parts.Length>=2&&parts.Length<=256&&parts.Max(b=>b.Model.N)<=m.N*3/4){
@@ -78,7 +80,7 @@ internal sealed class DependencyDispatcher(bool reuse,bool decompose,bool flow=t
                 }
             }
             tokens.Clear();
-            var f=CertifiedStudy.Features(m);trace.Mark("fallback-gate");
+            var f=features??CertifiedStudy.Features(m);trace.Mark("fallback-gate");
             if(f.Disjoint||f.ReductionProxy>=.125){
                 var o=monolithic.Solve(m,digest,trace,ct:ct);
                 return new(o.Route,o.Result,[new(whole.Members,o,null,null,o.Result)],0,0,1,o.OptimalityProved);
@@ -110,6 +112,12 @@ internal sealed class DependencyDispatcher(bool reuse,bool decompose,bool flow=t
             var u=Enumerable.Range(0,a.Shape.K).Select(i=>checked(m.Cost[a.Shape.Matrix[i*a.Shape.K+a.Match[i]]]-a.V[a.Match[i]])).ToArray();
             var p=a with{Digest=d,U=u};var r=CertifiedAssignment.Reconstruct(m,p.Shape,p.Match);
             if(AssignmentVerifier.Verify(m,d,p,r)){transported=true;return new(b.Members,null,p,null,r);}
+        }
+        if(same&&flowTransport&&old!.Proof.Flow is {} previousFlow){
+            var bits=old.Proof.Result.Bits!;
+            long value=0;for(int i=0;i<m.N;i++)value+=m.Cost[i]*bits[i];
+            var p=previousFlow with{Digest=d};var r=old.Proof.Result with{Value=value};
+            if(CertifiedSparseFlow.Verify(m,d,p,r)){transported=true;return new(b.Members,null,null,p,r);}
         }
         var shape=CertifiedAssignment.Discover(m);
         if(shape!=null){
