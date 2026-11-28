@@ -1,0 +1,163 @@
+{
+  "records": 9920,
+  "valid": 9920,
+  "models": 992,
+  "holdoutRevised": {
+    "cp-sat-cold": 560.7539999999999,
+    "cp-sat-hint": 547.0039999999999,
+    "full": 40.2345,
+    "warm": 29.685000000000002,
+    "partition": 83.795,
+    "reuse": 61.345,
+    "box": 67.8905,
+    "pair": 61.3305,
+    "parity": 42.42,
+    "parity-warm": 23.375,
+    "orientation": 27.13,
+    "orientation-adaptive": 21.229
+  },
+  "wide": [
+    {
+      "n": 64,
+      "f": "chain",
+      "records": 3,
+      "valid": 3,
+      "localMedianUs": 126.511,
+      "nativeMedianUs": 2571.675
+    },
+    {
+      "n": 64,
+      "f": "blocks",
+      "records": 3,
+      "valid": 3,
+      "localMedianUs": 43.619,
+      "nativeMedianUs": 1730.417
+    },
+    {
+      "n": 64,
+      "f": "sparse",
+      "records": 3,
+      "valid": 3,
+      "localMedianUs": 76.169,
+      "nativeMedianUs": 1370.368
+    },
+    {
+      "n": 64,
+      "f": "odd",
+      "records": 3,
+      "valid": 3,
+      "localMedianUs": 30.51,
+      "nativeMedianUs": 898.328
+    },
+    {
+      "n": 256,
+      "f": "chain",
+      "records": 3,
+      "valid": 3,
+      "localMedianUs": 155.369,
+      "nativeMedianUs": 5697.149
+    },
+    {
+      "n": 256,
+      "f": "blocks",
+      "records": 3,
+      "valid": 3,
+      "localMedianUs": 150.749,
+      "nativeMedianUs": 5075.3
+    },
+    {
+      "n": 256,
+      "f": "sparse",
+      "records": 3,
+      "valid": 3,
+      "localMedianUs": 239.459,
+      "nativeMedianUs": 3793.583
+    },
+    {
+      "n": 256,
+      "f": "odd",
+      "records": 3,
+      "valid": 3,
+      "localMedianUs": 66.63,
+      "nativeMedianUs": 3437.114
+    },
+    {
+      "n": 1024,
+      "f": "chain",
+      "records": 3,
+      "valid": 3,
+      "localMedianUs": 649.049,
+      "nativeMedianUs": 22070.048
+    },
+    {
+      "n": 1024,
+      "f": "blocks",
+      "records": 3,
+      "valid": 3,
+      "localMedianUs": 579.528,
+      "nativeMedianUs": 25726.521
+    },
+    {
+      "n": 1024,
+      "f": "sparse",
+      "records": 3,
+      "valid": 3,
+      "localMedianUs": 416.969,
+      "nativeMedianUs": 14680.782
+    },
+    {
+      "n": 1024,
+      "f": "odd",
+      "records": 3,
+      "valid": 3,
+      "localMedianUs": 124.41,
+      "nativeMedianUs": 17524.307
+    },
+    {
+      "n": 4096,
+      "f": "chain",
+      "records": 3,
+      "valid": 3,
+      "localMedianUs": 806.148,
+      "nativeMedianUs": 70751.457
+    },
+    {
+      "n": 4096,
+      "f": "blocks",
+      "records": 3,
+      "valid": 3,
+      "localMedianUs": 859.829,
+      "nativeMedianUs": 67037.253
+    },
+    {
+      "n": 4096,
+      "f": "sparse",
+      "records": 3,
+      "valid": 3,
+      "localMedianUs": 1259.777,
+      "nativeMedianUs": 45194.034
+    },
+    {
+      "n": 4096,
+      "f": "odd",
+      "records": 3,
+      "valid": 3,
+      "localMedianUs": 266.609,
+      "nativeMedianUs": 44585.045
+    }
+  ],
+  "reportingError": [
+    {
+      "mode": "small",
+      "count": 20,
+      "maxObjectiveError": 2.842170943040401e-14,
+      "maxBoundError": 2.842170943040401e-14
+    },
+    {
+      "mode": "wide",
+      "count": 0,
+      "maxObjectiveError": 0,
+      "maxBoundError": 0
+    }
+  ]
+}

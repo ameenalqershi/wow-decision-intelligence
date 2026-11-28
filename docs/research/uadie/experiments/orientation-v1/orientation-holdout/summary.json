@@ -1,0 +1,751 @@
+{
+  "records": 4800,
+  "valid": 4800,
+  "arms": {
+    "box": {
+      "medianUs": 115.185,
+      "p10Us": 53.46,
+      "p90Us": 365.879,
+      "coldMedianUs": 113.56450000000001,
+      "verifyMedianUs": 3.255,
+      "auditMedianUs": 344.37,
+      "gateMedianUs": 16.128999999999998,
+      "cpuTicksMedian": 1195,
+      "allocatedMedian": 28360,
+      "peakBytes": 57692160,
+      "uniqueTransfers": 3,
+      "vsWarm": {
+        "pairedMedianDifferenceUs": 73.63900000000001,
+        "clusterBootstrap95": [
+          65.1995,
+          97.36449999999999
+        ],
+        "clusters": 8,
+        "draws": 2000
+      },
+      "families": {
+        "chain-shift": {
+          "medianUs": 237.07,
+          "uniqueTransfers": 0,
+          "medianGateUs": 26.185
+        },
+        "star-shift": {
+          "medianUs": 240.7695,
+          "uniqueTransfers": 0,
+          "medianGateUs": 18.455
+        },
+        "cycle-shift": {
+          "medianUs": 236.199,
+          "uniqueTransfers": 0,
+          "medianGateUs": 20.0595
+        },
+        "odd-cycle": {
+          "medianUs": 184.1845,
+          "uniqueTransfers": 0,
+          "medianGateUs": 6.744999999999999
+        },
+        "mixed": {
+          "medianUs": 144.85500000000002,
+          "uniqueTransfers": 0,
+          "medianGateUs": 21.095
+        },
+        "relax-chain": {
+          "medianUs": 77.21000000000001,
+          "uniqueTransfers": 0,
+          "medianGateUs": 2.1900000000000004
+        },
+        "disjoint": {
+          "medianUs": 68.6005,
+          "uniqueTransfers": 0,
+          "medianGateUs": 18.425
+        },
+        "isolated": {
+          "medianUs": 76.58000000000001,
+          "uniqueTransfers": 0,
+          "medianGateUs": 14.629999999999999
+        },
+        "tighten": {
+          "medianUs": 59.834999999999994,
+          "uniqueTransfers": 3,
+          "medianGateUs": 7.2745
+        },
+        "large-delta": {
+          "medianUs": 128.6645,
+          "uniqueTransfers": 0,
+          "medianGateUs": 19.240000000000002
+        }
+      }
+    },
+    "full": {
+      "medianUs": 46.46,
+      "p10Us": 15.679,
+      "p90Us": 162.249,
+      "coldMedianUs": 42.71,
+      "verifyMedianUs": 3.33,
+      "auditMedianUs": 355.46900000000005,
+      "gateMedianUs": 0,
+      "cpuTicksMedian": 500,
+      "allocatedMedian": 384,
+      "peakBytes": 46329856,
+      "uniqueTransfers": 0,
+      "vsWarm": {
+        "pairedMedianDifferenceUs": 3.9244999999999948,
+        "clusterBootstrap95": [
+          0.5350000000000006,
+          20.699999999999996
+        ],
+        "clusters": 8,
+        "draws": 2000
+      },
+      "families": {
+        "chain-shift": {
+          "medianUs": 63.195,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "star-shift": {
+          "medianUs": 48.8745,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "cycle-shift": {
+          "medianUs": 68.19,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "odd-cycle": {
+          "medianUs": 75.3095,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "mixed": {
+          "medianUs": 66.96549999999999,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "relax-chain": {
+          "medianUs": 61.09,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "disjoint": {
+          "medianUs": 24.5,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "isolated": {
+          "medianUs": 10.57,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "tighten": {
+          "medianUs": 66.5495,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "large-delta": {
+          "medianUs": 52.75,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        }
+      }
+    },
+    "orientation": {
+      "medianUs": 28.880000000000003,
+      "p10Us": 20.539,
+      "p90Us": 50.54,
+      "coldMedianUs": 24.82,
+      "verifyMedianUs": 2.97,
+      "auditMedianUs": 338.9595,
+      "gateMedianUs": 0,
+      "cpuTicksMedian": 320,
+      "allocatedMedian": 2736,
+      "peakBytes": 47300608,
+      "uniqueTransfers": 0,
+      "vsWarm": {
+        "pairedMedianDifferenceUs": -4.445,
+        "clusterBootstrap95": [
+          -31.2105,
+          0.8309999999999995
+        ],
+        "clusters": 8,
+        "draws": 2000
+      },
+      "families": {
+        "chain-shift": {
+          "medianUs": 33.42,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "star-shift": {
+          "medianUs": 31.085,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "cycle-shift": {
+          "medianUs": 36.349999999999994,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "odd-cycle": {
+          "medianUs": 13.4,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "mixed": {
+          "medianUs": 31.795,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "relax-chain": {
+          "medianUs": 26.5295,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "disjoint": {
+          "medianUs": 35.61,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "isolated": {
+          "medianUs": 32.114999999999995,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "tighten": {
+          "medianUs": 27.5345,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "large-delta": {
+          "medianUs": 27.67,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        }
+      }
+    },
+    "orientation-adaptive": {
+      "medianUs": 31.8855,
+      "p10Us": 18.99,
+      "p90Us": 59.68,
+      "coldMedianUs": 26.945,
+      "verifyMedianUs": 3.15,
+      "auditMedianUs": 347.8145,
+      "gateMedianUs": 0,
+      "cpuTicksMedian": 350,
+      "allocatedMedian": 2648,
+      "peakBytes": 47136768,
+      "uniqueTransfers": 0,
+      "vsWarm": {
+        "pairedMedianDifferenceUs": -1.0244999999999997,
+        "clusterBootstrap95": [
+          -25.799999999999997,
+          5.59
+        ],
+        "clusters": 8,
+        "draws": 2000
+      },
+      "families": {
+        "chain-shift": {
+          "medianUs": 40.985,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "star-shift": {
+          "medianUs": 35.239999999999995,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "cycle-shift": {
+          "medianUs": 35.68,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "odd-cycle": {
+          "medianUs": 15.350000000000001,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "mixed": {
+          "medianUs": 35.5695,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "relax-chain": {
+          "medianUs": 28.35,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "disjoint": {
+          "medianUs": 38.535,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "isolated": {
+          "medianUs": 20.795499999999997,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "tighten": {
+          "medianUs": 33.86,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "large-delta": {
+          "medianUs": 35.695,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        }
+      }
+    },
+    "pair": {
+      "medianUs": 109.87950000000001,
+      "p10Us": 55.69,
+      "p90Us": 341.179,
+      "coldMedianUs": 114.37950000000001,
+      "verifyMedianUs": 3.18,
+      "auditMedianUs": 345.59400000000005,
+      "gateMedianUs": 16.475,
+      "cpuTicksMedian": 1140,
+      "allocatedMedian": 28360,
+      "peakBytes": 57733120,
+      "uniqueTransfers": 4,
+      "vsWarm": {
+        "pairedMedianDifferenceUs": 66.87,
+        "clusterBootstrap95": [
+          57.001000000000005,
+          102.2355
+        ],
+        "clusters": 8,
+        "draws": 2000
+      },
+      "families": {
+        "chain-shift": {
+          "medianUs": 250.1845,
+          "uniqueTransfers": 0,
+          "medianGateUs": 23.3755
+        },
+        "star-shift": {
+          "medianUs": 235.4895,
+          "uniqueTransfers": 0,
+          "medianGateUs": 19.285
+        },
+        "cycle-shift": {
+          "medianUs": 206.709,
+          "uniqueTransfers": 0,
+          "medianGateUs": 18.775
+        },
+        "odd-cycle": {
+          "medianUs": 213.0845,
+          "uniqueTransfers": 0,
+          "medianGateUs": 5.63
+        },
+        "mixed": {
+          "medianUs": 150.29500000000002,
+          "uniqueTransfers": 0,
+          "medianGateUs": 19.495
+        },
+        "relax-chain": {
+          "medianUs": 75.1505,
+          "uniqueTransfers": 0,
+          "medianGateUs": 2.09
+        },
+        "disjoint": {
+          "medianUs": 66,
+          "uniqueTransfers": 1,
+          "medianGateUs": 16.835
+        },
+        "isolated": {
+          "medianUs": 68.4195,
+          "uniqueTransfers": 0,
+          "medianGateUs": 14.14
+        },
+        "tighten": {
+          "medianUs": 76.13,
+          "uniqueTransfers": 3,
+          "medianGateUs": 6.390000000000001
+        },
+        "large-delta": {
+          "medianUs": 117.65,
+          "uniqueTransfers": 0,
+          "medianGateUs": 18.189999999999998
+        }
+      }
+    },
+    "parity": {
+      "medianUs": 58.33,
+      "p10Us": 19.33,
+      "p90Us": 253.699,
+      "coldMedianUs": 120.869,
+      "verifyMedianUs": 3.06,
+      "auditMedianUs": 341.789,
+      "gateMedianUs": 9.68,
+      "cpuTicksMedian": 610,
+      "allocatedMedian": 13660,
+      "peakBytes": 57724928,
+      "uniqueTransfers": 37,
+      "vsWarm": {
+        "pairedMedianDifferenceUs": 28.18,
+        "clusterBootstrap95": [
+          -0.3495000000000008,
+          38.995000000000005
+        ],
+        "clusters": 8,
+        "draws": 2000
+      },
+      "families": {
+        "chain-shift": {
+          "medianUs": 28.055,
+          "uniqueTransfers": 8,
+          "medianGateUs": 14.45
+        },
+        "star-shift": {
+          "medianUs": 24.994999999999997,
+          "uniqueTransfers": 8,
+          "medianGateUs": 13.5
+        },
+        "cycle-shift": {
+          "medianUs": 22.6245,
+          "uniqueTransfers": 8,
+          "medianGateUs": 11.6345
+        },
+        "odd-cycle": {
+          "medianUs": 193.07,
+          "uniqueTransfers": 0,
+          "medianGateUs": 5.085
+        },
+        "mixed": {
+          "medianUs": 31.350499999999997,
+          "uniqueTransfers": 5,
+          "medianGateUs": 11.91
+        },
+        "relax-chain": {
+          "medianUs": 155.515,
+          "uniqueTransfers": 0,
+          "medianGateUs": 1.875
+        },
+        "disjoint": {
+          "medianUs": 61.045,
+          "uniqueTransfers": 1,
+          "medianGateUs": 9.27
+        },
+        "isolated": {
+          "medianUs": 61.20399999999999,
+          "uniqueTransfers": 0,
+          "medianGateUs": 7.0205
+        },
+        "tighten": {
+          "medianUs": 67.9405,
+          "uniqueTransfers": 3,
+          "medianGateUs": 5.109999999999999
+        },
+        "large-delta": {
+          "medianUs": 48.6105,
+          "uniqueTransfers": 4,
+          "medianGateUs": 10.015
+        }
+      }
+    },
+    "parity-warm": {
+      "medianUs": 29.965,
+      "p10Us": 17.43,
+      "p90Us": 96.09,
+      "coldMedianUs": 45.920500000000004,
+      "verifyMedianUs": 2.885,
+      "auditMedianUs": 345.3995,
+      "gateMedianUs": 9.114999999999998,
+      "cpuTicksMedian": 340,
+      "allocatedMedian": 1896,
+      "peakBytes": 46686208,
+      "uniqueTransfers": 37,
+      "vsWarm": {
+        "pairedMedianDifferenceUs": 1.5809999999999995,
+        "clusterBootstrap95": [
+          -5.9909999999999854,
+          5.0849999999999955
+        ],
+        "clusters": 8,
+        "draws": 2000
+      },
+      "families": {
+        "chain-shift": {
+          "medianUs": 20.485,
+          "uniqueTransfers": 8,
+          "medianGateUs": 10.92
+        },
+        "star-shift": {
+          "medianUs": 23.774,
+          "uniqueTransfers": 8,
+          "medianGateUs": 11.2
+        },
+        "cycle-shift": {
+          "medianUs": 30.5,
+          "uniqueTransfers": 8,
+          "medianGateUs": 16.25
+        },
+        "odd-cycle": {
+          "medianUs": 84.92,
+          "uniqueTransfers": 0,
+          "medianGateUs": 4.775
+        },
+        "mixed": {
+          "medianUs": 33.834999999999994,
+          "uniqueTransfers": 5,
+          "medianGateUs": 11.9
+        },
+        "relax-chain": {
+          "medianUs": 31.810499999999998,
+          "uniqueTransfers": 0,
+          "medianGateUs": 1.635
+        },
+        "disjoint": {
+          "medianUs": 25.285,
+          "uniqueTransfers": 1,
+          "medianGateUs": 8.485
+        },
+        "isolated": {
+          "medianUs": 19.4345,
+          "uniqueTransfers": 0,
+          "medianGateUs": 6.779999999999999
+        },
+        "tighten": {
+          "medianUs": 50.730000000000004,
+          "uniqueTransfers": 3,
+          "medianGateUs": 5.055
+        },
+        "large-delta": {
+          "medianUs": 35.325,
+          "uniqueTransfers": 4,
+          "medianGateUs": 10.375
+        }
+      }
+    },
+    "partition": {
+      "medianUs": 104.74950000000001,
+      "p10Us": 48.05,
+      "p90Us": 291.839,
+      "coldMedianUs": 110.03,
+      "verifyMedianUs": 3.505,
+      "auditMedianUs": 343.649,
+      "gateMedianUs": 0,
+      "cpuTicksMedian": 1080,
+      "allocatedMedian": 28284,
+      "peakBytes": 57720832,
+      "uniqueTransfers": 0,
+      "vsWarm": {
+        "pairedMedianDifferenceUs": 56.756,
+        "clusterBootstrap95": [
+          45.8,
+          85.29950000000001
+        ],
+        "clusters": 8,
+        "draws": 2000
+      },
+      "families": {
+        "chain-shift": {
+          "medianUs": 191.4845,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "star-shift": {
+          "medianUs": 225.92450000000002,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "cycle-shift": {
+          "medianUs": 225.8395,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "odd-cycle": {
+          "medianUs": 200.7395,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "mixed": {
+          "medianUs": 121.36,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "relax-chain": {
+          "medianUs": 76.16499999999999,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "disjoint": {
+          "medianUs": 48.64,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "isolated": {
+          "medianUs": 53.195,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "tighten": {
+          "medianUs": 95.47999999999999,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "large-delta": {
+          "medianUs": 98.16900000000001,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        }
+      }
+    },
+    "reuse": {
+      "medianUs": 92.97,
+      "p10Us": 47.52,
+      "p90Us": 316.92,
+      "coldMedianUs": 111.5855,
+      "verifyMedianUs": 3.52,
+      "auditMedianUs": 346.914,
+      "gateMedianUs": 0,
+      "cpuTicksMedian": 970,
+      "allocatedMedian": 27624,
+      "peakBytes": 57630720,
+      "uniqueTransfers": 0,
+      "vsWarm": {
+        "pairedMedianDifferenceUs": 52.689499999999995,
+        "clusterBootstrap95": [
+          43.904999999999994,
+          75.6505
+        ],
+        "clusters": 8,
+        "draws": 2000
+      },
+      "families": {
+        "chain-shift": {
+          "medianUs": 207.3595,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "star-shift": {
+          "medianUs": 203.25900000000001,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "cycle-shift": {
+          "medianUs": 160.1755,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "odd-cycle": {
+          "medianUs": 205.1395,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "mixed": {
+          "medianUs": 106.5145,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "relax-chain": {
+          "medianUs": 76.565,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "disjoint": {
+          "medianUs": 45.725,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "isolated": {
+          "medianUs": 51.345,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "tighten": {
+          "medianUs": 109.32050000000001,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "large-delta": {
+          "medianUs": 92.9645,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        }
+      }
+    },
+    "warm": {
+      "medianUs": 32.655,
+      "p10Us": 11.64,
+      "p90Us": 147.689,
+      "coldMedianUs": 48.38,
+      "verifyMedianUs": 2.895,
+      "auditMedianUs": 345.5345,
+      "gateMedianUs": 0,
+      "cpuTicksMedian": 360,
+      "allocatedMedian": 368,
+      "peakBytes": 46272512,
+      "uniqueTransfers": 0,
+      "vsWarm": {
+        "pairedMedianDifferenceUs": 0,
+        "clusterBootstrap95": [
+          0,
+          0
+        ],
+        "clusters": 8,
+        "draws": 2000
+      },
+      "families": {
+        "chain-shift": {
+          "medianUs": 44.61,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "star-shift": {
+          "medianUs": 33.545,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "cycle-shift": {
+          "medianUs": 41.629999999999995,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "odd-cycle": {
+          "medianUs": 70.8595,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "mixed": {
+          "medianUs": 28.3645,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "relax-chain": {
+          "medianUs": 25.1795,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "disjoint": {
+          "medianUs": 15.990000000000002,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "isolated": {
+          "medianUs": 10.47,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "tighten": {
+          "medianUs": 75.7345,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        },
+        "large-delta": {
+          "medianUs": 36.325,
+          "uniqueTransfers": 0,
+          "medianGateUs": 0
+        }
+      }
+    }
+  },
+  "pareto": [
+    "orientation",
+    "parity-warm",
+    "warm"
+  ]
+}
