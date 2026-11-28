@@ -1,0 +1,306 @@
+{
+  "rows": 576,
+  "models": 144,
+  "distinctDigests": 144,
+  "histories": 72,
+  "summaries": [
+    {
+      "arm": "CP-SAT",
+      "rows": 144,
+      "statuses": {
+        "Optimal": 83,
+        "Feasible": 61
+      },
+      "proofs": 0,
+      "witnesses": 144,
+      "medianUs": 326322.14099999995,
+      "p95Us": 507403.07265,
+      "p99Us": 511332.87321,
+      "medianBytes": 435388,
+      "medianEvidenceBytes": 8584
+    },
+    {
+      "arm": "native-assignment",
+      "rows": 144,
+      "statuses": {
+        "Optimal": 144
+      },
+      "proofs": 0,
+      "witnesses": 144,
+      "medianUs": 550.7239999999999,
+      "p95Us": 1329.3046499999998,
+      "p99Us": 2466.1708299999937,
+      "medianBytes": 75008,
+      "medianEvidenceBytes": 8583.5
+    },
+    {
+      "arm": "native-certified",
+      "rows": 144,
+      "statuses": {
+        "Optimal": 144
+      },
+      "proofs": 144,
+      "witnesses": 144,
+      "medianUs": 612.3344999999999,
+      "p95Us": 3041.638849999997,
+      "p99Us": 16897.296689999985,
+      "medianBytes": 105592,
+      "medianEvidenceBytes": 11276
+    },
+    {
+      "arm": "assignment-proof",
+      "rows": 144,
+      "statuses": {
+        "Optimal": 144
+      },
+      "proofs": 144,
+      "witnesses": 144,
+      "medianUs": 676.3085000000001,
+      "p95Us": 2386.7115,
+      "p99Us": 8006.18254999998,
+      "medianBytes": 118060,
+      "medianEvidenceBytes": 11276
+    }
+  ],
+  "comparisons": [
+    {
+      "base": "CP-SAT",
+      "histories": 34,
+      "totalHistories": 72,
+      "clusters": 12,
+      "medianSpeedup": 15.789448133621578,
+      "ci95": [
+        14.669045700471969,
+        17.13794965644931
+      ],
+      "wins": 34
+    },
+    {
+      "base": "native-assignment",
+      "histories": 72,
+      "totalHistories": 72,
+      "clusters": 12,
+      "medianSpeedup": 0.6131576810533304,
+      "ci95": [
+        0.5844638933097934,
+        0.6277834625551216
+      ],
+      "wins": 3
+    },
+    {
+      "base": "native-certified",
+      "histories": 72,
+      "totalHistories": 72,
+      "clusters": 12,
+      "medianSpeedup": 1.0618400043614948,
+      "ci95": [
+        1.0078304512341454,
+        1.0772414857361867
+      ],
+      "wins": 42
+    }
+  ],
+  "bySize": [
+    {
+      "k": 8,
+      "comparisons": [
+        {
+          "base": "CP-SAT",
+          "histories": 24,
+          "totalHistories": 24,
+          "clusters": 12,
+          "medianSpeedup": 14.680061368437018,
+          "ci95": [
+            14.43889790511923,
+            15.697583565038437
+          ],
+          "wins": 24
+        },
+        {
+          "base": "native-assignment",
+          "histories": 24,
+          "totalHistories": 24,
+          "clusters": 12,
+          "medianSpeedup": 0.6068434518860036,
+          "ci95": [
+            0.5829922197540452,
+            0.6202992721699361
+          ],
+          "wins": 1
+        },
+        {
+          "base": "native-certified",
+          "histories": 24,
+          "totalHistories": 24,
+          "clusters": 12,
+          "medianSpeedup": 1.1067328941874537,
+          "ci95": [
+            1.0644343302990897,
+            1.1260116154953912
+          ],
+          "wins": 19
+        }
+      ]
+    },
+    {
+      "k": 24,
+      "comparisons": [
+        {
+          "base": "CP-SAT",
+          "histories": 9,
+          "totalHistories": 24,
+          "clusters": 8,
+          "medianSpeedup": 179.69629880500503,
+          "ci95": null,
+          "wins": 9
+        },
+        {
+          "base": "native-assignment",
+          "histories": 24,
+          "totalHistories": 24,
+          "clusters": 12,
+          "medianSpeedup": 0.620146998989654,
+          "ci95": [
+            0.5460074077118096,
+            0.7839466821337855
+          ],
+          "wins": 1
+        },
+        {
+          "base": "native-certified",
+          "histories": 24,
+          "totalHistories": 24,
+          "clusters": 12,
+          "medianSpeedup": 0.972981200932836,
+          "ci95": [
+            0.9030418305726593,
+            1.1155311315428704
+          ],
+          "wins": 11
+        }
+      ]
+    },
+    {
+      "k": 48,
+      "comparisons": [
+        {
+          "base": "CP-SAT",
+          "histories": 1,
+          "totalHistories": 24,
+          "clusters": 1,
+          "medianSpeedup": 241.05871928872318,
+          "ci95": null,
+          "wins": 1
+        },
+        {
+          "base": "native-assignment",
+          "histories": 24,
+          "totalHistories": 24,
+          "clusters": 12,
+          "medianSpeedup": 0.6180490589438166,
+          "ci95": [
+            0.5792068493255662,
+            0.6288326558064932
+          ],
+          "wins": 1
+        },
+        {
+          "base": "native-certified",
+          "histories": 24,
+          "totalHistories": 24,
+          "clusters": 12,
+          "medianSpeedup": 0.9929796242702797,
+          "ci95": [
+            0.9306631094413629,
+            1.0322452452058286
+          ],
+          "wins": 12
+        }
+      ]
+    }
+  ],
+  "byFamily": [
+    {
+      "family": "signed",
+      "comparisons": [
+        {
+          "base": "CP-SAT",
+          "histories": 16,
+          "totalHistories": 36,
+          "clusters": 12,
+          "medianSpeedup": 16.601952746398375,
+          "ci95": [
+            14.669045700471969,
+            22.018263921898424
+          ],
+          "wins": 16
+        },
+        {
+          "base": "native-assignment",
+          "histories": 36,
+          "totalHistories": 36,
+          "clusters": 12,
+          "medianSpeedup": 0.6185535694357054,
+          "ci95": [
+            0.6030645546531614,
+            0.67079389141666
+          ],
+          "wins": 3
+        },
+        {
+          "base": "native-certified",
+          "histories": 36,
+          "totalHistories": 36,
+          "clusters": 12,
+          "medianSpeedup": 1.108021129486922,
+          "ci95": [
+            1.0651482855129004,
+            1.1476910595892136
+          ],
+          "wins": 30
+        }
+      ]
+    },
+    {
+      "family": "ties",
+      "comparisons": [
+        {
+          "base": "CP-SAT",
+          "histories": 18,
+          "totalHistories": 36,
+          "clusters": 12,
+          "medianSpeedup": 14.814230763628537,
+          "ci95": [
+            14.610173171020449,
+            15.921900223319048
+          ],
+          "wins": 18
+        },
+        {
+          "base": "native-assignment",
+          "histories": 36,
+          "totalHistories": 36,
+          "clusters": 12,
+          "medianSpeedup": 0.5982119953856537,
+          "ci95": [
+            0.573378927948163,
+            0.621002414122846
+          ],
+          "wins": 0
+        },
+        {
+          "base": "native-certified",
+          "histories": 36,
+          "totalHistories": 36,
+          "clusters": 12,
+          "medianSpeedup": 0.9382807495259621,
+          "ci95": [
+            0.8843746136867848,
+            0.9706413030403599
+          ],
+          "wins": 12
+        }
+      ]
+    }
+  ]
+}

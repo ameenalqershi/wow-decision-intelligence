@@ -1,0 +1,13 @@
+{
+  "finite": 60,
+  "highs": 36,
+  "tamper": 360,
+  "rejected": 360,
+  "abstain": 240,
+  "abstainStatuses": [
+    {
+      "status": "Optimal",
+      "count": 240
+    }
+  ]
+}
