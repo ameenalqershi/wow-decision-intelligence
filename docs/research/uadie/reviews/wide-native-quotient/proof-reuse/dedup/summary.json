@@ -1,0 +1,23 @@
+{
+  "full": {
+    "replicates": 3,
+    "records": 180,
+    "objects": 0,
+    "bytes": 1441047,
+    "medianWriteMs": 171.815121,
+    "medianReadbackMs": 237.66075,
+    "medianTotalMs": 416.585569
+  },
+  "compact": {
+    "replicates": 3,
+    "records": 180,
+    "objects": 14,
+    "bytes": 527753,
+    "medianWriteMs": 188.379503,
+    "medianReadbackMs": 208.428529,
+    "medianTotalMs": 396.808032
+  },
+  "reduction": 0.6337711400113946,
+  "tamper": 4,
+  "rejected": 4
+}

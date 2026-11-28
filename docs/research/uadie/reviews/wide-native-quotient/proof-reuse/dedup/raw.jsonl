@@ -1,0 +1,10 @@
+{"kind":"storage","mode":"full","rep":0,"records":180,"objects":0,"bytes":1441047,"writeTicks":178924819,"readbackTicks":237660750,"frequency":1000000000}
+{"kind":"storage","mode":"compact","rep":0,"records":180,"objects":14,"bytes":527753,"writeTicks":188379503,"readbackTicks":208428529,"frequency":1000000000}
+{"kind":"storage","mode":"compact","rep":1,"records":180,"objects":14,"bytes":527753,"writeTicks":203179139,"readbackTicks":247646803,"frequency":1000000000}
+{"kind":"storage","mode":"full","rep":1,"records":180,"objects":0,"bytes":1441047,"writeTicks":171815121,"readbackTicks":252323635,"frequency":1000000000}
+{"kind":"storage","mode":"full","rep":2,"records":180,"objects":0,"bytes":1441047,"writeTicks":145955305,"readbackTicks":229113855,"frequency":1000000000}
+{"kind":"storage","mode":"compact","rep":2,"records":180,"objects":14,"bytes":527753,"writeTicks":161705548,"readbackTicks":185975867,"frequency":1000000000}
+{"kind":"tamper","name":"missing-object","rejected":true}
+{"kind":"tamper","name":"object-key","rejected":true}
+{"kind":"tamper","name":"revision-objective","rejected":true}
+{"kind":"tamper","name":"missing-reference","rejected":true}
