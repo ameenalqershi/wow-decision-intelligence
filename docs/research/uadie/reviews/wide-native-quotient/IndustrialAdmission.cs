@@ -87,7 +87,7 @@ internal static class IndustrialAdmission
         void Ok(int s){if(s<0)throw new Exception("HiGHS error");}
         try{
             Ok(Native.Highs_setBoolOptionValue(h,"output_flag",0));Ok(Native.Highs_setIntOptionValue(h,"threads",1));Ok(Native.Highs_setDoubleOptionValue(h,"time_limit",2));Ok(Native.Highs_setDoubleOptionValue(h,"mip_rel_gap",0));Ok(Native.Highs_setDoubleOptionValue(h,"mip_abs_gap",0));
-            Ok(Native.Highs_readModel(h,path));Ok(Native.Highs_run(h));
+            Ok(Native.Highs_readModel(h,path.EndsWith(".gz",StringComparison.Ordinal)?path[..^3]:path));Ok(Native.Highs_run(h));
             int status=Native.Highs_getModelStatus(h);Ok(Native.Highs_getIntInfoValue(h,"primal_solution_status",out int primal));
             double objective=0,inf=0;if(primal==2){Ok(Native.Highs_getDoubleInfoValue(h,"objective_function_value",out objective));Ok(Native.Highs_getDoubleInfoValue(h,"max_primal_infeasibility",out inf));}
             return new(status,objective,primal,inf);

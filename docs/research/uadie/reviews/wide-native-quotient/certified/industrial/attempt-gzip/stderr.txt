@@ -1,0 +1,5 @@
+Unhandled exception. System.Exception: HiGHS error
+   at IndustrialAdmission.<NativeSolve>g__Ok|3_0(Int32 s) in /root/uadie-quota-fast.lIlBa5/docs/research/uadie/reviews/wide-native-quotient/IndustrialAdmission.cs:line 87
+   at IndustrialAdmission.NativeSolve(String path) in /root/uadie-quota-fast.lIlBa5/docs/research/uadie/reviews/wide-native-quotient/IndustrialAdmission.cs:line 90
+   at IndustrialAdmission.Run(String dir) in /root/uadie-quota-fast.lIlBa5/docs/research/uadie/reviews/wide-native-quotient/IndustrialAdmission.cs:line 78
+   at Program.<Main>$(String[] args) in /root/uadie-quota-fast.lIlBa5/docs/research/uadie/reviews/wide-native-quotient/WideNativeQuotient.cs:line 15
