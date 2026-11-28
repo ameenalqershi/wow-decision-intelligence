@@ -8,10 +8,14 @@ internal static class GapSourceAudit
     private static readonly CultureInfo Inv=CultureInfo.InvariantCulture;
     // Independent lexical rational parser; reject exponent/rounding and noncanonical grammar.
     private static (BigInteger N,int Scale) Lex(string s){
-        var parts=s.Split('.');if(parts.Length>2||parts.Any(p=>p.Length==0||p.Any(c=>c<'0'||c>'9')))throw new FormatException("decimal token");
-        int scale=parts.Length==2?parts[1].Length:0;
+        if(s.Length>32)throw new FormatException("token length");
+        var scientific=s.ToLowerInvariant().Split('e');int exponent=0;
+        if(scientific.Length>2||scientific.Length==2&&(!int.TryParse(scientific[1],NumberStyles.AllowLeadingSign,Inv,out exponent)||exponent< -18||exponent>18))throw new FormatException("exponent");
+        var parts=scientific[0].Split('.');if(parts.Length>2||parts.Any(p=>p.Length==0||p.Any(c=>c<'0'||c>'9')))throw new FormatException("decimal token");
+        int scale=(parts.Length==2?parts[1].Length:0)-exponent;
         if(scale>18||s.Length>32)throw new FormatException("numeric envelope");
-        return(BigInteger.Parse(string.Concat(parts),Inv),scale);
+        BigInteger n=BigInteger.Parse(string.Concat(parts),Inv);
+        if(scale<0){n*=BigInteger.Pow(10,-scale);scale=0;}return(n,scale);
     }
     internal static void Run(string zip,string split)
     {
@@ -33,7 +37,7 @@ internal static class GapSourceAudit
             (BigInteger N,int Scale)[] Parse(string file,int length){
                 var a=Read(file);if(a.Length!=length)throw new Exception("vector length");
                 return a.Select(s=>{
-                    var x=Lex(s);decimal d=decimal.Parse(s,NumberStyles.AllowDecimalPoint,Inv);
+                    var x=Lex(s);decimal d=decimal.Parse(s,NumberStyles.Float,Inv);
                     decimal scale=1;for(int i=0;i<x.Scale;i++)scale*=10;
                     if(d*scale!=(decimal)x.N)throw new Exception("independent decimal mismatch");
                     tokens++;if(d!=decimal.Truncate(d))nonintegral++;maxScale=Math.Max(maxScale,x.Scale);return x;

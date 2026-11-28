@@ -1,0 +1,9 @@
+Unhandled exception. System.FormatException: decimal token
+   at GapSourceAudit.Lex(String s) in /root/uadie-quota-fast.lIlBa5/docs/research/uadie/reviews/wide-native-quotient/GapSourceAudit.cs:line 11
+   at GapSourceAudit.<>c__DisplayClass2_1.<Run>b__14(String s) in /root/uadie-quota-fast.lIlBa5/docs/research/uadie/reviews/wide-native-quotient/GapSourceAudit.cs:line 36
+   at System.Linq.Enumerable.ArraySelectIterator`2.Fill(ReadOnlySpan`1 source, Span`1 destination, Func`2 func)
+   at System.Linq.Enumerable.ArraySelectIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at GapSourceAudit.<>c__DisplayClass2_1.<Run>g__Parse|7(String file, Int32 length, <>c__DisplayClass2_0&) in /root/uadie-quota-fast.lIlBa5/docs/research/uadie/reviews/wide-native-quotient/GapSourceAudit.cs:line 35
+   at GapSourceAudit.Run(String zip, String split) in /root/uadie-quota-fast.lIlBa5/docs/research/uadie/reviews/wide-native-quotient/GapSourceAudit.cs:line 48
+   at Program.<Main>$(String[] args) in /root/uadie-quota-fast.lIlBa5/docs/research/uadie/reviews/wide-native-quotient/WideNativeQuotient.cs:line 41
