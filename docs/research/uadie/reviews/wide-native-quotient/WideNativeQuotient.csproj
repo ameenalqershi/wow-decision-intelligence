@@ -3,6 +3,7 @@
 <ItemGroup>
 <Compile Include="WideNativeQuotient.cs"/>
 <Compile Include="IncrementalQuotient.cs"/>
+<Compile Include="IncrementalAudit.cs"/>
 <Compile Include="../../../../../research/AlgorithmDiscoveryLab/*.cs" Exclude="../../../../../research/AlgorithmDiscoveryLab/Program.cs"/>
 <Compile Include="../../../../../research/ComponentStudy/Model.cs"/>
 <Compile Include="../../../../../research/ComponentStudy/Oracle.cs"/>

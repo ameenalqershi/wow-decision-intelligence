@@ -6,6 +6,7 @@ using System.Text.Json;
 if(args is ["audit"]){Audit();return;}
 if(args is ["adaptive"]){Adaptive();return;}
 if(args is ["incremental",var split]){IncrementalStudy.Run(split,Original,m=>Quotient(m),(m,t)=>Select(m,t).Result,Check);return;}
+if(args is ["incremental-audit"]){IncrementalAudit.Run(Original);return;}
 if(args.Length!=1)throw new ArgumentException("dev|holdout|audit");
 bool dev=args[0]=="dev";if(!dev&&args[0]!="holdout")throw new ArgumentException("split");
 foreach(int n in dev?new[]{64,512}:new[]{64,512,4096,10000})
