@@ -34,6 +34,7 @@
 <Compile Include="MatrixStudy.cs"/>
 <Compile Include="MatrixSelectorStudy.cs"/>
 <Compile Include="MatrixBoundaryAudit.cs"/>
+<Compile Include="GapSourceAudit.cs"/>
 <Compile Include="../../../../../research/AlgorithmDiscoveryLab/*.cs" Exclude="../../../../../research/AlgorithmDiscoveryLab/Program.cs"/>
 <Compile Include="../../../../../research/ComponentStudy/Model.cs"/>
 <Compile Include="../../../../../research/ComponentStudy/Oracle.cs"/>
