@@ -8,7 +8,7 @@ const validate=(files)=>{const rows=files.flatMap(read);return {records:rows.len
 const get=p=>JSON.parse(fs.readFileSync(path.join(root,p),'utf8'));
 const reviews=path.join(root,'reviews'),exp=path.join(root,'experiments');
 const data={schema:1,scope:"Separate denominators; not an overall success rate. Timed rows share models and arms.",original:validate(['first','second','final'].map(s=>path.join(exp,s,'raw.jsonl.gz'))),G3:validate(walk(path.join(exp,'parity-v1')).filter(x=>x.endsWith('.jsonl'))),G4:validate(walk(path.join(exp,'orientation-v1')).filter(x=>x.endsWith('.jsonl'))),historicalNativeCorrected:validate([path.join(root,'evidence/orientation-native/small.jsonl')]),historicalWide:validate([path.join(root,'evidence/orientation-native/wide.jsonl')]),parityFinite:get('experiments/parity-v1/finite-audit.json')};
-for(const [key,dir] of [['G5','quota-normalization'],['G6','quota-revision-cache'],['G7','adaptive-decision'],['G8','propagation-search'],['G9','structural-admission']])
+for(const [key,dir] of [['G5','quota-normalization'],['G6','quota-revision-cache'],['G7','adaptive-decision'],['G8','propagation-search'],['G9','structural-admission'],['G10','compressed-propagation']])
  data[key]=validate(['dev','holdout'].map(s=>path.join(reviews,dir,s,'raw.jsonl')));
 const n5=path.join(reviews,'quota-normalization/native'),n6=path.join(reviews,'cache-native-history');
 for(const [key,dir] of [['G5',n5],['G6',n6]]){
@@ -29,4 +29,18 @@ data.metrics.G9PropagationWins={numerator:g9.comparisons.find(x=>x.name==='struc
 data.metrics.G9Routes=g9.summary.find(x=>x.name==='structural').routes;
 data.metrics.G9Holdout=g9.summary;
 data.metrics.G9Durable=n9;
+const g10=get('reviews/compressed-propagation/summary.json').holdout;
+const g11=get('reviews/wide-native-quotient/summary.json');
+const g11audit=get('reviews/wide-native-quotient/adversarial/summary.json');
+const g12=get('reviews/wide-native-quotient/adaptive/summary.json');
+data.G11Native=g11;
+data.G11Adversarial=g11audit;
+data.G12Adaptive=g12;
+data.metrics.G10Holdout=g10.summary;
+data.metrics.G10Comparisons=g10.comparisons;
+data.metrics.G10WarmWins={numerator:g10.comparisons.find(x=>x.name==='compressed'&&x.base==='warm').wins,denominator:g10.histories};
+data.metrics.G10G9Wins={numerator:g10.comparisons.find(x=>x.name==='compressed'&&x.base==='structural').wins,denominator:g10.histories};
+data.metrics.G11HoldoutWins={numerator:g11.holdout.summary.wins,denominator:g11.holdout.models};
+data.metrics.G12OriginalWins={numerator:g12.all.winsOriginal,denominator:g12.all.models};
+data.metrics.G12QuotientWins={numerator:g12.all.winsQuotient,denominator:g12.all.models};
 console.log(JSON.stringify(data,null,2));
