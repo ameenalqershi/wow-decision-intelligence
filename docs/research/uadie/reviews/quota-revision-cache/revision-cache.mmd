@@ -1,0 +1,13 @@
+flowchart TD
+  A["New objective + exact quota structure"] --> B["Validate domain and signed numeric envelope"]
+  B --> C{"Exact edge sequence, membership, count and n match?"}
+  C -->|yes| D["Reuse structural plan only"]
+  C -->|no| E["Copy inputs, rebuild complete plan"]
+  E --> D
+  D --> F["Recompute all orientation costs"]
+  F --> G{"Normalized increments all unit?"}
+  G -->|yes| H["Sort signed differences"]
+  G -->|no| I["Exact descending DP"]
+  H --> J["Residual minimum or infeasible relaxation"]
+  I --> J
+  J --> K["Original-model witness / bound check still required"]

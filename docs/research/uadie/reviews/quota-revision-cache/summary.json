@@ -1,0 +1,1030 @@
+{
+  "dev": {
+    "rows": 960,
+    "valid": 960,
+    "independentRows": 240,
+    "histories": 48,
+    "cacheHits": 336,
+    "cacheMisses": 144,
+    "summary": [
+      {
+        "key": "8/stable-unit/full-history",
+        "histories": 4,
+        "baselineMedianUs": 56.42,
+        "cacheMedianUs": 33.885000000000005,
+        "pairedMedianSpeedup": 2.5792936972280227,
+        "bootstrap95": [
+          1.0415879017013232,
+          43.263027352804805
+        ],
+        "wins": 4,
+        "baselineMedianBytes": 19040,
+        "cacheMedianBytes": 3672
+      },
+      {
+        "key": "8/stable-unit/miss",
+        "histories": 4,
+        "baselineMedianUs": 3.785,
+        "cacheMedianUs": 15.445,
+        "pairedMedianSpeedup": 0.5047033285094067,
+        "bootstrap95": [
+          0.16730038022813687,
+          69.19713302752294
+        ],
+        "wins": 1,
+        "baselineMedianBytes": 1904,
+        "cacheMedianBytes": 2592
+      },
+      {
+        "key": "8/stable-unit/hit",
+        "histories": 4,
+        "baselineMedianUs": 3.665,
+        "cacheMedianUs": 1.275,
+        "pairedMedianSpeedup": 2.92821965033243,
+        "bootstrap95": [
+          2.470149253731343,
+          3.3305084745762716
+        ],
+        "wins": 4,
+        "baselineMedianBytes": 1904,
+        "cacheMedianBytes": 120
+      },
+      {
+        "key": "8/stable-mixed/full-history",
+        "histories": 4,
+        "baselineMedianUs": 47.64,
+        "cacheMedianUs": 31.990000000000002,
+        "pairedMedianSpeedup": 1.6531052941172029,
+        "bootstrap95": [
+          0.2603930916481894,
+          2.644433042585942
+        ],
+        "wins": 2,
+        "baselineMedianBytes": 16280,
+        "cacheMedianBytes": 3304
+      },
+      {
+        "key": "8/stable-mixed/miss",
+        "histories": 4,
+        "baselineMedianUs": 6.425,
+        "cacheMedianUs": 22.03,
+        "pairedMedianSpeedup": 0.3727399251438088,
+        "bootstrap95": [
+          0.21691176470588236,
+          0.5954022988505747
+        ],
+        "wins": 0,
+        "baselineMedianBytes": 1628,
+        "cacheMedianBytes": 2224
+      },
+      {
+        "key": "8/stable-mixed/hit",
+        "histories": 4,
+        "baselineMedianUs": 3.37,
+        "cacheMedianUs": 1.07,
+        "pairedMedianSpeedup": 3.1499825296995105,
+        "bootstrap95": [
+          2.9235668789808913,
+          3.216494845360825
+        ],
+        "wins": 4,
+        "baselineMedianBytes": 1628,
+        "cacheMedianBytes": 120
+      },
+      {
+        "key": "8/revision-edits/full-history",
+        "histories": 4,
+        "baselineMedianUs": 60.889500000000005,
+        "cacheMedianUs": 57.765,
+        "pairedMedianSpeedup": 1.054327207772777,
+        "bootstrap95": [
+          0.7667794918188766,
+          1.3963963963963963
+        ],
+        "wins": 3,
+        "baselineMedianBytes": 15760,
+        "cacheMedianBytes": 14668
+      },
+      {
+        "key": "8/revision-edits/miss",
+        "histories": 4,
+        "baselineMedianUs": 3.5345000000000004,
+        "cacheMedianUs": 5.445,
+        "pairedMedianSpeedup": 0.6125397737583933,
+        "bootstrap95": [
+          0.5795246800731262,
+          1.0701402805611222
+        ],
+        "wins": 1,
+        "baselineMedianBytes": 1628,
+        "cacheMedianBytes": 2204
+      },
+      {
+        "key": "8/revision-edits/hit",
+        "histories": 4,
+        "baselineMedianUs": 3.565,
+        "cacheMedianUs": 1.22,
+        "pairedMedianSpeedup": 2.893867924528302,
+        "bootstrap95": [
+          2.5625,
+          13.63793103448276
+        ],
+        "wins": 4,
+        "baselineMedianBytes": 1664,
+        "cacheMedianBytes": 120
+      },
+      {
+        "key": "64/stable-unit/full-history",
+        "histories": 4,
+        "baselineMedianUs": 440,
+        "cacheMedianUs": 163.25850000000003,
+        "pairedMedianSpeedup": 3.2694944674444404,
+        "bootstrap95": [
+          1.3344640434192674,
+          4.430466265812128
+        ],
+        "wins": 4,
+        "baselineMedianBytes": 142000,
+        "cacheMedianBytes": 26824
+      },
+      {
+        "key": "64/stable-unit/miss",
+        "histories": 4,
+        "baselineMedianUs": 41.195,
+        "cacheMedianUs": 47.430499999999995,
+        "pairedMedianSpeedup": 0.7858434822640028,
+        "bootstrap95": [
+          0.2772656499390876,
+          1.0612664565591543
+        ],
+        "wins": 1,
+        "baselineMedianBytes": 14200,
+        "cacheMedianBytes": 17032
+      },
+      {
+        "key": "64/stable-unit/hit",
+        "histories": 4,
+        "baselineMedianUs": 40.235,
+        "cacheMedianUs": 6.16,
+        "pairedMedianSpeedup": 6.526039209692,
+        "bootstrap95": [
+          5.971962616822431,
+          7.3596535914416705
+        ],
+        "wins": 4,
+        "baselineMedianBytes": 14200,
+        "cacheMedianBytes": 1088
+      },
+      {
+        "key": "64/stable-mixed/full-history",
+        "histories": 4,
+        "baselineMedianUs": 410.5915,
+        "cacheMedianUs": 158.91400000000002,
+        "pairedMedianSpeedup": 3.4462356272696155,
+        "bootstrap95": [
+          0.44507065649434624,
+          4.93886660916423
+        ],
+        "wins": 3,
+        "baselineMedianBytes": 100600,
+        "cacheMedianBytes": 17248
+      },
+      {
+        "key": "64/stable-mixed/miss",
+        "histories": 4,
+        "baselineMedianUs": 42.45,
+        "cacheMedianUs": 99.4345,
+        "pairedMedianSpeedup": 0.6373957014027004,
+        "bootstrap95": [
+          0.057117818972815156,
+          0.935179358086847
+        ],
+        "wins": 0,
+        "baselineMedianBytes": 10060,
+        "cacheMedianBytes": 11848
+      },
+      {
+        "key": "64/stable-mixed/hit",
+        "histories": 4,
+        "baselineMedianUs": 34.085,
+        "cacheMedianUs": 5.78,
+        "pairedMedianSpeedup": 6.001692755381402,
+        "bootstrap95": [
+          5.305438596491228,
+          6.839580209895052
+        ],
+        "wins": 4,
+        "baselineMedianBytes": 10060,
+        "cacheMedianBytes": 600
+      },
+      {
+        "key": "64/revision-edits/full-history",
+        "histories": 4,
+        "baselineMedianUs": 441.948,
+        "cacheMedianUs": 319.73,
+        "pairedMedianSpeedup": 1.0306974423435542,
+        "bootstrap95": [
+          0.9345188400053275,
+          1.890403058192164
+        ],
+        "wins": 3,
+        "baselineMedianBytes": 96900,
+        "cacheMedianBytes": 79680
+      },
+      {
+        "key": "64/revision-edits/miss",
+        "histories": 4,
+        "baselineMedianUs": 32.655,
+        "cacheMedianUs": 43.505,
+        "pairedMedianSpeedup": 0.7321870647565698,
+        "bootstrap95": [
+          0.6612634088200238,
+          0.9050609530845954
+        ],
+        "wins": 0,
+        "baselineMedianBytes": 10060,
+        "cacheMedianBytes": 11848
+      },
+      {
+        "key": "64/revision-edits/hit",
+        "histories": 4,
+        "baselineMedianUs": 31.95,
+        "cacheMedianUs": 6.415,
+        "pairedMedianSpeedup": 4.895021443812984,
+        "bootstrap95": [
+          4.35558583106267,
+          5.14170692431562
+        ],
+        "wins": 4,
+        "baselineMedianBytes": 10060,
+        "cacheMedianBytes": 600
+      },
+      {
+        "key": "512/stable-unit/full-history",
+        "histories": 4,
+        "baselineMedianUs": 1645.811,
+        "cacheMedianUs": 654.4975,
+        "pairedMedianSpeedup": 2.5579714062845538,
+        "bootstrap95": [
+          2.498819507519445,
+          2.8854995986528498
+        ],
+        "wins": 4,
+        "baselineMedianBytes": 1115600,
+        "cacheMedianBytes": 205992
+      },
+      {
+        "key": "512/stable-unit/miss",
+        "histories": 4,
+        "baselineMedianUs": 216.07,
+        "cacheMedianUs": 256.34000000000003,
+        "pairedMedianSpeedup": 0.8171277237379171,
+        "bootstrap95": [
+          0.7010440888159394,
+          0.9410228509249183
+        ],
+        "wins": 0,
+        "baselineMedianBytes": 111560,
+        "cacheMedianBytes": 131040
+      },
+      {
+        "key": "512/stable-unit/hit",
+        "histories": 4,
+        "baselineMedianUs": 145.4745,
+        "cacheMedianUs": 41.87,
+        "pairedMedianSpeedup": 3.4738307484397044,
+        "bootstrap95": [
+          3.4233308877476154,
+          5.625696292500702
+        ],
+        "wins": 4,
+        "baselineMedianBytes": 111560,
+        "cacheMedianBytes": 8328
+      },
+      {
+        "key": "512/stable-mixed/full-history",
+        "histories": 4,
+        "baselineMedianUs": 1461.533,
+        "cacheMedianUs": 977.488,
+        "pairedMedianSpeedup": 1.9712044763546472,
+        "bootstrap95": [
+          1.1918187957697775,
+          2.461949062586625
+        ],
+        "wins": 4,
+        "baselineMedianBytes": 786440,
+        "cacheMedianBytes": 129468
+      },
+      {
+        "key": "512/stable-mixed/miss",
+        "histories": 4,
+        "baselineMedianUs": 151.74,
+        "cacheMedianUs": 209.119,
+        "pairedMedianSpeedup": 0.7874099736257287,
+        "bootstrap95": [
+          0.18380752057271485,
+          0.8484377839829488
+        ],
+        "wins": 0,
+        "baselineMedianBytes": 78644,
+        "cacheMedianBytes": 90408
+      },
+      {
+        "key": "512/stable-mixed/hit",
+        "histories": 4,
+        "baselineMedianUs": 140.9755,
+        "cacheMedianUs": 45.655,
+        "pairedMedianSpeedup": 3.1128633261905523,
+        "bootstrap95": [
+          3.0657439446366777,
+          5.030336732369454
+        ],
+        "wins": 4,
+        "baselineMedianBytes": 78644,
+        "cacheMedianBytes": 4340
+      },
+      {
+        "key": "512/revision-edits/full-history",
+        "histories": 4,
+        "baselineMedianUs": 1402.277,
+        "cacheMedianUs": 1332.5695,
+        "pairedMedianSpeedup": 1.072086873705174,
+        "bootstrap95": [
+          0.9937276719357762,
+          1.3269216783961266
+        ],
+        "wins": 3,
+        "baselineMedianBytes": 751432,
+        "cacheMedianBytes": 602932
+      },
+      {
+        "key": "512/revision-edits/miss",
+        "histories": 4,
+        "baselineMedianUs": 140.3345,
+        "cacheMedianUs": 178.02550000000002,
+        "pairedMedianSpeedup": 0.7912824305733901,
+        "bootstrap95": [
+          0.7717778682535875,
+          0.8063513979979289
+        ],
+        "wins": 0,
+        "baselineMedianBytes": 78644,
+        "cacheMedianBytes": 90408
+      },
+      {
+        "key": "512/revision-edits/hit",
+        "histories": 4,
+        "baselineMedianUs": 146.1995,
+        "cacheMedianUs": 46.355000000000004,
+        "pairedMedianSpeedup": 3.158917494727759,
+        "bootstrap95": [
+          3.0619560439560436,
+          3.2163286211841835
+        ],
+        "wins": 4,
+        "baselineMedianBytes": 78640,
+        "cacheMedianBytes": 4340
+      },
+      {
+        "key": "4096/stable-unit/full-history",
+        "histories": 4,
+        "baselineMedianUs": 10965.840499999998,
+        "cacheMedianUs": 3237.4555,
+        "pairedMedianSpeedup": 3.338964217641424,
+        "bootstrap95": [
+          2.2445295266107155,
+          3.465165915963855
+        ],
+        "wins": 4,
+        "baselineMedianBytes": 8894320,
+        "cacheMedianBytes": 1633288
+      },
+      {
+        "key": "4096/stable-unit/miss",
+        "histories": 4,
+        "baselineMedianUs": 1039.9835,
+        "cacheMedianUs": 1444.748,
+        "pairedMedianSpeedup": 0.6971347828018364,
+        "bootstrap95": [
+          0.4967386818669021,
+          1.985450331333131
+        ],
+        "wins": 1,
+        "baselineMedianBytes": 889432,
+        "cacheMedianBytes": 1041592
+      },
+      {
+        "key": "4096/stable-unit/hit",
+        "histories": 4,
+        "baselineMedianUs": 746.0785000000001,
+        "cacheMedianUs": 149.3945,
+        "pairedMedianSpeedup": 5.277875026863489,
+        "bootstrap95": [
+          4.501775657970348,
+          6.0753636605206545
+        ],
+        "wins": 4,
+        "baselineMedianBytes": 889432,
+        "cacheMedianBytes": 65744
+      },
+      {
+        "key": "4096/stable-mixed/full-history",
+        "histories": 4,
+        "baselineMedianUs": 8757.678,
+        "cacheMedianUs": 3866.5035,
+        "pairedMedianSpeedup": 2.2823981694861044,
+        "bootstrap95": [
+          2.1296312505410127,
+          2.5930293453493825
+        ],
+        "wins": 4,
+        "baselineMedianBytes": 6218360,
+        "cacheMedianBytes": 1017600
+      },
+      {
+        "key": "4096/stable-mixed/miss",
+        "histories": 4,
+        "baselineMedianUs": 943.323,
+        "cacheMedianUs": 1174.6435000000001,
+        "pairedMedianSpeedup": 0.7733483817291675,
+        "bootstrap95": [
+          0.6998294928539104,
+          1.5194033695361204
+        ],
+        "wins": 1,
+        "baselineMedianBytes": 621836,
+        "cacheMedianBytes": 711924
+      },
+      {
+        "key": "4096/stable-mixed/hit",
+        "histories": 4,
+        "baselineMedianUs": 836.954,
+        "cacheMedianUs": 289.2395,
+        "pairedMedianSpeedup": 3.0249590590370925,
+        "bootstrap95": [
+          2.60470485821837,
+          3.3210935302391
+        ],
+        "wins": 4,
+        "baselineMedianBytes": 621836,
+        "cacheMedianBytes": 33948
+      },
+      {
+        "key": "4096/revision-edits/full-history",
+        "histories": 4,
+        "baselineMedianUs": 8045.3675,
+        "cacheMedianUs": 8728.283500000001,
+        "pairedMedianSpeedup": 0.9487220263817426,
+        "bootstrap95": [
+          0.7274457781490307,
+          1.0244593436427816
+        ],
+        "wins": 1,
+        "baselineMedianBytes": 5943408,
+        "cacheMedianBytes": 4750076
+      },
+      {
+        "key": "4096/revision-edits/miss",
+        "histories": 4,
+        "baselineMedianUs": 736.9490000000001,
+        "cacheMedianUs": 1120.2585,
+        "pairedMedianSpeedup": 0.6585914088498344,
+        "bootstrap95": [
+          0.5834564021252417,
+          0.6799593254326183
+        ],
+        "wins": 0,
+        "baselineMedianBytes": 621836,
+        "cacheMedianBytes": 711924
+      },
+      {
+        "key": "4096/revision-edits/hit",
+        "histories": 4,
+        "baselineMedianUs": 824.7539999999999,
+        "cacheMedianUs": 268.8995,
+        "pairedMedianSpeedup": 3.0556755694368127,
+        "bootstrap95": [
+          2.76464687743805,
+          3.3702541423301278
+        ],
+        "wins": 4,
+        "baselineMedianBytes": 621836,
+        "cacheMedianBytes": 33952
+      }
+    ]
+  },
+  "holdout": {
+    "rows": 3840,
+    "valid": 3840,
+    "independentRows": 960,
+    "histories": 192,
+    "cacheHits": 1344,
+    "cacheMisses": 576,
+    "summary": [
+      {
+        "key": "8/stable-unit/full-history",
+        "histories": 16,
+        "baselineMedianUs": 61.745,
+        "cacheMedianUs": 19.395000000000003,
+        "pairedMedianSpeedup": 2.9767541740234797,
+        "bootstrap95": [
+          2.3689704823614113,
+          3.6222222222222222
+        ],
+        "wins": 16,
+        "baselineMedianBytes": 19040,
+        "cacheMedianBytes": 3672
+      },
+      {
+        "key": "8/stable-unit/miss",
+        "histories": 16,
+        "baselineMedianUs": 4.025,
+        "cacheMedianUs": 7.154999999999999,
+        "pairedMedianSpeedup": 0.5234813886262062,
+        "bootstrap95": [
+          0.3737646001796945,
+          1.8234349919743176
+        ],
+        "wins": 6,
+        "baselineMedianBytes": 1904,
+        "cacheMedianBytes": 2592
+      },
+      {
+        "key": "8/stable-unit/hit",
+        "histories": 16,
+        "baselineMedianUs": 3.575,
+        "cacheMedianUs": 1.19,
+        "pairedMedianSpeedup": 2.995989709443099,
+        "bootstrap95": [
+          2.903147699757869,
+          3.132743362831859
+        ],
+        "wins": 16,
+        "baselineMedianBytes": 1904,
+        "cacheMedianBytes": 120
+      },
+      {
+        "key": "8/stable-mixed/full-history",
+        "histories": 16,
+        "baselineMedianUs": 80.6005,
+        "cacheMedianUs": 24.829500000000003,
+        "pairedMedianSpeedup": 3.3928418481618214,
+        "bootstrap95": [
+          2.4741649893411934,
+          5.363966248894198
+        ],
+        "wins": 15,
+        "baselineMedianBytes": 16720,
+        "cacheMedianBytes": 3504
+      },
+      {
+        "key": "8/stable-mixed/miss",
+        "histories": 16,
+        "baselineMedianUs": 5.115,
+        "cacheMedianUs": 8.0355,
+        "pairedMedianSpeedup": 0.5730567585395934,
+        "bootstrap95": [
+          0.3289473684210526,
+          1.4160475482912331
+        ],
+        "wins": 5,
+        "baselineMedianBytes": 1672,
+        "cacheMedianBytes": 2280
+      },
+      {
+        "key": "8/stable-mixed/hit",
+        "histories": 16,
+        "baselineMedianUs": 4.225,
+        "cacheMedianUs": 1.5550000000000002,
+        "pairedMedianSpeedup": 2.7738801054018447,
+        "bootstrap95": [
+          2.687961023586194,
+          3.0268817204301075
+        ],
+        "wins": 16,
+        "baselineMedianBytes": 1672,
+        "cacheMedianBytes": 140
+      },
+      {
+        "key": "8/revision-edits/full-history",
+        "histories": 16,
+        "baselineMedianUs": 52.4555,
+        "cacheMedianUs": 52.7045,
+        "pairedMedianSpeedup": 0.8941440063505646,
+        "bootstrap95": [
+          0.7614961271911943,
+          1.1914585530667332
+        ],
+        "wins": 5,
+        "baselineMedianBytes": 16288,
+        "cacheMedianBytes": 15428
+      },
+      {
+        "key": "8/revision-edits/miss",
+        "histories": 16,
+        "baselineMedianUs": 3.79,
+        "cacheMedianUs": 5.635,
+        "pairedMedianSpeedup": 0.6305266337372517,
+        "bootstrap95": [
+          0.5617977528089888,
+          0.6924603174603174
+        ],
+        "wins": 0,
+        "baselineMedianBytes": 1672,
+        "cacheMedianBytes": 2280
+      },
+      {
+        "key": "8/revision-edits/hit",
+        "histories": 16,
+        "baselineMedianUs": 3.66,
+        "cacheMedianUs": 1.605,
+        "pairedMedianSpeedup": 2.4420017434891577,
+        "bootstrap95": [
+          2.2483660130718954,
+          2.568421052631579
+        ],
+        "wins": 16,
+        "baselineMedianBytes": 1672,
+        "cacheMedianBytes": 140
+      },
+      {
+        "key": "64/stable-unit/full-history",
+        "histories": 16,
+        "baselineMedianUs": 269.86,
+        "cacheMedianUs": 94.51,
+        "pairedMedianSpeedup": 2.885778288542312,
+        "bootstrap95": [
+          2.79402871057071,
+          2.9834756234554023
+        ],
+        "wins": 16,
+        "baselineMedianBytes": 142000,
+        "cacheMedianBytes": 26824
+      },
+      {
+        "key": "64/stable-unit/miss",
+        "histories": 16,
+        "baselineMedianUs": 26.48,
+        "cacheMedianUs": 33.4345,
+        "pairedMedianSpeedup": 0.7805638357776952,
+        "bootstrap95": [
+          0.7440773067331672,
+          0.8012831247342349
+        ],
+        "wins": 3,
+        "baselineMedianBytes": 14200,
+        "cacheMedianBytes": 17032
+      },
+      {
+        "key": "64/stable-unit/hit",
+        "histories": 16,
+        "baselineMedianUs": 26.08,
+        "cacheMedianUs": 6.265000000000001,
+        "pairedMedianSpeedup": 4.031409092192308,
+        "bootstrap95": [
+          3.851373182552504,
+          4.162790697674419
+        ],
+        "wins": 16,
+        "baselineMedianBytes": 14200,
+        "cacheMedianBytes": 1088
+      },
+      {
+        "key": "64/stable-mixed/full-history",
+        "histories": 16,
+        "baselineMedianUs": 312.7885,
+        "cacheMedianUs": 105.5495,
+        "pairedMedianSpeedup": 2.830185589374528,
+        "bootstrap95": [
+          2.625539930537398,
+          3.3333709755056664
+        ],
+        "wins": 15,
+        "baselineMedianBytes": 101720,
+        "cacheMedianBytes": 17332
+      },
+      {
+        "key": "64/stable-mixed/miss",
+        "histories": 16,
+        "baselineMedianUs": 28.8,
+        "cacheMedianUs": 35.095,
+        "pairedMedianSpeedup": 0.8111282414853187,
+        "bootstrap95": [
+          0.7868238027806713,
+          0.8365650969529085
+        ],
+        "wins": 1,
+        "baselineMedianBytes": 10172,
+        "cacheMedianBytes": 11968
+      },
+      {
+        "key": "64/stable-mixed/hit",
+        "histories": 16,
+        "baselineMedianUs": 27.465,
+        "cacheMedianUs": 7.645,
+        "pairedMedianSpeedup": 3.8972185230024214,
+        "bootstrap95": [
+          3.6807980049875315,
+          4.080651912074676
+        ],
+        "wins": 16,
+        "baselineMedianBytes": 10172,
+        "cacheMedianBytes": 600
+      },
+      {
+        "key": "64/revision-edits/full-history",
+        "histories": 16,
+        "baselineMedianUs": 260.5685,
+        "cacheMedianUs": 226.6945,
+        "pairedMedianSpeedup": 1.1275124222295942,
+        "bootstrap95": [
+          1.0995413646187555,
+          1.156252473683091
+        ],
+        "wins": 14,
+        "baselineMedianBytes": 97364,
+        "cacheMedianBytes": 80032
+      },
+      {
+        "key": "64/revision-edits/miss",
+        "histories": 16,
+        "baselineMedianUs": 26.2895,
+        "cacheMedianUs": 30.82,
+        "pairedMedianSpeedup": 0.841380661918002,
+        "bootstrap95": [
+          0.8233418367346939,
+          0.8530862606890999
+        ],
+        "wins": 0,
+        "baselineMedianBytes": 10172,
+        "cacheMedianBytes": 11968
+      },
+      {
+        "key": "64/revision-edits/hit",
+        "histories": 16,
+        "baselineMedianUs": 26.67,
+        "cacheMedianUs": 6.96,
+        "pairedMedianSpeedup": 3.779658824413083,
+        "bootstrap95": [
+          3.692097557324751,
+          3.8995695839311337
+        ],
+        "wins": 16,
+        "baselineMedianBytes": 10172,
+        "cacheMedianBytes": 604
+      },
+      {
+        "key": "512/stable-unit/full-history",
+        "histories": 16,
+        "baselineMedianUs": 1799.9064999999998,
+        "cacheMedianUs": 806.8029999999999,
+        "pairedMedianSpeedup": 2.4007713720699364,
+        "bootstrap95": [
+          2.0523365362081085,
+          2.697094234962165
+        ],
+        "wins": 16,
+        "baselineMedianBytes": 1115600,
+        "cacheMedianBytes": 205992
+      },
+      {
+        "key": "512/stable-unit/miss",
+        "histories": 16,
+        "baselineMedianUs": 195.92,
+        "cacheMedianUs": 198.29500000000002,
+        "pairedMedianSpeedup": 0.8204233098552627,
+        "bootstrap95": [
+          0.7270904345784734,
+          1.5960666049379524
+        ],
+        "wins": 7,
+        "baselineMedianBytes": 111560,
+        "cacheMedianBytes": 131040
+      },
+      {
+        "key": "512/stable-unit/hit",
+        "histories": 16,
+        "baselineMedianUs": 146.909,
+        "cacheMedianUs": 43.92,
+        "pairedMedianSpeedup": 3.2960040478361257,
+        "bootstrap95": [
+          3.2696067288020005,
+          3.3507183580387685
+        ],
+        "wins": 16,
+        "baselineMedianBytes": 111560,
+        "cacheMedianBytes": 8328
+      },
+      {
+        "key": "512/stable-mixed/full-history",
+        "histories": 16,
+        "baselineMedianUs": 1714.3885,
+        "cacheMedianUs": 684.578,
+        "pairedMedianSpeedup": 2.132455923862817,
+        "bootstrap95": [
+          2.0611026418500797,
+          2.5061614297174932
+        ],
+        "wins": 15,
+        "baselineMedianBytes": 781880,
+        "cacheMedianBytes": 129332
+      },
+      {
+        "key": "512/stable-mixed/miss",
+        "histories": 16,
+        "baselineMedianUs": 142.9555,
+        "cacheMedianUs": 189.12900000000002,
+        "pairedMedianSpeedup": 0.7732998186314105,
+        "bootstrap95": [
+          0.7372931886409946,
+          0.7854442289982898
+        ],
+        "wins": 0,
+        "baselineMedianBytes": 78188,
+        "cacheMedianBytes": 89832
+      },
+      {
+        "key": "512/stable-mixed/hit",
+        "histories": 16,
+        "baselineMedianUs": 141.0795,
+        "cacheMedianUs": 50.75,
+        "pairedMedianSpeedup": 2.7702097003616983,
+        "bootstrap95": [
+          2.717797112912794,
+          2.885273105207078
+        ],
+        "wins": 16,
+        "baselineMedianBytes": 78188,
+        "cacheMedianBytes": 4364
+      },
+      {
+        "key": "512/revision-edits/full-history",
+        "histories": 16,
+        "baselineMedianUs": 1690.118,
+        "cacheMedianUs": 1423.428,
+        "pairedMedianSpeedup": 1.1437956432380023,
+        "bootstrap95": [
+          1.023723113312144,
+          1.2853055013644241
+        ],
+        "wins": 12,
+        "baselineMedianBytes": 747464,
+        "cacheMedianBytes": 599696
+      },
+      {
+        "key": "512/revision-edits/miss",
+        "histories": 16,
+        "baselineMedianUs": 138.20499999999998,
+        "cacheMedianUs": 180.774,
+        "pairedMedianSpeedup": 0.7698078282718552,
+        "bootstrap95": [
+          0.7632200380191183,
+          0.7741390081327838
+        ],
+        "wins": 0,
+        "baselineMedianBytes": 78188,
+        "cacheMedianBytes": 89832
+      },
+      {
+        "key": "512/revision-edits/hit",
+        "histories": 16,
+        "baselineMedianUs": 137.189,
+        "cacheMedianUs": 50.705,
+        "pairedMedianSpeedup": 2.7428680520891944,
+        "bootstrap95": [
+          2.6613033468055707,
+          2.7937729685585957
+        ],
+        "wins": 16,
+        "baselineMedianBytes": 78196,
+        "cacheMedianBytes": 4368
+      },
+      {
+        "key": "4096/stable-unit/full-history",
+        "histories": 16,
+        "baselineMedianUs": 9994.0945,
+        "cacheMedianUs": 2728.0009999999997,
+        "pairedMedianSpeedup": 3.3611795026898625,
+        "bootstrap95": [
+          2.8852519913689356,
+          3.910531115985493
+        ],
+        "wins": 15,
+        "baselineMedianBytes": 8894320,
+        "cacheMedianBytes": 1633224
+      },
+      {
+        "key": "4096/stable-unit/miss",
+        "histories": 16,
+        "baselineMedianUs": 805.6434999999999,
+        "cacheMedianUs": 1144.623,
+        "pairedMedianSpeedup": 0.718864493179357,
+        "bootstrap95": [
+          0.6243581959755885,
+          1.2107137459908084
+        ],
+        "wins": 4,
+        "baselineMedianBytes": 889432,
+        "cacheMedianBytes": 1041528
+      },
+      {
+        "key": "4096/stable-unit/hit",
+        "histories": 16,
+        "baselineMedianUs": 715.8240000000001,
+        "cacheMedianUs": 132.665,
+        "pairedMedianSpeedup": 5.189802573472687,
+        "bootstrap95": [
+          4.399608354463267,
+          5.3292467580960095
+        ],
+        "wins": 16,
+        "baselineMedianBytes": 889432,
+        "cacheMedianBytes": 65744
+      },
+      {
+        "key": "4096/stable-mixed/full-history",
+        "histories": 16,
+        "baselineMedianUs": 9307.897,
+        "cacheMedianUs": 5300.337,
+        "pairedMedianSpeedup": 1.7181372243835464,
+        "bootstrap95": [
+          1.6384214484497501,
+          1.834260462760125
+        ],
+        "wins": 16,
+        "baselineMedianBytes": 6216600,
+        "cacheMedianBytes": 1017228
+      },
+      {
+        "key": "4096/stable-mixed/miss",
+        "histories": 16,
+        "baselineMedianUs": 818.5435,
+        "cacheMedianUs": 1367.7224999999999,
+        "pairedMedianSpeedup": 0.6194031134041513,
+        "bootstrap95": [
+          0.5496215318505202,
+          0.69584698745469
+        ],
+        "wins": 0,
+        "baselineMedianBytes": 621660,
+        "cacheMedianBytes": 711748
+      },
+      {
+        "key": "4096/stable-mixed/hit",
+        "histories": 16,
+        "baselineMedianUs": 823.1134999999999,
+        "cacheMedianUs": 414.09950000000003,
+        "pairedMedianSpeedup": 1.987600099138347,
+        "bootstrap95": [
+          1.9452964422123633,
+          2.1736317738833604
+        ],
+        "wins": 16,
+        "baselineMedianBytes": 621660,
+        "cacheMedianBytes": 33892
+      },
+      {
+        "key": "4096/revision-edits/full-history",
+        "histories": 16,
+        "baselineMedianUs": 9812.734,
+        "cacheMedianUs": 9654.7265,
+        "pairedMedianSpeedup": 1.0047433527647387,
+        "bootstrap95": [
+          0.8974473269191642,
+          1.0495803322583215
+        ],
+        "wins": 9,
+        "baselineMedianBytes": 5942088,
+        "cacheMedianBytes": 4748408
+      },
+      {
+        "key": "4096/revision-edits/miss",
+        "histories": 16,
+        "baselineMedianUs": 836.6235,
+        "cacheMedianUs": 1259.2125,
+        "pairedMedianSpeedup": 0.7102606784004402,
+        "bootstrap95": [
+          0.6553988110763191,
+          0.7341179858743964
+        ],
+        "wins": 0,
+        "baselineMedianBytes": 621660,
+        "cacheMedianBytes": 711748
+      },
+      {
+        "key": "4096/revision-edits/hit",
+        "histories": 16,
+        "baselineMedianUs": 931.723,
+        "cacheMedianUs": 422.404,
+        "pairedMedianSpeedup": 2.10803363441444,
+        "bootstrap95": [
+          1.9051674403874905,
+          2.282328146338467
+        ],
+        "wins": 16,
+        "baselineMedianBytes": 621660,
+        "cacheMedianBytes": 33892
+      }
+    ]
+  }
+}
