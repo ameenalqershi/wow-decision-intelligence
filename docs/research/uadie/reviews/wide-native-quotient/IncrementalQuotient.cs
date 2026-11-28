@@ -138,7 +138,7 @@ internal sealed class IncrementalQuotient(bool reuse,bool template=false,bool fa
                 }
                 if(template){templateModel=cp;templateVariables=y;}
             }
-            if(template)cp.ClearObjective();
+            if(template){cp.Model.Objective=null;cp.Model.FloatingPointObjective=null;}
             cp.Minimize(LinearExpr.WeightedSum(y,costs)+offset);trace.Mark("native-build");
             ct.ThrowIfCancellationRequested();
             var solver=new CpSolver{StringParameters="num_search_workers:1 random_seed:1320101 max_time_in_seconds:0.5"};
