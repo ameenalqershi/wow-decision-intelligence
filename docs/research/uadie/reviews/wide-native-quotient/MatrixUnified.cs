@@ -150,7 +150,11 @@ internal sealed class MatrixDispatcher(bool network=true,bool weighted=true,bool
             }
             MatrixNetworkProof? p=null;
             if(network){
-                if(same&&previousNetwork!=null){p=previousNetwork with{Digest=d,From=previousNetwork.From.ToArray(),To=previousNetwork.To.ToArray()};StructuralHits++;}
+                if(same&&previousNetwork!=null){
+                    var candidate=previousNetwork with{Digest=d,From=previousNetwork.From.ToArray(),To=previousNetwork.To.ToArray()};
+                    try{GeneralFlow.Admit(MatrixDiscovery.Build(m,candidate));p=candidate;StructuralHits++;}
+                    catch(Exception ex)when(ex is ArgumentException or OverflowException){p=null;}
+                }
                 else p=MatrixDiscovery.Find(m,d);
             }
             trace.Mark("network-discovery");
