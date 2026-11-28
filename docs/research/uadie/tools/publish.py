@@ -35,6 +35,19 @@ def parse(source):
             blocks.append(('p',value,''))
         for link in links:
             if link.startswith(('https://','http://')):blocks.append(('url',link,link))
+            elif not link.startswith('#'):
+                # Resolve only existing repository files and pin the ref used for this edition.
+                from urllib.parse import unquote,quote
+                file_part,sep,fragment=link.partition('#')
+                target=(source.parent/unquote(file_part)).resolve()
+                repo=ROOT.parents[2]
+                if target.is_file() and target.is_relative_to(repo):
+                    url='https://github.com/ameenalqershi/wow-decision-intelligence/blob/ac2737cf3e2dd4c4a7434f68ebf61a4eaf05b9b5/'+quote(str(target.relative_to(repo)))+(sep+fragment if sep else '')
+                    # Only evidence cut content already committed is linked. Sources/figures
+                    # newly introduced in the manuscript keep their source-relative paths.
+                    import subprocess
+                    if subprocess.run(['git','-C',str(repo),'cat-file','-e','ac2737c:'+str(target.relative_to(repo))],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL).returncode==0:
+                        blocks.append(('url',url,url))
     return blocks
 def render(source,output=None):
     rtl=source.stem=='guide'
@@ -53,7 +66,7 @@ def render(source,output=None):
     for name,en,ar,*_ in FIGURES:
         if name not in known:blocks.append(('figure',ar if rtl else en,ROOT/'diagrams'/f'{name}.svg'))
     pdf=Book(dest.with_suffix('.pdf'),rtl);doc=Word(rtl)
-    subtitle=('طبعة بحثية قابلة للتدقيق  ·  هندسة القرار' if rtl else 'Scientific review edition   /   Algorithm research and engineering')
+    subtitle=('طبعة المراجعة البحثية R3  ·  هندسة القرار' if rtl else 'Research review edition R3   /   Algorithm research and engineering')
     pdf.cover(title,subtitle)
     doc.t('WOW DI',48,True,'165D52',rtl=False);doc.t(title,55,True,'1B2331',style='Heading1');doc.t(subtitle,27);doc.t('2026-11-28',21,rtl=False);doc.newpage()
     def both(v,sz=10,bold=False,col='233245',**args):
@@ -68,6 +81,8 @@ def render(source,output=None):
     pdf.newpage();doc.newpage();fig=0;tab=0
     for i,(kind,value,arg) in enumerate(blocks):
         if kind=='head':
+            # Keep a heading with the first lines of its following content.
+            pdf.room(75 if arg<=2 else 60)
             pdf.y+=8
             both(value,16 if arg<=2 else 12,True,'165D52',dest=headings[i],style=f'Heading{min(6,arg)}')
         elif kind=='p':both(value)

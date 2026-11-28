@@ -383,6 +383,8 @@ Else: solve current model and verify
 
 ## ملحق ب: الوصول إلى الدليل العلمي
 
+- [الأدلة والكود والمقارنات للأجيال الخامس إلى الثامن](https://github.com/ameenalqershi/wow-decision-intelligence/tree/ac2737cf3e2dd4c4a7434f68ebf61a4eaf05b9b5/docs/research/uadie/reviews)
+
 - [المستودع الرسمي والقضية البحثية](https://github.com/ameenalqershi/wow-decision-intelligence/issues/236)
 - [الكود الفعلي في C#](https://github.com/ameenalqershi/wow-decision-intelligence/tree/17450d931622a63c3812033a7ec317f59f2012a8/research/AlgorithmDiscoveryLab)
 - [أدلة الجيل الثالث](https://github.com/ameenalqershi/wow-decision-intelligence/tree/17450d931622a63c3812033a7ec317f59f2012a8/docs/research/uadie/experiments/parity-v1)

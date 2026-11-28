@@ -372,6 +372,8 @@ Evidence pointers:
 - [Native audit, raw runs, counterexample and summary](https://github.com/ameenalqershi/wow-decision-intelligence/tree/17450d931622a63c3812033a7ec317f59f2012a8/docs/research/uadie/evidence/orientation-native)
 - [C# implementation](https://github.com/ameenalqershi/wow-decision-intelligence/tree/17450d931622a63c3812033a7ec317f59f2012a8/research/AlgorithmDiscoveryLab)
 
+- [Companion G5–G8 implementation and evidence cut](https://github.com/ameenalqershi/wow-decision-intelligence/tree/ac2737cf3e2dd4c4a7434f68ebf61a4eaf05b9b5/docs/research/uadie/reviews)
+
 ## 12. References and bibliography
 
 R1. Land, A. H.; Doig, A. G. (1960). An Automatic Method of Solving Discrete Programming Problems. Econometrica 28(3), 497–520. https://doi.org/10.2307/1910129
@@ -392,6 +394,12 @@ R8. The SCIP Optimization Suite 10.0 (2025). https://arxiv.org/abs/2511.18580
 
 R9. SATzilla portfolio method: https://arxiv.org/abs/1111.2249 ; ParamILS: https://arxiv.org/abs/1401.3492 . These are selection/configuration comparators, not measured competitors in the present lab.
 
+R10. Rice, J. R. (1976). The Algorithm Selection Problem. Advances in Computers 15, 65–118. https://doi.org/10.1016/S0065-2458(08)60520-3
+
+R11. Virginia Tech OpenDSA. Dynamic Programming, exact subset-sum and knapsack background. https://opendsa-server.cs.vt.edu/ODSA/Books/Catalog/html/DynamicProgramming.html
+
+R12. Dechter, R. Constraint processing, chapter 3, constraint propagation for numeric and Boolean constraints. https://ics.uci.edu/~dechter/courses/ics-276/spring-19/reading/chapter3-constraints.pdf
+
 See the attached historical technique matrix, mathematical proofs and engineering evidence for the broader register. Source review does not establish priority or patent novelty. The listed sources support background methods, not the measured performance of WOW DI.
 
 ## 13. Mathematical and engineering appendices
@@ -400,4 +408,4 @@ Appendix A: historical independent-audit.md and finite checker sources, includin
 
 ## 14. Limitations and acceptance gate
 
-The finite model uses bit masks and exact integer costs; it cannot represent general continuous, nonlinear, multi-objective or uncertain real-world decisions. The wide profile has only pair equations and unary objectives. Source data generators intentionally favor structural challenges and cannot establish typical industrial frequency. No independent human peer review, release-quality accessible PDF proof, full native reoptimization, representative long-run memory/cancellation/concurrency qualification, cross-platform run, production certificate acceptance, or global optimality of strategy selection is established. Do not close #236 based on a successful build, experiment count or manuscript alone. Any new mathematical contradiction blocks promotion, must retain an exact counterexample and requires replay after repair.
+The finite model uses bit masks and exact integer costs; it cannot represent general continuous, nonlinear, multi-objective or uncertain real-world decisions. The historical wide profile has pair equations and unary objectives; G5/G6 add one exact unweighted quota, and G7/G8 remain limited to the small Boolean fixture. Source data generators intentionally favor structural challenges and cannot establish typical industrial frequency. No independent human peer review, release-quality accessible PDF proof, full native reoptimization, representative long-run memory/cancellation/concurrency qualification, cross-platform run, production certificate acceptance, or global optimality of strategy selection is established. Do not close #236 based on a successful build, experiment count or manuscript alone. Any new mathematical contradiction blocks promotion, must retain an exact counterexample and requires replay after repair.
