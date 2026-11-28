@@ -1,0 +1,18 @@
+flowchart TD
+  n0["[I] DecisionGraph #14"]:::I
+  n1["[I] UDIR #16"]:::I
+  n2["[C] Lowering #21"]:::C
+  n3["[I] Solver contracts #26"]:::I
+  n4["[I] Verifier #29"]:::I
+  n5["[I] Evidence store #35"]:::I
+  n0 --> n1
+  n1 --> n2
+  n2 --> n3
+  n1 --> n4
+  n3 --> n4
+  n4 --> n5
+  classDef I fill:#23463f,color:#fff,stroke:#23463f
+  classDef P fill:#224f75,color:#fff,stroke:#224f75
+  classDef T fill:#326437,color:#fff,stroke:#326437
+  classDef C fill:#83551c,color:#fff,stroke:#83551c
+  classDef U fill:#86404a,color:#fff,stroke:#86404a

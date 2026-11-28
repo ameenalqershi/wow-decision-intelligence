@@ -1,0 +1,17 @@
+flowchart TD
+  n0["[C] Old blocks A and B"]:::C
+  n1["[C] Edit price in A"]:::C
+  n2["[P] Recheck A; test B key"]:::P
+  n3["[C] New row uses A and B"]:::C
+  n4["[T] Join A and B"]:::T
+  n5["[C] Solve joined model"]:::C
+  n0 --> n1
+  n1 --> n2
+  n0 --> n3
+  n3 --> n4
+  n4 --> n5
+  classDef I fill:#23463f,color:#fff,stroke:#23463f
+  classDef P fill:#224f75,color:#fff,stroke:#224f75
+  classDef T fill:#326437,color:#fff,stroke:#326437
+  classDef C fill:#83551c,color:#fff,stroke:#83551c
+  classDef U fill:#86404a,color:#fff,stroke:#86404a

@@ -1,0 +1,7 @@
+stateDiagram-v2
+  [*] --> Pending
+  Pending --> Candidate
+  Candidate --> PrimalChecked
+  PrimalChecked --> GlobalProof
+  GlobalProof --> Certified
+  Candidate --> UnsupportedOrUnknown

@@ -1,0 +1,13 @@
+sequenceDiagram
+  participant R as Registry
+  participant P as Planner
+  participant C as Cache
+  participant W as Worker
+  participant V as Checker
+  participant E as Store
+  R->>P: Frozen revision
+  P->>C: Scoped evidence request
+  C-->>P: Miss or proof
+  P->>W: Solve misses
+  W->>V: Proposed witness
+  V->>E: Append scoped outcome

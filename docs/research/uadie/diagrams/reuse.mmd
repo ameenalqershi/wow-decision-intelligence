@@ -1,0 +1,17 @@
+flowchart TD
+  n0["[P] Digest lookup #40"]:::P
+  n1["[C] Compare scope + bytes"]:::C
+  n2["[C] Check proof kind #41"]:::C
+  n3["[T] Transfer under theorem"]:::T
+  n4["[C] Current primal check"]:::C
+  n5["[U] Mismatch: recompute"]:::U
+  n0 --> n1
+  n1 --> n2
+  n2 --> n3
+  n3 --> n4
+  n2 --> n5
+  classDef I fill:#23463f,color:#fff,stroke:#23463f
+  classDef P fill:#224f75,color:#fff,stroke:#224f75
+  classDef T fill:#326437,color:#fff,stroke:#326437
+  classDef C fill:#83551c,color:#fff,stroke:#83551c
+  classDef U fill:#86404a,color:#fff,stroke:#86404a

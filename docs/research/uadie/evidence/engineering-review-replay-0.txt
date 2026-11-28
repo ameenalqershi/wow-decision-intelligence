@@ -1,0 +1,62 @@
+{
+  "seed": 20261127,
+  "comparisons": 391,
+  "namedCases": [
+    {
+      "name": "cold",
+      "Components": 2,
+      "Reused": 0,
+      "Assignments": 8,
+      "fullAssignments": 16,
+      "optimum": 2
+    },
+    {
+      "name": "local-price-change",
+      "Components": 2,
+      "Reused": 1,
+      "Assignments": 4,
+      "fullAssignments": 16,
+      "optimum": 4
+    },
+    {
+      "name": "reordered",
+      "Components": 2,
+      "Reused": 2,
+      "Assignments": 0,
+      "fullAssignments": 16,
+      "optimum": 4
+    },
+    {
+      "name": "shared-capacity",
+      "Components": 1,
+      "Reused": 0,
+      "Assignments": 16,
+      "fullAssignments": 16,
+      "optimum": 8
+    },
+    {
+      "name": "joint-objective",
+      "Components": 1,
+      "Reused": 0,
+      "Assignments": 16,
+      "fullAssignments": 16,
+      "optimum": 8
+    },
+    {
+      "name": "edge-removed",
+      "Components": 2,
+      "Reused": 2,
+      "Assignments": 0,
+      "fullAssignments": 16,
+      "optimum": 4
+    },
+    {
+      "name": "infeasible",
+      "Components": 2,
+      "Reused": 1,
+      "Assignments": 4,
+      "fullAssignments": 16,
+      "optimum": null
+    }
+  ]
+}

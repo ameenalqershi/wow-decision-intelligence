@@ -1,0 +1,101 @@
+{
+  "stage": "first",
+  "split": "dev",
+  "core": 0,
+  "host": "Linux-6.8.0-134-generic-x86_64-with-glibc2.39",
+  "cpu": "\t: AMD EPYC 7713 64-Core Processor",
+  "sdk": "10.0.115",
+  "seed": 236,
+  "launches": [
+    {
+      "arm": "full",
+      "repetition": 0,
+      "status": 0,
+      "processWall": 0.21732871606945992
+    },
+    {
+      "arm": "warm",
+      "repetition": 0,
+      "status": 0,
+      "processWall": 0.21386247174814343
+    },
+    {
+      "arm": "box",
+      "repetition": 0,
+      "status": 0,
+      "processWall": 0.25199388805776834
+    },
+    {
+      "arm": "reuse",
+      "repetition": 0,
+      "status": 0,
+      "processWall": 0.23591784993186593
+    },
+    {
+      "arm": "partition",
+      "repetition": 0,
+      "status": 0,
+      "processWall": 0.2386881336569786
+    },
+    {
+      "arm": "warm",
+      "repetition": 1,
+      "status": 0,
+      "processWall": 0.20408844202756882
+    },
+    {
+      "arm": "box",
+      "repetition": 1,
+      "status": 0,
+      "processWall": 0.2473293268121779
+    },
+    {
+      "arm": "partition",
+      "repetition": 1,
+      "status": 0,
+      "processWall": 0.23315673600882292
+    },
+    {
+      "arm": "reuse",
+      "repetition": 1,
+      "status": 0,
+      "processWall": 0.22955023311078548
+    },
+    {
+      "arm": "full",
+      "repetition": 1,
+      "status": 0,
+      "processWall": 0.21135766711086035
+    },
+    {
+      "arm": "warm",
+      "repetition": 2,
+      "status": 0,
+      "processWall": 0.21074446896091104
+    },
+    {
+      "arm": "full",
+      "repetition": 2,
+      "status": 0,
+      "processWall": 0.20877914410084486
+    },
+    {
+      "arm": "reuse",
+      "repetition": 2,
+      "status": 0,
+      "processWall": 0.2703321729786694
+    },
+    {
+      "arm": "partition",
+      "repetition": 2,
+      "status": 0,
+      "processWall": 0.2549676429480314
+    },
+    {
+      "arm": "box",
+      "repetition": 2,
+      "status": 0,
+      "processWall": 0.2532585971057415
+    }
+  ]
+}

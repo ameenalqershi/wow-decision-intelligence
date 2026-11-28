@@ -1,0 +1,3143 @@
+[
+  {
+    "n": 13,
+    "record": {
+      "issue": {
+        "id": 6647032320,
+        "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/13",
+        "title": "F05 Version API, schema and extension contracts",
+        "issue_number": 13,
+        "body": "## Deliverable\n\nVersion API, schema and extension contracts\n\n## Acceptance evidence\n\nPublish compatibility policy with a backward-compatible extension, breaking migration example and rejection fixtures.\n\n## Dependencies\n\n#9 (F01)\n\n## Coordination\n\nClaim this issue before editing and record the intended paths, contract changes and verification command. Work on an isolated branch. Link the implementation and measured evidence before closing.\n\nScope key: F05\n\n### Traceability record\n\nIssue F05 · Independent scope · P0 · MVP · medium risk.\n\nRequirements: REQ-F05.\n\nDesign: `docs/design/contract-compatibility.md`. Diagram: `docs/design/contract-compatibility.md`.\n\nFields: The field table in docs/design/contract-compatibility.md defines the required identity, structural fields and rejection behavior. Contracts: EnvelopeReader.Read is the public compatibility entry point.\n\nDirect consumers: #14 (M01), #16 (M03), #23 (M10), #55 (I01), #75 (E01), #129 (RT01), #132 (RT04), #138 (EXT01), #139 (AI01).\n\nRequired evidence: TC-F05-A — Publish compatibility policy with a backward-compatible extension, breaking migration example and rejection fixtures.\n\nVerification: Run dotnet test tests/Contracts/WowDi.Contracts.Tests.csproj -c Release after locked restore. Planning: `dotnet run --project tools/Traceability`. Keep scope within the deliverable above. Review downstream contracts and publish feature-specific evidence before closing.",
+        "state": "closed",
+        "user": {
+          "login": "ameenalqershi",
+          "name": "ameenalqershi",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+          "id": 39249008
+        },
+        "assignees": [
+          {
+            "login": "ameenalqershi",
+            "name": "ameenalqershi",
+            "email": null,
+            "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+            "id": 39249008
+          }
+        ],
+        "labels": [
+          {
+            "name": "priority:P0",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "release:MVP",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "risk:medium",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "type:specification",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "dependencies:tracked",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "area:Foundation",
+            "color": "446F63",
+            "description": "Owning workstream"
+          },
+          {
+            "name": "complexity:integrated",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          }
+        ],
+        "milestone": 2,
+        "state_reason": "completed",
+        "comments": 2,
+        "created_at": "2026-11-27T13:06:21Z",
+        "updated_at": "2026-11-27T14:45:49Z",
+        "closed_at": "2026-11-27T14:35:56Z",
+        "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/13",
+        "display_title": "F05 Version API, schema and extension contracts"
+      },
+      "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/13",
+      "title": "F05 Version API, schema and extension contracts",
+      "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/13",
+      "display_title": "F05 Version API, schema and extension contracts"
+    }
+  },
+  {
+    "n": 14,
+    "record": {
+      "issue": {
+        "id": 6647032559,
+        "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/14",
+        "title": "M01 Define revisioned entity and hyperedge graph",
+        "issue_number": 14,
+        "body": "## Deliverable\n\nDefine revisioned entity and hyperedge graph\n\n## Acceptance evidence\n\nRepresent all named EDG concepts and interval, capacity and provenance relationships. Show multi-variable constraint scopes.\n\n## Dependencies\n\n#13 (F05)\n\n## Coordination\n\nClaim this issue before editing and record the intended paths, contract changes and verification command. Work on an isolated branch. Link the implementation and measured evidence before closing.\n\nScope key: M01\n\n### Traceability record\n\nIssue M01 · Independent scope · P0 · MVP · high risk.\n\nRequirements: REQ-M01.\n\nDesign: `docs/design/decision-graph.md`. Diagram: `docs/design/decision-graph.md`.\n\nFields: The field table in docs/design/decision-graph.md defines the required identity, structural fields and rejection behavior. Contracts: DecisionGraphSnapshot.Create and IncidentRelationships are the managed graph entry points.\n\nDirect consumers: #15 (M02), #24 (M11), #72 (U03), #93 (UI04), #94 (UI05), #128 (DS04).\n\nRequired evidence: TC-M01-A — Represent all named EDG concepts and interval, capacity and provenance relationships. Show multi-variable constraint scopes.\n\nVerification: Run dotnet test tests/DecisionGraph/WowDi.DecisionGraph.Tests.csproj -c Release after locked restore. Planning: `dotnet run --project tools/Traceability`. Keep scope within the deliverable above. Review downstream contracts and publish feature-specific evidence before closing.",
+        "state": "closed",
+        "user": {
+          "login": "ameenalqershi",
+          "name": "ameenalqershi",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+          "id": 39249008
+        },
+        "assignees": [
+          {
+            "login": "ameenalqershi",
+            "name": "ameenalqershi",
+            "email": null,
+            "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+            "id": 39249008
+          }
+        ],
+        "labels": [
+          {
+            "name": "priority:P0",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "release:MVP",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "risk:high",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "type:feature",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "dependencies:tracked",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "area:Model",
+            "color": "446F63",
+            "description": "Owning workstream"
+          },
+          {
+            "name": "complexity:integrated",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          }
+        ],
+        "milestone": 3,
+        "state_reason": "completed",
+        "comments": 2,
+        "created_at": "2026-11-27T13:06:22Z",
+        "updated_at": "2026-11-27T14:45:54Z",
+        "closed_at": "2026-11-27T14:41:46Z",
+        "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/14",
+        "display_title": "M01 Define revisioned entity and hyperedge graph"
+      },
+      "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/14",
+      "title": "M01 Define revisioned entity and hyperedge graph",
+      "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/14",
+      "display_title": "M01 Define revisioned entity and hyperedge graph"
+    }
+  },
+  {
+    "n": 15,
+    "record": {
+      "issue": {
+        "id": 6647032977,
+        "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/15",
+        "title": "M02 Index dependencies and impact across revisions",
+        "issue_number": 15,
+        "body": "## Deliverable\n\nIndex dependencies and impact across revisions\n\n## Acceptance evidence\n\nCompare incremental reachability to complete traversal including deleted and newly introduced edges and global objectives.\n\n## Dependencies\n\n#14 (M01)\n\n## Coordination\n\nClaim this issue before editing and record the intended paths, contract changes and verification command. Work on an isolated branch. Link the implementation and measured evidence before closing.\n\nScope key: M02",
+        "state": "closed",
+        "user": {
+          "login": "ameenalqershi",
+          "name": "ameenalqershi",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+          "id": 39249008
+        },
+        "assignees": [
+          {
+            "login": "ameenalqershi",
+            "name": "ameenalqershi",
+            "email": null,
+            "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+            "id": 39249008
+          }
+        ],
+        "labels": [
+          {
+            "name": "priority:P0",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "release:MVP",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "risk:high",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "type:feature",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "dependencies:tracked",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "area:Model",
+            "color": "446F63",
+            "description": "Owning workstream"
+          },
+          {
+            "name": "complexity:integrated",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          }
+        ],
+        "milestone": 3,
+        "state_reason": "completed",
+        "comments": 3,
+        "created_at": "2026-11-27T13:06:23Z",
+        "updated_at": "2026-11-27T14:47:41Z",
+        "closed_at": "2026-11-27T14:47:38Z",
+        "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/15",
+        "display_title": "M02 Index dependencies and impact across revisions"
+      },
+      "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/15",
+      "title": "M02 Index dependencies and impact across revisions",
+      "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/15",
+      "display_title": "M02 Index dependencies and impact across revisions"
+    }
+  },
+  {
+    "n": 16,
+    "record": {
+      "issue": {
+        "id": 6647033416,
+        "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/16",
+        "title": "M03 Implement typed UDIR and source spans",
+        "issue_number": 16,
+        "body": "## Deliverable\n\nImplement typed UDIR and source spans\n\n## Acceptance evidence\n\nEncode domains, rational literals, units, currencies, time basis, uncertainty, requirements and semantic versions. Round-trip fixtures.\n\n## Dependencies\n\n#13 (F05)\n\n## Coordination\n\nClaim this issue before editing and record the intended paths, contract changes and verification command. Work on an isolated branch. Link the implementation and measured evidence before closing.\n\nScope key: M03\n\n### Traceability record\n\nIssue M03 · Independent scope · P0 · MVP · high risk.\n\nRequirements: REQ-M03.\n\nDesign: `docs/design/language.md`, `docs/design/engine.md`. Diagram: `docs/design/operating-modes.md`.\n\nFields: see docs/design/udir-v1.md and the F-REV mapping in the pilot field dictionary. Contract: wowdi.udir 1.0, semantics udir/1, using UdirDocument.Create, Read and Write (API-MODEL).\n\nDirect consumers: #17 (M04), #18 (M05), #22 (M09), #23 (M10), #24 (M11), #26 (S01), #29 (S04), #48 (V01), #136 (NUM03).\n\nRequired evidence: TC-M03-A — Encode domains, rational literals, units, currencies, time basis, uncertainty, requirements and semantic versions. Round-trip fixtures.\n\nVerification: Execute the linked acceptance cases and attach observed evidence to the issue. Planning: `dotnet run --project tools/Traceability`. Keep scope within the deliverable above. Review downstream contracts and publish feature-specific evidence before closing.\n",
+        "state": "closed",
+        "user": {
+          "login": "ameenalqershi",
+          "name": "ameenalqershi",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+          "id": 39249008
+        },
+        "assignees": [
+          {
+            "login": "ameenalqershi",
+            "name": "ameenalqershi",
+            "email": null,
+            "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+            "id": 39249008
+          }
+        ],
+        "labels": [
+          {
+            "name": "priority:P0",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "release:MVP",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "risk:high",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "type:feature",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "dependencies:tracked",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "area:Model",
+            "color": "446F63",
+            "description": "Owning workstream"
+          },
+          {
+            "name": "complexity:integrated",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          }
+        ],
+        "milestone": 3,
+        "state_reason": "completed",
+        "comments": 2,
+        "created_at": "2026-11-27T13:06:25Z",
+        "updated_at": "2026-11-27T19:39:25Z",
+        "closed_at": "2026-11-27T19:39:03Z",
+        "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/16",
+        "display_title": "M03 Implement typed UDIR and source spans"
+      },
+      "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/16",
+      "title": "M03 Implement typed UDIR and source spans",
+      "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/16",
+      "display_title": "M03 Implement typed UDIR and source spans"
+    }
+  },
+  {
+    "n": 17,
+    "record": {
+      "issue": {
+        "id": 6647033818,
+        "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/17",
+        "title": "M04 Validate dimensions, calendars and currency conversion",
+        "issue_number": 17,
+        "body": "## Deliverable\n\nValidate dimensions, calendars and currency conversion\n\n## Acceptance evidence\n\nReject implicit currency conversion, inconsistent time bases and overflow. Accept an explicit versioned rate and exact scale.\n\n## Dependencies\n\n#16 (M03)\n\n## Coordination\n\nClaim this issue before editing and record the intended paths, contract changes and verification command. Work on an isolated branch. Link the implementation and measured evidence before closing.\n\nScope key: M04\n\n### Traceability record\n\nIssue M04 · Independent scope · P0 · MVP · high risk.\n\nRequirements: REQ-M04.\n\nDesign: `docs/design/language.md`, `docs/design/engine.md`. Diagram: `docs/design/operating-modes.md`.\n\nFields: No approved field mapping in this baseline. Contracts: No approved API mapping in this baseline.\n\nDirect consumers: #20 (M07), #22 (M09), #96 (UI07), #134 (NUM01).\n\nRequired evidence: TC-M04-A — Reject implicit currency conversion, inconsistent time bases and overflow. Accept an explicit versioned rate and exact scale.\n\nVerification: Execute the linked acceptance cases and attach observed evidence to the issue. Planning: `dotnet run --project tools/Traceability`. Keep scope within the deliverable above. Review downstream contracts and publish feature-specific evidence before closing.",
+        "state": "closed",
+        "user": {
+          "login": "ameenalqershi",
+          "name": "ameenalqershi",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+          "id": 39249008
+        },
+        "assignees": [
+          {
+            "login": "ameenalqershi",
+            "name": "ameenalqershi",
+            "email": null,
+            "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+            "id": 39249008
+          }
+        ],
+        "labels": [
+          {
+            "name": "priority:P0",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "release:MVP",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "risk:high",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "type:feature",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "dependencies:tracked",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "area:Model",
+            "color": "446F63",
+            "description": "Owning workstream"
+          },
+          {
+            "name": "complexity:integrated",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          }
+        ],
+        "milestone": 3,
+        "state_reason": "completed",
+        "comments": 4,
+        "created_at": "2026-11-27T13:06:26Z",
+        "updated_at": "2026-11-27T21:05:23Z",
+        "closed_at": "2026-11-27T21:05:20Z",
+        "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/17",
+        "display_title": "M04 Validate dimensions, calendars and currency conversion"
+      },
+      "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/17",
+      "title": "M04 Validate dimensions, calendars and currency conversion",
+      "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/17",
+      "display_title": "M04 Validate dimensions, calendars and currency conversion"
+    }
+  },
+  {
+    "n": 18,
+    "record": {
+      "issue": {
+        "id": 6647034270,
+        "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/18",
+        "title": "M05 Specify DML grammar, AST and diagnostics",
+        "issue_number": 18,
+        "body": "## Deliverable\n\nSpecify DML grammar, AST and diagnostics\n\n## Acceptance evidence\n\nParse valid and invalid examples with spans and stable error codes. Define grammar extension rules for scenarios and triggers.\n\n## Dependencies\n\n#16 (M03)\n\n## Coordination\n\nClaim this issue before editing and record the intended paths, contract changes and verification command. Work on an isolated branch. Link the implementation and measured evidence before closing.\n\nScope key: M05\n\n### Traceability record\n\nIssue M05 · Independent scope · P0 · MVP · high risk.\n\nRequirements: REQ-M05.\n\nDesign: `docs/design/language.md`, `docs/design/engine.md`. Diagram: `docs/design/operating-modes.md`.\n\nFields: No approved field mapping in this baseline. Contracts: No approved API mapping in this baseline.\n\nDirect consumers: #19 (M06), #72 (U03).\n\nRequired evidence: TC-M05-A — Parse valid and invalid examples with spans and stable error codes. Define grammar extension rules for scenarios and triggers.\n\nVerification: Execute the linked acceptance cases and attach observed evidence to the issue. Planning: `dotnet run --project tools/Traceability`. Keep scope within the deliverable above. Review downstream contracts and publish feature-specific evidence before closing.",
+        "state": "closed",
+        "user": {
+          "login": "ameenalqershi",
+          "name": "ameenalqershi",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+          "id": 39249008
+        },
+        "assignees": [
+          {
+            "login": "ameenalqershi",
+            "name": "ameenalqershi",
+            "email": null,
+            "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+            "id": 39249008
+          }
+        ],
+        "labels": [
+          {
+            "name": "priority:P0",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "release:MVP",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "risk:high",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "type:feature",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "dependencies:tracked",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "area:Model",
+            "color": "446F63",
+            "description": "Owning workstream"
+          },
+          {
+            "name": "complexity:integrated",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          }
+        ],
+        "milestone": 3,
+        "state_reason": "completed",
+        "comments": 4,
+        "created_at": "2026-11-27T13:06:28Z",
+        "updated_at": "2026-11-27T21:52:30Z",
+        "closed_at": "2026-11-27T21:52:27Z",
+        "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/18",
+        "display_title": "M05 Specify DML grammar, AST and diagnostics"
+      },
+      "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/18",
+      "title": "M05 Specify DML grammar, AST and diagnostics",
+      "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/18",
+      "display_title": "M05 Specify DML grammar, AST and diagnostics"
+    }
+  },
+  {
+    "n": 19,
+    "record": {
+      "issue": {
+        "id": 6647034670,
+        "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/19",
+        "title": "M06 Build bounded declarative parser and binder",
+        "issue_number": 19,
+        "body": "## Deliverable\n\nBuild bounded declarative parser and binder\n\n## Acceptance evidence\n\nReject unknown symbols, cycles in derived expressions, excessive input and arbitrary executable constructs.\n\n## Dependencies\n\n#18 (M05)\n\n## Coordination\n\nClaim this issue before editing and record the intended paths, contract changes and verification command. Work on an isolated branch. Link the implementation and measured evidence before closing.\n\nScope key: M06\n\n### Traceability record\n\nIssue M06 · Independent scope · P0 · MVP · high risk.\n\nRequirements: REQ-M06.\n\nDesign: `docs/design/language.md`, `docs/design/engine.md`. Diagram: `docs/design/operating-modes.md`.\n\nFields: No approved field mapping in this baseline. Contracts: No approved API mapping in this baseline.\n\nDirect consumers: #20 (M07), #95 (UI06), #140 (AI02).\n\nRequired evidence: TC-M06-A — Reject unknown symbols, cycles in derived expressions, excessive input and arbitrary executable constructs.\n\nVerification: Execute the linked acceptance cases and attach observed evidence to the issue. Planning: `dotnet run --project tools/Traceability`. Keep scope within the deliverable above. Review downstream contracts and publish feature-specific evidence before closing.",
+        "state": "closed",
+        "user": {
+          "login": "ameenalqershi",
+          "name": "ameenalqershi",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+          "id": 39249008
+        },
+        "assignees": [
+          {
+            "login": "ameenalqershi",
+            "name": "ameenalqershi",
+            "email": null,
+            "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+            "id": 39249008
+          }
+        ],
+        "labels": [
+          {
+            "name": "priority:P0",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "release:MVP",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "risk:high",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "type:feature",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "dependencies:tracked",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "area:Model",
+            "color": "446F63",
+            "description": "Owning workstream"
+          },
+          {
+            "name": "complexity:integrated",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          }
+        ],
+        "milestone": 3,
+        "state_reason": "completed",
+        "comments": 3,
+        "created_at": "2026-11-27T13:06:29Z",
+        "updated_at": "2026-11-27T21:55:32Z",
+        "closed_at": "2026-11-27T21:55:29Z",
+        "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/19",
+        "display_title": "M06 Build bounded declarative parser and binder"
+      },
+      "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/19",
+      "title": "M06 Build bounded declarative parser and binder",
+      "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/19",
+      "display_title": "M06 Build bounded declarative parser and binder"
+    }
+  },
+  {
+    "n": 20,
+    "record": {
+      "issue": {
+        "id": 6647034951,
+        "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/20",
+        "title": "M07 Implement semantic analysis and normalization",
+        "issue_number": 20,
+        "body": "## Deliverable\n\nImplement semantic analysis and normalization\n\n## Acceptance evidence\n\nNormalize equivalent exact expressions, retain provenance and compare finite feasible sets before and after transformation.\n\n## Dependencies\n\n#17 (M04), #19 (M06)\n\n## Coordination\n\nClaim this issue before editing and record the intended paths, contract changes and verification command. Work on an isolated branch. Link the implementation and measured evidence before closing.\n\nScope key: M07\n\n### Traceability record\n\nIssue M07 · Independent scope · P0 · MVP · high risk.\n\nRequirements: REQ-M07.\n\nDesign: `docs/design/language.md`, `docs/design/engine.md`. Diagram: `docs/design/operating-modes.md`.\n\nFields: No approved field mapping in this baseline. Contracts: No approved API mapping in this baseline.\n\nDirect consumers: #21 (M08), #25 (M12), #39 (X02), #40 (X03), #83 (Q01), #95 (UI06), #134 (NUM01), #135 (NUM02).\n\nRequired evidence: TC-M07-A — Normalize equivalent exact expressions, retain provenance and compare finite feasible sets before and after transformation.\n\nVerification: Execute the linked acceptance cases and attach observed evidence to the issue. Planning: `dotnet run --project tools/Traceability`. Keep scope within the deliverable above. Review downstream contracts and publish feature-specific evidence before closing.",
+        "state": "closed",
+        "user": {
+          "login": "ameenalqershi",
+          "name": "ameenalqershi",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+          "id": 39249008
+        },
+        "assignees": [
+          {
+            "login": "ameenalqershi",
+            "name": "ameenalqershi",
+            "email": null,
+            "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+            "id": 39249008
+          }
+        ],
+        "labels": [
+          {
+            "name": "priority:P0",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "release:MVP",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "risk:high",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "type:feature",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "dependencies:tracked",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "area:Model",
+            "color": "446F63",
+            "description": "Owning workstream"
+          },
+          {
+            "name": "complexity:integrated",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          }
+        ],
+        "milestone": 3,
+        "state_reason": "completed",
+        "comments": 3,
+        "created_at": "2026-11-27T13:06:30Z",
+        "updated_at": "2026-11-27T22:10:43Z",
+        "closed_at": "2026-11-27T22:10:40Z",
+        "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/20",
+        "display_title": "M07 Implement semantic analysis and normalization"
+      },
+      "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/20",
+      "title": "M07 Implement semantic analysis and normalization",
+      "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/20",
+      "display_title": "M07 Implement semantic analysis and normalization"
+    }
+  },
+  {
+    "n": 21,
+    "record": {
+      "issue": {
+        "id": 6647035321,
+        "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/21",
+        "title": "M08 Implement capability-checked solver lowering",
+        "issue_number": 21,
+        "body": "## Deliverable\n\nImplement capability-checked solver lowering\n\n## Acceptance evidence\n\nReject unsupported requirements and rounding. Map native indices to source constraints and distinguish exact from approximate transformations.\n\n## Dependencies\n\n#20 (M07)\n\n## Coordination\n\nClaim this issue before editing and record the intended paths, contract changes and verification command. Work on an isolated branch. Link the implementation and measured evidence before closing.\n\nScope key: M08\n\n### Traceability record\n\nIssue M08 · Independent scope · P0 · MVP · high risk.\n\nRequirements: REQ-M08.\n\nDesign: `docs/design/language.md`, `docs/design/engine.md`. Diagram: `docs/design/operating-modes.md`.\n\nFields: No approved field mapping in this baseline. Contracts: No approved API mapping in this baseline.\n\nDirect consumers: #27 (S02), #28 (S03), #31 (S06), #83 (Q01), #98 (UI09), #116 (CLI04), #147 (QA05).\n\nRequired evidence: TC-M08-A — Reject unsupported requirements and rounding. Map native indices to source constraints and distinguish exact from approximate transformations.\n\nVerification: Execute the linked acceptance cases and attach observed evidence to the issue. Planning: `dotnet run --project tools/Traceability`. Keep scope within the deliverable above. Review downstream contracts and publish feature-specific evidence before closing.",
+        "state": "closed",
+        "user": {
+          "login": "ameenalqershi",
+          "name": "ameenalqershi",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+          "id": 39249008
+        },
+        "assignees": [
+          {
+            "login": "ameenalqershi",
+            "name": "ameenalqershi",
+            "email": null,
+            "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+            "id": 39249008
+          }
+        ],
+        "labels": [
+          {
+            "name": "priority:P0",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "release:MVP",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "risk:high",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "type:feature",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "dependencies:tracked",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "area:Model",
+            "color": "446F63",
+            "description": "Owning workstream"
+          },
+          {
+            "name": "complexity:integrated",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          }
+        ],
+        "milestone": 3,
+        "state_reason": "completed",
+        "comments": 3,
+        "created_at": "2026-11-27T13:06:31Z",
+        "updated_at": "2026-11-27T22:21:12Z",
+        "closed_at": "2026-11-27T22:20:58Z",
+        "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/21",
+        "display_title": "M08 Implement capability-checked solver lowering"
+      },
+      "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/21",
+      "title": "M08 Implement capability-checked solver lowering",
+      "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/21",
+      "display_title": "M08 Implement capability-checked solver lowering"
+    }
+  },
+  {
+    "n": 22,
+    "record": {
+      "issue": {
+        "id": 6647035640,
+        "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/22",
+        "title": "M09 Expose typed C# modeling SDK",
+        "issue_number": 22,
+        "body": "## Deliverable\n\nExpose typed C# modeling SDK\n\n## Acceptance evidence\n\nConstruct a production and workforce model with no strings for unit arithmetic. Compare normalized IR with DML equivalents.\n\n## Dependencies\n\n#16 (M03), #17 (M04)\n\n## Coordination\n\nClaim this issue before editing and record the intended paths, contract changes and verification command. Work on an isolated branch. Link the implementation and measured evidence before closing.\n\nScope key: M09\n\n### Traceability record\n\nIssue M09 · Independent scope · P1 · Production · high risk.\n\nRequirements: REQ-M09.\n\nDesign: `docs/design/language.md`, `docs/design/engine.md`. Diagram: `docs/design/operating-modes.md`.\n\nFields: No approved field mapping in this baseline. Contracts: No approved API mapping in this baseline.\n\nDirect consumers: #53 (V06), #72 (U03), #93 (UI04), #132 (RT04).\n\nRequired evidence: TC-M09-A — Construct a production and workforce model with no strings for unit arithmetic. Compare normalized IR with DML equivalents.\n\nVerification: Execute the linked acceptance cases and attach observed evidence to the issue. Planning: `dotnet run --project tools/Traceability`. Keep scope within the deliverable above. Review downstream contracts and publish feature-specific evidence before closing.",
+        "state": "closed",
+        "user": {
+          "login": "ameenalqershi",
+          "name": "ameenalqershi",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+          "id": 39249008
+        },
+        "assignees": [
+          {
+            "login": "ameenalqershi",
+            "name": "ameenalqershi",
+            "email": null,
+            "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+            "id": 39249008
+          }
+        ],
+        "labels": [
+          {
+            "name": "priority:P1",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "release:Production",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "risk:high",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "type:feature",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "dependencies:tracked",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "area:Model",
+            "color": "446F63",
+            "description": "Owning workstream"
+          },
+          {
+            "name": "complexity:integrated",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          }
+        ],
+        "milestone": 3,
+        "state_reason": "completed",
+        "comments": 4,
+        "created_at": "2026-11-27T13:06:32Z",
+        "updated_at": "2026-11-27T22:16:56Z",
+        "closed_at": "2026-11-27T22:16:54Z",
+        "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/22",
+        "display_title": "M09 Expose typed C# modeling SDK"
+      },
+      "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/22",
+      "title": "M09 Expose typed C# modeling SDK",
+      "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/22",
+      "display_title": "M09 Expose typed C# modeling SDK"
+    }
+  },
+  {
+    "n": 24,
+    "record": {
+      "issue": {
+        "id": 6647036252,
+        "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/24",
+        "title": "M11 Implement immutable model registry and provenance",
+        "issue_number": 24,
+        "body": "## Deliverable\n\nImplement immutable model registry and provenance\n\n## Acceptance evidence\n\nPersist tenant-scoped model revisions, source hashes and snapshots. Resolve old revisions after schema migration.\n\n## Dependencies\n\n#14 (M01), #16 (M03)\n\n## Coordination\n\nClaim this issue before editing and record the intended paths, contract changes and verification command. Work on an isolated branch. Link the implementation and measured evidence before closing.\n\nScope key: M11\n\n### Traceability record\n\nIssue M11 · Independent scope · P1 · MVP · high risk.\n\nRequirements: REQ-M11.\n\nDesign: `docs/design/engine.md`. Diagram: `docs/design/operating-modes.md`.\n\nFields: No approved field mapping in this baseline. Contracts: No approved API mapping in this baseline.\n\nDirect consumers: #35 (S10), #40 (X03), #64 (A01), #76 (E02), #129 (RT01).\n\nRequired evidence: TC-M11-A — Persist tenant-scoped model revisions, source hashes and snapshots. Resolve old revisions after schema migration.\n\nVerification: Execute the linked acceptance cases and attach observed evidence to the issue. Planning: `dotnet run --project tools/Traceability`. Keep scope within the deliverable above. Review downstream contracts and publish feature-specific evidence before closing.",
+        "state": "closed",
+        "user": {
+          "login": "ameenalqershi",
+          "name": "ameenalqershi",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+          "id": 39249008
+        },
+        "assignees": [
+          {
+            "login": "ameenalqershi",
+            "name": "ameenalqershi",
+            "email": null,
+            "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+            "id": 39249008
+          }
+        ],
+        "labels": [
+          {
+            "name": "priority:P1",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "release:MVP",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "risk:high",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "type:feature",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "dependencies:tracked",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "area:Model",
+            "color": "446F63",
+            "description": "Owning workstream"
+          },
+          {
+            "name": "complexity:integrated",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          }
+        ],
+        "milestone": 3,
+        "state_reason": "completed",
+        "comments": 2,
+        "created_at": "2026-11-27T13:06:34Z",
+        "updated_at": "2026-11-27T19:52:21Z",
+        "closed_at": "2026-11-27T19:52:18Z",
+        "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/24",
+        "display_title": "M11 Implement immutable model registry and provenance"
+      },
+      "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/24",
+      "title": "M11 Implement immutable model registry and provenance",
+      "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/24",
+      "display_title": "M11 Implement immutable model registry and provenance"
+    }
+  },
+  {
+    "n": 25,
+    "record": {
+      "issue": {
+        "id": 6647036607,
+        "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/25",
+        "title": "M12 Implement safe presolve and transformation ledger",
+        "issue_number": 25,
+        "body": "## Deliverable\n\nImplement safe presolve and transformation ledger\n\n## Acceptance evidence\n\nCheck tautologies, duplicates, unused variables and empty domains; preserve reconstruction metadata and counterexamples.\n\n## Dependencies\n\n#20 (M07)\n\n## Coordination\n\nClaim this issue before editing and record the intended paths, contract changes and verification command. Work on an isolated branch. Link the implementation and measured evidence before closing.\n\nScope key: M12\n\n### Traceability record\n\nIssue M12 · Independent scope · P1 · Production · high risk.\n\nRequirements: REQ-M12.\n\nDesign: `docs/design/engine.md`. Diagram: `docs/design/operating-modes.md`.\n\nFields: No approved field mapping in this baseline. Contracts: No approved API mapping in this baseline.\n\nDirect consumers: #98 (UI09).\n\nRequired evidence: TC-M12-A — Check tautologies, duplicates, unused variables and empty domains; preserve reconstruction metadata and counterexamples.\n\nVerification: Execute the linked acceptance cases and attach observed evidence to the issue. Planning: `dotnet run --project tools/Traceability`. Keep scope within the deliverable above. Review downstream contracts and publish feature-specific evidence before closing.",
+        "state": "closed",
+        "user": {
+          "login": "ameenalqershi",
+          "name": "ameenalqershi",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+          "id": 39249008
+        },
+        "assignees": [
+          {
+            "login": "ameenalqershi",
+            "name": "ameenalqershi",
+            "email": null,
+            "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+            "id": 39249008
+          }
+        ],
+        "labels": [
+          {
+            "name": "priority:P1",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "release:Production",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "risk:high",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "type:feature",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "dependencies:tracked",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "area:Model",
+            "color": "446F63",
+            "description": "Owning workstream"
+          },
+          {
+            "name": "complexity:integrated",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          }
+        ],
+        "milestone": 3,
+        "state_reason": "completed",
+        "comments": 2,
+        "created_at": "2026-11-27T13:06:36Z",
+        "updated_at": "2026-11-27T22:23:16Z",
+        "closed_at": "2026-11-27T22:23:04Z",
+        "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/25",
+        "display_title": "M12 Implement safe presolve and transformation ledger"
+      },
+      "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/25",
+      "title": "M12 Implement safe presolve and transformation ledger",
+      "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/25",
+      "display_title": "M12 Implement safe presolve and transformation ledger"
+    }
+  },
+  {
+    "n": 26,
+    "record": {
+      "issue": {
+        "id": 6647036941,
+        "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/26",
+        "title": "S01 Define solver capability and result contracts",
+        "issue_number": 26,
+        "body": "## Deliverable\n\nDefine solver capability and result contracts\n\n## Acceptance evidence\n\nSeparate mathematical status, termination reason, incumbent, bounds, tolerances, trust source and resource use.\n\n## Dependencies\n\n#16 (M03)\n\n## Coordination\n\nClaim this issue before editing and record the intended paths, contract changes and verification command. Work on an isolated branch. Link the implementation and measured evidence before closing.\n\nScope key: S01\n\n### Traceability record\n\nIssue S01 · Independent scope · P0 · MVP · high risk.\n\nRequirements: REQ-S01.\n\nDesign: `docs/design/engine.md`. Diagram: `docs/design/operating-modes.md`.\n\nFields: No approved field mapping in this baseline. Contracts: No approved API mapping in this baseline.\n\nDirect consumers: #27 (S02), #28 (S03), #29 (S04), #31 (S06), #32 (S07), #121 (CLI09), #135 (NUM02), #136 (NUM03), #138 (EXT01).\n\nRequired evidence: TC-S01-A — Separate mathematical status, termination reason, incumbent, bounds, tolerances, trust source and resource use.\n\nVerification: Execute the linked acceptance cases and attach observed evidence to the issue. Planning: `dotnet run --project tools/Traceability`. Keep scope within the deliverable above. Review downstream contracts and publish feature-specific evidence before closing.",
+        "state": "closed",
+        "user": {
+          "login": "ameenalqershi",
+          "name": "ameenalqershi",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+          "id": 39249008
+        },
+        "assignees": [
+          {
+            "login": "ameenalqershi",
+            "name": "ameenalqershi",
+            "email": null,
+            "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+            "id": 39249008
+          }
+        ],
+        "labels": [
+          {
+            "name": "priority:P0",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "release:MVP",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "risk:high",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "type:feature",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "dependencies:tracked",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "area:Runtime",
+            "color": "446F63",
+            "description": "Owning workstream"
+          },
+          {
+            "name": "complexity:integrated",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          }
+        ],
+        "milestone": 4,
+        "state_reason": "completed",
+        "comments": 2,
+        "created_at": "2026-11-27T13:06:37Z",
+        "updated_at": "2026-11-27T19:47:46Z",
+        "closed_at": "2026-11-27T19:47:43Z",
+        "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/26",
+        "display_title": "S01 Define solver capability and result contracts"
+      },
+      "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/26",
+      "title": "S01 Define solver capability and result contracts",
+      "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/26",
+      "display_title": "S01 Define solver capability and result contracts"
+    }
+  },
+  {
+    "n": 27,
+    "record": {
+      "issue": {
+        "id": 6647037345,
+        "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/27",
+        "title": "S02 Integrate integer scheduling adapter",
+        "issue_number": 27,
+        "body": "## Deliverable\n\nIntegrate integer scheduling adapter\n\n## Acceptance evidence\n\nSolve a precedence and no-overlap fixture using CP-SAT; preserve domain bounds, horizon semantics and native status.\n\n## Dependencies\n\n#21 (M08), #26 (S01), #7 (R07)\n\n## Coordination\n\nClaim this issue before editing and record the intended paths, contract changes and verification command. Work on an isolated branch. Link the implementation and measured evidence before closing.\n\nScope key: S02\n\n### Traceability record\n\nIssue S02 · Independent scope · P0 · MVP · high risk.\n\nRequirements: REQ-S02.\n\nDesign: `docs/design/engine.md`. Diagram: `docs/design/operating-modes.md`.\n\nFields: No approved field mapping in this baseline. Contracts: No approved API mapping in this baseline.\n\nDirect consumers: #37 (S12), #50 (V03).\n\nRequired evidence: TC-S02-A — Solve a precedence and no-overlap fixture using CP-SAT; preserve domain bounds, horizon semantics and native status.\n\nVerification: Execute the linked acceptance cases and attach observed evidence to the issue. Planning: `dotnet run --project tools/Traceability`. Keep scope within the deliverable above. Review downstream contracts and publish feature-specific evidence before closing.",
+        "state": "open",
+        "user": {
+          "login": "ameenalqershi",
+          "name": "ameenalqershi",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+          "id": 39249008
+        },
+        "assignees": null,
+        "labels": [
+          {
+            "name": "status:backlog",
+            "color": "EDEDED",
+            "description": "In scope, unclaimed"
+          },
+          {
+            "name": "priority:P0",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "release:MVP",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "risk:high",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "type:feature",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "complexity:cross-component",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "dependencies:tracked",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "area:Runtime",
+            "color": "446F63",
+            "description": "Owning workstream"
+          }
+        ],
+        "milestone": 4,
+        "state_reason": null,
+        "comments": 1,
+        "created_at": "2026-11-27T13:06:38Z",
+        "updated_at": "2026-11-27T22:20:49Z",
+        "closed_at": null,
+        "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/27",
+        "display_title": "S02 Integrate integer scheduling adapter"
+      },
+      "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/27",
+      "title": "S02 Integrate integer scheduling adapter",
+      "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/27",
+      "display_title": "S02 Integrate integer scheduling adapter"
+    }
+  },
+  {
+    "n": 28,
+    "record": {
+      "issue": {
+        "id": 6647037642,
+        "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/28",
+        "title": "S03 Integrate LP and MILP adapter",
+        "issue_number": 28,
+        "body": "## Deliverable\n\nIntegrate LP and MILP adapter\n\n## Acceptance evidence\n\nSolve and independently check LP and integer fixtures via HiGHS; handle native failures and unsupported certificates.\n\n## Dependencies\n\n#21 (M08), #26 (S01), #7 (R07)\n\n## Coordination\n\nClaim this issue before editing and record the intended paths, contract changes and verification command. Work on an isolated branch. Link the implementation and measured evidence before closing.\n\nScope key: S03\n\n### Traceability record\n\nIssue S03 · Independent scope · P1 · Multi-Sector · high risk.\n\nRequirements: REQ-S03.\n\nDesign: `docs/design/engine.md`. Diagram: `docs/design/operating-modes.md`.\n\nFields: No approved field mapping in this baseline. Contracts: No approved API mapping in this baseline.\n\nDirect consumers: #43 (X06), #54 (V07), #66 (A03).\n\nRequired evidence: TC-S03-A — Solve and independently check LP and integer fixtures via HiGHS; handle native failures and unsupported certificates.\n\nVerification: Execute the linked acceptance cases and attach observed evidence to the issue. Planning: `dotnet run --project tools/Traceability`. Keep scope within the deliverable above. Review downstream contracts and publish feature-specific evidence before closing.",
+        "state": "open",
+        "user": {
+          "login": "ameenalqershi",
+          "name": "ameenalqershi",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+          "id": 39249008
+        },
+        "assignees": null,
+        "labels": [
+          {
+            "name": "status:backlog",
+            "color": "EDEDED",
+            "description": "In scope, unclaimed"
+          },
+          {
+            "name": "priority:P1",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "release:Multi-Sector",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "risk:high",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "type:feature",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "complexity:cross-component",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "dependencies:tracked",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "area:Runtime",
+            "color": "446F63",
+            "description": "Owning workstream"
+          }
+        ],
+        "milestone": 4,
+        "state_reason": null,
+        "comments": 2,
+        "created_at": "2026-11-27T13:06:39Z",
+        "updated_at": "2026-11-27T22:27:48Z",
+        "closed_at": null,
+        "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/28",
+        "display_title": "S03 Integrate LP and MILP adapter"
+      },
+      "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/28",
+      "title": "S03 Integrate LP and MILP adapter",
+      "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/28",
+      "display_title": "S03 Integrate LP and MILP adapter"
+    }
+  },
+  {
+    "n": 29,
+    "record": {
+      "issue": {
+        "id": 6647038069,
+        "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/29",
+        "title": "S04 Implement independent feasibility and cost checker",
+        "issue_number": 29,
+        "body": "## Deliverable\n\nImplement independent feasibility and cost checker\n\n## Acceptance evidence\n\nCheck original-model assignments, integrality, intervals, capacities and every objective without calling the lowering layer.\n\n## Dependencies\n\n#16 (M03), #26 (S01)\n\n## Coordination\n\nClaim this issue before editing and record the intended paths, contract changes and verification command. Work on an isolated branch. Link the implementation and measured evidence before closing.\n\nScope key: S04\n\n### Traceability record\n\nIssue S04 · Independent scope · P0 · MVP · high risk.\n\nRequirements: REQ-S04, DIR-S04-1.\n\nDesign: `docs/design/engine.md`. Diagram: `docs/design/operating-modes.md`.\n\nFields: No approved field mapping in this baseline. Contracts: No approved API mapping in this baseline.\n\nDirect consumers: #30 (S05), #34 (S09), #35 (S10), #42 (X05), #50 (V03), #54 (V07), #65 (A02), #117 (CLI05), #135 (NUM02), #140 (AI02), #147 (QA05).\n\nRequired evidence: TC-S04-A — Check original-model assignments, integrality, intervals, capacities and every objective without calling the lowering layer.\n\nVerification: Execute the linked acceptance cases and attach observed evidence to the issue. Planning: `dotnet run --project tools/Traceability`. Keep scope within the deliverable above. Review downstream contracts and publish feature-specific evidence before closing.",
+        "state": "closed",
+        "user": {
+          "login": "ameenalqershi",
+          "name": "ameenalqershi",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+          "id": 39249008
+        },
+        "assignees": [
+          {
+            "login": "ameenalqershi",
+            "name": "ameenalqershi",
+            "email": null,
+            "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+            "id": 39249008
+          }
+        ],
+        "labels": [
+          {
+            "name": "priority:P0",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "release:MVP",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "risk:high",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "type:feature",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "dependencies:tracked",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "area:Runtime",
+            "color": "446F63",
+            "description": "Owning workstream"
+          },
+          {
+            "name": "complexity:integrated",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          }
+        ],
+        "milestone": 4,
+        "state_reason": "completed",
+        "comments": 5,
+        "created_at": "2026-11-27T13:06:41Z",
+        "updated_at": "2026-11-27T22:27:49Z",
+        "closed_at": "2026-11-27T21:58:00Z",
+        "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/29",
+        "display_title": "S04 Implement independent feasibility and cost checker"
+      },
+      "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/29",
+      "title": "S04 Implement independent feasibility and cost checker",
+      "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/29",
+      "display_title": "S04 Implement independent feasibility and cost checker"
+    }
+  },
+  {
+    "n": 30,
+    "record": {
+      "issue": {
+        "id": 6647038487,
+        "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/30",
+        "title": "S05 Validate bounds and classify evidence strength",
+        "issue_number": 30,
+        "body": "## Deliverable\n\nValidate bounds and classify evidence strength\n\n## Acceptance evidence\n\nReject wrong-direction and stale bounds. Reproduce a primal/dual or enumeration proof; distinguish solver attestation.\n\n## Dependencies\n\n#29 (S04)\n\n## Coordination\n\nClaim this issue before editing and record the intended paths, contract changes and verification command. Work on an isolated branch. Link the implementation and measured evidence before closing.\n\nScope key: S05\n\n### Traceability record\n\nIssue S05 · Independent scope · P1 · MVP · high risk.\n\nRequirements: REQ-S05.\n\nDesign: `docs/design/engine.md`. Diagram: `docs/design/operating-modes.md`.\n\nFields: No approved field mapping in this baseline. Contracts: No approved API mapping in this baseline.\n\nDirect consumers: #35 (S10), #41 (X04), #65 (A02).\n\nRequired evidence: TC-S05-A — Reject wrong-direction and stale bounds. Reproduce a primal/dual or enumeration proof; distinguish solver attestation.\n\nVerification: Execute the linked acceptance cases and attach observed evidence to the issue. Planning: `dotnet run --project tools/Traceability`. Keep scope within the deliverable above. Review downstream contracts and publish feature-specific evidence before closing.",
+        "state": "closed",
+        "user": {
+          "login": "ameenalqershi",
+          "name": "ameenalqershi",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+          "id": 39249008
+        },
+        "assignees": [
+          {
+            "login": "ameenalqershi",
+            "name": "ameenalqershi",
+            "email": null,
+            "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+            "id": 39249008
+          }
+        ],
+        "labels": [
+          {
+            "name": "priority:P1",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "release:MVP",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "risk:high",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "type:feature",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "dependencies:tracked",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "area:Runtime",
+            "color": "446F63",
+            "description": "Owning workstream"
+          },
+          {
+            "name": "complexity:integrated",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          }
+        ],
+        "milestone": 4,
+        "state_reason": "completed",
+        "comments": 4,
+        "created_at": "2026-11-27T13:06:42Z",
+        "updated_at": "2026-11-27T22:27:50Z",
+        "closed_at": "2026-11-27T22:23:04Z",
+        "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/30",
+        "display_title": "S05 Validate bounds and classify evidence strength"
+      },
+      "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/30",
+      "title": "S05 Validate bounds and classify evidence strength",
+      "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/30",
+      "display_title": "S05 Validate bounds and classify evidence strength"
+    }
+  },
+  {
+    "n": 31,
+    "record": {
+      "issue": {
+        "id": 6647038929,
+        "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/31",
+        "title": "S06 Implement capability-first solver planning",
+        "issue_number": 31,
+        "body": "## Deliverable\n\nImplement capability-first solver planning\n\n## Acceptance evidence\n\nFilter by semantics then choose an eligible algorithm using features, budget and a documented tie-break; explain rejections.\n\n## Dependencies\n\n#26 (S01), #21 (M08)\n\n## Coordination\n\nClaim this issue before editing and record the intended paths, contract changes and verification command. Work on an isolated branch. Link the implementation and measured evidence before closing.\n\nScope key: S06\n\n### Traceability record\n\nIssue S06 · Independent scope · P0 · MVP · high risk.\n\nRequirements: REQ-S06.\n\nDesign: `docs/design/engine.md`. Diagram: `docs/design/operating-modes.md`.\n\nFields: No approved field mapping in this baseline. Contracts: No approved API mapping in this baseline.\n\nDirect consumers: #33 (S08), #37 (S12), #46 (X09), #99 (UI10), #117 (CLI05).\n\nRequired evidence: TC-S06-A — Filter by semantics then choose an eligible algorithm using features, budget and a documented tie-break; explain rejections.\n\nVerification: Execute the linked acceptance cases and attach observed evidence to the issue. Planning: `dotnet run --project tools/Traceability`. Keep scope within the deliverable above. Review downstream contracts and publish feature-specific evidence before closing.",
+        "state": "closed",
+        "user": {
+          "login": "ameenalqershi",
+          "name": "ameenalqershi",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+          "id": 39249008
+        },
+        "assignees": [
+          {
+            "login": "ameenalqershi",
+            "name": "ameenalqershi",
+            "email": null,
+            "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+            "id": 39249008
+          }
+        ],
+        "labels": [
+          {
+            "name": "priority:P0",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "release:MVP",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "risk:high",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "type:feature",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "dependencies:tracked",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "area:Runtime",
+            "color": "446F63",
+            "description": "Owning workstream"
+          },
+          {
+            "name": "complexity:integrated",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          }
+        ],
+        "milestone": 4,
+        "state_reason": "completed",
+        "comments": 3,
+        "created_at": "2026-11-27T13:06:44Z",
+        "updated_at": "2026-11-27T22:24:03Z",
+        "closed_at": "2026-11-27T22:24:00Z",
+        "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/31",
+        "display_title": "S06 Implement capability-first solver planning"
+      },
+      "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/31",
+      "title": "S06 Implement capability-first solver planning",
+      "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/31",
+      "display_title": "S06 Implement capability-first solver planning"
+    }
+  },
+  {
+    "n": 32,
+    "record": {
+      "issue": {
+        "id": 6647039376,
+        "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/32",
+        "title": "S07 Govern worker CPU, memory, queues and deadlines",
+        "issue_number": 32,
+        "body": "## Deliverable\n\nGovern worker CPU, memory, queues and deadlines\n\n## Acceptance evidence\n\nExercise quotas with competing tenants, solver subprocess crashes, cancellation and timeouts without leaking leases.\n\n## Dependencies\n\n#26 (S01)\n\n## Coordination\n\nClaim this issue before editing and record the intended paths, contract changes and verification command. Work on an isolated branch. Link the implementation and measured evidence before closing.\n\nScope key: S07\n\n### Traceability record\n\nIssue S07 · Independent scope · P0 · MVP · high risk.\n\nRequirements: REQ-S07.\n\nDesign: `docs/design/engine.md`. Diagram: `docs/design/operating-modes.md`.\n\nFields: No approved field mapping in this baseline. Contracts: No approved API mapping in this baseline.\n\nDirect consumers: #33 (S08), #37 (S12), #79 (E05), #81 (E07), #99 (UI10), #100 (UI11), #137 (NUM04).\n\nRequired evidence: TC-S07-A — Exercise quotas with competing tenants, solver subprocess crashes, cancellation and timeouts without leaking leases.\n\nVerification: Execute the linked acceptance cases and attach observed evidence to the issue. Planning: `dotnet run --project tools/Traceability`. Keep scope within the deliverable above. Review downstream contracts and publish feature-specific evidence before closing.",
+        "state": "closed",
+        "user": {
+          "login": "ameenalqershi",
+          "name": "ameenalqershi",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+          "id": 39249008
+        },
+        "assignees": [
+          {
+            "login": "ameenalqershi",
+            "name": "ameenalqershi",
+            "email": null,
+            "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+            "id": 39249008
+          }
+        ],
+        "labels": [
+          {
+            "name": "priority:P0",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "release:MVP",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "risk:high",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "type:feature",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "dependencies:tracked",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "area:Runtime",
+            "color": "446F63",
+            "description": "Owning workstream"
+          },
+          {
+            "name": "complexity:integrated",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          }
+        ],
+        "milestone": 4,
+        "state_reason": "completed",
+        "comments": 7,
+        "created_at": "2026-11-27T13:06:45Z",
+        "updated_at": "2026-11-27T22:06:11Z",
+        "closed_at": "2026-11-27T22:06:09Z",
+        "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/32",
+        "display_title": "S07 Govern worker CPU, memory, queues and deadlines"
+      },
+      "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/32",
+      "title": "S07 Govern worker CPU, memory, queues and deadlines",
+      "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/32",
+      "display_title": "S07 Govern worker CPU, memory, queues and deadlines"
+    }
+  },
+  {
+    "n": 33,
+    "record": {
+      "issue": {
+        "id": 6647039690,
+        "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/33",
+        "title": "S08 Implement budgeted solver portfolio",
+        "issue_number": 33,
+        "body": "## Deliverable\n\nImplement budgeted solver portfolio\n\n## Acceptance evidence\n\nCharge cumulative core-seconds, cap concurrent native threads and compare equal-budget single solver runs.\n\n## Dependencies\n\n#31 (S06), #32 (S07)\n\n## Coordination\n\nClaim this issue before editing and record the intended paths, contract changes and verification command. Work on an isolated branch. Link the implementation and measured evidence before closing.\n\nScope key: S08\n\n### Traceability record\n\nIssue S08 · Independent scope · P1 · Production · high risk.\n\nRequirements: REQ-S08.\n\nDesign: `docs/design/engine.md`. Diagram: `docs/design/operating-modes.md`.\n\nFields: No approved field mapping in this baseline. Contracts: No approved API mapping in this baseline.\n\nDirect consumers: #34 (S09), #45 (X08).\n\nRequired evidence: TC-S08-A — Charge cumulative core-seconds, cap concurrent native threads and compare equal-budget single solver runs.\n\nVerification: Execute the linked acceptance cases and attach observed evidence to the issue. Planning: `dotnet run --project tools/Traceability`. Keep scope within the deliverable above. Review downstream contracts and publish feature-specific evidence before closing.",
+        "state": "open",
+        "user": {
+          "login": "ameenalqershi",
+          "name": "ameenalqershi",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+          "id": 39249008
+        },
+        "assignees": null,
+        "labels": [
+          {
+            "name": "status:backlog",
+            "color": "EDEDED",
+            "description": "In scope, unclaimed"
+          },
+          {
+            "name": "priority:P1",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "release:Production",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "risk:high",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "type:feature",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "dependencies:tracked",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "area:Runtime",
+            "color": "446F63",
+            "description": "Owning workstream"
+          },
+          {
+            "name": "complexity:integrated",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          }
+        ],
+        "milestone": 4,
+        "state_reason": null,
+        "comments": 0,
+        "created_at": "2026-11-27T13:06:46Z",
+        "updated_at": "2026-11-27T14:47:28Z",
+        "closed_at": null,
+        "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/33",
+        "display_title": "S08 Implement budgeted solver portfolio"
+      },
+      "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/33",
+      "title": "S08 Implement budgeted solver portfolio",
+      "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/33",
+      "display_title": "S08 Implement budgeted solver portfolio"
+    }
+  },
+  {
+    "n": 34,
+    "record": {
+      "issue": {
+        "id": 6647040101,
+        "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/34",
+        "title": "S09 Enable compatible hints and solver switching",
+        "issue_number": 34,
+        "body": "## Deliverable\n\nEnable compatible hints and solver switching\n\n## Acceptance evidence\n\nMap hints to the current revision, discard invalid bounds and stop workers on budget expiry, retaining best verified incumbent.\n\n## Dependencies\n\n#33 (S08), #29 (S04)\n\n## Coordination\n\nClaim this issue before editing and record the intended paths, contract changes and verification command. Work on an isolated branch. Link the implementation and measured evidence before closing.\n\nScope key: S09\n\n### Traceability record\n\nIssue S09 · Independent scope · P1 · Production · high risk.\n\nRequirements: REQ-S09.\n\nDesign: `docs/design/engine.md`. Diagram: `docs/design/operating-modes.md`.\n\nFields: No approved field mapping in this baseline. Contracts: No approved API mapping in this baseline.\n\nDirect consumers: No downstream scheduling edge in this baseline.\n\nRequired evidence: TC-S09-A — Map hints to the current revision, discard invalid bounds and stop workers on budget expiry, retaining best verified incumbent.\n\nVerification: Execute the linked acceptance cases and attach observed evidence to the issue. Planning: `dotnet run --project tools/Traceability`. Keep scope within the deliverable above. Review downstream contracts and publish feature-specific evidence before closing.",
+        "state": "open",
+        "user": {
+          "login": "ameenalqershi",
+          "name": "ameenalqershi",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+          "id": 39249008
+        },
+        "assignees": null,
+        "labels": [
+          {
+            "name": "status:backlog",
+            "color": "EDEDED",
+            "description": "In scope, unclaimed"
+          },
+          {
+            "name": "priority:P1",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "release:Production",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "risk:high",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "type:feature",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "dependencies:tracked",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "area:Runtime",
+            "color": "446F63",
+            "description": "Owning workstream"
+          },
+          {
+            "name": "complexity:integrated",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          }
+        ],
+        "milestone": 4,
+        "state_reason": null,
+        "comments": 0,
+        "created_at": "2026-11-27T13:06:48Z",
+        "updated_at": "2026-11-27T14:47:33Z",
+        "closed_at": null,
+        "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/34",
+        "display_title": "S09 Enable compatible hints and solver switching"
+      },
+      "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/34",
+      "title": "S09 Enable compatible hints and solver switching",
+      "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/34",
+      "display_title": "S09 Enable compatible hints and solver switching"
+    }
+  },
+  {
+    "n": 35,
+    "record": {
+      "issue": {
+        "id": 6647040438,
+        "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/35",
+        "title": "S10 Persist evidence, lineage and audit reports",
+        "issue_number": 35,
+        "body": "## Deliverable\n\nPersist evidence, lineage and audit reports\n\n## Acceptance evidence\n\nExport input hash, solver version, termination, tolerances, verifier, hardware, timestamps and reproducible invocation.\n\n## Dependencies\n\n#29 (S04), #30 (S05), #24 (M11)\n\n## Coordination\n\nClaim this issue before editing and record the intended paths, contract changes and verification command. Work on an isolated branch. Link the implementation and measured evidence before closing.\n\nScope key: S10\n\n### Traceability record\n\nIssue S10 · Independent scope · P0 · MVP · high risk.\n\nRequirements: REQ-S10.\n\nDesign: `docs/design/architecture.md`, `docs/design/operating-modes.md`. Diagram: `docs/design/operating-modes.md`.\n\nFields: No approved field mapping in this baseline. Contracts: No approved API mapping in this baseline.\n\nDirect consumers: #36 (S11), #51 (V04), #64 (A01), #74 (U05), #100 (UI11), #106 (UI17), #120 (CLI08).\n\nRequired evidence: TC-S10-A — Export input hash, solver version, termination, tolerances, verifier, hardware, timestamps and reproducible invocation.\n\nVerification: Execute the linked acceptance cases and attach observed evidence to the issue. Planning: `dotnet run --project tools/Traceability`. Keep scope within the deliverable above. Review downstream contracts and publish feature-specific evidence before closing.",
+        "state": "closed",
+        "user": {
+          "login": "ameenalqershi",
+          "name": "ameenalqershi",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+          "id": 39249008
+        },
+        "assignees": [
+          {
+            "login": "ameenalqershi",
+            "name": "ameenalqershi",
+            "email": null,
+            "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+            "id": 39249008
+          }
+        ],
+        "labels": [
+          {
+            "name": "priority:P0",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "release:MVP",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "risk:high",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "type:feature",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "complexity:cross-component",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "dependencies:tracked",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "area:Runtime",
+            "color": "446F63",
+            "description": "Owning workstream"
+          }
+        ],
+        "milestone": 4,
+        "state_reason": "completed",
+        "comments": 3,
+        "created_at": "2026-11-27T13:06:49Z",
+        "updated_at": "2026-11-27T22:29:35Z",
+        "closed_at": "2026-11-27T22:29:33Z",
+        "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/35",
+        "display_title": "S10 Persist evidence, lineage and audit reports"
+      },
+      "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/35",
+      "title": "S10 Persist evidence, lineage and audit reports",
+      "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/35",
+      "display_title": "S10 Persist evidence, lineage and audit reports"
+    }
+  },
+  {
+    "n": 38,
+    "record": {
+      "issue": {
+        "id": 6647041538,
+        "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/38",
+        "title": "X01 Run exhaustive separability and reuse experiment",
+        "issue_number": 38,
+        "body": "## Deliverable\n\nRun exhaustive separability and reuse experiment\n\n## Acceptance evidence\n\nCompare full enumeration with component reuse after a local change, then test shared capacities, coupled objectives and stale cache inputs.\n\n## Dependencies\n\n#3 (R03), #4 (R04)\n\n## Coordination\n\nClaim this issue before editing and record the intended paths, contract changes and verification command. Work on an isolated branch. Link the implementation and measured evidence before closing.\n\nScope key: X01\n\n### Traceability record\n\nIssue X01 · Independent scope · P1 · Research · medium risk.\n\nRequirements: REQ-X01.\n\nDesign: `docs/research/innovation.md`, `docs/research/comparison-protocol.md`. Diagram: `docs/design/operating-modes.md`.\n\nFields: No approved field mapping in this baseline. Contracts: No approved API mapping in this baseline.\n\nDirect consumers: #39 (X02), #47 (X10), #153 (G01).\n\nRequired evidence: TC-X01-A — Compare full enumeration with component reuse after a local change, then test shared capacities, coupled objectives and stale cache inputs.\n\nVerification: Execute the linked acceptance cases and attach observed evidence to the issue. Planning: `dotnet run --project tools/Traceability`. Keep scope within the deliverable above. Review downstream contracts and publish feature-specific evidence before closing.",
+        "state": "closed",
+        "user": {
+          "login": "ameenalqershi",
+          "name": "ameenalqershi",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+          "id": 39249008
+        },
+        "assignees": [
+          {
+            "login": "ameenalqershi",
+            "name": "ameenalqershi",
+            "email": null,
+            "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+            "id": 39249008
+          }
+        ],
+        "labels": [
+          {
+            "name": "priority:P1",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "release:Research",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "risk:medium",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "type:research",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "dependencies:tracked",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "research:study",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "area:Research engineering",
+            "color": "446F63",
+            "description": "Owning workstream"
+          },
+          {
+            "name": "complexity:integrated",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          }
+        ],
+        "milestone": 5,
+        "state_reason": "completed",
+        "comments": 1,
+        "created_at": "2026-11-27T13:06:53Z",
+        "updated_at": "2026-11-27T14:47:53Z",
+        "closed_at": "2026-11-27T13:20:46Z",
+        "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/38",
+        "display_title": "X01 Run exhaustive separability and reuse experiment"
+      },
+      "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/38",
+      "title": "X01 Run exhaustive separability and reuse experiment",
+      "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/38",
+      "display_title": "X01 Run exhaustive separability and reuse experiment"
+    }
+  },
+  {
+    "n": 39,
+    "record": {
+      "issue": {
+        "id": 6647042116,
+        "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/39",
+        "title": "X02 Detect exact components and certify separability",
+        "issue_number": 39,
+        "body": "## Deliverable\n\nDetect exact components and certify separability\n\n## Acceptance evidence\n\nCheck complete constraint and objective scopes, including implicit global resources; reconstruct a verified solution from independent components.\n\n## Dependencies\n\n#15 (M02), #20 (M07), #38 (X01)\n\n## Coordination\n\nClaim this issue before editing and record the intended paths, contract changes and verification command. Work on an isolated branch. Link the implementation and measured evidence before closing.\n\nScope key: X02\n\n### Traceability record\n\nIssue X02 · Independent scope · P1 · MVP · medium risk.\n\nRequirements: REQ-X02.\n\nDesign: `docs/research/innovation.md`, `docs/research/comparison-protocol.md`. Diagram: `docs/design/operating-modes.md`.\n\nFields: No approved field mapping in this baseline. Contracts: No approved API mapping in this baseline.\n\nDirect consumers: #42 (X05), #43 (X06).\n\nRequired evidence: TC-X02-A — Check complete constraint and objective scopes, including implicit global resources; reconstruct a verified solution from independent components.\n\nVerification: Execute the linked acceptance cases and attach observed evidence to the issue. Planning: `dotnet run --project tools/Traceability`. Keep scope within the deliverable above. Review downstream contracts and publish feature-specific evidence before closing.",
+        "state": "open",
+        "user": {
+          "login": "ameenalqershi",
+          "name": "ameenalqershi",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+          "id": 39249008
+        },
+        "assignees": null,
+        "labels": [
+          {
+            "name": "status:backlog",
+            "color": "EDEDED",
+            "description": "In scope, unclaimed"
+          },
+          {
+            "name": "priority:P1",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "release:MVP",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "risk:medium",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "type:research",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "complexity:cross-component",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "dependencies:tracked",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "research:study",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "area:Research engineering",
+            "color": "446F63",
+            "description": "Owning workstream"
+          }
+        ],
+        "milestone": 5,
+        "state_reason": null,
+        "comments": 0,
+        "created_at": "2026-11-27T13:06:55Z",
+        "updated_at": "2026-11-27T14:47:58Z",
+        "closed_at": null,
+        "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/39",
+        "display_title": "X02 Detect exact components and certify separability"
+      },
+      "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/39",
+      "title": "X02 Detect exact components and certify separability",
+      "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/39",
+      "display_title": "X02 Detect exact components and certify separability"
+    }
+  },
+  {
+    "n": 40,
+    "record": {
+      "issue": {
+        "id": 6647042497,
+        "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/40",
+        "title": "X03 Produce canonical fingerprints and reuse permissions",
+        "issue_number": 40,
+        "body": "## Deliverable\n\nProduce canonical fingerprints and reuse permissions\n\n## Acceptance evidence\n\nSeparate structure, data, constraints, objectives and solver config; exercise deletion, reordered input, tenant and compiler version.\n\n## Dependencies\n\n#24 (M11), #20 (M07)\n\n## Coordination\n\nClaim this issue before editing and record the intended paths, contract changes and verification command. Work on an isolated branch. Link the implementation and measured evidence before closing.\n\nScope key: X03\n\n### Traceability record\n\nIssue X03 · Independent scope · P1 · MVP · medium risk.\n\nRequirements: REQ-X03.\n\nDesign: `docs/research/innovation.md`, `docs/research/comparison-protocol.md`. Diagram: `docs/design/operating-modes.md`.\n\nFields: No approved field mapping in this baseline. Contracts: No approved API mapping in this baseline.\n\nDirect consumers: #41 (X04).\n\nRequired evidence: TC-X03-A — Separate structure, data, constraints, objectives and solver config; exercise deletion, reordered input, tenant and compiler version.\n\nVerification: Execute the linked acceptance cases and attach observed evidence to the issue. Planning: `dotnet run --project tools/Traceability`. Keep scope within the deliverable above. Review downstream contracts and publish feature-specific evidence before closing.",
+        "state": "open",
+        "user": {
+          "login": "ameenalqershi",
+          "name": "ameenalqershi",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+          "id": 39249008
+        },
+        "assignees": null,
+        "labels": [
+          {
+            "name": "status:backlog",
+            "color": "EDEDED",
+            "description": "In scope, unclaimed"
+          },
+          {
+            "name": "priority:P1",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "release:MVP",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "risk:medium",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "type:research",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "dependencies:tracked",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "research:study",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "area:Research engineering",
+            "color": "446F63",
+            "description": "Owning workstream"
+          },
+          {
+            "name": "complexity:integrated",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          }
+        ],
+        "milestone": 5,
+        "state_reason": null,
+        "comments": 0,
+        "created_at": "2026-11-27T13:06:56Z",
+        "updated_at": "2026-11-27T14:48:03Z",
+        "closed_at": null,
+        "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/40",
+        "display_title": "X03 Produce canonical fingerprints and reuse permissions"
+      },
+      "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/40",
+      "title": "X03 Produce canonical fingerprints and reuse permissions",
+      "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/40",
+      "display_title": "X03 Produce canonical fingerprints and reuse permissions"
+    }
+  },
+  {
+    "n": 41,
+    "record": {
+      "issue": {
+        "id": 6647043000,
+        "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/41",
+        "title": "X04 Validate cache entries and prevent stale bound reuse",
+        "issue_number": 41,
+        "body": "## Deliverable\n\nValidate cache entries and prevent stale bound reuse\n\n## Acceptance evidence\n\nReplay changed units, objectives, adapter versions and data. Cache misses or revalidation must preserve evidence strength.\n\n## Dependencies\n\n#40 (X03), #30 (S05)\n\n## Coordination\n\nClaim this issue before editing and record the intended paths, contract changes and verification command. Work on an isolated branch. Link the implementation and measured evidence before closing.\n\nScope key: X04\n\n### Traceability record\n\nIssue X04 · Independent scope · P1 · MVP · medium risk.\n\nRequirements: REQ-X04.\n\nDesign: `docs/research/innovation.md`, `docs/research/comparison-protocol.md`. Diagram: `docs/design/operating-modes.md`.\n\nFields: No approved field mapping in this baseline. Contracts: No approved API mapping in this baseline.\n\nDirect consumers: #42 (X05).\n\nRequired evidence: TC-X04-A — Replay changed units, objectives, adapter versions and data. Cache misses or revalidation must preserve evidence strength.\n\nVerification: Execute the linked acceptance cases and attach observed evidence to the issue. Planning: `dotnet run --project tools/Traceability`. Keep scope within the deliverable above. Review downstream contracts and publish feature-specific evidence before closing.",
+        "state": "open",
+        "user": {
+          "login": "ameenalqershi",
+          "name": "ameenalqershi",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+          "id": 39249008
+        },
+        "assignees": null,
+        "labels": [
+          {
+            "name": "status:backlog",
+            "color": "EDEDED",
+            "description": "In scope, unclaimed"
+          },
+          {
+            "name": "priority:P1",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "release:MVP",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "risk:medium",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "type:research",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "dependencies:tracked",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "research:study",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "area:Research engineering",
+            "color": "446F63",
+            "description": "Owning workstream"
+          },
+          {
+            "name": "complexity:integrated",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          }
+        ],
+        "milestone": 5,
+        "state_reason": null,
+        "comments": 0,
+        "created_at": "2026-11-27T13:06:58Z",
+        "updated_at": "2026-11-27T14:48:08Z",
+        "closed_at": null,
+        "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/41",
+        "display_title": "X04 Validate cache entries and prevent stale bound reuse"
+      },
+      "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/41",
+      "title": "X04 Validate cache entries and prevent stale bound reuse",
+      "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/41",
+      "display_title": "X04 Validate cache entries and prevent stale bound reuse"
+    }
+  },
+  {
+    "n": 42,
+    "record": {
+      "issue": {
+        "id": 6647043348,
+        "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/42",
+        "title": "X05 Implement bounded repair and full-solve fallback",
+        "issue_number": 42,
+        "body": "## Deliverable\n\nImplement bounded repair and full-solve fallback\n\n## Acceptance evidence\n\nTreat fixed-boundary solutions as feasible unless certified. Re-expand on failed verification, crossing constraints or insufficient quality.\n\n## Dependencies\n\n#39 (X02), #41 (X04), #29 (S04)\n\n## Coordination\n\nClaim this issue before editing and record the intended paths, contract changes and verification command. Work on an isolated branch. Link the implementation and measured evidence before closing.\n\nScope key: X05\n\n### Traceability record\n\nIssue X05 · Independent scope · P1 · MVP · medium risk.\n\nRequirements: REQ-X05.\n\nDesign: `docs/research/innovation.md`, `docs/research/comparison-protocol.md`. Diagram: `docs/design/operating-modes.md`.\n\nFields: No approved field mapping in this baseline. Contracts: No approved API mapping in this baseline.\n\nDirect consumers: #45 (X08), #101 (UI12), #117 (CLI05), #137 (NUM04), #151 (SL01).\n\nRequired evidence: TC-X05-A — Treat fixed-boundary solutions as feasible unless certified. Re-expand on failed verification, crossing constraints or insufficient quality.\n\nVerification: Execute the linked acceptance cases and attach observed evidence to the issue. Planning: `dotnet run --project tools/Traceability`. Keep scope within the deliverable above. Review downstream contracts and publish feature-specific evidence before closing.",
+        "state": "open",
+        "user": {
+          "login": "ameenalqershi",
+          "name": "ameenalqershi",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+          "id": 39249008
+        },
+        "assignees": null,
+        "labels": [
+          {
+            "name": "status:backlog",
+            "color": "EDEDED",
+            "description": "In scope, unclaimed"
+          },
+          {
+            "name": "priority:P1",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "release:MVP",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "risk:medium",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "type:research",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "complexity:cross-component",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "dependencies:tracked",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "research:study",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "area:Research engineering",
+            "color": "446F63",
+            "description": "Owning workstream"
+          }
+        ],
+        "milestone": 5,
+        "state_reason": null,
+        "comments": 0,
+        "created_at": "2026-11-27T13:06:59Z",
+        "updated_at": "2026-11-27T14:48:14Z",
+        "closed_at": null,
+        "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/42",
+        "display_title": "X05 Implement bounded repair and full-solve fallback"
+      },
+      "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/42",
+      "title": "X05 Implement bounded repair and full-solve fallback",
+      "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/42",
+      "display_title": "X05 Implement bounded repair and full-solve fallback"
+    }
+  },
+  {
+    "n": 43,
+    "record": {
+      "issue": {
+        "id": 6647043746,
+        "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/43",
+        "title": "X06 Evaluate separators, SCCs and coordinated decomposition",
+        "issue_number": 43,
+        "body": "## Deliverable\n\nEvaluate separators, SCCs and coordinated decomposition\n\n## Acceptance evidence\n\nContrast SCCs with primal incidence components. Test Benders or pricing only for structures satisfying documented assumptions.\n\n## Dependencies\n\n#39 (X02), #28 (S03)\n\n## Coordination\n\nClaim this issue before editing and record the intended paths, contract changes and verification command. Work on an isolated branch. Link the implementation and measured evidence before closing.\n\nScope key: X06\n\n### Traceability record\n\nIssue X06 · Independent scope · P1 · Research · medium risk.\n\nRequirements: REQ-X06.\n\nDesign: `docs/research/innovation.md`, `docs/research/comparison-protocol.md`. Diagram: `docs/design/operating-modes.md`.\n\nFields: No approved field mapping in this baseline. Contracts: No approved API mapping in this baseline.\n\nDirect consumers: No downstream scheduling edge in this baseline.\n\nRequired evidence: TC-X06-A — Contrast SCCs with primal incidence components. Test Benders or pricing only for structures satisfying documented assumptions.\n\nVerification: Execute the linked acceptance cases and attach observed evidence to the issue. Planning: `dotnet run --project tools/Traceability`. Keep scope within the deliverable above. Review downstream contracts and publish feature-specific evidence before closing.",
+        "state": "open",
+        "user": {
+          "login": "ameenalqershi",
+          "name": "ameenalqershi",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+          "id": 39249008
+        },
+        "assignees": null,
+        "labels": [
+          {
+            "name": "status:backlog",
+            "color": "EDEDED",
+            "description": "In scope, unclaimed"
+          },
+          {
+            "name": "priority:P1",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "release:Research",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "risk:medium",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "type:research",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "dependencies:tracked",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "research:study",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "area:Research engineering",
+            "color": "446F63",
+            "description": "Owning workstream"
+          },
+          {
+            "name": "complexity:integrated",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          }
+        ],
+        "milestone": 5,
+        "state_reason": null,
+        "comments": 0,
+        "created_at": "2026-11-27T13:07:01Z",
+        "updated_at": "2026-11-27T14:48:19Z",
+        "closed_at": null,
+        "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/43",
+        "display_title": "X06 Evaluate separators, SCCs and coordinated decomposition"
+      },
+      "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/43",
+      "title": "X06 Evaluate separators, SCCs and coordinated decomposition",
+      "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/43",
+      "display_title": "X06 Evaluate separators, SCCs and coordinated decomposition"
+    }
+  },
+  {
+    "n": 44,
+    "record": {
+      "issue": {
+        "id": 6647044038,
+        "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/44",
+        "title": "X07 Build reproducible benchmark harness and corpus",
+        "issue_number": 44,
+        "body": "## Deliverable\n\nBuild reproducible benchmark harness and corpus\n\n## Acceptance evidence\n\nRecord seed, dataset license, hardware, warm/cold setup, wall time, core seconds, peak RSS, gap and timeout censoring.\n\n## Dependencies\n\n#3 (R03), #11 (F03)\n\n## Coordination\n\nClaim this issue before editing and record the intended paths, contract changes and verification command. Work on an isolated branch. Link the implementation and measured evidence before closing.\n\nScope key: X07\n\n### Traceability record\n\nIssue X07 · Independent scope · P1 · Scale · medium risk.\n\nRequirements: REQ-X07.\n\nDesign: `docs/research/innovation.md`, `docs/research/comparison-protocol.md`. Diagram: `docs/design/operating-modes.md`.\n\nFields: No approved field mapping in this baseline. Contracts: No approved API mapping in this baseline.\n\nDirect consumers: #45 (X08), #46 (X09), #74 (U05), #108 (UI19), #121 (CLI09), #141 (AI03), #142 (EXP01), #158 (G06).\n\nRequired evidence: TC-X07-A — Record seed, dataset license, hardware, warm/cold setup, wall time, core seconds, peak RSS, gap and timeout censoring.\n\nVerification: Execute the linked acceptance cases and attach observed evidence to the issue. Planning: `dotnet run --project tools/Traceability`. Keep scope within the deliverable above. Review downstream contracts and publish feature-specific evidence before closing.",
+        "state": "open",
+        "user": {
+          "login": "ameenalqershi",
+          "name": "ameenalqershi",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+          "id": 39249008
+        },
+        "assignees": null,
+        "labels": [
+          {
+            "name": "status:backlog",
+            "color": "EDEDED",
+            "description": "In scope, unclaimed"
+          },
+          {
+            "name": "priority:P1",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "release:Scale",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "risk:medium",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "type:research",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "dependencies:tracked",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "research:study",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "area:Research engineering",
+            "color": "446F63",
+            "description": "Owning workstream"
+          },
+          {
+            "name": "complexity:integrated",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          }
+        ],
+        "milestone": 5,
+        "state_reason": null,
+        "comments": 1,
+        "created_at": "2026-11-27T13:07:02Z",
+        "updated_at": "2026-11-27T20:25:25Z",
+        "closed_at": null,
+        "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/44",
+        "display_title": "X07 Build reproducible benchmark harness and corpus"
+      },
+      "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/44",
+      "title": "X07 Build reproducible benchmark harness and corpus",
+      "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/44",
+      "display_title": "X07 Build reproducible benchmark harness and corpus"
+    }
+  },
+  {
+    "n": 45,
+    "record": {
+      "issue": {
+        "id": 6647044551,
+        "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/45",
+        "title": "X08 Evaluate incremental and portfolio hypotheses",
+        "issue_number": 45,
+        "body": "## Deliverable\n\nEvaluate incremental and portfolio hypotheses\n\n## Acceptance evidence\n\nCompare cold full, hinted full, component reuse and repair under matched budgets; publish failures, confidence intervals and ablations.\n\n## Dependencies\n\n#42 (X05), #44 (X07), #33 (S08)\n\n## Coordination\n\nClaim this issue before editing and record the intended paths, contract changes and verification command. Work on an isolated branch. Link the implementation and measured evidence before closing.\n\nScope key: X08\n\n### Traceability record\n\nIssue X08 · Independent scope · P1 · Research · medium risk.\n\nRequirements: REQ-X08.\n\nDesign: `docs/research/innovation.md`, `docs/research/comparison-protocol.md`. Diagram: `docs/design/operating-modes.md`.\n\nFields: No approved field mapping in this baseline. Contracts: No approved API mapping in this baseline.\n\nDirect consumers: No downstream scheduling edge in this baseline.\n\nRequired evidence: TC-X08-A — Compare cold full, hinted full, component reuse and repair under matched budgets; publish failures, confidence intervals and ablations.\n\nVerification: Execute the linked acceptance cases and attach observed evidence to the issue. Planning: `dotnet run --project tools/Traceability`. Keep scope within the deliverable above. Review downstream contracts and publish feature-specific evidence before closing.",
+        "state": "open",
+        "user": {
+          "login": "ameenalqershi",
+          "name": "ameenalqershi",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+          "id": 39249008
+        },
+        "assignees": null,
+        "labels": [
+          {
+            "name": "status:backlog",
+            "color": "EDEDED",
+            "description": "In scope, unclaimed"
+          },
+          {
+            "name": "priority:P1",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "release:Research",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "risk:medium",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "type:research",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "complexity:cross-component",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "dependencies:tracked",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "research:study",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "area:Research engineering",
+            "color": "446F63",
+            "description": "Owning workstream"
+          }
+        ],
+        "milestone": 5,
+        "state_reason": null,
+        "comments": 0,
+        "created_at": "2026-11-27T13:07:03Z",
+        "updated_at": "2026-11-27T14:48:29Z",
+        "closed_at": null,
+        "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/45",
+        "display_title": "X08 Evaluate incremental and portfolio hypotheses"
+      },
+      "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/45",
+      "title": "X08 Evaluate incremental and portfolio hypotheses",
+      "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/45",
+      "display_title": "X08 Evaluate incremental and portfolio hypotheses"
+    }
+  },
+  {
+    "n": 46,
+    "record": {
+      "issue": {
+        "id": 6647044878,
+        "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/46",
+        "title": "X09 Evaluate learned selection against deterministic policy",
+        "issue_number": 46,
+        "body": "## Deliverable\n\nEvaluate learned selection against deterministic policy\n\n## Acceptance evidence\n\nHold out instance families; include feature extraction overhead and single-best baseline. Disable ML unless acceptance threshold holds.\n\n## Dependencies\n\n#31 (S06), #44 (X07)\n\n## Coordination\n\nClaim this issue before editing and record the intended paths, contract changes and verification command. Work on an isolated branch. Link the implementation and measured evidence before closing.\n\nScope key: X09\n\n### Traceability record\n\nIssue X09 · Independent scope · P1 · Research · medium risk.\n\nRequirements: REQ-X09.\n\nDesign: `docs/research/innovation.md`, `docs/research/comparison-protocol.md`. Diagram: `docs/design/operating-modes.md`.\n\nFields: No approved field mapping in this baseline. Contracts: No approved API mapping in this baseline.\n\nDirect consumers: No downstream scheduling edge in this baseline.\n\nRequired evidence: TC-X09-A — Hold out instance families; include feature extraction overhead and single-best baseline. Disable ML unless acceptance threshold holds.\n\nVerification: Execute the linked acceptance cases and attach observed evidence to the issue. Planning: `dotnet run --project tools/Traceability`. Keep scope within the deliverable above. Review downstream contracts and publish feature-specific evidence before closing.",
+        "state": "open",
+        "user": {
+          "login": "ameenalqershi",
+          "name": "ameenalqershi",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+          "id": 39249008
+        },
+        "assignees": null,
+        "labels": [
+          {
+            "name": "status:backlog",
+            "color": "EDEDED",
+            "description": "In scope, unclaimed"
+          },
+          {
+            "name": "priority:P1",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "release:Research",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "risk:medium",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "type:research",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "dependencies:tracked",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "research:study",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "area:Research engineering",
+            "color": "446F63",
+            "description": "Owning workstream"
+          },
+          {
+            "name": "complexity:integrated",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          }
+        ],
+        "milestone": 5,
+        "state_reason": null,
+        "comments": 0,
+        "created_at": "2026-11-27T13:07:05Z",
+        "updated_at": "2026-11-27T14:48:35Z",
+        "closed_at": null,
+        "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/46",
+        "display_title": "X09 Evaluate learned selection against deterministic policy"
+      },
+      "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/46",
+      "title": "X09 Evaluate learned selection against deterministic policy",
+      "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/46",
+      "display_title": "X09 Evaluate learned selection against deterministic policy"
+    }
+  },
+  {
+    "n": 47,
+    "record": {
+      "issue": {
+        "id": 6647045263,
+        "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/47",
+        "title": "X10 Maintain innovation register and stop decisions",
+        "issue_number": 47,
+        "body": "## Deliverable\n\nMaintain innovation register and stop decisions\n\n## Acceptance evidence\n\nRecord prior art, proof assumptions, benchmark results, failure regions and novelty status per hypothesis.\n\n## Dependencies\n\n#4 (R04), #38 (X01)\n\n## Coordination\n\nClaim this issue before editing and record the intended paths, contract changes and verification command. Work on an isolated branch. Link the implementation and measured evidence before closing.\n\nScope key: X10\n\n### Traceability record\n\nIssue X10 · Independent scope · P1 · Research · medium risk.\n\nRequirements: REQ-X10.\n\nDesign: `docs/research/innovation.md`, `docs/research/comparison-protocol.md`. Diagram: `docs/design/operating-modes.md`.\n\nFields: No approved field mapping in this baseline. Contracts: No approved API mapping in this baseline.\n\nDirect consumers: No downstream scheduling edge in this baseline.\n\nRequired evidence: TC-X10-A — Record prior art, proof assumptions, benchmark results, failure regions and novelty status per hypothesis.\n\nVerification: Execute the linked acceptance cases and attach observed evidence to the issue. Planning: `dotnet run --project tools/Traceability`. Keep scope within the deliverable above. Review downstream contracts and publish feature-specific evidence before closing.",
+        "state": "closed",
+        "user": {
+          "login": "ameenalqershi",
+          "name": "ameenalqershi",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+          "id": 39249008
+        },
+        "assignees": [
+          {
+            "login": "ameenalqershi",
+            "name": "ameenalqershi",
+            "email": null,
+            "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+            "id": 39249008
+          }
+        ],
+        "labels": [
+          {
+            "name": "priority:P1",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "release:Research",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "risk:medium",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "type:research",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "dependencies:tracked",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "research:study",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "area:Research engineering",
+            "color": "446F63",
+            "description": "Owning workstream"
+          },
+          {
+            "name": "complexity:integrated",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          }
+        ],
+        "milestone": 5,
+        "state_reason": "completed",
+        "comments": 1,
+        "created_at": "2026-11-27T13:07:06Z",
+        "updated_at": "2026-11-27T14:48:40Z",
+        "closed_at": "2026-11-27T13:20:50Z",
+        "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/47",
+        "display_title": "X10 Maintain innovation register and stop decisions"
+      },
+      "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/47",
+      "title": "X10 Maintain innovation register and stop decisions",
+      "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/47",
+      "display_title": "X10 Maintain innovation register and stop decisions"
+    }
+  },
+  {
+    "n": 83,
+    "record": {
+      "issue": {
+        "id": 6647058981,
+        "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/83",
+        "title": "Q01 Add compiler property and differential tests",
+        "issue_number": 83,
+        "body": "## Deliverable\n\nAdd compiler property and differential tests\n\n## Acceptance evidence\n\nGenerate bounded models and compare original, normalized and lowered feasible assignments, objectives and diagnostic spans.\n\n## Dependencies\n\n#20 (M07), #21 (M08)\n\n## Coordination\n\nClaim this issue before editing and record the intended paths, contract changes and verification command. Work on an isolated branch. Link the implementation and measured evidence before closing.\n\nScope key: Q01\n\n### Traceability record\n\nIssue Q01 · Independent scope · P1 · Production · high risk.\n\nRequirements: REQ-Q01.\n\nDesign: `docs/design/architecture.md`, `docs/design/operating-modes.md`. Diagram: `docs/design/operating-modes.md`.\n\nFields: No approved field mapping in this baseline. Contracts: No approved API mapping in this baseline.\n\nDirect consumers: #85 (Q03).\n\nRequired evidence: TC-Q01-A — Generate bounded models and compare original, normalized and lowered feasible assignments, objectives and diagnostic spans.\n\nVerification: Execute the linked acceptance cases and attach observed evidence to the issue. Planning: `dotnet run --project tools/Traceability`. Keep scope within the deliverable above. Review downstream contracts and publish feature-specific evidence before closing.",
+        "state": "open",
+        "user": {
+          "login": "ameenalqershi",
+          "name": "ameenalqershi",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+          "id": 39249008
+        },
+        "assignees": null,
+        "labels": [
+          {
+            "name": "status:backlog",
+            "color": "EDEDED",
+            "description": "In scope, unclaimed"
+          },
+          {
+            "name": "priority:P1",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "release:Production",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "risk:high",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "type:qualification",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "dependencies:tracked",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "area:Quality",
+            "color": "446F63",
+            "description": "Owning workstream"
+          },
+          {
+            "name": "complexity:integrated",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          }
+        ],
+        "milestone": 12,
+        "state_reason": null,
+        "comments": 0,
+        "created_at": "2026-11-27T13:07:54Z",
+        "updated_at": "2026-11-27T14:51:42Z",
+        "closed_at": null,
+        "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/83",
+        "display_title": "Q01 Add compiler property and differential tests"
+      },
+      "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/83",
+      "title": "Q01 Add compiler property and differential tests",
+      "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/83",
+      "display_title": "Q01 Add compiler property and differential tests"
+    }
+  },
+  {
+    "n": 134,
+    "record": {
+      "issue": {
+        "id": 6647509681,
+        "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/134",
+        "title": "NUM01 Numerical invariants and reproducibility",
+        "issue_number": 134,
+        "body": "## Objective\n\nEnumerate small exact models and test equivalent unit scalings, boundary residuals and overflowing coefficients; compare repeat runs under a pinned profile.\n\n## Scope\n\n- NUM01-01 · Rational arithmetic\n\n- NUM01-02 · Integer overflow\n\n- NUM01-03 · Absolute and relative tolerances\n\n- NUM01-04 · Floating-point stability\n\n- NUM01-05 · Deterministic modes and versioned seeds\n\n## Boundaries and failure behavior\n\nReject non-finite inputs and unsupported exact conversions with source spans.\n\n## Engineering references\n\nDirective §12 · NUM01 · parent #182 (EP04). Target module: `src/Engine`. Architecture: `docs/design/architecture.md`. Diagram/reference: `docs/design/operating-modes.md`. See `planning/requirements.json` for contracts, field readiness and evidence. Implement only after the relevant design/field contracts are reviewed.\n\n## Dependencies\n\n#17 (M04), #20 (M07)\n\n## Consumers\n\nRelease review and end users.\n\n## Acceptance and required tests\n\nEnumerate small exact models and test equivalent unit scalings, boundary residuals and overflowing coefficients; compare repeat runs under a pinned profile. Reject non-finite inputs and unsupported exact conversions with source spans.\n\n## Verification and definition of done\n\nRun `dotnet run --project tools/Traceability` for planning integrity. Attach feature-specific tests, commands, observed pass/fail output and applicable OS/fixture revisions to the implementation PR. Review downstream consumers, field compatibility and recovery behavior. A green planning check establishes structural validity only. Merge under repository policy before closing.\n\n## Planning\n\nP1 · MVP · feature · high risk.\n\nScope key: NUM01",
+        "state": "open",
+        "user": {
+          "login": "ameenalqershi",
+          "name": "ameenalqershi",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+          "id": 39249008
+        },
+        "assignees": [
+          {
+            "login": "ameenalqershi",
+            "name": "ameenalqershi",
+            "email": null,
+            "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+            "id": 39249008
+          }
+        ],
+        "labels": [
+          {
+            "name": "status:active",
+            "color": "0052CC",
+            "description": "Claimed work in progress"
+          },
+          {
+            "name": "priority:P1",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "release:MVP",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "risk:high",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "type:feature",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "complexity:cross-component",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "dependencies:tracked",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "area:Model",
+            "color": "446F63",
+            "description": "Owning workstream"
+          }
+        ],
+        "milestone": 3,
+        "state_reason": null,
+        "comments": 1,
+        "created_at": "2026-11-27T13:35:29Z",
+        "updated_at": "2026-11-27T22:27:54Z",
+        "closed_at": null,
+        "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/134",
+        "display_title": "NUM01 Numerical invariants and reproducibility"
+      },
+      "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/134",
+      "title": "NUM01 Numerical invariants and reproducibility",
+      "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/134",
+      "display_title": "NUM01 Numerical invariants and reproducibility"
+    }
+  },
+  {
+    "n": 135,
+    "record": {
+      "issue": {
+        "id": 6647510372,
+        "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/135",
+        "title": "NUM02 Multi-objective solving semantics",
+        "issue_number": 135,
+        "body": "## Objective\n\nCompare a tiny two-objective model against an enumerated nondominated set. Establish each higher-priority bound before declaring lexicographic optimality.\n\n## Scope\n\n- NUM02-01 · Weighted and lexicographic objectives\n\n- NUM02-02 · Pareto frontier\n\n- NUM02-03 · Solver capability map\n\n## Boundaries and failure behavior\n\nLabel truncated frontiers and unproven stages explicitly.\n\n## Engineering references\n\nDirective §12 · NUM02 · parent #182 (EP04). Target module: `src/Engine`. Architecture: `docs/design/architecture.md`. Diagram/reference: `docs/design/operating-modes.md`. See `planning/requirements.json` for contracts, field readiness and evidence. Implement only after the relevant design/field contracts are reviewed.\n\n## Dependencies\n\n#20 (M07), #26 (S01), #29 (S04)\n\n## Consumers\n\nUI08\n\n## Acceptance and required tests\n\nCompare a tiny two-objective model against an enumerated nondominated set. Establish each higher-priority bound before declaring lexicographic optimality. Label truncated frontiers and unproven stages explicitly.\n\n## Verification and definition of done\n\nRun `dotnet run --project tools/Traceability` for planning integrity. Attach feature-specific tests, commands, observed pass/fail output and applicable OS/fixture revisions to the implementation PR. Review downstream consumers, field compatibility and recovery behavior. A green planning check establishes structural validity only. Merge under repository policy before closing.\n\n## Planning\n\nP1 · Production · feature · high risk.\n\nScope key: NUM02",
+        "state": "open",
+        "user": {
+          "login": "ameenalqershi",
+          "name": "ameenalqershi",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+          "id": 39249008
+        },
+        "assignees": null,
+        "labels": [
+          {
+            "name": "status:backlog",
+            "color": "EDEDED",
+            "description": "In scope, unclaimed"
+          },
+          {
+            "name": "priority:P1",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "release:Production",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "risk:high",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "type:feature",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "complexity:cross-component",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "dependencies:tracked",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "area:Model",
+            "color": "446F63",
+            "description": "Owning workstream"
+          }
+        ],
+        "milestone": 3,
+        "state_reason": null,
+        "comments": 0,
+        "created_at": "2026-11-27T13:35:31Z",
+        "updated_at": "2026-11-27T13:44:20Z",
+        "closed_at": null,
+        "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/135",
+        "display_title": "NUM02 Multi-objective solving semantics"
+      },
+      "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/135",
+      "title": "NUM02 Multi-objective solving semantics",
+      "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/135",
+      "display_title": "NUM02 Multi-objective solving semantics"
+    }
+  },
+  {
+    "n": 136,
+    "record": {
+      "issue": {
+        "id": 6647511039,
+        "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/136",
+        "title": "NUM03 Robust and stochastic models",
+        "issue_number": 136,
+        "body": "## Objective\n\nCheck a two-stage example against enumerated scenarios and verify that first-stage choices agree on identical information sets.\n\n## Scope\n\n- NUM03-01 · Uncertainty sets\n\n- NUM03-02 · Scenario probabilities\n\n- NUM03-03 · Nonanticipativity\n\n- NUM03-04 · Robust feasibility\n\n## Boundaries and failure behavior\n\nReject invalid probabilities and unsupported risk measures; promotion requires separate research evidence.\n\n## Engineering references\n\nDirective §12 · NUM03 · parent #182 (EP04). Target module: `src/Engine`. Architecture: `docs/design/architecture.md`. Diagram/reference: `docs/design/operating-modes.md`. See `planning/requirements.json` for contracts, field readiness and evidence. Implement only after the relevant design/field contracts are reviewed.\n\n## Dependencies\n\n#16 (M03), #26 (S01)\n\n## Consumers\n\nRelease review and end users.\n\n## Acceptance and required tests\n\nCheck a two-stage example against enumerated scenarios and verify that first-stage choices agree on identical information sets. Reject invalid probabilities and unsupported risk measures; promotion requires separate research evidence.\n\n## Verification and definition of done\n\nRun `dotnet run --project tools/Traceability` for planning integrity. Attach feature-specific tests, commands, observed pass/fail output and applicable OS/fixture revisions to the implementation PR. Review downstream consumers, field compatibility and recovery behavior. A green planning check establishes structural validity only. Merge under repository policy before closing.\n\n## Planning\n\nP1 · Research · research · high risk.\n\nScope key: NUM03",
+        "state": "open",
+        "user": {
+          "login": "ameenalqershi",
+          "name": "ameenalqershi",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+          "id": 39249008
+        },
+        "assignees": null,
+        "labels": [
+          {
+            "name": "status:backlog",
+            "color": "EDEDED",
+            "description": "In scope, unclaimed"
+          },
+          {
+            "name": "priority:P1",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "release:Research",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "risk:high",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "type:research",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "complexity:cross-component",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "dependencies:tracked",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "research:study",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "area:Model",
+            "color": "446F63",
+            "description": "Owning workstream"
+          }
+        ],
+        "milestone": 3,
+        "state_reason": null,
+        "comments": 0,
+        "created_at": "2026-11-27T13:35:33Z",
+        "updated_at": "2026-11-27T13:44:23Z",
+        "closed_at": null,
+        "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/136",
+        "display_title": "NUM03 Robust and stochastic models"
+      },
+      "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/136",
+      "title": "NUM03 Robust and stochastic models",
+      "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/136",
+      "display_title": "NUM03 Robust and stochastic models"
+    }
+  },
+  {
+    "n": 137,
+    "record": {
+      "issue": {
+        "id": 6647511692,
+        "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/137",
+        "title": "NUM04 Online reoptimization study",
+        "issue_number": 137,
+        "body": "## Objective\n\nReplay timestamped disruptions under an equal budget and compare decisions to cold full solves on identical observed prefixes.\n\n## Scope\n\n- NUM04-01 · Rolling horizons\n\n- NUM04-02 · Revision consistency\n\n- NUM04-03 · Safe cancellation\n\n- NUM04-04 · Latency budget\n\n- NUM04-05 · Full-solve recovery\n\n## Boundaries and failure behavior\n\nFuture-information leakage invalidates the trial.\n\n## Engineering references\n\nDirective §12 · NUM04 · parent #182 (EP04). Target module: `src/Engine`. Architecture: `docs/design/architecture.md`. Diagram/reference: `docs/design/operating-modes.md`. See `planning/requirements.json` for contracts, field readiness and evidence. Implement only after the relevant design/field contracts are reviewed.\n\n## Dependencies\n\n#42 (X05), #32 (S07)\n\n## Consumers\n\nRelease review and end users.\n\n## Acceptance and required tests\n\nReplay timestamped disruptions under an equal budget and compare decisions to cold full solves on identical observed prefixes. Future-information leakage invalidates the trial.\n\n## Verification and definition of done\n\nRun `dotnet run --project tools/Traceability` for planning integrity. Attach feature-specific tests, commands, observed pass/fail output and applicable OS/fixture revisions to the implementation PR. Review downstream consumers, field compatibility and recovery behavior. A green planning check establishes structural validity only. Merge under repository policy before closing.\n\n## Planning\n\nP1 · Research · research · high risk.\n\nScope key: NUM04",
+        "state": "open",
+        "user": {
+          "login": "ameenalqershi",
+          "name": "ameenalqershi",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+          "id": 39249008
+        },
+        "assignees": null,
+        "labels": [
+          {
+            "name": "status:backlog",
+            "color": "EDEDED",
+            "description": "In scope, unclaimed"
+          },
+          {
+            "name": "priority:P1",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "release:Research",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "risk:high",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "type:research",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "complexity:cross-component",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "dependencies:tracked",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "research:study",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "area:Model",
+            "color": "446F63",
+            "description": "Owning workstream"
+          }
+        ],
+        "milestone": 3,
+        "state_reason": null,
+        "comments": 0,
+        "created_at": "2026-11-27T13:35:36Z",
+        "updated_at": "2026-11-27T13:44:27Z",
+        "closed_at": null,
+        "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/137",
+        "display_title": "NUM04 Online reoptimization study"
+      },
+      "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/137",
+      "title": "NUM04 Online reoptimization study",
+      "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/137",
+      "display_title": "NUM04 Online reoptimization study"
+    }
+  },
+  {
+    "n": 142,
+    "record": {
+      "issue": {
+        "id": 6647514686,
+        "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/142",
+        "title": "EXP01 Five-strategy comparative study",
+        "issue_number": 142,
+        "body": "## Objective\n\nFreeze holdout families, observed data and budget. Publish positive, negative and missing outcomes across profit, cost, utilization, feasibility, violations, gaps, latency, CPU, memory, training, inference, disruption adaptation, explanation, reproducibility and robustness.\n\n## Scope\n\n- EXP01-01 · Human planning\n\n- EXP01-02 · Enterprise-trained AI\n\n- EXP01-03 · Conventional optimization\n\n- EXP01-04 · Adaptive engine\n\n- EXP01-05 · Adaptive engine with predictive inputs\n\n## Boundaries and failure behavior\n\nOmit unavailable financial metrics with a reason; exclude future observations from every strategy.\n\n## Engineering references\n\nDirective §15 · EXP01 · parent #182 (EP04). Target module: `docs/research`. Architecture: `docs/design/architecture.md`. Diagram/reference: `docs/design/operating-modes.md`. See `planning/requirements.json` for contracts, field readiness and evidence. Implement only after the relevant design/field contracts are reviewed.\n\n## Dependencies\n\n#44 (X07), #49 (V02)\n\n## Consumers\n\nRelease review and end users.\n\n## Acceptance and required tests\n\nFreeze holdout families, observed data and budget. Publish positive, negative and missing outcomes across profit, cost, utilization, feasibility, violations, gaps, latency, CPU, memory, training, inference, disruption adaptation, explanation, reproducibility and robustness. Omit unavailable financial metrics with a reason; exclude future observations from every strategy.\n\n## Verification and definition of done\n\nRun `dotnet run --project tools/Traceability` for planning integrity. Attach feature-specific tests, commands, observed pass/fail output and applicable OS/fixture revisions to the implementation PR. Review downstream consumers, field compatibility and recovery behavior. A green planning check establishes structural validity only. Merge under repository policy before closing.\n\n## Planning\n\nP1 · Research · research · medium risk.\n\nScope key: EXP01",
+        "state": "open",
+        "user": {
+          "login": "ameenalqershi",
+          "name": "ameenalqershi",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+          "id": 39249008
+        },
+        "assignees": null,
+        "labels": [
+          {
+            "name": "status:backlog",
+            "color": "EDEDED",
+            "description": "In scope, unclaimed"
+          },
+          {
+            "name": "priority:P1",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "release:Research",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "risk:medium",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "type:research",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "complexity:cross-component",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "dependencies:tracked",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "research:study",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "area:Research engineering",
+            "color": "446F63",
+            "description": "Owning workstream"
+          }
+        ],
+        "milestone": 5,
+        "state_reason": null,
+        "comments": 0,
+        "created_at": "2026-11-27T13:35:47Z",
+        "updated_at": "2026-11-27T13:44:44Z",
+        "closed_at": null,
+        "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/142",
+        "display_title": "EXP01 Five-strategy comparative study"
+      },
+      "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/142",
+      "title": "EXP01 Five-strategy comparative study",
+      "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/142",
+      "display_title": "EXP01 Five-strategy comparative study"
+    }
+  },
+  {
+    "n": 147,
+    "record": {
+      "issue": {
+        "id": 6647517666,
+        "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/147",
+        "title": "QA05 Compiler and solver robustness suite",
+        "issue_number": 147,
+        "body": "## Objective\n\nCompare generated bounded source models with exact enumeration after normalization and independent verification; persist minimized seeds and rejection reasons.\n\n## Scope\n\n- QA05-01 · Fuzzing\n\n- QA05-02 · Property-based tests\n\n- QA05-03 · Differential tests\n\n- QA05-04 · Mathematical verification\n\n- QA05-05 · Regression corpus\n\n## Boundaries and failure behavior\n\nInvalid or unsupported models must not crash or silently lose constraints.\n\n## Engineering references\n\nDirective §21 · QA05 · parent #83 (Q01). Target module: `tests`. Architecture: `docs/design/architecture.md`. Diagram/reference: `docs/design/operating-modes.md`. See `planning/requirements.json` for contracts, field readiness and evidence. Implement only after the relevant design/field contracts are reviewed.\n\n## Dependencies\n\n#21 (M08), #29 (S04)\n\n## Consumers\n\nRelease review and end users.\n\n## Acceptance and required tests\n\nCompare generated bounded source models with exact enumeration after normalization and independent verification; persist minimized seeds and rejection reasons. Invalid or unsupported models must not crash or silently lose constraints.\n\n## Verification and definition of done\n\nRun `dotnet run --project tools/Traceability` for planning integrity. Attach feature-specific tests, commands, observed pass/fail output and applicable OS/fixture revisions to the implementation PR. Review downstream consumers, field compatibility and recovery behavior. A green planning check establishes structural validity only. Merge under repository policy before closing.\n\n## Planning\n\nP1 · MVP · qualification · medium risk.\n\nScope key: QA05",
+        "state": "open",
+        "user": {
+          "login": "ameenalqershi",
+          "name": "ameenalqershi",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+          "id": 39249008
+        },
+        "assignees": null,
+        "labels": [
+          {
+            "name": "status:backlog",
+            "color": "EDEDED",
+            "description": "In scope, unclaimed"
+          },
+          {
+            "name": "priority:P1",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "release:MVP",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "risk:medium",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "type:qualification",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "complexity:cross-component",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "dependencies:tracked",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "area:Quality",
+            "color": "446F63",
+            "description": "Owning workstream"
+          }
+        ],
+        "milestone": 12,
+        "state_reason": null,
+        "comments": 1,
+        "created_at": "2026-11-27T13:35:59Z",
+        "updated_at": "2026-11-27T22:10:20Z",
+        "closed_at": null,
+        "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/147",
+        "display_title": "QA05 Compiler and solver robustness suite"
+      },
+      "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/147",
+      "title": "QA05 Compiler and solver robustness suite",
+      "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/147",
+      "display_title": "QA05 Compiler and solver robustness suite"
+    }
+  },
+  {
+    "n": 163,
+    "record": {
+      "issue": {
+        "id": 6647527347,
+        "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/163",
+        "title": "SP05 Research hypothesis dossiers",
+        "issue_number": 163,
+        "body": "## Objective\n\nReview H1–H5 individually with counterexamples and before/after flows. Mark unmeasured results and record the rejection rule before running experiments.\n\n## Scope\n\n- SP05-01 · Question and prior art\n\n- SP05-02 · Formal definitions and assumptions\n\n- SP05-03 · Algorithm and pseudocode\n\n- SP05-04 · Complexity and correctness\n\n- SP05-05 · Failure cases\n\n- SP05-06 · Design, baselines, datasets and ablation\n\n- SP05-07 · Replay, results and limits\n\n- SP05-08 · Novelty and go/revise/stop\n\n## Boundaries and failure behavior\n\nA missing independent baseline prevents a superiority claim.\n\n## Engineering references\n\nDirective §13 · SP05 · parent #182 (EP04). Target module: `docs/research`. Architecture: `docs/design/architecture.md`. Diagram/reference: `docs/design/operating-modes.md`. See `planning/requirements.json` for contracts, field readiness and evidence. Implement only after the relevant design/field contracts are reviewed.\n\n## Dependencies\n\n#4 (R04)\n\n## Consumers\n\nRelease review and end users.\n\n## Acceptance and required tests\n\nReview H1–H5 individually with counterexamples and before/after flows. Mark unmeasured results and record the rejection rule before running experiments. A missing independent baseline prevents a superiority claim.\n\n## Verification and definition of done\n\nRun `dotnet run --project tools/Traceability` for planning integrity. Attach feature-specific tests, commands, observed pass/fail output and applicable OS/fixture revisions to the implementation PR. Review downstream consumers, field compatibility and recovery behavior. A green planning check establishes structural validity only. Merge under repository policy before closing.\n\n## Planning\n\nP1 · Research · research · medium risk.\n\nScope key: SP05",
+        "state": "closed",
+        "user": {
+          "login": "ameenalqershi",
+          "name": "ameenalqershi",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+          "id": 39249008
+        },
+        "assignees": [
+          {
+            "login": "ameenalqershi",
+            "name": "ameenalqershi",
+            "email": null,
+            "avatar_url": "https://avatars.githubusercontent.com/u/39249008?v=4",
+            "id": 39249008
+          }
+        ],
+        "labels": [
+          {
+            "name": "priority:P1",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "release:Research",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "risk:medium",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "type:research",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "complexity:cross-component",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "dependencies:tracked",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "research:study",
+            "color": "506681",
+            "description": "Engineering planning classification"
+          },
+          {
+            "name": "area:Research engineering",
+            "color": "446F63",
+            "description": "Owning workstream"
+          }
+        ],
+        "milestone": 5,
+        "state_reason": "completed",
+        "comments": 4,
+        "created_at": "2026-11-27T13:36:35Z",
+        "updated_at": "2026-11-27T19:07:41Z",
+        "closed_at": "2026-11-27T19:07:10Z",
+        "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/163",
+        "display_title": "SP05 Research hypothesis dossiers"
+      },
+      "url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/163",
+      "title": "SP05 Research hypothesis dossiers",
+      "display_url": "https://github.com/ameenalqershi/wow-decision-intelligence/issues/163",
+      "display_title": "SP05 Research hypothesis dossiers"
+    }
+  }
+]

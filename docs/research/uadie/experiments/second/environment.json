@@ -1,0 +1,47 @@
+{
+  "stage": "second",
+  "split": "dev",
+  "core": 0,
+  "host": "Linux-6.8.0-134-generic-x86_64-with-glibc2.39",
+  "cpu": "\t: AMD EPYC 7713 64-Core Processor",
+  "sdk": "10.0.115",
+  "seed": 236,
+  "launches": [
+    {
+      "arm": "box",
+      "repetition": 0,
+      "status": 0,
+      "processWall": 0.2654002825729549
+    },
+    {
+      "arm": "pair",
+      "repetition": 0,
+      "status": 0,
+      "processWall": 0.2728532892651856
+    },
+    {
+      "arm": "box",
+      "repetition": 1,
+      "status": 0,
+      "processWall": 0.270933632273227
+    },
+    {
+      "arm": "pair",
+      "repetition": 1,
+      "status": 0,
+      "processWall": 0.23982276301831007
+    },
+    {
+      "arm": "box",
+      "repetition": 2,
+      "status": 0,
+      "processWall": 0.2574424291960895
+    },
+    {
+      "arm": "pair",
+      "repetition": 2,
+      "status": 0,
+      "processWall": 0.24683733005076647
+    }
+  ]
+}

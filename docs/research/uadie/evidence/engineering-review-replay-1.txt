@@ -1,0 +1,6 @@
+PASS H1 crossing capacity invalidates the independent incumbent
+PASS H2 relaxation invalidates the cached lower bound
+PASS H3 solver fits alone but charged plan exceeds its deadline
+PASS H4 conditional cost and infeasibility cannot certify the full model
+PASS H5 duplicate soft cost and missing feasible projection
+PASS H5 reversing objective sense preserves values but changes the optimizer

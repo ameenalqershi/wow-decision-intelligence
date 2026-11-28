@@ -1,0 +1,17 @@
+flowchart TD
+  n0["[I] Typed requirements #16"]:::I
+  n1["[I] Manifest #26"]:::I
+  n2["[C] Capability check #31"]:::C
+  n3["[P] Rank within budget"]:::P
+  n4["[C] Run + verify #29"]:::C
+  n5["[U] No compatible backend"]:::U
+  n0 --> n2
+  n1 --> n2
+  n2 --> n3
+  n3 --> n4
+  n2 --> n5
+  classDef I fill:#23463f,color:#fff,stroke:#23463f
+  classDef P fill:#224f75,color:#fff,stroke:#224f75
+  classDef T fill:#326437,color:#fff,stroke:#326437
+  classDef C fill:#83551c,color:#fff,stroke:#83551c
+  classDef U fill:#86404a,color:#fff,stroke:#86404a

@@ -1,0 +1,2 @@
+Outage=False startA=0 startB=3 verifiedCost=3 bound=3
+Outage=True startA=3 startB=6 verifiedCost=12 bound=12

@@ -1,0 +1,17 @@
+flowchart TD
+  n0["[I] Original snapshot #24"]:::I
+  n1["[I] Candidate witness"]:::I
+  n2["[I] Evaluate rows #29"]:::I
+  n3["[I] Recompute objective"]:::I
+  n4["[C] Check bound #30"]:::C
+  n5["[I] Classify evidence #35"]:::I
+  n0 --> n2
+  n1 --> n2
+  n2 --> n3
+  n3 --> n5
+  n4 --> n5
+  classDef I fill:#23463f,color:#fff,stroke:#23463f
+  classDef P fill:#224f75,color:#fff,stroke:#224f75
+  classDef T fill:#326437,color:#fff,stroke:#326437
+  classDef C fill:#83551c,color:#fff,stroke:#83551c
+  classDef U fill:#86404a,color:#fff,stroke:#86404a

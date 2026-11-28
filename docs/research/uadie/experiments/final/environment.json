@@ -1,0 +1,119 @@
+{
+  "stage": "final",
+  "split": "holdout",
+  "core": 0,
+  "host": "Linux-6.8.0-134-generic-x86_64-with-glibc2.39",
+  "cpu": "\t: AMD EPYC 7713 64-Core Processor",
+  "sdk": "10.0.115",
+  "seed": 236,
+  "launches": [
+    {
+      "arm": "full",
+      "repetition": 0,
+      "status": 0,
+      "processWall": 0.34028203692287207
+    },
+    {
+      "arm": "warm",
+      "repetition": 0,
+      "status": 0,
+      "processWall": 0.3248173971660435
+    },
+    {
+      "arm": "box",
+      "repetition": 0,
+      "status": 0,
+      "processWall": 0.4261671998538077
+    },
+    {
+      "arm": "reuse",
+      "repetition": 0,
+      "status": 0,
+      "processWall": 0.3738700612448156
+    },
+    {
+      "arm": "partition",
+      "repetition": 0,
+      "status": 0,
+      "processWall": 0.3782053431496024
+    },
+    {
+      "arm": "pair",
+      "repetition": 0,
+      "status": 0,
+      "processWall": 0.34245973266661167
+    },
+    {
+      "arm": "pair",
+      "repetition": 1,
+      "status": 0,
+      "processWall": 0.31670452281832695
+    },
+    {
+      "arm": "box",
+      "repetition": 1,
+      "status": 0,
+      "processWall": 0.33803611109033227
+    },
+    {
+      "arm": "partition",
+      "repetition": 1,
+      "status": 0,
+      "processWall": 0.3978500450029969
+    },
+    {
+      "arm": "warm",
+      "repetition": 1,
+      "status": 0,
+      "processWall": 0.3098896569572389
+    },
+    {
+      "arm": "reuse",
+      "repetition": 1,
+      "status": 0,
+      "processWall": 0.42669663904234767
+    },
+    {
+      "arm": "full",
+      "repetition": 1,
+      "status": 0,
+      "processWall": 0.3178302519954741
+    },
+    {
+      "arm": "full",
+      "repetition": 2,
+      "status": 0,
+      "processWall": 0.30833273893222213
+    },
+    {
+      "arm": "reuse",
+      "repetition": 2,
+      "status": 0,
+      "processWall": 0.3713817656971514
+    },
+    {
+      "arm": "pair",
+      "repetition": 2,
+      "status": 0,
+      "processWall": 0.37289842404425144
+    },
+    {
+      "arm": "partition",
+      "repetition": 2,
+      "status": 0,
+      "processWall": 0.3772199060767889
+    },
+    {
+      "arm": "warm",
+      "repetition": 2,
+      "status": 0,
+      "processWall": 0.3236395288258791
+    },
+    {
+      "arm": "box",
+      "repetition": 2,
+      "status": 0,
+      "processWall": 0.33776969322934747
+    }
+  ]
+}

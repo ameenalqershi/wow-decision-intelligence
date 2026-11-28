@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 227" role="img">
+<title>Concurrent revision update</title>
+<polyline points="187,39 212,39" fill="none" stroke="#617385" stroke-width="2"/>
+<polygon points="212.00,39.00 203.90,42.91 203.90,35.09" fill="#617385"/>
+<polyline points="387,39 412,39" fill="none" stroke="#617385" stroke-width="2"/>
+<polygon points="412.00,39.00 403.90,42.91 403.90,35.09" fill="#617385"/>
+<polyline points="486,70 486,106 116,106 116,146" fill="none" stroke="#617385" stroke-width="2"/>
+<polygon points="116.00,146.00 112.09,137.90 119.91,137.90" fill="#617385"/>
+<polyline points="187,177 212,177" fill="none" stroke="#617385" stroke-width="2"/>
+<polygon points="212.00,177.00 203.90,180.91 203.90,173.09" fill="#617385"/>
+<polyline points="86,146 86,97 516,97 516,146" fill="none" stroke="#617385" stroke-width="2"/>
+<polygon points="516.00,146.00 512.09,137.90 519.91,137.90" fill="#617385"/>
+<rect x="12" y="8" width="175" height="62" rx="5" fill="#83551c"/>
+<text x="22" y="27" fill="white" font-family="DejaVu Sans" font-size="11">C</text>
+<text x="22" y="52" fill="white" font-family="DejaVu Sans" font-size="12">Pin revision r</text>
+<rect x="212" y="8" width="175" height="62" rx="5" fill="#83551c"/>
+<text x="222" y="27" fill="white" font-family="DejaVu Sans" font-size="11">C</text>
+<text x="222" y="52" fill="white" font-family="DejaVu Sans" font-size="12">Compute witness</text>
+<rect x="412" y="8" width="175" height="62" rx="5" fill="#83551c"/>
+<text x="422" y="27" fill="white" font-family="DejaVu Sans" font-size="11">C</text>
+<text x="422" y="52" fill="white" font-family="DejaVu Sans" font-size="12">Verify against r</text>
+<rect x="12" y="146" width="175" height="62" rx="5" fill="#83551c"/>
+<text x="22" y="165" fill="white" font-family="DejaVu Sans" font-size="11">C</text>
+<text x="22" y="190" fill="white" font-family="DejaVu Sans" font-size="12">Compare current head</text>
+<rect x="212" y="146" width="175" height="62" rx="5" fill="#23463f"/>
+<text x="222" y="165" fill="white" font-family="DejaVu Sans" font-size="11">I</text>
+<text x="222" y="190" fill="white" font-family="DejaVu Sans" font-size="12">Record scoped evidence</text>
+<rect x="412" y="146" width="175" height="62" rx="5" fill="#86404a"/>
+<text x="422" y="165" fill="white" font-family="DejaVu Sans" font-size="11">U</text>
+<text x="422" y="190" fill="white" font-family="DejaVu Sans" font-size="12">Stale for new head</text>
+</svg>

@@ -1,0 +1,17 @@
+flowchart TD
+  n0["[C] Total envelope #32"]:::C
+  n1["[C] Charge preparation"]:::C
+  n2["[C] Reserve verification"]:::C
+  n3["[P] Choose affordable arm"]:::P
+  n4["[C] Enforce deadline"]:::C
+  n5["[C] Classify partial work"]:::C
+  n0 --> n1
+  n1 --> n2
+  n2 --> n3
+  n3 --> n4
+  n4 --> n5
+  classDef I fill:#23463f,color:#fff,stroke:#23463f
+  classDef P fill:#224f75,color:#fff,stroke:#224f75
+  classDef T fill:#326437,color:#fff,stroke:#326437
+  classDef C fill:#83551c,color:#fff,stroke:#83551c
+  classDef U fill:#86404a,color:#fff,stroke:#86404a

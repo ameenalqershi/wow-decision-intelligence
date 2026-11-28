@@ -1,0 +1,24 @@
+Running HiGHS 1.16.0 (git hash: ): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+LP has 1 row; 2 cols; 2 nonzeros
+Coefficient ranges:
+  Matrix  [1e+00, 1e+00]
+  Cost    [1e+00, 3e+00]
+  Bound   [2e+00, 2e+00]
+  RHS     [2e+00, 4e+00]
+Presolving model
+1 rows, 2 cols, 2 nonzeros 0s
+1 rows, 2 cols, 2 nonzeros 0s
+Presolve reductions: rows 1(-0); columns 2(-0); nonzeros 2(-0) - Not reduced
+Problem not reduced by presolve: solving the LP
+Choosing to use dual simplex solver
+Using dual simplex solver
+  Iteration        Objective     Infeasibilities num(sum)
+          0     0.0000000000e+00 Pr: 1(1.5) 0.0s
+          1     1.5000000000e+00 Pr: 0(0) 0.0s
+Model status        : Optimal
+Simplex   iterations: 1
+Objective value     :  1.5000000000e+00
+P-D objective error :  0.0000000000e+00
+HiGHS run time      :          0.00
+Coverage LP verified: x0=1.5, x1=0, objective=1.5, analytic lower bound=1.5.

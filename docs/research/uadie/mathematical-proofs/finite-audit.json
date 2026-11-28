@@ -1,0 +1,6 @@
+{
+  "product_cases": 432,
+  "bound_checks": 5265,
+  "certified_primal_equalities": 2128,
+  "strict_bounds": 3308
+}

@@ -1,0 +1,26 @@
+{
+  "states": 4,
+  "functions": 81,
+  "nonempty_subsets": 15,
+  "checked": {
+    "restriction": 5265,
+    "transfer": 426465,
+    "restricted_witness": 3939
+  },
+  "failures": [],
+  "relaxation_counterexample": {
+    "old": [
+      1
+    ],
+    "revised": [
+      0,
+      1
+    ],
+    "costs": [
+      0,
+      1
+    ],
+    "old_lower": 1,
+    "new_optimum": 0
+  }
+}
