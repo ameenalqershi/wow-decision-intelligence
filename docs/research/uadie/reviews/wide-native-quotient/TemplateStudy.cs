@@ -57,4 +57,46 @@ internal static class TemplateStudy
             }
         }
     }
+
+    internal static void ScaleAudit(string evidencePath,Func<WideModel,int[],long> verify)
+    {
+        var options=new JsonSerializerOptions{IncludeFields=true};
+        var reference=new Dictionary<string,(string Digest,long Cost)>();
+        foreach(string line in File.ReadLines(evidencePath))
+        {
+            using var d=JsonDocument.Parse(line);var r=d.RootElement;
+            if(r.GetProperty("arm").GetString()!="G14")continue;
+            if(r.GetProperty("status").GetString()!="Optimal")throw new Exception("reference not optimal");
+            string key=r.GetProperty("n").GetInt32()+"/"+r.GetProperty("family").GetString()+"/"+r.GetProperty("revision").GetInt32();
+            reference.Add(key,(r.GetProperty("digest").GetString()!,r.GetProperty("value").GetInt64()));
+        }
+        if(reference.Count!=12)throw new Exception("scale reference count");
+        foreach(int n in new[]{50000,100000})
+        foreach(string family in new[]{"stable","edits"})
+        {
+            int seed=2000101;var rng=new Random(seed+n);
+            var planted=Enumerable.Range(0,n).Select(_=>rng.Next(2)).ToArray();
+            var edges=new List<(int A,int B)>();
+            for(int i=0;i<n;i+=9)
+                for(int j=i+1;j<Math.Min(i+9,n);j++){edges.Add((i,j));planted[j]=1-planted[i];}
+            var rows=new List<WideRow>();
+            for(int i=0;i<n;i+=18){int[] scope=Enumerable.Range(i,Math.Min(18,n-i)).ToArray();int k=scope.Sum(j=>planted[j]);rows.Add(new(scope,k,k));}
+            var fixes=new List<(int Bit,int Value)>();
+            for(int rev=0;rev<3;rev++)
+            {
+                if(family=="edits"&&rev==2){edges.RemoveAt(0);fixes.Add((0,planted[0]));}
+                var m=new WideModel(n,edges.ToArray(),fixes.ToArray(),rows.ToArray(),Enumerable.Range(0,n).Select(_=>(long)rng.Next(-100,101)).ToArray());
+                string digest=Convert.ToHexString(SHA256.HashData(JsonSerializer.SerializeToUtf8Bytes(m,options)));
+                var expected=reference[n+"/"+family+"/"+rev];
+                if(digest!=expected.Digest)throw new Exception("replay digest mismatch");
+                _=verify(m,planted);
+                long start=Stopwatch.GetTimestamp();
+                var r=IncrementalAudit.Highs(m,5);
+                long ticks=Stopwatch.GetTimestamp()-start;
+                if(r.Bits!=null&&verify(m,r.Bits)!=r.Value)throw new Exception("original witness");
+                Console.WriteLine(JsonSerializer.Serialize(new{n,family,seed,revision=rev,digest,expected=expected.Cost,status=r.Status,value=r.Value,bits=r.Bits,model=m,ticks,frequency=Stopwatch.Frequency},options));
+                if(r.Status=="Infeasible"||r.Status=="Optimal"&&r.Value!=expected.Cost)throw new Exception("independent scale mismatch");
+            }
+        }
+    }
 }

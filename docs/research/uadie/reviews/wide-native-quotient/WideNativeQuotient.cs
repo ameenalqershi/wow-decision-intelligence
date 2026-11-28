@@ -8,6 +8,7 @@ if(args is ["adaptive"]){Adaptive();return;}
 if(args is ["incremental",var split]){IncrementalStudy.Run(split,Original,m=>Quotient(m),(m,t)=>Select(m,t).Result,Check);return;}
 if(args is ["incremental-audit"]){IncrementalAudit.Run(Original);return;}
 if(args is ["template-audit"]){IncrementalAudit.Run(Original,true);return;}
+if(args is ["scale-independent",var scaleEvidence]){TemplateStudy.ScaleAudit(scaleEvidence,Check);return;}
 if(args is ["template",var templateSplit]){TemplateStudy.Run(templateSplit,Original,m=>Quotient(m),Check);return;}
 if(args.Length!=1)throw new ArgumentException("dev|holdout|audit");
 bool dev=args[0]=="dev";if(!dev&&args[0]!="holdout")throw new ArgumentException("split");

@@ -119,7 +119,7 @@ internal static class IncrementalAudit
             }
         }
     }
-    private static WideResult Highs(WideModel m)
+    internal static WideResult Highs(WideModel m,double timeLimit=2)
     {
         var start=new List<int>();var index=new List<int>();var val=new List<double>();var lower=new List<double>();var upper=new List<double>();
         void Row(int[] scope,int lo,int hi){start.Add(index.Count);index.AddRange(scope);val.AddRange(scope.Select(_=>1d));lower.Add(lo);upper.Add(hi);}
@@ -132,7 +132,7 @@ internal static class IncrementalAudit
         {
             Ok(Native.Highs_setBoolOptionValue(h,"output_flag",0));
             Ok(Native.Highs_setIntOptionValue(h,"threads",1));
-            Ok(Native.Highs_setDoubleOptionValue(h,"time_limit",2));
+            Ok(Native.Highs_setDoubleOptionValue(h,"time_limit",timeLimit));
             Ok(Native.Highs_setDoubleOptionValue(h,"mip_rel_gap",0));
             Ok(Native.Highs_setDoubleOptionValue(h,"mip_abs_gap",0));
             Ok(Native.Highs_passMip(h,m.N,start.Count,index.Count,2,1,0,m.Cost.Select(c=>(double)c).ToArray(),new double[m.N],Enumerable.Repeat(1d,m.N).ToArray(),lower.ToArray(),upper.ToArray(),start.ToArray(),index.ToArray(),val.ToArray(),Enumerable.Repeat(1,m.N).ToArray()));
