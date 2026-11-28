@@ -20,6 +20,9 @@ if(args is ["mps-matrix-audit",var mpsDir]){MpsMatrixAudit.Run(mpsDir);return;}
 if(args is ["assignment-study"]){AssignmentStudy.Run();return;}
 if(args is ["assignment-audit"]){AssignmentStudy.Audit();return;}
 if(args is ["proof-store",var storeInput,var storeDir]){ProofEvidenceStore.Run(storeInput,storeDir);return;}
+if(args is ["unified",var unifiedSplit]){UnifiedStudy.Run(unifiedSplit);return;}
+if(args is ["unified-audit"]){UnifiedStudy.Audit();return;}
+if(args is ["unified-readback",var unifiedFile]){UnifiedStudy.Readback(unifiedFile);return;}
 if(args.Length!=1)throw new ArgumentException("dev|holdout|audit");
 bool dev=args[0]=="dev";if(!dev&&args[0]!="holdout")throw new ArgumentException("split");
 foreach(int n in dev?new[]{64,512}:new[]{64,512,4096,10000})

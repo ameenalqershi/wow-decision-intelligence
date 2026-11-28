@@ -16,6 +16,9 @@
 <Compile Include="CertifiedAssignment.cs"/>
 <Compile Include="AssignmentStudy.cs"/>
 <Compile Include="ProofEvidenceStore.cs"/>
+<Compile Include="DependencyDispatcher.cs"/>
+<Compile Include="CertifiedSparseFlow.cs"/>
+<Compile Include="UnifiedStudy.cs"/>
 <Compile Include="../../../../../research/AlgorithmDiscoveryLab/*.cs" Exclude="../../../../../research/AlgorithmDiscoveryLab/Program.cs"/>
 <Compile Include="../../../../../research/ComponentStudy/Model.cs"/>
 <Compile Include="../../../../../research/ComponentStudy/Oracle.cs"/>
