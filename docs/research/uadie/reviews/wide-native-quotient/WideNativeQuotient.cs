@@ -5,6 +5,7 @@ using System.Text.Json;
 
 if(args is ["audit"]){Audit();return;}
 if(args is ["adaptive"]){Adaptive();return;}
+if(args is ["incremental",var split]){IncrementalStudy.Run(split,Original,m=>Quotient(m),(m,t)=>Select(m,t).Result,Check);return;}
 if(args.Length!=1)throw new ArgumentException("dev|holdout|audit");
 bool dev=args[0]=="dev";if(!dev&&args[0]!="holdout")throw new ArgumentException("split");
 foreach(int n in dev?new[]{64,512}:new[]{64,512,4096,10000})
@@ -98,9 +99,9 @@ static WideResult Original(WideModel m)
     Reports(solver,cost,status==CpSolverStatus.Optimal);
     return new(status.ToString(),cost,bits,m.N,m.Edges.Length+m.Fixes.Length+m.Rows.Length);
 }
-static WideResult Quotient(WideModel m,List<(int[] Zero,int[] One)>? supplied=null)
+static WideResult Quotient(WideModel m,List<(int[] Zero,int[] One)>? supplied=null,PhaseTrace? trace=null)
 {
-    var partition=supplied??OrientationPartition.Build(m.N,m.Edges);
+    var partition=supplied??OrientationPartition.Build(m.N,m.Edges);trace?.Mark("g12-quotient-partition");
     if(partition==null)return new("Infeasible",null,null,0,0);
     int[] owner=new int[m.N],side=new int[m.N],fixedChoice=new int[partition.Count];
     Array.Fill(fixedChoice,-1);
@@ -115,6 +116,7 @@ static WideResult Quotient(WideModel m,List<(int[] Zero,int[] One)>? supplied=nu
         if(fixedChoice[owner[i]]>=0&&fixedChoice[owner[i]]!=y)return new("Infeasible",null,null,0,0);
         fixedChoice[owner[i]]=y;
     }
+    trace?.Mark("g12-duplicate-owner-fix");
     var cp=new CpModel();var free=new Dictionary<int,BoolVar>();
     long offset=0;var objVars=new List<BoolVar>();var objCost=new List<long>();
     for(int j=0;j<partition.Count;j++)
@@ -141,8 +143,8 @@ static WideResult Quotient(WideModel m,List<(int[] Zero,int[] One)>? supplied=nu
         cp.AddLinearConstraint(LinearExpr.WeightedSum(active.Select(x=>free[x.Key]),active.Select(x=>x.Value)),r.L-baseline,r.U-baseline);
         nr++;
     }
-    cp.Minimize(LinearExpr.WeightedSum(objVars,objCost)+offset);
-    var solver=Solver();var status=solver.Solve(cp);
+    cp.Minimize(LinearExpr.WeightedSum(objVars,objCost)+offset);trace?.Mark("g12-native-build");
+    var solver=Solver();var status=solver.Solve(cp);trace?.Mark("g12-native-solve");
     if(status is not(CpSolverStatus.Optimal or CpSolverStatus.Feasible))return new(status.ToString(),null,null,free.Count,nr);
     var bits=new int[m.N];
     for(int j=0;j<partition.Count;j++)
@@ -151,7 +153,7 @@ static WideResult Quotient(WideModel m,List<(int[] Zero,int[] One)>? supplied=nu
         if(y is not(0 or 1))throw new Exception("quotient domain");
         foreach(int i in y==0?partition[j].Zero:partition[j].One)bits[i]=1;
     }
-    long cost=Check(m,bits);Reports(solver,cost,status==CpSolverStatus.Optimal);
+    trace?.Mark("g12-reconstruct");long cost=Check(m,bits);Reports(solver,cost,status==CpSolverStatus.Optimal);
     return new(status.ToString(),cost,bits,free.Count,nr);
 }
 
@@ -201,12 +203,12 @@ static void Audit()
 }
 
 
-static (WideResult Result,string Route,int Free) Select(WideModel m)
+static (WideResult Result,string Route,int Free) Select(WideModel m,PhaseTrace? trace=null)
 {
     // No pair graph and few fixes: no substantial quotient reduction is possible.
     if(m.Edges.Length==0 && 4L*m.Fixes.Length<m.N)
         return (Original(m),"original-fast",m.N);
-    var partition=OrientationPartition.Build(m.N,m.Edges);
+    var partition=OrientationPartition.Build(m.N,m.Edges);trace?.Mark("g12-partition");
     if(partition==null)return(new("Infeasible",null,null,0,0),"odd-cycle",0);
     int[] owner=new int[m.N],side=new int[m.N];
     int[] fix=new int[partition.Count];Array.Fill(fix,-1);
@@ -222,10 +224,10 @@ static (WideResult Result,string Route,int Free) Select(WideModel m)
         if(fix[j]>=0&&fix[j]!=y)return(new("Infeasible",null,null,0,0),"conflicting-fix",0);
         if(fix[j]<0){fix[j]=y;fixedComponents++;}
     }
-    int free=partition.Count-fixedComponents;
+    int free=partition.Count-fixedComponents;trace?.Mark("g12-owner-fix");
     // Frozen descriptive threshold, not a proven cost model.
     return 4L*free<=3L*m.N
-        ? (Quotient(m,partition),"quotient",free)
+        ? (Quotient(m,partition,trace),"quotient",free)
         : (Original(m),"original-low-reduction",free);
 }
 static void Adaptive()
