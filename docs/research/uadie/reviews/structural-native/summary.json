@@ -1,0 +1,68 @@
+{
+  "rows": 864,
+  "valid": 864,
+  "models": 288,
+  "conclusive": 288,
+  "statuses": {
+    "Infeasible": 158,
+    "Optimal": 130
+  },
+  "histories": 48,
+  "summary": [
+    {
+      "name": "warm",
+      "rows": 288,
+      "valid": 288,
+      "verifiedReadback": 288,
+      "medianUs": 659.7235000000001,
+      "p95Us": 1055.9295,
+      "computeMedianUs": 69.765,
+      "flushMedianUs": 499.209,
+      "routes": {
+        "warm": 288
+      }
+    },
+    {
+      "name": "propagation",
+      "rows": 288,
+      "valid": 288,
+      "verifiedReadback": 288,
+      "medianUs": 556.1590000000001,
+      "p95Us": 819.2023499999998,
+      "computeMedianUs": 43.775000000000006,
+      "flushMedianUs": 501.069,
+      "routes": {
+        "propagation": 288
+      }
+    },
+    {
+      "name": "structural",
+      "rows": 288,
+      "valid": 288,
+      "verifiedReadback": 288,
+      "medianUs": 552.044,
+      "p95Us": 845.0063499999998,
+      "computeMedianUs": 41.0205,
+      "flushMedianUs": 499.59400000000005,
+      "routes": {
+        "direct": 160,
+        "propagation": 97,
+        "warm": 31
+      }
+    }
+  ],
+  "comparisons": [
+    {
+      "base": "warm",
+      "histories": 48,
+      "medianSpeedup": 1.0978538133375724,
+      "wins": 34
+    },
+    {
+      "base": "propagation",
+      "histories": 48,
+      "medianSpeedup": 0.9751764565164098,
+      "wins": 22
+    }
+  ]
+}
