@@ -1,22 +1,22 @@
 # WOW Decision Intelligence — UADIE: Scientific and Engineering Algorithm Specification
 
-Research edition R2 · 28 November 2026 · Issue #236 · Evidence cut 17450d931622a63c3812033a7ec317f59f2012a8
+Research review edition R3 · 28 November 2026 · Issue #236 · Companion evidence cut ac2737c (G5–G8); historical G1–G4 cut 17450d9. R2 preserved at 1697a27.
 
 **Release status:** research manuscript, not a production-qualified algorithm or peer-reviewed publication. Mathematical statements are conditional on explicit premises; measured results concern the stated fixtures and host. Independent human review, production integration, broad workload qualification and publication layout acceptance remain open.
 
 ## Abstract
 
-Repeated decisions often require optimization of a revised mathematical model rather than an unrelated model. We study exact, conservative reuse of previous optimization evidence under domain restriction, objective perturbation and factor separability. We compare cold exhaustive search, warm search, component partitioning and exact reuse, coordinate-box and disjoint-pair residual certificates, graph-based parity certificates with alternative fallbacks, and exact orientation-compressed search. Four generations are distinguished from the unqualified architecture. For a minimization model with a validated previous lower bound and a revised feasible set contained in the original one, a lower bound on the objective difference transports the previous bound. Exactly-one constraints on Boolean pairs induce a graph. In a bipartite component exactly two complementary assignments satisfy every eligible edge. Their residual minima provide a valid lower bound dominating coordinate-box and disjoint-pair relaxations. Alternatively the two orientations can replace many original variables in a complete search over the current objective. General residual rows still require validation. The original 3,360 observations and all new experiments are retained. The parity and orientation studies produced 7,680 and 9,600 valid timed observations, respectively. A separately translated CP-SAT comparison of ten candidates produced 9,920 matching verdicts on 992 model observations, and a structural scaling study matched 48 native verdicts up to 4,096 binary variables in the pair-only profile. A native floating-point reporting counterexample was preserved and corrected without weakening exact feasibility or objective verification. No universally fastest strategy or new graph theorem is claimed.
+Repeated decisions often require optimization of a revised mathematical model rather than an unrelated model. We study exact, conservative reuse of previous optimization evidence under domain restriction, objective perturbation and factor separability. We compare cold exhaustive search, warm search, component partitioning and exact reuse, coordinate-box and disjoint-pair residual certificates, graph-based parity certificates with alternative fallbacks, and exact orientation-compressed search. Eight research generations or challengers are distinguished from the unqualified architecture. G5 normalizes a single exact quota after parity decomposition; G6 reuses only an exact structural plan with fresh coefficients. G7 evaluates a bounded certificate hierarchy and adaptive route, and G8 propagates forced bits before exact search. G7 and G8 add 16,800 and 10,800 valid timed records, respectively, with original-model exhaustive references; G7 did not outperform warm search, while G8 showed family-specific benefits without establishing overall superiority. For a minimization model with a validated previous lower bound and a revised feasible set contained in the original one, a lower bound on the objective difference transports the previous bound. Exactly-one constraints on Boolean pairs induce a graph. In a bipartite component exactly two complementary assignments satisfy every eligible edge. Their residual minima provide a valid lower bound dominating coordinate-box and disjoint-pair relaxations. Alternatively the two orientations can replace many original variables in a complete search over the current objective. General residual rows still require validation. The original 3,360 observations and all new experiments are retained. The parity and orientation studies produced 7,680 and 9,600 valid timed observations, respectively. A separately translated CP-SAT comparison of ten candidates produced 9,920 matching verdicts on 992 model observations, and a structural scaling study matched 48 native verdicts up to 4,096 binary variables in the pair-only profile. A native floating-point reporting counterexample was preserved and corrected without weakening exact feasibility or objective verification. No universally fastest strategy or new graph theorem is claimed.
 
 ## Executive summary
 
-The engineering recommendation is a guarded portfolio, not compulsory use of certificate transport. In small models warm search can dominate expensive preprocessing; overlapping exactly-one structure can justify parity residual transport or direct orientation compression. Compression is particularly promising when the original variable count n is much larger than the number k of parity components. On the pair-only profile, optimization separates by orientation and needs no exponential search. In general mixed models, other constraints can couple the orientation variables and the problem remains combinatorial. The proof transport path is permitted only if model identity, old proof validity, semantic alignment, restriction and a current feasible witness are established. The new candidate code is isolated research; production verifier and orchestrator remain owned by #39–46 and #142 and require independent acceptance.
+The engineering recommendation is a guarded portfolio, not compulsory use of certificate transport. In small models warm search can dominate expensive preprocessing; overlapping exactly-one structure can justify parity residual transport or direct orientation compression. Compression is particularly promising when the original variable count n is much larger than the number k of parity components. On the pair-only profile, optimization separates by orientation and needs no exponential search. In general mixed models, other constraints can couple the orientation variables and the problem remains combinatorial. The proof transport path is permitted only if model identity, old proof validity, semantic alignment, restriction and a current feasible witness are established. The new candidate code is isolated research; production verifier and orchestrator remain owned by #39–46 and #142 and require independent acceptance. G5/G6 are exact residual/structure candidates, not full general solvers. G7 avoided 585 of 1,680 later revision solves but lost to Warm on paired histories. G8 is a better direction on forced and contradictory rows, not on every model. Maintain Warm as a strong reference and select only with checked admission.
 
 ![Revision-aware decision pipeline](../diagrams/overview.svg)
 
 ## 1. Problem definition, assumptions and objectives
 
-A decision request contains a frozen source model, tenant-scoped fact snapshot, measurement catalog, policy/version information and an objective. The admitted finite laboratory model has n in {1,...,12}, Boolean variables indexed by stable positions, constraints specifying integer lower/upper cardinality on nonempty subsets, and one ordered unary integer price per variable. Every coefficient and sum has a declared exact integer envelope. There is no continuous domain, nonlinear objective, uncertain scenario or cross-tenant production certificate in this laboratory. The wide structural experiment relaxes the representation cap but admits only Boolean pair equations and unary integer cost.
+A decision request contains a frozen source model, tenant-scoped fact snapshot, measurement catalog, policy/version information and an objective. The admitted finite laboratory model has n in {1,...,12}, Boolean variables indexed by stable positions, constraints specifying integer lower/upper cardinality on nonempty subsets, and one ordered unary integer price per variable. Every coefficient and sum has a declared exact integer envelope. There is no continuous domain, nonlinear objective, uncertain scenario or cross-tenant production certificate in this laboratory. The wide structural experiment relaxes the representation cap for Boolean pair equations and unary integer costs. G5/G6 additionally admit one unweighted exact quota and a checked Int64 residual; tested up to 4,096 variables. G7/G8 use the admitted 12-bit fixture, not a production compiler or general integer/LP/MILP solver.
 
 Given an old revision and a revised revision, minimize the complete current source objective subject to all current source constraints. Return a feasible witness plus evidence that supports the claimed status, or a qualified unknown/unsupported/infeasible result. Distinguish an incumbent hint from a certified lower bound and distinguish a native solver attestation from a mathematical proof. The research objectives are to reduce verified end-to-end work, identify failure and crossover regimes, compare independent baselines, preserve all raw evidence, and make scientific claims falsifiable.
 
@@ -107,15 +107,46 @@ For pair-only models every orientation tuple is feasible, so select the cheaper 
 ![Algorithm evolution](../diagrams/evolution.svg)
 ![Mathematical proof dependencies](../diagrams/math-dependency.svg)
 
-### 4.7 Future generation hypotheses and rejection criteria
+### 4.7 Generation 5: normalized single-quota residual (Theorem T7)
 
-A candidate that conditions on current fixed-domain singleton rows can eliminate one component orientation or prove contradiction. A residual exact-minimum oracle over compressed orientations may tighten transport but performs essentially the same search as direct current-objective optimization; measure whether its extra cost is warranted rather than assume it is. For a single additional global cardinality quota, a dynamic program over component orientations and accumulated count can produce an exact constrained minimum: DP_j(q)=min over the two choices of component j of prior DP at q minus the selected count plus selected cost. This is pseudopolynomial in the reachable count range; multiple quotas cause state explosion. This design remains prospective in the principal lab; a companion reviewer has a separate study, which must not be conflated with this branch or accepted without reviewing its artifacts. Certified component reuse, adaptive repair, multi-level cache, learned selection and budget orchestration remain separate research hypotheses with own preregistration. Reject any candidate with an invalid status/witness, and do not promote a correct but slower arm merely because it is novel to the project.
+Let the Boolean pair relaxation also retain one exact quota on subset S, sum of x_i over S = k. Every bipartite component j has two possible assignments. Denote quota counts by a_j and b_j, with a_j <= b_j after ordering, and corresponding signed residual costs A_j and B_j. Set w_j=b_j-a_j and v_j=B_j-A_j. For equal counts, choose the cheaper cost and subtract the fixed count from k. For every other component, start with A_j and a_j. If C is the sum of these fixed base costs and T=k minus all baseline counts, the exact minimum is:
+
+```
+B_quota = C + min Σ_j v_j y_j
+subject to Σ_j w_j y_j = T, y_j ∈ {0,1}
+```
+
+The mapping is exact because the two orientations exhaust every valid assignment; choosing y_j=1 selects the high-count orientation. Equal counts can be optimized independently. Reject T outside [0, sum w], or nondivisibility by gcd(w). Divisibility is necessary, not sufficient (weights 2 and 3, target 1). Divide by the gcd. Complement all selections when T exceeds half the total: replace T by total-T, add sum v to C and negate every v. This preserves feasibility and objective. For unit normalized weights, choose the T smallest signed differences; exchanging a larger chosen cost with a smaller unchosen one cannot increase cost. Otherwise descending 0/1 dynamic programming keeps the exact minimum for each reachable count, using each component once. Induction over components proves the recurrence. An unreachable state or odd cycle proves infeasibility of this relaxation. A finite bound does not prove feasibility of omitted rows. For transport apply T1 and require a current feasible witness to close the gap.
+
+![Normalized exact quota](../diagrams/quota-normalized.svg)
+
+### 4.8 Generation 6: exact structural plan reuse (Theorem T8)
+
+A private plan contains the exact copied edge sequence, membership bits, quota count, number of variables, component orientations and normalized counts. An exact equality test permits reuse only for identical structural inputs. All objective coefficients are checked and orientation costs recomputed on every call. The structural reduction in T7 depends only on these matched fields; therefore evaluating fresh coefficients on the reused plan is equivalent to rebuilding it. Reorder and duplicate changes conservatively invalidate; failed admission cannot justify stale evidence. This theorem assumes exclusive call ownership and inputs not mutated during evaluation. It does not certify tenant identity, semantic units, shared-instance concurrency, or persisted proof caches. Recovery and fresh native revision-history comparisons are recorded in the companion dossier.
+
+![Exact structural plan reuse](../diagrams/quota-reuse.svg)
+
+### 4.9 Generation 7: bounded adaptive proof route (Theorem T9, conditional correctness)
+
+For a surviving verified prior optimum and current row containment, try identity or a restricted residual. Every attempt yields only a lower bound until equality with a current feasible objective is shown. At most two nonidentity attempts (Box and one stronger parity/quota) are admitted by the adaptive arm; the fixed hierarchy may try three. If no attempt closes the gap, exact warm or orientation search is used. T1 and T6 prove soundness conditional on these admissions; the performance predictor is not part of the proof. With attempt cost A, success probability p and equal fallback cost S, an attempt is worthwhile in expectation only when A < pS. More generally compare A+pV+(1-p)F with immediate S, where V is incremental verification on success and F is all fallback cost. The implemented policy uses a bounded operation-count proxy, observed Box success with smoothing, and structure thresholds, not a calibrated predictive model. It is not promoted after the measured Warm regression.
+
+![Cost-aware bounded certificate route](../diagrams/adaptive-g7.svg)
+
+### 4.10 Generation 8: exact cardinality propagation (Theorem T10)
+
+At a partial assignment, for any row l <= count <= u, let k be selected bits and r be unset bits. The attainable count lies in [k,k+r]. If k>u or k+r<l, no completion is feasible. If k=u, all unset row bits must be zero; if k+r=l, all must be one. Repeat until stable: each change fixes at least one previously unset bit, so at most n bits can change. Forced bits preserve every feasible completion. Contradiction pruning discards no feasible completion. Branch on an unset bit, using the sum of assigned costs and independent minima of unassigned unary costs as a lower bound. Current verified incumbent permits safe equal-cost pruning. Induction on remaining bits proves optimality or infeasibility on the admitted finite grammar. This is established constraint propagation, not a new mathematical theorem of general optimization.
+
+![Forced-bit propagation](../diagrams/propagation-g8.svg)
+
+### 4.11 Remaining hypotheses and rejection criteria
+
+Multi-quota optimization, dynamic graph deletion, native persistent reoptimization, cost calibration, proof-carrying repair and production resource governance remain hypotheses or separately owned engineering work. A mathematically valid candidate can be rejected as a performance default. G7 is an explicit example. Any invalid status or witness prevents promotion. G8 evidence motivates prospective cheap admission for forcing-heavy rows; it does not validate such a new policy on unseen families.
 
 ## 5. Numerical safety and complexity
 
 The historical model's value/mask representation uses signed Int32 and n≤12; the new transport checks the total positive and negative objective envelopes before admission. Subtract prices after promotion to Int64, and use checked additions. For Int32 endpoints the maximum coefficient difference magnitude is 4,294,967,295; twelve such terms fit in Int64, but the public product would need checked arbitrary precision or a formal bounded arithmetic profile. The current fallback remains a bounded fixture, not a general solver. Never cast a binary64 native objective to integer and treat it as exact evidence. Native report consistency can use a separately justified tolerance; witness and source objective are recalculated exactly. Error bounds, infinity, rounding direction, scaling and overflow need explicit contracts.
 
-For input rows count m, eligible graph edges e, n variables, k components, and coefficient bit length b: building adjacency and coloring require O(n+e) graph operations and O(n+e) storage after row parsing; scanning/validating all rows is additional O(m) for fixed-width masks, more for variable-length incidence. Summation and comparison depend on b+log n bits. Source semantic parsing, row containment (the current simple implementation can be O(m_old m_new)), copying, old-witness checking, canonical identity, proof verification, cache lookup and fallback are additional costs, not hidden in O(n+e). Box is O(n) arithmetic; greedy disjoint Pair is O(m+n) for fixed-width masks. Full enumeration can take O(2^n (m+n)); branch-and-bound can prune but retains that worst case. Compressed search has at most 2^(k+1)-1 tree nodes and up to 2^k leaves, row checking O(m) per leaf in this representation, so O(n+m+e+2^k m) time plus arithmetic/reconstruction. DFS search state O(k); adjacency, orientation masks, row data and original snapshot add memory. Pair-only direct orientation selection takes O(n+e) graph and arithmetic operations after validation. General cardinality rows do not enjoy this linear guarantee.
+For input rows count m, eligible graph edges e, n variables, k components, and coefficient bit length b: building adjacency and coloring require O(n+e) graph operations and O(n+e) storage after row parsing; scanning/validating all rows is additional O(m) for fixed-width masks, more for variable-length incidence. Summation and comparison depend on b+log n bits. Source semantic parsing, row containment (the current simple implementation can be O(m_old m_new)), copying, old-witness checking, canonical identity, proof verification, cache lookup and fallback are additional costs, not hidden in O(n+e). Box is O(n) arithmetic; greedy disjoint Pair is O(m+n) for fixed-width masks. Full enumeration can take O(2^n (m+n)); branch-and-bound can prune but retains that worst case. Compressed search has at most 2^(k+1)-1 tree nodes and up to 2^k leaves, row checking O(m) per leaf in this representation, so O(n+m+e+2^k m) time plus arithmetic/reconstruction. DFS search state O(k); adjacency, orientation masks, row data and original snapshot add memory. Pair-only direct orientation selection takes O(n+e) graph and arithmetic operations after validation. General cardinality rows do not enjoy this linear guarantee. G5 uses O(n+e) graph storage, plus O(m log m) time for unit sorting or O(mT) time and O(T) DP memory (m active components, normalized complemented target T); graph and component arrays are additional. G5/G6 require sum(abs(delta)) < Int64.MaxValue, using Int128 for the magnitude test and reserving Int64.MaxValue as unreachable. Checked arithmetic covers every partial disjoint sum and signed difference; no truncation. G6 exact input comparison costs O(n+e) and stores a full private plan; a miss rebuilds it. G7 adds capped attempts but no per-call wall guarantee. G8 costs O(n*m) propagation per node and has exponential worst case. Active cancellation, memory exhaustion and concurrent shared state remain unqualified.
 
 ## 6. Algorithms, pseudocode and data structures
 
@@ -188,6 +219,44 @@ ORIENTATION_SOLVE(model, old_hint):
 
 The implemented adaptive arm bypasses orientation on n<8, fewer than two eligible edges, or k≥n−1 and uses warm search. This threshold is a frozen research hypothesis, not a learned or optimal decision rule. The parity-warm ablation keeps the same mathematical gate but changes fallback from cached exact components to warm search. A fallback may reuse an older feasible hint; it must recheck it and prove current optimality. The next iteration should expose candidate version, eligibility and measured setup cost as explicit registry attributes.
 
+### 6.4 Quota residual and plan reuse pseudocode
+
+```
+validate n, edges, quota and signed magnitude
+if structure differs: copy inputs and build full plan
+color components; reject odd cycle
+for each component: recompute costs from current delta
+fold equal counts; subtract baseline counts
+check range and gcd; optionally complement
+if normalized weights equal one: sort signed differences
+else: descending exact-count DP, only finite prior states
+return exact residual or infeasible relaxation
+```
+
+### 6.5 Adaptive and propagation pseudocode
+
+```
+admit snapshot and current objective
+if prior proof survives restriction and witness is feasible:
+  try identity or bounded Box / parity / quota stages
+  if lower bound equals witness cost: return witnessed optimum
+otherwise: exact warm or orientation fallback
+verify original witness and encode evidence
+```
+
+```
+propagation search(partial assignment):
+  repeat row interval checks and forced bits until stable
+  if contradictory: return
+  if unary lower bound cannot beat incumbent: return
+  if all bits assigned: update incumbent
+  otherwise branch both values of an unassigned bit
+```
+
+The common timed laboratory pipeline includes snapshot admission, SHA-256, strategy execution, independent original witness verification and in-memory evidence encoding. External exhaustive optimum checking is separate from timed execution. Durable persistence and production semantic processing remain unmeasured.
+
+![Research measurement pipeline](../diagrams/research-pipeline.svg)
+
 ## 7. System architecture and integration contract
 
 The proposed production path is: source registry (#24) pins revision, tenant and facts; compiler (#16–21) proves typed units and exact lowering; impact analysis (#14–15) finds potentially changed factors from old and new incidence; partition and reuse (#39–41) validate complete factor scope; budgeted orchestrator (#32, #42, #44) chooses eligible methods, with qualified solver manifest (#26, #31) and backend; independent primal and bound verifier (#29–30) checks original rows and evidence; immutable evidence (#35) stores proof lineage; approval and publication (#36–37) accept only appropriately classified decisions. No shared production contracts are edited by this study.
@@ -226,6 +295,40 @@ The actual server was Linux x86-64 AMD EPYC 7713, .NET SDK 10.0.115. Per-run res
 
 ![Algorithm discovery cycle](../diagrams/discovery.svg)
 
+### 8.1 Companion G5–G6 component evidence
+
+G5: 15,570 valid timed records (15,336 with independent exhaustive/analytical reference; 234 wide mixed records only baseline differential). The separately frozen native audit matched 36 fresh models and passed 13 boundary checks. At 4,096 variables, paired median speedups over the companion quota DP were 11.84x unit-free, 4.36x unit-pairs, 5.60x equal-pairs, 3.50x uniform-stars, 5.25x mixed-blocks. Small and some medium cases regressed. Component-only timing, not verified decision latency.
+
+G6: 4,800 valid timed records over 240 ten-revision histories, 1,680/2,400 cache hits (70%). Holdout 4,096-variable full-history paired medians: stable-unit 3.36x (95% exploratory interval 2.89–3.91), stable-mixed 1.72x (1.64–1.83), revision-edits 1.005x (0.90–1.05). Cost of misses can erase gain. These are comparisons of residual calculation only.
+
+### 8.2 G7 and G8 research decision pipeline
+
+G7: 3,360 development and 13,440 holdout records, all valid, seven arms, 60 and 240 histories. The adaptive policy transported 585/1,680 later revisions (34.82%), versus hierarchy 1,044/1,680 (62.14%). Adaptive median 38.07 us, p95 72.97; Warm median 30.955 us, p95 132.72. Paired whole-history median speedups:
+
+| Reference | G7 speedup |
+|---|---:|
+| Full | 1.011x |
+| Warm | 0.787x |
+| Orientation | 0.952x |
+| Parity + Warm | 0.931x |
+| Component reuse | 1.965x |
+| Fixed hierarchy | 1.113x |
+
+Seed-cluster exploratory interval vs Warm 0.752–0.817 and vs hierarchy 1.078–1.146. G7 is retained as a valid research challenger but rejected as a universal default. This comparison includes shared pipeline cost; serialized evidence metadata differs between arms and is an additional limitation.
+
+G8: 2,160 development and 8,640 holdout records, all valid, five arms, 72 and 288 histories. Propagation median 30.67 us and p95 77.28, Warm 37.55 and 249.90. Paired history median speedup 1.037x vs Warm (seed-cluster interval 0.990–1.137); 1.514x vs Orientation. Family-specific comparisons with Warm:
+
+| Family | G8 speedup |
+|---|---:|
+| Chain | 2.418x |
+| Forced | 2.848x |
+| Contradiction | 3.862x |
+| Loose | 0.854x |
+| Mixed | 0.775x |
+| Quota | 0.883x |
+
+All six family intervals exclude one in the observed direction, but no multiple-comparison adjustment or real industrial population sampling. Results are exploratory. G7 and G8 use distinct generators, so do not compare their absolute timing medians across experiments as a controlled race. Both use n<=12; wide quota studies are separate. G7 holdout peak process RSS 65,792 KiB, 3.04 s wall; G8 66,620 KiB, 2.69 s wall. These are whole-process metrics, not per-strategy peak memory. All raw rows, code, frozen protocols, environment and reproducible summaries are preserved under reviews/adaptive-decision and reviews/propagation-search.
+
 ## 9. Independent reference comparison and failure analysis
 
 The C# audit builds CP-SAT 9.15.6755 independently from original cardinality rows and unary prices, one native worker, 2 s solver limit; checks returned witnesses separately and compares to the existing original-model exact enumeration for small models. It includes 480 repeated observations of the orientation evaluation set and 512 revision observations from 128 separately generated histories with arbitrary nonadjacent scopes, signed changes, duplicated/reordered/deleted rows and restored source. Corrected run: 992 model observations, 9,920 matching candidate verdicts. They are not all independent draws. Same-process native/candidate timing on revised orientation evaluation observations: CP-SAT cold 560.75 μs, hint 547.00 μs, Warm 29.69 μs, Parity+Warm 23.38 μs, Orientation 27.13 μs, adaptive 21.23 μs. These measure native model building, hints, native solve and independent witness check; candidate ordering, JIT and shared runtime may bias the descriptive comparison. Native hint is not persistent native search-tree reoptimization.
@@ -234,17 +337,21 @@ Attempt 1 aborted after 4,810 successful candidate rows because CP-SAT's binary6
 
 For the wide pair-only grammar, 64/256/1,024/4,096 variables, chains, 16-vertex blocks, disjoint pairs and odd cycles, three repetitions each: all 48 exact structural verdicts agreed with CP-SAT. At n=4,096 chain median local verified time 806.15 μs vs native 70,751.46 μs; blocks 859.83 vs 67,037.25 μs; disjoint pair 1,259.78 vs 45,194.03 μs; odd-cycle detection 266.61 vs 44,585.05 μs. These are specialized graph-only inputs, not general manufacturing MILPs. The direct wide candidate does not use the Int32 mask model, and does not certify arbitrary rows. Three repetitions per cell do not support a general speedup claim.
 
+### 9.1 Cache revision audit
+
+In a new CP-SAT comparison, 12 histories of eight revisions at 64, 512 and 4,096 variables matched the exact direct and cached residual on all 96 cases (84 optimal, 12 infeasible). Each native optimal witness was checked using original edges, quota and exact integer costs; binary64 reports checked separately. All 13 boundary and recovery checks passed, including isolated parallel instances. Deliberately mutation-heavy histories had 12/96 hits. This is independent reference-engine verification, not independent reviewer acceptance. The same-instance G6 concurrency contract remains single-owner; no evidence for arbitrary concurrent mutation, production tenant isolation, active cancellation latency or memory exhaustion recovery.
+
 ## 10. Research decision and production qualification roadmap
 
 Keep Warm as the low-overhead baseline and fallback where appropriate. Retain parity transport as an exact restricted-certificate candidate, and direct orientation as a separate exact compression candidate. In the pair-only grammar the structural method has a mathematical linear graph path; admission must prove the absence of other coupling. For mixed models choose only after measuring graph sparsity, k/n, anticipated residual strength and budget. The adaptive threshold was not a stable winner and is not promoted to production. No statistical superiority is declared from confidence intervals crossing zero. A prospective policy needs representative independent family holdout, native reoptimization controls, separate cost instrumentation and an external checker.
 
 Open qualification: #39 complete source factor separation; #40/41 versioned proof and cache reuse; #42 safe repair/portfolio; #44 reusable benchmark platform; #45 independent ablations and cost accounting; #46 genuinely held-out family selection; #142 operational comparison. #29, #30, #32 and #35 define verification, bound classification, budget and evidence interfaces; reviewed production extensions must coordinate with their owners. #236 is the publication/research supplement, not completion of any production issue. The topical issue figure is not the complete formal DAG. The authoritative issue-map and ledger are maintained by the planning owner.
 
-Future steps: separately freeze singleton-propagation and quota-DP designs; compare against direct solve, not merely against Box. Add representative factory/workforce/inventory and scheduling models with qualified native adapters (CP-SAT and HiGHS when appropriate), use a separate generator and family-level split, calibrate time and memory limits, add metamorphic tests and counterexample minimization, verify source evidence with tamper, cancellation, concurrency, stale publication and exact arithmetic tests. Keep failed experiments. A bounded research cycle ends when correctness fails, resource cap is reached, gain fails the preregistered gate or dependencies are absent. No unbounded search or arbitrary percentage completion.
+Future steps: retain the completed G5–G8 studies and freeze a new cheap structural-admission challenger on unseen families; compare against direct solve and warm, not merely against Box. G7 is not accepted as a performance default. G8 needs independent review and new native mixed-model comparisons. G5/G6 evidence maps to #38/#39/#40/#41, G7/G8 to #42/#44/#45/#46, numerical and proof admission to #29/#30/#134, resources to #32 and evidence to #35. Add representative factory/workforce/inventory and scheduling models with qualified native adapters (CP-SAT and HiGHS when appropriate), use a separate generator and family-level split, calibrate time and memory limits, add metamorphic tests and counterexample minimization, verify source evidence with tamper, cancellation, concurrency, stale publication and exact arithmetic tests. Keep failed experiments. A bounded research cycle ends when correctness fails, resource cap is reached, gain fails the preregistered gate or dependencies are absent. No unbounded search or arbitrary percentage completion.
 
 ## 11. Reproducibility and raw evidence
 
-All original evidence is preserved in commit dea48d9. New source and results cut 17450d9; the native comparator's initial and corrected commits are b58fcfa and 8904f78. Use a fresh detached worktree rather than overwriting the historical output directories. Build with .NET 10; no Python production component is introduced. Existing Python scripts are historical verification and publication tooling only. Node summary is offline research reporting, not runtime code.
+All original evidence is preserved in commit dea48d9. Companion evidence is pinned at ac2737c: G5 c404322/fd21bac/55924a8; G6 b52a017/e9cdaa8; G7 a4d3ea4/944b3a1; G8 722b190/d643ec2; cache native audit 459ccf3/ac2737c. The R2 publication remains available at 1697a27. Build ADL and run normalized-quota, cached-quota, adaptive-decision, propagation-search with dev or holdout, and CacheNativeHistory.dll boundary/native in fresh output directories under each frozen protocol. Research metrics and acceptance gates are in the companion ledger and dashboard. No Python runtime dependency is introduced. New source and results cut 17450d9; the native comparator's initial and corrected commits are b58fcfa and 8904f78. Use a fresh detached worktree rather than overwriting the historical output directories. Build with .NET 10; no Python production component is introduced. Existing Python scripts are historical verification and publication tooling only. Node summary is offline research reporting, not runtime code.
 
 ```sh
 dotnet build research/AlgorithmDiscoveryLab -c Release -m:1

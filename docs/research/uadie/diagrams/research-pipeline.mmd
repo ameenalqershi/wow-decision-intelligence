@@ -1,0 +1,17 @@
+flowchart TD
+  n0["[I] Snapshot + admit"]:::I
+  n1["[I] Digest + choose"]:::I
+  n2["[I] Solve or transport"]:::I
+  n3["[I] Verify witness"]:::I
+  n4["[I] Encode evidence"]:::I
+  n5["[U] Disk / product out"]:::U
+  n0 --> n1
+  n1 --> n2
+  n2 --> n3
+  n3 --> n4
+  n4 --> n5
+  classDef I fill:#23463f,color:#fff,stroke:#23463f
+  classDef P fill:#224f75,color:#fff,stroke:#224f75
+  classDef T fill:#326437,color:#fff,stroke:#326437
+  classDef C fill:#83551c,color:#fff,stroke:#83551c
+  classDef U fill:#86404a,color:#fff,stroke:#86404a
