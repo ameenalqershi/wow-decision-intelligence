@@ -73,4 +73,24 @@ data.metrics.G15DirectSolve={numerator:a15.directProofs,denominator:a15.rows};
 data.metrics.G15CertifiedTransform={numerator:a15.certificateChecks,denominator:a15.rows};
 data.metrics.G15G13Wins={numerator:g15.holdout.comparisons.find(x=>x.base==='G13').wins,denominator:g15.holdout.histories};
 data.metrics.G15TamperRejection={numerator:data.G15.independentAudit.tamper-data.G15.independentAudit.acceptedTamper,denominator:data.G15.independentAudit.tamper};
+const g16=get('reviews/wide-native-quotient/proof-reuse/summary.json');
+const g16splits={};
+for(const split of ['holdout','disk']){
+ const rows=read(path.join(wide,'proof-reuse',split,'raw.jsonl'));
+ g16splits[split]={records:rows.length,optimal:rows.filter(r=>r.status==='Optimal').length,distinctDigests:new Set(rows.map(r=>r.digest)).size,verifiedWitnesses:rows.filter(r=>r.verifiedWitness).length};
+}
+data.G16={bySplit:g16splits,comparison:g16,independentAudit:get('reviews/wide-native-quotient/proof-reuse/audit/summary.json'),industrial:get('reviews/wide-native-quotient/proof-reuse/industrial/summary.json'),readback:get('reviews/wide-native-quotient/proof-reuse/disk/readback.json'),storage:get('reviews/wide-native-quotient/proof-reuse/dedup/summary.json')};
+const a16=g16.holdout.summaries.find(x=>x.arm==='G16'),r16=g16.holdout.summaries.find(x=>x.arm==='G16-reuse');
+data.metrics.G16ProofHits={numerator:r16.hits,denominator:r16.rows};
+data.metrics.G16AdaptiveEligibleHits={numerator:a16.hits,denominator:a16.certificateChecks};
+data.metrics.G16AdaptiveAllHits={numerator:a16.hits,denominator:a16.rows};
+data.metrics.G16DirectSolve={numerator:a16.directProofs,denominator:a16.rows};
+data.metrics.G16G13Wins={numerator:g16.holdout.comparisons.find(x=>x.candidate==='G16'&&x.base==='G13').wins,denominator:g16.holdout.histories};
+data.metrics.G16TamperRejection={numerator:data.G16.independentAudit.rejected,denominator:data.G16.independentAudit.tamper};
+data.metrics.G16StorageByteReduction={numerator:data.G16.storage.full.bytes-data.G16.storage.compact.bytes,denominator:data.G16.storage.full.bytes};
+data.G17={comparison:get('reviews/wide-native-quotient/assignment/summary.json'),independentAudit:get('reviews/wide-native-quotient/assignment/audit/summary.json')};
+const aa=data.G17.comparison.summaries.find(x=>x.arm==='assignment-proof'),cp=data.G17.comparison.summaries.find(x=>x.arm==='CP-SAT');
+data.metrics.G17DirectProven={numerator:aa.proofs,denominator:aa.rows};
+data.metrics.G17CPOptimal={numerator:cp.statuses.Optimal,denominator:cp.rows};
+data.metrics.G17TamperRejection={numerator:data.G17.independentAudit.rejected,denominator:data.G17.independentAudit.tamper};
 console.log(JSON.stringify(data,null,2));
