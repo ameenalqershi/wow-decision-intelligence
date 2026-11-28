@@ -16,11 +16,14 @@ internal sealed class PhaseTrace
 }
 
 // Immutable structural snapshot owned by a single session. No mutable solver or bound cached.
-internal sealed class IncrementalQuotient(bool reuse)
+internal sealed class IncrementalQuotient(bool reuse,bool template=false,bool fast=false)
 {
     private sealed record Row(int[] Index,long[] Coeff,long L,long U);
     private sealed record Plan(WideModel Shape,int[] Map,int[] Base,int Free,Row[] Rows,bool Impossible,bool Direct);
     private Plan? plan;
+    private CpModel? templateModel;
+    private BoolVar[]? templateVariables;
+    internal bool TemplateHit {get;private set;}
     private int busy;
     internal bool Hit {get;private set;}
     internal string Route {get;private set;}="";
@@ -105,11 +108,14 @@ internal sealed class IncrementalQuotient(bool reuse)
         {
             ct.ThrowIfCancellationRequested();
             Admit(m);trace.Mark("plan-admission");
+            TemplateHit=false;
+            if(fast&&m.Edges.Length==0&&4L*m.Fixes.Length<m.N)
+            {Hit=false;Route="original-fast";var direct=original(m);ct.ThrowIfCancellationRequested();return direct;}
             Hit=reuse&&plan!=null&&Same(plan.Shape,m);
             trace.Mark("identity");
             Plan p;
             if(Hit)p=plan!;
-            else {p=Build(m,trace,ct);ct.ThrowIfCancellationRequested();if(reuse)plan=p;Builds++;}
+            else {p=Build(m,trace,ct);ct.ThrowIfCancellationRequested();if(reuse)plan=p;Builds++;templateModel=null;templateVariables=null;}
             trace.Mark("plan-ready");
             if(p.Impossible){Route="contradiction";return new("Infeasible",null,null,0,0);}
             if(p.Direct){Route="original";return original(m);}
@@ -117,12 +123,22 @@ internal sealed class IncrementalQuotient(bool reuse)
             long offset=0;long[] costs=new long[p.Free];
             for(int i=0;i<m.N;i++){long c=m.Cost[i];offset+=p.Base[i]*c;if(p.Map[i]>=0)costs[p.Map[i]]+=(1-2*p.Base[i])*c;}
             trace.Mark("objective");
-            var cp=new CpModel();var y=Enumerable.Range(0,p.Free).Select(i=>cp.NewBoolVar("y"+i)).ToArray();
-            foreach(var r in p.Rows)
+            CpModel cp;BoolVar[] y;
+            if(template&&Hit&&templateModel!=null&&templateVariables!=null)
             {
-                ct.ThrowIfCancellationRequested();
-                cp.AddLinearConstraint(LinearExpr.WeightedSum(r.Index.Select(i=>y[i]),r.Coeff),r.L,r.U);
+                cp=templateModel;y=templateVariables;TemplateHit=true;
             }
+            else
+            {
+                cp=new CpModel();y=Enumerable.Range(0,p.Free).Select(i=>cp.NewBoolVar("y"+i)).ToArray();
+                foreach(var r in p.Rows)
+                {
+                    ct.ThrowIfCancellationRequested();
+                    cp.AddLinearConstraint(LinearExpr.WeightedSum(r.Index.Select(i=>y[i]),r.Coeff),r.L,r.U);
+                }
+                if(template){templateModel=cp;templateVariables=y;}
+            }
+            if(template)cp.ClearObjective();
             cp.Minimize(LinearExpr.WeightedSum(y,costs)+offset);trace.Mark("native-build");
             ct.ThrowIfCancellationRequested();
             var solver=new CpSolver{StringParameters="num_search_workers:1 random_seed:1320101 max_time_in_seconds:0.5"};
@@ -138,6 +154,7 @@ internal sealed class IncrementalQuotient(bool reuse)
                 throw new Exception("native report mismatch");
             return new(status.ToString(),value,bits,p.Free,p.Rows.Length);
         }
+        catch{if(template){templateModel=null;templateVariables=null;}throw;}
         finally{Volatile.Write(ref busy,0);}
     }
 }
