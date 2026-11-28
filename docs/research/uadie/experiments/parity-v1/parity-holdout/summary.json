@@ -1,0 +1,407 @@
+{
+  "split": "parity-holdout",
+  "records": 3840,
+  "valid": 3840,
+  "arms": {
+    "box": {
+      "medianUs": 100.86,
+      "p10Us": 54.23,
+      "p90Us": 377.898,
+      "allocatedMedian": 28000,
+      "peakBytes": 57970688,
+      "uniqueTransfers": 5,
+      "families": {
+        "chain-shift": {
+          "medianUs": 248.0795,
+          "uniqueTransfers": 0
+        },
+        "star-shift": {
+          "medianUs": 232.88,
+          "uniqueTransfers": 0
+        },
+        "cycle-shift": {
+          "medianUs": 231.0595,
+          "uniqueTransfers": 0
+        },
+        "odd-cycle": {
+          "medianUs": 211.8945,
+          "uniqueTransfers": 0
+        },
+        "mixed": {
+          "medianUs": 133.235,
+          "uniqueTransfers": 0
+        },
+        "relax-chain": {
+          "medianUs": 77.995,
+          "uniqueTransfers": 0
+        },
+        "disjoint": {
+          "medianUs": 65.9845,
+          "uniqueTransfers": 0
+        },
+        "isolated": {
+          "medianUs": 65.82,
+          "uniqueTransfers": 0
+        },
+        "tighten": {
+          "medianUs": 40.7,
+          "uniqueTransfers": 5
+        },
+        "large-delta": {
+          "medianUs": 113.25999999999999,
+          "uniqueTransfers": 0
+        }
+      }
+    },
+    "full": {
+      "medianUs": 39.965,
+      "p10Us": 13.66,
+      "p90Us": 180.109,
+      "allocatedMedian": 384,
+      "peakBytes": 46198784,
+      "uniqueTransfers": 0,
+      "families": {
+        "chain-shift": {
+          "medianUs": 66.61449999999999,
+          "uniqueTransfers": 0
+        },
+        "star-shift": {
+          "medianUs": 69.37950000000001,
+          "uniqueTransfers": 0
+        },
+        "cycle-shift": {
+          "medianUs": 58.09,
+          "uniqueTransfers": 0
+        },
+        "odd-cycle": {
+          "medianUs": 61.9945,
+          "uniqueTransfers": 0
+        },
+        "mixed": {
+          "medianUs": 52.019999999999996,
+          "uniqueTransfers": 0
+        },
+        "relax-chain": {
+          "medianUs": 56.42,
+          "uniqueTransfers": 0
+        },
+        "disjoint": {
+          "medianUs": 28.3495,
+          "uniqueTransfers": 0
+        },
+        "isolated": {
+          "medianUs": 11.095500000000001,
+          "uniqueTransfers": 0
+        },
+        "tighten": {
+          "medianUs": 56.7145,
+          "uniqueTransfers": 0
+        },
+        "large-delta": {
+          "medianUs": 38.7,
+          "uniqueTransfers": 0
+        }
+      }
+    },
+    "pair": {
+      "medianUs": 96.9405,
+      "p10Us": 43.74,
+      "p90Us": 322.138,
+      "allocatedMedian": 27508,
+      "peakBytes": 57745408,
+      "uniqueTransfers": 8,
+      "families": {
+        "chain-shift": {
+          "medianUs": 253.05450000000002,
+          "uniqueTransfers": 0
+        },
+        "star-shift": {
+          "medianUs": 239.74,
+          "uniqueTransfers": 0
+        },
+        "cycle-shift": {
+          "medianUs": 178.894,
+          "uniqueTransfers": 0
+        },
+        "odd-cycle": {
+          "medianUs": 215.754,
+          "uniqueTransfers": 0
+        },
+        "mixed": {
+          "medianUs": 120.875,
+          "uniqueTransfers": 1
+        },
+        "relax-chain": {
+          "medianUs": 66.855,
+          "uniqueTransfers": 0
+        },
+        "disjoint": {
+          "medianUs": 62.869,
+          "uniqueTransfers": 1
+        },
+        "isolated": {
+          "medianUs": 64.67,
+          "uniqueTransfers": 0
+        },
+        "tighten": {
+          "medianUs": 40.505,
+          "uniqueTransfers": 5
+        },
+        "large-delta": {
+          "medianUs": 76.815,
+          "uniqueTransfers": 1
+        }
+      }
+    },
+    "parity": {
+      "medianUs": 55.2195,
+      "p10Us": 18.99,
+      "p90Us": 227.88,
+      "allocatedMedian": 12664,
+      "peakBytes": 57663488,
+      "uniqueTransfers": 38,
+      "families": {
+        "chain-shift": {
+          "medianUs": 21.615000000000002,
+          "uniqueTransfers": 8
+        },
+        "star-shift": {
+          "medianUs": 25.564999999999998,
+          "uniqueTransfers": 8
+        },
+        "cycle-shift": {
+          "medianUs": 26.665,
+          "uniqueTransfers": 8
+        },
+        "odd-cycle": {
+          "medianUs": 218.049,
+          "uniqueTransfers": 0
+        },
+        "mixed": {
+          "medianUs": 66.53,
+          "uniqueTransfers": 4
+        },
+        "relax-chain": {
+          "medianUs": 141.1745,
+          "uniqueTransfers": 0
+        },
+        "disjoint": {
+          "medianUs": 67.52000000000001,
+          "uniqueTransfers": 1
+        },
+        "isolated": {
+          "medianUs": 59.1045,
+          "uniqueTransfers": 0
+        },
+        "tighten": {
+          "medianUs": 23.564999999999998,
+          "uniqueTransfers": 5
+        },
+        "large-delta": {
+          "medianUs": 52.75,
+          "uniqueTransfers": 4
+        }
+      }
+    },
+    "parity-warm": {
+      "medianUs": 28.1845,
+      "p10Us": 17.9,
+      "p90Us": 94.419,
+      "allocatedMedian": 1924,
+      "peakBytes": 46559232,
+      "uniqueTransfers": 38,
+      "families": {
+        "chain-shift": {
+          "medianUs": 22.125,
+          "uniqueTransfers": 8
+        },
+        "star-shift": {
+          "medianUs": 20.360500000000002,
+          "uniqueTransfers": 8
+        },
+        "cycle-shift": {
+          "medianUs": 23.285,
+          "uniqueTransfers": 8
+        },
+        "odd-cycle": {
+          "medianUs": 80.9105,
+          "uniqueTransfers": 0
+        },
+        "mixed": {
+          "medianUs": 32.295,
+          "uniqueTransfers": 4
+        },
+        "relax-chain": {
+          "medianUs": 53.414500000000004,
+          "uniqueTransfers": 0
+        },
+        "disjoint": {
+          "medianUs": 27.545,
+          "uniqueTransfers": 1
+        },
+        "isolated": {
+          "medianUs": 22.2795,
+          "uniqueTransfers": 0
+        },
+        "tighten": {
+          "medianUs": 29.4795,
+          "uniqueTransfers": 5
+        },
+        "large-delta": {
+          "medianUs": 34.4,
+          "uniqueTransfers": 4
+        }
+      }
+    },
+    "partition": {
+      "medianUs": 100.435,
+      "p10Us": 48.23,
+      "p90Us": 350.91,
+      "allocatedMedian": 28296,
+      "peakBytes": 57692160,
+      "uniqueTransfers": 0,
+      "families": {
+        "chain-shift": {
+          "medianUs": 203.039,
+          "uniqueTransfers": 0
+        },
+        "star-shift": {
+          "medianUs": 244.1755,
+          "uniqueTransfers": 0
+        },
+        "cycle-shift": {
+          "medianUs": 220.889,
+          "uniqueTransfers": 0
+        },
+        "odd-cycle": {
+          "medianUs": 210.7545,
+          "uniqueTransfers": 0
+        },
+        "mixed": {
+          "medianUs": 123.2755,
+          "uniqueTransfers": 0
+        },
+        "relax-chain": {
+          "medianUs": 74.2645,
+          "uniqueTransfers": 0
+        },
+        "disjoint": {
+          "medianUs": 50.905,
+          "uniqueTransfers": 0
+        },
+        "isolated": {
+          "medianUs": 52.9645,
+          "uniqueTransfers": 0
+        },
+        "tighten": {
+          "medianUs": 94.685,
+          "uniqueTransfers": 0
+        },
+        "large-delta": {
+          "medianUs": 98.286,
+          "uniqueTransfers": 0
+        }
+      }
+    },
+    "reuse": {
+      "medianUs": 93.5495,
+      "p10Us": 48.529,
+      "p90Us": 282.86,
+      "allocatedMedian": 27620,
+      "peakBytes": 57700352,
+      "uniqueTransfers": 0,
+      "families": {
+        "chain-shift": {
+          "medianUs": 198.816,
+          "uniqueTransfers": 0
+        },
+        "star-shift": {
+          "medianUs": 199.7,
+          "uniqueTransfers": 0
+        },
+        "cycle-shift": {
+          "medianUs": 184.84,
+          "uniqueTransfers": 0
+        },
+        "odd-cycle": {
+          "medianUs": 163.04950000000002,
+          "uniqueTransfers": 0
+        },
+        "mixed": {
+          "medianUs": 112.53999999999999,
+          "uniqueTransfers": 0
+        },
+        "relax-chain": {
+          "medianUs": 72.2045,
+          "uniqueTransfers": 0
+        },
+        "disjoint": {
+          "medianUs": 51.075,
+          "uniqueTransfers": 0
+        },
+        "isolated": {
+          "medianUs": 54.980000000000004,
+          "uniqueTransfers": 0
+        },
+        "tighten": {
+          "medianUs": 96.4195,
+          "uniqueTransfers": 0
+        },
+        "large-delta": {
+          "medianUs": 91.765,
+          "uniqueTransfers": 0
+        }
+      }
+    },
+    "warm": {
+      "medianUs": 37.53,
+      "p10Us": 11.42,
+      "p90Us": 217.889,
+      "allocatedMedian": 368,
+      "peakBytes": 46182400,
+      "uniqueTransfers": 0,
+      "families": {
+        "chain-shift": {
+          "medianUs": 69.2645,
+          "uniqueTransfers": 0
+        },
+        "star-shift": {
+          "medianUs": 52.2145,
+          "uniqueTransfers": 0
+        },
+        "cycle-shift": {
+          "medianUs": 57.445,
+          "uniqueTransfers": 0
+        },
+        "odd-cycle": {
+          "medianUs": 67.6695,
+          "uniqueTransfers": 0
+        },
+        "mixed": {
+          "medianUs": 44.91,
+          "uniqueTransfers": 0
+        },
+        "relax-chain": {
+          "medianUs": 50.9845,
+          "uniqueTransfers": 0
+        },
+        "disjoint": {
+          "medianUs": 14.1,
+          "uniqueTransfers": 0
+        },
+        "isolated": {
+          "medianUs": 10.594999999999999,
+          "uniqueTransfers": 0
+        },
+        "tighten": {
+          "medianUs": 47.879999999999995,
+          "uniqueTransfers": 0
+        },
+        "large-delta": {
+          "medianUs": 43.65,
+          "uniqueTransfers": 0
+        }
+      }
+    }
+  }
+}

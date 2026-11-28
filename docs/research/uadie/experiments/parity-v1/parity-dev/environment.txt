@@ -1,0 +1,11 @@
+commit=4c0dc0174d45aedf07345243975724c4d6a36f68
+split=parity-dev
+utc=2026-11-28T00:50:35Z
+Linux localhost 6.8.0-134-generic #134-Ubuntu SMP PREEMPT_DYNAMIC Fri Jun 26 18:43:11 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+10.0.115
+model name	: AMD EPYC 7713 64-Core Processor
+core=0
+0::/user.slice/user-0.slice/user@0.service/app.slice/run-rf1463cca0ce943158d3390d3d12fd187.scope
+CPUQuotaPerSecUSec=1s
+MemoryMax=805306368
+f03d9aa17365c405cc8f1c888b18beb644a5689d870e1654773a8387bab288f1  /root/uadie-lab/research/AlgorithmDiscoveryLab/bin/Release/net10.0/AlgorithmDiscoveryLab.dll
