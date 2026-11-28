@@ -30,7 +30,7 @@ FIGURES = [
 ("perturbation","Objective perturbation","تغير أسعار القرار",["I|Old f and bound L","I|New objective g","C|Check F' subset F","I|Delta = new - old","T|Bound L + residual","C|Compare witness cost"],[(0,2),(1,3),(2,4),(3,4),(4,5)]),
 ("selection","Eligibility and adaptive selection","اختيار المرشح المؤهل",["C|Admit model profile","C|Check scope and budget","I|Warm: tiny / sparse","I|Parity certificate","I|Orientation search","C|Verify or fallback"],[(0,1),(1,2),(1,3),(1,4),(2,5),(3,5),(4,5)]),
 ("discovery","Frozen research cycle","دورة البحث والتحقق",["P|Falsifiable hypothesis","I|Freeze code + seeds","I|Bounded execution","I|Independent oracle","C|Counterexample or data","C|Reject / retain"],[(0,1),(1,2),(2,3),(3,4),(4,5)]),
-("evolution","Algorithm evolution","تطور أجيال الخوارزمية",["I|G1: Box floor","I|G2: Disjoint pairs","I|G3: Parity graph","I|G4: Orientation solve","I|G5/G6: quota + reuse","I|G7/G8: adapt + force"],[(0,1),(1,2),(2,3),(3,4),(4,5)]),
+("evolution","Algorithm evolution","تطور أجيال الخوارزمية",["I|G1: Box floor","I|G2: Disjoint pairs","I|G3: Parity graph","I|G4: Orientation solve","I|G5/G6: quota + reuse","I|G7-G9: adaptive routes"],[(0,1),(1,2),(2,3),(3,4),(4,5)]),
 ("math-dependency","Mathematical proof dependencies","اعتماديات الإثبات الرياضي",["T|T1: Restriction","T|T3: Box","T|T4: Pair","T|T5: Parity bound","T|T6: Orientation","C|Verified witness"],[(1,2),(2,3),(3,4),(0,3),(3,5),(4,5)]),
 ("before-after","Cold search versus structural reuse","قبل وبعد استخدام البنية",["I|Cold: all variables","I|Search and verify","T|Current optimum","I|Revised: graph first","I|Reuse / compress","C|Verify current scope"],[(0,1),(1,2),(3,4),(4,5)]),
 
