@@ -1,0 +1,15 @@
+{
+  "finite": 768,
+  "finiteInfeasible": 192,
+  "highs": 48,
+  "tamper": 672,
+  "rejected": 672,
+  "summary": {
+    "kind": "summary",
+    "cases": 768,
+    "hits": 96,
+    "tamper": 672,
+    "highs": 48,
+    "boundary": 6
+  }
+}

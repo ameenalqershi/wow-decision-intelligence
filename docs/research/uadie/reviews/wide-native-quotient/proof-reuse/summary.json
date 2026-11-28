@@ -1,0 +1,3217 @@
+{
+  "holdout": {
+    "rows": 4320,
+    "models": 480,
+    "distinctDigests": 480,
+    "allOptimal": 480,
+    "witnesses": 4320,
+    "histories": 120,
+    "summaries": [
+      {
+        "arm": "original",
+        "rows": 480,
+        "statuses": {
+          "Optimal": 480
+        },
+        "medianUs": 9852.368999999999,
+        "p95Us": 68865.08455,
+        "p99Us": 78744.51506999995,
+        "medianBytes": 628292,
+        "medianEvidenceBytes": 8720,
+        "hits": 0,
+        "certificateChecks": 0,
+        "directProofs": 0,
+        "routes": {
+          "original": 480
+        },
+        "phases": {
+          "admit": {
+            "calls": 480,
+            "medianUs": 55.844,
+            "p95Us": 87.14104999999999
+          },
+          "digest": {
+            "calls": 480,
+            "medianUs": 80.98949999999999,
+            "p95Us": 237.19549999999995
+          },
+          "solve-rest": {
+            "calls": 480,
+            "medianUs": 9343.5345,
+            "p95Us": 68471.22254999999
+          },
+          "verify": {
+            "calls": 480,
+            "medianUs": 13.93,
+            "p95Us": 43.62349999999983
+          },
+          "encode": {
+            "calls": 480,
+            "medianUs": 113.63,
+            "p95Us": 298.2560499999999
+          }
+        }
+      },
+      {
+        "arm": "hint",
+        "rows": 480,
+        "statuses": {
+          "Optimal": 480
+        },
+        "medianUs": 10429.233,
+        "p95Us": 118490.35639999999,
+        "p99Us": 139039.75284999996,
+        "medianBytes": 406548,
+        "medianEvidenceBytes": 8712,
+        "hits": 0,
+        "certificateChecks": 0,
+        "directProofs": 0,
+        "routes": {
+          "hint": 480
+        },
+        "phases": {
+          "admit": {
+            "calls": 480,
+            "medianUs": 56.474999999999994,
+            "p95Us": 90.1305
+          },
+          "digest": {
+            "calls": 480,
+            "medianUs": 85.66900000000001,
+            "p95Us": 235.33909999999997
+          },
+          "solve-rest": {
+            "calls": 480,
+            "medianUs": 9918.014,
+            "p95Us": 118167.60845
+          },
+          "verify": {
+            "calls": 480,
+            "medianUs": 14,
+            "p95Us": 45.92899999999994
+          },
+          "encode": {
+            "calls": 480,
+            "medianUs": 120.334,
+            "p95Us": 276.4859999999998
+          }
+        }
+      },
+      {
+        "arm": "G13",
+        "rows": 480,
+        "statuses": {
+          "Optimal": 480
+        },
+        "medianUs": 5911.5855,
+        "p95Us": 67341.26349999999,
+        "p99Us": 77741.85779000001,
+        "medianBytes": 209124,
+        "medianEvidenceBytes": 8709,
+        "hits": 0,
+        "certificateChecks": 0,
+        "directProofs": 0,
+        "routes": {
+          "G13": 480
+        },
+        "phases": {
+          "admit": {
+            "calls": 480,
+            "medianUs": 8.53,
+            "p95Us": 17.807499999999983
+          },
+          "digest": {
+            "calls": 480,
+            "medianUs": 85.8095,
+            "p95Us": 234.4614
+          },
+          "plan-admission": {
+            "calls": 480,
+            "medianUs": 49.08,
+            "p95Us": 72.47699999999999
+          },
+          "identity": {
+            "calls": 480,
+            "medianUs": 3.0300000000000002,
+            "p95Us": 12.654499999999997
+          },
+          "snapshot": {
+            "calls": 48,
+            "medianUs": 8.785,
+            "p95Us": 37.948999999999984
+          },
+          "plan-ready": {
+            "calls": 480,
+            "medianUs": 0.735,
+            "p95Us": 1.720999999999999
+          },
+          "solve-rest": {
+            "calls": 480,
+            "medianUs": 3652.7095,
+            "p95Us": 66953.33399999999
+          },
+          "verify": {
+            "calls": 480,
+            "medianUs": 14.819500000000001,
+            "p95Us": 48.98454999999985
+          },
+          "encode": {
+            "calls": 480,
+            "medianUs": 113.8145,
+            "p95Us": 238.13049999999996
+          },
+          "partition": {
+            "calls": 120,
+            "medianUs": 104.40950000000001,
+            "p95Us": 131.8715
+          },
+          "owner-fix": {
+            "calls": 120,
+            "medianUs": 7.12,
+            "p95Us": 38.53905
+          },
+          "row-transform": {
+            "calls": 96,
+            "medianUs": 115.874,
+            "p95Us": 289.09675000000004
+          },
+          "objective": {
+            "calls": 192,
+            "medianUs": 6.43,
+            "p95Us": 8.427999999999999
+          },
+          "native-build": {
+            "calls": 192,
+            "medianUs": 109.1895,
+            "p95Us": 314.4930499999994
+          },
+          "native-solve": {
+            "calls": 192,
+            "medianUs": 1290.648,
+            "p95Us": 2592.472049999999
+          },
+          "reconstruct": {
+            "calls": 192,
+            "medianUs": 12.01,
+            "p95Us": 24.797949999999997
+          }
+        }
+      },
+      {
+        "arm": "G14",
+        "rows": 480,
+        "statuses": {
+          "Optimal": 480
+        },
+        "medianUs": 5475.961499999999,
+        "p95Us": 68614.78049999998,
+        "p99Us": 79574.37619999998,
+        "medianBytes": 144280,
+        "medianEvidenceBytes": 8709,
+        "hits": 0,
+        "certificateChecks": 0,
+        "directProofs": 0,
+        "routes": {
+          "G14": 480
+        },
+        "phases": {
+          "admit": {
+            "calls": 480,
+            "medianUs": 8.36,
+            "p95Us": 24.32754999999999
+          },
+          "digest": {
+            "calls": 480,
+            "medianUs": 90.525,
+            "p95Us": 233.509
+          },
+          "plan-admission": {
+            "calls": 480,
+            "medianUs": 48.5055,
+            "p95Us": 71.18799999999993
+          },
+          "solve-rest": {
+            "calls": 480,
+            "medianUs": 3851.2644999999998,
+            "p95Us": 68290.06139999998
+          },
+          "verify": {
+            "calls": 480,
+            "medianUs": 16.049999999999997,
+            "p95Us": 42.820999999999835
+          },
+          "encode": {
+            "calls": 480,
+            "medianUs": 112.87950000000001,
+            "p95Us": 244.43349999999998
+          },
+          "identity": {
+            "calls": 288,
+            "medianUs": 2.68,
+            "p95Us": 7.132499999999999
+          },
+          "partition": {
+            "calls": 120,
+            "medianUs": 105.00049999999999,
+            "p95Us": 146.96649999999974
+          },
+          "owner-fix": {
+            "calls": 120,
+            "medianUs": 7.13,
+            "p95Us": 32.1555
+          },
+          "row-transform": {
+            "calls": 96,
+            "medianUs": 112.83449999999999,
+            "p95Us": 151.06425
+          },
+          "plan-ready": {
+            "calls": 288,
+            "medianUs": 0.68,
+            "p95Us": 1.5764999999999998
+          },
+          "objective": {
+            "calls": 192,
+            "medianUs": 6.2,
+            "p95Us": 8.438
+          },
+          "native-build": {
+            "calls": 192,
+            "medianUs": 60.25,
+            "p95Us": 160.458
+          },
+          "native-solve": {
+            "calls": 192,
+            "medianUs": 1358.973,
+            "p95Us": 2367.1199500000002
+          },
+          "reconstruct": {
+            "calls": 192,
+            "medianUs": 11.184999999999999,
+            "p95Us": 19.83199999999999
+          }
+        }
+      },
+      {
+        "arm": "cert-native",
+        "rows": 480,
+        "statuses": {
+          "Optimal": 480
+        },
+        "medianUs": 6586.7045,
+        "p95Us": 70500.02299999999,
+        "p99Us": 81077.74867999996,
+        "medianBytes": 399372,
+        "medianEvidenceBytes": 21355.5,
+        "hits": 0,
+        "certificateChecks": 480,
+        "directProofs": 0,
+        "routes": {
+          "native-quotient": 480
+        },
+        "phases": {
+          "admit": {
+            "calls": 480,
+            "medianUs": 56.2095,
+            "p95Us": 95.0255
+          },
+          "digest": {
+            "calls": 480,
+            "medianUs": 84.5455,
+            "p95Us": 235.564
+          },
+          "transform": {
+            "calls": 480,
+            "medianUs": 243.745,
+            "p95Us": 769.9103999999998
+          },
+          "proof": {
+            "calls": 480,
+            "medianUs": 267.764,
+            "p95Us": 1306.0844999999974
+          },
+          "solve": {
+            "calls": 480,
+            "medianUs": 5295.192,
+            "p95Us": 69030.42744999997
+          },
+          "solve-rest": {
+            "calls": 480,
+            "medianUs": 1.56,
+            "p95Us": 3.6104999999999996
+          },
+          "verify": {
+            "calls": 480,
+            "medianUs": 11.25,
+            "p95Us": 32.693
+          },
+          "encode": {
+            "calls": 480,
+            "medianUs": 256.814,
+            "p95Us": 512.0980499999998
+          }
+        }
+      },
+      {
+        "arm": "cert-direct",
+        "rows": 480,
+        "statuses": {
+          "Optimal": 480
+        },
+        "medianUs": 3299.5299999999997,
+        "p95Us": 72386.25694999997,
+        "p99Us": 82685.77026999998,
+        "medianBytes": 343392,
+        "medianEvidenceBytes": 21350.5,
+        "hits": 0,
+        "certificateChecks": 480,
+        "directProofs": 192,
+        "routes": {
+          "direct": 192,
+          "native-quotient": 288
+        },
+        "phases": {
+          "admit": {
+            "calls": 480,
+            "medianUs": 55.8705,
+            "p95Us": 92.04149999999998
+          },
+          "digest": {
+            "calls": 480,
+            "medianUs": 90.225,
+            "p95Us": 233.90704999999997
+          },
+          "transform": {
+            "calls": 480,
+            "medianUs": 242.24,
+            "p95Us": 778.6104999999955
+          },
+          "proof": {
+            "calls": 480,
+            "medianUs": 255.25400000000002,
+            "p95Us": 1221.9540499999905
+          },
+          "solve": {
+            "calls": 480,
+            "medianUs": 2055.2315,
+            "p95Us": 71292.65044999996
+          },
+          "solve-rest": {
+            "calls": 480,
+            "medianUs": 3.05,
+            "p95Us": 75.44
+          },
+          "verify": {
+            "calls": 480,
+            "medianUs": 11.7,
+            "p95Us": 34.693499999999915
+          },
+          "encode": {
+            "calls": 480,
+            "medianUs": 241.239,
+            "p95Us": 500.2754999999995
+          }
+        }
+      },
+      {
+        "arm": "G16-cold",
+        "rows": 480,
+        "statuses": {
+          "Optimal": 480
+        },
+        "medianUs": 3654.529,
+        "p95Us": 72465.82194999998,
+        "p99Us": 80491.89925999983,
+        "medianBytes": 398752,
+        "medianEvidenceBytes": 21347.5,
+        "hits": 0,
+        "certificateChecks": 480,
+        "directProofs": 192,
+        "routes": {
+          "direct": 192,
+          "native-quotient": 288
+        },
+        "phases": {
+          "admit": {
+            "calls": 480,
+            "medianUs": 56.5,
+            "p95Us": 89.36044999999997
+          },
+          "digest": {
+            "calls": 480,
+            "medianUs": 81.116,
+            "p95Us": 223.3945499999996
+          },
+          "identity": {
+            "calls": 480,
+            "medianUs": 0.85,
+            "p95Us": 2.02
+          },
+          "structural-transform": {
+            "calls": 480,
+            "medianUs": 342.69899999999996,
+            "p95Us": 1073.6419999999982
+          },
+          "structural-proof": {
+            "calls": 480,
+            "medianUs": 258.1145,
+            "p95Us": 1073.252549999987
+          },
+          "objective-transform": {
+            "calls": 480,
+            "medianUs": 18.435,
+            "p95Us": 73.51799999999945
+          },
+          "objective-proof": {
+            "calls": 480,
+            "medianUs": 12.835,
+            "p95Us": 43.92449999999998
+          },
+          "solve": {
+            "calls": 480,
+            "medianUs": 2079.431,
+            "p95Us": 71056.57689999999
+          },
+          "optimality-proof": {
+            "calls": 480,
+            "medianUs": 4.67,
+            "p95Us": 69.80199999999999
+          },
+          "solve-rest": {
+            "calls": 480,
+            "medianUs": 0.55,
+            "p95Us": 1.070999999999999
+          },
+          "verify": {
+            "calls": 480,
+            "medianUs": 12.87,
+            "p95Us": 40.07199999999977
+          },
+          "encode": {
+            "calls": 480,
+            "medianUs": 232.4005,
+            "p95Us": 458.3799999999999
+          }
+        }
+      },
+      {
+        "arm": "G16-reuse",
+        "rows": 480,
+        "statuses": {
+          "Optimal": 480
+        },
+        "medianUs": 3387.7595,
+        "p95Us": 71926.43544999999,
+        "p99Us": 80380.2298,
+        "medianBytes": 205304,
+        "medianEvidenceBytes": 21348.5,
+        "hits": 312,
+        "certificateChecks": 480,
+        "directProofs": 192,
+        "routes": {
+          "direct": 192,
+          "native-quotient": 288
+        },
+        "phases": {
+          "admit": {
+            "calls": 480,
+            "medianUs": 56.015,
+            "p95Us": 88.77799999999999
+          },
+          "digest": {
+            "calls": 480,
+            "medianUs": 81.5255,
+            "p95Us": 233.13644999999997
+          },
+          "identity": {
+            "calls": 480,
+            "medianUs": 3.175,
+            "p95Us": 10.792499999999961
+          },
+          "structural-transform": {
+            "calls": 168,
+            "medianUs": 340.57349999999997,
+            "p95Us": 1134.9690000000007
+          },
+          "structural-proof": {
+            "calls": 168,
+            "medianUs": 245.21949999999998,
+            "p95Us": 1116.089650000001
+          },
+          "objective-transform": {
+            "calls": 480,
+            "medianUs": 18.8995,
+            "p95Us": 74.21904999999987
+          },
+          "objective-proof": {
+            "calls": 480,
+            "medianUs": 12.96,
+            "p95Us": 42.47399999999997
+          },
+          "solve": {
+            "calls": 480,
+            "medianUs": 2095.2709999999997,
+            "p95Us": 70478.98894999998
+          },
+          "optimality-proof": {
+            "calls": 480,
+            "medianUs": 3.42,
+            "p95Us": 70.49154999999992
+          },
+          "solve-rest": {
+            "calls": 480,
+            "medianUs": 0.52,
+            "p95Us": 1.1204999999999996
+          },
+          "verify": {
+            "calls": 480,
+            "medianUs": 15.53,
+            "p95Us": 35.26499999999999
+          },
+          "encode": {
+            "calls": 480,
+            "medianUs": 227.7145,
+            "p95Us": 450.6419999999981
+          }
+        }
+      },
+      {
+        "arm": "G16",
+        "rows": 480,
+        "statuses": {
+          "Optimal": 480
+        },
+        "medianUs": 3358.8050000000003,
+        "p95Us": 68272.98439999996,
+        "p99Us": 81015.52260999999,
+        "medianBytes": 178152,
+        "medianEvidenceBytes": 10839,
+        "hits": 168,
+        "certificateChecks": 288,
+        "directProofs": 192,
+        "routes": {
+          "direct": 192,
+          "original-bypass": 192,
+          "native-quotient": 96
+        },
+        "phases": {
+          "admit": {
+            "calls": 480,
+            "medianUs": 55.6895,
+            "p95Us": 93.26149999999997
+          },
+          "digest": {
+            "calls": 480,
+            "medianUs": 81.535,
+            "p95Us": 215.56504999999993
+          },
+          "features": {
+            "calls": 480,
+            "medianUs": 4.97,
+            "p95Us": 20.800999999999988
+          },
+          "identity": {
+            "calls": 288,
+            "medianUs": 2.035,
+            "p95Us": 12.827499999999997
+          },
+          "structural-transform": {
+            "calls": 120,
+            "medianUs": 297.39,
+            "p95Us": 790.3214999999998
+          },
+          "structural-proof": {
+            "calls": 120,
+            "medianUs": 220.164,
+            "p95Us": 1331.7664
+          },
+          "objective-transform": {
+            "calls": 288,
+            "medianUs": 15.3,
+            "p95Us": 102.9785
+          },
+          "objective-proof": {
+            "calls": 288,
+            "medianUs": 9.1,
+            "p95Us": 48.162
+          },
+          "solve": {
+            "calls": 288,
+            "medianUs": 145.1745,
+            "p95Us": 2482.3554999999997
+          },
+          "optimality-proof": {
+            "calls": 288,
+            "medianUs": 5.475,
+            "p95Us": 107.923
+          },
+          "solve-rest": {
+            "calls": 480,
+            "medianUs": 1.04,
+            "p95Us": 67723.81094999996
+          },
+          "verify": {
+            "calls": 480,
+            "medianUs": 16.490000000000002,
+            "p95Us": 43.58904999999996
+          },
+          "encode": {
+            "calls": 480,
+            "medianUs": 133.159,
+            "p95Us": 408.5309999999999
+          }
+        }
+      }
+    ],
+    "comparisons": [
+      {
+        "candidate": "G16",
+        "base": "original",
+        "histories": 120,
+        "totalHistories": 120,
+        "seedClusters": 12,
+        "medianSpeedup": 2.447420533985044,
+        "ci95": [
+          2.258529171584945,
+          2.5668612280695524
+        ],
+        "wins": 102,
+        "p10": 0.9832382754554337,
+        "p90": 15.102511771318154
+      },
+      {
+        "candidate": "G16",
+        "base": "hint",
+        "histories": 120,
+        "totalHistories": 120,
+        "seedClusters": 12,
+        "medianSpeedup": 2.468695795407302,
+        "ci95": [
+          2.279983485730565,
+          2.604161912790037
+        ],
+        "wins": 120,
+        "p10": 1.14701810220912,
+        "p90": 9.3592588601266
+      },
+      {
+        "candidate": "G16",
+        "base": "G13",
+        "histories": 120,
+        "totalHistories": 120,
+        "seedClusters": 12,
+        "medianSpeedup": 1.0577560926089262,
+        "ci95": [
+          1.0341797966209698,
+          1.0721130250103201
+        ],
+        "wins": 82,
+        "p10": 0.8423954446739622,
+        "p90": 4.260510155283853
+      },
+      {
+        "candidate": "G16",
+        "base": "G14",
+        "histories": 120,
+        "totalHistories": 120,
+        "seedClusters": 12,
+        "medianSpeedup": 1.0327223097485732,
+        "ci95": [
+          1.019455763623088,
+          1.0416210879012395
+        ],
+        "wins": 75,
+        "p10": 0.8504476917332302,
+        "p90": 3.8177305198470544
+      },
+      {
+        "candidate": "G16",
+        "base": "cert-native",
+        "histories": 120,
+        "totalHistories": 120,
+        "seedClusters": 12,
+        "medianSpeedup": 1.110994075267754,
+        "ci95": [
+          1.0987751415179656,
+          1.1546729432481475
+        ],
+        "wins": 96,
+        "p10": 0.9567433009930163,
+        "p90": 4.63646575085826
+      },
+      {
+        "candidate": "G16",
+        "base": "cert-direct",
+        "histories": 120,
+        "totalHistories": 120,
+        "seedClusters": 12,
+        "medianSpeedup": 1.091197066367403,
+        "ci95": [
+          1.0691954699207742,
+          1.120823842029897
+        ],
+        "wins": 91,
+        "p10": 0.9377029949641503,
+        "p90": 1.6058008972586482
+      },
+      {
+        "candidate": "G16",
+        "base": "G16-cold",
+        "histories": 120,
+        "totalHistories": 120,
+        "seedClusters": 12,
+        "medianSpeedup": 1.1357765926187418,
+        "ci95": [
+          1.1123247759932797,
+          1.1781042089463134
+        ],
+        "wins": 99,
+        "p10": 0.9739798030350078,
+        "p90": 1.6796407222709757
+      },
+      {
+        "candidate": "G16",
+        "base": "G16-reuse",
+        "histories": 120,
+        "totalHistories": 120,
+        "seedClusters": 12,
+        "medianSpeedup": 1.0084555777418842,
+        "ci95": [
+          0.9967105699535797,
+          1.0282891877485627
+        ],
+        "wins": 63,
+        "p10": 0.8653453834831458,
+        "p90": 1.1320811607219878
+      },
+      {
+        "candidate": "G16-reuse",
+        "base": "G16-cold",
+        "histories": 120,
+        "totalHistories": 120,
+        "seedClusters": 12,
+        "medianSpeedup": 1.0954218174454138,
+        "ci95": [
+          1.075613401359079,
+          1.143667632895904
+        ],
+        "wins": 100,
+        "p10": 0.9899423912329516,
+        "p90": 1.7384735553370365
+      },
+      {
+        "candidate": "G16-reuse",
+        "base": "cert-direct",
+        "histories": 120,
+        "totalHistories": 120,
+        "seedClusters": 12,
+        "medianSpeedup": 1.0657578681131437,
+        "ci95": [
+          1.0500309881464533,
+          1.0844112856148937
+        ],
+        "wins": 89,
+        "p10": 0.9338384364088895,
+        "p90": 1.5787789327600346
+      },
+      {
+        "candidate": "hint",
+        "base": "original",
+        "histories": 120,
+        "totalHistories": 120,
+        "seedClusters": 12,
+        "medianSpeedup": 0.9216235735431648,
+        "ci95": [
+          0.9052299691788486,
+          0.9402127143522949
+        ],
+        "wins": 21,
+        "p10": 0.6178441164573167,
+        "p90": 1.0593888125200706
+      }
+    ],
+    "byFamily": [
+      {
+        "family": "disjoint",
+        "comparisons": [
+          {
+            "candidate": "G16",
+            "base": "original",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 3.34007704457885,
+            "ci95": [
+              3.2114188201887712,
+              3.469334474571932
+            ],
+            "wins": 24,
+            "p10": 2.9080630882478418,
+            "p90": 5.383887832161454
+          },
+          {
+            "candidate": "G16",
+            "base": "hint",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 3.5689010674872192,
+            "ci95": [
+              3.3793318762062468,
+              3.7315461616601753
+            ],
+            "wins": 24,
+            "p10": 2.8784738866586164,
+            "p90": 4.949855697360013
+          },
+          {
+            "candidate": "G16",
+            "base": "G13",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 3.388102704663585,
+            "ci95": [
+              3.186317166446119,
+              3.86165801360032
+            ],
+            "wins": 24,
+            "p10": 2.618858506447921,
+            "p90": 5.270777774948295
+          },
+          {
+            "candidate": "G16",
+            "base": "G14",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 3.373076162049685,
+            "ci95": [
+              3.1997727178727655,
+              3.485501054007076
+            ],
+            "wins": 24,
+            "p10": 2.668702699682646,
+            "p90": 4.802045842661712
+          },
+          {
+            "candidate": "G16",
+            "base": "cert-native",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 4.477623186966223,
+            "ci95": [
+              4.33381108674714,
+              4.700543785384758
+            ],
+            "wins": 24,
+            "p10": 3.628733857322337,
+            "p90": 5.930064258598059
+          },
+          {
+            "candidate": "G16",
+            "base": "cert-direct",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 1.571827268671882,
+            "ci95": [
+              1.5083894032224263,
+              1.6482145530822618
+            ],
+            "wins": 22,
+            "p10": 1.1191249397352538,
+            "p90": 1.9768042656564968
+          },
+          {
+            "candidate": "G16",
+            "base": "G16-cold",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 1.6483978474850973,
+            "ci95": [
+              1.61574171053978,
+              1.6909467221292107
+            ],
+            "wins": 23,
+            "p10": 1.0742852022431837,
+            "p90": 2.499937625587567
+          },
+          {
+            "candidate": "G16",
+            "base": "G16-reuse",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 1.0086653148727431,
+            "ci95": [
+              0.9483538998261812,
+              1.083556475503802
+            ],
+            "wins": 12,
+            "p10": 0.6623838335071178,
+            "p90": 1.3058363913641926
+          },
+          {
+            "candidate": "G16-reuse",
+            "base": "G16-cold",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 1.6359629364448038,
+            "ci95": [
+              1.6085273062534866,
+              1.719654976307737
+            ],
+            "wins": 23,
+            "p10": 1.2312848868072948,
+            "p90": 2.2758334348415943
+          },
+          {
+            "candidate": "G16-reuse",
+            "base": "cert-direct",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 1.5597591318204493,
+            "ci95": [
+              1.5044675981010351,
+              1.6076261468183586
+            ],
+            "wins": 22,
+            "p10": 1.0980642325363603,
+            "p90": 2.5671110222573215
+          },
+          {
+            "candidate": "hint",
+            "base": "original",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 0.9713096184208211,
+            "ci95": [
+              0.9524706281671858,
+              0.9981156347971734
+            ],
+            "wins": 7,
+            "p10": 0.8529002053182095,
+            "p90": 1.1258817811894684
+          }
+        ]
+      },
+      {
+        "family": "signed",
+        "comparisons": [
+          {
+            "candidate": "G16",
+            "base": "original",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 12.488255857169406,
+            "ci95": [
+              10.883361325718237,
+              14.180815845825103
+            ],
+            "wins": 24,
+            "p10": 6.196037079834802,
+            "p90": 22.424393344059954
+          },
+          {
+            "candidate": "G16",
+            "base": "hint",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 12.112058436952552,
+            "ci95": [
+              11.322203560365676,
+              13.44243916077859
+            ],
+            "wins": 24,
+            "p10": 6.4021230599915615,
+            "p90": 23.445424198574685
+          },
+          {
+            "candidate": "G16",
+            "base": "G13",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 3.3937360585312266,
+            "ci95": [
+              2.827164251941079,
+              3.969089568772169
+            ],
+            "wins": 24,
+            "p10": 2.330870282563756,
+            "p90": 5.296876577795006
+          },
+          {
+            "candidate": "G16",
+            "base": "G14",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 2.9089581809574883,
+            "ci95": [
+              2.6598664613148832,
+              3.1523558806621548
+            ],
+            "wins": 24,
+            "p10": 2.1827473264728274,
+            "p90": 4.754767781176264
+          },
+          {
+            "candidate": "G16",
+            "base": "cert-native",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 3.2346566327646578,
+            "ci95": [
+              3.132579767364332,
+              3.6605010014185604
+            ],
+            "wins": 24,
+            "p10": 2.801379695993286,
+            "p90": 4.653756072806044
+          },
+          {
+            "candidate": "G16",
+            "base": "cert-direct",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 1.2930959894360288,
+            "ci95": [
+              1.2680398757713105,
+              1.3553361593647955
+            ],
+            "wins": 23,
+            "p10": 1.1748186677344274,
+            "p90": 1.5424852323207088
+          },
+          {
+            "candidate": "G16",
+            "base": "G16-cold",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 1.493103392870329,
+            "ci95": [
+              1.4701118334770396,
+              1.5493851600121218
+            ],
+            "wins": 24,
+            "p10": 1.3906086348670808,
+            "p90": 1.692465335880589
+          },
+          {
+            "candidate": "G16",
+            "base": "G16-reuse",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 0.9460612385770963,
+            "ci95": [
+              0.8885829976487523,
+              1.0339531440271967
+            ],
+            "wins": 10,
+            "p10": 0.8270501025329049,
+            "p90": 1.1565323649342656
+          },
+          {
+            "candidate": "G16-reuse",
+            "base": "G16-cold",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 1.5886745612003774,
+            "ci95": [
+              1.5051940351680329,
+              1.621611036970071
+            ],
+            "wins": 23,
+            "p10": 1.3456893640565255,
+            "p90": 1.9730693712428717
+          },
+          {
+            "candidate": "G16-reuse",
+            "base": "cert-direct",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 1.4001199045066226,
+            "ci95": [
+              1.2974165330739988,
+              1.4396498352742595
+            ],
+            "wins": 22,
+            "p10": 1.0554767700231382,
+            "p90": 1.5325547220376543
+          },
+          {
+            "candidate": "hint",
+            "base": "original",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 0.9569653144461279,
+            "ci95": [
+              0.9444031388969669,
+              1.0214679979120622
+            ],
+            "wins": 9,
+            "p10": 0.8694528599555521,
+            "p90": 1.0680013051637285
+          }
+        ]
+      },
+      {
+        "family": "overlap",
+        "comparisons": [
+          {
+            "candidate": "G16",
+            "base": "original",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 1.0181648383286415,
+            "ci95": [
+              1.0081574888409661,
+              1.0301340668872554
+            ],
+            "wins": 17,
+            "p10": 0.9717974616416069,
+            "p90": 1.0740622929700363
+          },
+          {
+            "candidate": "G16",
+            "base": "hint",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 1.4211673260926345,
+            "ci95": [
+              1.3184266598043748,
+              1.49487587064419
+            ],
+            "wins": 24,
+            "p10": 1.0936968914041567,
+            "p90": 1.7852829398095638
+          },
+          {
+            "candidate": "G16",
+            "base": "G13",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 1.0160452395279038,
+            "ci95": [
+              1.0071863579755616,
+              1.033623295105542
+            ],
+            "wins": 17,
+            "p10": 0.9684911861370454,
+            "p90": 1.0701803857827468
+          },
+          {
+            "candidate": "G16",
+            "base": "G14",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 1.0167004864452955,
+            "ci95": [
+              0.9943193015403333,
+              1.029760926278159
+            ],
+            "wins": 15,
+            "p10": 0.9683871099533248,
+            "p90": 1.0906813560732083
+          },
+          {
+            "candidate": "G16",
+            "base": "cert-native",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 1.093132608248832,
+            "ci95": [
+              1.0631469800385056,
+              1.0987578405826262
+            ],
+            "wins": 21,
+            "p10": 0.9891606309607783,
+            "p90": 1.188161931908406
+          },
+          {
+            "candidate": "G16",
+            "base": "cert-direct",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 1.084820928140569,
+            "ci95": [
+              1.0597410590664402,
+              1.1162053921980115
+            ],
+            "wins": 21,
+            "p10": 1.0034341141429999,
+            "p90": 1.172527581562718
+          },
+          {
+            "candidate": "G16",
+            "base": "G16-cold",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 1.0981474097280626,
+            "ci95": [
+              1.0743396221077024,
+              1.1185557449516281
+            ],
+            "wins": 21,
+            "p10": 1.006050341257226,
+            "p90": 1.210604472928629
+          },
+          {
+            "candidate": "G16",
+            "base": "G16-reuse",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 1.0532074646232257,
+            "ci95": [
+              1.0398516767641852,
+              1.0589653694941719
+            ],
+            "wins": 21,
+            "p10": 0.9949984986240367,
+            "p90": 1.1295681606225845
+          },
+          {
+            "candidate": "G16-reuse",
+            "base": "G16-cold",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 1.0357988956669542,
+            "ci95": [
+              1.0162818470745614,
+              1.0556114180372056
+            ],
+            "wins": 19,
+            "p10": 0.987861141101506,
+            "p90": 1.079419310269374
+          },
+          {
+            "candidate": "G16-reuse",
+            "base": "cert-direct",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 1.0488066801419187,
+            "ci95": [
+              0.9985573744244962,
+              1.0562239537428142
+            ],
+            "wins": 17,
+            "p10": 0.967909430080931,
+            "p90": 1.122466346362278
+          },
+          {
+            "candidate": "hint",
+            "base": "original",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 0.7232171878814393,
+            "ci95": [
+              0.7075854388496114,
+              0.7634288029797573
+            ],
+            "wins": 0,
+            "p10": 0.5565387889756751,
+            "p90": 0.9174427434889197
+          }
+        ]
+      },
+      {
+        "family": "weak",
+        "comparisons": [
+          {
+            "candidate": "G16",
+            "base": "original",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 1.006023950162934,
+            "ci95": [
+              0.9830757777633085,
+              1.0354599920938885
+            ],
+            "wins": 13,
+            "p10": 0.9707045110444604,
+            "p90": 1.061469958888635
+          },
+          {
+            "candidate": "G16",
+            "base": "hint",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 1.3304298389786604,
+            "ci95": [
+              1.2643168234914195,
+              1.4088787206875457
+            ],
+            "wins": 24,
+            "p10": 1.1249742014741984,
+            "p90": 1.6599232907019354
+          },
+          {
+            "candidate": "G16",
+            "base": "G13",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 1.0126120140209263,
+            "ci95": [
+              0.9847772626692826,
+              1.0357701544727187
+            ],
+            "wins": 14,
+            "p10": 0.9277936486729766,
+            "p90": 1.0833818278873961
+          },
+          {
+            "candidate": "G16",
+            "base": "G14",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 1.0004754680675327,
+            "ci95": [
+              0.9764281519032101,
+              1.0163889648645272
+            ],
+            "wins": 12,
+            "p10": 0.9279630200511993,
+            "p90": 1.0407176548151416
+          },
+          {
+            "candidate": "G16",
+            "base": "cert-native",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 1.023362167814462,
+            "ci95": [
+              0.9698780647283505,
+              1.0702795513039318
+            ],
+            "wins": 15,
+            "p10": 0.9440400034819605,
+            "p90": 1.1054500101725424
+          },
+          {
+            "candidate": "G16",
+            "base": "cert-direct",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 1.0451898911622177,
+            "ci95": [
+              0.9744907634703004,
+              1.0741856781208194
+            ],
+            "wins": 15,
+            "p10": 0.9285145379195373,
+            "p90": 1.1257395888125752
+          },
+          {
+            "candidate": "G16",
+            "base": "G16-cold",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 1.0246525635216135,
+            "ci95": [
+              0.9741215606354258,
+              1.0866930440170495
+            ],
+            "wins": 13,
+            "p10": 0.9032179948792605,
+            "p90": 1.123135123307504
+          },
+          {
+            "candidate": "G16",
+            "base": "G16-reuse",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 0.9965633627907196,
+            "ci95": [
+              0.9764731812221807,
+              1.025600636324313
+            ],
+            "wins": 9,
+            "p10": 0.9066770754226251,
+            "p90": 1.0561832882047932
+          },
+          {
+            "candidate": "G16-reuse",
+            "base": "G16-cold",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 1.0424699210663158,
+            "ci95": [
+              0.9940924188596496,
+              1.0722034905925095
+            ],
+            "wins": 14,
+            "p10": 0.9691618825019299,
+            "p90": 1.0955459209166114
+          },
+          {
+            "candidate": "G16-reuse",
+            "base": "cert-direct",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 1.026825962138346,
+            "ci95": [
+              1.02297312738017,
+              1.0483524015449392
+            ],
+            "wins": 18,
+            "p10": 0.9767556863014237,
+            "p90": 1.0942827895192553
+          },
+          {
+            "candidate": "hint",
+            "base": "original",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 0.7307955276945282,
+            "ci95": [
+              0.7189161975065366,
+              0.7791056276812278
+            ],
+            "wins": 0,
+            "p10": 0.6079828531377273,
+            "p90": 0.9159904443247843
+          }
+        ]
+      },
+      {
+        "family": "edited",
+        "comparisons": [
+          {
+            "candidate": "G16",
+            "base": "original",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 2.504527389599305,
+            "ci95": [
+              2.315636027199207,
+              2.583167477686774
+            ],
+            "wins": 24,
+            "p10": 1.8226791740854555,
+            "p90": 3.0130325666604176
+          },
+          {
+            "candidate": "G16",
+            "base": "hint",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 2.497092316027139,
+            "ci95": [
+              2.325051730488086,
+              2.7136746247256696
+            ],
+            "wins": 24,
+            "p10": 1.8557651940705775,
+            "p90": 3.2022476887723155
+          },
+          {
+            "candidate": "G16",
+            "base": "G13",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 0.8432308843018317,
+            "ci95": [
+              0.8350568584047857,
+              0.8698400294617714
+            ],
+            "wins": 3,
+            "p10": 0.7999151171735475,
+            "p90": 1.0240122958979088
+          },
+          {
+            "candidate": "G16",
+            "base": "G14",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 0.8461502920719728,
+            "ci95": [
+              0.8123406263370315,
+              0.8675842586677482
+            ],
+            "wins": 0,
+            "p10": 0.7563861209564461,
+            "p90": 0.940871755261026
+          },
+          {
+            "candidate": "G16",
+            "base": "cert-native",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 1.000170148537873,
+            "ci95": [
+              0.9672209394212188,
+              1.0396065058553767
+            ],
+            "wins": 12,
+            "p10": 0.8859045317239255,
+            "p90": 1.145341729288579
+          },
+          {
+            "candidate": "G16",
+            "base": "cert-direct",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 0.9830670027715459,
+            "ci95": [
+              0.9474213246976394,
+              1.0210004112425342
+            ],
+            "wins": 10,
+            "p10": 0.8776792368376085,
+            "p90": 1.0576151848957522
+          },
+          {
+            "candidate": "G16",
+            "base": "G16-cold",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 1.0968418435466731,
+            "ci95": [
+              1.0364900006797138,
+              1.1500547851700704
+            ],
+            "wins": 18,
+            "p10": 0.9406271015694185,
+            "p90": 1.2254829121820505
+          },
+          {
+            "candidate": "G16",
+            "base": "G16-reuse",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 0.9930029421352873,
+            "ci95": [
+              0.9783230739270984,
+              1.035906669086871
+            ],
+            "wins": 11,
+            "p10": 0.9359250117111858,
+            "p90": 1.0849775669293378
+          },
+          {
+            "candidate": "G16-reuse",
+            "base": "G16-cold",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 1.081316779879218,
+            "ci95": [
+              1.049371549246713,
+              1.1561814981086809
+            ],
+            "wins": 21,
+            "p10": 0.9965104876788021,
+            "p90": 1.2172305780191495
+          },
+          {
+            "candidate": "G16-reuse",
+            "base": "cert-direct",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 0.9800148573748706,
+            "ci95": [
+              0.9222116989617,
+              1.0162197832811044
+            ],
+            "wins": 10,
+            "p10": 0.8682358670037054,
+            "p90": 1.0868928250148076
+          },
+          {
+            "candidate": "hint",
+            "base": "original",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 0.963618952874987,
+            "ci95": [
+              0.9267283735710438,
+              0.9829730491732178
+            ],
+            "wins": 5,
+            "p10": 0.890314244845083,
+            "p90": 1.0477906939414765
+          }
+        ]
+      }
+    ]
+  },
+  "disk": {
+    "rows": 180,
+    "models": 20,
+    "distinctDigests": 20,
+    "allOptimal": 20,
+    "witnesses": 180,
+    "histories": 5,
+    "summaries": [
+      {
+        "arm": "original",
+        "rows": 20,
+        "statuses": {
+          "Optimal": 20
+        },
+        "medianUs": 7602.748,
+        "p95Us": 32066.194650000172,
+        "p99Us": 213131.75092999972,
+        "medianBytes": 197544,
+        "medianEvidenceBytes": 4388,
+        "hits": 0,
+        "certificateChecks": 0,
+        "directProofs": 0,
+        "routes": {
+          "original": 20
+        },
+        "phases": {
+          "admit": {
+            "calls": 20,
+            "medianUs": 96.47999999999999,
+            "p95Us": 606.0918000000063
+          },
+          "digest": {
+            "calls": 20,
+            "medianUs": 135.244,
+            "p95Us": 7149.0459000000665
+          },
+          "solve-rest": {
+            "calls": 20,
+            "medianUs": 5020.007,
+            "p95Us": 23971.88100000007
+          },
+          "verify": {
+            "calls": 20,
+            "medianUs": 56.9905,
+            "p95Us": 79.25390000000019
+          },
+          "encode": {
+            "calls": 20,
+            "medianUs": 164.675,
+            "p95Us": 1968.6095000000232
+          },
+          "flush": {
+            "calls": 20,
+            "medianUs": 759.8689999999999,
+            "p95Us": 1257.9434500000002
+          }
+        }
+      },
+      {
+        "arm": "hint",
+        "rows": 20,
+        "statuses": {
+          "Optimal": 20
+        },
+        "medianUs": 6486.619000000001,
+        "p95Us": 24220.626150000004,
+        "p99Us": 27320.440429999995,
+        "medianBytes": 205360,
+        "medianEvidenceBytes": 4380,
+        "hits": 0,
+        "certificateChecks": 0,
+        "directProofs": 0,
+        "routes": {
+          "hint": 20
+        },
+        "phases": {
+          "admit": {
+            "calls": 20,
+            "medianUs": 96.1095,
+            "p95Us": 231.23800000000006
+          },
+          "digest": {
+            "calls": 20,
+            "medianUs": 92.92949999999999,
+            "p95Us": 194.01855
+          },
+          "solve-rest": {
+            "calls": 20,
+            "medianUs": 5131.057500000001,
+            "p95Us": 22437.623150000003
+          },
+          "verify": {
+            "calls": 20,
+            "medianUs": 56.644999999999996,
+            "p95Us": 60.022450000000006
+          },
+          "encode": {
+            "calls": 20,
+            "medianUs": 152.96949999999998,
+            "p95Us": 354.76990000000006
+          },
+          "flush": {
+            "calls": 20,
+            "medianUs": 876.639,
+            "p95Us": 1102.958
+          }
+        }
+      },
+      {
+        "arm": "G13",
+        "rows": 20,
+        "statuses": {
+          "Optimal": 20
+        },
+        "medianUs": 8428.162,
+        "p95Us": 19088.789,
+        "p99Us": 19203.8682,
+        "medianBytes": 187000,
+        "medianEvidenceBytes": 4378,
+        "hits": 0,
+        "certificateChecks": 0,
+        "directProofs": 0,
+        "routes": {
+          "G13": 20
+        },
+        "phases": {
+          "admit": {
+            "calls": 20,
+            "medianUs": 9.995000000000001,
+            "p95Us": 22.769500000000004
+          },
+          "digest": {
+            "calls": 20,
+            "medianUs": 98.09,
+            "p95Us": 199.08300000000008
+          },
+          "plan-admission": {
+            "calls": 20,
+            "medianUs": 86.7555,
+            "p95Us": 412.5368000000016
+          },
+          "identity": {
+            "calls": 20,
+            "medianUs": 4.725,
+            "p95Us": 597.894300000002
+          },
+          "snapshot": {
+            "calls": 2,
+            "medianUs": 1537.9375000000002,
+            "p95Us": 2914.70125
+          },
+          "plan-ready": {
+            "calls": 20,
+            "medianUs": 1.205,
+            "p95Us": 21.72995000000018
+          },
+          "solve-rest": {
+            "calls": 20,
+            "medianUs": 2935.6544999999996,
+            "p95Us": 17697.03395
+          },
+          "verify": {
+            "calls": 20,
+            "medianUs": 56.39,
+            "p95Us": 64.58200000000001
+          },
+          "encode": {
+            "calls": 20,
+            "medianUs": 131.9295,
+            "p95Us": 201.19400000000002
+          },
+          "flush": {
+            "calls": 20,
+            "medianUs": 795.364,
+            "p95Us": 1086.06555
+          },
+          "partition": {
+            "calls": 5,
+            "medianUs": 112.5,
+            "p95Us": 277.49899999999997
+          },
+          "owner-fix": {
+            "calls": 5,
+            "medianUs": 9.87,
+            "p95Us": 19.4632
+          },
+          "row-transform": {
+            "calls": 4,
+            "medianUs": 379.9285,
+            "p95Us": 4980.731549999999
+          },
+          "objective": {
+            "calls": 8,
+            "medianUs": 7.69,
+            "p95Us": 72.93534999999994
+          },
+          "native-build": {
+            "calls": 8,
+            "medianUs": 162.2955,
+            "p95Us": 412.54449999999997
+          },
+          "native-solve": {
+            "calls": 8,
+            "medianUs": 1002.5830000000001,
+            "p95Us": 1247.0466999999999
+          },
+          "reconstruct": {
+            "calls": 8,
+            "medianUs": 16.8305,
+            "p95Us": 106.09484999999995
+          }
+        }
+      },
+      {
+        "arm": "G14",
+        "rows": 20,
+        "statuses": {
+          "Optimal": 20
+        },
+        "medianUs": 3783.7535,
+        "p95Us": 20009.26655,
+        "p99Us": 20459.02771,
+        "medianBytes": 186596,
+        "medianEvidenceBytes": 4378,
+        "hits": 0,
+        "certificateChecks": 0,
+        "directProofs": 0,
+        "routes": {
+          "G14": 20
+        },
+        "phases": {
+          "admit": {
+            "calls": 20,
+            "medianUs": 10.71,
+            "p95Us": 53.65805000000011
+          },
+          "digest": {
+            "calls": 20,
+            "medianUs": 103.5,
+            "p95Us": 261.5075000000001
+          },
+          "plan-admission": {
+            "calls": 20,
+            "medianUs": 86.5745,
+            "p95Us": 266.12649999999996
+          },
+          "solve-rest": {
+            "calls": 20,
+            "medianUs": 2713.4115,
+            "p95Us": 18522.31295
+          },
+          "verify": {
+            "calls": 20,
+            "medianUs": 56.569500000000005,
+            "p95Us": 90.04655000000011
+          },
+          "encode": {
+            "calls": 20,
+            "medianUs": 125.83,
+            "p95Us": 214.08805000000007
+          },
+          "flush": {
+            "calls": 20,
+            "medianUs": 782.9390000000001,
+            "p95Us": 949.0455000000001
+          },
+          "identity": {
+            "calls": 12,
+            "medianUs": 3.6550000000000002,
+            "p95Us": 5.441
+          },
+          "partition": {
+            "calls": 5,
+            "medianUs": 75.68,
+            "p95Us": 94.1492
+          },
+          "owner-fix": {
+            "calls": 5,
+            "medianUs": 8.53,
+            "p95Us": 13.68
+          },
+          "row-transform": {
+            "calls": 4,
+            "medianUs": 173.7395,
+            "p95Us": 316.6764999999999
+          },
+          "plan-ready": {
+            "calls": 12,
+            "medianUs": 0.935,
+            "p95Us": 1.0535
+          },
+          "objective": {
+            "calls": 8,
+            "medianUs": 7.6899999999999995,
+            "p95Us": 8.0465
+          },
+          "native-build": {
+            "calls": 8,
+            "medianUs": 110.05000000000001,
+            "p95Us": 177.33569999999997
+          },
+          "native-solve": {
+            "calls": 8,
+            "medianUs": 927.9585,
+            "p95Us": 1161.762
+          },
+          "reconstruct": {
+            "calls": 8,
+            "medianUs": 16.495,
+            "p95Us": 19.2565
+          }
+        }
+      },
+      {
+        "arm": "cert-native",
+        "rows": 20,
+        "statuses": {
+          "Optimal": 20
+        },
+        "medianUs": 5452.5515,
+        "p95Us": 25156.97260000002,
+        "p99Us": 47325.26971999996,
+        "medianBytes": 371860,
+        "medianEvidenceBytes": 10727,
+        "hits": 0,
+        "certificateChecks": 20,
+        "directProofs": 0,
+        "routes": {
+          "native-quotient": 20
+        },
+        "phases": {
+          "admit": {
+            "calls": 20,
+            "medianUs": 95.8945,
+            "p95Us": 119.15155000000001
+          },
+          "digest": {
+            "calls": 20,
+            "medianUs": 106.4495,
+            "p95Us": 293.52455000000003
+          },
+          "transform": {
+            "calls": 20,
+            "medianUs": 322.375,
+            "p95Us": 1851.5829500000143
+          },
+          "proof": {
+            "calls": 20,
+            "medianUs": 511.30899999999997,
+            "p95Us": 2283.742100000016
+          },
+          "solve": {
+            "calls": 20,
+            "medianUs": 3080.9745000000003,
+            "p95Us": 18290.129350000003
+          },
+          "solve-rest": {
+            "calls": 20,
+            "medianUs": 1.67,
+            "p95Us": 2.8505000000000003
+          },
+          "verify": {
+            "calls": 20,
+            "medianUs": 56.1195,
+            "p95Us": 61.80055000000001
+          },
+          "encode": {
+            "calls": 20,
+            "medianUs": 273.0245,
+            "p95Us": 532.2698000000013
+          },
+          "flush": {
+            "calls": 20,
+            "medianUs": 890.8330000000001,
+            "p95Us": 1090.23295
+          }
+        }
+      },
+      {
+        "arm": "cert-direct",
+        "rows": 20,
+        "statuses": {
+          "Optimal": 20
+        },
+        "medianUs": 13744.807,
+        "p95Us": 20040.498900000002,
+        "p99Us": 21343.927779999998,
+        "medianBytes": 255564,
+        "medianEvidenceBytes": 10727,
+        "hits": 0,
+        "certificateChecks": 20,
+        "directProofs": 8,
+        "routes": {
+          "direct": 8,
+          "native-quotient": 12
+        },
+        "phases": {
+          "admit": {
+            "calls": 20,
+            "medianUs": 96.25450000000001,
+            "p95Us": 126.26340000000013
+          },
+          "digest": {
+            "calls": 20,
+            "medianUs": 92.35900000000001,
+            "p95Us": 198.74505000000008
+          },
+          "transform": {
+            "calls": 20,
+            "medianUs": 321.26,
+            "p95Us": 8409.485650000008
+          },
+          "proof": {
+            "calls": 20,
+            "medianUs": 500.10900000000004,
+            "p95Us": 699.9389500000003
+          },
+          "solve": {
+            "calls": 20,
+            "medianUs": 1392.403,
+            "p95Us": 17841.01195
+          },
+          "solve-rest": {
+            "calls": 20,
+            "medianUs": 2.075,
+            "p95Us": 79.65545000000073
+          },
+          "verify": {
+            "calls": 20,
+            "medianUs": 54.8305,
+            "p95Us": 59.23250000000001
+          },
+          "encode": {
+            "calls": 20,
+            "medianUs": 259.6155,
+            "p95Us": 405.6649500000001
+          },
+          "flush": {
+            "calls": 20,
+            "medianUs": 781.3035,
+            "p95Us": 1056.324
+          }
+        }
+      },
+      {
+        "arm": "G16-cold",
+        "rows": 20,
+        "statuses": {
+          "Optimal": 20
+        },
+        "medianUs": 4783.0525,
+        "p95Us": 21275.473050000004,
+        "p99Us": 25237.916209999992,
+        "medianBytes": 287372,
+        "medianEvidenceBytes": 10724,
+        "hits": 0,
+        "certificateChecks": 20,
+        "directProofs": 8,
+        "routes": {
+          "direct": 8,
+          "native-quotient": 12
+        },
+        "phases": {
+          "admit": {
+            "calls": 20,
+            "medianUs": 97.86449999999999,
+            "p95Us": 128.60495000000014
+          },
+          "digest": {
+            "calls": 20,
+            "medianUs": 88.2,
+            "p95Us": 172.25
+          },
+          "identity": {
+            "calls": 20,
+            "medianUs": 1.5150000000000001,
+            "p95Us": 34.87345000000047
+          },
+          "structural-transform": {
+            "calls": 20,
+            "medianUs": 419.4145,
+            "p95Us": 4355.889600000004
+          },
+          "structural-proof": {
+            "calls": 20,
+            "medianUs": 475.974,
+            "p95Us": 657.8625000000001
+          },
+          "objective-transform": {
+            "calls": 20,
+            "medianUs": 24.9705,
+            "p95Us": 67.91845000000048
+          },
+          "objective-proof": {
+            "calls": 20,
+            "medianUs": 24.6845,
+            "p95Us": 87.71290000000067
+          },
+          "solve": {
+            "calls": 20,
+            "medianUs": 1294.873,
+            "p95Us": 17436.55045
+          },
+          "optimality-proof": {
+            "calls": 20,
+            "medianUs": 3.5300000000000002,
+            "p95Us": 27.365949999999998
+          },
+          "solve-rest": {
+            "calls": 20,
+            "medianUs": 0.49,
+            "p95Us": 0.5525000000000002
+          },
+          "verify": {
+            "calls": 20,
+            "medianUs": 55.165,
+            "p95Us": 58.928599999999996
+          },
+          "encode": {
+            "calls": 20,
+            "medianUs": 256.7695,
+            "p95Us": 408.99800000000005
+          },
+          "flush": {
+            "calls": 20,
+            "medianUs": 846.8285,
+            "p95Us": 1333.6955500000001
+          }
+        }
+      },
+      {
+        "arm": "G16-reuse",
+        "rows": 20,
+        "statuses": {
+          "Optimal": 20
+        },
+        "medianUs": 3672.3085,
+        "p95Us": 19876.18245,
+        "p99Us": 20621.50609,
+        "medianBytes": 231224,
+        "medianEvidenceBytes": 10725,
+        "hits": 13,
+        "certificateChecks": 20,
+        "directProofs": 8,
+        "routes": {
+          "direct": 8,
+          "native-quotient": 12
+        },
+        "phases": {
+          "admit": {
+            "calls": 20,
+            "medianUs": 97.536,
+            "p95Us": 132.28050000000016
+          },
+          "digest": {
+            "calls": 20,
+            "medianUs": 89.61500000000001,
+            "p95Us": 339.97545
+          },
+          "identity": {
+            "calls": 20,
+            "medianUs": 6.785,
+            "p95Us": 134.41500000000065
+          },
+          "structural-transform": {
+            "calls": 7,
+            "medianUs": 417.019,
+            "p95Us": 553.492
+          },
+          "structural-proof": {
+            "calls": 7,
+            "medianUs": 479.659,
+            "p95Us": 655.2589999999999
+          },
+          "objective-transform": {
+            "calls": 20,
+            "medianUs": 26.994999999999997,
+            "p95Us": 63.28400000000011
+          },
+          "objective-proof": {
+            "calls": 20,
+            "medianUs": 25.28,
+            "p95Us": 44.89450000000001
+          },
+          "solve": {
+            "calls": 20,
+            "medianUs": 1237.5435,
+            "p95Us": 18058.6315
+          },
+          "optimality-proof": {
+            "calls": 20,
+            "medianUs": 2.9699999999999998,
+            "p95Us": 27.006
+          },
+          "solve-rest": {
+            "calls": 20,
+            "medianUs": 0.515,
+            "p95Us": 0.6945
+          },
+          "verify": {
+            "calls": 20,
+            "medianUs": 55.644999999999996,
+            "p95Us": 62.896
+          },
+          "encode": {
+            "calls": 20,
+            "medianUs": 258.71,
+            "p95Us": 438.611
+          },
+          "flush": {
+            "calls": 20,
+            "medianUs": 832.578,
+            "p95Us": 1195.804
+          }
+        }
+      },
+      {
+        "arm": "G16",
+        "rows": 20,
+        "statuses": {
+          "Optimal": 20
+        },
+        "medianUs": 3531.049,
+        "p95Us": 18789.197900000003,
+        "p99Us": 19878.41318,
+        "medianBytes": 186836,
+        "medianEvidenceBytes": 9216,
+        "hits": 7,
+        "certificateChecks": 12,
+        "directProofs": 8,
+        "routes": {
+          "direct": 8,
+          "original-bypass": 8,
+          "native-quotient": 4
+        },
+        "phases": {
+          "admit": {
+            "calls": 20,
+            "medianUs": 95.03450000000001,
+            "p95Us": 101.51845
+          },
+          "digest": {
+            "calls": 20,
+            "medianUs": 89.035,
+            "p95Us": 343.07890000000003
+          },
+          "features": {
+            "calls": 20,
+            "medianUs": 5.5,
+            "p95Us": 28.059950000000306
+          },
+          "identity": {
+            "calls": 12,
+            "medianUs": 3.94,
+            "p95Us": 5.616999999999999
+          },
+          "structural-transform": {
+            "calls": 5,
+            "medianUs": 393.518,
+            "p95Us": 512.8736
+          },
+          "structural-proof": {
+            "calls": 5,
+            "medianUs": 408.78,
+            "p95Us": 469.779
+          },
+          "objective-transform": {
+            "calls": 12,
+            "medianUs": 25.28,
+            "p95Us": 40.6815
+          },
+          "objective-proof": {
+            "calls": 12,
+            "medianUs": 18.745,
+            "p95Us": 35.038549999999994
+          },
+          "solve": {
+            "calls": 12,
+            "medianUs": 293.95849999999996,
+            "p95Us": 1351.8065000000001
+          },
+          "optimality-proof": {
+            "calls": 12,
+            "medianUs": 7.25,
+            "p95Us": 29.528999999999996
+          },
+          "solve-rest": {
+            "calls": 20,
+            "medianUs": 1.12,
+            "p95Us": 17621.994450000002
+          },
+          "verify": {
+            "calls": 20,
+            "medianUs": 56.91,
+            "p95Us": 66.60900000000001
+          },
+          "encode": {
+            "calls": 20,
+            "medianUs": 211.67000000000002,
+            "p95Us": 286.9805
+          },
+          "flush": {
+            "calls": 20,
+            "medianUs": 825.9285,
+            "p95Us": 1209.4295000000002
+          }
+        }
+      }
+    ],
+    "comparisons": [
+      {
+        "candidate": "G16",
+        "base": "original",
+        "histories": 5,
+        "totalHistories": 5,
+        "seedClusters": 1,
+        "medianSpeedup": 1.6887778814700056,
+        "ci95": null,
+        "wins": 4,
+        "p10": 1.0044584162722046,
+        "p90": 21.1816604829631
+      },
+      {
+        "candidate": "G16",
+        "base": "hint",
+        "histories": 5,
+        "totalHistories": 5,
+        "seedClusters": 1,
+        "medianSpeedup": 1.7953989621844464,
+        "ci95": null,
+        "wins": 5,
+        "p10": 1.244743705034688,
+        "p90": 3.35769054893641
+      },
+      {
+        "candidate": "G16",
+        "base": "G13",
+        "histories": 5,
+        "totalHistories": 5,
+        "seedClusters": 1,
+        "medianSpeedup": 1.023403874192972,
+        "ci95": null,
+        "wins": 4,
+        "p10": 0.9451106619970775,
+        "p90": 2.9852382697831734
+      },
+      {
+        "candidate": "G16",
+        "base": "G14",
+        "histories": 5,
+        "totalHistories": 5,
+        "seedClusters": 1,
+        "medianSpeedup": 1.048956581365797,
+        "ci95": null,
+        "wins": 4,
+        "p10": 0.9133941535407675,
+        "p90": 1.7348035595948215
+      },
+      {
+        "candidate": "G16",
+        "base": "cert-native",
+        "histories": 5,
+        "totalHistories": 5,
+        "seedClusters": 1,
+        "medianSpeedup": 1.1272937701666141,
+        "ci95": null,
+        "wins": 5,
+        "p10": 1.0841759870381817,
+        "p90": 5.632861642924259
+      },
+      {
+        "candidate": "G16",
+        "base": "cert-direct",
+        "histories": 5,
+        "totalHistories": 5,
+        "seedClusters": 1,
+        "medianSpeedup": 1.1010222384323678,
+        "ci95": null,
+        "wins": 5,
+        "p10": 1.0659155764390384,
+        "p90": 3.7053801115371314
+      },
+      {
+        "candidate": "G16",
+        "base": "G16-cold",
+        "histories": 5,
+        "totalHistories": 5,
+        "seedClusters": 1,
+        "medianSpeedup": 1.1908849740545016,
+        "ci95": null,
+        "wins": 5,
+        "p10": 1.0664449674853604,
+        "p90": 1.8183331763193755
+      },
+      {
+        "candidate": "G16",
+        "base": "G16-reuse",
+        "histories": 5,
+        "totalHistories": 5,
+        "seedClusters": 1,
+        "medianSpeedup": 1.030067389357074,
+        "ci95": null,
+        "wins": 4,
+        "p10": 0.9966646563582509,
+        "p90": 1.119255003774854
+      },
+      {
+        "candidate": "G16-reuse",
+        "base": "G16-cold",
+        "histories": 5,
+        "totalHistories": 5,
+        "seedClusters": 1,
+        "medianSpeedup": 1.1561233627615406,
+        "ci95": null,
+        "wins": 5,
+        "p10": 1.0305399183084079,
+        "p90": 1.748878766588695
+      },
+      {
+        "candidate": "G16-reuse",
+        "base": "cert-direct",
+        "histories": 5,
+        "totalHistories": 5,
+        "seedClusters": 1,
+        "medianSpeedup": 1.1297176785113687,
+        "ci95": null,
+        "wins": 5,
+        "p10": 1.0349842070181197,
+        "p90": 3.235662448595277
+      },
+      {
+        "candidate": "hint",
+        "base": "original",
+        "histories": 5,
+        "totalHistories": 5,
+        "seedClusters": 1,
+        "medianSpeedup": 0.9406142684939978,
+        "ci95": null,
+        "wins": 2,
+        "p10": 0.7928672760035003,
+        "p90": 9.004447158995944
+      }
+    ],
+    "byFamily": [
+      {
+        "family": "disjoint",
+        "comparisons": [
+          {
+            "candidate": "G16",
+            "base": "original",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 32.30159179986156,
+            "ci95": null,
+            "wins": 1,
+            "p10": 32.30159179986156,
+            "p90": 32.30159179986156
+          },
+          {
+            "candidate": "G16",
+            "base": "hint",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 2.263099508283318,
+            "ci95": null,
+            "wins": 1,
+            "p10": 2.263099508283318,
+            "p90": 2.263099508283318
+          },
+          {
+            "candidate": "G16",
+            "base": "G13",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 3.13590741708359,
+            "ci95": null,
+            "wins": 1,
+            "p10": 3.13590741708359,
+            "p90": 3.13590741708359
+          },
+          {
+            "candidate": "G16",
+            "base": "G14",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 1.8709877611957753,
+            "ci95": null,
+            "wins": 1,
+            "p10": 1.8709877611957753,
+            "p90": 1.8709877611957753
+          },
+          {
+            "candidate": "G16",
+            "base": "cert-native",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 8.205345558972294,
+            "ci95": null,
+            "wins": 1,
+            "p10": 8.205345558972294,
+            "p90": 8.205345558972294
+          },
+          {
+            "candidate": "G16",
+            "base": "cert-direct",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 5.063028129477955,
+            "ci95": null,
+            "wins": 1,
+            "p10": 5.063028129477955,
+            "p90": 5.063028129477955
+          },
+          {
+            "candidate": "G16",
+            "base": "G16-cold",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 1.7006333287950954,
+            "ci95": null,
+            "wins": 1,
+            "p10": 1.7006333287950954,
+            "p90": 1.7006333287950954
+          },
+          {
+            "candidate": "G16",
+            "base": "G16-reuse",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 1.1705545364738894,
+            "ci95": null,
+            "wins": 1,
+            "p10": 1.1705545364738894,
+            "p90": 1.1705545364738894
+          },
+          {
+            "candidate": "G16-reuse",
+            "base": "G16-cold",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 1.4528441655678723,
+            "ci95": null,
+            "wins": 1,
+            "p10": 1.4528441655678723,
+            "p90": 1.4528441655678723
+          },
+          {
+            "candidate": "G16-reuse",
+            "base": "cert-direct",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 4.32532442677086,
+            "ci95": null,
+            "wins": 1,
+            "p10": 4.32532442677086,
+            "p90": 4.32532442677086
+          },
+          {
+            "candidate": "hint",
+            "base": "original",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 14.273164605282444,
+            "ci95": null,
+            "wins": 1,
+            "p10": 14.273164605282444,
+            "p90": 14.273164605282444
+          }
+        ]
+      },
+      {
+        "family": "signed",
+        "comparisons": [
+          {
+            "candidate": "G16",
+            "base": "original",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 4.501763507615398,
+            "ci95": null,
+            "wins": 1,
+            "p10": 4.501763507615398,
+            "p90": 4.501763507615398
+          },
+          {
+            "candidate": "G16",
+            "base": "hint",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 4.087417909371804,
+            "ci95": null,
+            "wins": 1,
+            "p10": 4.087417909371804,
+            "p90": 4.087417909371804
+          },
+          {
+            "candidate": "G16",
+            "base": "G13",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 2.7592345488325485,
+            "ci95": null,
+            "wins": 1,
+            "p10": 2.7592345488325485,
+            "p90": 2.7592345488325485
+          },
+          {
+            "candidate": "G16",
+            "base": "G14",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 1.530527257193391,
+            "ci95": null,
+            "wins": 1,
+            "p10": 1.530527257193391,
+            "p90": 1.530527257193391
+          },
+          {
+            "candidate": "G16",
+            "base": "cert-native",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 1.774135768852205,
+            "ci95": null,
+            "wins": 1,
+            "p10": 1.774135768852205,
+            "p90": 1.774135768852205
+          },
+          {
+            "candidate": "G16",
+            "base": "cert-direct",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 1.1010222384323678,
+            "ci95": null,
+            "wins": 1,
+            "p10": 1.1010222384323678,
+            "p90": 1.1010222384323678
+          },
+          {
+            "candidate": "G16",
+            "base": "G16-cold",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 1.8967997413355622,
+            "ci95": null,
+            "wins": 1,
+            "p10": 1.8967997413355622,
+            "p90": 1.8967997413355622
+          },
+          {
+            "candidate": "G16",
+            "base": "G16-reuse",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 0.9745994591172433,
+            "ci95": null,
+            "wins": 0,
+            "p10": 0.9745994591172433,
+            "p90": 0.9745994591172433
+          },
+          {
+            "candidate": "G16-reuse",
+            "base": "G16-cold",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 1.9462351672692433,
+            "ci95": null,
+            "wins": 1,
+            "p10": 1.9462351672692433,
+            "p90": 1.9462351672692433
+          },
+          {
+            "candidate": "G16-reuse",
+            "base": "cert-direct",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 1.1297176785113687,
+            "ci95": null,
+            "wins": 1,
+            "p10": 1.1297176785113687,
+            "p90": 1.1297176785113687
+          },
+          {
+            "candidate": "hint",
+            "base": "original",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 1.1013709895661916,
+            "ci95": null,
+            "wins": 1,
+            "p10": 1.1013709895661916,
+            "p90": 1.1013709895661916
+          }
+        ]
+      },
+      {
+        "family": "overlap",
+        "comparisons": [
+          {
+            "candidate": "G16",
+            "base": "original",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 1.0166705390094768,
+            "ci95": null,
+            "wins": 1,
+            "p10": 1.0166705390094768,
+            "p90": 1.0166705390094768
+          },
+          {
+            "candidate": "G16",
+            "base": "hint",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 1.3382561093375296,
+            "ci95": null,
+            "wins": 1,
+            "p10": 1.3382561093375296,
+            "p90": 1.3382561093375296
+          },
+          {
+            "candidate": "G16",
+            "base": "G13",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 1.023403874192972,
+            "ci95": null,
+            "wins": 1,
+            "p10": 1.023403874192972,
+            "p90": 1.023403874192972
+          },
+          {
+            "candidate": "G16",
+            "base": "G14",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 1.048956581365797,
+            "ci95": null,
+            "wins": 1,
+            "p10": 1.048956581365797,
+            "p90": 1.048956581365797
+          },
+          {
+            "candidate": "G16",
+            "base": "cert-native",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 1.0685359723062886,
+            "ci95": null,
+            "wins": 1,
+            "p10": 1.0685359723062886,
+            "p90": 1.0685359723062886
+          },
+          {
+            "candidate": "G16",
+            "base": "cert-direct",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 1.0575741763893818,
+            "ci95": null,
+            "wins": 1,
+            "p10": 1.0575741763893818,
+            "p90": 1.0575741763893818
+          },
+          {
+            "candidate": "G16",
+            "base": "G16-cold",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 1.0525740146913551,
+            "ci95": null,
+            "wins": 1,
+            "p10": 1.0525740146913551,
+            "p90": 1.0525740146913551
+          },
+          {
+            "candidate": "G16",
+            "base": "G16-reuse",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 1.0297624522197621,
+            "ci95": null,
+            "wins": 1,
+            "p10": 1.0297624522197621,
+            "p90": 1.0297624522197621
+          },
+          {
+            "candidate": "G16-reuse",
+            "base": "G16-cold",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 1.0221522569816177,
+            "ci95": null,
+            "wins": 1,
+            "p10": 1.0221522569816177,
+            "p90": 1.0221522569816177
+          },
+          {
+            "candidate": "G16-reuse",
+            "base": "cert-direct",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 1.0270079027543375,
+            "ci95": null,
+            "wins": 1,
+            "p10": 1.0270079027543375,
+            "p90": 1.0270079027543375
+          },
+          {
+            "candidate": "hint",
+            "base": "original",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 0.7596980368075841,
+            "ci95": null,
+            "wins": 0,
+            "p10": 0.7596980368075841,
+            "p90": 0.7596980368075841
+          }
+        ]
+      },
+      {
+        "family": "weak",
+        "comparisons": [
+          {
+            "candidate": "G16",
+            "base": "original",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 0.9963170011140231,
+            "ci95": null,
+            "wins": 0,
+            "p10": 0.9963170011140231,
+            "p90": 0.9963170011140231
+          },
+          {
+            "candidate": "G16",
+            "base": "hint",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 1.1824021021661268,
+            "ci95": null,
+            "wins": 1,
+            "p10": 1.1824021021661268,
+            "p90": 1.1824021021661268
+          },
+          {
+            "candidate": "G16",
+            "base": "G13",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 1.0025061812399247,
+            "ci95": null,
+            "wins": 1,
+            "p10": 1.0025061812399247,
+            "p90": 1.0025061812399247
+          },
+          {
+            "candidate": "G16",
+            "base": "G14",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 1.0125182902605692,
+            "ci95": null,
+            "wins": 1,
+            "p10": 1.0125182902605692,
+            "p90": 1.0125182902605692
+          },
+          {
+            "candidate": "G16",
+            "base": "cert-native",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 1.1272937701666141,
+            "ci95": null,
+            "wins": 1,
+            "p10": 1.1272937701666141,
+            "p90": 1.1272937701666141
+          },
+          {
+            "candidate": "G16",
+            "base": "cert-direct",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 1.0784276765135234,
+            "ci95": null,
+            "wins": 1,
+            "p10": 1.0784276765135234,
+            "p90": 1.0784276765135234
+          },
+          {
+            "candidate": "G16",
+            "base": "G16-cold",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 1.1908849740545016,
+            "ci95": null,
+            "wins": 1,
+            "p10": 1.1908849740545016,
+            "p90": 1.1908849740545016
+          },
+          {
+            "candidate": "G16",
+            "base": "G16-reuse",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 1.030067389357074,
+            "ci95": null,
+            "wins": 1,
+            "p10": 1.030067389357074,
+            "p90": 1.030067389357074
+          },
+          {
+            "candidate": "G16-reuse",
+            "base": "G16-cold",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 1.1561233627615406,
+            "ci95": null,
+            "wins": 1,
+            "p10": 1.1561233627615406,
+            "p90": 1.1561233627615406
+          },
+          {
+            "candidate": "G16-reuse",
+            "base": "cert-direct",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 1.0469486634137928,
+            "ci95": null,
+            "wins": 1,
+            "p10": 1.0469486634137928,
+            "p90": 1.0469486634137928
+          },
+          {
+            "candidate": "hint",
+            "base": "original",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 0.8426211347973747,
+            "ci95": null,
+            "wins": 0,
+            "p10": 0.8426211347973747,
+            "p90": 0.8426211347973747
+          }
+        ]
+      },
+      {
+        "family": "edited",
+        "comparisons": [
+          {
+            "candidate": "G16",
+            "base": "original",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 1.6887778814700056,
+            "ci95": null,
+            "wins": 1,
+            "p10": 1.6887778814700056,
+            "p90": 1.6887778814700056
+          },
+          {
+            "candidate": "G16",
+            "base": "hint",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 1.7953989621844464,
+            "ci95": null,
+            "wins": 1,
+            "p10": 1.7953989621844464,
+            "p90": 1.7953989621844464
+          },
+          {
+            "candidate": "G16",
+            "base": "G13",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 0.906846982501846,
+            "ci95": null,
+            "wins": 0,
+            "p10": 0.906846982501846,
+            "p90": 0.906846982501846
+          },
+          {
+            "candidate": "G16",
+            "base": "G14",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 0.8473113957275663,
+            "ci95": null,
+            "wins": 0,
+            "p10": 0.8473113957275663,
+            "p90": 0.8473113957275663
+          },
+          {
+            "candidate": "G16",
+            "base": "cert-native",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 1.1076360091360216,
+            "ci95": null,
+            "wins": 1,
+            "p10": 1.1076360091360216,
+            "p90": 1.1076360091360216
+          },
+          {
+            "candidate": "G16",
+            "base": "cert-direct",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 1.668908084625895,
+            "ci95": null,
+            "wins": 1,
+            "p10": 1.668908084625895,
+            "p90": 1.668908084625895
+          },
+          {
+            "candidate": "G16",
+            "base": "G16-cold",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 1.0872513966763684,
+            "ci95": null,
+            "wins": 1,
+            "p10": 1.0872513966763684,
+            "p90": 1.0872513966763684
+          },
+          {
+            "candidate": "G16",
+            "base": "G16-reuse",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 1.0423057047263014,
+            "ci95": null,
+            "wins": 1,
+            "p10": 1.0423057047263014,
+            "p90": 1.0423057047263014
+          },
+          {
+            "candidate": "G16-reuse",
+            "base": "G16-cold",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 1.043121410298593,
+            "ci95": null,
+            "wins": 1,
+            "p10": 1.043121410298593,
+            "p90": 1.043121410298593
+          },
+          {
+            "candidate": "G16-reuse",
+            "base": "cert-direct",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 1.6011694813319024,
+            "ci95": null,
+            "wins": 1,
+            "p10": 1.6011694813319024,
+            "p90": 1.6011694813319024
+          },
+          {
+            "candidate": "hint",
+            "base": "original",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 0.9406142684939978,
+            "ci95": null,
+            "wins": 0,
+            "p10": 0.9406142684939978,
+            "p90": 0.9406142684939978
+          }
+        ]
+      }
+    ]
+  }
+}
