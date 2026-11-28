@@ -1,0 +1,56 @@
+name: Budgeted solver portfolio
+on:
+  pull_request:
+    paths:
+      - src/Solver.Portfolio/**
+      - tests/Solver.Portfolio/**
+      - research/PortfolioStudy/**
+      - src/Solver.Planning/**
+      - src/Verification.Bounds/**
+      - src/Verification.Independent/**
+      - src/Runtime.Governance/**
+      - src/Solver.Contracts/**
+      - src/Dml.Lowering/**
+      - src/Dml.Semantics/**
+      - src/Dml.Binding/**
+      - src/Dml.Syntax/**
+      - src/Udir/**
+      - src/Contracts/**
+      - .github/workflows/solver-portfolio.yml
+  push:
+    branches: [main, algorithm-1]
+    paths:
+      - src/Solver.Portfolio/**
+      - tests/Solver.Portfolio/**
+      - research/PortfolioStudy/**
+      - src/Solver.Planning/**
+      - src/Verification.Bounds/**
+      - src/Verification.Independent/**
+      - src/Runtime.Governance/**
+      - src/Solver.Contracts/**
+      - src/Dml.Lowering/**
+      - src/Dml.Semantics/**
+      - src/Dml.Binding/**
+      - src/Dml.Syntax/**
+      - src/Udir/**
+      - src/Contracts/**
+      - .github/workflows/solver-portfolio.yml
+permissions:
+  contents: read
+jobs:
+  portfolio:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - run: dotnet restore tests/Solver.Portfolio/WowDi.Solver.Portfolio.Tests.csproj --locked-mode
+      # Simulated members with the real S05 verifier; 10,000 seeded randomized cases (WOWDI_PORTFOLIO_CASES).
+      - run: dotnet test tests/Solver.Portfolio/WowDi.Solver.Portfolio.Tests.csproj --no-restore -c Release
+      - name: Research study builds (native engines run only in the cgroup study, see research/PortfolioStudy/README.md)
+        run: dotnet build research/PortfolioStudy -c Release
