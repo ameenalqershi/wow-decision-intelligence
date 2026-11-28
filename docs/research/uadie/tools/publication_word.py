@@ -41,6 +41,18 @@ class Word:
         self.body.append('<w:p>'+ppr+content+'</w:p>')
     def newpage(self):
         self.body.append('<w:p><w:r><w:br w:type="page"/></w:r></w:p>')
+    def table(self,headers,rows):
+        n=len(headers)
+        if not n:return
+        cw=9900//n
+        body='<w:tbl><w:tblPr><w:tblW w:w="9900" w:type="dxa"/><w:tblLayout w:type="fixed"/>'+('<w:bidiVisual/>' if self.rtl else '')+'</w:tblPr><w:tblGrid>'+''.join(f'<w:gridCol w:w="{cw}"/>' for _ in headers)+'</w:tblGrid>'
+        for i,row in enumerate([headers]+rows):
+            body+='<w:tr><w:trPr>'+('<w:tblHeader/>' if i==0 else '')+'</w:trPr>'
+            for v in row:
+                shade='165D52' if i==0 else ('EAF3F1' if i%2 else 'F5F7FA')
+                body+=f'<w:tc><w:tcPr><w:tcW w:w="{cw}" w:type="dxa"/><w:shd w:fill="{shade}"/></w:tcPr><w:p><w:pPr>'+('<w:bidi/><w:jc w:val="right"/>' if self.rtl else '')+'<w:spacing w:after="85" w:before="85"/></w:pPr>'+run(v,17 if n>4 else 18,'FFFFFF' if i==0 else '233245',i==0,self.rtl,False)+'</w:p></w:tc>'
+            body+='</w:tr>'
+        self.body.append(body+'</w:tbl>')
     def figure(self,path):
         name=path.stem
         if name not in self.pictures:

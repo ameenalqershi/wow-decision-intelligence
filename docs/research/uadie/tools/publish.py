@@ -77,11 +77,15 @@ def render(source,output=None):
         elif kind=='url':both(value,8.2,False,'165D52',rtl=False,link=value)
         elif kind=='table':
             tab+=1
+            rows=[];headers=[];j=i+1
+            while j<len(blocks) and blocks[j][0]=='row':
+                pairs=blocks[j][1]
+                if not headers:headers=[h for h,_ in pairs]
+                rows.append([cell for _,cell in pairs]);j+=1
+            pdf.room(75)
             both(('الجدول ' if rtl else 'Table ')+str(tab),10,True,'165D52')
-        elif kind=='row':
-            for h,cell in value:
-                both(h+'  ·  '+cell,9.4,gap=3)
-            pdf.y+=7
+            if headers:pdf.table(headers,rows);doc.table(headers,rows)
+        elif kind=='row':continue
         elif kind=='figure':
             fig+=1
             pdf.room(225)

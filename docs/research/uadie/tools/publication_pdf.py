@@ -115,6 +115,30 @@ class Book:
         text_at(self.ctx,txt,x,self.y,w,sz,col,bold,rtl,True,mono)
         if link:end(self.ctx,b'Link')
         self.y+=h+gap
+    def table(self,headers,rows):
+        n=len(headers)
+        if not n:return
+        cw=495/n; fs=8.5 if n>4 else 9.2
+        def measure(row,bold=False):
+            return max(text_at(self.ctx,v,0,0,cw-12,fs,'#233245',bold,self.rtl,False) for v in row)+12
+        def paint(row,h,header=False,alternate=False):
+            for j,v in enumerate(row):
+                x=50+cw*(n-1-j if self.rtl else j)
+                box(self.ctx,x,self.y,cw-0.6,h-0.6,'#165d52' if header else ('#eaf3f1' if alternate else '#f5f7fa'))
+                text_at(self.ctx,v,x+6,self.y+6,cw-12,fs,'#ffffff' if header else '#233245',header,self.rtl)
+            self.y+=h
+        hh=measure(headers,True)
+        self.room(hh+min(measure(rows[0]),680-hh) if rows else hh)
+        paint(headers,hh,True)
+        for j,row in enumerate(rows):
+            h=measure(row)
+            if h>690-hh:
+                for k,v in zip(headers,row):self.t(k+' · '+v,9.4,gap=3)
+                continue
+            if self.y+h>780:
+                self.newpage();paint(headers,hh,True)
+            paint(row,h,alternate=j%2==0)
+        self.y+=10
     def figure(self,path):
         h=draw_height(path,495);self.room(h+10);draw_svg(self.ctx,path,50,self.y,495);self.y+=h+7
     def cover(self,title,sub):
