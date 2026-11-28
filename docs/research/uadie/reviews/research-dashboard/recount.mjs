@@ -43,4 +43,22 @@ data.metrics.G10G9Wins={numerator:g10.comparisons.find(x=>x.name==='compressed'&
 data.metrics.G11HoldoutWins={numerator:g11.holdout.summary.wins,denominator:g11.holdout.models};
 data.metrics.G12OriginalWins={numerator:g12.all.winsOriginal,denominator:g12.all.models};
 data.metrics.G12QuotientWins={numerator:g12.all.winsQuotient,denominator:g12.all.models};
+const wide=path.join(reviews,'wide-native-quotient');
+const g13=get('reviews/wide-native-quotient/incremental/summary.json');
+const g14=get('reviews/wide-native-quotient/template/summary.json');
+for(const [key,dir,splits] of [['G13','incremental',['dev','holdout','disk']],['G14','template',['holdout','scale']]]){
+ const bySplit={};
+ for(const split of splits){
+  const rows=read(path.join(wide,dir,split,'raw.jsonl'));
+  bySplit[split]={records:rows.length,optimal:rows.filter(r=>r.status==='Optimal').length,nonconclusive:rows.filter(r=>!['Optimal','Infeasible'].includes(r.status)).length,distinctDigests:new Set(rows.map(r=>r.digest)).size,verifiedWitnesses:rows.filter(r=>r.verifiedWitness).length};
+ }
+ data[key]={bySplit,comparison:key==='G13'?g13:g14,independentAudit:get('reviews/wide-native-quotient/'+dir+'/audit/summary.json')};
+}
+data.G14.scaleIndependentReplay=get('reviews/wide-native-quotient/template/scale-independent/summary.json');
+data.metrics.G13PlanHits={numerator:g13.holdout.hits,denominator:g13.holdout.cacheEvaluations};
+data.metrics.G13G12Wins={numerator:g13.holdout.comparisons.find(x=>x.base==='G12').wins,denominator:g13.holdout.histories};
+const a14=g14.holdout.summaries.find(x=>x.arm==='G14');
+data.metrics.G14TemplateHits={numerator:a14.templateHits,denominator:a14.quotientCalls};
+data.metrics.G14G13Wins={numerator:g14.holdout.comparisons.find(x=>x.base==='G13').wins,denominator:g14.holdout.histories};
+data.metrics.G14ScaleConclusive={numerator:g14.scale.summaries.find(x=>x.arm==='G14').statuses.Optimal,denominator:g14.scale.models};
 console.log(JSON.stringify(data,null,2));
