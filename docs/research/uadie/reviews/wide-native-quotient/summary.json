@@ -1,0 +1,408 @@
+{
+  "dev": {
+    "rows": 24,
+    "models": 12,
+    "bothConclusive": 12,
+    "bothOptimal": 12,
+    "matchingConclusive": 12,
+    "armStatus": {
+      "original": {
+        "Optimal": 12
+      },
+      "quotient": {
+        "Optimal": 12
+      }
+    },
+    "verifiedWitnesses": 24,
+    "summary": {
+      "models": 12,
+      "medianSpeedup": 4.291515611775119,
+      "p10Speedup": 1.2504750909532465,
+      "p90Speedup": 8.10420051705152,
+      "wins": 11,
+      "originalMedianMs": 8.7472995,
+      "quotientMedianMs": 1.2711285,
+      "variableReductionMedian": 8.126984126984127,
+      "medianReducedVariables": 39.5
+    },
+    "bySize": [
+      {
+        "n": 64,
+        "models": 6,
+        "medianSpeedup": 3.0074721762642627,
+        "p10Speedup": 0.9752440091402342,
+        "p90Speedup": 9.522026115364573,
+        "wins": 5,
+        "originalMedianMs": 1.7390409999999998,
+        "quotientMedianMs": 0.841323,
+        "variableReductionMedian": 9.142857142857142,
+        "medianReducedVariables": 7
+      },
+      {
+        "n": 512,
+        "models": 6,
+        "medianSpeedup": 6.078215358219429,
+        "p10Speedup": 2.8994086729458983,
+        "p90Speedup": 7.686431701619144,
+        "wins": 6,
+        "originalMedianMs": 9.774222,
+        "quotientMedianMs": 1.776822,
+        "variableReductionMedian": 7.013698630136986,
+        "medianReducedVariables": 73
+      }
+    ],
+    "byFamily": [
+      {
+        "family": "pair",
+        "models": 6,
+        "medianSpeedup": 7.069144585322277,
+        "p10Speedup": 3.823303351055703,
+        "p90Speedup": 11.634798167532372,
+        "wins": 6,
+        "originalMedianMs": 8.7472995,
+        "quotientMedianMs": 1.1415535,
+        "variableReductionMedian": 8.126984126984127,
+        "medianReducedVariables": 39.5
+      },
+      {
+        "family": "linked",
+        "models": 6,
+        "medianSpeedup": 2.0331122631417102,
+        "p10Speedup": 0.7172922489518799,
+        "p90Speedup": 4.8911474175496,
+        "wins": 5,
+        "originalMedianMs": 6.4403179999999995,
+        "quotientMedianMs": 2.253376,
+        "variableReductionMedian": 8.126984126984127,
+        "medianReducedVariables": 39.5
+      }
+    ],
+    "bySizeFamily": [
+      {
+        "n": 64,
+        "family": "pair",
+        "models": 3,
+        "medianSpeedup": 3.9830986165740163,
+        "p10Speedup": 3.7274261917447142,
+        "p90Speedup": 12.845382614638908,
+        "wins": 3,
+        "originalMedianMs": 1.793426,
+        "quotientMedianMs": 0.450259,
+        "variableReductionMedian": 9.142857142857142,
+        "medianReducedVariables": 7
+      },
+      {
+        "n": 64,
+        "family": "linked",
+        "models": 3,
+        "medianSpeedup": 1.714788259292284,
+        "p10Speedup": 0.5315174590490043,
+        "p90Speedup": 2.2241066654513664,
+        "wins": 2,
+        "originalMedianMs": 1.684656,
+        "quotientMedianMs": 0.982428,
+        "variableReductionMedian": 9.142857142857142,
+        "medianReducedVariables": 7
+      },
+      {
+        "n": 512,
+        "family": "pair",
+        "models": 3,
+        "medianSpeedup": 7.164220682328675,
+        "p10Speedup": 7.012098927118438,
+        "p90Speedup": 7.999758313193427,
+        "wins": 3,
+        "originalMedianMs": 8.943464,
+        "quotientMedianMs": 1.193589,
+        "variableReductionMedian": 7.013698630136986,
+        "medianReducedVariables": 73
+      },
+      {
+        "n": 512,
+        "family": "linked",
+        "models": 3,
+        "medianSpeedup": 4.599932606976221,
+        "p10Speedup": 1.8790943125277049,
+        "p90Speedup": 5.065876303893628,
+        "wins": 3,
+        "originalMedianMs": 10.31208,
+        "quotientMedianMs": 2.301776,
+        "variableReductionMedian": 7.013698630136986,
+        "medianReducedVariables": 73
+      }
+    ]
+  },
+  "holdout": {
+    "rows": 144,
+    "models": 72,
+    "bothConclusive": 72,
+    "bothOptimal": 72,
+    "matchingConclusive": 72,
+    "armStatus": {
+      "original": {
+        "Optimal": 72
+      },
+      "quotient": {
+        "Optimal": 72
+      }
+    },
+    "verifiedWitnesses": 144,
+    "summary": {
+      "models": 72,
+      "medianSpeedup": 7.020533120729348,
+      "p10Speedup": 2.349002314990138,
+      "p90Speedup": 15.061702086355528,
+      "wins": 71,
+      "originalMedianMs": 58.829372500000005,
+      "quotientMedianMs": 6.909402500000001,
+      "variableReductionMedian": 7.024939398485554,
+      "medianReducedVariables": 327.5
+    },
+    "bySize": [
+      {
+        "n": 64,
+        "models": 18,
+        "medianSpeedup": 2.909105571811236,
+        "p10Speedup": 2.127076122459832,
+        "p90Speedup": 3.9056836697676696,
+        "wins": 17,
+        "originalMedianMs": 2.0031214999999998,
+        "quotientMedianMs": 0.7838285,
+        "variableReductionMedian": 7.111111111111111,
+        "medianReducedVariables": 9
+      },
+      {
+        "n": 512,
+        "models": 18,
+        "medianSpeedup": 5.293122908579344,
+        "p10Speedup": 4.164407593980394,
+        "p90Speedup": 7.642802793290393,
+        "wins": 18,
+        "originalMedianMs": 9.150072999999999,
+        "quotientMedianMs": 1.9396019999999998,
+        "variableReductionMedian": 6.788900597119775,
+        "medianReducedVariables": 75.5
+      },
+      {
+        "n": 4096,
+        "models": 18,
+        "medianSpeedup": 7.993084293591803,
+        "p10Speedup": 5.749867853635137,
+        "p90Speedup": 11.259472513842818,
+        "wins": 18,
+        "originalMedianMs": 66.124594,
+        "quotientMedianMs": 8.4623295,
+        "variableReductionMedian": 7.014706442976244,
+        "medianReducedVariables": 584
+      },
+      {
+        "n": 10000,
+        "models": 18,
+        "medianSpeedup": 11.090208636861878,
+        "p10Speedup": 6.002079800185071,
+        "p90Speedup": 20.237367881353048,
+        "wins": 18,
+        "originalMedianMs": 181.099188,
+        "quotientMedianMs": 15.938020999999999,
+        "variableReductionMedian": 7.085132014857946,
+        "medianReducedVariables": 1411.5
+      }
+    ],
+    "byFamily": [
+      {
+        "family": "pair",
+        "models": 24,
+        "medianSpeedup": 7.677449433799059,
+        "p10Speedup": 3.1638763545649073,
+        "p90Speedup": 18.22148155674277,
+        "wins": 24,
+        "originalMedianMs": 62.3755315,
+        "quotientMedianMs": 5.5470095,
+        "variableReductionMedian": 7.024939398485554,
+        "medianReducedVariables": 327.5
+      },
+      {
+        "family": "sparse-quota",
+        "models": 24,
+        "medianSpeedup": 7.010639998730839,
+        "p10Speedup": 2.627369737557897,
+        "p90Speedup": 11.62759741231911,
+        "wins": 23,
+        "originalMedianMs": 36.414823,
+        "quotientMedianMs": 6.909402500000001,
+        "variableReductionMedian": 7.024939398485554,
+        "medianReducedVariables": 327.5
+      },
+      {
+        "family": "linked",
+        "models": 24,
+        "medianSpeedup": 5.3752762309788,
+        "p10Speedup": 2.17232659069444,
+        "p90Speedup": 8.547710540210762,
+        "wins": 24,
+        "originalMedianMs": 37.1341325,
+        "quotientMedianMs": 5.3878155,
+        "variableReductionMedian": 7.024939398485554,
+        "medianReducedVariables": 327.5
+      }
+    ],
+    "bySizeFamily": [
+      {
+        "n": 64,
+        "family": "pair",
+        "models": 6,
+        "medianSpeedup": 3.7320706980918965,
+        "p10Speedup": 3.335798326448852,
+        "p90Speedup": 10.76389906747891,
+        "wins": 6,
+        "originalMedianMs": 1.6350514999999999,
+        "quotientMedianMs": 0.45425499999999996,
+        "variableReductionMedian": 7.111111111111111,
+        "medianReducedVariables": 9
+      },
+      {
+        "n": 64,
+        "family": "sparse-quota",
+        "models": 6,
+        "medianSpeedup": 2.636870575469156,
+        "p10Speedup": 1.2825004324292806,
+        "p90Speedup": 3.6943126904274166,
+        "wins": 5,
+        "originalMedianMs": 2.430866,
+        "quotientMedianMs": 0.8244484999999999,
+        "variableReductionMedian": 7.111111111111111,
+        "medianReducedVariables": 9
+      },
+      {
+        "n": 64,
+        "family": "linked",
+        "models": 6,
+        "medianSpeedup": 2.1814382480256413,
+        "p10Speedup": 2.107914934376638,
+        "p90Speedup": 2.6908030347973892,
+        "wins": 6,
+        "originalMedianMs": 1.9880365000000002,
+        "quotientMedianMs": 0.8913074999999999,
+        "variableReductionMedian": 7.111111111111111,
+        "medianReducedVariables": 9
+      },
+      {
+        "n": 512,
+        "family": "pair",
+        "models": 6,
+        "medianSpeedup": 7.457472712065056,
+        "p10Speedup": 3.875996694473679,
+        "p90Speedup": 7.989039428411293,
+        "wins": 6,
+        "originalMedianMs": 8.646454,
+        "quotientMedianMs": 1.1713925,
+        "variableReductionMedian": 6.788900597119775,
+        "medianReducedVariables": 75.5
+      },
+      {
+        "n": 512,
+        "family": "sparse-quota",
+        "models": 6,
+        "medianSpeedup": 5.710928804921863,
+        "p10Speedup": 4.9706098396918446,
+        "p90Speedup": 7.010639998730839,
+        "wins": 6,
+        "originalMedianMs": 9.939982,
+        "quotientMedianMs": 1.9548565,
+        "variableReductionMedian": 6.788900597119775,
+        "medianReducedVariables": 75.5
+      },
+      {
+        "n": 512,
+        "family": "linked",
+        "models": 6,
+        "medianSpeedup": 4.71840709158724,
+        "p10Speedup": 4.059650983554978,
+        "p90Speedup": 5.189434665721441,
+        "wins": 6,
+        "originalMedianMs": 9.406128,
+        "quotientMedianMs": 2.0505315,
+        "variableReductionMedian": 6.788900597119775,
+        "medianReducedVariables": 75.5
+      },
+      {
+        "n": 4096,
+        "family": "pair",
+        "models": 6,
+        "medianSpeedup": 7.906322729326025,
+        "p10Speedup": 2.7339644946734496,
+        "p90Speedup": 15.782507944520475,
+        "wins": 6,
+        "originalMedianMs": 77.287043,
+        "quotientMedianMs": 11.1608745,
+        "variableReductionMedian": 7.014706442976244,
+        "medianReducedVariables": 584
+      },
+      {
+        "n": 4096,
+        "family": "sparse-quota",
+        "models": 6,
+        "medianSpeedup": 8.325109845362178,
+        "p10Speedup": 7.969221956002028,
+        "p90Speedup": 9.445778778192398,
+        "wins": 6,
+        "originalMedianMs": 63.904713,
+        "quotientMedianMs": 7.515171,
+        "variableReductionMedian": 7.014706442976244,
+        "medianReducedVariables": 584
+      },
+      {
+        "n": 4096,
+        "family": "linked",
+        "models": 6,
+        "medianSpeedup": 7.560916276235011,
+        "p10Speedup": 7.020533120729348,
+        "p90Speedup": 8.228353162673995,
+        "wins": 6,
+        "originalMedianMs": 66.9078575,
+        "quotientMedianMs": 8.8482835,
+        "variableReductionMedian": 7.014706442976244,
+        "medianReducedVariables": 584
+      },
+      {
+        "n": 10000,
+        "family": "pair",
+        "models": 6,
+        "medianSpeedup": 17.826643064806344,
+        "p10Speedup": 11.724494553671667,
+        "p90Speedup": 20.40142221631473,
+        "wins": 6,
+        "originalMedianMs": 187.762651,
+        "quotientMedianMs": 10.891910500000002,
+        "variableReductionMedian": 7.085132014857946,
+        "medianReducedVariables": 1411.5
+      },
+      {
+        "n": 10000,
+        "family": "sparse-quota",
+        "models": 6,
+        "medianSpeedup": 11.606833202260345,
+        "p10Speedup": 5.958504756942014,
+        "p90Speedup": 18.57539848574926,
+        "wins": 6,
+        "originalMedianMs": 199.16840050000002,
+        "quotientMedianMs": 15.9199165,
+        "variableReductionMedian": 7.085132014857946,
+        "medianReducedVariables": 1411.5
+      },
+      {
+        "n": 10000,
+        "family": "linked",
+        "models": 6,
+        "medianSpeedup": 8.181108998585426,
+        "p10Speedup": 5.848532792396785,
+        "p90Speedup": 9.278824419019227,
+        "wins": 6,
+        "originalMedianMs": 162.853517,
+        "quotientMedianMs": 20.413162,
+        "variableReductionMedian": 7.085132014857946,
+        "medianReducedVariables": 1411.5
+      }
+    ]
+  }
+}
