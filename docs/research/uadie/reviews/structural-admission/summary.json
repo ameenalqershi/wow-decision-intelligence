@@ -1,0 +1,1006 @@
+{
+  "dev": {
+    "rows": 2304,
+    "valid": 2304,
+    "histories": 48,
+    "summary": [
+      {
+        "name": "warm",
+        "rows": 384,
+        "valid": 384,
+        "transported": 0,
+        "eligibleRevisions": 336,
+        "medianUs": 42.4245,
+        "p90Us": 213.90099999999998,
+        "p95Us": 288.9016499999999,
+        "p99Us": 1101.688,
+        "medianBytes": 2568,
+        "routes": {
+          "warm": 384
+        },
+        "certificates": {},
+        "attempts": 0,
+        "cacheHits": 0
+      },
+      {
+        "name": "orientation",
+        "rows": 384,
+        "valid": 384,
+        "transported": 0,
+        "eligibleRevisions": 336,
+        "medianUs": 53.2795,
+        "p90Us": 306.05429999999996,
+        "p95Us": 369.29199999999986,
+        "p99Us": 1671.1303300000077,
+        "medianBytes": 7584,
+        "routes": {
+          "orientation": 384
+        },
+        "certificates": {},
+        "attempts": 0,
+        "cacheHits": 0
+      },
+      {
+        "name": "propagation",
+        "rows": 384,
+        "valid": 384,
+        "transported": 0,
+        "eligibleRevisions": 336,
+        "medianUs": 33.0345,
+        "p90Us": 56.235,
+        "p95Us": 69.18984999999999,
+        "p99Us": 203.36740000000017,
+        "medianBytes": 2488,
+        "routes": {
+          "propagation": 384
+        },
+        "certificates": {},
+        "attempts": 0,
+        "cacheHits": 0
+      },
+      {
+        "name": "gate-only",
+        "rows": 384,
+        "valid": 384,
+        "transported": 0,
+        "eligibleRevisions": 336,
+        "medianUs": 28.915,
+        "p90Us": 51.45269999999999,
+        "p95Us": 63.423649999999974,
+        "p99Us": 80.20970000000003,
+        "medianBytes": 2488,
+        "routes": {
+          "propagation": 218,
+          "warm": 166
+        },
+        "certificates": {},
+        "attempts": 0,
+        "cacheHits": 0
+      },
+      {
+        "name": "structural",
+        "rows": 384,
+        "valid": 384,
+        "transported": 0,
+        "eligibleRevisions": 336,
+        "medianUs": 24.965,
+        "p90Us": 40.467,
+        "p95Us": 52.78049999999996,
+        "p99Us": 75.84657000000003,
+        "medianBytes": 2476,
+        "routes": {
+          "direct": 252,
+          "propagation": 38,
+          "warm": 94
+        },
+        "certificates": {},
+        "attempts": 0,
+        "cacheHits": 0
+      },
+      {
+        "name": "full",
+        "rows": 384,
+        "valid": 384,
+        "transported": 0,
+        "eligibleRevisions": 336,
+        "medianUs": 38.1505,
+        "p90Us": 234.5433,
+        "p95Us": 291.45849999999996,
+        "p99Us": 551.5964600000103,
+        "medianBytes": 2568,
+        "routes": {
+          "full": 384
+        },
+        "certificates": {},
+        "attempts": 0,
+        "cacheHits": 0
+      }
+    ],
+    "comparisons": [
+      {
+        "name": "structural",
+        "base": "warm",
+        "histories": 48,
+        "medianSpeedup": 2.354366848040507,
+        "wins": 45,
+        "seedClusterMedian": 2.404470634400877,
+        "ci95": [
+          1.7663356015306475,
+          2.732831920345453
+        ]
+      },
+      {
+        "name": "structural",
+        "base": "orientation",
+        "histories": 48,
+        "medianSpeedup": 2.395320903246541,
+        "wins": 48,
+        "seedClusterMedian": 2.33032534907633,
+        "ci95": [
+          2.2465871960358212,
+          4.802819672947112
+        ]
+      },
+      {
+        "name": "structural",
+        "base": "propagation",
+        "histories": 48,
+        "medianSpeedup": 1.30702706442171,
+        "wins": 44,
+        "seedClusterMedian": 1.3111938535383552,
+        "ci95": [
+          1.2698311295834686,
+          1.3770047645259405
+        ]
+      },
+      {
+        "name": "structural",
+        "base": "gate-only",
+        "histories": 48,
+        "medianSpeedup": 1.1808246391536796,
+        "wins": 40,
+        "seedClusterMedian": 1.17102688874761,
+        "ci95": [
+          1.0777042970640527,
+          1.2153443523087721
+        ]
+      },
+      {
+        "name": "structural",
+        "base": "full",
+        "histories": 48,
+        "medianSpeedup": 2.073375981012769,
+        "wins": 43,
+        "seedClusterMedian": 2.3142641970804707,
+        "ci95": [
+          1.7931271892445442,
+          2.3884380876763207
+        ]
+      },
+      {
+        "name": "gate-only",
+        "base": "warm",
+        "histories": 48,
+        "medianSpeedup": 1.895385579549402,
+        "wins": 41,
+        "seedClusterMedian": 1.8754489368855016,
+        "ci95": [
+          1.7898505850505706,
+          2.477760008185723
+        ]
+      },
+      {
+        "name": "gate-only",
+        "base": "orientation",
+        "histories": 48,
+        "medianSpeedup": 2.131615276476791,
+        "wins": 48,
+        "seedClusterMedian": 2.051515091875496,
+        "ci95": [
+          1.9378193673098365,
+          4.199311441451281
+        ]
+      },
+      {
+        "name": "gate-only",
+        "base": "propagation",
+        "histories": 48,
+        "medianSpeedup": 1.1404486783474466,
+        "wins": 35,
+        "seedClusterMedian": 1.139731738245958,
+        "ci95": [
+          1.0882362722464078,
+          1.1741004398070045
+        ]
+      },
+      {
+        "name": "gate-only",
+        "base": "structural",
+        "histories": 48,
+        "medianSpeedup": 0.8469325769605326,
+        "wins": 8,
+        "seedClusterMedian": 0.856107546673066,
+        "ci95": [
+          0.8239419163169124,
+          0.9280546744240897
+        ]
+      },
+      {
+        "name": "gate-only",
+        "base": "full",
+        "histories": 48,
+        "medianSpeedup": 1.8577949898050994,
+        "wins": 39,
+        "seedClusterMedian": 1.8347682502554439,
+        "ci95": [
+          1.8219841540842463,
+          2.1322926376511564
+        ]
+      }
+    ],
+    "byFamily": [
+      {
+        "family": "chain",
+        "name": "structural",
+        "base": "warm",
+        "histories": 12,
+        "medianSpeedup": 3.2672477599419065,
+        "wins": 12,
+        "seedClusterMedian": 3.2672477599419065,
+        "ci95": [
+          2.7238356950583125,
+          7.649673847982137
+        ]
+      },
+      {
+        "family": "chain",
+        "name": "structural",
+        "base": "orientation",
+        "histories": 12,
+        "medianSpeedup": 1.6683205334379752,
+        "wins": 12,
+        "seedClusterMedian": 1.6744492319171218,
+        "ci95": [
+          1.5349412524751695,
+          10.732072599487278
+        ]
+      },
+      {
+        "family": "chain",
+        "name": "structural",
+        "base": "propagation",
+        "histories": 12,
+        "medianSpeedup": 1.2711378067778942,
+        "wins": 11,
+        "seedClusterMedian": 1.3224380432393095,
+        "ci95": [
+          1.19661063029589,
+          1.4028527711504568
+        ]
+      },
+      {
+        "family": "chain",
+        "name": "structural",
+        "base": "gate-only",
+        "histories": 12,
+        "medianSpeedup": 1.2712578718575631,
+        "wins": 12,
+        "seedClusterMedian": 1.2712578718575631,
+        "ci95": [
+          1.0618529689737022,
+          1.2850345812889665
+        ]
+      },
+      {
+        "family": "fixed",
+        "name": "structural",
+        "base": "warm",
+        "histories": 12,
+        "medianSpeedup": 3.7350156954561795,
+        "wins": 12,
+        "seedClusterMedian": 3.7350156954561795,
+        "ci95": [
+          2.675547703180212,
+          4.473280322876266
+        ]
+      },
+      {
+        "family": "fixed",
+        "name": "structural",
+        "base": "orientation",
+        "histories": 12,
+        "medianSpeedup": 10.062479169258886,
+        "wins": 12,
+        "seedClusterMedian": 10.062479169258886,
+        "ci95": [
+          7.06477738515901,
+          11.123471475252018
+        ]
+      },
+      {
+        "family": "fixed",
+        "name": "structural",
+        "base": "propagation",
+        "histories": 12,
+        "medianSpeedup": 1.2578044377914561,
+        "wins": 10,
+        "seedClusterMedian": 1.3122280091962193,
+        "ci95": [
+          1.2004350761383242,
+          1.41752018719911
+        ]
+      },
+      {
+        "family": "fixed",
+        "name": "structural",
+        "base": "gate-only",
+        "histories": 12,
+        "medianSpeedup": 1.1915647354956214,
+        "wins": 11,
+        "seedClusterMedian": 1.1915647354956214,
+        "ci95": [
+          1.0916929713317722,
+          1.4102567726737338
+        ]
+      },
+      {
+        "family": "loose",
+        "name": "structural",
+        "base": "warm",
+        "histories": 12,
+        "medianSpeedup": 1.9009607819417524,
+        "wins": 12,
+        "seedClusterMedian": 1.9009607819417524,
+        "ci95": [
+          1.799198976844373,
+          2.3189811647559875
+        ]
+      },
+      {
+        "family": "loose",
+        "name": "structural",
+        "base": "orientation",
+        "histories": 12,
+        "medianSpeedup": 2.489453831409042,
+        "wins": 12,
+        "seedClusterMedian": 2.489453831409042,
+        "ci95": [
+          2.358009854009356,
+          5.108371372676883
+        ]
+      },
+      {
+        "family": "loose",
+        "name": "structural",
+        "base": "propagation",
+        "histories": 12,
+        "medianSpeedup": 1.341010857417296,
+        "wins": 12,
+        "seedClusterMedian": 1.3185094308650271,
+        "ci95": [
+          1.2646809369951535,
+          1.4115548415343255
+        ]
+      },
+      {
+        "family": "loose",
+        "name": "structural",
+        "base": "gate-only",
+        "histories": 12,
+        "medianSpeedup": 1.2494759119297916,
+        "wins": 11,
+        "seedClusterMedian": 1.298475338736551,
+        "ci95": [
+          1.107680091916675,
+          1.400195970969724
+        ]
+      },
+      {
+        "family": "packing",
+        "name": "structural",
+        "base": "warm",
+        "histories": 12,
+        "medianSpeedup": 1.4483402011936035,
+        "wins": 9,
+        "seedClusterMedian": 1.4483402011936035,
+        "ci95": [
+          1.3167220488034101,
+          1.5429449566918136
+        ]
+      },
+      {
+        "family": "packing",
+        "name": "structural",
+        "base": "orientation",
+        "histories": 12,
+        "medianSpeedup": 2.231813196375212,
+        "wins": 12,
+        "seedClusterMedian": 2.201063347479125,
+        "ci95": [
+          1.8073305810089617,
+          2.432631952483726
+        ]
+      },
+      {
+        "family": "packing",
+        "name": "structural",
+        "base": "propagation",
+        "histories": 12,
+        "medianSpeedup": 1.3028756254666893,
+        "wins": 11,
+        "seedClusterMedian": 1.3347904493614413,
+        "ci95": [
+          1.1513073540764607,
+          1.8431898069120285
+        ]
+      },
+      {
+        "family": "packing",
+        "name": "structural",
+        "base": "gate-only",
+        "histories": 12,
+        "medianSpeedup": 0.9895952195477321,
+        "wins": 6,
+        "seedClusterMedian": 0.9895952195477321,
+        "ci95": [
+          0.9324206774169852,
+          1.0859960882928192
+        ]
+      }
+    ]
+  },
+  "holdout": {
+    "rows": 13824,
+    "valid": 13824,
+    "histories": 288,
+    "summary": [
+      {
+        "name": "propagation",
+        "rows": 2304,
+        "valid": 2304,
+        "transported": 0,
+        "eligibleRevisions": 2016,
+        "medianUs": 27.384500000000003,
+        "p90Us": 53.04930000000002,
+        "p95Us": 64.20649999999999,
+        "p99Us": 98.07662999999978,
+        "medianBytes": 2432,
+        "routes": {
+          "propagation": 2304
+        },
+        "certificates": {},
+        "attempts": 0,
+        "cacheHits": 0
+      },
+      {
+        "name": "gate-only",
+        "rows": 2304,
+        "valid": 2304,
+        "transported": 0,
+        "eligibleRevisions": 2016,
+        "medianUs": 28.865000000000002,
+        "p90Us": 68.777,
+        "p95Us": 216.9764999999993,
+        "p99Us": 312.78293999999863,
+        "medianBytes": 2472,
+        "routes": {
+          "propagation": 1744,
+          "warm": 560
+        },
+        "certificates": {},
+        "attempts": 0,
+        "cacheHits": 0
+      },
+      {
+        "name": "structural",
+        "rows": 2304,
+        "valid": 2304,
+        "transported": 0,
+        "eligibleRevisions": 2016,
+        "medianUs": 21.835,
+        "p90Us": 50.91730000000004,
+        "p95Us": 65.031,
+        "p99Us": 207.90399999999997,
+        "medianBytes": 2432,
+        "routes": {
+          "direct": 1344,
+          "propagation": 880,
+          "warm": 80
+        },
+        "certificates": {},
+        "attempts": 0,
+        "cacheHits": 0
+      },
+      {
+        "name": "full",
+        "rows": 2304,
+        "valid": 2304,
+        "transported": 0,
+        "eligibleRevisions": 2016,
+        "medianUs": 51.355000000000004,
+        "p90Us": 253.12370000000016,
+        "p95Us": 289.54035,
+        "p99Us": 394.47889999999927,
+        "medianBytes": 2552,
+        "routes": {
+          "full": 2304
+        },
+        "certificates": {},
+        "attempts": 0,
+        "cacheHits": 0
+      },
+      {
+        "name": "warm",
+        "rows": 2304,
+        "valid": 2304,
+        "transported": 0,
+        "eligibleRevisions": 2016,
+        "medianUs": 41.4,
+        "p90Us": 229.11230000000015,
+        "p95Us": 270.746,
+        "p99Us": 364.2189299999998,
+        "medianBytes": 2528,
+        "routes": {
+          "warm": 2304
+        },
+        "certificates": {},
+        "attempts": 0,
+        "cacheHits": 0
+      },
+      {
+        "name": "orientation",
+        "rows": 2304,
+        "valid": 2304,
+        "transported": 0,
+        "eligibleRevisions": 2016,
+        "medianUs": 37.055,
+        "p90Us": 63.75030000000001,
+        "p95Us": 77.74765,
+        "p99Us": 244.36412999999823,
+        "medianBytes": 5720,
+        "routes": {
+          "orientation": 2304
+        },
+        "certificates": {},
+        "attempts": 0,
+        "cacheHits": 0
+      }
+    ],
+    "comparisons": [
+      {
+        "name": "structural",
+        "base": "propagation",
+        "histories": 288,
+        "medianSpeedup": 1.124211461615034,
+        "wins": 210,
+        "seedClusterMedian": 1.1429711807568936,
+        "ci95": [
+          1.0679429032290781,
+          1.1702598088666107
+        ]
+      },
+      {
+        "name": "structural",
+        "base": "gate-only",
+        "histories": 288,
+        "medianSpeedup": 1.121203227091559,
+        "wins": 226,
+        "seedClusterMedian": 1.1208705139575192,
+        "ci95": [
+          1.0967578946630763,
+          1.1411579596067707
+        ]
+      },
+      {
+        "name": "structural",
+        "base": "full",
+        "histories": 288,
+        "medianSpeedup": 2.081892484352462,
+        "wins": 262,
+        "seedClusterMedian": 2.1466238711179884,
+        "ci95": [
+          2.0136119076692593,
+          2.2568113530123934
+        ]
+      },
+      {
+        "name": "structural",
+        "base": "warm",
+        "histories": 288,
+        "medianSpeedup": 1.942643151934595,
+        "wins": 259,
+        "seedClusterMedian": 1.8661337075561435,
+        "ci95": [
+          1.797501397938671,
+          2.030274453407252
+        ]
+      },
+      {
+        "name": "structural",
+        "base": "orientation",
+        "histories": 288,
+        "medianSpeedup": 1.5400322229993626,
+        "wins": 252,
+        "seedClusterMedian": 1.5386238002012278,
+        "ci95": [
+          1.467794583204517,
+          1.64543191612325
+        ]
+      },
+      {
+        "name": "gate-only",
+        "base": "propagation",
+        "histories": 288,
+        "medianSpeedup": 1.0308282934563164,
+        "wins": 186,
+        "seedClusterMedian": 1.0257554923434742,
+        "ci95": [
+          1.0173078721175923,
+          1.0484228280052275
+        ]
+      },
+      {
+        "name": "gate-only",
+        "base": "structural",
+        "histories": 288,
+        "medianSpeedup": 0.8918994126940973,
+        "wins": 62,
+        "seedClusterMedian": 0.8921876990430413,
+        "ci95": [
+          0.8766515783830956,
+          0.9124389911885711
+        ]
+      },
+      {
+        "name": "gate-only",
+        "base": "full",
+        "histories": 288,
+        "medianSpeedup": 1.4947986765021088,
+        "wins": 243,
+        "seedClusterMedian": 1.4601293150653296,
+        "ci95": [
+          1.4343730603190594,
+          1.5801043585965466
+        ]
+      },
+      {
+        "name": "gate-only",
+        "base": "warm",
+        "histories": 288,
+        "medianSpeedup": 1.3811140327312024,
+        "wins": 248,
+        "seedClusterMedian": 1.38856667995047,
+        "ci95": [
+          1.3412360802995569,
+          1.4172677454472464
+        ]
+      },
+      {
+        "name": "gate-only",
+        "base": "orientation",
+        "histories": 288,
+        "medianSpeedup": 1.3485799689278624,
+        "wins": 232,
+        "seedClusterMedian": 1.3314927227659619,
+        "ci95": [
+          1.299949609714326,
+          1.3690023556907271
+        ]
+      }
+    ],
+    "byFamily": [
+      {
+        "family": "star",
+        "name": "structural",
+        "base": "warm",
+        "histories": 48,
+        "medianSpeedup": 2.8459497723729195,
+        "wins": 46,
+        "seedClusterMedian": 2.8459497723729195,
+        "ci95": [
+          2.5253649027718352,
+          3.21700833331562
+        ]
+      },
+      {
+        "family": "star",
+        "name": "structural",
+        "base": "orientation",
+        "histories": 48,
+        "medianSpeedup": 1.696874415088206,
+        "wins": 45,
+        "seedClusterMedian": 1.6840743065651882,
+        "ci95": [
+          1.653822071609175,
+          1.7988950119907468
+        ]
+      },
+      {
+        "family": "star",
+        "name": "structural",
+        "base": "propagation",
+        "histories": 48,
+        "medianSpeedup": 1.2136034094940913,
+        "wins": 42,
+        "seedClusterMedian": 1.257477524151799,
+        "ci95": [
+          1.1527239191770535,
+          1.2815466731858371
+        ]
+      },
+      {
+        "family": "star",
+        "name": "structural",
+        "base": "gate-only",
+        "histories": 48,
+        "medianSpeedup": 1.1927805728823153,
+        "wins": 38,
+        "seedClusterMedian": 1.1776701544754602,
+        "ci95": [
+          1.0687950275462637,
+          1.2200300862009243
+        ]
+      },
+      {
+        "family": "matching",
+        "name": "structural",
+        "base": "warm",
+        "histories": 48,
+        "medianSpeedup": 2.0415201311820885,
+        "wins": 45,
+        "seedClusterMedian": 1.9147281110061234,
+        "ci95": [
+          1.691178834147246,
+          2.1625099399985537
+        ]
+      },
+      {
+        "family": "matching",
+        "name": "structural",
+        "base": "orientation",
+        "histories": 48,
+        "medianSpeedup": 1.731258265860291,
+        "wins": 45,
+        "seedClusterMedian": 1.7095307186109374,
+        "ci95": [
+          1.6531996709646086,
+          1.7968838818542738
+        ]
+      },
+      {
+        "family": "matching",
+        "name": "structural",
+        "base": "propagation",
+        "histories": 48,
+        "medianSpeedup": 1.4759016093913973,
+        "wins": 44,
+        "seedClusterMedian": 1.5089950542314874,
+        "ci95": [
+          1.2536824013629029,
+          1.5536104080249253
+        ]
+      },
+      {
+        "family": "matching",
+        "name": "structural",
+        "base": "gate-only",
+        "histories": 48,
+        "medianSpeedup": 1.3884178153492437,
+        "wins": 44,
+        "seedClusterMedian": 1.3380073500567833,
+        "ci95": [
+          1.2810073461771045,
+          1.4657093184183734
+        ]
+      },
+      {
+        "family": "odd",
+        "name": "structural",
+        "base": "warm",
+        "histories": 48,
+        "medianSpeedup": 3.1563674659616323,
+        "wins": 44,
+        "seedClusterMedian": 3.1354907332812627,
+        "ci95": [
+          2.941792226726593,
+          3.2058723310867387
+        ]
+      },
+      {
+        "family": "odd",
+        "name": "structural",
+        "base": "orientation",
+        "histories": 48,
+        "medianSpeedup": 1.0226287413589703,
+        "wins": 26,
+        "seedClusterMedian": 1.0235219785001544,
+        "ci95": [
+          0.9578171721486544,
+          1.1027313022378267
+        ]
+      },
+      {
+        "family": "odd",
+        "name": "structural",
+        "base": "propagation",
+        "histories": 48,
+        "medianSpeedup": 0.7637489118894139,
+        "wins": 15,
+        "seedClusterMedian": 0.7810238328555646,
+        "ci95": [
+          0.7048829470672378,
+          0.8606750420965974
+        ]
+      },
+      {
+        "family": "odd",
+        "name": "structural",
+        "base": "gate-only",
+        "histories": 48,
+        "medianSpeedup": 2.965648262400784,
+        "wins": 42,
+        "seedClusterMedian": 2.8871274461525376,
+        "ci95": [
+          2.732742417770184,
+          3.0175401131247837
+        ]
+      },
+      {
+        "family": "workforce",
+        "name": "structural",
+        "base": "warm",
+        "histories": 48,
+        "medianSpeedup": 1.468825653459525,
+        "wins": 41,
+        "seedClusterMedian": 1.468825653459525,
+        "ci95": [
+          1.3218265207827127,
+          1.6787758118646736
+        ]
+      },
+      {
+        "family": "workforce",
+        "name": "structural",
+        "base": "orientation",
+        "histories": 48,
+        "medianSpeedup": 1.2342142600426254,
+        "wins": 41,
+        "seedClusterMedian": 1.27991062104344,
+        "ci95": [
+          1.1880421922229516,
+          1.3385916512931282
+        ]
+      },
+      {
+        "family": "workforce",
+        "name": "structural",
+        "base": "propagation",
+        "histories": 48,
+        "medianSpeedup": 1.0237934509554791,
+        "wins": 32,
+        "seedClusterMedian": 1.0222204786637232,
+        "ci95": [
+          1.0092071532498328,
+          1.0454009832802718
+        ]
+      },
+      {
+        "family": "workforce",
+        "name": "structural",
+        "base": "gate-only",
+        "histories": 48,
+        "medianSpeedup": 1.009524560510088,
+        "wins": 28,
+        "seedClusterMedian": 1.009524560510088,
+        "ci95": [
+          0.9948863328207236,
+          1.0239257048023631
+        ]
+      },
+      {
+        "family": "hybrid",
+        "name": "structural",
+        "base": "warm",
+        "histories": 48,
+        "medianSpeedup": 1.766877970405323,
+        "wins": 37,
+        "seedClusterMedian": 1.8998592319714391,
+        "ci95": [
+          1.5478437438793824,
+          2.7539691815813385
+        ]
+      },
+      {
+        "family": "hybrid",
+        "name": "structural",
+        "base": "orientation",
+        "histories": 48,
+        "medianSpeedup": 1.2238212554209524,
+        "wins": 47,
+        "seedClusterMedian": 1.2238212554209524,
+        "ci95": [
+          1.1819608711181762,
+          1.304773292479895
+        ]
+      },
+      {
+        "family": "hybrid",
+        "name": "structural",
+        "base": "propagation",
+        "histories": 48,
+        "medianSpeedup": 1.0381589626774799,
+        "wins": 32,
+        "seedClusterMedian": 1.0615888327118683,
+        "ci95": [
+          1.0011134401261512,
+          1.0946137465119694
+        ]
+      },
+      {
+        "family": "hybrid",
+        "name": "structural",
+        "base": "gate-only",
+        "histories": 48,
+        "medianSpeedup": 1.0312434558670758,
+        "wins": 32,
+        "seedClusterMedian": 1.032608346116284,
+        "ci95": [
+          0.995214157540794,
+          1.0376631477548186
+        ]
+      },
+      {
+        "family": "free",
+        "name": "structural",
+        "base": "warm",
+        "histories": 48,
+        "medianSpeedup": 1.5910779321157804,
+        "wins": 46,
+        "seedClusterMedian": 1.5910779321157804,
+        "ci95": [
+          1.431920177435603,
+          1.7208534084350222
+        ]
+      },
+      {
+        "family": "free",
+        "name": "structural",
+        "base": "orientation",
+        "histories": 48,
+        "medianSpeedup": 2.798829013657284,
+        "wins": 48,
+        "seedClusterMedian": 2.798829013657284,
+        "ci95": [
+          2.644157313967745,
+          3.226280422140856
+        ]
+      },
+      {
+        "family": "free",
+        "name": "structural",
+        "base": "propagation",
+        "histories": 48,
+        "medianSpeedup": 1.2667419097981596,
+        "wins": 45,
+        "seedClusterMedian": 1.252864236069412,
+        "ci95": [
+          1.2337065823562992,
+          1.326356485801893
+        ]
+      },
+      {
+        "family": "free",
+        "name": "structural",
+        "base": "gate-only",
+        "histories": 48,
+        "medianSpeedup": 1.122820221236927,
+        "wins": 42,
+        "seedClusterMedian": 1.1433580474136442,
+        "ci95": [
+          1.0958840342641858,
+          1.1861234664450853
+        ]
+      }
+    ]
+  }
+}
