@@ -4,6 +4,7 @@ using ComponentStudy;
 using AlgorithmDiscoveryLab;
 
 if (args is ["parity-audit"]) { ParityAudit.Run(); return; }
+if (args is ["normalized-quota", var splitName]) { NormalizedQuotaStudy.Run(splitName); return; }
 if (args.Length != 3) throw new ArgumentException("usage: strategy split repetition");
 string strategy=args[0], split=args[1];
 int repeat=int.Parse(args[2]);
