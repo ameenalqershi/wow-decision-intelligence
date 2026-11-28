@@ -17,6 +17,8 @@ if(args is ["proof-reuse",var proofSplit]){ProofReuseStudy.Run(proofSplit);retur
 if(args is ["proof-readback",var proofFile]){ProofReadback.Run(proofFile);return;}
 if(args is ["proof-reuse-audit"]){ProofReuseAudit.Run();return;}
 if(args is ["mps-matrix-audit",var mpsDir]){MpsMatrixAudit.Run(mpsDir);return;}
+if(args is ["assignment-study"]){AssignmentStudy.Run();return;}
+if(args is ["assignment-audit"]){AssignmentStudy.Audit();return;}
 if(args.Length!=1)throw new ArgumentException("dev|holdout|audit");
 bool dev=args[0]=="dev";if(!dev&&args[0]!="holdout")throw new ArgumentException("split");
 foreach(int n in dev?new[]{64,512}:new[]{64,512,4096,10000})
