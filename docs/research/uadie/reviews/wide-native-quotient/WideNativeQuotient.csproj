@@ -25,6 +25,8 @@
 <Compile Include="LowOverheadStudy.cs"/>
 <Compile Include="WeightedReduction.cs"/>
 <Compile Include="WeightedStudy.cs"/>
+<Compile Include="GeneralFlow.cs"/>
+<Compile Include="GeneralFlowStudy.cs"/>
 <Compile Include="../../../../../research/AlgorithmDiscoveryLab/*.cs" Exclude="../../../../../research/AlgorithmDiscoveryLab/Program.cs"/>
 <Compile Include="../../../../../research/ComponentStudy/Model.cs"/>
 <Compile Include="../../../../../research/ComponentStudy/Oracle.cs"/>
