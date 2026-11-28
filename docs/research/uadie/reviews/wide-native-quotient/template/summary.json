@@ -1,0 +1,1282 @@
+{
+  "holdout": {
+    "rows": 480,
+    "models": 96,
+    "allOptimal": 96,
+    "verifiedWitnesses": 480,
+    "histories": 24,
+    "summaries": [
+      {
+        "arm": "original",
+        "rows": 96,
+        "statuses": {
+          "Optimal": 96
+        },
+        "medianUs": 62378.447,
+        "p95Us": 526141.35,
+        "p99Us": 667573.7453,
+        "medianBytes": 3747108,
+        "hits": 0,
+        "templateHits": 0,
+        "quotientCalls": 0,
+        "routes": {
+          "original": 96
+        },
+        "phases": {
+          "outer-admission": {
+            "calls": 96,
+            "medianUs": 207.005
+          },
+          "digest": {
+            "calls": 96,
+            "medianUs": 1687.2975000000001
+          },
+          "solve-rest": {
+            "calls": 96,
+            "medianUs": 58576.5685
+          },
+          "verify": {
+            "calls": 96,
+            "medianUs": 164.00900000000001
+          },
+          "encode": {
+            "calls": 96,
+            "medianUs": 173.95
+          }
+        }
+      },
+      {
+        "arm": "G11",
+        "rows": 96,
+        "statuses": {
+          "Optimal": 96
+        },
+        "medianUs": 28118.353499999997,
+        "p95Us": 172848.4395,
+        "p99Us": 183154.29909999997,
+        "medianBytes": 2869404,
+        "hits": 0,
+        "templateHits": 0,
+        "quotientCalls": 0,
+        "routes": {
+          "G11": 96
+        },
+        "phases": {
+          "outer-admission": {
+            "calls": 96,
+            "medianUs": 285.094
+          },
+          "digest": {
+            "calls": 96,
+            "medianUs": 1465.4525
+          },
+          "solve-rest": {
+            "calls": 96,
+            "medianUs": 25229.0395
+          },
+          "verify": {
+            "calls": 96,
+            "medianUs": 137.16
+          },
+          "encode": {
+            "calls": 96,
+            "medianUs": 166.60500000000002
+          }
+        }
+      },
+      {
+        "arm": "G13",
+        "rows": 96,
+        "statuses": {
+          "Optimal": 96
+        },
+        "medianUs": 26446.826,
+        "p95Us": 177359.10025,
+        "p99Us": 189094.64424999992,
+        "medianBytes": 2039308,
+        "hits": 60,
+        "templateHits": 0,
+        "quotientCalls": 48,
+        "routes": {
+          "quotient": 48,
+          "original": 48
+        },
+        "phases": {
+          "outer-admission": {
+            "calls": 96,
+            "medianUs": 0.2
+          },
+          "digest": {
+            "calls": 96,
+            "medianUs": 1496.3325
+          },
+          "plan-admission": {
+            "calls": 96,
+            "medianUs": 219.5345
+          },
+          "identity": {
+            "calls": 96,
+            "medianUs": 8.98
+          },
+          "partition": {
+            "calls": 30,
+            "medianUs": 520.419
+          },
+          "owner-fix": {
+            "calls": 30,
+            "medianUs": 66.37950000000001
+          },
+          "row-transform": {
+            "calls": 24,
+            "medianUs": 1022.263
+          },
+          "plan-ready": {
+            "calls": 96,
+            "medianUs": 1.42
+          },
+          "objective": {
+            "calls": 48,
+            "medianUs": 68.63499999999999
+          },
+          "native-build": {
+            "calls": 48,
+            "medianUs": 873.0535
+          },
+          "native-solve": {
+            "calls": 48,
+            "medianUs": 4112.0975
+          },
+          "reconstruct": {
+            "calls": 48,
+            "medianUs": 62.665000000000006
+          },
+          "solve-rest": {
+            "calls": 96,
+            "medianUs": 2484.6005
+          },
+          "verify": {
+            "calls": 96,
+            "medianUs": 138.40949999999998
+          },
+          "encode": {
+            "calls": 96,
+            "medianUs": 162.5995
+          },
+          "snapshot": {
+            "calls": 6,
+            "medianUs": 62.1905
+          }
+        }
+      },
+      {
+        "arm": "template-only",
+        "rows": 96,
+        "statuses": {
+          "Optimal": 96
+        },
+        "medianUs": 24902.845,
+        "p95Us": 174749.3745,
+        "p99Us": 211199.46934999997,
+        "medianBytes": 2039476,
+        "hits": 60,
+        "templateHits": 24,
+        "quotientCalls": 48,
+        "routes": {
+          "quotient": 48,
+          "original": 48
+        },
+        "phases": {
+          "outer-admission": {
+            "calls": 96,
+            "medianUs": 0.18
+          },
+          "digest": {
+            "calls": 96,
+            "medianUs": 1337.7975000000001
+          },
+          "plan-admission": {
+            "calls": 96,
+            "medianUs": 227.6545
+          },
+          "identity": {
+            "calls": 96,
+            "medianUs": 7.54
+          },
+          "partition": {
+            "calls": 30,
+            "medianUs": 809.3130000000001
+          },
+          "owner-fix": {
+            "calls": 30,
+            "medianUs": 68.056
+          },
+          "row-transform": {
+            "calls": 24,
+            "medianUs": 842.7685
+          },
+          "plan-ready": {
+            "calls": 96,
+            "medianUs": 1.125
+          },
+          "objective": {
+            "calls": 48,
+            "medianUs": 68.1795
+          },
+          "native-build": {
+            "calls": 48,
+            "medianUs": 334.0085
+          },
+          "native-solve": {
+            "calls": 48,
+            "medianUs": 3996.3925
+          },
+          "reconstruct": {
+            "calls": 48,
+            "medianUs": 61.0095
+          },
+          "solve-rest": {
+            "calls": 96,
+            "medianUs": 2084.1760000000004
+          },
+          "verify": {
+            "calls": 96,
+            "medianUs": 162.7095
+          },
+          "encode": {
+            "calls": 96,
+            "medianUs": 167.52949999999998
+          },
+          "snapshot": {
+            "calls": 6,
+            "medianUs": 46.8595
+          }
+        }
+      },
+      {
+        "arm": "G14",
+        "rows": 96,
+        "statuses": {
+          "Optimal": 96
+        },
+        "medianUs": 27968.644,
+        "p95Us": 175078.8445,
+        "p99Us": 196696.92879999997,
+        "medianBytes": 2038856,
+        "hits": 42,
+        "templateHits": 24,
+        "quotientCalls": 48,
+        "routes": {
+          "quotient": 48,
+          "original": 24,
+          "original-fast": 24
+        },
+        "phases": {
+          "outer-admission": {
+            "calls": 96,
+            "medianUs": 0.17
+          },
+          "digest": {
+            "calls": 96,
+            "medianUs": 1490.507
+          },
+          "plan-admission": {
+            "calls": 96,
+            "medianUs": 248.35
+          },
+          "identity": {
+            "calls": 72,
+            "medianUs": 7.29
+          },
+          "partition": {
+            "calls": 30,
+            "medianUs": 524.524
+          },
+          "owner-fix": {
+            "calls": 30,
+            "medianUs": 69.39
+          },
+          "row-transform": {
+            "calls": 24,
+            "medianUs": 963.9485
+          },
+          "plan-ready": {
+            "calls": 72,
+            "medianUs": 1.15
+          },
+          "objective": {
+            "calls": 48,
+            "medianUs": 67.1055
+          },
+          "native-build": {
+            "calls": 48,
+            "medianUs": 372.944
+          },
+          "native-solve": {
+            "calls": 48,
+            "medianUs": 4026.9880000000003
+          },
+          "reconstruct": {
+            "calls": 48,
+            "medianUs": 60.179500000000004
+          },
+          "solve-rest": {
+            "calls": 96,
+            "medianUs": 2057.466
+          },
+          "verify": {
+            "calls": 96,
+            "medianUs": 135.6455
+          },
+          "encode": {
+            "calls": 96,
+            "medianUs": 166.5695
+          }
+        }
+      }
+    ],
+    "comparisons": [
+      {
+        "base": "original",
+        "histories": 24,
+        "totalHistories": 24,
+        "medianSpeedup": 2.777708832500898,
+        "p10": 0.9450510483321433,
+        "p90": 10.965143927972806,
+        "wins": 16
+      },
+      {
+        "base": "G11",
+        "histories": 24,
+        "totalHistories": 24,
+        "medianSpeedup": 1.1462504835493048,
+        "p10": 0.7536677909903859,
+        "p90": 2.086646246469638,
+        "wins": 16
+      },
+      {
+        "base": "G13",
+        "histories": 24,
+        "totalHistories": 24,
+        "medianSpeedup": 0.9867253762396574,
+        "p10": 0.8375583365232171,
+        "p90": 1.3530241171836017,
+        "wins": 11
+      },
+      {
+        "base": "template-only",
+        "histories": 24,
+        "totalHistories": 24,
+        "medianSpeedup": 0.9934785676778378,
+        "p10": 0.8188439517925326,
+        "p90": 1.1648096580807434,
+        "wins": 12
+      }
+    ],
+    "byFamily": [
+      {
+        "family": "stable",
+        "comparisons": [
+          {
+            "base": "original",
+            "histories": 6,
+            "totalHistories": 6,
+            "medianSpeedup": 9.303210530977386,
+            "p10": 5.551979237306533,
+            "p90": 15.927654822922893,
+            "wins": 6
+          },
+          {
+            "base": "G11",
+            "histories": 6,
+            "totalHistories": 6,
+            "medianSpeedup": 1.2147801523454593,
+            "p10": 1.0306024172848998,
+            "p90": 1.901562670572709,
+            "wins": 5
+          },
+          {
+            "base": "G13",
+            "histories": 6,
+            "totalHistories": 6,
+            "medianSpeedup": 1.3157700976121656,
+            "p10": 1.0656639459251207,
+            "p90": 1.520645036315858,
+            "wins": 5
+          },
+          {
+            "base": "template-only",
+            "histories": 6,
+            "totalHistories": 6,
+            "medianSpeedup": 0.9964315365699816,
+            "p10": 0.871916628696032,
+            "p90": 1.8087441155781057,
+            "wins": 3
+          }
+        ]
+      },
+      {
+        "family": "edits",
+        "comparisons": [
+          {
+            "base": "original",
+            "histories": 6,
+            "totalHistories": 6,
+            "medianSpeedup": 6.253681314093123,
+            "p10": 4.790543909935765,
+            "p90": 8.976591145983068,
+            "wins": 6
+          },
+          {
+            "base": "G11",
+            "histories": 6,
+            "totalHistories": 6,
+            "medianSpeedup": 1.160563103725273,
+            "p10": 0.6892864829303575,
+            "p90": 2.402446632741282,
+            "wins": 4
+          },
+          {
+            "base": "G13",
+            "histories": 6,
+            "totalHistories": 6,
+            "medianSpeedup": 1.0021596058258733,
+            "p10": 0.7521138722880139,
+            "p90": 2.420870579283833,
+            "wins": 3
+          },
+          {
+            "base": "template-only",
+            "histories": 6,
+            "totalHistories": 6,
+            "medianSpeedup": 1.0591298794362896,
+            "p10": 0.6490537131223557,
+            "p90": 1.4498675648308672,
+            "wins": 4
+          }
+        ]
+      },
+      {
+        "family": "weak",
+        "comparisons": [
+          {
+            "base": "original",
+            "histories": 6,
+            "totalHistories": 6,
+            "medianSpeedup": 0.9981500768547384,
+            "p10": 0.9165914939938586,
+            "p90": 1.018454956159768,
+            "wins": 3
+          },
+          {
+            "base": "G11",
+            "histories": 6,
+            "totalHistories": 6,
+            "medianSpeedup": 0.86707950281525,
+            "p10": 0.7794829077643943,
+            "p90": 0.9928572667138269,
+            "wins": 1
+          },
+          {
+            "base": "G13",
+            "histories": 6,
+            "totalHistories": 6,
+            "medianSpeedup": 0.9942602947643299,
+            "p10": 0.8377549866784714,
+            "p90": 1.0611948733553578,
+            "wins": 3
+          },
+          {
+            "base": "template-only",
+            "histories": 6,
+            "totalHistories": 6,
+            "medianSpeedup": 1.009627400796441,
+            "p10": 0.8572852019412631,
+            "p90": 1.0540797189703637,
+            "wins": 4
+          }
+        ]
+      },
+      {
+        "family": "none",
+        "comparisons": [
+          {
+            "base": "original",
+            "histories": 6,
+            "totalHistories": 6,
+            "medianSpeedup": 0.9604143298666612,
+            "p10": 0.9370387191911055,
+            "p90": 0.9987650474917349,
+            "wins": 1
+          },
+          {
+            "base": "G11",
+            "histories": 6,
+            "totalHistories": 6,
+            "medianSpeedup": 1.1932620185928018,
+            "p10": 1.1223878459122383,
+            "p90": 1.935897812660365,
+            "wins": 6
+          },
+          {
+            "base": "G13",
+            "histories": 6,
+            "totalHistories": 6,
+            "medianSpeedup": 0.9583895547595674,
+            "p10": 0.9354984634498573,
+            "p90": 0.9867253762396574,
+            "wins": 0
+          },
+          {
+            "base": "template-only",
+            "histories": 6,
+            "totalHistories": 6,
+            "medianSpeedup": 0.9735838572358384,
+            "p10": 0.9271825818693115,
+            "p90": 0.9943655312334208,
+            "wins": 1
+          }
+        ]
+      }
+    ],
+    "bySize": [
+      {
+        "n": 512,
+        "comparisons": [
+          {
+            "base": "original",
+            "histories": 8,
+            "totalHistories": 8,
+            "medianSpeedup": 3.031290033594636,
+            "p10": 0.9355038537438144,
+            "p90": 9.925769946091838,
+            "wins": 5
+          },
+          {
+            "base": "G11",
+            "histories": 8,
+            "totalHistories": 8,
+            "medianSpeedup": 1.1848424086921505,
+            "p10": 1.0177932277276454,
+            "p90": 2.9019894353086237,
+            "wins": 7
+          },
+          {
+            "base": "G13",
+            "histories": 8,
+            "totalHistories": 8,
+            "medianSpeedup": 1.065071214332252,
+            "p10": 0.9042848510420349,
+            "p90": 2.2284012812288987,
+            "wins": 5
+          },
+          {
+            "base": "template-only",
+            "histories": 8,
+            "totalHistories": 8,
+            "medianSpeedup": 1.022608850886895,
+            "p10": 0.9091077253389074,
+            "p90": 1.950251402029334,
+            "wins": 5
+          }
+        ],
+        "status": {
+          "original": {
+            "Optimal": 32
+          },
+          "G11": {
+            "Optimal": 32
+          },
+          "G13": {
+            "Optimal": 32
+          },
+          "template-only": {
+            "Optimal": 32
+          },
+          "G14": {
+            "Optimal": 32
+          }
+        }
+      },
+      {
+        "n": 4096,
+        "comparisons": [
+          {
+            "base": "original",
+            "histories": 8,
+            "totalHistories": 8,
+            "medianSpeedup": 2.7649507332830114,
+            "p10": 0.9461168255748017,
+            "p90": 6.995016432862745,
+            "wins": 5
+          },
+          {
+            "base": "G11",
+            "histories": 8,
+            "totalHistories": 8,
+            "medianSpeedup": 1.0306024172848998,
+            "p10": 0.703206642545831,
+            "p90": 1.2370701493129708,
+            "wins": 4
+          },
+          {
+            "base": "G13",
+            "histories": 8,
+            "totalHistories": 8,
+            "medianSpeedup": 0.9673061780741403,
+            "p10": 0.7943643447259345,
+            "p90": 1.114705564275003,
+            "wins": 2
+          },
+          {
+            "base": "template-only",
+            "histories": 8,
+            "totalHistories": 8,
+            "medianSpeedup": 0.9568047620215321,
+            "p10": 0.7459058630078101,
+            "p90": 1.023615423069663,
+            "wins": 2
+          }
+        ],
+        "status": {
+          "original": {
+            "Optimal": 32
+          },
+          "G11": {
+            "Optimal": 32
+          },
+          "G13": {
+            "Optimal": 32
+          },
+          "template-only": {
+            "Optimal": 32
+          },
+          "G14": {
+            "Optimal": 32
+          }
+        }
+      },
+      {
+        "n": 25000,
+        "comparisons": [
+          {
+            "base": "original",
+            "histories": 8,
+            "totalHistories": 8,
+            "medianSpeedup": 4.341648539618059,
+            "p10": 0.972713643017145,
+            "p90": 11.472864794580374,
+            "wins": 6
+          },
+          {
+            "base": "G11",
+            "histories": 8,
+            "totalHistories": 8,
+            "medianSpeedup": 1.1378829746195944,
+            "p10": 0.8016413180825355,
+            "p90": 1.3053620018098453,
+            "wins": 5
+          },
+          {
+            "base": "G13",
+            "histories": 8,
+            "totalHistories": 8,
+            "medianSpeedup": 0.9942602947643299,
+            "p10": 0.8998753129578563,
+            "p90": 1.3421078038318879,
+            "wins": 4
+          },
+          {
+            "base": "template-only",
+            "histories": 8,
+            "totalHistories": 8,
+            "medianSpeedup": 1.0220311010965455,
+            "p10": 0.8476771320661233,
+            "p90": 1.1436548179799506,
+            "wins": 5
+          }
+        ],
+        "status": {
+          "original": {
+            "Optimal": 32
+          },
+          "G11": {
+            "Optimal": 32
+          },
+          "G13": {
+            "Optimal": 32
+          },
+          "template-only": {
+            "Optimal": 32
+          },
+          "G14": {
+            "Optimal": 32
+          }
+        }
+      }
+    ]
+  },
+  "scale": {
+    "rows": 60,
+    "models": 12,
+    "allOptimal": 0,
+    "verifiedWitnesses": 48,
+    "histories": 4,
+    "summaries": [
+      {
+        "arm": "original",
+        "rows": 12,
+        "statuses": {
+          "Unknown": 12
+        },
+        "medianUs": 1077865.151,
+        "p95Us": 1833848.8214999998,
+        "p99Us": 1901453.5411,
+        "medianBytes": 92801464,
+        "hits": 0,
+        "templateHits": 0,
+        "quotientCalls": 0,
+        "routes": {
+          "original": 12
+        },
+        "phases": {
+          "outer-admission": {
+            "calls": 12,
+            "medianUs": 8601.708999999999
+          },
+          "digest": {
+            "calls": 12,
+            "medianUs": 41411.8595
+          },
+          "solve-rest": {
+            "calls": 12,
+            "medianUs": 1039207.6155000001
+          },
+          "verify": {
+            "calls": 12,
+            "medianUs": 3.63
+          },
+          "encode": {
+            "calls": 12,
+            "medianUs": 60.595
+          }
+        }
+      },
+      {
+        "arm": "G11",
+        "rows": 12,
+        "statuses": {
+          "Optimal": 12
+        },
+        "medianUs": 181181.5715,
+        "p95Us": 230569.39114999998,
+        "p99Us": 238870.86543,
+        "medianBytes": 28442688,
+        "hits": 0,
+        "templateHits": 0,
+        "quotientCalls": 0,
+        "routes": {
+          "G11": 12
+        },
+        "phases": {
+          "outer-admission": {
+            "calls": 12,
+            "medianUs": 8940.8485
+          },
+          "digest": {
+            "calls": 12,
+            "medianUs": 29868.961
+          },
+          "solve-rest": {
+            "calls": 12,
+            "medianUs": 151056.1655
+          },
+          "verify": {
+            "calls": 12,
+            "medianUs": 1345.278
+          },
+          "encode": {
+            "calls": 12,
+            "medianUs": 1966.2915
+          }
+        }
+      },
+      {
+        "arm": "G13",
+        "rows": 12,
+        "statuses": {
+          "Optimal": 12
+        },
+        "medianUs": 158328.883,
+        "p95Us": 235253.61054999998,
+        "p99Us": 247664.12691000002,
+        "medianBytes": 20532652,
+        "hits": 6,
+        "templateHits": 0,
+        "quotientCalls": 12,
+        "routes": {
+          "quotient": 12
+        },
+        "phases": {
+          "outer-admission": {
+            "calls": 12,
+            "medianUs": 0.18
+          },
+          "digest": {
+            "calls": 12,
+            "medianUs": 34383.238
+          },
+          "plan-admission": {
+            "calls": 12,
+            "medianUs": 9492.258000000002
+          },
+          "identity": {
+            "calls": 12,
+            "medianUs": 360.32500000000005
+          },
+          "partition": {
+            "calls": 6,
+            "medianUs": 25606.6685
+          },
+          "owner-fix": {
+            "calls": 6,
+            "medianUs": 1332.703
+          },
+          "row-transform": {
+            "calls": 6,
+            "medianUs": 17958.492
+          },
+          "plan-ready": {
+            "calls": 12,
+            "medianUs": 8.79
+          },
+          "objective": {
+            "calls": 12,
+            "medianUs": 608.0840000000001
+          },
+          "native-build": {
+            "calls": 12,
+            "medianUs": 12983.6165
+          },
+          "native-solve": {
+            "calls": 12,
+            "medianUs": 62627.941000000006
+          },
+          "reconstruct": {
+            "calls": 12,
+            "medianUs": 898.7985
+          },
+          "solve-rest": {
+            "calls": 12,
+            "medianUs": 39.85
+          },
+          "verify": {
+            "calls": 12,
+            "medianUs": 1188.913
+          },
+          "encode": {
+            "calls": 12,
+            "medianUs": 2158.411
+          }
+        }
+      },
+      {
+        "arm": "template-only",
+        "rows": 12,
+        "statuses": {
+          "Optimal": 12
+        },
+        "medianUs": 129765.62950000001,
+        "p95Us": 212687.70249999998,
+        "p99Us": 214953.8037,
+        "medianBytes": 16062076,
+        "hits": 6,
+        "templateHits": 6,
+        "quotientCalls": 12,
+        "routes": {
+          "quotient": 12
+        },
+        "phases": {
+          "outer-admission": {
+            "calls": 12,
+            "medianUs": 0.16
+          },
+          "digest": {
+            "calls": 12,
+            "medianUs": 28206.4795
+          },
+          "plan-admission": {
+            "calls": 12,
+            "medianUs": 8083.66
+          },
+          "identity": {
+            "calls": 12,
+            "medianUs": 167.435
+          },
+          "partition": {
+            "calls": 6,
+            "medianUs": 24373.7455
+          },
+          "owner-fix": {
+            "calls": 6,
+            "medianUs": 997.4485
+          },
+          "row-transform": {
+            "calls": 6,
+            "medianUs": 16358.6895
+          },
+          "plan-ready": {
+            "calls": 12,
+            "medianUs": 9.105
+          },
+          "objective": {
+            "calls": 12,
+            "medianUs": 481.099
+          },
+          "native-build": {
+            "calls": 12,
+            "medianUs": 9896.627499999999
+          },
+          "native-solve": {
+            "calls": 12,
+            "medianUs": 64659.812999999995
+          },
+          "reconstruct": {
+            "calls": 12,
+            "medianUs": 788.8489999999999
+          },
+          "solve-rest": {
+            "calls": 12,
+            "medianUs": 38.7505
+          },
+          "verify": {
+            "calls": 12,
+            "medianUs": 1237.287
+          },
+          "encode": {
+            "calls": 12,
+            "medianUs": 1861.762
+          }
+        }
+      },
+      {
+        "arm": "G14",
+        "rows": 12,
+        "statuses": {
+          "Optimal": 12
+        },
+        "medianUs": 136071.6235,
+        "p95Us": 209350.38155000002,
+        "p99Us": 209503.75631,
+        "medianBytes": 16060864,
+        "hits": 6,
+        "templateHits": 6,
+        "quotientCalls": 12,
+        "routes": {
+          "quotient": 12
+        },
+        "phases": {
+          "outer-admission": {
+            "calls": 12,
+            "medianUs": 0.15
+          },
+          "digest": {
+            "calls": 12,
+            "medianUs": 31703.7875
+          },
+          "plan-admission": {
+            "calls": 12,
+            "medianUs": 8788.564
+          },
+          "identity": {
+            "calls": 12,
+            "medianUs": 195.425
+          },
+          "partition": {
+            "calls": 6,
+            "medianUs": 26924.805999999997
+          },
+          "owner-fix": {
+            "calls": 6,
+            "medianUs": 678.994
+          },
+          "row-transform": {
+            "calls": 6,
+            "medianUs": 15692.5665
+          },
+          "plan-ready": {
+            "calls": 12,
+            "medianUs": 6.78
+          },
+          "objective": {
+            "calls": 12,
+            "medianUs": 556.319
+          },
+          "native-build": {
+            "calls": 12,
+            "medianUs": 4791.3015
+          },
+          "native-solve": {
+            "calls": 12,
+            "medianUs": 58043.659
+          },
+          "reconstruct": {
+            "calls": 12,
+            "medianUs": 716.759
+          },
+          "solve-rest": {
+            "calls": 12,
+            "medianUs": 37.3
+          },
+          "verify": {
+            "calls": 12,
+            "medianUs": 1227.272
+          },
+          "encode": {
+            "calls": 12,
+            "medianUs": 1707.0525
+          }
+        }
+      }
+    ],
+    "comparisons": [
+      {
+        "base": "original",
+        "histories": 0,
+        "totalHistories": 4,
+        "medianSpeedup": null,
+        "p10": null,
+        "p90": null,
+        "wins": 0
+      },
+      {
+        "base": "G11",
+        "histories": 4,
+        "totalHistories": 4,
+        "medianSpeedup": 1.2491646530053147,
+        "p10": 1.171458342187306,
+        "p90": 1.469497906665429,
+        "wins": 4
+      },
+      {
+        "base": "G13",
+        "histories": 4,
+        "totalHistories": 4,
+        "medianSpeedup": 1.1642882993070272,
+        "p10": 1.1155559281954373,
+        "p90": 1.2638165544132083,
+        "wins": 4
+      },
+      {
+        "base": "template-only",
+        "histories": 4,
+        "totalHistories": 4,
+        "medianSpeedup": 1.0181877876634744,
+        "p10": 0.9033283872267537,
+        "p90": 1.1268138840308666,
+        "wins": 2
+      }
+    ],
+    "byFamily": [
+      {
+        "family": "stable",
+        "comparisons": [
+          {
+            "base": "original",
+            "histories": 0,
+            "totalHistories": 2,
+            "medianSpeedup": null,
+            "p10": null,
+            "p90": null,
+            "wins": 0
+          },
+          {
+            "base": "G11",
+            "histories": 2,
+            "totalHistories": 2,
+            "medianSpeedup": 1.42846279083908,
+            "p10": 1.346392559186382,
+            "p90": 1.510533022491778,
+            "wins": 2
+          },
+          {
+            "base": "G13",
+            "histories": 2,
+            "totalHistories": 2,
+            "medianSpeedup": 1.2384834322041325,
+            "p10": 1.1878171877859804,
+            "p90": 1.2891496766222843,
+            "wins": 2
+          },
+          {
+            "base": "template-only",
+            "histories": 2,
+            "totalHistories": 2,
+            "medianSpeedup": 1.0181877876634744,
+            "p10": 1.0020546909799253,
+            "p90": 1.0343208843470233,
+            "wins": 1
+          }
+        ]
+      },
+      {
+        "family": "edits",
+        "comparisons": [
+          {
+            "base": "original",
+            "histories": 0,
+            "totalHistories": 2,
+            "medianSpeedup": null,
+            "p10": null,
+            "p90": null,
+            "wins": 0
+          },
+          {
+            "base": "G11",
+            "histories": 2,
+            "totalHistories": 2,
+            "medianSpeedup": 1.1717429029159105,
+            "p10": 1.1711737814587013,
+            "p90": 1.1723120243731198,
+            "wins": 2
+          },
+          {
+            "base": "G13",
+            "histories": 2,
+            "totalHistories": 2,
+            "medianSpeedup": 1.1263759406917728,
+            "p10": 1.1047359156991017,
+            "p90": 1.148015965684444,
+            "wins": 2
+          },
+          {
+            "base": "template-only",
+            "histories": 2,
+            "totalHistories": 2,
+            "medianSpeedup": 1.0137354276139539,
+            "p10": 0.8929436137331247,
+            "p90": 1.1345272414947831,
+            "wins": 1
+          }
+        ]
+      }
+    ],
+    "bySize": [
+      {
+        "n": 50000,
+        "comparisons": [
+          {
+            "base": "original",
+            "histories": 0,
+            "totalHistories": 2,
+            "medianSpeedup": null,
+            "p10": null,
+            "p90": null,
+            "wins": 0
+          },
+          {
+            "base": "G11",
+            "histories": 2,
+            "totalHistories": 2,
+            "medianSpeedup": 1.351752442571187,
+            "p10": 1.2083139323041752,
+            "p90": 1.4951909528381992,
+            "wins": 2
+          },
+          {
+            "base": "G13",
+            "histories": 2,
+            "totalHistories": 2,
+            "medianSpeedup": 1.2005710735888782,
+            "p10": 1.1195749422785226,
+            "p90": 1.2815672048992335,
+            "wins": 2
+          },
+          {
+            "base": "template-only",
+            "histories": 2,
+            "totalHistories": 2,
+            "medianSpeedup": 1.1015396767414505,
+            "p10": 1.0509912621626185,
+            "p90": 1.1520880913202824,
+            "wins": 2
+          }
+        ],
+        "status": {
+          "original": {
+            "Unknown": 6
+          },
+          "G11": {
+            "Optimal": 6
+          },
+          "G13": {
+            "Optimal": 6
+          },
+          "template-only": {
+            "Optimal": 6
+          },
+          "G14": {
+            "Optimal": 6
+          }
+        }
+      },
+      {
+        "n": 100000,
+        "comparisons": [
+          {
+            "base": "original",
+            "histories": 0,
+            "totalHistories": 2,
+            "medianSpeedup": null,
+            "p10": null,
+            "p90": null,
+            "wins": 0
+          },
+          {
+            "base": "G11",
+            "histories": 2,
+            "totalHistories": 2,
+            "medianSpeedup": 1.2484532511838031,
+            "p10": 1.1865158511122798,
+            "p90": 1.3103906512553265,
+            "wins": 2
+          },
+          {
+            "base": "G13",
+            "histories": 2,
+            "totalHistories": 2,
+            "medianSpeedup": 1.1642882993070272,
+            "p10": 1.155598437407495,
+            "p90": 1.1729781612065593,
+            "wins": 2
+          },
+          {
+            "base": "template-only",
+            "histories": 2,
+            "totalHistories": 2,
+            "medianSpeedup": 0.9303835385359778,
+            "p10": 0.8762732359175295,
+            "p90": 0.9844938411544261,
+            "wins": 0
+          }
+        ],
+        "status": {
+          "original": {
+            "Unknown": 6
+          },
+          "G11": {
+            "Optimal": 6
+          },
+          "G13": {
+            "Optimal": 6
+          },
+          "template-only": {
+            "Optimal": 6
+          },
+          "G14": {
+            "Optimal": 6
+          }
+        }
+      }
+    ]
+  }
+}
