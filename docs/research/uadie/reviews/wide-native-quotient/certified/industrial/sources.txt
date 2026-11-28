@@ -1,0 +1,4 @@
+air03 3ad400c1afb949cf75b3da5fd7e74cff034684f3acdeb893e8e2c6e9fa934557 https://miplib.zib.de/WebData/instances/air03.mps.gz G. Astfalk; known optimum 340160
+air04 54f5958f9d3395c45b7dfe70507117777ad914f42f4cd07d50d291bdb6a324a6 https://miplib.zib.de/WebData/instances/air04.mps.gz G. Astfalk; known optimum 56137
+air05 8e03d2b90834dc1fe15c908247fdd8baf76e208aa310508caa0734e5245692cc https://miplib.zib.de/WebData/instances/air05.mps.gz G. Astfalk; known optimum 26374
+10teams 5f73e7922fa51cfb3a15243223a20458dfc258f684b10cd1be630356fd2ef31e https://miplib.zib.de/WebData/instances/10teams.mps.gz MIPLIB submission pool; known optimum 924

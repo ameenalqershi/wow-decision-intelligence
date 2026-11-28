@@ -8,6 +8,7 @@
 <Compile Include="CertifiedQuotient.cs"/>
 <Compile Include="CertifiedStudy.cs"/>
 <Compile Include="CertifiedAudit.cs"/>
+<Compile Include="IndustrialAdmission.cs"/>
 <Compile Include="../../../../../research/AlgorithmDiscoveryLab/*.cs" Exclude="../../../../../research/AlgorithmDiscoveryLab/Program.cs"/>
 <Compile Include="../../../../../research/ComponentStudy/Model.cs"/>
 <Compile Include="../../../../../research/ComponentStudy/Oracle.cs"/>
