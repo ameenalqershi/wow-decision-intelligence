@@ -1,0 +1,46 @@
+name: Canonical fingerprints conformance
+on:
+  pull_request:
+    paths:
+      - src/Optimization.Fingerprints/**
+      - src/Udir/**
+      - src/Contracts/**
+      - src/Verification.Independent/**
+      - src/Solver.Contracts/**
+      - src/Manufacturing.Data/**
+      - src/Dml.*/**
+      - tests/Optimization.Fingerprints/**
+      - .github/workflows/canonical-fingerprints.yml
+  push:
+    branches: [main]
+    paths:
+      - src/Optimization.Fingerprints/**
+      - src/Udir/**
+      - src/Contracts/**
+      - src/Verification.Independent/**
+      - src/Solver.Contracts/**
+      - src/Manufacturing.Data/**
+      - src/Dml.*/**
+      - tests/Optimization.Fingerprints/**
+      - .github/workflows/canonical-fingerprints.yml
+permissions:
+  contents: read
+jobs:
+  fingerprints:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - run: dotnet restore tests/Optimization.Fingerprints --locked-mode
+      - run: dotnet test tests/Optimization.Fingerprints --no-restore -c Release --logger trx
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: fingerprints-${{ matrix.os }}
+          path: tests/Optimization.Fingerprints/TestResults/*.trx
