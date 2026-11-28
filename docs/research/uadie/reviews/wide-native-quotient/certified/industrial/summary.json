@@ -1,0 +1,99 @@
+{
+  "records": 4,
+  "supported": 3,
+  "unsupported": 1,
+  "originalOptimal": 0,
+  "g15Optimal": 0,
+  "highsOptimal": 0,
+  "highsFeasibleWitness": 1,
+  "recordsByInstance": [
+    {
+      "name": "air03",
+      "sha": "3AD400C1AFB949CF75B3DA5FD7E74CFF034684F3ACDEB893E8E2C6E9FA934557",
+      "admission": "supported",
+      "n": 10757,
+      "edges": 2,
+      "fixes": 0,
+      "rows": 122,
+      "nonzeros": 91028,
+      "features": {
+        "Item1": false,
+        "Item2": 0.0001859254438969973
+      },
+      "route": "original",
+      "original": "Unknown",
+      "originalValue": null,
+      "g15": "Unknown",
+      "g15Value": null,
+      "native": {
+        "Status": 13,
+        "Objective": 0,
+        "PrimalStatus": 0,
+        "MaxPrimalInfeasibility": 0
+      }
+    },
+    {
+      "name": "air04",
+      "sha": "54F5958F9D3395C45B7DFE70507117777AD914F42F4CD07D50D291BDB6A324A6",
+      "admission": "supported",
+      "n": 8904,
+      "edges": 2,
+      "fixes": 0,
+      "rows": 821,
+      "nonzeros": 72965,
+      "features": {
+        "Item1": false,
+        "Item2": 0.00022461814914645105
+      },
+      "route": "original",
+      "original": "Unknown",
+      "originalValue": null,
+      "g15": "Unknown",
+      "g15Value": null,
+      "native": {
+        "Status": 13,
+        "Objective": 0,
+        "PrimalStatus": 0,
+        "MaxPrimalInfeasibility": 0
+      }
+    },
+    {
+      "name": "air05",
+      "sha": "8E03D2B90834DC1FE15C908247FDD8BAF76E208AA310508CAA0734E5245692CC",
+      "admission": "supported",
+      "n": 7195,
+      "edges": 0,
+      "fixes": 0,
+      "rows": 426,
+      "nonzeros": 52121,
+      "features": {
+        "Item1": false,
+        "Item2": 0
+      },
+      "route": "original",
+      "original": "Unknown",
+      "originalValue": null,
+      "g15": "Unknown",
+      "g15Value": null,
+      "native": {
+        "Status": 13,
+        "Objective": 48056,
+        "PrimalStatus": 2,
+        "MaxPrimalInfeasibility": 0
+      }
+    },
+    {
+      "name": "10teams",
+      "sha": "5F73E7922FA51CFB3A15243223A20458DFC258F684B10CD1BE630356FD2EF31E",
+      "admission": "unsupported",
+      "reason": "continuous or unmarked column",
+      "route": "original-HiGHS-MPS",
+      "native": {
+        "Status": 13,
+        "Objective": 0,
+        "PrimalStatus": 0,
+        "MaxPrimalInfeasibility": 0
+      }
+    }
+  ]
+}

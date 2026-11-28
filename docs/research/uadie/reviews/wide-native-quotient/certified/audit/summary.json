@@ -1,0 +1,16 @@
+{
+  "finite": 768,
+  "finiteInfeasible": 256,
+  "highs": 36,
+  "tamper": 1226,
+  "acceptedTamper": 0,
+  "summary": {
+    "kind": "summary",
+    "finite": 768,
+    "direct": 273,
+    "native": 239,
+    "fallback": 256,
+    "highs": 36,
+    "tamper": 1226
+  }
+}

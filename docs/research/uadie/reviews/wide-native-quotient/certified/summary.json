@@ -1,0 +1,1228 @@
+{
+  "holdout": {
+    "rows": 2520,
+    "revisionRecords": 360,
+    "completeModels": 360,
+    "distinctDigests": 360,
+    "allOptimal": 360,
+    "verifiedWitnesses": 2520,
+    "histories": 120,
+    "readback": 0,
+    "summaries": [
+      {
+        "arm": "original",
+        "rows": 360,
+        "statuses": {
+          "Optimal": 360
+        },
+        "medianUs": 18420.057,
+        "p95Us": 152402.16040000002,
+        "p99Us": 171429.22629000005,
+        "medianBytes": 928996,
+        "medianEvidenceBytes": 2565.5,
+        "certificateChecks": 0,
+        "directProofs": 0,
+        "routes": {
+          "original": 360
+        }
+      },
+      {
+        "arm": "warm",
+        "rows": 360,
+        "statuses": {
+          "Optimal": 360
+        },
+        "medianUs": 19506.0845,
+        "p95Us": 281283.89745,
+        "p99Us": 344760.16664000036,
+        "medianBytes": 774236,
+        "medianEvidenceBytes": 2561.5,
+        "certificateChecks": 0,
+        "directProofs": 0,
+        "routes": {
+          "warm": 360
+        }
+      },
+      {
+        "arm": "G13",
+        "rows": 360,
+        "statuses": {
+          "Optimal": 360
+        },
+        "medianUs": 11794.2835,
+        "p95Us": 147355.7769,
+        "p99Us": 170399.58906000006,
+        "medianBytes": 345236,
+        "medianEvidenceBytes": 2560.5,
+        "certificateChecks": 0,
+        "directProofs": 0,
+        "routes": {
+          "G13": 360
+        }
+      },
+      {
+        "arm": "G14",
+        "rows": 360,
+        "statuses": {
+          "Optimal": 360
+        },
+        "medianUs": 11868.019,
+        "p95Us": 153319.80544999999,
+        "p99Us": 174753.7694700002,
+        "medianBytes": 261296,
+        "medianEvidenceBytes": 2560.5,
+        "certificateChecks": 0,
+        "directProofs": 0,
+        "routes": {
+          "G14": 360
+        }
+      },
+      {
+        "arm": "cert-native",
+        "rows": 360,
+        "statuses": {
+          "Optimal": 360
+        },
+        "medianUs": 11858.583999999999,
+        "p95Us": 153920.09375000003,
+        "p99Us": 169763.4977,
+        "medianBytes": 719072,
+        "medianEvidenceBytes": 15922.5,
+        "certificateChecks": 360,
+        "directProofs": 0,
+        "routes": {
+          "native-quotient": 360
+        }
+      },
+      {
+        "arm": "cert-direct",
+        "rows": 360,
+        "statuses": {
+          "Optimal": 360
+        },
+        "medianUs": 7293.497,
+        "p95Us": 154509.33700000003,
+        "p99Us": 176965.85059000002,
+        "medianBytes": 614704,
+        "medianEvidenceBytes": 15922,
+        "certificateChecks": 360,
+        "directProofs": 144,
+        "routes": {
+          "direct": 144,
+          "native-quotient": 216
+        }
+      },
+      {
+        "arm": "G15",
+        "rows": 360,
+        "statuses": {
+          "Optimal": 360
+        },
+        "medianUs": 7379.857,
+        "p95Us": 268036.88055000006,
+        "p99Us": 350987.4177300001,
+        "medianBytes": 590240,
+        "medianEvidenceBytes": 6622.5,
+        "certificateChecks": 288,
+        "directProofs": 144,
+        "routes": {
+          "direct": 144,
+          "warm": 72,
+          "native-quotient": 144
+        }
+      }
+    ],
+    "comparisons": [
+      {
+        "base": "original",
+        "histories": 120,
+        "totalHistories": 120,
+        "seedClusters": 12,
+        "medianSpeedup": 1.8954351489295285,
+        "ci95": [
+          1.8428750644624414,
+          2.002067735777082
+        ],
+        "p10": 0.6985758353767291,
+        "p90": 9.227325753105783,
+        "wins": 89
+      },
+      {
+        "base": "warm",
+        "histories": 120,
+        "totalHistories": 120,
+        "seedClusters": 12,
+        "medianSpeedup": 2.025532615394638,
+        "ci95": [
+          1.9661596306051403,
+          2.0976043688227874
+        ],
+        "p10": 0.977068990399374,
+        "p90": 7.3677853763081105,
+        "wins": 101
+      },
+      {
+        "base": "G13",
+        "histories": 120,
+        "totalHistories": 120,
+        "seedClusters": 12,
+        "medianSpeedup": 1.039370036164705,
+        "ci95": [
+          1.0078388639669615,
+          1.0726596161608568
+        ],
+        "p10": 0.6907275031555327,
+        "p90": 2.5249510834370423,
+        "wins": 67
+      },
+      {
+        "base": "G14",
+        "histories": 120,
+        "totalHistories": 120,
+        "seedClusters": 12,
+        "medianSpeedup": 1.050812421559016,
+        "ci95": [
+          1.0245181804274783,
+          1.0761188650188533
+        ],
+        "p10": 0.6549755657953767,
+        "p90": 2.508433261544001,
+        "wins": 68
+      },
+      {
+        "base": "cert-native",
+        "histories": 120,
+        "totalHistories": 120,
+        "seedClusters": 12,
+        "medianSpeedup": 1.0380028649319297,
+        "ci95": [
+          1.0171158608881874,
+          1.0924041769607467
+        ],
+        "p10": 0.7249537564693586,
+        "p90": 3.0969071384066216,
+        "wins": 74
+      },
+      {
+        "base": "cert-direct",
+        "histories": 120,
+        "totalHistories": 120,
+        "seedClusters": 12,
+        "medianSpeedup": 0.987150430199317,
+        "ci95": [
+          0.979081721319813,
+          0.9986771775610636
+        ],
+        "p10": 0.612961984266443,
+        "p90": 1.144893655002277,
+        "wins": 53
+      }
+    ],
+    "byFamily": [
+      {
+        "family": "disjoint",
+        "comparisons": [
+          {
+            "base": "original",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 1.9812324220819144,
+            "ci95": [
+              1.8930301180780638,
+              2.0880851673739222
+            ],
+            "p10": 1.7030980422555964,
+            "p90": 2.6675174489593187,
+            "wins": 24
+          },
+          {
+            "base": "warm",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 2.054253095780272,
+            "ci95": [
+              1.9833553984730485,
+              2.176203376404318
+            ],
+            "p10": 1.5852145512048719,
+            "p90": 2.541133972162325,
+            "wins": 24
+          },
+          {
+            "base": "G13",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 2.0126884567924366,
+            "ci95": [
+              1.8927612016799165,
+              2.080435618702885
+            ],
+            "p10": 1.4885929157919318,
+            "p90": 2.804556693328004,
+            "wins": 24
+          },
+          {
+            "base": "G14",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 1.969199934263716,
+            "ci95": [
+              1.7821718870743934,
+              2.005771173365477
+            ],
+            "p10": 1.4850709209124222,
+            "p90": 2.6932182830293105,
+            "wins": 24
+          },
+          {
+            "base": "cert-native",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 2.70296962950566,
+            "ci95": [
+              2.557337056649968,
+              3.036797946815687
+            ],
+            "p10": 2.0412632944797413,
+            "p90": 4.301727769969168,
+            "wins": 24
+          },
+          {
+            "base": "cert-direct",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 1.024133175357348,
+            "ci95": [
+              0.9711063068411725,
+              1.070361265581901
+            ],
+            "p10": 0.7896873991361846,
+            "p90": 2.2829762030052176,
+            "wins": 13
+          }
+        ]
+      },
+      {
+        "family": "signed-pairs",
+        "comparisons": [
+          {
+            "base": "original",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 8.142829298225582,
+            "ci95": [
+              7.949547981932423,
+              8.768090259293148
+            ],
+            "p10": 5.389586363049629,
+            "p90": 19.021752288743464,
+            "wins": 24
+          },
+          {
+            "base": "warm",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 7.520675708885053,
+            "ci95": [
+              7.1889209979926685,
+              8.554628884075816
+            ],
+            "p10": 5.294201512702396,
+            "p90": 19.274681140050717,
+            "wins": 24
+          },
+          {
+            "base": "G13",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 2.0697595064067817,
+            "ci95": [
+              1.95504257930212,
+              2.6623358215163964
+            ],
+            "p10": 1.440475956200949,
+            "p90": 3.8287014715909313,
+            "wins": 23
+          },
+          {
+            "base": "G14",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 1.9635888529884036,
+            "ci95": [
+              1.8030361891554194,
+              2.2420573381545186
+            ],
+            "p10": 1.5767831766885192,
+            "p90": 3.169558628883707,
+            "wins": 23
+          },
+          {
+            "base": "cert-native",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 2.2661537582087274,
+            "ci95": [
+              2.2246735791527117,
+              2.3947578813356882
+            ],
+            "p10": 1.675377539441844,
+            "p90": 3.6245755333795238,
+            "wins": 23
+          },
+          {
+            "base": "cert-direct",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 0.9489205511420858,
+            "ci95": [
+              0.839872436217567,
+              1.0157221697339227
+            ],
+            "p10": 0.5383257506404155,
+            "p90": 1.0391524022797376,
+            "wins": 11
+          }
+        ]
+      },
+      {
+        "family": "overlap",
+        "comparisons": [
+          {
+            "base": "original",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 0.6843935008609923,
+            "ci95": [
+              0.6387784770173816,
+              0.7559513843757122
+            ],
+            "p10": 0.5067554732598434,
+            "p90": 0.872700711118028,
+            "wins": 0
+          },
+          {
+            "base": "warm",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 0.9813309909866577,
+            "ci95": [
+              0.9567388511554217,
+              1.001899453889533
+            ],
+            "p10": 0.912247384158673,
+            "p90": 1.0622506691075804,
+            "wins": 8
+          },
+          {
+            "base": "G13",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 0.7023063312808201,
+            "ci95": [
+              0.6484158613657289,
+              0.7898440656965087
+            ],
+            "p10": 0.5147470149517644,
+            "p90": 0.8731958767566729,
+            "wins": 0
+          },
+          {
+            "base": "G14",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 0.6818713875094629,
+            "ci95": [
+              0.6313621960855567,
+              0.7598973570946057
+            ],
+            "p10": 0.5512672054342029,
+            "p90": 0.8475059502127054,
+            "wins": 0
+          },
+          {
+            "base": "cert-native",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 0.7106407499131318,
+            "ci95": [
+              0.6593108137432001,
+              0.7892392700156092
+            ],
+            "p10": 0.586562904384284,
+            "p90": 0.9527443243290121,
+            "wins": 2
+          },
+          {
+            "base": "cert-direct",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 0.7779311258193811,
+            "ci95": [
+              0.6860799403762637,
+              0.8103085611402768
+            ],
+            "p10": 0.585499392684878,
+            "p90": 0.9276940402612952,
+            "wins": 0
+          }
+        ]
+      },
+      {
+        "family": "weak-overlap",
+        "comparisons": [
+          {
+            "base": "original",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 1.0512867556683296,
+            "ci95": [
+              1.0193895058641655,
+              1.0766666302057855
+            ],
+            "p10": 0.9431259715776147,
+            "p90": 1.1121767855340974,
+            "wins": 17
+          },
+          {
+            "base": "warm",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 1.408812104006119,
+            "ci95": [
+              1.3237678471609144,
+              1.5123508362376339
+            ],
+            "p10": 1.0110834338525412,
+            "p90": 1.911060329598535,
+            "wins": 21
+          },
+          {
+            "base": "G13",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 1.039370036164705,
+            "ci95": [
+              1.0004599986985458,
+              1.06584312409531
+            ],
+            "p10": 0.9328773730646992,
+            "p90": 1.2055012860547623,
+            "wins": 16
+          },
+          {
+            "base": "G14",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 1.050812421559016,
+            "ci95": [
+              1.0245181804274783,
+              1.0825369366161148
+            ],
+            "p10": 0.9827463382235181,
+            "p90": 1.1685239536497687,
+            "wins": 20
+          },
+          {
+            "base": "cert-native",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 0.9999976803150519,
+            "ci95": [
+              0.9848886277118691,
+              1.0149913524707015
+            ],
+            "p10": 0.9327723095993744,
+            "p90": 1.0488120417705509,
+            "wins": 12
+          },
+          {
+            "base": "cert-direct",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 1.0023870097977388,
+            "ci95": [
+              0.9955976426953731,
+              1.0464991628580516
+            ],
+            "p10": 0.9531233562601741,
+            "p90": 1.0804709002926336,
+            "wins": 13
+          }
+        ]
+      },
+      {
+        "family": "strong-overlap",
+        "comparisons": [
+          {
+            "base": "original",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 2.534386027836618,
+            "ci95": [
+              2.4817047307325293,
+              2.596649631268951
+            ],
+            "p10": 1.9341872107662976,
+            "p90": 3.520030665162042,
+            "wins": 24
+          },
+          {
+            "base": "warm",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 2.7502085066571693,
+            "ci95": [
+              2.6084192389572065,
+              2.7783551272657783
+            ],
+            "p10": 2.009072623809708,
+            "p90": 3.5140753817262222,
+            "wins": 24
+          },
+          {
+            "base": "G13",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 0.7932083965849401,
+            "ci95": [
+              0.7702803724742014,
+              0.8469195315946181
+            ],
+            "p10": 0.741304752567796,
+            "p90": 1.019687333931785,
+            "wins": 4
+          },
+          {
+            "base": "G14",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 0.8483802024833756,
+            "ci95": [
+              0.7385608002135072,
+              0.8675292320410568
+            ],
+            "p10": 0.6612191340230144,
+            "p90": 0.9156464037362783,
+            "wins": 1
+          },
+          {
+            "base": "cert-native",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 1.0030916229550528,
+            "ci95": [
+              0.9706527330859618,
+              1.0350371850740356
+            ],
+            "p10": 0.9203982119066757,
+            "p90": 1.1575836346463195,
+            "wins": 13
+          },
+          {
+            "base": "cert-direct",
+            "histories": 24,
+            "totalHistories": 24,
+            "seedClusters": 12,
+            "medianSpeedup": 1.0134909393793747,
+            "ci95": [
+              0.9986771775610636,
+              1.0901286941547856
+            ],
+            "p10": 0.8510667653875617,
+            "p90": 1.1527131509953017,
+            "wins": 16
+          }
+        ]
+      }
+    ]
+  },
+  "disk": {
+    "rows": 105,
+    "revisionRecords": 15,
+    "completeModels": 15,
+    "distinctDigests": 15,
+    "allOptimal": 15,
+    "verifiedWitnesses": 105,
+    "histories": 5,
+    "readback": 105,
+    "summaries": [
+      {
+        "arm": "original",
+        "rows": 15,
+        "statuses": {
+          "Optimal": 15
+        },
+        "medianUs": 6193.369,
+        "p95Us": 91120.44319999976,
+        "p99Us": 223359.55103999987,
+        "medianBytes": 198184,
+        "medianEvidenceBytes": 774,
+        "certificateChecks": 0,
+        "directProofs": 0,
+        "routes": {
+          "original": 15
+        }
+      },
+      {
+        "arm": "warm",
+        "rows": 15,
+        "statuses": {
+          "Optimal": 15
+        },
+        "medianUs": 6079.869,
+        "p95Us": 22068.455899999997,
+        "p99Us": 24124.799979999996,
+        "medianBytes": 204864,
+        "medianEvidenceBytes": 770,
+        "certificateChecks": 0,
+        "directProofs": 0,
+        "routes": {
+          "warm": 15
+        }
+      },
+      {
+        "arm": "G13",
+        "rows": 15,
+        "statuses": {
+          "Optimal": 15
+        },
+        "medianUs": 9171.283,
+        "p95Us": 16825.2267,
+        "p99Us": 16871.86854,
+        "medianBytes": 177720,
+        "medianEvidenceBytes": 769,
+        "certificateChecks": 0,
+        "directProofs": 0,
+        "routes": {
+          "G13": 15
+        }
+      },
+      {
+        "arm": "G14",
+        "rows": 15,
+        "statuses": {
+          "Optimal": 15
+        },
+        "medianUs": 4597.661,
+        "p95Us": 16680.543,
+        "p99Us": 16821.780600000002,
+        "medianBytes": 177720,
+        "medianEvidenceBytes": 769,
+        "certificateChecks": 0,
+        "directProofs": 0,
+        "routes": {
+          "G14": 15
+        }
+      },
+      {
+        "arm": "cert-native",
+        "rows": 15,
+        "statuses": {
+          "Optimal": 15
+        },
+        "medianUs": 6999.687,
+        "p95Us": 38731.16319999998,
+        "p99Us": 49768.69263999999,
+        "medianBytes": 363616,
+        "medianEvidenceBytes": 6527,
+        "certificateChecks": 15,
+        "directProofs": 0,
+        "routes": {
+          "native-quotient": 15
+        }
+      },
+      {
+        "arm": "cert-direct",
+        "rows": 15,
+        "statuses": {
+          "Optimal": 15
+        },
+        "medianUs": 3456.613,
+        "p95Us": 17240.4924,
+        "p99Us": 17564.40088,
+        "medianBytes": 246736,
+        "medianEvidenceBytes": 6526,
+        "certificateChecks": 15,
+        "directProofs": 6,
+        "routes": {
+          "direct": 6,
+          "native-quotient": 9
+        }
+      },
+      {
+        "arm": "G15",
+        "rows": 15,
+        "statuses": {
+          "Optimal": 15
+        },
+        "medianUs": 3368.213,
+        "p95Us": 20945.891099999997,
+        "p99Us": 21960.06622,
+        "medianBytes": 233152,
+        "medianEvidenceBytes": 4370,
+        "certificateChecks": 12,
+        "directProofs": 6,
+        "routes": {
+          "direct": 6,
+          "warm": 3,
+          "native-quotient": 6
+        }
+      }
+    ],
+    "comparisons": [
+      {
+        "base": "original",
+        "histories": 5,
+        "totalHistories": 5,
+        "seedClusters": 1,
+        "medianSpeedup": 1.6132433227967948,
+        "ci95": null,
+        "p10": 0.9623916589302223,
+        "p90": 20.736177700679235,
+        "wins": 4
+      },
+      {
+        "base": "warm",
+        "histories": 5,
+        "totalHistories": 5,
+        "seedClusters": 1,
+        "medianSpeedup": 1.54304429095845,
+        "ci95": null,
+        "p10": 1.1124140256373138,
+        "p90": 3.3258084251588667,
+        "wins": 5
+      },
+      {
+        "base": "G13",
+        "histories": 5,
+        "totalHistories": 5,
+        "seedClusters": 1,
+        "medianSpeedup": 1.0431236702563205,
+        "ci95": null,
+        "p10": 0.8026239412611006,
+        "p90": 2.8310685293924664,
+        "wins": 3
+      },
+      {
+        "base": "G14",
+        "histories": 5,
+        "totalHistories": 5,
+        "seedClusters": 1,
+        "medianSpeedup": 1.0520210992840822,
+        "ci95": null,
+        "p10": 0.7552621605708355,
+        "p90": 2.2089865399600015,
+        "wins": 3
+      },
+      {
+        "base": "cert-native",
+        "histories": 5,
+        "totalHistories": 5,
+        "seedClusters": 1,
+        "medianSpeedup": 1.1449712449652032,
+        "ci95": null,
+        "p10": 0.9959989093673413,
+        "p90": 5.375915620607528,
+        "wins": 4
+      },
+      {
+        "base": "cert-direct",
+        "histories": 5,
+        "totalHistories": 5,
+        "seedClusters": 1,
+        "medianSpeedup": 0.917824654750254,
+        "ci95": null,
+        "p10": 0.8556198992041062,
+        "p90": 2.0259775089558754,
+        "wins": 1
+      }
+    ],
+    "byFamily": [
+      {
+        "family": "disjoint",
+        "comparisons": [
+          {
+            "base": "original",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 32.18852048567851,
+            "ci95": null,
+            "p10": 32.18852048567851,
+            "p90": 32.18852048567851,
+            "wins": 1
+          },
+          {
+            "base": "warm",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 1.6656455971891877,
+            "ci95": null,
+            "p10": 1.6656455971891877,
+            "p90": 1.6656455971891877,
+            "wins": 1
+          },
+          {
+            "base": "G13",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 2.7686069017343886,
+            "ci95": null,
+            "p10": 2.7686069017343886,
+            "p90": 2.7686069017343886,
+            "wins": 1
+          },
+          {
+            "base": "G14",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 1.4474806322914462,
+            "ci95": null,
+            "p10": 1.4474806322914462,
+            "p90": 1.4474806322914462,
+            "wins": 1
+          },
+          {
+            "base": "cert-native",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 7.910023887226365,
+            "ci95": null,
+            "p10": 7.910023887226365,
+            "p90": 7.910023887226365,
+            "wins": 1
+          },
+          {
+            "base": "cert-direct",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 2.7215622484841737,
+            "ci95": null,
+            "p10": 2.7215622484841737,
+            "p90": 2.7215622484841737,
+            "wins": 1
+          }
+        ]
+      },
+      {
+        "family": "signed-pairs",
+        "comparisons": [
+          {
+            "base": "original",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 3.5576635231803215,
+            "ci95": null,
+            "p10": 3.5576635231803215,
+            "p90": 3.5576635231803215,
+            "wins": 1
+          },
+          {
+            "base": "warm",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 4.4325836438053186,
+            "ci95": null,
+            "p10": 4.4325836438053186,
+            "p90": 4.4325836438053186,
+            "wins": 1
+          },
+          {
+            "base": "G13",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 2.8727096144978517,
+            "ci95": null,
+            "p10": 2.8727096144978517,
+            "p90": 2.8727096144978517,
+            "wins": 1
+          },
+          {
+            "base": "G14",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 2.716657145072371,
+            "ci95": null,
+            "p10": 2.716657145072371,
+            "p90": 2.716657145072371,
+            "wins": 1
+          },
+          {
+            "base": "cert-native",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 1.5747532206792705,
+            "ci95": null,
+            "p10": 1.5747532206792705,
+            "p90": 1.5747532206792705,
+            "wins": 1
+          },
+          {
+            "base": "cert-direct",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 0.8746703828088975,
+            "ci95": null,
+            "p10": 0.8746703828088975,
+            "p90": 0.8746703828088975,
+            "wins": 0
+          }
+        ]
+      },
+      {
+        "family": "overlap",
+        "comparisons": [
+          {
+            "base": "original",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 0.8871313306788485,
+            "ci95": null,
+            "p10": 0.8871313306788485,
+            "p90": 0.8871313306788485,
+            "wins": 0
+          },
+          {
+            "base": "warm",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 1.06034373474609,
+            "ci95": null,
+            "p10": 1.06034373474609,
+            "p90": 1.06034373474609,
+            "wins": 1
+          },
+          {
+            "base": "G13",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 0.7862816362935894,
+            "ci95": null,
+            "p10": 0.7862816362935894,
+            "p90": 0.7862816362935894,
+            "wins": 0
+          },
+          {
+            "base": "G14",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 0.7846036786467925,
+            "ci95": null,
+            "p10": 0.7846036786467925,
+            "p90": 0.7846036786467925,
+            "wins": 0
+          },
+          {
+            "base": "cert-native",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 1.1449712449652032,
+            "ci95": null,
+            "p10": 1.1449712449652032,
+            "p90": 1.1449712449652032,
+            "wins": 1
+          },
+          {
+            "base": "cert-direct",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 0.842919576800912,
+            "ci95": null,
+            "p10": 0.842919576800912,
+            "p90": 0.842919576800912,
+            "wins": 0
+          }
+        ]
+      },
+      {
+        "family": "weak-overlap",
+        "comparisons": [
+          {
+            "base": "original",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 1.0752821513072828,
+            "ci95": null,
+            "p10": 1.0752821513072828,
+            "p90": 1.0752821513072828,
+            "wins": 1
+          },
+          {
+            "base": "warm",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 1.1905194619741495,
+            "ci95": null,
+            "p10": 1.1905194619741495,
+            "p90": 1.1905194619741495,
+            "wins": 1
+          },
+          {
+            "base": "G13",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 1.0431236702563205,
+            "ci95": null,
+            "p10": 1.0431236702563205,
+            "p90": 1.0431236702563205,
+            "wins": 1
+          },
+          {
+            "base": "G14",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 1.0520210992840822,
+            "ci95": null,
+            "p10": 1.0520210992840822,
+            "p90": 1.0520210992840822,
+            "wins": 1
+          },
+          {
+            "base": "cert-native",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 1.0860140118909676,
+            "ci95": null,
+            "p10": 1.0860140118909676,
+            "p90": 1.0860140118909676,
+            "wins": 1
+          },
+          {
+            "base": "cert-direct",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 0.982600399663427,
+            "ci95": null,
+            "p10": 0.982600399663427,
+            "p90": 0.982600399663427,
+            "wins": 0
+          }
+        ]
+      },
+      {
+        "family": "strong-overlap",
+        "comparisons": [
+          {
+            "base": "original",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 1.6132433227967948,
+            "ci95": null,
+            "p10": 1.6132433227967948,
+            "p90": 1.6132433227967948,
+            "wins": 1
+          },
+          {
+            "base": "warm",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 1.54304429095845,
+            "ci95": null,
+            "p10": 1.54304429095845,
+            "p90": 1.54304429095845,
+            "wins": 1
+          },
+          {
+            "base": "G13",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 0.8271373987123675,
+            "ci95": null,
+            "p10": 0.8271373987123675,
+            "p90": 0.8271373987123675,
+            "wins": 0
+          },
+          {
+            "base": "G14",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 0.7357011485201975,
+            "ci95": null,
+            "p10": 0.7357011485201975,
+            "p90": 0.7357011485201975,
+            "wins": 0
+          },
+          {
+            "base": "cert-native",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 0.9359888410182571,
+            "ci95": null,
+            "p10": 0.9359888410182571,
+            "p90": 0.9359888410182571,
+            "wins": 0
+          },
+          {
+            "base": "cert-direct",
+            "histories": 1,
+            "totalHistories": 1,
+            "seedClusters": 1,
+            "medianSpeedup": 0.917824654750254,
+            "ci95": null,
+            "p10": 0.917824654750254,
+            "p90": 0.917824654750254,
+            "wins": 0
+          }
+        ]
+      }
+    ]
+  }
+}
