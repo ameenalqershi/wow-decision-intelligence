@@ -93,4 +93,21 @@ const aa=data.G17.comparison.summaries.find(x=>x.arm==='assignment-proof'),cp=da
 data.metrics.G17DirectProven={numerator:aa.proofs,denominator:aa.rows};
 data.metrics.G17CPOptimal={numerator:cp.statuses.Optimal,denominator:cp.rows};
 data.metrics.G17TamperRejection={numerator:data.G17.independentAudit.rejected,denominator:data.G17.independentAudit.tamper};
+const unified=get('reviews/wide-native-quotient/unified/summary.json'),selector=get('reviews/wide-native-quotient/unified/selector/summary.json'),gate=get('reviews/wide-native-quotient/unified/selector/gate-summary.json');
+const unifiedSplits={};
+for(const split of ['holdout','disk','selector']){
+ const rows=read(path.join(wide,'unified',split,'raw.jsonl'));
+ unifiedSplits[split]={records:rows.length,optimal:rows.filter(r=>r.status==='Optimal').length,distinctDigests:new Set(rows.map(r=>r.digest)).size,verifiedWitnesses:rows.filter(r=>r.witness).length};
+}
+data.G18G19={bySplit:unifiedSplits,comparison:unified,selector,gate,independentAudit:get('reviews/wide-native-quotient/unified/audit/summary.json'),adversarial:get('reviews/wide-native-quotient/unified/adversarial/summary.json'),readback:get('reviews/wide-native-quotient/unified/adversarial/readback.json'),journal:get('reviews/wide-native-quotient/unified/journal/summary.json'),industrial:get('reviews/wide-native-quotient/unified/industrial/summary.json')};
+const u=unified.holdout.summaries.find(x=>x.arm==='unified-reuse'),g=selector.selector.summaries.find(x=>x.arm==='unified-gate');
+data.metrics.G18FormalOptima={numerator:u.formal,denominator:u.rows};
+data.metrics.G18AvoidGeneralCpSat={numerator:u.formal,denominator:u.rows};
+data.metrics.G18ExactLocalHits={numerator:u.reused,denominator:u.blocks};
+data.metrics.G18TransportedLocalProofs={numerator:u.transported,denominator:u.blocks};
+data.metrics.G18OriginalWins={numerator:unified.holdout.comparisons.find(x=>x.base==='original').wins,denominator:unified.holdout.histories};
+data.metrics.G19FlowFormal={numerator:u.routes.flow,denominator:120};
+data.metrics.G18GateFormal={numerator:g.formal,denominator:g.rows};
+data.metrics.G18JournalCrashRecovery={numerator:data.G18G19.journal.crashesPassed,denominator:data.G18G19.journal.crashes};
+data.metrics.G18JournalTamperRejection={numerator:data.G18G19.journal.rejected,denominator:data.G18G19.journal.tamper};
 console.log(JSON.stringify(data,null,2));
