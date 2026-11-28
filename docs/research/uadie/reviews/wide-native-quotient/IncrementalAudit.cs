@@ -31,13 +31,13 @@ internal static class IncrementalAudit
         if(r.Status!=(expected.HasValue?"Optimal":"Infeasible")||r.Value!=expected||
             (expected.HasValue&&(r.Bits==null||Evaluate(m,r.Bits)!=expected)))throw new Exception("reference mismatch");
     }
-    internal static void Run(Func<WideModel,WideResult> original)
+    internal static void Run(Func<WideModel,WideResult> original,bool template=false)
     {
-        var cache=new IncrementalQuotient(true);
+        var cache=new IncrementalQuotient(true,template,template);
         int checks=0;
         for(int s=0;s<64;s++)
         {
-            var rng=new Random(1860101+s);int n=8;
+            var rng=new Random((template?2090101:1860101)+s);int n=8;
             var edges=new List<(int,int)>();for(int i=0;i<7;i++)if(rng.Next(3)!=0)edges.Add((i,i+1));
             var rows=new List<WideRow>{new([0,2,4,6],1,3),new([1,3,5,7],1,2)};
             var fixes=new List<(int,int)>();
@@ -54,18 +54,26 @@ internal static class IncrementalAudit
                 var m=new WideModel(n,edges.ToArray(),fixes.ToArray(),rows.ToArray(),cost.ToArray());
                 var r=cache.Solve(m,original,new());
                 long? expected=Exact(m);
-                Console.WriteLine(JsonSerializer.Serialize(new{kind="finite",seed=s,rev,model=m,status=r.Status,value=r.Value,expected,bits=r.Bits,hit=cache.Hit},Options));
+                Console.WriteLine(JsonSerializer.Serialize(new{kind="finite",seed=s,rev,model=m,status=r.Status,value=r.Value,expected,bits=r.Bits,hit=cache.Hit,templateHit=cache.TemplateHit},Options));
                 Match(m,r,expected);checks++;
             }
         }
         Console.WriteLine(JsonSerializer.Serialize(new{kind="finite-summary",checks}));
         void Assert(string name,bool ok){Console.WriteLine(JsonSerializer.Serialize(new{kind="boundary",name,valid=ok}));if(!ok)throw new Exception(name);}
         bool Reject<T>(Action a)where T:Exception{try{a();return false;}catch(T){return true;}}
-        var local=new IncrementalQuotient(true);
+        var local=new IncrementalQuotient(true,template,template);
         var m0=new WideModel(4,[(0,1),(1,2),(2,3)],[],[new([0,2],0,2)],[3,-4,5,-6]);
         Match(m0,local.Solve(m0,original,new()),Exact(m0));
         m0.Cost[0]=-30;Match(m0,local.Solve(m0,original,new()),Exact(m0));
         Assert("fresh-objective-hit",local.Hit);
+        if(template)
+        {
+            Assert("native-template-hit",local.TemplateHit);
+            Array.Fill(m0.Cost,0L);Match(m0,local.Solve(m0,original,new()),0);
+            Assert("zero-objective-template-hit",local.TemplateHit);
+            m0.Cost[3]=-47;Match(m0,local.Solve(m0,original,new()),Exact(m0));
+            Assert("negative-objective-template-hit",local.TemplateHit);
+        }
         m0.Rows[0].Scope[0]=1;Match(m0,local.Solve(m0,original,new()),Exact(m0));
         Assert("same-array-row-invalidates",!local.Hit);
         m0.Edges[0]=(0,2);Match(m0,local.Solve(m0,original,new()),Exact(m0));
@@ -78,24 +86,25 @@ internal static class IncrementalAudit
         Assert("invalid-domain",Reject<ArgumentException>(()=>local.Solve(m0 with{Fixes=[(1,2)]},original,new())));
         Assert("overflow",Reject<OverflowException>(()=>local.Solve(m0 with{Cost=[long.MaxValue,0,0,0]},original,new())));
         Match(m0,local.Solve(m0,original,new()),Exact(m0));Assert("recovery-preserves-plan",local.Hit);
+        if(template){Assert("failed-call-discarded-template",!local.TemplateHit);Match(m0,local.Solve(m0,original,new()),Exact(m0));Assert("template-rebuilt-after-failure",local.TemplateHit);}
         using var entered=new ManualResetEventSlim();using var release=new ManualResetEventSlim();
         var uncompressed=new WideModel(4,[],[],[],[1,2,3,4]);
         var t=Task.Run(()=>local.Solve(uncompressed,m=>{entered.Set();release.Wait();return original(m);},new()));
         if(!entered.Wait(TimeSpan.FromSeconds(5)))throw new Exception("concurrency setup");
         try{Assert("same-session-overlap-rejected",Reject<InvalidOperationException>(()=>local.Solve(m0,original,new())));}
         finally{release.Set();}Match(uncompressed,t.GetAwaiter().GetResult(),0);
-        Assert("separate-session-isolation",Enumerable.Range(0,4).AsParallel().All(i=>{var m=uncompressed with{Cost=[-i,2,3,4]};return new IncrementalQuotient(true).Solve(m,original,new()).Value==-i;}));
+        Assert("separate-session-isolation",Enumerable.Range(0,4).AsParallel().All(i=>{var m=uncompressed with{Cost=[-i,2,3,4]};return new IncrementalQuotient(true,template,template).Solve(m,original,new()).Value==-i;}));
         foreach(int n in new[]{64,512,4096})
         foreach(string family in new[]{"structured","uncompressed","contradiction"})
         for(int seed=0;seed<2;seed++)
         {
-            var rng=new Random(1890101+seed+n);var planted=Enumerable.Range(0,n).Select(_=>rng.Next(2)).ToArray();
+            var rng=new Random((template?2120101:1890101)+seed+n);var planted=Enumerable.Range(0,n).Select(_=>rng.Next(2)).ToArray();
             var edges=new List<(int,int)>();
             if(family!="uncompressed")for(int i=0;i<n-1;i+=2){edges.Add((i,i+1));planted[i+1]=1-planted[i];}
             var rows=new List<WideRow>();
             for(int i=0;i<n;i+=8){int[] scope=Enumerable.Range(i,Math.Min(8,n-i)).ToArray();int v=scope.Sum(j=>planted[j]);rows.Add(new(scope,v,v));}
             var fixes=new List<(int,int)>();
-            var session=new IncrementalQuotient(true);
+            var session=new IncrementalQuotient(true,template,template);
             for(int rev=0;rev<3;rev++)
             {
                 if(rev==2){if(family=="contradiction"){fixes.Add((0,0));fixes.Add((1,0));}else fixes.Add((0,planted[0]));}
@@ -103,7 +112,7 @@ internal static class IncrementalAudit
                 var a=session.Solve(m,original,new());var b=Highs(m);
                 bool ca=a.Status is "Optimal" or "Infeasible",cb=b.Status is "Optimal" or "Infeasible";
                 if(a.Bits!=null&&Evaluate(m,a.Bits)!=a.Value||b.Bits!=null&&Evaluate(m,b.Bits)!=b.Value)throw new Exception("wide witness");
-                Console.WriteLine(JsonSerializer.Serialize(new{kind="highs",n,family,seed,rev,model=m,g13=a,highs=b,conclusive=ca&&cb,hit=session.Hit},Options));
+                Console.WriteLine(JsonSerializer.Serialize(new{kind="highs",n,family,seed,rev,model=m,g13=a,highs=b,conclusive=ca&&cb,hit=session.Hit,templateHit=session.TemplateHit},Options));
                 if(ca&&cb&&(a.Status!=b.Status||a.Value!=b.Value))throw new Exception("independent solver mismatch");
                 if(a.Status=="Optimal"&&b.Value<a.Value||b.Status=="Optimal"&&a.Value<b.Value)throw new Exception("bound mismatch");
                 if(a.Status=="Infeasible"&&b.Bits!=null||b.Status=="Infeasible"&&a.Bits!=null)throw new Exception("status mismatch");
