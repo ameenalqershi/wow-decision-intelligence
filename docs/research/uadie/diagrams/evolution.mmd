@@ -1,0 +1,18 @@
+flowchart TD
+  n0["[I] G1: Box floor"]:::I
+  n1["[I] G2: Disjoint pairs"]:::I
+  n2["[I] G3: Parity graph"]:::I
+  n3["[I] G4: Orientation solve"]:::I
+  n4["[P] Quota / fixed bits"]:::P
+  n5["[C] Adaptive portfolio"]:::C
+  n0 --> n1
+  n1 --> n2
+  n2 --> n3
+  n3 --> n4
+  n3 --> n5
+  n4 --> n5
+  classDef I fill:#23463f,color:#fff,stroke:#23463f
+  classDef P fill:#224f75,color:#fff,stroke:#224f75
+  classDef T fill:#326437,color:#fff,stroke:#326437
+  classDef C fill:#83551c,color:#fff,stroke:#83551c
+  classDef U fill:#86404a,color:#fff,stroke:#86404a

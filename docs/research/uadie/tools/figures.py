@@ -24,10 +24,20 @@ FIGURES = [
 ("sequence","Messages for a changed revision","تتابع رسائل النسخة الجديدة",["I|Registry: snapshot","P|Planner: old/new diff","P|Cache: scoped proof","C|Worker: solve misses","I|Checker: evaluate","I|Store: append #35"],[(0,1),(1,2),(2,3),(3,4),(4,5)]),
 ("comparison","Local and shared edits","التغيير المحلي والمشترك",["C|Old blocks A and B","C|Edit price in A","P|Recheck A; test B key","C|New row uses A and B","T|Join A and B","C|Solve joined model"],[(0,1),(1,2),(0,3),(3,4),(4,5)]),
 ("repair","Bound closes a repair","متى يثبت الإصلاح الأمثلية؟",["P|Freeze exterior #42","C|Solve restricted model","C|Check global feasibility","T|Upper bound for min","C|Global lower bound","T|Equal bounds: optimal"],[(0,1),(1,2),(2,3),(3,5),(4,5)]),
+
+("parity-transport","Parity residual lower bound","الحد الرياضي لشبكة التكافؤ",["I|Eligible pair rows","I|Color A / B","T|Odd cycle: impossible","I|Sum delta by color","T|Min per component","T|Sum exact graph floor"],[(0,1),(1,2),(1,3),(3,4),(4,5)]),
+("orientation","Exact orientation search","ضغط المكونات إلى اتجاهات",["I|All current pair rows","T|Two color assignments","I|k orientation bits","I|Search both choices","I|Recheck all hard rows","T|Exact current optimum"],[(0,1),(1,2),(2,3),(3,4),(4,5)]),
+("perturbation","Objective perturbation","تغير أسعار القرار",["I|Old f and bound L","I|New objective g","C|Check F' subset F","I|Delta = new - old","T|Bound L + residual","C|Compare witness cost"],[(0,2),(1,3),(2,4),(3,4),(4,5)]),
+("selection","Eligibility and adaptive selection","اختيار المرشح المؤهل",["C|Admit model profile","C|Check scope and budget","I|Warm: tiny / sparse","I|Parity certificate","I|Orientation search","C|Verify or fallback"],[(0,1),(1,2),(1,3),(1,4),(2,5),(3,5),(4,5)]),
+("discovery","Frozen research cycle","دورة البحث والتحقق",["P|Falsifiable hypothesis","I|Freeze code + seeds","I|Bounded execution","I|Independent oracle","C|Counterexample or data","C|Reject / retain"],[(0,1),(1,2),(2,3),(3,4),(4,5)]),
+("evolution","Algorithm evolution","تطور أجيال الخوارزمية",["I|G1: Box floor","I|G2: Disjoint pairs","I|G3: Parity graph","I|G4: Orientation solve","P|Quota / fixed bits","C|Adaptive portfolio"],[(0,1),(1,2),(2,3),(3,4),(3,5),(4,5)]),
+("math-dependency","Mathematical proof dependencies","اعتماديات الإثبات الرياضي",["T|T1: Restriction","T|T3: Box","T|T4: Pair","T|T5: Parity bound","T|T6: Orientation","C|Verified witness"],[(1,2),(2,3),(3,4),(0,3),(3,5),(4,5)]),
+("before-after","Cold search versus structural reuse","قبل وبعد استخدام البنية",["I|Cold: all variables","I|Search and verify","T|Current optimum","I|Revised: graph first","I|Reuse / compress","C|Verify current scope"],[(0,1),(1,2),(3,4),(4,5)]),
 ]
-def build():
+def build(stems=None):
     OUT.mkdir(exist_ok=True)
     for stem,en,ar,nodes,edges in FIGURES:
+        if stems is not None and stem not in stems: continue
         m=['flowchart TD']
         svg=['<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 227" role="img">',f'<title>{escape(en)}</title>']
         # Two parallel lanes of three steps. Connections cross the gutter.

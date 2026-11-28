@@ -1,0 +1,17 @@
+flowchart TD
+  n0["[I] Old f and bound L"]:::I
+  n1["[I] New objective g"]:::I
+  n2["[C] Check F' subset F"]:::C
+  n3["[I] Delta = new - old"]:::I
+  n4["[T] Bound L + residual"]:::T
+  n5["[C] Compare witness cost"]:::C
+  n0 --> n2
+  n1 --> n3
+  n2 --> n4
+  n3 --> n4
+  n4 --> n5
+  classDef I fill:#23463f,color:#fff,stroke:#23463f
+  classDef P fill:#224f75,color:#fff,stroke:#224f75
+  classDef T fill:#326437,color:#fff,stroke:#326437
+  classDef C fill:#83551c,color:#fff,stroke:#83551c
+  classDef U fill:#86404a,color:#fff,stroke:#86404a

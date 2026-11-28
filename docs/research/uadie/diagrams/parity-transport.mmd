@@ -1,0 +1,17 @@
+flowchart TD
+  n0["[I] Eligible pair rows"]:::I
+  n1["[I] Color A / B"]:::I
+  n2["[T] Odd cycle: impossible"]:::T
+  n3["[I] Sum delta by color"]:::I
+  n4["[T] Min per component"]:::T
+  n5["[T] Sum exact graph floor"]:::T
+  n0 --> n1
+  n1 --> n2
+  n1 --> n3
+  n3 --> n4
+  n4 --> n5
+  classDef I fill:#23463f,color:#fff,stroke:#23463f
+  classDef P fill:#224f75,color:#fff,stroke:#224f75
+  classDef T fill:#326437,color:#fff,stroke:#326437
+  classDef C fill:#83551c,color:#fff,stroke:#83551c
+  classDef U fill:#86404a,color:#fff,stroke:#86404a

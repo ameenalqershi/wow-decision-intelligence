@@ -1,0 +1,18 @@
+flowchart TD
+  n0["[T] T1: Restriction"]:::T
+  n1["[T] T3: Box"]:::T
+  n2["[T] T4: Pair"]:::T
+  n3["[T] T5: Parity bound"]:::T
+  n4["[T] T6: Orientation"]:::T
+  n5["[C] Verified witness"]:::C
+  n1 --> n2
+  n2 --> n3
+  n3 --> n4
+  n0 --> n3
+  n3 --> n5
+  n4 --> n5
+  classDef I fill:#23463f,color:#fff,stroke:#23463f
+  classDef P fill:#224f75,color:#fff,stroke:#224f75
+  classDef T fill:#326437,color:#fff,stroke:#326437
+  classDef C fill:#83551c,color:#fff,stroke:#83551c
+  classDef U fill:#86404a,color:#fff,stroke:#86404a
