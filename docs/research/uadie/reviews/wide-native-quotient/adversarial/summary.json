@@ -1,0 +1,153 @@
+{
+  "rows": 96,
+  "verifiedWitnesses": 44,
+  "status": {
+    "original": {
+      "Optimal": 21,
+      "Infeasible": 24,
+      "Feasible": 1,
+      "Unknown": 2
+    },
+    "quotient": {
+      "Optimal": 20,
+      "Infeasible": 24,
+      "Feasible": 2,
+      "Unknown": 2
+    }
+  },
+  "all": {
+    "models": 48,
+    "bothConclusive": 44,
+    "bothOptimal": 20,
+    "bothInfeasible": 24,
+    "medianSpeedup": 1.6280791366452538,
+    "wins": 31,
+    "originalMedianMs": 8.238529499999999,
+    "quotientMedianMs": 4.0274175,
+    "medianReducedVars": 63
+  },
+  "byFamily": [
+    {
+      "family": "uncompressed",
+      "models": 8,
+      "bothConclusive": 8,
+      "bothOptimal": 8,
+      "bothInfeasible": 0,
+      "medianSpeedup": 0.8252520174279349,
+      "wins": 1,
+      "originalMedianMs": 38.1535105,
+      "quotientMedianMs": 34.2654375,
+      "medianReducedVars": 2304
+    },
+    {
+      "family": "sparse-matching",
+      "models": 8,
+      "bothConclusive": 8,
+      "bothOptimal": 8,
+      "bothInfeasible": 0,
+      "medianSpeedup": 1.0838282590025512,
+      "wins": 7,
+      "originalMedianMs": 21.390761,
+      "quotientMedianMs": 19.9030235,
+      "medianReducedVars": 2016
+    },
+    {
+      "family": "odd-cycle",
+      "models": 8,
+      "bothConclusive": 8,
+      "bothOptimal": 0,
+      "bothInfeasible": 8,
+      "medianSpeedup": 72.18370458142657,
+      "wins": 8,
+      "originalMedianMs": 5.6618645,
+      "quotientMedianMs": 0.06443499999999999,
+      "medianReducedVars": 0
+    },
+    {
+      "family": "opposite-fixes",
+      "models": 8,
+      "bothConclusive": 8,
+      "bothOptimal": 0,
+      "bothInfeasible": 8,
+      "medianSpeedup": 9.381787709567565,
+      "wins": 7,
+      "originalMedianMs": 9.1753685,
+      "quotientMedianMs": 1.0733885,
+      "medianReducedVars": 0
+    },
+    {
+      "family": "impossible-row",
+      "models": 8,
+      "bothConclusive": 8,
+      "bothOptimal": 0,
+      "bothInfeasible": 8,
+      "medianSpeedup": 2.431238265437341,
+      "wins": 6,
+      "originalMedianMs": 5.0112155,
+      "quotientMedianMs": 2.7010845,
+      "medianReducedVars": 2302
+    },
+    {
+      "family": "overlapping",
+      "models": 8,
+      "bothConclusive": 4,
+      "bothOptimal": 4,
+      "bothInfeasible": 0,
+      "medianSpeedup": 1.005586784809811,
+      "wins": 2,
+      "originalMedianMs": 15.846225500000001,
+      "quotientMedianMs": 16.041625500000002,
+      "medianReducedVars": 252
+    }
+  ],
+  "bySize": [
+    {
+      "n": 64,
+      "models": 12,
+      "bothConclusive": 12,
+      "bothOptimal": 6,
+      "bothInfeasible": 6,
+      "medianSpeedup": 2.469922766935129,
+      "wins": 11,
+      "originalMedianMs": 0.9546885,
+      "quotientMedianMs": 0.706894,
+      "medianReducedVars": 56
+    },
+    {
+      "n": 512,
+      "models": 12,
+      "bothConclusive": 12,
+      "bothOptimal": 6,
+      "bothInfeasible": 6,
+      "medianSpeedup": 0.9834056907361186,
+      "wins": 5,
+      "originalMedianMs": 4.9367205,
+      "quotientMedianMs": 5.696384500000001,
+      "medianReducedVars": 448
+    },
+    {
+      "n": 4096,
+      "models": 12,
+      "bothConclusive": 10,
+      "bothOptimal": 4,
+      "bothInfeasible": 6,
+      "medianSpeedup": 3.119517555184358,
+      "wins": 8,
+      "originalMedianMs": 12.7777815,
+      "quotientMedianMs": 3.6876195000000003,
+      "medianReducedVars": 3584
+    },
+    {
+      "n": 10000,
+      "models": 12,
+      "bothConclusive": 10,
+      "bothOptimal": 4,
+      "bothInfeasible": 6,
+      "medianSpeedup": 2.2414956622841835,
+      "wins": 7,
+      "originalMedianMs": 40.84021,
+      "quotientMedianMs": 18.320171000000002,
+      "medianReducedVars": 8750
+    }
+  ]
+}
