@@ -1,0 +1,5 @@
+Sat Nov 28 03:00:23 AM UTC 2026
+Linux localhost 6.8.0-134-generic #134-Ubuntu SMP PREEMPT_DYNAMIC Fri Jun 26 18:43:11 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+10.0.115
+9cdd810c32adcdb02ba74baed3dbfc8215ac98d5
+CPU5 768MiB timeout120s HiGHS.Native 1.16.0

@@ -1,0 +1,19 @@
+{
+  "crashes": 4,
+  "crashesPassed": 4,
+  "race": {
+    "kind": "race",
+    "exits": [
+      134,
+      0
+    ],
+    "valid": true
+  },
+  "tamper": 6,
+  "rejected": 6,
+  "summary": {
+    "kind": "summary",
+    "checks": 11,
+    "valid": true
+  }
+}

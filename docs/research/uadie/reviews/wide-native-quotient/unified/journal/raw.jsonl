@@ -1,0 +1,12 @@
+{"kind":"crash","stage":"partial","exit":137,"visible":1,"recovered":2,"temps":1,"valid":true}
+{"kind":"crash","stage":"flushed","exit":137,"visible":1,"recovered":2,"temps":1,"valid":true}
+{"kind":"crash","stage":"renamed","exit":137,"visible":2,"recovered":3,"temps":0,"valid":true}
+{"kind":"crash","stage":"synced","exit":137,"visible":2,"recovered":3,"temps":0,"valid":true}
+{"kind":"race","exits":[134,0],"valid":true}
+{"kind":"tamper","name":"cross-tenant","rejected":true}
+{"kind":"tamper","name":"stale-revision","rejected":true}
+{"kind":"tamper","name":"suffix-deletion-with-receipt","rejected":true}
+{"kind":"tamper","name":"truncated-commit","rejected":true}
+{"kind":"tamper","name":"forged-hash","rejected":true}
+{"kind":"tamper","name":"missing-prefix","rejected":true}
+{"kind":"summary","checks":11,"valid":true}

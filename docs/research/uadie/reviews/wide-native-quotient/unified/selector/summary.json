@@ -1,0 +1,1057 @@
+{
+  "selector": {
+    "rows": 2520,
+    "models": 420,
+    "distinctDigests": 420,
+    "allOptimal": 420,
+    "histories": 84,
+    "summaries": [
+      {
+        "arm": "original",
+        "rows": 420,
+        "statuses": {
+          "Optimal": 420
+        },
+        "medianUs": 3522.554,
+        "p95Us": 6620.220049999998,
+        "p99Us": 8148.4972,
+        "medianBytes": 94248,
+        "medianEvidenceBytes": 1783,
+        "formal": 0,
+        "witnesses": 420,
+        "reused": 0,
+        "transported": 0,
+        "rebuilt": 0,
+        "blocks": 0,
+        "routes": {
+          "original": 420
+        }
+      },
+      {
+        "arm": "G16",
+        "rows": 420,
+        "statuses": {
+          "Optimal": 420
+        },
+        "medianUs": 3248.6639999999998,
+        "p95Us": 6601.605949999998,
+        "p99Us": 7691.6116,
+        "medianBytes": 80924,
+        "medianEvidenceBytes": 1963.5,
+        "formal": 120,
+        "witnesses": 420,
+        "reused": 0,
+        "transported": 0,
+        "rebuilt": 0,
+        "blocks": 120,
+        "routes": {
+          "direct": 120,
+          "original": 300
+        }
+      },
+      {
+        "arm": "unified-mono",
+        "rows": 420,
+        "statuses": {
+          "Optimal": 420
+        },
+        "medianUs": 832.559,
+        "p95Us": 6298.36305,
+        "p99Us": 9818.271,
+        "medianBytes": 107008,
+        "medianEvidenceBytes": 2293,
+        "formal": 300,
+        "witnesses": 420,
+        "reused": 0,
+        "transported": 19,
+        "rebuilt": 281,
+        "blocks": 300,
+        "routes": {
+          "direct": 120,
+          "assignment": 60,
+          "flow": 120,
+          "original": 120
+        }
+      },
+      {
+        "arm": "unified-reuse",
+        "rows": 420,
+        "statuses": {
+          "Optimal": 420
+        },
+        "medianUs": 1168.1825,
+        "p95Us": 6220.121949999998,
+        "p99Us": 7765.87028,
+        "medianBytes": 159000,
+        "medianEvidenceBytes": 2559,
+        "formal": 348,
+        "witnesses": 420,
+        "reused": 1536,
+        "transported": 90,
+        "rebuilt": 750,
+        "blocks": 2376,
+        "routes": {
+          "components": 168,
+          "assignment": 60,
+          "flow": 120,
+          "original": 72
+        }
+      },
+      {
+        "arm": "unified-gate",
+        "rows": 420,
+        "statuses": {
+          "Optimal": 420
+        },
+        "medianUs": 814.2239999999999,
+        "p95Us": 6238.104949999995,
+        "p99Us": 7778.769800000001,
+        "medianBytes": 106972,
+        "medianEvidenceBytes": 2559,
+        "formal": 348,
+        "witnesses": 420,
+        "reused": 120,
+        "transported": 42,
+        "rebuilt": 426,
+        "blocks": 588,
+        "routes": {
+          "direct": 120,
+          "assignment": 60,
+          "flow": 120,
+          "components": 48,
+          "original": 72
+        }
+      },
+      {
+        "arm": "unified-gate-flow",
+        "rows": 420,
+        "statuses": {
+          "Optimal": 420
+        },
+        "medianUs": 809.5335,
+        "p95Us": 6187.07345,
+        "p99Us": 7586.732300000001,
+        "medianBytes": 107032,
+        "medianEvidenceBytes": 2559,
+        "formal": 348,
+        "witnesses": 420,
+        "reused": 120,
+        "transported": 73,
+        "rebuilt": 395,
+        "blocks": 588,
+        "routes": {
+          "direct": 120,
+          "assignment": 60,
+          "flow": 120,
+          "components": 48,
+          "original": 72
+        }
+      }
+    ],
+    "comparisons": [
+      {
+        "base": "original",
+        "histories": 84,
+        "totalHistories": 84,
+        "clusters": 12,
+        "medianSpeedup": 3.528995752420996,
+        "ci95": [
+          3.337965936123365,
+          3.7914430575619003
+        ],
+        "wins": 73,
+        "min": 0.8908697909557539,
+        "p10": 0.9750388359728729,
+        "p90": 9.184705299964424
+      },
+      {
+        "base": "G16",
+        "histories": 84,
+        "totalHistories": 84,
+        "clusters": 12,
+        "medianSpeedup": 2.5160116317057843,
+        "ci95": [
+          2.3326140735691965,
+          3.5247238898548705
+        ],
+        "wins": 52,
+        "min": 0.49693779817567096,
+        "p10": 0.5835221247177947,
+        "p90": 8.615647879153459
+      },
+      {
+        "base": "unified-mono",
+        "histories": 84,
+        "totalHistories": 84,
+        "clusters": 12,
+        "medianSpeedup": 1.0725004075865976,
+        "ci95": [
+          1.0325699200947434,
+          1.1113233989151718
+        ],
+        "wins": 57,
+        "min": 0.7328774994779655,
+        "p10": 0.9193743569033372,
+        "p90": 2.5108618337153463
+      },
+      {
+        "base": "unified-reuse",
+        "histories": 84,
+        "totalHistories": 84,
+        "clusters": 12,
+        "medianSpeedup": 1.062537357685263,
+        "ci95": [
+          1.035088846359448,
+          1.102321093151012
+        ],
+        "wins": 60,
+        "min": 0.7103780443752125,
+        "p10": 0.9165721163741982,
+        "p90": 1.5467185997395314
+      },
+      {
+        "base": "unified-gate",
+        "histories": 84,
+        "totalHistories": 84,
+        "clusters": 12,
+        "medianSpeedup": 0.992167236926959,
+        "ci95": [
+          0.9779992332116012,
+          1.0114827159119422
+        ],
+        "wins": 39,
+        "min": 0.7315798444298351,
+        "p10": 0.9103623973934599,
+        "p90": 1.1624792923809375
+      }
+    ],
+    "byFamily": [
+      {
+        "family": "blocks",
+        "comparisons": [
+          {
+            "base": "original",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 3.528995752420996,
+            "ci95": [
+              3.337965936123365,
+              3.7914430575619003
+            ],
+            "wins": 12,
+            "min": 2.961413869822734,
+            "p10": 3.1622106870305617,
+            "p90": 4.297687697543357
+          },
+          {
+            "base": "G16",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 0.5930553424149194,
+            "ci95": [
+              0.5423723019040388,
+              0.6289358033733795
+            ],
+            "wins": 1,
+            "min": 0.49693779817567096,
+            "p10": 0.5185288762546626,
+            "p90": 0.6654201282818916
+          },
+          {
+            "base": "unified-mono",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.0502602056806067,
+            "ci95": [
+              0.953507465791334,
+              1.3186896099565328
+            ],
+            "wins": 7,
+            "min": 0.8584986865051049,
+            "p10": 0.8814592473209931,
+            "p90": 1.8091848791184466
+          },
+          {
+            "base": "unified-reuse",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.6084367579763676,
+            "ci95": [
+              1.5080252371161431,
+              1.741614647615326
+            ],
+            "wins": 12,
+            "min": 1.3434923851464031,
+            "p10": 1.3922079256599247,
+            "p90": 2.2157126105911367
+          },
+          {
+            "base": "unified-gate",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 0.981713107443152,
+            "ci95": [
+              0.930773097878379,
+              1.0510338771674492
+            ],
+            "wins": 6,
+            "min": 0.824967401114556,
+            "p10": 0.8611041909203252,
+            "p90": 1.1533139689555902
+          }
+        ],
+        "routes": [
+          {
+            "arm": "original",
+            "formal": 0,
+            "reused": 0,
+            "transported": 0
+          },
+          {
+            "arm": "G16",
+            "formal": 60,
+            "reused": 0,
+            "transported": 0
+          },
+          {
+            "arm": "unified-mono",
+            "formal": 60,
+            "reused": 0,
+            "transported": 0
+          },
+          {
+            "arm": "unified-reuse",
+            "formal": 60,
+            "reused": 696,
+            "transported": 12
+          },
+          {
+            "arm": "unified-gate",
+            "formal": 60,
+            "reused": 0,
+            "transported": 0
+          },
+          {
+            "arm": "unified-gate-flow",
+            "formal": 60,
+            "reused": 0,
+            "transported": 0
+          }
+        ]
+      },
+      {
+        "family": "quotas",
+        "comparisons": [
+          {
+            "base": "original",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.615202279831688,
+            "ci95": [
+              1.5677167674401442,
+              1.634593200577732
+            ],
+            "wins": 12,
+            "min": 1.5030014929730766,
+            "p10": 1.522244483825053,
+            "p90": 1.6696479286287154
+          },
+          {
+            "base": "G16",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 0.5891110167496816,
+            "ci95": [
+              0.5717268978049537,
+              0.6208420151231968
+            ],
+            "wins": 1,
+            "min": 0.5071348741640396,
+            "p10": 0.5603169394096897,
+            "p90": 0.6641222846734092
+          },
+          {
+            "base": "unified-mono",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.0243180699164367,
+            "ci95": [
+              0.9782255004039163,
+              1.1107890099216373
+            ],
+            "wins": 8,
+            "min": 0.864772554033848,
+            "p10": 0.9002370477725902,
+            "p90": 1.159122926063668
+          },
+          {
+            "base": "unified-reuse",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.3771062584092681,
+            "ci95": [
+              1.3436587004128109,
+              1.4648260743581454
+            ],
+            "wins": 12,
+            "min": 1.2877155566118543,
+            "p10": 1.3215237763495675,
+            "p90": 1.496389286838087
+          },
+          {
+            "base": "unified-gate",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.0047668856557068,
+            "ci95": [
+              0.9231409797165986,
+              1.0484280910027506
+            ],
+            "wins": 6,
+            "min": 0.8696779448347803,
+            "p10": 0.9083892418855848,
+            "p90": 1.1291991091405689
+          }
+        ],
+        "routes": [
+          {
+            "arm": "original",
+            "formal": 0,
+            "reused": 0,
+            "transported": 0
+          },
+          {
+            "arm": "G16",
+            "formal": 60,
+            "reused": 0,
+            "transported": 0
+          },
+          {
+            "arm": "unified-mono",
+            "formal": 60,
+            "reused": 0,
+            "transported": 0
+          },
+          {
+            "arm": "unified-reuse",
+            "formal": 60,
+            "reused": 720,
+            "transported": 36
+          },
+          {
+            "arm": "unified-gate",
+            "formal": 60,
+            "reused": 0,
+            "transported": 0
+          },
+          {
+            "arm": "unified-gate-flow",
+            "formal": 60,
+            "reused": 0,
+            "transported": 0
+          }
+        ]
+      },
+      {
+        "family": "assignment",
+        "comparisons": [
+          {
+            "base": "original",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 9.87615462395896,
+            "ci95": [
+              8.72535722420561,
+              10.6122554852255
+            ],
+            "wins": 12,
+            "min": 7.731992317537449,
+            "p10": 7.8691146300714605,
+            "p90": 11.852471472112947
+          },
+          {
+            "base": "G16",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 9.59035499340635,
+            "ci95": [
+              8.567879269190968,
+              10.117038016421246
+            ],
+            "wins": 12,
+            "min": 7.499074360564986,
+            "p10": 7.698730410641755,
+            "p90": 11.710370084783875
+          },
+          {
+            "base": "unified-mono",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.0688005803073213,
+            "ci95": [
+              0.9993154044388577,
+              1.131022167670252
+            ],
+            "wins": 9,
+            "min": 0.7328774994779655,
+            "p10": 0.943540346480039,
+            "p90": 1.5567557032938544
+          },
+          {
+            "base": "unified-reuse",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.0069738086475586,
+            "ci95": [
+              0.9304732955885104,
+              1.1112281257985206
+            ],
+            "wins": 8,
+            "min": 0.7103780443752125,
+            "p10": 0.8753925610232536,
+            "p90": 1.2102492359020531
+          },
+          {
+            "base": "unified-gate",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.0114827159119422,
+            "ci95": [
+              0.990407631707118,
+              1.0378433480301266
+            ],
+            "wins": 8,
+            "min": 0.802980397416806,
+            "p10": 0.9601669924689262,
+            "p90": 1.1498937543713377
+          }
+        ],
+        "routes": [
+          {
+            "arm": "original",
+            "formal": 0,
+            "reused": 0,
+            "transported": 0
+          },
+          {
+            "arm": "G16",
+            "formal": 0,
+            "reused": 0,
+            "transported": 0
+          },
+          {
+            "arm": "unified-mono",
+            "formal": 60,
+            "reused": 0,
+            "transported": 19
+          },
+          {
+            "arm": "unified-reuse",
+            "formal": 60,
+            "reused": 0,
+            "transported": 19
+          },
+          {
+            "arm": "unified-gate",
+            "formal": 60,
+            "reused": 0,
+            "transported": 19
+          },
+          {
+            "arm": "unified-gate-flow",
+            "formal": 60,
+            "reused": 0,
+            "transported": 19
+          }
+        ]
+      },
+      {
+        "family": "sparse",
+        "comparisons": [
+          {
+            "base": "original",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 5.397613777371766,
+            "ci95": [
+              4.800341726580582,
+              5.929873496707387
+            ],
+            "wins": 12,
+            "min": 3.9837014906369888,
+            "p10": 4.381955931250189,
+            "p90": 6.469117525160463
+          },
+          {
+            "base": "G16",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 5.285363914241424,
+            "ci95": [
+              4.7087122663688135,
+              5.658165336341269
+            ],
+            "wins": 12,
+            "min": 3.9104813203972086,
+            "p10": 4.249637875515275,
+            "p90": 6.253225348661249
+          },
+          {
+            "base": "unified-mono",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.063725421267492,
+            "ci95": [
+              0.9484157525277661,
+              1.1498319154350902
+            ],
+            "wins": 8,
+            "min": 0.8625528415997543,
+            "p10": 0.917318958365842,
+            "p90": 1.6890175340619729
+          },
+          {
+            "base": "unified-reuse",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.021420408725545,
+            "ci95": [
+              0.9409357938913452,
+              1.1089061019379678
+            ],
+            "wins": 7,
+            "min": 0.777142086543162,
+            "p10": 0.9025749933866124,
+            "p90": 1.1682550658648576
+          },
+          {
+            "base": "unified-gate",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 0.9558219155651155,
+            "ci95": [
+              0.9313535093969274,
+              0.9851238643460689
+            ],
+            "wins": 1,
+            "min": 0.7315798444298351,
+            "p10": 0.921447620885891,
+            "p90": 0.989171926261509
+          }
+        ],
+        "routes": [
+          {
+            "arm": "original",
+            "formal": 0,
+            "reused": 0,
+            "transported": 0
+          },
+          {
+            "arm": "G16",
+            "formal": 0,
+            "reused": 0,
+            "transported": 0
+          },
+          {
+            "arm": "unified-mono",
+            "formal": 60,
+            "reused": 0,
+            "transported": 0
+          },
+          {
+            "arm": "unified-reuse",
+            "formal": 60,
+            "reused": 0,
+            "transported": 0
+          },
+          {
+            "arm": "unified-gate",
+            "formal": 60,
+            "reused": 0,
+            "transported": 0
+          },
+          {
+            "arm": "unified-gate-flow",
+            "formal": 60,
+            "reused": 0,
+            "transported": 16
+          }
+        ]
+      },
+      {
+        "family": "rectangular",
+        "comparisons": [
+          {
+            "base": "original",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 6.602969964254385,
+            "ci95": [
+              6.129635789625407,
+              7.695923924398686
+            ],
+            "wins": 12,
+            "min": 5.514513129942655,
+            "p10": 5.727213808653172,
+            "p90": 7.9898930427701735
+          },
+          {
+            "base": "G16",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 6.451060620132623,
+            "ci95": [
+              6.125926031657478,
+              7.254928012715373
+            ],
+            "wins": 12,
+            "min": 5.489674691412378,
+            "p10": 5.996520083070976,
+            "p90": 8.179237967656904
+          },
+          {
+            "base": "unified-mono",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.0944613795507934,
+            "ci95": [
+              0.9914852171089255,
+              1.132644930398825
+            ],
+            "wins": 9,
+            "min": 0.8805794205435168,
+            "p10": 0.930686000239089,
+            "p90": 1.1570011214603468
+          },
+          {
+            "base": "unified-reuse",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.029668690827772,
+            "ci95": [
+              0.9737315446088415,
+              1.0986149767787903
+            ],
+            "wins": 8,
+            "min": 0.8465987525315056,
+            "p10": 0.9203822824135882,
+            "p90": 1.1909916445114441
+          },
+          {
+            "base": "unified-gate",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 0.9852616899160969,
+            "ci95": [
+              0.9533151053568845,
+              1.032742359560987
+            ],
+            "wins": 4,
+            "min": 0.855736680618285,
+            "p10": 0.9467423280758722,
+            "p90": 1.1953397702517152
+          }
+        ],
+        "routes": [
+          {
+            "arm": "original",
+            "formal": 0,
+            "reused": 0,
+            "transported": 0
+          },
+          {
+            "arm": "G16",
+            "formal": 0,
+            "reused": 0,
+            "transported": 0
+          },
+          {
+            "arm": "unified-mono",
+            "formal": 60,
+            "reused": 0,
+            "transported": 0
+          },
+          {
+            "arm": "unified-reuse",
+            "formal": 60,
+            "reused": 0,
+            "transported": 0
+          },
+          {
+            "arm": "unified-gate",
+            "formal": 60,
+            "reused": 0,
+            "transported": 0
+          },
+          {
+            "arm": "unified-gate-flow",
+            "formal": 60,
+            "reused": 0,
+            "transported": 15
+          }
+        ]
+      },
+      {
+        "family": "mixed",
+        "comparisons": [
+          {
+            "base": "original",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 2.483812721548374,
+            "ci95": [
+              2.4123071222314945,
+              2.691867548264945
+            ],
+            "wins": 12,
+            "min": 1.686873299183493,
+            "p10": 1.973742226819964,
+            "p90": 2.832020284250677
+          },
+          {
+            "base": "G16",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 2.3854552642623665,
+            "ci95": [
+              2.320727538033485,
+              2.6343702176185846
+            ],
+            "wins": 12,
+            "min": 1.972645577688328,
+            "p10": 2.045273093005824,
+            "p90": 2.7561305666014135
+          },
+          {
+            "base": "unified-mono",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 2.5062472571222663,
+            "ci95": [
+              2.3063545357765727,
+              2.729872852276002
+            ],
+            "wins": 12,
+            "min": 1.7917331221331867,
+            "p10": 2.0868112967923103,
+            "p90": 2.822666315289797
+          },
+          {
+            "base": "unified-reuse",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.0262515088504651,
+            "ci95": [
+              0.9847440861173422,
+              1.0858257317879803
+            ],
+            "wins": 7,
+            "min": 0.8285866862665159,
+            "p10": 0.8587598052772567,
+            "p90": 1.1399211142543364
+          },
+          {
+            "base": "unified-gate",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.0321312178646727,
+            "ci95": [
+              0.9699581569114432,
+              1.0754199104315072
+            ],
+            "wins": 8,
+            "min": 0.8115816733754041,
+            "p10": 0.8563504778021188,
+            "p90": 1.158856048142756
+          }
+        ],
+        "routes": [
+          {
+            "arm": "original",
+            "formal": 0,
+            "reused": 0,
+            "transported": 0
+          },
+          {
+            "arm": "G16",
+            "formal": 0,
+            "reused": 0,
+            "transported": 0
+          },
+          {
+            "arm": "unified-mono",
+            "formal": 0,
+            "reused": 0,
+            "transported": 0
+          },
+          {
+            "arm": "unified-reuse",
+            "formal": 48,
+            "reused": 120,
+            "transported": 23
+          },
+          {
+            "arm": "unified-gate",
+            "formal": 48,
+            "reused": 120,
+            "transported": 23
+          },
+          {
+            "arm": "unified-gate-flow",
+            "formal": 48,
+            "reused": 120,
+            "transported": 23
+          }
+        ]
+      },
+      {
+        "family": "overlap",
+        "comparisons": [
+          {
+            "base": "original",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 0.9405228331428355,
+            "ci95": [
+              0.9289443449323005,
+              0.9757784587791241
+            ],
+            "wins": 1,
+            "min": 0.8908697909557539,
+            "p10": 0.9058631489561836,
+            "p90": 0.9802669754240418
+          },
+          {
+            "base": "G16",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 0.9403822245002348,
+            "ci95": [
+              0.915422228610332,
+              0.9836056838003604
+            ],
+            "wins": 2,
+            "min": 0.8563808477761344,
+            "p10": 0.9051307121804768,
+            "p90": 1.0115147225836205
+          },
+          {
+            "base": "unified-mono",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 0.9824832520350304,
+            "ci95": [
+              0.9655246207944173,
+              1.0043952648302361
+            ],
+            "wins": 4,
+            "min": 0.9145604067651638,
+            "p10": 0.9500256384463949,
+            "p90": 1.0085000274355305
+          },
+          {
+            "base": "unified-reuse",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.0062751594387245,
+            "ci95": [
+              0.9643532791832412,
+              1.0573261710938788
+            ],
+            "wins": 6,
+            "min": 0.9370012320563559,
+            "p10": 0.9406722321011366,
+            "p90": 1.066251684766723
+          },
+          {
+            "base": "unified-gate",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.000298455582206,
+            "ci95": [
+              0.9617648033077699,
+              1.0284965863700153
+            ],
+            "wins": 6,
+            "min": 0.9327337487075907,
+            "p10": 0.9393456573610571,
+            "p90": 1.0509528797129941
+          }
+        ],
+        "routes": [
+          {
+            "arm": "original",
+            "formal": 0,
+            "reused": 0,
+            "transported": 0
+          },
+          {
+            "arm": "G16",
+            "formal": 0,
+            "reused": 0,
+            "transported": 0
+          },
+          {
+            "arm": "unified-mono",
+            "formal": 0,
+            "reused": 0,
+            "transported": 0
+          },
+          {
+            "arm": "unified-reuse",
+            "formal": 0,
+            "reused": 0,
+            "transported": 0
+          },
+          {
+            "arm": "unified-gate",
+            "formal": 0,
+            "reused": 0,
+            "transported": 0
+          },
+          {
+            "arm": "unified-gate-flow",
+            "formal": 0,
+            "reused": 0,
+            "transported": 0
+          }
+        ]
+      }
+    ]
+  }
+}

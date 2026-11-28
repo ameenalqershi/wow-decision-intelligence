@@ -1,0 +1,13 @@
+{
+  "finite": 240,
+  "infeasible": 48,
+  "highs": 48,
+  "summary": {
+    "kind": "summary",
+    "exhaustive": 240,
+    "highs": 48,
+    "tamper": 144,
+    "transport": 46,
+    "abstain": 48
+  }
+}

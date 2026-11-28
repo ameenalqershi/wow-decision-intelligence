@@ -1,0 +1,11 @@
+{
+  "finite": 48,
+  "checks": 13,
+  "passed": 13,
+  "summary": {
+    "kind": "summary",
+    "checks": 13,
+    "finite": 48,
+    "valid": true
+  }
+}
