@@ -1858,5 +1858,15 @@
       "V06"
     ],
     "accept": "Specify racks, servers and power zones with placement and power scheduling. On synthetic rack inventory and power traces, compare energy plus unmet service against static rack assignment subject to thermal envelope, power caps and redundancy. Record units, solver capabilities, input rights, integration fields, uncertainty and rejection thresholds before an experiment."
+  },
+  {
+    "id": "X11",
+    "area": "Research engineering",
+    "title": "Research supplement: verify objective-perturbation certificates and publish a bilingual reproducible dossier",
+    "deps": [
+      "X01",
+      "SP05"
+    ],
+    "accept": "Publish source, independent counterexamples, per-run costs and bilingual mathematical documentation. Scope is the new laboratory experiment and evidence, leaving production implementation and the benchmark platform to #39–46 and the business comparison to #142. Completion requires independent review and an auditable evidence archive."
   }
 ]
