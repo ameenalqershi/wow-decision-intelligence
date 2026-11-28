@@ -1,0 +1,10 @@
+{"kind":"small","family":"independent-history","seed":575001,"rep":0,"revision":0,"n":9,"arm":"full","value":-10,"valid":true,"ticks":3155355,"coldTicks":125141334,"warmTicks":1491417,"frequency":1000000000}
+{"kind":"small","family":"independent-history","seed":575001,"rep":0,"revision":0,"n":9,"arm":"warm","value":-10,"valid":true,"ticks":85831,"coldTicks":125141334,"warmTicks":1491417,"frequency":1000000000}
+{"kind":"small","family":"independent-history","seed":575001,"rep":0,"revision":0,"n":9,"arm":"partition","value":-10,"valid":true,"ticks":28220397,"coldTicks":125141334,"warmTicks":1491417,"frequency":1000000000}
+{"kind":"small","family":"independent-history","seed":575001,"rep":0,"revision":0,"n":9,"arm":"reuse","value":-10,"valid":true,"ticks":263409,"coldTicks":125141334,"warmTicks":1491417,"frequency":1000000000}
+{"kind":"small","family":"independent-history","seed":575001,"rep":0,"revision":0,"n":9,"arm":"box","value":-10,"valid":true,"ticks":1534488,"coldTicks":125141334,"warmTicks":1491417,"frequency":1000000000}
+{"kind":"small","family":"independent-history","seed":575001,"rep":0,"revision":0,"n":9,"arm":"pair","value":-10,"valid":true,"ticks":243959,"coldTicks":125141334,"warmTicks":1491417,"frequency":1000000000}
+{"kind":"small","family":"independent-history","seed":575001,"rep":0,"revision":0,"n":9,"arm":"parity","value":-10,"valid":true,"ticks":1769327,"coldTicks":125141334,"warmTicks":1491417,"frequency":1000000000}
+{"kind":"small","family":"independent-history","seed":575001,"rep":0,"revision":0,"n":9,"arm":"parity-warm","value":-10,"valid":true,"ticks":62610,"coldTicks":125141334,"warmTicks":1491417,"frequency":1000000000}
+{"kind":"small","family":"independent-history","seed":575001,"rep":0,"revision":0,"n":9,"arm":"orientation","value":-10,"valid":true,"ticks":18394805,"coldTicks":125141334,"warmTicks":1491417,"frequency":1000000000}
+{"kind":"small","family":"independent-history","seed":575001,"rep":0,"revision":0,"n":9,"arm":"orientation-adaptive","value":-10,"valid":true,"ticks":597179,"coldTicks":125141334,"warmTicks":1491417,"frequency":1000000000}

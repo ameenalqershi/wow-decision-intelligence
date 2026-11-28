@@ -1,0 +1,5 @@
+Unhandled exception. System.Exception: Native objective bound mismatch
+   at Program.<<Main>$>g__SolveNative|0_0(Model model, Nullable`1 hint) in /root/uadie-lab/docs/research/uadie/evidence/orientation-native/NativeAudit.cs:line 22
+   at Program.<<Main>$>g__Compare|0_3(Model[] sequence, String family, Int32 seed, Int32 rep, <>c__DisplayClass0_0&) in /root/uadie-lab/docs/research/uadie/evidence/orientation-native/NativeAudit.cs:line 50
+   at Program.<Main>$(String[] args) in /root/uadie-lab/docs/research/uadie/evidence/orientation-native/NativeAudit.cs:line 92
+/usr/bin/timeout: the monitored command dumped core

@@ -19,7 +19,7 @@ static (int? Value,int Mask) SolveNative(Model model,int? hint)
     int mask=0;
     for(int i=0;i<vars.Length;i++)if(solver.Value(vars[i])==1)mask|=1<<i;
     int val=checked((int)solver.ObjectiveValue);
-    if(solver.ObjectiveValue!=val || solver.BestObjectiveBound!=val)throw new Exception("Native objective bound mismatch");
+    if(solver.ObjectiveValue!=val || solver.BestObjectiveBound!=val)throw new Exception(JsonSerializer.Serialize(new {message="Native objective bound mismatch", model, mask, hint, reportedObjective=solver.ObjectiveValue, reportedBound=solver.BestObjectiveBound, truncated=val, exactWitness=model.Costs.Where((_,i)=>(mask&(1<<i))!=0).Sum(c=>(long)c.Weight)}));
     return(val,mask);
 }
 static bool Verify(Model model,int? value,int mask,int? expected)
@@ -71,14 +71,14 @@ void Compare(Model[] sequence,string family,int seed,int rep)
         }
     }
 }
-if(args is ["small"])
+if(args is ["small"] or ["diagnose"])
 {
     string[] families=["chain-shift","star-shift","cycle-shift","odd-cycle","mixed","relax-chain","disjoint","isolated","tighten","large-delta"];
-    for(int rep=0;rep<3;rep++)foreach(string f in families)for(int i=0;i<8;i++){
+    for(int rep=0;args[0]=="small" && rep<3;rep++)foreach(string f in families)for(int i=0;i<8;i++){
         var p=ParityCorpus.Generate(f,485000+i,8+i%5); Compare([p.Source,p.Revision],f,485000+i,rep);}
     // Independently constructed histories: arbitrary cardinality rows on random
     // nonadjacent scopes, duplicates, row reorder, deletion, restored source.
-    for(int seed=575001;seed<575129;seed++){
+    for(int seed=575001;seed<(args[0]=="diagnose"?575002:575129);seed++){
         var rng=new Random(seed);int n=rng.Next(3,11);var rows=new List<Capacity>();
         for(int k=0;k<rng.Next(1,9);k++){
             int scope=rng.Next(1,1<<n);int width=System.Numerics.BitOperations.PopCount((uint)scope);
