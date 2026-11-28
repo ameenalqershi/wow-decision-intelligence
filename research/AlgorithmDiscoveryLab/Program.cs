@@ -3,6 +3,7 @@ using System.Text.Json;
 using ComponentStudy;
 using AlgorithmDiscoveryLab;
 
+if (args is ["parity-audit"]) { ParityAudit.Run(); return; }
 if (args.Length != 3) throw new ArgumentException("usage: strategy split repetition");
 string strategy=args[0], split=args[1];
 int repeat=int.Parse(args[2]);
@@ -11,19 +12,21 @@ ICandidate Create() => strategy switch
     "full" => new FullSearch(false), "warm" => new FullSearch(true),
     "partition" => new Components(false), "reuse" => new Components(true),
     "box" => new Transfer(false), "pair" => new Transfer(true),
+    "parity" => new ParityTransfer(), "parity-warm" => new ParityTransfer(true),
     _ => throw new ArgumentOutOfRangeException(nameof(strategy))
 };
 var families = split switch {
     "dev" => new[]{"flat-shift","global-price","bridge","shortage"},
     "holdout" => new[]{"flat-shift","global-price","bridge","shortage","dense","relax","outage"},
+    "parity-dev" or "parity-holdout" => new[]{"chain-shift","star-shift","cycle-shift","odd-cycle","mixed","relax-chain","disjoint","isolated","tighten","large-delta"},
     _ => throw new ArgumentOutOfRangeException(nameof(split))
 };
 using var process=Process.GetCurrentProcess();
 foreach (var family in families)
 for (int i=0;i<8;i++)
 {
-    int seed=(split=="dev"?41000:91000)+i;
-    var (old,current)=Corpus.Generate(family,seed,split=="dev"?3+i%2:4+i%3);
+    int seed=(split switch { "dev"=>41000, "holdout"=>91000, "parity-dev"=>182000, _=>283000 })+i;
+    var (old,current)=split.StartsWith("parity-",StringComparison.Ordinal) ? ParityCorpus.Generate(family,seed,split=="parity-dev"?6+i%3:8+i%5) : Corpus.Generate(family,seed,split=="dev"?3+i%2:4+i%3);
     var candidate=Create();
     foreach (var (revision,model) in new[]{(0,old),(1,current)})
     {
