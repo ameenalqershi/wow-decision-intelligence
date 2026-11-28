@@ -17,6 +17,7 @@ if(args is ["proof-reuse",var proofSplit]){ProofReuseStudy.Run(proofSplit);retur
 if(args is ["proof-readback",var proofFile]){ProofReadback.Run(proofFile);return;}
 if(args is ["proof-reuse-audit"]){ProofReuseAudit.Run();return;}
 if(args is ["mps-matrix-audit",var mpsDir]){MpsMatrixAudit.Run(mpsDir);return;}
+if(args is ["unified-industrial",var industrialPath]){MpsMatrixAudit.Run(industrialPath,["air03","air04","air05","wachplan","fhnw-binschedule2","comp08-2idx"],true);return;}
 if(args is ["assignment-study"]){AssignmentStudy.Run();return;}
 if(args is ["assignment-audit"]){AssignmentStudy.Audit();return;}
 if(args is ["proof-store",var storeInput,var storeDir]){ProofEvidenceStore.Run(storeInput,storeDir);return;}

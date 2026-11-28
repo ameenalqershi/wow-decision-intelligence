@@ -4,14 +4,14 @@ using System.Security.Cryptography;
 internal static class MpsMatrixAudit
 {
     private static string Key(IEnumerable<int> s,long l,long u)=>l+":"+u+":"+string.Join(",",s.Order());
-    internal static void Run(string dir)
+    internal static void Run(string dir,string[]? names=null,bool dispatcher=false)
     {
-        foreach(string name in new[]{"air03","air04","air05","10teams","mod010","assign1-5-8"})
+        foreach(string name in names??new[]{"air03","air04","air05","10teams","mod010","assign1-5-8"})
         {
             string path=Path.Combine(dir,name+".mps.gz");
             string sha=Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(path)));
             WideModel? m=null;string? reason=null;
-            try{m=IndustrialAdmission.Read(path);}catch(NotSupportedException e){reason=e.Message;}
+            try{m=IndustrialAdmission.Read(path);}catch(NotSupportedException e){reason=e.Message;}catch(OverflowException e) when(dispatcher){reason=e.Message;}catch(ArgumentException e) when(dispatcher){reason=e.Message;}
             IntPtr h=Native.Highs_create();if(h==IntPtr.Zero)throw new Exception("create");
             void Ok(int s){if(s<0)throw new Exception("HiGHS error");}
             try{
@@ -69,7 +69,14 @@ internal static class MpsMatrixAudit
                     }
                     objective=reported;witness=true;
                 }
-                Console.WriteLine(JsonSerializer.Serialize(new{name,sha,n,rows=r,nonzeros=nz,admission=m!=null?"supported":"unsupported",reason,checkedMatrix,checkedCoefficients,checkedCosts=m?.N??0,checkedDomains=m?.N??0,checkedRows=m==null?0:r,status,primal,objective,witnessVerified=witness,maxError}));
+                WideResult? original=null;UnifiedOutcome? candidate=null;
+                if(dispatcher&&m!=null){
+                    original=CertifiedStudy.Original(m);if(original.Bits!=null&&CertifiedStudy.Verify(m,original.Bits)!=original.Value)throw new Exception("original witness");
+                    candidate=new DependencyDispatcher(true,true,true,true).Decide(m,new());UnifiedVerifier.Verify(new(CertifiedQuotient.Digest(m),m,candidate));
+                    if(original.Status=="Optimal"&&candidate.Result.Status=="Optimal"&&original.Value!=candidate.Result.Value)throw new Exception("dispatcher objective");
+                    if(status==7&&candidate.Result.Status=="Optimal"&&Math.Abs(objective!.Value-candidate.Result.Value!.Value)>1e-6)throw new Exception("independent optimum");
+                }
+                Console.WriteLine(JsonSerializer.Serialize(new{name,sha,n,rows=r,nonzeros=nz,admission=m!=null?"supported":"unsupported",reason,checkedMatrix,checkedCoefficients,checkedCosts=m?.N??0,checkedDomains=m?.N??0,checkedRows=m==null?0:r,status,primal,objective,witnessVerified=witness,maxError,originalStatus=original?.Status,originalValue=original?.Value,candidateStatus=candidate?.Result.Status,candidateValue=candidate?.Result.Value,candidateRoute=candidate?.Route,candidateFormal=candidate?.Formal}));
             }finally{Native.Highs_destroy(h);}
         }
     }
