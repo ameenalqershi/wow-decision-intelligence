@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Text.Json;
 
 if(args is ["audit"]){Audit();return;}
+if(args is ["adaptive"]){Adaptive();return;}
 if(args.Length!=1)throw new ArgumentException("dev|holdout|audit");
 bool dev=args[0]=="dev";if(!dev&&args[0]!="holdout")throw new ArgumentException("split");
 foreach(int n in dev?new[]{64,512}:new[]{64,512,4096,10000})
@@ -97,9 +98,9 @@ static WideResult Original(WideModel m)
     Reports(solver,cost,status==CpSolverStatus.Optimal);
     return new(status.ToString(),cost,bits,m.N,m.Edges.Length+m.Fixes.Length+m.Rows.Length);
 }
-static WideResult Quotient(WideModel m)
+static WideResult Quotient(WideModel m,List<(int[] Zero,int[] One)>? supplied=null)
 {
-    var partition=OrientationPartition.Build(m.N,m.Edges);
+    var partition=supplied??OrientationPartition.Build(m.N,m.Edges);
     if(partition==null)return new("Infeasible",null,null,0,0);
     int[] owner=new int[m.N],side=new int[m.N],fixedChoice=new int[partition.Count];
     Array.Fill(fixedChoice,-1);
@@ -196,6 +197,81 @@ static void Audit()
         bool ca=a.Status is "Optimal" or "Infeasible",cb=b.Status is "Optimal" or "Infeasible";
         if(ca&&cb&&(a.Status!=b.Status||a.Value!=b.Value))throw new Exception("conclusive mismatch");
         if(a.Status=="Optimal"&&b.Value<a.Value||b.Status=="Optimal"&&a.Value<b.Value)throw new Exception("bound mismatch");
+    }
+}
+
+
+static (WideResult Result,string Route,int Free) Select(WideModel m)
+{
+    // No pair graph and few fixes: no substantial quotient reduction is possible.
+    if(m.Edges.Length==0 && 4L*m.Fixes.Length<m.N)
+        return (Original(m),"original-fast",m.N);
+    var partition=OrientationPartition.Build(m.N,m.Edges);
+    if(partition==null)return(new("Infeasible",null,null,0,0),"odd-cycle",0);
+    int[] owner=new int[m.N],side=new int[m.N];
+    int[] fix=new int[partition.Count];Array.Fill(fix,-1);
+    for(int j=0;j<partition.Count;j++)
+    {
+        foreach(int i in partition[j].Zero){owner[i]=j;side[i]=0;}
+        foreach(int i in partition[j].One){owner[i]=j;side[i]=1;}
+    }
+    int fixedComponents=0;
+    foreach(var (i,value) in m.Fixes)
+    {
+        int y=value==1?side[i]:1-side[i],j=owner[i];
+        if(fix[j]>=0&&fix[j]!=y)return(new("Infeasible",null,null,0,0),"conflicting-fix",0);
+        if(fix[j]<0){fix[j]=y;fixedComponents++;}
+    }
+    int free=partition.Count-fixedComponents;
+    // Frozen descriptive threshold, not a proven cost model.
+    return 4L*free<=3L*m.N
+        ? (Quotient(m,partition),"quotient",free)
+        : (Original(m),"original-low-reduction",free);
+}
+static void Adaptive()
+{
+    var options=new JsonSerializerOptions{IncludeFields=true};
+    foreach(int n in new[]{512,4096,10000})
+    foreach(string family in new[]{"none","weak","medium","strong","odd","fixed"})
+    for(int h=0;h<3;h++)
+    {
+        int seed=1619301+h;var rng=new Random(seed+n);
+        var planted=Enumerable.Range(0,n).Select(_=>rng.Next(2)).ToArray();
+        var edges=new List<(int A,int B)>();var fixes=new List<(int Bit,int Value)>();var rows=new List<WideRow>();
+        int group=family switch{"weak"=>2,"medium"=>3,"strong"=>8,_=>1};
+        int covered=family=="weak"?n/5:family=="medium"?n*3/4:family=="strong"?n:0;
+        for(int i=0;i<covered;i+=group)
+        for(int j=i+1;j<Math.Min(i+group,covered);j++){edges.Add((i,j));planted[j]=1-planted[i];}
+        if(family=="odd"){edges.Add((0,1));edges.Add((1,2));edges.Add((2,0));}
+        if(family=="fixed")for(int i=0;i<n;i+=2)fixes.Add((i,planted[i]));
+        for(int i=0;i<n;i+=12)
+        {
+            int[] scope=Enumerable.Range(i,Math.Min(12,n-i)).ToArray();int target=scope.Sum(j=>planted[j]);
+            rows.Add(new(scope,target,target));
+        }
+        var model=new WideModel(n,edges.ToArray(),fixes.ToArray(),rows.ToArray(),Enumerable.Range(0,n).Select(_=>(long)rng.Next(-90,91)).ToArray());
+        bool impossible=family=="odd";
+        if(!impossible)_=Check(model,planted);
+        string[] arms=["original","quotient","adaptive"];
+        var results=new Dictionary<string,WideResult>();
+        for(int k=0;k<3;k++)
+        {
+            string arm=arms[(h+k)%3];long t=Stopwatch.GetTimestamp();
+            var selected=arm=="adaptive"?Select(model):(arm=="original"?Original(model):Quotient(model),arm,-1);
+            var (result,route,free)=selected;
+            if(result.Status is "ModelInvalid" or "Invalid")throw new Exception("model invalid");
+            if(result.Bits!=null&&Check(model,result.Bits)!=result.Value)throw new Exception("witness");
+            if(impossible&&result.Bits!=null||!impossible&&result.Status=="Infeasible")throw new Exception("planted truth mismatch");
+            var evidence=JsonSerializer.SerializeToUtf8Bytes(new{n,family,seed,result.Status,result.Value,result.Bits},options);
+            long ticks=Stopwatch.GetTimestamp()-t;results.Add(arm,result);
+            Console.WriteLine(JsonSerializer.Serialize(new{n,family,seed,arm,route,free,status=result.Status,value=result.Value,variables=result.Variables,verifiedWitness=result.Bits!=null,ticks,frequency=Stopwatch.Frequency,evidenceBytes=evidence.Length,model,bits=result.Bits},options));
+        }
+        foreach(var a in results.Values)foreach(var b in results.Values)
+        {
+            bool ca=a.Status is "Optimal" or "Infeasible",cb=b.Status is "Optimal" or "Infeasible";
+            if(ca&&cb&&(a.Status!=b.Status||a.Value!=b.Value))throw new Exception("conclusive mismatch");
+            if(a.Status=="Optimal"&&b.Value<a.Value)throw new Exception("bound mismatch");
+        }
     }
 }
 
