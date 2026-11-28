@@ -50,7 +50,8 @@ static class Study
         if(Want("residual"))doc["residualStress"]=await ResidualAsync(boundary,dotnet,self,work,outDir,quick?20:200);
         if(Want("compare"))doc["comparison"]=await CompareAsync(boundary,dotnet,self,work,outDir,quick);
         var path=Path.Combine(outDir,"portfolio-study.json");
-        await File.WriteAllTextAsync(path,JsonSerializer.Serialize(doc,new JsonSerializerOptions{WriteIndented=true}));
+        await File.WriteAllTextAsync(path,JsonSerializer.Serialize(doc,new JsonSerializerOptions{WriteIndented=true,
+            NumberHandling=System.Text.Json.Serialization.JsonNumberHandling.AllowNamedFloatingPointLiterals}));
         Console.WriteLine("evidence: "+path);
         return 0;
     }
@@ -122,7 +123,17 @@ static class Study
         }
         Console.WriteLine("residual "+string.Join(" ",counts.Select(kv=>kv.Key+"="+kv.Value)));
         var residual=counts.Where(kv=>kv.Key.Contains("residual",StringComparison.Ordinal)).Sum(kv=>kv.Value);
-        return new{runs,outcomes=counts,residual,upper95=residual==0?3.0/runs:double.NaN};
+        // exact one-sided 95% Clopper-Pearson upper bound for the residual rate (0 -> rule of three)
+        double up=residual==0?3.0/runs:ClopperPearsonUpper(residual,runs);
+        return new{runs,outcomes=counts,residual,rate=(double)residual/runs,upper95=up};
+    }
+
+    static double ClopperPearsonUpper(int k,int n)
+    {
+        // bisection on the binomial tail P[X<=k | p] = 0.05
+        double lo=0,hi=1;
+        for(int it=0;it<100;it++){var p=(lo+hi)/2;double cdf=0,term=Math.Pow(1-p,n);for(int i=0;i<=k;i++){cdf+=term;term*=(double)(n-i)/(i+1)*p/(1-p);}if(cdf>0.05)lo=p;else hi=p;}
+        return hi;
     }
 
     // ---------------------------------------------------------------- 2. where does the current front end stop?
