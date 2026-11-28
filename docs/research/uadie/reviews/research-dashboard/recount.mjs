@@ -61,4 +61,16 @@ const a14=g14.holdout.summaries.find(x=>x.arm==='G14');
 data.metrics.G14TemplateHits={numerator:a14.templateHits,denominator:a14.quotientCalls};
 data.metrics.G14G13Wins={numerator:g14.holdout.comparisons.find(x=>x.base==='G13').wins,denominator:g14.holdout.histories};
 data.metrics.G14ScaleConclusive={numerator:g14.scale.summaries.find(x=>x.arm==='G14').statuses.Optimal,denominator:g14.scale.models};
+const g15=get('reviews/wide-native-quotient/certified/summary.json');
+const g15splits={};
+for(const split of ['dev','holdout','disk']){
+ const rows=read(path.join(wide,'certified',split,'raw.jsonl'));
+ g15splits[split]={records:rows.length,optimal:rows.filter(r=>r.status==='Optimal').length,distinctDigests:new Set(rows.map(r=>r.digest)).size,verifiedWitnesses:rows.filter(r=>r.verifiedWitness).length};
+}
+data.G15={bySplit:g15splits,comparison:g15,calibration:get('reviews/wide-native-quotient/certified/calibration.json'),independentAudit:get('reviews/wide-native-quotient/certified/audit/summary.json'),industrial:get('reviews/wide-native-quotient/certified/industrial/summary.json')};
+const a15=g15.holdout.summaries.find(x=>x.arm==='G15');
+data.metrics.G15DirectSolve={numerator:a15.directProofs,denominator:a15.rows};
+data.metrics.G15CertifiedTransform={numerator:a15.certificateChecks,denominator:a15.rows};
+data.metrics.G15G13Wins={numerator:g15.holdout.comparisons.find(x=>x.base==='G13').wins,denominator:g15.holdout.histories};
+data.metrics.G15TamperRejection={numerator:data.G15.independentAudit.tamper-data.G15.independentAudit.acceptedTamper,denominator:data.G15.independentAudit.tamper};
 console.log(JSON.stringify(data,null,2));
