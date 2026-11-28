@@ -7,7 +7,7 @@ internal static class GapSourceAudit
 {
     private static readonly CultureInfo Inv=CultureInfo.InvariantCulture;
     // Independent lexical rational parser; bounded exponent, no rounding.
-    private static (BigInteger N,int Scale) Lex(string s){
+    internal static (BigInteger N,int Scale) Lex(string s){
         if(s.Length>32)throw new FormatException("token length");
         var scientific=s.ToLowerInvariant().Split('e');int exponent=0;
         if(scientific.Length>2||scientific.Length==2&&(!int.TryParse(scientific[1],NumberStyles.AllowLeadingSign,Inv,out exponent)||exponent< -18||exponent>18))throw new FormatException("exponent");

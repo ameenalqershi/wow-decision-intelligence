@@ -79,7 +79,7 @@ internal static class MatrixVerifier
         var n=new GeneralNetwork(m.Rows.Length,m.Rows.Select(r=>r.U).ToArray(),arcs);GeneralFlow.Admit(n);return n;
     }
     internal static string Assurance(string status,bool formal)=>status switch{"Optimal"=>formal?"ProvenOptimal":"SolverOptimal","Infeasible"=>formal?"ProvenInfeasible":"SolverInfeasible","Feasible"=>"Feasible","Unknown"=>"Unknown",_=>throw new Exception("status")};
-    internal static void Replay(MatrixEvidence e,bool typedProjection=false,Action<long>? elapsedProjection=null)
+    internal static void Replay(MatrixEvidence e,bool typedProjection=true,Action<long>? elapsedProjection=null)
     {
         var m=e.Source;MatrixAdmission.Check(m);if(MatrixAdmission.Digest(m)!=e.Digest)throw new Exception("revision");
         if(e.Status is "Optimal" or "Feasible"){if(e.X==null||MatrixAdmission.Value(m,e.X)!=e.Value)throw new Exception("source witness");}
