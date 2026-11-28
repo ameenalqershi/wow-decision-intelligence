@@ -66,7 +66,7 @@ internal static class ProofEvidenceStore
             var recovered=mode=="full"?File.ReadLines(file).Select(line=>JsonSerializer.Deserialize<ProofEvidence>(line,Json)??throw new Exception("record")).ToArray():ReadCompact(File.ReadLines(file));
             if(mode=="full")foreach(var r in recovered)ProofReadback.Verify(r);
             if(recovered.Length!=source.Length)throw new Exception("record count");
-            for(int i=0;i<source.Length;i++)if(!Bytes(source[i]).AsSpan().SequenceEqual(Bytes(recovered[i])))throw new Exception("record replay mismatch");
+            for(int index=0;index<source.Length;index++)if(!Bytes(source[index]).AsSpan().SequenceEqual(Bytes(recovered[index])))throw new Exception("record replay mismatch");
             long end=Stopwatch.GetTimestamp();
             Console.WriteLine(JsonSerializer.Serialize(new{kind="storage",mode,rep,records=recovered.Length,objects,bytes=new FileInfo(file).Length,writeTicks=written-start,readbackTicks=end-written,frequency=Stopwatch.Frequency}));
         }
