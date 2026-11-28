@@ -1,0 +1,10 @@
+{
+  "finite": 512,
+  "finiteInfeasible": 173,
+  "finiteHits": 64,
+  "boundaries": 12,
+  "highs": 54,
+  "conclusive": 54,
+  "highsOptimal": 48,
+  "highsInfeasible": 6
+}

@@ -1,0 +1,1757 @@
+{
+  "dev": {
+    "rows": 100,
+    "models": 20,
+    "allConclusive": 20,
+    "verifiedWitnesses": 100,
+    "histories": 4,
+    "completeConclusiveHistories": 4,
+    "hits": 10,
+    "cacheEvaluations": 20,
+    "persistedReadback": 0,
+    "summaries": [
+      {
+        "arm": "original",
+        "rows": 20,
+        "statuses": {
+          "Optimal": 20
+        },
+        "medianUs": 8616.864,
+        "p95Us": 26348.057250000187,
+        "p99Us": 227580.25304999968,
+        "medianBytes": 519276,
+        "phases": {
+          "admission": {
+            "calls": 20,
+            "medianUs": 126.0755,
+            "p95Us": 459.18755000000397
+          },
+          "digest": {
+            "calls": 20,
+            "medianUs": 312.7395,
+            "p95Us": 5758.4973000000755
+          },
+          "solve-rest": {
+            "calls": 20,
+            "medianUs": 7958.1505,
+            "p95Us": 19340.047600000096
+          },
+          "verify": {
+            "calls": 20,
+            "medianUs": 76.455,
+            "p95Us": 206.15900000000008
+          },
+          "encode": {
+            "calls": 20,
+            "medianUs": 50.055,
+            "p95Us": 910.815950000012
+          }
+        }
+      },
+      {
+        "arm": "G11",
+        "rows": 20,
+        "statuses": {
+          "Optimal": 20
+        },
+        "medianUs": 2534.3405000000002,
+        "p95Us": 10586.64285000001,
+        "p99Us": 20719.75096999998,
+        "medianBytes": 148624,
+        "phases": {
+          "admission": {
+            "calls": 20,
+            "medianUs": 92.53450000000001,
+            "p95Us": 199.0955000000001
+          },
+          "digest": {
+            "calls": 20,
+            "medianUs": 262.509,
+            "p95Us": 517.1095
+          },
+          "solve-rest": {
+            "calls": 20,
+            "medianUs": 1887.5915,
+            "p95Us": 9788.065300000011
+          },
+          "verify": {
+            "calls": 20,
+            "medianUs": 48.204499999999996,
+            "p95Us": 99.70600000000016
+          },
+          "encode": {
+            "calls": 20,
+            "medianUs": 47.3195,
+            "p95Us": 70.85805
+          }
+        }
+      },
+      {
+        "arm": "G12",
+        "rows": 20,
+        "statuses": {
+          "Optimal": 20
+        },
+        "medianUs": 2153.4714999999997,
+        "p95Us": 4389.465450000016,
+        "p99Us": 21322.13548999997,
+        "medianBytes": 152060,
+        "phases": {
+          "admission": {
+            "calls": 20,
+            "medianUs": 106.47900000000001,
+            "p95Us": 181.95100000000014
+          },
+          "digest": {
+            "calls": 20,
+            "medianUs": 224.67950000000002,
+            "p95Us": 492.7605
+          },
+          "g12-partition": {
+            "calls": 20,
+            "medianUs": 99.949,
+            "p95Us": 419.98400000000044
+          },
+          "g12-owner-fix": {
+            "calls": 20,
+            "medianUs": 10.3845,
+            "p95Us": 19.396
+          },
+          "g12-quotient-partition": {
+            "calls": 20,
+            "medianUs": 0.985,
+            "p95Us": 10.085950000000123
+          },
+          "g12-duplicate-owner-fix": {
+            "calls": 20,
+            "medianUs": 11.100000000000001,
+            "p95Us": 23.452
+          },
+          "g12-native-build": {
+            "calls": 20,
+            "medianUs": 279.3045,
+            "p95Us": 1789.1549500000156
+          },
+          "g12-native-solve": {
+            "calls": 20,
+            "medianUs": 880.203,
+            "p95Us": 1557.2055000000003
+          },
+          "g12-reconstruct": {
+            "calls": 20,
+            "medianUs": 6.5649999999999995,
+            "p95Us": 19.776500000000006
+          },
+          "solve-rest": {
+            "calls": 20,
+            "medianUs": 76.875,
+            "p95Us": 104.34795000000001
+          },
+          "verify": {
+            "calls": 20,
+            "medianUs": 53.775000000000006,
+            "p95Us": 85.71245
+          },
+          "encode": {
+            "calls": 20,
+            "medianUs": 46.6595,
+            "p95Us": 165.0175000000001
+          }
+        }
+      },
+      {
+        "arm": "cold",
+        "rows": 20,
+        "statuses": {
+          "Optimal": 20
+        },
+        "medianUs": 2283.645,
+        "p95Us": 23981.029100000003,
+        "p99Us": 27070.324219999995,
+        "medianBytes": 177184,
+        "phases": {
+          "admission": {
+            "calls": 20,
+            "medianUs": 127.30950000000001,
+            "p95Us": 168.24350000000007
+          },
+          "digest": {
+            "calls": 20,
+            "medianUs": 211.98449999999997,
+            "p95Us": 392.2935000000001
+          },
+          "plan-admission": {
+            "calls": 20,
+            "medianUs": 125.8545,
+            "p95Us": 255.42140000000109
+          },
+          "identity": {
+            "calls": 20,
+            "medianUs": 0.37,
+            "p95Us": 3.1639500000000322
+          },
+          "partition": {
+            "calls": 20,
+            "medianUs": 106.87049999999999,
+            "p95Us": 482.43075000000226
+          },
+          "owner-fix": {
+            "calls": 20,
+            "medianUs": 12.625,
+            "p95Us": 29.406500000000005
+          },
+          "row-transform": {
+            "calls": 20,
+            "medianUs": 135.43,
+            "p95Us": 6359.7131500000105
+          },
+          "plan-ready": {
+            "calls": 20,
+            "medianUs": 0.965,
+            "p95Us": 16.927500000000112
+          },
+          "objective": {
+            "calls": 20,
+            "medianUs": 14.95,
+            "p95Us": 38.1959500000001
+          },
+          "native-build": {
+            "calls": 20,
+            "medianUs": 184.0245,
+            "p95Us": 613.1052000000022
+          },
+          "native-solve": {
+            "calls": 20,
+            "medianUs": 870.093,
+            "p95Us": 1336.1659500000003
+          },
+          "reconstruct": {
+            "calls": 20,
+            "medianUs": 27.950000000000003,
+            "p95Us": 1471.6737000000176
+          },
+          "solve-rest": {
+            "calls": 20,
+            "medianUs": 1.7695,
+            "p95Us": 13.307000000000011
+          },
+          "verify": {
+            "calls": 20,
+            "medianUs": 54.525,
+            "p95Us": 215.70180000000158
+          },
+          "encode": {
+            "calls": 20,
+            "medianUs": 46.59,
+            "p95Us": 100.66055000000014
+          }
+        }
+      },
+      {
+        "arm": "G13",
+        "rows": 20,
+        "statuses": {
+          "Optimal": 20
+        },
+        "medianUs": 2181.2400000000002,
+        "p95Us": 4309.894800000002,
+        "p99Us": 6402.825359999997,
+        "medianBytes": 110508,
+        "phases": {
+          "admission": {
+            "calls": 20,
+            "medianUs": 85.5145,
+            "p95Us": 171.91840000000016
+          },
+          "digest": {
+            "calls": 20,
+            "medianUs": 248.93,
+            "p95Us": 485.93605
+          },
+          "plan-admission": {
+            "calls": 20,
+            "medianUs": 83.6545,
+            "p95Us": 169.133
+          },
+          "identity": {
+            "calls": 20,
+            "medianUs": 3.34,
+            "p95Us": 290.36825000000226
+          },
+          "partition": {
+            "calls": 10,
+            "medianUs": 105.23949999999999,
+            "p95Us": 2666.3216499999953
+          },
+          "owner-fix": {
+            "calls": 10,
+            "medianUs": 12.68,
+            "p95Us": 17.203899999999997
+          },
+          "row-transform": {
+            "calls": 10,
+            "medianUs": 109.904,
+            "p95Us": 216.14399999999998
+          },
+          "plan-ready": {
+            "calls": 20,
+            "medianUs": 0.905,
+            "p95Us": 1.4410000000000012
+          },
+          "objective": {
+            "calls": 20,
+            "medianUs": 10.02,
+            "p95Us": 27.9145
+          },
+          "native-build": {
+            "calls": 20,
+            "medianUs": 131.0655,
+            "p95Us": 274.04200000000014
+          },
+          "native-solve": {
+            "calls": 20,
+            "medianUs": 871.4739999999999,
+            "p95Us": 1459.7024500000005
+          },
+          "reconstruct": {
+            "calls": 20,
+            "medianUs": 24.1045,
+            "p95Us": 34.5495
+          },
+          "solve-rest": {
+            "calls": 20,
+            "medianUs": 1.7149999999999999,
+            "p95Us": 4.645000000000033
+          },
+          "verify": {
+            "calls": 20,
+            "medianUs": 59.855000000000004,
+            "p95Us": 92.63005
+          },
+          "encode": {
+            "calls": 20,
+            "medianUs": 35.725,
+            "p95Us": 195.40300000000002
+          }
+        }
+      }
+    ],
+    "comparisons": [
+      {
+        "base": "original",
+        "histories": 4,
+        "medianSpeedup": 3.333295148189123,
+        "p10": 2.8276836827580047,
+        "p90": 25.370221823333303,
+        "wins": 4
+      },
+      {
+        "base": "G11",
+        "histories": 4,
+        "medianSpeedup": 1.37976898931861,
+        "p10": 0.9123367669386544,
+        "p90": 2.8414067699393764,
+        "wins": 3
+      },
+      {
+        "base": "G12",
+        "histories": 4,
+        "medianSpeedup": 0.9306776604493737,
+        "p10": 0.7914207472251493,
+        "p90": 2.259948581513343,
+        "wins": 2
+      },
+      {
+        "base": "cold",
+        "histories": 4,
+        "medianSpeedup": 2.1710970113512245,
+        "p10": 1.3617645941989345,
+        "p90": 2.824584883535203,
+        "wins": 4
+      }
+    ],
+    "byFamily": [
+      {
+        "family": "stable",
+        "comparisons": [
+          {
+            "base": "original",
+            "histories": 2,
+            "medianSpeedup": 19.107903695902607,
+            "p10": 6.583267441041222,
+            "p90": 31.63253995076399,
+            "wins": 2
+          },
+          {
+            "base": "G11",
+            "histories": 2,
+            "medianSpeedup": 2.489548317958872,
+            "p10": 1.7858314139978653,
+            "p90": 3.193265221919879,
+            "wins": 2
+          },
+          {
+            "base": "G12",
+            "histories": 2,
+            "medianSpeedup": 1.780687666049191,
+            "p10": 0.9882533679008165,
+            "p90": 2.573121964197566,
+            "wins": 1
+          },
+          {
+            "base": "cold",
+            "histories": 2,
+            "medianSpeedup": 2.556042195471054,
+            "p10": 2.1564343566422166,
+            "p90": 2.9556500342998917,
+            "wins": 2
+          }
+        ]
+      },
+      {
+        "family": "edits",
+        "comparisons": [
+          {
+            "base": "original",
+            "histories": 2,
+            "medianSpeedup": 2.9381974645563944,
+            "p10": 2.717169900959615,
+            "p90": 3.1592250281531737,
+            "wins": 2
+          },
+          {
+            "base": "G11",
+            "histories": 2,
+            "medianSpeedup": 0.9801364879932122,
+            "p10": 0.8445370458840965,
+            "p90": 1.115735930102328,
+            "wins": 1
+          },
+          {
+            "base": "G12",
+            "histories": 2,
+            "medianSpeedup": 0.9306776604493737,
+            "p10": 0.8216539104113235,
+            "p90": 1.039701410487424,
+            "wins": 1
+          },
+          {
+            "base": "cold",
+            "histories": 2,
+            "medianSpeedup": 1.674834295111172,
+            "p10": 1.186172430586157,
+            "p90": 2.1634961596361872,
+            "wins": 2
+          }
+        ]
+      }
+    ],
+    "bySize": [
+      {
+        "n": 128,
+        "comparisons": [
+          {
+            "base": "original",
+            "histories": 2,
+            "medianSpeedup": 18.712806012269876,
+            "p10": 5.872091610502311,
+            "p90": 31.553520414037443,
+            "wins": 2
+          },
+          {
+            "base": "G11",
+            "histories": 2,
+            "medianSpeedup": 2.2594151192698693,
+            "p10": 1.3715916563576593,
+            "p90": 3.1472385821820787,
+            "wins": 2
+          },
+          {
+            "base": "G12",
+            "histories": 2,
+            "medianSpeedup": 0.9285510706803297,
+            "p10": 0.8178260488270442,
+            "p90": 1.039276092533615,
+            "wins": 1
+          },
+          {
+            "base": "cold",
+            "histories": 2,
+            "medianSpeedup": 1.5602696806949552,
+            "p10": 1.1632595077029135,
+            "p90": 1.9572798536869969,
+            "wins": 2
+          }
+        ]
+      },
+      {
+        "n": 512,
+        "comparisons": [
+          {
+            "base": "original",
+            "histories": 2,
+            "medianSpeedup": 3.333295148189123,
+            "p10": 3.2382445648797193,
+            "p90": 3.428345731498526,
+            "wins": 2
+          },
+          {
+            "base": "G11",
+            "histories": 2,
+            "medianSpeedup": 1.2102696866822156,
+            "p10": 0.8905636856218972,
+            "p90": 1.529975687742534,
+            "wins": 1
+          },
+          {
+            "base": "G12",
+            "histories": 2,
+            "medianSpeedup": 1.7828142558182352,
+            "p10": 0.9920812294850958,
+            "p90": 2.5735472821513743,
+            "wins": 1
+          },
+          {
+            "base": "cold",
+            "histories": 2,
+            "medianSpeedup": 2.6706068098872713,
+            "p10": 2.362650662591407,
+            "p90": 2.978562957183135,
+            "wins": 2
+          }
+        ]
+      }
+    ]
+  },
+  "holdout": {
+    "rows": 1200,
+    "models": 240,
+    "allConclusive": 240,
+    "verifiedWitnesses": 1200,
+    "histories": 48,
+    "completeConclusiveHistories": 48,
+    "hits": 156,
+    "cacheEvaluations": 240,
+    "persistedReadback": 0,
+    "summaries": [
+      {
+        "arm": "original",
+        "rows": 240,
+        "statuses": {
+          "Optimal": 240
+        },
+        "medianUs": 61967.867,
+        "p95Us": 323329.70584999997,
+        "p99Us": 354749.65267,
+        "medianBytes": 5621444,
+        "phases": {
+          "admission": {
+            "calls": 240,
+            "medianUs": 345.94500000000005,
+            "p95Us": 1798.0568999999978
+          },
+          "digest": {
+            "calls": 240,
+            "medianUs": 1763.0720000000001,
+            "p95Us": 6096.866349999987
+          },
+          "solve-rest": {
+            "calls": 240,
+            "medianUs": 58665.1225,
+            "p95Us": 313285.8665
+          },
+          "verify": {
+            "calls": 240,
+            "medianUs": 100.536,
+            "p95Us": 488.0554999999999
+          },
+          "encode": {
+            "calls": 240,
+            "medianUs": 201.3145,
+            "p95Us": 680.58205
+          }
+        }
+      },
+      {
+        "arm": "G11",
+        "rows": 240,
+        "statuses": {
+          "Optimal": 240
+        },
+        "medianUs": 30818.4545,
+        "p95Us": 172818.0328,
+        "p99Us": 196925.9963,
+        "medianBytes": 4468100,
+        "phases": {
+          "admission": {
+            "calls": 240,
+            "medianUs": 351.825,
+            "p95Us": 2500.1745999999994
+          },
+          "digest": {
+            "calls": 240,
+            "medianUs": 1702.1464999999998,
+            "p95Us": 6256.26395
+          },
+          "solve-rest": {
+            "calls": 240,
+            "medianUs": 28392.148,
+            "p95Us": 167310.09879999995
+          },
+          "verify": {
+            "calls": 240,
+            "medianUs": 103.6695,
+            "p95Us": 434.75255
+          },
+          "encode": {
+            "calls": 240,
+            "medianUs": 199.2745,
+            "p95Us": 678.0104999999999
+          }
+        }
+      },
+      {
+        "arm": "G12",
+        "rows": 240,
+        "statuses": {
+          "Optimal": 240
+        },
+        "medianUs": 29951.6,
+        "p95Us": 173246.85184999998,
+        "p99Us": 189202.39389,
+        "medianBytes": 4092668,
+        "phases": {
+          "admission": {
+            "calls": 240,
+            "medianUs": 349.05,
+            "p95Us": 5475.335999999996
+          },
+          "digest": {
+            "calls": 240,
+            "medianUs": 1678.9315000000001,
+            "p95Us": 6113.3839499999995
+          },
+          "g12-partition": {
+            "calls": 180,
+            "medianUs": 1051.388,
+            "p95Us": 11826.394949999993
+          },
+          "g12-owner-fix": {
+            "calls": 180,
+            "medianUs": 84.91499999999999,
+            "p95Us": 348.6304499999996
+          },
+          "g12-quotient-partition": {
+            "calls": 120,
+            "medianUs": 1.6150000000000002,
+            "p95Us": 3.501
+          },
+          "g12-duplicate-owner-fix": {
+            "calls": 120,
+            "medianUs": 55.2145,
+            "p95Us": 323.64104999999995
+          },
+          "g12-native-build": {
+            "calls": 120,
+            "medianUs": 2964.1095,
+            "p95Us": 16951.39945
+          },
+          "g12-native-solve": {
+            "calls": 120,
+            "medianUs": 8017.550499999999,
+            "p95Us": 22324.09695
+          },
+          "g12-reconstruct": {
+            "calls": 120,
+            "medianUs": 50.4495,
+            "p95Us": 292.44505
+          },
+          "solve-rest": {
+            "calls": 240,
+            "medianUs": 2267.3305,
+            "p95Us": 162380.389
+          },
+          "verify": {
+            "calls": 240,
+            "medianUs": 98.1095,
+            "p95Us": 471.75104999999996
+          },
+          "encode": {
+            "calls": 240,
+            "medianUs": 192.33999999999997,
+            "p95Us": 674.72405
+          }
+        }
+      },
+      {
+        "arm": "cold",
+        "rows": 240,
+        "statuses": {
+          "Optimal": 240
+        },
+        "medianUs": 29244.796000000002,
+        "p95Us": 171849.49149999997,
+        "p99Us": 191850.66721999994,
+        "medianBytes": 4603536,
+        "phases": {
+          "admission": {
+            "calls": 240,
+            "medianUs": 347.4985,
+            "p95Us": 2475.363449999991
+          },
+          "digest": {
+            "calls": 240,
+            "medianUs": 1777.8020000000001,
+            "p95Us": 6391.04905
+          },
+          "plan-admission": {
+            "calls": 240,
+            "medianUs": 348.1595,
+            "p95Us": 2292.4783999999954
+          },
+          "identity": {
+            "calls": 240,
+            "medianUs": 0.4,
+            "p95Us": 1.77
+          },
+          "partition": {
+            "calls": 180,
+            "medianUs": 1065.2935,
+            "p95Us": 11277.726249999954
+          },
+          "owner-fix": {
+            "calls": 180,
+            "medianUs": 80.5445,
+            "p95Us": 546.2209999999977
+          },
+          "row-transform": {
+            "calls": 120,
+            "medianUs": 1217.377,
+            "p95Us": 7072.299
+          },
+          "plan-ready": {
+            "calls": 240,
+            "medianUs": 1.585,
+            "p95Us": 5.715999999999988
+          },
+          "objective": {
+            "calls": 120,
+            "medianUs": 76.3995,
+            "p95Us": 351.26144999999997
+          },
+          "native-build": {
+            "calls": 120,
+            "medianUs": 1353.188,
+            "p95Us": 10474.584499999999
+          },
+          "native-solve": {
+            "calls": 120,
+            "medianUs": 7099.8775,
+            "p95Us": 22168.433549999998
+          },
+          "reconstruct": {
+            "calls": 120,
+            "medianUs": 82.2305,
+            "p95Us": 367.34905000000003
+          },
+          "solve-rest": {
+            "calls": 240,
+            "medianUs": 2980.245,
+            "p95Us": 160045.01894999997
+          },
+          "verify": {
+            "calls": 240,
+            "medianUs": 102.2695,
+            "p95Us": 451.93104999999997
+          },
+          "encode": {
+            "calls": 240,
+            "medianUs": 194.1495,
+            "p95Us": 665.2475499999999
+          },
+          "snapshot": {
+            "calls": 60,
+            "medianUs": 67.525,
+            "p95Us": 289.4379999999999
+          }
+        }
+      },
+      {
+        "arm": "G13",
+        "rows": 240,
+        "statuses": {
+          "Optimal": 240
+        },
+        "medianUs": 27388.0295,
+        "p95Us": 171859.7675,
+        "p99Us": 184880.75079999992,
+        "medianBytes": 2874480,
+        "phases": {
+          "admission": {
+            "calls": 240,
+            "medianUs": 350.629,
+            "p95Us": 1423.9369999999974
+          },
+          "digest": {
+            "calls": 240,
+            "medianUs": 1707.0465,
+            "p95Us": 6110.30405
+          },
+          "plan-admission": {
+            "calls": 240,
+            "medianUs": 339.9645,
+            "p95Us": 4223.5479999999925
+          },
+          "identity": {
+            "calls": 240,
+            "medianUs": 10.6,
+            "p95Us": 190.11649999999977
+          },
+          "partition": {
+            "calls": 72,
+            "medianUs": 1073.518,
+            "p95Us": 8395.549700000003
+          },
+          "owner-fix": {
+            "calls": 72,
+            "medianUs": 67.355,
+            "p95Us": 375.3390000000001
+          },
+          "row-transform": {
+            "calls": 60,
+            "medianUs": 1206.812,
+            "p95Us": 4417.832949999999
+          },
+          "plan-ready": {
+            "calls": 240,
+            "medianUs": 1.165,
+            "p95Us": 3.0964999999999976
+          },
+          "objective": {
+            "calls": 120,
+            "medianUs": 75.37,
+            "p95Us": 321.8364999999999
+          },
+          "native-build": {
+            "calls": 120,
+            "medianUs": 1343.7175,
+            "p95Us": 7723.969399999998
+          },
+          "native-solve": {
+            "calls": 120,
+            "medianUs": 7494.3215,
+            "p95Us": 24213.10995
+          },
+          "reconstruct": {
+            "calls": 120,
+            "medianUs": 79.6545,
+            "p95Us": 312.55294999999995
+          },
+          "solve-rest": {
+            "calls": 240,
+            "medianUs": 4159.112499999999,
+            "p95Us": 163606.72694999998
+          },
+          "verify": {
+            "calls": 240,
+            "medianUs": 101.42,
+            "p95Us": 455.05355
+          },
+          "encode": {
+            "calls": 240,
+            "medianUs": 192.175,
+            "p95Us": 659.2565
+          },
+          "snapshot": {
+            "calls": 12,
+            "medianUs": 48.945,
+            "p95Us": 3230.3075999999955
+          }
+        }
+      }
+    ],
+    "comparisons": [
+      {
+        "base": "original",
+        "histories": 48,
+        "medianSpeedup": 1.936265005155997,
+        "p10": 0.9092133771682378,
+        "p90": 7.2102715926920125,
+        "wins": 31
+      },
+      {
+        "base": "G11",
+        "histories": 48,
+        "medianSpeedup": 1.124832046227253,
+        "p10": 0.8793654329488453,
+        "p90": 1.5411823229971733,
+        "wins": 35
+      },
+      {
+        "base": "G12",
+        "histories": 48,
+        "medianSpeedup": 1.037824504569357,
+        "p10": 0.9126281096574921,
+        "p90": 1.3176197243778656,
+        "wins": 30
+      },
+      {
+        "base": "cold",
+        "histories": 48,
+        "medianSpeedup": 1.0409430507258346,
+        "p10": 0.9136801137360148,
+        "p90": 1.5737694136882228,
+        "wins": 35
+      }
+    ],
+    "byFamily": [
+      {
+        "family": "stable",
+        "comparisons": [
+          {
+            "base": "original",
+            "histories": 12,
+            "medianSpeedup": 5.9533638277789525,
+            "p10": 4.3739214348829485,
+            "p90": 8.035219794333276,
+            "wins": 12
+          },
+          {
+            "base": "G11",
+            "histories": 12,
+            "medianSpeedup": 1.2112493443830998,
+            "p10": 1.0048219138824348,
+            "p90": 1.6641981509098764,
+            "wins": 11
+          },
+          {
+            "base": "G12",
+            "histories": 12,
+            "medianSpeedup": 1.2380096210635765,
+            "p10": 1.020699002851391,
+            "p90": 1.81449145483333,
+            "wins": 11
+          },
+          {
+            "base": "cold",
+            "histories": 12,
+            "medianSpeedup": 1.2660300178005173,
+            "p10": 1.0498120939651991,
+            "p90": 2.8237979859614337,
+            "wins": 11
+          }
+        ]
+      },
+      {
+        "family": "edits",
+        "comparisons": [
+          {
+            "base": "original",
+            "histories": 12,
+            "medianSpeedup": 5.5456028161429405,
+            "p10": 3.418913491028814,
+            "p90": 7.0806258960776605,
+            "wins": 12
+          },
+          {
+            "base": "G11",
+            "histories": 12,
+            "medianSpeedup": 1.088039440178255,
+            "p10": 0.9209257347484715,
+            "p90": 1.2681769740246291,
+            "wins": 8
+          },
+          {
+            "base": "G12",
+            "histories": 12,
+            "medianSpeedup": 1.0743538213937054,
+            "p10": 0.903983885625301,
+            "p90": 1.3276775726435415,
+            "wins": 7
+          },
+          {
+            "base": "cold",
+            "histories": 12,
+            "medianSpeedup": 1.018982553532339,
+            "p10": 0.8729301262397184,
+            "p90": 1.1192090179355945,
+            "wins": 9
+          }
+        ]
+      },
+      {
+        "family": "weak",
+        "comparisons": [
+          {
+            "base": "original",
+            "histories": 12,
+            "medianSpeedup": 0.9932985914799356,
+            "p10": 0.9250444999518033,
+            "p90": 1.029501795385236,
+            "wins": 5
+          },
+          {
+            "base": "G11",
+            "histories": 12,
+            "medianSpeedup": 0.917067401875118,
+            "p10": 0.8274092293180182,
+            "p90": 1.16656372627098,
+            "wins": 4
+          },
+          {
+            "base": "G12",
+            "histories": 12,
+            "medianSpeedup": 1.037824504569357,
+            "p10": 0.9515602641437367,
+            "p90": 1.1925278710985827,
+            "wins": 9
+          },
+          {
+            "base": "cold",
+            "histories": 12,
+            "medianSpeedup": 1.0474580493080397,
+            "p10": 0.9891408949152696,
+            "p90": 1.1722107266083355,
+            "wins": 10
+          }
+        ]
+      },
+      {
+        "family": "none",
+        "comparisons": [
+          {
+            "base": "original",
+            "histories": 12,
+            "medianSpeedup": 0.9490746980723244,
+            "p10": 0.8894819056404156,
+            "p90": 1.0098349304553398,
+            "wins": 2
+          },
+          {
+            "base": "G11",
+            "histories": 12,
+            "medianSpeedup": 1.1581042710216591,
+            "p10": 1.0637153242227837,
+            "p90": 1.2518067143660714,
+            "wins": 12
+          },
+          {
+            "base": "G12",
+            "histories": 12,
+            "medianSpeedup": 0.9814478035801555,
+            "p10": 0.9104726389527253,
+            "p90": 1.0238888832487019,
+            "wins": 3
+          },
+          {
+            "base": "cold",
+            "histories": 12,
+            "medianSpeedup": 0.9952750399598702,
+            "p10": 0.9133190651939307,
+            "p90": 1.0424220415108556,
+            "wins": 5
+          }
+        ]
+      }
+    ],
+    "bySize": [
+      {
+        "n": 512,
+        "comparisons": [
+          {
+            "base": "original",
+            "histories": 12,
+            "medianSpeedup": 1.8501408335985743,
+            "p10": 0.9430128060331353,
+            "p90": 4.308983676603036,
+            "wins": 6
+          },
+          {
+            "base": "G11",
+            "histories": 12,
+            "medianSpeedup": 1.113832708975937,
+            "p10": 0.8722530794070357,
+            "p90": 2.4560730180959975,
+            "wins": 9
+          },
+          {
+            "base": "G12",
+            "histories": 12,
+            "medianSpeedup": 1.0124041774138854,
+            "p10": 0.906048771665831,
+            "p90": 1.2385322954417974,
+            "wins": 6
+          },
+          {
+            "base": "cold",
+            "histories": 12,
+            "medianSpeedup": 1.0271714339527995,
+            "p10": 0.9215343238116213,
+            "p90": 2.8029347776026605,
+            "wins": 9
+          }
+        ]
+      },
+      {
+        "n": 4096,
+        "comparisons": [
+          {
+            "base": "original",
+            "histories": 12,
+            "medianSpeedup": 2.7048084665203964,
+            "p10": 0.9303032665055492,
+            "p90": 5.519532897135217,
+            "wins": 9
+          },
+          {
+            "base": "G11",
+            "histories": 12,
+            "medianSpeedup": 1.0287066870630421,
+            "p10": 0.8915283217300431,
+            "p90": 1.2367604192950015,
+            "wins": 8
+          },
+          {
+            "base": "G12",
+            "histories": 12,
+            "medianSpeedup": 1.0170777391726862,
+            "p10": 0.9224276696710649,
+            "p90": 1.215829622301972,
+            "wins": 7
+          },
+          {
+            "base": "cold",
+            "histories": 12,
+            "medianSpeedup": 1.0423582643702645,
+            "p10": 1.0001376112727438,
+            "p90": 1.1156789741401767,
+            "wins": 10
+          }
+        ]
+      },
+      {
+        "n": 10000,
+        "comparisons": [
+          {
+            "base": "original",
+            "histories": 12,
+            "medianSpeedup": 3.0937371940897123,
+            "p10": 0.9128321389086005,
+            "p90": 6.476439342014485,
+            "wins": 8
+          },
+          {
+            "base": "G11",
+            "histories": 12,
+            "medianSpeedup": 1.1308573539088775,
+            "p10": 0.9873458108123607,
+            "p90": 1.458784841799162,
+            "wins": 10
+          },
+          {
+            "base": "G12",
+            "histories": 12,
+            "medianSpeedup": 1.0648564439453168,
+            "p10": 0.9522125099280904,
+            "p90": 1.5517451246756864,
+            "wins": 8
+          },
+          {
+            "base": "cold",
+            "histories": 12,
+            "medianSpeedup": 1.035793164740647,
+            "p10": 0.8893394961620702,
+            "p90": 1.1722107266083355,
+            "wins": 7
+          }
+        ]
+      },
+      {
+        "n": 25000,
+        "comparisons": [
+          {
+            "base": "original",
+            "histories": 12,
+            "medianSpeedup": 3.4179299601796274,
+            "p10": 0.9081054308559774,
+            "p90": 7.971053473820644,
+            "wins": 8
+          },
+          {
+            "base": "G11",
+            "histories": 12,
+            "medianSpeedup": 1.1581042710216591,
+            "p10": 0.877660439397685,
+            "p90": 1.2777604862031116,
+            "wins": 8
+          },
+          {
+            "base": "G12",
+            "histories": 12,
+            "medianSpeedup": 1.0442528556838309,
+            "p10": 0.9170383933035942,
+            "p90": 1.3343731166139303,
+            "wins": 9
+          },
+          {
+            "base": "cold",
+            "histories": 12,
+            "medianSpeedup": 1.0440713638266463,
+            "p10": 0.9604067285995787,
+            "p90": 1.2851912930807161,
+            "wins": 9
+          }
+        ]
+      }
+    ]
+  },
+  "disk": {
+    "rows": 100,
+    "models": 20,
+    "allConclusive": 20,
+    "verifiedWitnesses": 100,
+    "histories": 4,
+    "completeConclusiveHistories": 4,
+    "hits": 10,
+    "cacheEvaluations": 20,
+    "persistedReadback": 100,
+    "summaries": [
+      {
+        "arm": "original",
+        "rows": 20,
+        "statuses": {
+          "Optimal": 20
+        },
+        "medianUs": 59462.4725,
+        "p95Us": 89127.38785000012,
+        "p99Us": 211657.56476999982,
+        "medianBytes": 2798476,
+        "phases": {
+          "admission": {
+            "calls": 20,
+            "medianUs": 206.40449999999998,
+            "p95Us": 1449.6161000000034
+          },
+          "digest": {
+            "calls": 20,
+            "medianUs": 2497.8605,
+            "p95Us": 9489.73985000006
+          },
+          "solve-rest": {
+            "calls": 20,
+            "medianUs": 54934.785,
+            "p95Us": 78650.72170000004
+          },
+          "verify": {
+            "calls": 20,
+            "medianUs": 93.82050000000001,
+            "p95Us": 471.4826000000028
+          },
+          "encode": {
+            "calls": 20,
+            "medianUs": 155.21949999999998,
+            "p95Us": 1151.5481000000113
+          },
+          "flush": {
+            "calls": 20,
+            "medianUs": 993.0830000000001,
+            "p95Us": 1668.9685
+          }
+        }
+      },
+      {
+        "arm": "G11",
+        "rows": 20,
+        "statuses": {
+          "Optimal": 20
+        },
+        "medianUs": 11898.332999999999,
+        "p95Us": 19315.578300000005,
+        "p99Us": 25546.71645999999,
+        "medianBytes": 1063240,
+        "phases": {
+          "admission": {
+            "calls": 20,
+            "medianUs": 202.16000000000003,
+            "p95Us": 277.5484000000007
+          },
+          "digest": {
+            "calls": 20,
+            "medianUs": 1533.8670000000002,
+            "p95Us": 3374.1793500000013
+          },
+          "solve-rest": {
+            "calls": 20,
+            "medianUs": 8111.51,
+            "p95Us": 13783.492900000008
+          },
+          "verify": {
+            "calls": 20,
+            "medianUs": 85.3045,
+            "p95Us": 92.7475
+          },
+          "encode": {
+            "calls": 20,
+            "medianUs": 102.06,
+            "p95Us": 296.08900000000006
+          },
+          "flush": {
+            "calls": 20,
+            "medianUs": 814.094,
+            "p95Us": 1238.5975
+          }
+        }
+      },
+      {
+        "arm": "G12",
+        "rows": 20,
+        "statuses": {
+          "Optimal": 20
+        },
+        "medianUs": 12566.4525,
+        "p95Us": 28247.93915000002,
+        "p99Us": 51971.31102999996,
+        "medianBytes": 1083676,
+        "phases": {
+          "admission": {
+            "calls": 20,
+            "medianUs": 221.33499999999998,
+            "p95Us": 827.6432000000061
+          },
+          "digest": {
+            "calls": 20,
+            "medianUs": 1452.4875,
+            "p95Us": 4114.649100000003
+          },
+          "g12-partition": {
+            "calls": 20,
+            "medianUs": 466.1145,
+            "p95Us": 724.0664500000005
+          },
+          "g12-owner-fix": {
+            "calls": 20,
+            "medianUs": 39.17,
+            "p95Us": 325.47500000000343
+          },
+          "g12-quotient-partition": {
+            "calls": 20,
+            "medianUs": 1.23,
+            "p95Us": 2.2260000000000018
+          },
+          "g12-duplicate-owner-fix": {
+            "calls": 20,
+            "medianUs": 36.1255,
+            "p95Us": 1333.474700000018
+          },
+          "g12-native-build": {
+            "calls": 20,
+            "medianUs": 2569.5955000000004,
+            "p95Us": 7017.796000000012
+          },
+          "g12-native-solve": {
+            "calls": 20,
+            "medianUs": 3311.134,
+            "p95Us": 7845.600900000001
+          },
+          "g12-reconstruct": {
+            "calls": 20,
+            "medianUs": 24.5595,
+            "p95Us": 51.60945
+          },
+          "solve-rest": {
+            "calls": 20,
+            "medianUs": 100.50450000000001,
+            "p95Us": 143.59255000000002
+          },
+          "verify": {
+            "calls": 20,
+            "medianUs": 87.6745,
+            "p95Us": 111.85945000000001
+          },
+          "encode": {
+            "calls": 20,
+            "medianUs": 126.53,
+            "p95Us": 403.39815000000254
+          },
+          "flush": {
+            "calls": 20,
+            "medianUs": 798.2735,
+            "p95Us": 1155.6818500000006
+          }
+        }
+      },
+      {
+        "arm": "cold",
+        "rows": 20,
+        "statuses": {
+          "Optimal": 20
+        },
+        "medianUs": 13239.286,
+        "p95Us": 28903.64595000001,
+        "p99Us": 37167.23158999998,
+        "medianBytes": 1275068,
+        "phases": {
+          "admission": {
+            "calls": 20,
+            "medianUs": 203.984,
+            "p95Us": 302.14750000000004
+          },
+          "digest": {
+            "calls": 20,
+            "medianUs": 1478.007,
+            "p95Us": 3997.18305
+          },
+          "plan-admission": {
+            "calls": 20,
+            "medianUs": 199.7345,
+            "p95Us": 886.9053500000009
+          },
+          "identity": {
+            "calls": 20,
+            "medianUs": 0.435,
+            "p95Us": 4.528000000000042
+          },
+          "partition": {
+            "calls": 20,
+            "medianUs": 492.304,
+            "p95Us": 4484.254250000002
+          },
+          "owner-fix": {
+            "calls": 20,
+            "medianUs": 44.429500000000004,
+            "p95Us": 141.36905000000007
+          },
+          "row-transform": {
+            "calls": 20,
+            "medianUs": 1021.3835,
+            "p95Us": 6835.501450000009
+          },
+          "plan-ready": {
+            "calls": 20,
+            "medianUs": 1.21,
+            "p95Us": 15.70245000000017
+          },
+          "objective": {
+            "calls": 20,
+            "medianUs": 74.28,
+            "p95Us": 1445.9342500000173
+          },
+          "native-build": {
+            "calls": 20,
+            "medianUs": 1086.517,
+            "p95Us": 4239.756
+          },
+          "native-solve": {
+            "calls": 20,
+            "medianUs": 3140.215,
+            "p95Us": 5866.248350000002
+          },
+          "reconstruct": {
+            "calls": 20,
+            "medianUs": 72.63999999999999,
+            "p95Us": 1486.873350000017
+          },
+          "solve-rest": {
+            "calls": 20,
+            "medianUs": 2.31,
+            "p95Us": 27.265
+          },
+          "verify": {
+            "calls": 20,
+            "medianUs": 93.3295,
+            "p95Us": 120.58400000000002
+          },
+          "encode": {
+            "calls": 20,
+            "medianUs": 104.045,
+            "p95Us": 301.74555000000004
+          },
+          "flush": {
+            "calls": 20,
+            "medianUs": 883.5525,
+            "p95Us": 1070.7450000000001
+          }
+        }
+      },
+      {
+        "arm": "G13",
+        "rows": 20,
+        "statuses": {
+          "Optimal": 20
+        },
+        "medianUs": 8545.65,
+        "p95Us": 15195.143400000012,
+        "p99Us": 28688.037479999977,
+        "medianBytes": 724896,
+        "phases": {
+          "admission": {
+            "calls": 20,
+            "medianUs": 198.5895,
+            "p95Us": 235.97295000000014
+          },
+          "digest": {
+            "calls": 20,
+            "medianUs": 1504.4725,
+            "p95Us": 2975.0459500000006
+          },
+          "plan-admission": {
+            "calls": 20,
+            "medianUs": 203.80900000000003,
+            "p95Us": 286.28999999999996
+          },
+          "identity": {
+            "calls": 20,
+            "medianUs": 7.779999999999999,
+            "p95Us": 286.5732500000021
+          },
+          "partition": {
+            "calls": 10,
+            "medianUs": 493.93899999999996,
+            "p95Us": 2450.681649999997
+          },
+          "owner-fix": {
+            "calls": 10,
+            "medianUs": 30.354999999999997,
+            "p95Us": 10819.65524999998
+          },
+          "row-transform": {
+            "calls": 10,
+            "medianUs": 715.4435000000001,
+            "p95Us": 1231.9855499999999
+          },
+          "plan-ready": {
+            "calls": 20,
+            "medianUs": 1.1349999999999998,
+            "p95Us": 9.656450000000007
+          },
+          "objective": {
+            "calls": 20,
+            "medianUs": 48.875,
+            "p95Us": 90.19450000000009
+          },
+          "native-build": {
+            "calls": 20,
+            "medianUs": 754.4639999999999,
+            "p95Us": 1656.8670000000002
+          },
+          "native-solve": {
+            "calls": 20,
+            "medianUs": 3078.0945,
+            "p95Us": 5648.8864
+          },
+          "reconstruct": {
+            "calls": 20,
+            "medianUs": 60.955,
+            "p95Us": 77.14050000000003
+          },
+          "solve-rest": {
+            "calls": 20,
+            "medianUs": 1.6600000000000001,
+            "p95Us": 16.903500000000008
+          },
+          "verify": {
+            "calls": 20,
+            "medianUs": 92.2895,
+            "p95Us": 96.08550000000001
+          },
+          "encode": {
+            "calls": 20,
+            "medianUs": 99.0895,
+            "p95Us": 151.17050000000012
+          },
+          "flush": {
+            "calls": 20,
+            "medianUs": 847.5435,
+            "p95Us": 1077.1889999999999
+          }
+        }
+      }
+    ],
+    "comparisons": [
+      {
+        "base": "original",
+        "histories": 4,
+        "medianSpeedup": 5.023719785768581,
+        "p10": 3.5026300207891126,
+        "p90": 11.479522173079712,
+        "wins": 4
+      },
+      {
+        "base": "G11",
+        "histories": 4,
+        "medianSpeedup": 1.021059607247766,
+        "p10": 0.8698229113379998,
+        "p90": 1.9882556010454224,
+        "wins": 2
+      },
+      {
+        "base": "G12",
+        "histories": 4,
+        "medianSpeedup": 1.3677679396862068,
+        "p10": 0.9516051004826547,
+        "p90": 1.9784194735715557,
+        "wins": 3
+      },
+      {
+        "base": "cold",
+        "histories": 4,
+        "medianSpeedup": 1.5861847855060647,
+        "p10": 1.2370107509377386,
+        "p90": 2.5678439154383574,
+        "wins": 4
+      }
+    ],
+    "byFamily": [
+      {
+        "family": "stable",
+        "comparisons": [
+          {
+            "base": "original",
+            "histories": 2,
+            "medianSpeedup": 9.603484632735011,
+            "p10": 5.904367473915365,
+            "p90": 13.302601791554657,
+            "wins": 2
+          },
+          {
+            "base": "G11",
+            "histories": 2,
+            "medianSpeedup": 1.6639601669315793,
+            "p10": 1.0959315509922747,
+            "p90": 2.231988782870884,
+            "wins": 1
+          },
+          {
+            "base": "G12",
+            "histories": 2,
+            "medianSpeedup": 1.8635018843484783,
+            "p10": 1.633666705902324,
+            "p90": 2.0933370627946326,
+            "wins": 2
+          },
+          {
+            "base": "cold",
+            "histories": 2,
+            "medianSpeedup": 2.1248963479847616,
+            "p10": 1.5119567440321104,
+            "p90": 2.737835951937413,
+            "wins": 2
+          }
+        ]
+      },
+      {
+        "family": "edits",
+        "comparisons": [
+          {
+            "base": "original",
+            "histories": 2,
+            "medianSpeedup": 3.9687496690390516,
+            "p10": 3.089468294408926,
+            "p90": 4.848031043669177,
+            "wins": 2
+          },
+          {
+            "base": "G11",
+            "histories": 2,
+            "medianSpeedup": 0.9609871174838742,
+            "p10": 0.8592209574805065,
+            "p90": 1.062753277487242,
+            "wins": 1
+          },
+          {
+            "base": "G12",
+            "histories": 2,
+            "medianSpeedup": 1.0109544912252186,
+            "p10": 0.8922557097400907,
+            "p90": 1.1296532727103465,
+            "wins": 1
+          },
+          {
+            "base": "cold",
+            "histories": 2,
+            "medianSpeedup": 1.4992482911444869,
+            "p10": 1.247728741685531,
+            "p90": 1.7507678406034428,
+            "wins": 2
+          }
+        ]
+      }
+    ],
+    "bySize": [
+      {
+        "n": 512,
+        "comparisons": [
+          {
+            "base": "original",
+            "histories": 2,
+            "medianSpeedup": 8.548514516005483,
+            "p10": 4.005421263802212,
+            "p90": 13.091607768208751,
+            "wins": 2
+          },
+          {
+            "base": "G11",
+            "histories": 2,
+            "medianSpeedup": 1.6038876771676875,
+            "p10": 0.9878010694172692,
+            "p90": 2.2199742849181057,
+            "wins": 1
+          },
+          {
+            "base": "G12",
+            "histories": 2,
+            "medianSpeedup": 1.5066884358874901,
+            "p10": 0.991402498672545,
+            "p90": 2.021974373102435,
+            "wins": 1
+          },
+          {
+            "base": "cold",
+            "histories": 2,
+            "medianSpeedup": 2.352359290446879,
+            "p10": 1.921390040463921,
+            "p90": 2.783328540429836,
+            "wins": 2
+          }
+        ]
+      },
+      {
+        "n": 4096,
+        "comparisons": [
+          {
+            "base": "original",
+            "histories": 2,
+            "medianSpeedup": 5.023719785768581,
+            "p10": 4.988414504522079,
+            "p90": 5.059025067015083,
+            "wins": 2
+          },
+          {
+            "base": "G11",
+            "histories": 2,
+            "medianSpeedup": 1.021059607247766,
+            "p10": 0.967351439055512,
+            "p90": 1.0747677754400202,
+            "wins": 1
+          },
+          {
+            "base": "G12",
+            "histories": 2,
+            "medianSpeedup": 1.3677679396862068,
+            "p10": 1.201015962402544,
+            "p90": 1.5345199169698698,
+            "wins": 2
+          },
+          {
+            "base": "cold",
+            "histories": 2,
+            "medianSpeedup": 1.2717853486823698,
+            "p10": 1.2022361531931076,
+            "p90": 1.341334544171632,
+            "wins": 2
+          }
+        ]
+      }
+    ]
+  }
+}
