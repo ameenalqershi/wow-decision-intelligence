@@ -79,7 +79,7 @@ internal static class MatrixVerifier
         var n=new GeneralNetwork(m.Rows.Length,m.Rows.Select(r=>r.U).ToArray(),arcs);GeneralFlow.Admit(n);return n;
     }
     internal static string Assurance(string status,bool formal)=>status switch{"Optimal"=>formal?"ProvenOptimal":"SolverOptimal","Infeasible"=>formal?"ProvenInfeasible":"SolverInfeasible","Feasible"=>"Feasible","Unknown"=>"Unknown",_=>throw new Exception("status")};
-    internal static void Replay(MatrixEvidence e)
+    internal static void Replay(MatrixEvidence e,bool typedProjection=false,Action<long>? elapsedProjection=null)
     {
         var m=e.Source;MatrixAdmission.Check(m);if(MatrixAdmission.Digest(m)!=e.Digest)throw new Exception("revision");
         if(e.Status is "Optimal" or "Feasible"){if(e.X==null||MatrixAdmission.Value(m,e.X)!=e.Value)throw new Exception("source witness");}
@@ -97,7 +97,7 @@ internal static class MatrixVerifier
             Bind(e.Flow.Status,e.Flow.Value,e.Flow.Flow);formal=true;
         }else if(e.Boolean!=null){
             var b=e.Boolean;UnifiedVerifier.Verify(b);var src=MatrixAdmission.From(b.Model);
-            CheckProjection(m,src);var r=b.Outcome.Result;Bind(r.Status,r.Value,r.Bits?.Select(i=>(long)i).ToArray());formal=b.Outcome.Formal;
+            long started=System.Diagnostics.Stopwatch.GetTimestamp();CheckProjection(m,src,typedProjection);elapsedProjection?.Invoke(System.Diagnostics.Stopwatch.GetTimestamp()-started);var r=b.Outcome.Result;Bind(r.Status,r.Value,r.Bits?.Select(i=>(long)i).ToArray());formal=b.Outcome.Formal;
         }else if(e.Weighted!=null){
             if(m.Lower.Any(x=>x!=0)||m.Upper.Any(x=>x!=1))throw new Exception("weighted domain");
             var w=new WeightedModel(m.N,m.Rows,MatrixAdmission.MinCost(m));WeightedVerifier.Replay(w,WeightedReduction.Digest(w),e.Weighted);
@@ -105,12 +105,33 @@ internal static class MatrixVerifier
         }
         if(e.Assurance!=Assurance(e.Status,formal))throw new Exception("assurance");
     }
-    private static void CheckProjection(IntegralMatrix m,IntegralMatrix p)
+    internal static void CheckProjection(IntegralMatrix m,IntegralMatrix p,bool typed=false)
     {
         if(m.N!=p.N||!m.Lower.AsSpan().SequenceEqual(p.Lower)||!m.Upper.AsSpan().SequenceEqual(p.Upper)||!MatrixAdmission.MinCost(m).AsSpan().SequenceEqual(p.Cost)||m.Rows.Length!=p.Rows.Length)throw new Exception("boolean projection");
+        if(typed){CheckTypedRows(m.Rows,p.Rows);return;}
         // Exact row multiset; reordering permitted, duplicates preserved.
         string Key(WeightedRow r)=>r.L+":"+r.U+":"+string.Join(",",r.Index.Select((i,k)=>(i,r.Coeff[k])).OrderBy(a=>a.i));
         if(!m.Rows.Select(Key).Order(StringComparer.Ordinal).SequenceEqual(p.Rows.Select(Key).Order(StringComparer.Ordinal)))throw new Exception("boolean rows");
+    }
+    private sealed record RowKey(long L,long U,(int I,long C)[] Terms);
+    private static int CompareRows(RowKey a,RowKey b)
+    {
+        int c=a.L.CompareTo(b.L);if(c!=0)return c;c=a.U.CompareTo(b.U);if(c!=0)return c;
+        c=a.Terms.Length.CompareTo(b.Terms.Length);if(c!=0)return c;
+        for(int i=0;i<a.Terms.Length;i++){
+            c=a.Terms[i].I.CompareTo(b.Terms[i].I);if(c!=0)return c;
+            c=a.Terms[i].C.CompareTo(b.Terms[i].C);if(c!=0)return c;
+        }
+        return 0;
+    }
+    private static void CheckTypedRows(WeightedRow[] a,WeightedRow[] b)
+    {
+        RowKey[] Keys(WeightedRow[] rows)=>rows.Select(r=>{
+            var terms=new (int I,long C)[r.Index.Length];for(int i=0;i<terms.Length;i++)terms[i]=(r.Index[i],r.Coeff[i]);
+            Array.Sort(terms);return new RowKey(r.L,r.U,terms);
+        }).ToArray();
+        var x=Keys(a);var y=Keys(b);Array.Sort(x,CompareRows);Array.Sort(y,CompareRows);
+        for(int i=0;i<x.Length;i++)if(CompareRows(x[i],y[i])!=0)throw new Exception("boolean rows");
     }
 }
 internal sealed class MatrixDispatcher(bool network=true,bool weighted=true,bool boolean=true,bool preserveNetworkRows=false,bool reuseStructure=false)
