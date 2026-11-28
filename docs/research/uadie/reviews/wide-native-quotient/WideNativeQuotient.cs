@@ -13,6 +13,8 @@ if(args is ["template",var templateSplit]){TemplateStudy.Run(templateSplit,Origi
 if(args is ["certified",var certSplit,var threshold]){CertifiedStudy.Run(certSplit,double.Parse(threshold,System.Globalization.CultureInfo.InvariantCulture));return;}
 if(args is ["certified-audit"]){CertifiedAudit.Run();return;}
 if(args is ["industrial",var industrialDir]){IndustrialAdmission.Run(industrialDir);return;}
+if(args is ["proof-reuse",var proofSplit]){ProofReuseStudy.Run(proofSplit);return;}
+if(args is ["proof-readback",var proofFile]){ProofReadback.Run(proofFile);return;}
 if(args.Length!=1)throw new ArgumentException("dev|holdout|audit");
 bool dev=args[0]=="dev";if(!dev&&args[0]!="holdout")throw new ArgumentException("split");
 foreach(int n in dev?new[]{64,512}:new[]{64,512,4096,10000})
