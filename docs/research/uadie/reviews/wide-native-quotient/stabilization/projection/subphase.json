@@ -1,0 +1,11 @@
+{
+  "text": {
+    "calls": 144,
+    "medianUs": 201.5695
+  },
+  "typed": {
+    "calls": 144,
+    "medianUs": 78
+  },
+  "pairedMedianSpeedup": 2.7581949488397064
+}

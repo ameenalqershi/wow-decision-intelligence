@@ -1,0 +1,312 @@
+{
+  "projection": {
+    "rows": 288,
+    "models": 144,
+    "distinctDigests": 144,
+    "histories": 72,
+    "summaries": [
+      {
+        "arm": "text",
+        "rows": 144,
+        "statuses": {
+          "Optimal": 144
+        },
+        "formal": 120,
+        "medianUs": 2028.665,
+        "p95Us": 8547.94515,
+        "p99Us": 91642.10944999973,
+        "medianBytes": 299808,
+        "medianEvidenceBytes": 7457,
+        "dropped": 0,
+        "gcdRows": 0,
+        "phases": {
+          "matrix-context": {
+            "calls": 144,
+            "medianUs": 184.8245
+          },
+          "context": {
+            "calls": 144,
+            "medianUs": 119.905
+          },
+          "network-gate": {
+            "calls": 144,
+            "medianUs": 2.3099999999999996
+          },
+          "simple-gate": {
+            "calls": 96,
+            "medianUs": 3.645
+          },
+          "fallback-gate": {
+            "calls": 72,
+            "medianUs": 0.98
+          },
+          "identity": {
+            "calls": 48,
+            "medianUs": 2.12
+          },
+          "structural-transform": {
+            "calls": 24,
+            "medianUs": 188.23000000000002
+          },
+          "structural-proof": {
+            "calls": 24,
+            "medianUs": 193.36
+          },
+          "objective-transform": {
+            "calls": 48,
+            "medianUs": 9.48
+          },
+          "objective-proof": {
+            "calls": 48,
+            "medianUs": 12.23
+          },
+          "solve": {
+            "calls": 144,
+            "medianUs": 7.865
+          },
+          "optimality-proof": {
+            "calls": 48,
+            "medianUs": 13.14
+          },
+          "typed-export": {
+            "calls": 144,
+            "medianUs": 11.355
+          },
+          "replay": {
+            "calls": 144,
+            "medianUs": 912.303
+          },
+          "encode": {
+            "calls": 144,
+            "medianUs": 181.174
+          },
+          "partition": {
+            "calls": 48,
+            "medianUs": 77.7295
+          },
+          "block-solve": {
+            "calls": 24,
+            "medianUs": 480.829
+          }
+        }
+      },
+      {
+        "arm": "typed",
+        "rows": 144,
+        "statuses": {
+          "Optimal": 144
+        },
+        "formal": 120,
+        "medianUs": 1835.596,
+        "p95Us": 7601.453799999998,
+        "p99Us": 9193.981629999998,
+        "medianBytes": 206632,
+        "medianEvidenceBytes": 7457,
+        "dropped": 0,
+        "gcdRows": 0,
+        "phases": {
+          "matrix-context": {
+            "calls": 144,
+            "medianUs": 174.954
+          },
+          "context": {
+            "calls": 144,
+            "medianUs": 122.14
+          },
+          "network-gate": {
+            "calls": 144,
+            "medianUs": 2.395
+          },
+          "simple-gate": {
+            "calls": 96,
+            "medianUs": 2.96
+          },
+          "fallback-gate": {
+            "calls": 72,
+            "medianUs": 0.965
+          },
+          "identity": {
+            "calls": 48,
+            "medianUs": 1.395
+          },
+          "structural-transform": {
+            "calls": 24,
+            "medianUs": 191.9545
+          },
+          "structural-proof": {
+            "calls": 24,
+            "medianUs": 159.6495
+          },
+          "objective-transform": {
+            "calls": 48,
+            "medianUs": 10.94
+          },
+          "objective-proof": {
+            "calls": 48,
+            "medianUs": 11.225
+          },
+          "solve": {
+            "calls": 144,
+            "medianUs": 7.45
+          },
+          "optimality-proof": {
+            "calls": 48,
+            "medianUs": 7.665
+          },
+          "typed-export": {
+            "calls": 144,
+            "medianUs": 11.2
+          },
+          "replay": {
+            "calls": 144,
+            "medianUs": 750.8720000000001
+          },
+          "encode": {
+            "calls": 144,
+            "medianUs": 179.629
+          },
+          "partition": {
+            "calls": 48,
+            "medianUs": 77.17949999999999
+          },
+          "block-solve": {
+            "calls": 24,
+            "medianUs": 483.608
+          }
+        }
+      }
+    ],
+    "comparisons": [
+      {
+        "candidate": "typed",
+        "base": "text",
+        "histories": 72,
+        "totalHistories": 72,
+        "clusters": 12,
+        "medianSpeedup": 1.1016320443071974,
+        "ci95": [
+          1.075059317841084,
+          1.1421878936920353
+        ],
+        "wins": 60,
+        "min": 0.7991603262521507
+      }
+    ],
+    "byFamily": [
+      {
+        "family": "blocks",
+        "comparisons": [
+          {
+            "candidate": "typed",
+            "base": "text",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.1926332543709721,
+            "ci95": [
+              1.120583451901123,
+              1.611334872933519
+            ],
+            "wins": 11,
+            "min": 0.8715183377062624
+          }
+        ]
+      },
+      {
+        "family": "quotas",
+        "comparisons": [
+          {
+            "candidate": "typed",
+            "base": "text",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.075059317841084,
+            "ci95": [
+              1.00161767067338,
+              1.0986309164699617
+            ],
+            "wins": 9,
+            "min": 0.8220489712581167
+          }
+        ]
+      },
+      {
+        "family": "assignment",
+        "comparisons": [
+          {
+            "candidate": "typed",
+            "base": "text",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.1018458487505973,
+            "ci95": [
+              1.0504011351201528,
+              1.2440441220705538
+            ],
+            "wins": 10,
+            "min": 0.7991603262521507
+          }
+        ]
+      },
+      {
+        "family": "sparse",
+        "comparisons": [
+          {
+            "candidate": "typed",
+            "base": "text",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.166959451220917,
+            "ci95": [
+              1.0864463013232433,
+              1.2198517423621693
+            ],
+            "wins": 11,
+            "min": 0.8022310393425078
+          }
+        ]
+      },
+      {
+        "family": "mixed",
+        "comparisons": [
+          {
+            "candidate": "typed",
+            "base": "text",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.1016320443071974,
+            "ci95": [
+              1.0183132544225741,
+              1.185026810308113
+            ],
+            "wins": 10,
+            "min": 0.9641353107429871
+          }
+        ]
+      },
+      {
+        "family": "overlap",
+        "comparisons": [
+          {
+            "candidate": "typed",
+            "base": "text",
+            "histories": 12,
+            "totalHistories": 12,
+            "clusters": 12,
+            "medianSpeedup": 1.0313086357901864,
+            "ci95": [
+              0.9972103606756133,
+              1.0447181999563226
+            ],
+            "wins": 9,
+            "min": 0.9168981160591054
+          }
+        ]
+      }
+    ]
+  }
+}

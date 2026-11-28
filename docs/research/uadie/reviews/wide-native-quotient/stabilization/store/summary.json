@@ -1,0 +1,13 @@
+{
+  "checks": 25,
+  "storage": {
+    "kind": "storage",
+    "records": 72,
+    "objects": 39,
+    "sourceBytes": 176535,
+    "objectBytes": 66074,
+    "revisionBytes": 60734,
+    "writeMs": 1836.902584,
+    "replayMs": 45.269491
+  }
+}

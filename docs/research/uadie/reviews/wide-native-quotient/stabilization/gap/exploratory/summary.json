@@ -1,0 +1,186 @@
+{
+  "selected": 24,
+  "admitted": 17,
+  "rejected": 7,
+  "outcomes": 51,
+  "arms": [
+    {
+      "arm": "CP-SAT",
+      "cases": 17,
+      "statuses": [
+        {
+          "status": "Feasible",
+          "n": 5
+        },
+        {
+          "status": "Optimal",
+          "n": 4
+        },
+        {
+          "status": "Unknown",
+          "n": 8
+        }
+      ],
+      "sourceVerified": 9,
+      "formal": 0
+    },
+    {
+      "arm": "G24",
+      "cases": 17,
+      "statuses": [
+        {
+          "status": "Feasible",
+          "n": 5
+        },
+        {
+          "status": "Optimal",
+          "n": 3
+        },
+        {
+          "status": "Unknown",
+          "n": 9
+        }
+      ],
+      "sourceVerified": 8,
+      "formal": 0
+    },
+    {
+      "arm": "HiGHS",
+      "cases": 17,
+      "statuses": [
+        {
+          "status": "Feasible",
+          "n": 11
+        },
+        {
+          "status": "Optimal",
+          "n": 3
+        },
+        {
+          "status": "Unknown",
+          "n": 3
+        }
+      ],
+      "sourceVerified": 14,
+      "formal": 0
+    }
+  ],
+  "bySplit": [
+    {
+      "split": "dev",
+      "selected": 12,
+      "admitted": 9,
+      "arms": [
+        {
+          "arm": "CP-SAT",
+          "statuses": [
+            {
+              "status": "Feasible",
+              "n": 2
+            },
+            {
+              "status": "Optimal",
+              "n": 3
+            },
+            {
+              "status": "Unknown",
+              "n": 4
+            }
+          ]
+        },
+        {
+          "arm": "G24",
+          "statuses": [
+            {
+              "status": "Feasible",
+              "n": 2
+            },
+            {
+              "status": "Optimal",
+              "n": 2
+            },
+            {
+              "status": "Unknown",
+              "n": 5
+            }
+          ]
+        },
+        {
+          "arm": "HiGHS",
+          "statuses": [
+            {
+              "status": "Feasible",
+              "n": 6
+            },
+            {
+              "status": "Optimal",
+              "n": 1
+            },
+            {
+              "status": "Unknown",
+              "n": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "split": "holdout",
+      "selected": 12,
+      "admitted": 8,
+      "arms": [
+        {
+          "arm": "CP-SAT",
+          "statuses": [
+            {
+              "status": "Feasible",
+              "n": 3
+            },
+            {
+              "status": "Optimal",
+              "n": 1
+            },
+            {
+              "status": "Unknown",
+              "n": 4
+            }
+          ]
+        },
+        {
+          "arm": "G24",
+          "statuses": [
+            {
+              "status": "Feasible",
+              "n": 3
+            },
+            {
+              "status": "Optimal",
+              "n": 1
+            },
+            {
+              "status": "Unknown",
+              "n": 4
+            }
+          ]
+        },
+        {
+          "arm": "HiGHS",
+          "statuses": [
+            {
+              "status": "Feasible",
+              "n": 5
+            },
+            {
+              "status": "Optimal",
+              "n": 2
+            },
+            {
+              "status": "Unknown",
+              "n": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "cases": 108,
+  "valid": 73,
+  "rejected": 35,
+  "numericEnvelope": 73,
+  "tokens": 1558860,
+  "nonintegral": 1558856,
+  "maxScale": 12,
+  "bySplit": [
+    {
+      "split": "dev",
+      "cases": 54,
+      "valid": 35,
+      "rejected": 19
+    },
+    {
+      "split": "holdout",
+      "cases": 54,
+      "valid": 38,
+      "rejected": 16
+    }
+  ],
+  "byResources": [
+    {
+      "resources": 10,
+      "cases": 36,
+      "numericEnvelope": 36
+    },
+    {
+      "resources": 50,
+      "cases": 22,
+      "numericEnvelope": 22
+    },
+    {
+      "resources": 100,
+      "cases": 15,
+      "numericEnvelope": 15
+    }
+  ]
+}
