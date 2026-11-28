@@ -9,6 +9,7 @@ if (args is ["cached-quota", var cacheSplit]) { CachedQuotaStudy.Run(cacheSplit)
 if (args is ["adaptive-decision", var decisionSplit]) { AdaptiveDecisionStudy.Run(decisionSplit); return; }
 if (args is ["propagation-search", var propagationSplit]) { PropagationStudy.Run(propagationSplit); return; }
 if (args is ["structural-admission", var structuralSplit]) { StructuralAdmissionStudy.Run(structuralSplit); return; }
+if (args is ["compressed-propagation", var compressedSplit]) { CompressedPropagationStudy.Run(compressedSplit); return; }
 if (args.Length != 3) throw new ArgumentException("usage: strategy split repetition");
 string strategy=args[0], split=args[1];
 int repeat=int.Parse(args[2]);
